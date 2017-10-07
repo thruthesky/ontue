@@ -1,1 +1,24 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="rootContent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Site Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+        <button ion-item>
+          Home
+        </button>
+        <button ion-item>
+          Friends
+        </button>
+        <button ion-item>
+          Events
+        </button>
+        <button ion-item>
+          Close Menu
+        </button>
+      </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #rootContent [root]="rootPage"></ion-nav>

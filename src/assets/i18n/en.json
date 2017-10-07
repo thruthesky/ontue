@@ -1,0 +1,17 @@
+{
+  "BACK": "Back",
+  "NAME": "Name",
+  "EMAIL": "Email",
+  "USERNAME": "Username",
+  "PASSWORD": "Password",
+  "LOGIN": "Sign in",
+  "SIGNUP": "Sign up",
+  "SEARCH": "Search",
+  "SETTINGS": "Settings",
+  "SKIP": "Skip",
+  "CONTINUE": "Continue",
+  "EDIT_PROFILE": "Edit Profile",
+  "DONE": "Done",
+  "CANCEL": "Cancel",
+  "DELETE": "Delete"
+}

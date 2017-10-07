@@ -1,0 +1,24 @@
+{
+    "BACK": "뒤로",
+  
+    "NAME": "이름",
+    "EMAIL": "이메일",
+    "USERNAME": "로그인 아이디",
+    "PASSWORD": "비밀번호",
+    "LOGIN": "로그인",
+    "SIGNUP": "회원가입",
+    "SEARCH": "검색",
+    "SETTINGS": "설정",
+    "SKIP": "건너뛰기",
+    "CONTINUE": "계속",
+  
+    "EDIT_PROFILE": "프로필 수정",
+    
+
+  "DONE": "완료",
+  "CANCEL": "취소",
+  "DELETE": "삭제"
+
+
+    
+}

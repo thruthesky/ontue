@@ -1,0 +1,29 @@
+{
+    "BACK": "戻る",
+  
+    "NAME": "名前",
+    "EMAIL": "Eメール",
+    "USERNAME": "ユーザー名",
+    "PASSWORD": "パスワード",
+    "LOGIN": "サインイン",
+    "SIGNUP": "サインアップ",
+
+    "LOGIN": "サインイン",
+    "SIGNUP": "サインアップ",
+  
+
+
+    
+
+    "SKIP": "スキップ",
+    "CONTINUE": "続ける",
+      
+
+    "EDIT_PROFILE": "プロフィールの編集",
+    
+  "DONE": "完了",
+  "CANCEL": "キャンセル",
+  "DELETE": "削除"
+
+
+}
