@@ -6,6 +6,10 @@ import { TranslateService } from '@ngx-translate/core';
 
 // import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { XapiService } from './../angular-xapi/angular-xapi-service.module';
+import { ShareService } from './../providers/share.service';
+
+
 
 
 @Component({
@@ -16,8 +20,11 @@ export class MyApp {
 
   constructor(
     private translate: TranslateService, 
-    platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-
+    platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+    xapi: XapiService,
+    share: ShareService
+  ) {
+    xapi.setServerUrl('https://www.sonub.com');
       this.initTranslate();
 
     platform.ready().then(() => {

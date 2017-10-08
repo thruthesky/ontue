@@ -8,6 +8,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { AngularXapiServiceModule } from '../angular-xapi/angular-xapi-service.module';
+import { ShareService } from './../providers/share.service'
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -42,7 +44,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularXapiServiceModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,10 +56,12 @@ export function createTranslateLoader(http: HttpClient) {
     TabsPage,
     SettingsPage
   ],
+  
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ShareService
   ]
 })
 export class AppModule {}
