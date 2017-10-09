@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 
 // import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { MainPage } from '../pages/main/main';
 import { XapiService } from './../angular-xapi/angular-xapi-service.module';
+import { AppService } from './../providers/app.service';
 import { ShareService } from './../providers/share.service';
+
+
+
 
 
 
@@ -16,13 +20,15 @@ import { ShareService } from './../providers/share.service';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  @ViewChild(Nav) nav: Nav;
+  rootPage:any = MainPage;
 
   constructor(
     private translate: TranslateService, 
     platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     xapi: XapiService,
-    share: ShareService
+    public a: AppService,
+    public s: ShareService
   ) {
     xapi.setServerUrl('https://www.sonub.com');
       this.initTranslate();
@@ -33,6 +39,10 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  ngAfterViewInit() {
+    this.a.navCtrl = this.nav;
   }
 
 
@@ -49,5 +59,16 @@ export class MyApp {
     });
   }
   
+
+  onClickHome() {
+    this.nav.setRoot( MainPage );
+  }
+
+  onClickLogin() {
+    this.nav.push( this.s.pages.login.component );
+  }
+  onClickRegister() {
+    this.nav.push( this.s.pages.register.component );
+  }
 }
 

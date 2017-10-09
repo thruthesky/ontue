@@ -1,15 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      OnTue
+      {{ 'SITE NAME' | translate }}
     </ion-title>
+    <button ion-button menuToggle right>
+        <ion-icon name="menu"></ion-icon>
+      </button>  
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  
-    <div class="alert alert-warning">You are not logged in</div>
 
+  <login-box-component *ngIf="a.user.isLogout"></login-box-component>
+
+  <ul>
+    <li>잠깐! 여러분이 어디에 있는지 아십니까? 바로 온튜입니다.</li>
+    <li>12년 전통의 일대일 프리랜서 화상영어 사이트입니다.</li>
+  </ul>
   <ul>
     <li>학생과 선생님이 모두 사용</li>
     <li>Live chat 을 아이콘과 텍스로, 탭 박스위에 강조 해서 항상 표시 할 것.</li>

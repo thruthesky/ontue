@@ -1,11 +1,22 @@
 {
+
+  "SITE NAME": "온튜",
+
+  "CLOSE": "Close",
+
+
+  "HOME": "Home",
   "BACK": "Back",
   "NAME": "Name",
+  "NICKNAME": "Nickname",
   "EMAIL": "Email",
   "USERNAME": "Username",
   "PASSWORD": "Password",
-  "LOGIN": "Sign in",
-  "SIGNUP": "Sign up",
+  "LOGIN": "Login",
+  "LOGIN BUTTON": "SUBMIT",
+  "LOGOUT": "Logout",
+  "REGISTER": "Register",
+  "REGISTER BUTTON": "SUBMIT",
   "SEARCH": "Search",
   "SETTINGS": "Settings",
   "SKIP": "Skip",
@@ -13,5 +24,6 @@
   "EDIT_PROFILE": "Edit Profile",
   "DONE": "Done",
   "CANCEL": "Cancel",
-  "DELETE": "Delete"
+  "DELETE": "Delete",
+  "LOADING": "Please wait while loading..."
 }

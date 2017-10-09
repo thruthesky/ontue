@@ -1,24 +1,35 @@
-<ion-menu [content]="rootContent">
+<ion-menu side="right" [content]="rootContent">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Site Menu</ion-title>
+      <ion-title>{{ 'SITE NAME' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-        <button ion-item>
-          Home
+      <button ion-item menuClose (click)=" onClickHome() ">
+          {{ 'HOME' | translate }}
         </button>
-        <button ion-item>
-          Friends
+      <button ion-item menuClose *ngIf=" a.user.isLogin " (click)=" a.user.logout() ">
+          {{ 'LOGOUT' | translate }}
         </button>
-        <button ion-item>
-          Events
+
+      <button ion-item menuClose *ngIf=" a.user.isLogout " (click)=" onClickLogin() ">
+          {{ 'LOGIN' | translate }}
         </button>
-        <button ion-item>
-          Close Menu
+
+      <button ion-item menuClose *ngIf=" a.user.isLogout " (click)=" onClickRegister() ">
+        {{ 'REGISTER' | translate }}
+      </button>
+
+
+      <button ion-item menuClose (click)=" a.push( s.pages.settings.component ) ">
+          {{ 'SETTINGS' | translate }}
         </button>
-      </ion-list>
+
+
+      <button ion-item menuClose>Close</button>
+
+    </ion-list>
   </ion-content>
 </ion-menu>
 <ion-nav #rootContent [root]="rootPage"></ion-nav>

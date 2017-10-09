@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'REGISTER' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="onSubmit()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label fixed>{{ 'NICKNAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.display_name" name="display_name"></ion-input>
+      </ion-item>
+
+
+      <div padding>
+        <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

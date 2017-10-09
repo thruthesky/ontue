@@ -9,14 +9,23 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AngularXapiServiceModule } from '../angular-xapi/angular-xapi-service.module';
-import { ShareService } from './../providers/share.service'
+import { AppService } from './../providers/app.service';
+import { ShareService } from './../providers/share.service';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ForumPage } from '../pages/forum/forum';
-import { TabsPage } from '../pages/tabs/tabs';
+import { MainPage } from '../pages/main/main';
 import { SettingsPage } from '../pages/settings/settings';
+
+
+import { RegisterPage } from './../pages/register/register';
+import { LoginBoxComponent } from './../components/login-box/login-box';
+import { LoginPage } from './../pages/login/login';
+import { MenuPage } from './../pages/menu/menu';
+
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -31,8 +40,12 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     SchedulePage,
     ForumPage,
-    TabsPage,
-    SettingsPage
+    MainPage,
+    SettingsPage,
+    RegisterPage,
+    LoginBoxComponent,
+    LoginPage,
+    MenuPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {tabsPlacement: 'bottom',tabsHideOnSubPages: true}),
     AngularXapiServiceModule
   ],
   bootstrap: [IonicApp],
@@ -53,15 +66,19 @@ export function createTranslateLoader(http: HttpClient) {
     HomePage,
     SchedulePage,
     ForumPage,
-    TabsPage,
-    SettingsPage
+    MainPage,
+    SettingsPage,
+    RegisterPage,
+    LoginPage,
+    MenuPage
   ],
-  
+
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AppService,
     ShareService
   ]
 })
-export class AppModule {}
+export class AppModule { }

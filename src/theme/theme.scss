@@ -1,0 +1,26 @@
+
+
+// Themes
+// ---------------------------------
+@mixin list-style-none {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+@mixin list-dots() {
+    li:after {
+        display: inline-block;
+        padding: 0 .4em;
+        content: '•';
+    }
+    li:last-child:after {
+        display: none;
+    }
+}
+
+ul.buttons {
+  display: flex;
+  @include list-style-none();
+  @include list-dots();
+}
+
