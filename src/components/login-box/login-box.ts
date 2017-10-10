@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
-
 import { AppService } from './../../providers/app.service';
-import { ShareService } from './../../providers/share.service';
 
 
 @Component({
@@ -13,27 +9,8 @@ import { ShareService } from './../../providers/share.service';
 export class LoginBoxComponent {
 
   constructor(
-      public navCtrl: NavController,
-      public a: AppService,
-      public s: ShareService
+      public a: AppService
     ) {
-      
+
   }
-
-  ngAfterViewInit() { // TEST
-    if ( this.a.test.register ) this.navCtrl.push( this.s.pages.register.component );
-    if ( this.a.test.login ) this.navCtrl.push( this.s.pages.login.component );
-  }
-
-
-  onClickLogin() {
-    console.log("onClickLogin()...");
-    this.navCtrl.push( this.s.pages.login.component )
-  }
-
-  onClickRegister() {
-    this.navCtrl.push( this.s.pages.register.component );
-  }
-
-
 }

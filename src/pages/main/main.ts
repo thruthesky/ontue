@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { ShareService } from './../../providers/share.service';
+import { HomePage } from './../home/home';
+import { SchedulePage } from './../schedule/schedule';
+import { ForumPage } from './../forum/forum';
+import { MenuPage } from './../menu/menu';
 
 
 @Component({
@@ -7,8 +10,13 @@ import { ShareService } from './../../providers/share.service';
 })
 export class MainPage {
 
+  HomePage = HomePage;
+  SchedulePage = SchedulePage;
+  ForumPage = ForumPage;
+  MenuPage = MenuPage;
+  
   constructor(
-    public s: ShareService
+    
   ) {
 
   }

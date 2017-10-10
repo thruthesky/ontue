@@ -1,15 +1,10 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      {{ 'SITE NAME' | translate }}
-    </ion-title>
-    <button ion-button menuToggle right>
-        <ion-icon name="menu"></ion-icon>
-      </button>  
-  </ion-navbar>
+  <header-content></header-content>
 </ion-header>
 
 <ion-content padding>
+  
+    {{ 'SITE NAME' | translate }}
 
   <login-box-component *ngIf="a.user.isLogout"></login-box-component>
 

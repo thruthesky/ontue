@@ -1,13 +1,10 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>{{ 'LOGIN' | translate }}</ion-title>
-  </ion-navbar>
-
+  <header-content></header-content>
 </ion-header>
 
+<ion-content padding>
 
-<ion-content>
+{{ 'LOGIN' | translate }}
   <form (submit)="onSubmit()">
     <ion-list>
 
@@ -39,3 +36,15 @@
     </ion-list>
   </form>
 </ion-content>
+
+
+<ion-footer>
+    
+      <ion-navbar>
+        <ion-title>{{ 'LOGIN' | translate }}</ion-title>
+      </ion-navbar>
+    
+    </ion-footer>
+
+    
+    

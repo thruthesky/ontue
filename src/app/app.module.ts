@@ -21,11 +21,14 @@ import { SettingsPage } from '../pages/settings/settings';
 
 
 import { RegisterPage } from './../pages/register/register';
-import { LoginBoxComponent } from './../components/login-box/login-box';
 import { LoginPage } from './../pages/login/login';
 import { MenuPage } from './../pages/menu/menu';
 
 
+
+
+import { LoginBoxComponent } from './../components/login-box/login-box';
+import { HeaderComponent } from './../components/header/header';
 
 
 // The translate loader needs to know where to load i18n files
@@ -43,9 +46,11 @@ export function createTranslateLoader(http: HttpClient) {
     MainPage,
     SettingsPage,
     RegisterPage,
-    LoginBoxComponent,
     LoginPage,
-    MenuPage
+    MenuPage,
+
+    LoginBoxComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    IonicModule.forRoot(MyApp, {tabsPlacement: 'bottom',tabsHideOnSubPages: true}),
+    IonicModule.forRoot(MyApp, { tabsPlacement: 'top', tabs: '' }),
     AngularXapiServiceModule
   ],
   bootstrap: [IonicApp],

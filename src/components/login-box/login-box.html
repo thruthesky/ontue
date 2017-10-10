@@ -8,12 +8,12 @@
     <hr>
 
 
-    <button ion-button icon-left (click)="onClickLogin()">
+    <button ion-button icon-left (click)="a.open('login')">
                     <ion-icon name="log-in"></ion-icon>
                     {{ 'LOGIN' | translate }}
                   </button>
 
-    <button id="login-page-register-button" ion-button icon-left (click)="onClickRegister()">
+    <button id="login-page-register-button" ion-button icon-left (click)="a.open('register')">
                     <ion-icon name="person-add"></ion-icon>
                 {{ 'REGISTER' | translate }}
                   </button>

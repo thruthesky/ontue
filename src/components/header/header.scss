@@ -1,0 +1,17 @@
+#header-icons {
+  ion-col {
+      padding: 0!important;
+      text-align: center;
+    button {
+      padding: .25em;
+      width: 100%;
+      background-color: transparent!important;
+      font-size: 12pt;
+      font-weight: 100;
+      ion-icon {
+        display: block;
+        margin-bottom: .25em;
+      }
+    }
+  }
+}

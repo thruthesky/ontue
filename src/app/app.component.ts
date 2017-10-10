@@ -4,11 +4,22 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 
-// import { HomePage } from '../pages/home/home';
-import { MainPage } from '../pages/main/main';
 import { XapiService } from './../angular-xapi/angular-xapi-service.module';
 import { AppService } from './../providers/app.service';
-import { ShareService } from './../providers/share.service';
+
+
+
+
+// import { MainPage } from '../pages/main/main';
+import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+import { SettingsPage } from './../pages/settings/settings';
+import { SchedulePage } from './../pages/schedule/schedule';
+import { MenuPage } from './../pages/menu/menu';
+import { ForumPage } from './../pages/forum/forum';
+
+
 
 
 
@@ -21,14 +32,13 @@ import { ShareService } from './../providers/share.service';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = MainPage;
+  rootPage:any = HomePage;
 
   constructor(
     private translate: TranslateService, 
     platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     xapi: XapiService,
-    public a: AppService,
-    public s: ShareService
+    public a: AppService
   ) {
     xapi.setServerUrl('https://www.sonub.com');
       this.initTranslate();
@@ -43,7 +53,15 @@ export class MyApp {
 
   ngAfterViewInit() {
     this.a.navCtrl = this.nav;
+    this.a.pages['home'] = HomePage;
+    this.a.pages['menu'] = MenuPage;
+    this.a.pages['forum'] = ForumPage;
+    this.a.pages['settings'] = SettingsPage;
+    this.a.pages['schedule'] = SchedulePage;
+    this.a.pages['login'] = LoginPage;
+    this.a.pages['register'] = RegisterPage;
   }
+
 
 
   initTranslate() {
@@ -61,14 +79,14 @@ export class MyApp {
   
 
   onClickHome() {
-    this.nav.setRoot( MainPage );
+    this.a.open( HomePage );
   }
 
   onClickLogin() {
-    this.nav.push( this.s.pages.login.component );
+    this.a.open( LoginPage );
   }
   onClickRegister() {
-    this.nav.push( this.s.pages.register.component );
+    this.a.open( RegisterPage );
   }
 }
 

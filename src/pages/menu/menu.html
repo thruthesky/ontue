@@ -1,12 +1,23 @@
 <ion-header>
-        <ion-toolbar>
-          <ion-title>
-            Menu
-          </ion-title>
-        </ion-toolbar>
-      </ion-header>
+    <header-content></header-content>
+</ion-header>
       
       <ion-content padding>
+      
+
+        <button ion-button (click)="a.open('settings')">
+            
+            <ion-icon name="settings"></ion-icon>
+            Settings
+          </button>  
+        
+          <button ion-button menuToggle right>
+
+
+              <ion-icon name="menu"></ion-icon>
+              사이드 메뉴 열기
+            </button>  
+              
       
       </ion-content>
     
