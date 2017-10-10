@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
-import { USER_REGISTER } from './../../angular-xapi/services/defines';
+// import { USER_REGISTER } from './../../angular-xapi/services/defines';
 
 
 @Component({
@@ -10,7 +10,8 @@ import { USER_REGISTER } from './../../angular-xapi/services/defines';
 })
 export class RegisterPage {
 
-    account = <USER_REGISTER>{};
+    // account = <USER_REGISTER>{};
+    account = {};
     constructor(
         public navCtrl: NavController,
         public a: AppService
@@ -19,28 +20,20 @@ export class RegisterPage {
     }
 
     ngAfterViewInit() { // TEST
-        if ( this.a.test.register ) {
-            this.account.name = 'user_' + Math.floor((new Date).getTime() / 1000).toString().substr(4);
-            this.account.user_email = this.account.name + '@gmail.com';
-            this.account.user_pass = this.account.user_email;
-            this.account.user_login = this.account.user_email;
-            this.account.display_name = 'display name';
-            this.onSubmit();
-
-        }
+        
     }
 
 
     onSubmit() {
         this.a.showLoader();
-        this.account.user_login = this.account.user_email;
-        this.a.user.register( this.account ).subscribe(re => {
-            console.log("user.register => success: re: ", re);
-            this.navCtrl.pop();
-        }, reg => {
-            this.a.hideLoaader();
-            alert(reg.message);
-        });
+        // this.account.user_login = this.account.user_email;
+        // this.a.user.register( this.account ).subscribe(re => {
+        //     console.log("user.register => success: re: ", re);
+        //     this.navCtrl.pop();
+        // }, reg => {
+        //     this.a.hideLoaader();
+        //     alert(reg.message);
+        // });
 
     }
 

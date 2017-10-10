@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 
-import { XapiService } from './../angular-xapi/angular-xapi-service.module';
+// import { XapiService } from './../angular-xapi/angular-xapi-service.module';
 import { AppService } from './../providers/app.service';
 
 
@@ -37,10 +37,10 @@ export class MyApp {
   constructor(
     private translate: TranslateService, 
     platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-    xapi: XapiService,
+    // xapi: XapiService,
     public a: AppService
   ) {
-    xapi.setServerUrl('https://www.sonub.com');
+    // xapi.setServerUrl('https://www.sonub.com');
       this.initTranslate();
 
     platform.ready().then(() => {
