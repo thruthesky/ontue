@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-// import { ShareService } from './share.service';
-// import { XapiService, UserService, ForumService } from './../angular-xapi/angular-xapi-service.module';
+
+import { XapiService, UserService, ForumService } from './../angular-xapi/angular-xapi.module';
 
 @Injectable()
 export class AppService {
@@ -15,19 +15,18 @@ export class AppService {
     navCtrl: NavController = null;
     pages = {};
 
-    user = {}; // to avoid error.
 
 
 
     constructor(
         public loadingCtrl: LoadingController,
-        // public s: ShareService,
-        // public user: UserService,
-        // public forum: ForumService,
-        // public xapi: XapiService
+        public user: UserService,
+        public forum: ForumService,
+        public xapi: XapiService
     ) {
-        // xapi.setServerUrl('https://www.sonub.com');
-        // console.log("login: ", user.isLogin);
+        xapi.setServerUrl('https://www.sonub.com');
+        xapi.version().subscribe(re => console.log("Xapi version: ", re));
+        console.log("login: ", user.isLogin);
     }
 
 
@@ -56,7 +55,10 @@ export class AppService {
             if (!this.pages[page]) return this.alert('Wrong page name: ' + page);
             page = this.pages[page];
         }
-        this.navCtrl.setRoot(page);
+        this.navCtrl.setRoot(page, {}, {
+            animate: true,
+            direction: 'forward'
+          });
     }
 
     alert(str): void {

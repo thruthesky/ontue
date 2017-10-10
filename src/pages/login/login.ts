@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
-// import { USER_LOGIN } from './../../angular-xapi/services/defines';
+import { USER_LOGIN } from './../../angular-xapi/interfaces';
 
 
 
@@ -11,8 +11,7 @@ import { AppService } from './../../providers/app.service';
 export class LoginPage {
 
     
-    // account = <USER_LOGIN>{};
-    account = {};
+    account = <USER_LOGIN>{};
     constructor(
         public a: AppService
     ) {
@@ -26,15 +25,15 @@ export class LoginPage {
 
     onSubmit() {
         this.a.showLoader();
-        // this.a.user.login( this.account.user_email, this.account.user_pass ).subscribe(re => {
-        //     // this.loading = false;
-        //     console.log("user.login => success: re: ", re);
-        //     this.a.pop();
-        // }, reg => {
-        //     // this.loading = false;
-        //     this.a.hideLoaader();
-        //     alert(reg.message);
-        // });
+        this.a.user.login( this.account.user_email, this.account.user_pass ).subscribe(re => {
+            // this.loading = false;
+            console.log("user.login => success: re...: ", re);
+            this.a.open('home');
+        }, reg => {
+            // this.loading = false;
+            this.a.hideLoaader();
+            alert(reg.message);
+        });
     }
 
 

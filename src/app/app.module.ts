@@ -8,9 +8,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// import { AngularXapiServiceModule } from '../angular-xapi/angular-xapi-service.module';
+import { AngularXapiModule } from '../angular-xapi/angular-xapi.module';
+
+
 import { AppService } from './../providers/app.service';
-import { ShareService } from './../providers/share.service';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -29,6 +31,7 @@ import { MenuPage } from './../pages/menu/menu';
 
 import { LoginBoxComponent } from './../components/login-box/login-box';
 import { HeaderComponent } from './../components/header/header';
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -63,7 +66,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     IonicModule.forRoot(MyApp, { tabsPlacement: 'top', tabs: '' }),
-    // AngularXapiServiceModule
+    AngularXapiModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -82,8 +85,7 @@ export function createTranslateLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AppService,
-    ShareService
+    AppService
   ]
 })
-export class AppModule { }
+export class AppModule {}

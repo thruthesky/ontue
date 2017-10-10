@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
-// import { USER_REGISTER } from './../../angular-xapi/services/defines';
+import { USER_REGISTER } from './../../angular-xapi/interfaces';
 
 
 @Component({
@@ -10,8 +10,7 @@ import { AppService } from './../../providers/app.service';
 })
 export class RegisterPage {
 
-    // account = <USER_REGISTER>{};
-    account = {};
+    account = <USER_REGISTER>{};
     constructor(
         public navCtrl: NavController,
         public a: AppService
@@ -26,14 +25,14 @@ export class RegisterPage {
 
     onSubmit() {
         this.a.showLoader();
-        // this.account.user_login = this.account.user_email;
-        // this.a.user.register( this.account ).subscribe(re => {
-        //     console.log("user.register => success: re: ", re);
-        //     this.navCtrl.pop();
-        // }, reg => {
-        //     this.a.hideLoaader();
-        //     alert(reg.message);
-        // });
+        this.account.user_login = this.account.user_email;
+        this.a.user.register( this.account ).subscribe(re => {
+            console.log("user.register => success: re: ", re);
+            this.a.open('home');
+        }, reg => {
+            this.a.hideLoaader();
+            alert(reg.message);
+        });
 
     }
 
