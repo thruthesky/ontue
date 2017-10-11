@@ -18,6 +18,7 @@ import { SettingsPage } from './../pages/settings/settings';
 import { SchedulePage } from './../pages/schedule/schedule';
 import { MenuPage } from './../pages/menu/menu';
 import { ForumPage } from './../pages/forum/forum';
+import { PostPage } from './../pages/post/post';
 
 
 
@@ -61,6 +62,9 @@ export class MyApp {
     this.a.pages['login'] = LoginPage;
     this.a.pages['register'] = RegisterPage;
 
+    this.a.pages['post'] = PostPage;
+    
+    
 
     setTimeout(() => this.test(), 100);
 

@@ -20,6 +20,8 @@ import { SchedulePage } from '../pages/schedule/schedule';
 import { ForumPage } from '../pages/forum/forum';
 import { MainPage } from '../pages/main/main';
 import { SettingsPage } from '../pages/settings/settings';
+import { PostPage } from '../pages/post/post';
+
 
 
 import { RegisterPage } from './../pages/register/register';
@@ -51,9 +53,9 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterPage,
     LoginPage,
     MenuPage,
-
     LoginBoxComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ export function createTranslateLoader(http: HttpClient) {
     SettingsPage,
     RegisterPage,
     LoginPage,
-    MenuPage
+    MenuPage,
+    PostPage
   ],
 
   providers: [

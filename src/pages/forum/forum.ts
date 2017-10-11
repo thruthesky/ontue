@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { AppService } from '../../providers/app.service';
+
 
 @Component({
   selector: 'page-forum',
@@ -7,8 +8,14 @@ import { NavController } from 'ionic-angular';
 })
 export class ForumPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public a: AppService
+  ) {
 
   }
 
 }
+
+
+
+

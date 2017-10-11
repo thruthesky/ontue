@@ -1,8 +1,21 @@
 <ion-header>
   <header-content></header-content>
 </ion-header>
-  <ion-content padding>
+<ion-content padding>
 
-    forum
-  
-  </ion-content>
+  <ion-list>
+    <button ion-item (click)="a.open('post', {post_id: 'discussion'})">
+      Discussion
+    </button>
+    <button ion-item (click)="a.open('post', {post_id: 'qna'})">
+      QnA
+    </button>
+
+    <button ion-item (click)="a.open('post', {post_id: 'job'})">
+      Jobs
+    </button>
+
+  </ion-list>
+
+
+</ion-content>
