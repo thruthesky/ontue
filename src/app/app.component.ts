@@ -60,6 +60,15 @@ export class MyApp {
     this.a.pages['schedule'] = SchedulePage;
     this.a.pages['login'] = LoginPage;
     this.a.pages['register'] = RegisterPage;
+
+
+    setTimeout(() => this.test(), 100);
+
+  }
+
+  test() {
+    this.a.open('menu');
+    
   }
 
 

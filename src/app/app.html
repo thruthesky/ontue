@@ -22,12 +22,17 @@
       </button>
 
 
-      <button ion-item menuClose (click)=" a.open( a.pages.settings ) ">
+      <button ion-item menuClose (click)=" a.open( 'settings' ) ">
           {{ 'SETTINGS' | translate }}
         </button>
 
+      <button ion-item menuClose (click)=" a.open( 'menu' ) ">
+          {{ 'ALL MENU' | translate }}
+        </button>
 
-      <button ion-item menuClose>Close</button>
+
+
+      <button ion-item menuClose>{{ 'CLOSE' | translate }}</button>
 
     </ion-list>
   </ion-content>

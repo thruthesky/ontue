@@ -1,31 +1,41 @@
 <ion-header>
-    <header-content></header-content>
+  <header-content></header-content>
 </ion-header>
-      
-      <ion-content padding>
-      
 
-        <button ion-button (click)="a.user.logout(); a.open('home')">
-            
-            <ion-icon name="sign-out"></ion-icon>
-            Logout
-          </button>  
+<ion-content padding>
 
 
-        <button ion-button (click)="a.open('settings')">
-            
-            <ion-icon name="settings"></ion-icon>
-            Settings
-          </button>  
-        
-          <button ion-button menuToggle right>
+  <button ion-button (click)="a.user.logout(); a.open('home')">
+
+    <ion-icon name="sign-out"></ion-icon>
+    Logout
+  </button>
 
 
-              <ion-icon name="menu"></ion-icon>
-              사이드 메뉴 열기
-            </button>  
-              
-      
-      </ion-content>
-    
-      
+  <button ion-button (click)="a.open('settings')">
+
+    <ion-icon name="settings"></ion-icon>
+    Settings
+  </button>
+
+  <button ion-button menuToggle right>
+    <ion-icon name="menu"></ion-icon>
+    사이드 메뉴 열기
+  </button>
+
+
+
+  <ion-item-group>
+    <ion-list-header color="light">Student Menu</ion-list-header>
+    <ion-item>Angola</ion-item>
+    <ion-item>Argentina</ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-list-header color="light">Teacher Menu</ion-list-header>
+    <ion-item>Angola</ion-item>
+    <ion-item>Argentina</ion-item>
+  </ion-item-group>
+
+
+</ion-content>
