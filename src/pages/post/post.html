@@ -2,14 +2,56 @@
         <header-content></header-content>
       </ion-header>
       <ion-content padding>
-      
-        post id: {{ post_id }}
-        post name: {{ post_name }}
-        <br>
-        
-        {{ navParams.data | json }}
-        posts...
-      
-      
+
+        <ng-container *ngFor="let page of pages">
+          <ion-card *ngFor="let post of page.posts" [attr.post-id]="post.ID">
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="{{post.author.photoURL}}">
+              </ion-avatar>
+              <h2>{{post?.author?.name}}</h2>
+              <p>November 5, 1955</p>
+            </ion-item>
+
+            <img src="img/advance-card-bttf.png">
+
+            <ion-card-content>
+              <p>{{post.post_content}}</p>
+            </ion-card-content>
+
+            <ion-row>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>12 Likes</div>
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button icon-left clear small>
+                  <ion-icon name="text"></ion-icon>
+                  <div>4 Comments</div>
+                </button>
+              </ion-col>
+              <ion-col center text-center>
+                <ion-note>
+                  11h ago
+                </ion-note>
+              </ion-col>
+            </ion-row>
+
+          </ion-card>
+
+        </ng-container>
+
+
+        <div *ngIf="inLoading" class="p-5">
+          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> loading...
+        </div>
+
+        <div *ngIf="noMorePosts">
+          <h3>No more posts ... !</h3>
+        </div>
+
+
+
       </ion-content>
-      
