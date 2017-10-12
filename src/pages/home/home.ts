@@ -9,11 +9,13 @@ import { AppService } from './../../providers/app.service';
 })
 export class HomePage {
 
+  reminders = '';
   constructor(
     public navCtrl: NavController,
     public a: AppService
   ) {
 
+    a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e.message));
   }
 
 

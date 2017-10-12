@@ -24,7 +24,13 @@ export class AppService {
         public forum: ForumService,
         public xapi: XapiService
     ) {
-        xapi.setServerUrl('https://www.sonub.com');
+        window['a'] = {
+            open: this.open.bind( this ),
+            alert: this.alert.bind( this )
+        };
+         
+
+        xapi.setServerUrl('http://sonub.com');
         xapi.version().subscribe(re => console.log("Xapi version: ", re));
         console.log("login: ", user.isLogin);
     }

@@ -121,10 +121,7 @@ export class UserService {
         else return '';
     }
 
-    get provider(): string {
-        if (this.profile && this.profile.provider) return this.profile.provider;
-        else return '';
-    }
+    
     get photoURL(): string {
         if (this.profile && this.profile.photoURL) return this.profile.photoURL;
         else return '';
@@ -175,6 +172,11 @@ export class UserService {
     }
 
 
+    /**
+     * Sets user's a meta key/value.
+     * @param key meta key
+     * @param value meta value
+     */
     update_user_meta(key, value): Observable<string> {
         let data = {
             route: 'wordpress.update_user_meta',
@@ -185,6 +187,10 @@ export class UserService {
         return this.x.post(data);
     }
 
+    /**
+     * Sets user's ( array of ) meta keys and values.
+     * @param keys_values meta keys and values
+     */
     update_user_metas( keys_values ): Observable<any> {
         let data = {
             route: 'wordpress.update_user_metas',

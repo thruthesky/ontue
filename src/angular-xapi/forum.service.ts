@@ -2,20 +2,19 @@ import {Injectable} from '@angular/core';
 import {XapiService} from './xapi.service';
 import {Observable} from 'rxjs/Observable';
 import {PAGE, POST, POST_LIST, POST_LIST_RESPONSE} from "./interfaces";
-import {DomSanitizer} from '@angular/platform-browser';
+
 
 
 @Injectable()
 export class ForumService {
 
-  constructor(private x: XapiService,
-              private domSanitizer: DomSanitizer,) {
+  constructor(private x: XapiService) {
 
   }
 
   postCreate(data): Observable<any> {
     data.route = 'post.create';
-    console.log(data);
+    // console.log(data);
     return this.x.post(data);
   }
 
@@ -39,24 +38,24 @@ export class ForumService {
    *  this.app.forum.pre( post );
    * @endcode
    */
-  pre(post: POST): POST {
-    post.post_content_pre = this.x.htmlify(post.post_content);
-    post.post_content_pre = <any>this.domSanitizer.bypassSecurityTrustHtml(post.post_content_pre);
-    return post;
+  pre(post: POST): void {
+    post.post_content_pre = this.x.safe(post.post_content);
   }
 
   /**
    * Does 'pre' process for page.
+   * @note parameter 'page' is being referenced. ( meaning, no return value ).
    * @param page page from server
    * @param o options
    * @example
    *      this.app.forum.prePage( page );
    *
    */
-  prePage(page: PAGE) {
+  prePage(page: PAGE): void {
     if (page.posts && page.posts.length) {
       for (let i = 0; i < page.posts.length; i++) {
-        page.posts[i] = this.pre(page.posts[i]);
+        console.log("hi: ", i);
+        this.pre(page.posts[i]);
       }
     }
   }

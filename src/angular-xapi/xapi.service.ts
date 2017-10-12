@@ -3,11 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import {DomSanitizer} from '@angular/platform-browser';
+import * as I from './interfaces';
 
-export interface ERROR_RESPONSE {
-    code: number;
-    message?: string;
-};
 
 @Injectable()
 export class XapiService {
@@ -15,7 +13,8 @@ export class XapiService {
     private serverUrl = '';
     constructor(
         private http: HttpClient,
-        private zone: NgZone
+        private zone: NgZone,
+        private domSanitizer: DomSanitizer
     ) { }
 
     setServerUrl(url: string): void {
@@ -27,23 +26,41 @@ export class XapiService {
         return this.serverUrl;
     }
 
+    /**
+     * Request to server through POST method.
+     * @param data request data
+     * 
+     *      data['session_id'] - user session id
+     *      data['route'] - route
+     * 
+     */
     post(data): Observable<any> {
-        console.log('url: ', this.serverUrl);
-        // data.session_id = this.user.sessionId;
-        // data.route = 'post.create';
+        // console.log('url: ', this.serverUrl);
         return this.http.post(this.serverUrl, data)
             .map(e => this.checkResult(e, data))
-        // .map(e => {
-        //     setTimeout(() => this.ngZone.run(() => { }), 100); // redraw the page. Angular is not 100% redraw when XHR is done.
-        //     return e;
-        // })
     }
 
-  query(req): Observable<any> {
-    req['route'] = 'wordpress.wp_query';
-    req['paged'] = req['paged'] ? req['paged'] : 1;
-    return this.post(req);
-  }
+    query(req): Observable<any> {
+        req['route'] = 'wordpress.wp_query';
+        req['paged'] = req['paged'] ? req['paged'] : 1;
+        return this.post(req);
+    }
+
+    /**
+     * Gets a page
+     * @param req request data
+     * 
+     * @code
+     * a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e.message));
+     * @endcode
+     */
+    page(req) {
+        req['route'] = 'wordpress.page';
+        this.render(100);
+        return this.post(req)
+            .map( e => this.safe(e) );
+    }
+
 
 
 
@@ -57,12 +74,13 @@ export class XapiService {
         else if (res['code'] === void 0) throw this.errorResponse(-4009, 'Response has no code');
         else if (res['code'] !== 0) {
             // console.log("WordPressApiService::checkResult => error : ", res);
+            if ( res['message'] === void 0 ) res['message'] = 'no message';
             throw this.errorResponse(res['code'], res['message']);
         }
         else return res['data'];
     }
 
-    errorResponse(code, message?): ERROR_RESPONSE {
+    errorResponse(code, message?): I.ERROR_RESPONSE {
         if (!message) message = '';
         return { code: code, message: message };
     }
@@ -107,9 +125,7 @@ export class XapiService {
      */
     isCordova(): boolean {
         if (window['cordova']) return true;
-        if (document.URL.indexOf('http://') === -1
-            && document.URL.indexOf('https://') === -1) return true;
-        return false;
+        else return false;
     }
 
     isWeb(): boolean {
@@ -125,21 +141,9 @@ export class XapiService {
     }
 
 
-  /**
-   *
-   * @param text
-   * @param o
-   */
-  htmlify(text, o = {}) {
-
-    // if (o && o['autolink']) text = this.autoLink(text);
-    // if (o && o['nl2br']) text = this.nl2br(text);
-
-
-    return text;
-  }
-
-
+    safe( html: string ): any {
+        return <any>this.domSanitizer.bypassSecurityTrustHtml(html);
+    }
 }
 
 

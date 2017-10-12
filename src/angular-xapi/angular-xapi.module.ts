@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { XapiService } from './xapi.service';
-export * from './xapi.service';
+export { XapiService } from './xapi.service';
 
 import { ForumService } from './forum.service';
 export { ForumService } from './forum.service';

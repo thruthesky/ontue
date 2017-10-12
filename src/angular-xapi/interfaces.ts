@@ -23,6 +23,12 @@ export interface CATEGORY {
 // };
 
 
+export interface ERROR_RESPONSE {
+    code: number;
+    message?: string;
+};
+
+
 
 export interface FILE {
     id: number;

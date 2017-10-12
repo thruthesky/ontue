@@ -16,7 +16,7 @@
             <img src="img/advance-card-bttf.png">
 
             <ion-card-content>
-              <p>{{post.post_content}}</p>
+              <p [innerHTML]=" post.post_content_pre "></p>
             </ion-card-content>
 
             <ion-row>

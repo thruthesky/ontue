@@ -41,7 +41,6 @@ export class MyApp {
     xapi: XapiService,
     public a: AppService
   ) {
-    xapi.setServerUrl('https://www.sonub.com');
       this.initTranslate();
 
     platform.ready().then(() => {
