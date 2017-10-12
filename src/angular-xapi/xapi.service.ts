@@ -39,6 +39,12 @@ export class XapiService {
         // })
     }
 
+  query(req): Observable<any> {
+    req['route'] = 'wordpress.wp_query';
+    req['paged'] = req['paged'] ? req['paged'] : 1;
+    return this.post(req);
+  }
+
 
 
     checkResult(res, data) {
@@ -113,10 +119,25 @@ export class XapiService {
     }
 
 
-    
+
     render(timer = 10) {
         setTimeout(() => this.zone.run(() => { }), timer);
     }
+
+
+  /**
+   *
+   * @param text
+   * @param o
+   */
+  htmlify(text, o = {}) {
+
+    // if (o && o['autolink']) text = this.autoLink(text);
+    // if (o && o['nl2br']) text = this.nl2br(text);
+
+
+    return text;
+  }
 
 
 }
