@@ -63,7 +63,7 @@ export class MyApp {
     this.a.pages['register'] = RegisterPage;
 
     this.a.pages['post'] = PostPage;
-    
+
     
 
     setTimeout(() => this.test(), 100);
@@ -71,7 +71,7 @@ export class MyApp {
   }
 
   test() {
-    this.a.open('menu');
+    // this.a.open('menu');
 
   }
 
