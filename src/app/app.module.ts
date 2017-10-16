@@ -29,10 +29,13 @@ import { LoginPage } from './../pages/login/login';
 import { MenuPage } from './../pages/menu/menu';
 
 
-
-
+///
+/// Components
+/// -----------------------------
 import { LoginBoxComponent } from './../components/login-box/login-box';
 import { HeaderComponent } from './../components/header/header';
+import { ChooseUserTypeComponent } from './../components/choose-user-type/choose-user-type';
+
 
 
 
@@ -55,7 +58,8 @@ export function createTranslateLoader(http: HttpClient) {
     MenuPage,
     LoginBoxComponent,
     HeaderComponent,
-    PostPage
+    PostPage,
+    ChooseUserTypeComponent
   ],
   imports: [
     BrowserModule,

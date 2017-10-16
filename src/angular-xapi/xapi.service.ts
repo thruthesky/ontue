@@ -54,11 +54,15 @@ export class XapiService {
      * a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e.message));
      * @endcode
      */
-    page(req) {
+    page(req) : any {
         req['route'] = 'wordpress.page';
-        this.render(100);
+        
         return this.post(req)
-            .map( e => this.safe(e) );
+            .map( e => {
+                const re = this.safe(e);
+                this.render(500);  
+                return re;      
+             } );
     }
 
 
@@ -137,7 +141,9 @@ export class XapiService {
 
 
     render(timer = 10) {
-        setTimeout(() => this.zone.run(() => { }), timer);
+        setTimeout(() => this.zone.run(() => {
+            console.log("zone ran.");
+        }), timer);
     }
 
 

@@ -85,6 +85,10 @@ export class UserService {
     }
 
 
+    getProfile() {
+        return this.loadProfile();
+    }
+
 
 
     get isLogin(): boolean {
@@ -163,7 +167,8 @@ export class UserService {
 
     }
 
-    data(): Observable<USER_DATA_RESPONSE> {
+    data(): Observable<any> {
+        if ( ! this.sessionId ) throw this.x.errorResponse( -405, 'login-first' );
         let data: USER_DATA = {
             route: 'user.data',
             session_id: this.sessionId

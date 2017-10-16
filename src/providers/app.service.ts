@@ -18,21 +18,35 @@ export class AppService {
 
 
 
+    userData = {};
     constructor(
         public loadingCtrl: LoadingController,
         public user: UserService,
         public forum: ForumService,
         public xapi: XapiService
     ) {
+
+        /// for page service
         window['a'] = {
             open: this.open.bind( this ),
             alert: this.alert.bind( this )
         };
          
 
+        //
         xapi.setServerUrl('http://sonub.com');
-        xapi.version().subscribe(re => console.log("Xapi version: ", re));
+        // xapi.version().subscribe(re => console.log("Xapi version: ", re));
         console.log("login: ", user.isLogin);
+        user.data().subscribe( re => this.userData = re );
+    }
+
+    get userType() {
+        if ( this.userData['type'] ) {
+            if ( this.userData['type'] == 'T' ) return 'teacher';
+            else if ( this.userData['type'] == 'S' ) return 'student';
+            else return '';
+        }
+        else return '';
     }
 
 
