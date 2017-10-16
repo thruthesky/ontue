@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
+import { ChooseUserTypeModal } from './../../components/choose-user-type-modal/choose-user-type-modal';
 
 
 @Component({
@@ -9,17 +10,24 @@ import { AppService } from './../../providers/app.service';
 })
 export class MenuPage {
 
-  userType = '';
-  constructor(
-      public navCtrl: NavController,
-      public a: AppService
-    ) {
 
+  constructor(
+    public modalCtrl: ModalController,
+    public a: AppService
+  ) {
+
+    // test
+    // setTimeout(() => this.presentChooseUserTypeModal(), 50);
   }
 
-  onClickUserType() {
-    console.log("type: ", this.userType);
-    
+
+
+
+  presentChooseUserTypeModal() {
+    const modal = this.modalCtrl.create(ChooseUserTypeModal);
+    modal.present();
   }
 
 }
+
+

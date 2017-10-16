@@ -8,7 +8,7 @@ import {
     USER_REGISTER, USER_REGISTER_RESPONSE,
     USER_UPDATE, USER_UPDATE_RESPONSE,
     USER_CHANGE_PASSWORD,
-    USER_DATA, USER_DATA_RESPONSE
+    USER_DATA
 } from './interfaces';
 
 import { Base } from './base';

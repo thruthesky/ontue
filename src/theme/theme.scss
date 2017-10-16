@@ -45,7 +45,12 @@ ul.buttons {
 @each $animal in white,
 blue,
 red,
-wheat {
+orange,
+darkorange,
+wheat,
+indigo,
+teal,
+skyblue {
   .#{$animal} {
     color: #{$animal}!important;
   }
