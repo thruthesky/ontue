@@ -11,15 +11,20 @@ import {
     USER_DATA, USER_DATA_RESPONSE
 } from './interfaces';
 
+import { Base } from './base';
+
+
 
 
 @Injectable()
-export class UserService {
+export class UserService extends Base {
 
     profile: USER_LOGIN_RESPONSE = null;
     constructor(
         private x: XapiService
-    ) { }
+    ) {
+        super();
+    }
 
 
 
@@ -54,7 +59,8 @@ export class UserService {
             this.rawSetUserProfile(res);
             return res;
         }
-        else throw this.x.errorResponse(-35, "Error on setUserProfile(). No session id exists. It may be a wrong session id or User login failed.");
+        else this.throw(-35, "Error on setUserProfile(). No session id exists. It may be a wrong session id or User login failed.");
+
     }
 
     /**
@@ -168,7 +174,12 @@ export class UserService {
     }
 
     data(): Observable<any> {
-        if ( ! this.sessionId ) throw this.x.errorResponse( -405, 'login-first' );
+        console.log('data(): this.sessionId: ', this.sessionId);
+        if ( ! this.sessionId ) {
+            console.log("User has not logged in. So, it will throw an error of -405. ");
+            // return Observable.throw( new Error( JSON.stringify(this.x.errorResponse(-504, 'login-first')) ) );
+            return this.throw( this.ERROR.LOGIN_FIRST, 'login-first', true );
+        }
         let data: USER_DATA = {
             route: 'user.data',
             session_id: this.sessionId

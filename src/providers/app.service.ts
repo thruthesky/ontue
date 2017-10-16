@@ -35,11 +35,22 @@ export class AppService {
         };
 
         xapi.setServerUrl('https://www.sonub.com');
-        // xapi.setServerUrl('https://sonub.com:8443');
-        // xapi.setServerUrl('http://sonub.com');
-        // xapi.version().subscribe(re => console.log("Xapi version: ", re));
-        console.log("login: ", user.isLogin);
-        user.data().subscribe( re => this.userData = re );
+        // // xapi.setServerUrl('https://sonub.com:8443');
+        // // xapi.setServerUrl('http://sonub.com');
+        // // xapi.version().subscribe(re => console.log("Xapi version: ", re));
+        // console.log("login: ", user.isLogin);
+        user.data()
+            .subscribe(
+                re => this.userData = re,
+                e => {
+                    const o = xapi.getError(e);
+                    if ( o.code == xapi.ERROR.LOGIN_FIRST ) {
+                        console.log("User has not logged in, yet");
+                    }
+                    else {
+                        console.error("ERROR:", o);
+                    }
+                 } );
     }
 
     get userType() {

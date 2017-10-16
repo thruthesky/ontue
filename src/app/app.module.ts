@@ -16,6 +16,8 @@ import { AppService } from './../providers/app.service';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+
+
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ForumPage } from '../pages/forum/forum';
 import { MainPage } from '../pages/main/main';
@@ -30,9 +32,9 @@ import { LoginPage } from './../pages/login/login';
 import { MenuPage } from './../pages/menu/menu';
 
 
-///
-/// Components
-/// -----------------------------
+// 
+// Components
+// -----------------------------
 import { LoginBoxComponent } from './../components/login-box/login-box';
 import { HeaderComponent } from './../components/header/header';
 import { ChooseUserTypeComponent } from './../components/choose-user-type/choose-user-type';

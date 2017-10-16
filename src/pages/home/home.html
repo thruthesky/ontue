@@ -1,3 +1,4 @@
+
 <ion-header>
   <header-content></header-content>
 </ion-header>
@@ -5,12 +6,9 @@
 <ion-content padding>
 
 
-  <choose-user-type-component *ngIf=" a.userType == '' "></choose-user-type-component>
+  <choose-user-type-component *ngIf=" a.user.isLogin && a.userType == '' "></choose-user-type-component>
   <div [innerHTML]=" reminders "></div>
   <login-box-component *ngIf="a.user.isLogout"></login-box-component>
-
-
-
 
   <ul>
     <li>잠깐! 여러분이 어디에 있는지 아십니까? 바로 온튜입니다.</li>

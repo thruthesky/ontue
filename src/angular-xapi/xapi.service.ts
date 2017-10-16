@@ -4,35 +4,25 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import {DomSanitizer} from '@angular/platform-browser';
-import * as I from './interfaces';
+
+import { Base } from './base';
+
 
 
 @Injectable()
-export class XapiService {
+export class XapiService extends Base {
 
   
     private serverUrl = '';
-    ERROR = {
-      
-          /// client error.
-          /// errors that may occur only in client begin with -800xxxx
-          LOGIN_FIRST: -80005,
-          EMPTY: -80010,
-          NO_CODE: -80011,
-          RESPONSE_EMPTY: -80021,
-          RESPONSE_NO_CODE: -80031,
-          USER_LOGIN_RESPONSE_HAS_NO_SESSION_ID: -80041,
-          CODE_PERMISSION_DENIED_NOT_OWNER: -80201,
-      
-          CHAT_ROOM_PATH: -80091,
-          WRONG_PATH: -80060
-        };
+
 
     constructor(
         private http: HttpClient,
         private zone: NgZone,
         private domSanitizer: DomSanitizer
-    ) { }
+    ) {
+        super();
+    }
 
     setServerUrl(url: string): void {
         this.serverUrl = url + '/wp-json/xapi/v2/do';
@@ -90,22 +80,17 @@ export class XapiService {
         if (!res) {
             console.error("Response from backend is empty");
             console.log("Requested data(that cause empty response): ", data);
-            throw this.errorResponse(-4008, 'Response from backend is empty');
+            this.throw(-4008, 'Response from backend is empty');
         }
-        else if (res['code'] === void 0) throw this.errorResponse(-4009, 'Response has no code');
+        else if (res['code'] === void 0) this.throw(-4009, 'Response has no code');
         else if (res['code'] !== 0) {
             // console.log("WordPressApiService::checkResult => error : ", res);
             if ( res['message'] === void 0 ) res['message'] = 'no message';
-            throw this.errorResponse(res['code'], res['message']);
+            this.throw(res['code'], res['message']);
         }
         else return res['data'];
-
   }
 
-  errorResponse(code, message?): I.ERROR_RESPONSE {
-    if (!message) message = '';
-    return {code: code, message: message};
-  }
 
   version() {
     // console.log("version: ");
@@ -165,6 +150,9 @@ export class XapiService {
     safe( html: string ): any {
         return <any>this.domSanitizer.bypassSecurityTrustHtml(html);
     }
+
+
+    
     
 }
 
