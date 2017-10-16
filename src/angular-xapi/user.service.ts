@@ -75,31 +75,34 @@ export class UserService extends Base {
 
 
 
+    loadProfile(): Observable<any> {
+        return this.x.post({ route: 'user.load_profile', session_id: this.sessionId })
+            .map(res => {
+                console.log("user profile loaded: ", res);
+                this.setUserProfile(res);
+            });
+    }
+
+
+
 
     /**
      *
      * @Warning This will load user profile from localStorage.
-     * @Warning So, this must be case on every bootstrap.
+     * @Warning So, this must be called on every bootstrap.
      * @Attention This is being called in UserService::constructor which will be called by AppService::constructor.
      *          Meaning, if you inject AppService on every module, user profile will be loaded automatically.
      */
-    loadProfile() {
+    getProfile() {
         let re = this.x.get(KEY_LOGIN);
         if (re === null) this.profile = <USER_LOGIN_RESPONSE>{};
         else this.profile = re;
         return this.profile;
     }
 
-
-    getProfile() {
-        return this.loadProfile();
-    }
-
-
-
     get isLogin(): boolean {
         /// one time data load from localStorage
-        if (this.profile === null) this.loadProfile();
+        if (this.profile === null) this.getProfile();
         if (this.sessionId) return true;
         else return false;
     }
@@ -131,7 +134,7 @@ export class UserService extends Base {
         else return '';
     }
 
-    
+
     get photoURL(): string {
         if (this.profile && this.profile.photoURL) return this.profile.photoURL;
         else return '';
@@ -173,12 +176,33 @@ export class UserService extends Base {
 
     }
 
+    /**
+     * Gets user data from server
+     * 
+     * @code
+        user.data()
+            .subscribe(
+            re => {
+                this.userData = re;
+                console.log("userData: ", this.userData);
+            },
+            e => {
+                const o = xapi.getError(e);
+                if (o.code == xapi.ERROR.LOGIN_FIRST) {
+                    console.log("User has not logged in, yet");
+                }
+                else {
+                    console.error("ERROR:", o);
+                }
+            });
+     * @endcode
+     */
     data(): Observable<any> {
         console.log('data(): this.sessionId: ', this.sessionId);
-        if ( ! this.sessionId ) {
+        if (!this.sessionId) {
             console.log("User has not logged in. So, it will throw an error of -405. ");
             // return Observable.throw( new Error( JSON.stringify(this.x.errorResponse(-504, 'login-first')) ) );
-            return this.throw( this.ERROR.LOGIN_FIRST, 'login-first', true );
+            return this.throw(this.ERROR.LOGIN_FIRST, 'login-first', true);
         }
         let data: USER_DATA = {
             route: 'user.data',
@@ -207,14 +231,14 @@ export class UserService extends Base {
      * Sets user's ( array of ) meta keys and values.
      * @param keys_values meta keys and values
      */
-    update_user_metas( keys_values ): Observable<any> {
+    update_user_metas(keys_values): Observable<any> {
         let data = {
             route: 'wordpress.update_user_metas',
             session_id: this.sessionId,
             keys_values: keys_values
         };
         // console.log('data', data);
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
 

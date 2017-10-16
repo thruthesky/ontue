@@ -9,11 +9,17 @@ import { AppService } from './../../providers/app.service';
 })
 export class MenuPage {
 
+  userType = '';
   constructor(
       public navCtrl: NavController,
       public a: AppService
     ) {
 
+  }
+
+  onClickUserType() {
+    console.log("type: ", this.userType);
+    
   }
 
 }

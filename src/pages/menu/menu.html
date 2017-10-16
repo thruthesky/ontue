@@ -23,19 +23,19 @@
     사이드 메뉴 열기
   </button>
 
-
-
-  <ion-item-group>
-    <ion-list-header color="light">Student Menu</ion-list-header>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
-  </ion-item-group>
-
-  <ion-item-group>
-    <ion-list-header color="light">Teacher Menu</ion-list-header>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
-  </ion-item-group>
+  <ion-list radio-group [(ngModel)]="userType">
+    <ion-list-header color="light">회원 분류 변경</ion-list-header>
+    <ion-item>
+      <ion-icon name="school" item-start></ion-icon>
+      <ion-label>저는 학생입니다.</ion-label>
+      <ion-radio checked="false" value="{{ a.lms.userType.student }}" (click)="onClickUserType()"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person-add" item-start></ion-icon>
+      <ion-label>저는 선생입니다.</ion-label>
+      <ion-radio checked="false" value="{{ a.lms.userType.teacher }}" (click)="onClickUserType()"></ion-radio>
+    </ion-item>
+  </ion-list>
 
 
 </ion-content>

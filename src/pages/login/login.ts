@@ -29,10 +29,10 @@ export class LoginPage {
             // this.loading = false;
             console.log("user.login => success: re...: ", re);
             this.a.open('home');
-        }, reg => {
+        }, e => {
             // this.loading = false;
-            this.a.hideLoaader();
-            alert(reg.message);
+            // this.a.hideLoaader();
+            this.a.alert(e);
         });
     }
 

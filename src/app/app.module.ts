@@ -14,9 +14,11 @@ import { AngularXapiModule } from '../angular-xapi/angular-xapi.module';
 import { AppService } from './../providers/app.service';
 
 
+//
+// Pages
+// -----------------------------------------------
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
 
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ForumPage } from '../pages/forum/forum';
@@ -25,11 +27,11 @@ import { SettingsPage } from '../pages/settings/settings';
 import { PostPage } from '../pages/post/post';
 import { PostCreateEditPage } from '../pages/post-create-edit/post-create-edit';
 
-
-
 import { RegisterPage } from './../pages/register/register';
 import { LoginPage } from './../pages/login/login';
 import { MenuPage } from './../pages/menu/menu';
+import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
+
 
 
 // 
@@ -65,7 +67,8 @@ export function createTranslateLoader(http: HttpClient) {
     PostPage,
     ChooseUserTypeComponent,
     PostCreateEditPage,
-    SitePreviewWidget
+    SitePreviewWidget,
+    TeacherProfilePage
   ],
   imports: [
     BrowserModule,
@@ -92,7 +95,8 @@ export function createTranslateLoader(http: HttpClient) {
     LoginPage,
     MenuPage,
     PostPage,
-    PostCreateEditPage
+    PostCreateEditPage,
+    TeacherProfilePage
   ],
 
   providers: [

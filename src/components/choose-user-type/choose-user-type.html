@@ -1,31 +1,22 @@
+<section class="choose-user-type bg-wheat">
+  <div class="box box-blue mb-5">
+    온튜에 처음 오셨군요. 여러분의 회원 구분을 위해서 학생 또는 선생님을 선택해주세요.
+    참고: 설정 페이지에서 변경 할 수 있습니다.
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="pointer text-center" col-6 (click)=" onClickType( a.lms.userType.student ) ">
+        <img src="assets/img/student.png">
+        <h3>학생입니까?</h3>
+        <p>무료 수업을 예약해 보세요.</p>
+      </ion-col>
+  
+      <ion-col class="pointer text-center" col-6 (click)="  onClickType( a.lms.userType.teacher )  ">
+        <img src="assets/img/teacher.png">
+        <h3>선생님이십니까?</h3>
+        <p>수업 시간표를 만들어 보세요.</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+</section>
 
-<ion-grid>
-  <ion-row>
-    <ion-col col-6>
-
-        
-          <img src="assets/img/student.png">
-          <h3>학생입니까?</h3>
-          <p>무료 수업을 예약해 보세요.</p>
-          
-          
-          
-          
-
-    </ion-col>
-
-    <ion-col col-6>
-
-      <ion-card>
-            <img src="assets/img/teacher.png">
-        <ion-card-header>
-          선생님이십니까?
-        </ion-card-header>
-        <ion-card-content>
-          수업 시간표를 만들어 보세요.
-        </ion-card-content>
-      </ion-card>
-
-    </ion-col>
-  </ion-row>
-</ion-grid>

@@ -39,9 +39,21 @@ export class Base {
     /**
      * Returns an I.ERROR_RESPONSE object from an Error Object.
      * @param e error object
+     * 
+     * @code
+     
+        if ( str instanceof Error) {
+            str = this.xapi.getError(str).message;
+        }
+        alert ( str );
+     *
+     * @endcode
      */
     getError( e: Error ): I.ERROR_RESPONSE {
-        return JSON.parse( e.message );
+        console.log("getError: message: ", e.message);
+        const re = JSON.parse( e.message );
+        console.log("parsed error: ", re);
+        return re;
     }
 
 
