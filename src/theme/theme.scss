@@ -26,11 +26,23 @@ ul.buttons {
 .pointer {
   cursor: pointer;
 }
+.pointers {
+  & > * {
+    cursor: pointer;
+  }
+}
 
 .text-center {
   text-align: center!important;
 }
 
+//
+.d-flex {
+  display: flex;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
 // Box
 .box {
   padding: .725em;
@@ -42,12 +54,32 @@ ul.buttons {
   }
 }
 
+
 @each $animal in white,
+black,
+darkgrey,
+grey,
+dimgrey,
+slategrey,
+lightgrey,
+lightslategrey,
 blue,
+brown,
 red,
+darkred,
+salmon,
+lightsalmon,
 orange,
 darkorange,
 wheat,
+olive,
+yellowgreen,
+limegreen,
+green,
+darkgreen,
+darkviolet,
+slateblue,
+darkslateblue,
 indigo,
 teal,
 skyblue {

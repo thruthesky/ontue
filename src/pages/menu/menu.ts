@@ -16,6 +16,8 @@ export class MenuPage {
     public a: AppService
   ) {
 
+
+
     // test
     // setTimeout(() => this.presentChooseUserTypeModal(), 50);
   }
