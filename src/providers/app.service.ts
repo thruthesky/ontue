@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import {NavController, LoadingController, AlertController} from 'ionic-angular';
 
 import { XapiService, UserService, ForumService } from './../angular-xapi/angular-xapi.module';
+import * as I from "../angular-xapi/interfaces";
 
 @Injectable()
 export class AppService {
@@ -21,6 +22,7 @@ export class AppService {
     userData = {};
     constructor(
         public loadingCtrl: LoadingController,
+        public alertCtrl: AlertController,
         public user: UserService,
         public forum: ForumService,
         public xapi: XapiService
@@ -31,10 +33,10 @@ export class AppService {
             open: this.open.bind( this ),
             alert: this.alert.bind( this )
         };
-         
 
-        //
-        xapi.setServerUrl('http://sonub.com');
+        xapi.setServerUrl('https://www.sonub.com');
+        // xapi.setServerUrl('https://sonub.com:8443');
+        // xapi.setServerUrl('http://sonub.com');
         // xapi.version().subscribe(re => console.log("Xapi version: ", re));
         console.log("login: ", user.isLogin);
         user.data().subscribe( re => this.userData = re );
@@ -84,6 +86,43 @@ export class AppService {
     alert(str): void {
         alert(str);
         return;
+    }
+
+    showAlert(title = '', content = '') {
+      let alert = this.alertCtrl.create({
+        title: title,
+        subTitle: content,
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+
+    showError(err: I.ERROR_RESPONSE){
+      console.log(err);
+      let alert = this.alertCtrl.create({
+        title: 'Error' + err['code'],
+        subTitle: err['message'],
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+
+
+    shortDate(stamp) {
+
+      let d = new Date(stamp * 1000);
+      let today = new Date();
+
+      let dt = '';
+      if (d.getFullYear() == today.getFullYear() && d.getMonth() == today.getMonth() && d.getDate() == today.getDate()) {
+        dt = d.toLocaleString();
+        dt = dt.substring(dt.indexOf(',') + 2).toLowerCase();
+        dt = dt.replace(/\:\d\d /, ' ');
+      }
+      else {
+        dt = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+      }
+      return dt;
     }
 
 }

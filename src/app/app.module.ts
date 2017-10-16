@@ -21,6 +21,7 @@ import { ForumPage } from '../pages/forum/forum';
 import { MainPage } from '../pages/main/main';
 import { SettingsPage } from '../pages/settings/settings';
 import { PostPage } from '../pages/post/post';
+import { PostCreateEditPage } from '../pages/post-create-edit/post-create-edit';
 
 
 
@@ -36,6 +37,7 @@ import { LoginBoxComponent } from './../components/login-box/login-box';
 import { HeaderComponent } from './../components/header/header';
 import { ChooseUserTypeComponent } from './../components/choose-user-type/choose-user-type';
 
+import { SitePreviewWidget} from './../components/site-preview/site-preview';
 
 
 
@@ -59,7 +61,9 @@ export function createTranslateLoader(http: HttpClient) {
     LoginBoxComponent,
     HeaderComponent,
     PostPage,
-    ChooseUserTypeComponent
+    ChooseUserTypeComponent,
+    PostCreateEditPage,
+    SitePreviewWidget
   ],
   imports: [
     BrowserModule,
@@ -85,7 +89,8 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterPage,
     LoginPage,
     MenuPage,
-    PostPage
+    PostPage,
+    PostCreateEditPage
   ],
 
   providers: [

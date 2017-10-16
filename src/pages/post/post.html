@@ -3,6 +3,12 @@
       </ion-header>
       <ion-content padding>
 
+        <ion-fab top right>
+          <button ion-fab (click)="onClickPostCreate()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-fab>
+
         <ng-container *ngFor="let page of pages">
           <ion-card *ngFor="let post of page.posts" [attr.post-id]="post.ID">
             <ion-item>
@@ -10,10 +16,26 @@
                 <img src="{{post.author.photoURL}}">
               </ion-avatar>
               <h2>{{post?.author?.name}}</h2>
-              <p>November 5, 1955</p>
+              <p *ngIf="post.meta && post.meta.timestamp_create">&nbsp;
+                <!--{{ a.shortDate( post.meta.timestamp_create ) }}-->
+              </p>
             </ion-item>
+            <ion-card-header>
+              <b>{{post.post_title}}</b>
+            </ion-card-header>
 
-            <img src="img/advance-card-bttf.png">
+            <ng-container *ngIf=" files && files.length ">
+              <div class="file-display-widget">
+                <div class="files" [attr.count]="files.length" [attr.items]="files.length == 1 ? 'single' : 'many'">
+                  <div class="file" *ngFor=" let file of files " [attr.type]="app.file.getFileType(file)">
+                    <div [class]="app.file.getFileType(file)">
+                      <img *ngIf="app.file.getFileType(file) == 'image'" src="{{ files.length == 1 ? file.url_thumbnail_wide : file.url_thumbnail }}">
+                      <a href="{{ file.url }}" target="_blank" *ngIf="app.file.getFileType(file) == 'attachment'">{{ file.name }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
 
             <ion-card-content>
               <p [innerHTML]=" post.post_content_pre "></p>
@@ -21,20 +43,22 @@
 
             <ion-row>
               <ion-col>
-                <button ion-button icon-left clear small>
+                <button ion-button icon-left clear small  (click)="onClickLike( post, 'like' )">
                   <ion-icon name="thumbs-up"></ion-icon>
-                  <div>12 Likes</div>
+                  <div>
+                    <span class="badge badge-dark" *ngIf="post.meta['like']">{{ post.meta['like'] }}</span> Likes
+                  </div>
                 </button>
               </ion-col>
               <ion-col>
                 <button ion-button icon-left clear small>
                   <ion-icon name="text"></ion-icon>
-                  <div>4 Comments</div>
+                  <div>{{post.comment_count}} Comments</div>
                 </button>
               </ion-col>
-              <ion-col center text-center>
+              <ion-col center text-center *ngIf="post.meta && post.meta.timestamp_create">
                 <ion-note>
-                  11h ago
+                  {{ a.shortDate( post.meta.timestamp_create ) }}
                 </ion-note>
               </ion-col>
             </ion-row>
@@ -44,9 +68,12 @@
         </ng-container>
 
 
-        <div *ngIf="inLoading" class="p-5">
-          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> loading...
-        </div>
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading...">
+          ></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
 
         <div *ngIf="noMorePosts">
           <h3>No more posts ... !</h3>

@@ -10,7 +10,7 @@ export { ForumService } from './forum.service';
 import { UserService } from './user.service';
 export { UserService } from './user.service';
 import { FileService } from './file.service';
-export { FileService } from './file.service';
+
 
 export { SERVER_ERROR_CODE } from './interfaces';
 

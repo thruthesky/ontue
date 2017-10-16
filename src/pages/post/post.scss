@@ -1,0 +1,42 @@
+///// breaks
+//$break-a: 600px;
+//$break-c: 840px;
+//$break-d: 1100px;
+//$a-width: 160px;
+//$c-width: 280px;
+//$d-width: 220px;
+//$layout-max-width: 1240px;
+//$mobile-width: 360px;
+//
+//
+//
+//
+//
+//@mixin clearfix() {
+//  overflow: auto;
+//  &:after {
+//    display: block;
+//    content: '';
+//    clear: both;
+//  }
+//}
+//
+//.file-display-widget {
+//  width: 100%; /// for 1 image only. side.
+//  .files[items="single"] {
+//    img {
+//      max-width: 100%;
+//    }
+//  } /// for normal images. sqaure.
+//  .files[items="many"] {
+//    @include clearfix();
+//    .image {
+//      float: left;
+//      width: 50%; @media (min-width: $break-c) { width: 33.33%; }
+//      img {
+//        width: 100%;
+//        border: 1px solid white;
+//      }
+//    }
+//  }
+//}

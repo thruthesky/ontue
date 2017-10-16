@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{params['category']}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="onClickCancel()">
+        <span ion-text color="primary">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Title</ion-label>
+      <ion-input type="text" [(ngModel)]="post_title" (keyup)="titleInput()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Content</ion-label>
+      <ion-textarea [(ngModel)]="post_content"
+                    #textareaPostContent
+                    (keyup)="contentInput(textareaPostContent.value)"
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <!--<span class="stacked-camera-icon-with-file-box fa-stack fa-lg"-->
+              <!--(click)="fileUploadWidget.onClickCamera()">-->
+        <!--<i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>-->
+        <!--<i class="fa fa-camera fa-stack-1x fa-inverse" aria-hidden="true"></i>-->
+        <!--<input *ngIf=" ! a.xapi.isCordova() " type="file" (change)="fileUploadWidget.onChangeFile($event)">-->
+        <!--</span>-->
+      </ion-col>
+      <ion-col>
+        <button *ngIf="params['method'] == 'create' " ion-button class="post-create-button" (click)="onClickSubmit()">Submit Post</button>
+        <button *ngIf="params['method'] == 'edit' " ion-button class="post-edit-button" (click)="onClickEdit()">Update Post</button>
+        <button ion-button color="light" (click)="onClickCancel()">Cancel</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <site-preview-widget [preview]="preview.result" [edit]="true" [loading]="preview.loading"></site-preview-widget>
+</ion-content>
