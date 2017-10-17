@@ -51,7 +51,15 @@ export class Base {
      */
     getError( e: Error ): I.ERROR_RESPONSE {
         console.log("getError: message: ", e.message);
-        const re = JSON.parse( e.message );
+        let re = <I.ERROR_RESPONSE> {};
+        try {
+            re = JSON.parse( e.message );
+        }
+        catch ( ex ) { // failed to JOSN parse error message. Meaning it is not error object of backend.
+            console.error(" ========> JSON.parse() failed: ", ex.message );
+            re['code'] = -1;
+            re['message'] = e.message; 
+        }
         console.log("parsed error: ", re);
         return re;
     }

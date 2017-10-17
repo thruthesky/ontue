@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {XapiService} from './xapi.service';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { XapiService } from './xapi.service';
+import { Observable } from 'rxjs/Observable';
 import {
   COMMENT_CREATE, COMMENT_CREATE_RESPONSE, COMMENT_DATA, COMMENT_DATA_RESPONSE, COMMENT_DELETE, COMMENT_DELETE_RESPONSE,
   PAGE, POST,
@@ -8,8 +8,8 @@ import {
   POST_LIST_RESPONSE,
   SITE_PREVIEW
 } from "./interfaces";
-import {UserService} from "./user.service";
-import {Base} from "./base";
+import { UserService } from "./user.service";
+import { Base } from "./base";
 
 
 
@@ -189,4 +189,16 @@ export class ForumService extends Base {
     return s.substring(0, cut)
   }
 
+
+
+  commentLike(ID, choice): Observable<any> {
+    if ( this.user.isLogout ) return this.throw( this.ERROR.LOGIN_FIRST, 'login-first', true );
+    let data = {
+      route: 'wordpress.comment_like',
+      choice: choice,
+      comment_ID: ID,
+      session_id: this.user.sessionId
+    };
+    return this.x.post( data );
+  }
 }

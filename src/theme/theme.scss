@@ -54,6 +54,19 @@ ul.buttons {
   }
 }
 
+// spinner
+
+
+.spinner-sm * {
+  width: 16px;
+  height: 16px;
+  stroke: #444;
+  fill: #222;
+}
+
+
+
+// colors
 
 @each $animal in white,
 black,

@@ -66,7 +66,7 @@ export class AppService {
         });
         this.loader.present();
     }
-    hideLoaader() {
+    hideLoader() {
         if (this.loader) this.loader.dismiss();
     }
 
@@ -111,46 +111,69 @@ export class AppService {
      *
      * @note it closes the 'loader' box. normally, 'loader' will be opened for http request.
      *
-     * @param str error string or Error object.
+     * @param str
+     *      It can be
+     *          - a string.
+     *          - an Error object of Javascripit 'Error' class
+     *          - an object of { title: '...', subTitle: '...', message: '...', text: '...', callback: () => {} }
      *
      * @code
      *      x.subscribe(re => re, e => this.a.alert( e )
+     * 
+            a.alert('Hello, Alert !');
+            a.alert( { title: 'title', subTitle: 'subtitle', message: 'message', text: 'YES', callback: () => {
+            console.log( this );
+            } } );
+            a.alert( new Error('This is an error alert') );
+
      * @endcode
      */
     alert(str): void {
+        if ( ! str ) {
+            str = { title: 'No alert information was given.' };
+        }
         console.log(str);
-        if (str instanceof Error) {
+        if ( typeof str === 'string' ) {
+            str = { message: str };
+        }
+        else if (str instanceof Error) {
             console.log("instanceof Error");
-            str = this.xapi.getError(str).message;
+            const message = this.xapi.getError(str).message;
+            const code = this.xapi.getError(str).code;
+            str = { subTitle: code, message: message };
         }
         else if (str instanceof HttpErrorResponse) {
             console.log("instanceof HttpErrorResponse");
             const e = str['error'];
-            str = e['error']['message'] + "\n\n" + e['text'];
+            // str = e['error']['message'] + "\n\n" + e['text'];
+            str = { title: 'Http Error', subTitle: e['error']['message'], message: e['text'] };
         }
-        alert(str);
-        this.hideLoaader(); // #
-        return;
+        else if ( str['title'] !== void 0 || str['subTitle'] !== void 0 || str['message'] !== void 0  ) {
+            
+        }
+
+        let options = {};
+        if ( str['title'] ) options['title'] = str['title'];
+        if ( str['subTitle'] ) options['subTitle'] = str['subTitle'];
+        if ( str['message'] ) options['message'] = str['message'];
+
+        options['buttons'] = [ {
+            text: str['text'] === void 0 ? 'OK' : str['text'],
+            handler: str['callback'] === void 0 ? null : str['callback']
+        } ];
+        
+
+        this.alertCtrl.create( options ).present();
+        
     }
 
     showAlert(title = '', content = '') {
-        let alert = this.alertCtrl.create({
-            title: title,
-            subTitle: content,
-            buttons: ['OK']
-        });
-        alert.present();
+        this.alert( { title: title, message: content } );
     }
 
     showError(err) {
-        console.log(err);
         let e = this.xapi.getError(err);
-        let alert = this.alertCtrl.create({
-            title: 'Error' + e['code'],
-            subTitle: e['message'],
-            buttons: ['OK']
-        });
-        alert.present();
+        this.showAlert( 'Error' + e['code'], e['message'] );
     }
 
 

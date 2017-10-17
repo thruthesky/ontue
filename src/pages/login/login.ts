@@ -31,7 +31,7 @@ export class LoginPage {
             this.a.open('home');
         }, e => {
             // this.loading = false;
-            // this.a.hideLoaader();
+            this.a.hideLoader();
             this.a.alert(e);
         });
     }

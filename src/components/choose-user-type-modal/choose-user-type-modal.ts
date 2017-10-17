@@ -24,11 +24,16 @@ export class ChooseUserTypeModal {
                 .subscribe(
                 re => {
                     this.dismiss();
-                    this.a.hideLoaader();
+                    this.a.hideLoader();
                 },
-                e => this.a.alert(e)
-                );
-        }, e => this.a.alert(e));
+                e => {
+                    this.a.alert(e);
+                    this.a.hideLoader();
+                });
+        }, e => {
+            this.a.alert(e);
+            this.a.hideLoader();
+        });
 
     }
     dismiss() {

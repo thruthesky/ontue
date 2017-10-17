@@ -18,6 +18,7 @@ export class ChooseUserTypeComponent implements OnInit {
     onClickType(type) {
         this.a.showLoader();
         this.a.lms.setUserType(type).subscribe(re => {
+            this.a.hideLoader();
             console.log("seType:", re);
             if (re.user_type == this.a.lms.userType.student) {
                 this.a.user.loadProfile()
@@ -36,6 +37,9 @@ export class ChooseUserTypeComponent implements OnInit {
             else {
                 this.a.alert("Wrong user type");
             }
-        }, e => this.a.alert( e ));
+        }, e => {
+            this.a.hideLoader();
+            this.a.alert( e );
+        });
     }
 }

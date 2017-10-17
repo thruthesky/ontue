@@ -24,6 +24,7 @@ export class CommentViewWidget {
   timeout = 600;
   closingTimeout = 400;
 
+  likeLoader = false;
   constructor(
     public a: AppService,
     public alertCtrl: AlertController
@@ -90,14 +91,18 @@ export class CommentViewWidget {
   }
 
   onClickLike( choice: 'like' | 'dislike' ) {
-    if ( this.a.user.isLogout ) return this.a.xapi.throw( this.a.xapi.ERROR.LOGIN_FIRST );
-    this.a.xapi.post({route: 'wordpress.comment_like', choice: choice, comment_ID: this.comment.comment_ID, session_id: this.a.user.sessionId})
+    
+    this.likeLoader = true;
+    this.a.forum.commentLike( this.comment.comment_ID, choice )
       .subscribe( re => {
+        this.likeLoader = false;
         console.log("like: ", re);
         this.comment.meta['like'] = re['like'];
         this.comment.meta['dislike'] = re['dislike'];
-
-      }, e => this.a.showError(e));
+      }, e => {
+        this.likeLoader = false;
+        this.a.alert(e);
+      });
   }
 
 

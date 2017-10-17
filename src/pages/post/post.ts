@@ -15,7 +15,7 @@ export class PostPage {
 
   pages: PAGES = [];
 
-  watch = null;
+  
   pageNo: number = 0;
   noMorePosts: boolean = false;
 

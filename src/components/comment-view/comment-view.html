@@ -25,7 +25,11 @@
 
             <ul class="buttons mt-2 pointers">
 
-              <li (click)="onClickLike( 'like' )">Like <span class="badge badge-dark" *ngIf="comment.meta['like']">{{ comment.meta['like'] }}</span>
+              <li (click)="onClickLike( 'like' )">
+                Like
+                <ion-spinner class="spinner-sm" name="bubbles" *ngIf="likeLoader"></ion-spinner>
+                <span class="badge badge-dark" *ngIf="comment.meta['like']">{{ comment.meta['like'] }}</span>
+
               </li>
 
               <li (click)="showReply=!showReply">Reply</li>
