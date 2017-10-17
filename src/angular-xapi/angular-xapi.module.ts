@@ -11,6 +11,11 @@ import { UserService } from './user.service';
 export { UserService } from './user.service';
 import { FileService } from './file.service';
 
+import { LMSService } from './lms.service';
+export { LMSService } from './lms.service';
+
+
+
 
 export { SERVER_ERROR_CODE } from './interfaces';
 
@@ -20,6 +25,6 @@ export { SERVER_ERROR_CODE } from './interfaces';
     ],
     exports: [],
     declarations: [],
-    providers: [XapiService, ForumService, UserService, FileService],
+    providers: [XapiService, ForumService, UserService, FileService, LMSService],
 })
 export class AngularXapiModule { }

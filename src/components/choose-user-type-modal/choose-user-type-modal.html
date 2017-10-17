@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>회원 분류 변경</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary">취소</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="box mb-5 p-5 bg-indigo white">
+    회원님이 학생인지 선생인지 선택을 하십시오.
+  </div>
+  <ion-list radio-group>
+    <ion-item>
+      <ion-icon name="school" item-start></ion-icon>
+      <ion-label>저는 학생입니다.</ion-label>
+      <ion-radio [checked]=" a.userType == 'student' " value="{{ a.lms.userType.student }}" (click)="onClickUserType('S')"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person-add" item-start></ion-icon>
+      <ion-label>저는 선생입니다.</ion-label>
+      <ion-radio [checked]=" a.userType == 'teacher' " value="{{ a.lms.userType.teacher }}" (click)="onClickUserType('T')"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+
+  <div class="d-flex justify-content-between">
+    <button class="ml-4 bg-lightslategrey" ion-button icon-left [mode]="'ios'" (click)=" a.open('home') ">
+      <ion-icon name="home"></ion-icon>
+      홈으로 돌아가기
+    </button>
+
+    <button class="mr-4 bg-slategrey" ion-button icon-right [mode]="'ios'" (click)="dismiss()">
+      취소
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </div>
+
+
+
+</ion-content>

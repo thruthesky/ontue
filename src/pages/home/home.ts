@@ -22,4 +22,11 @@ export class HomePage {
     
   }
 
+
+
+  ngAfterViewInit() {
+    // setTimeout(() => this.a.open('menu') , 200);
+  }
+
+
 }

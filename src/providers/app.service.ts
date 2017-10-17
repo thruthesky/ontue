@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {NavController, LoadingController, AlertController} from 'ionic-angular';
+import { HttpErrorResponse } from '@angular/common/http';
 
-import { XapiService, UserService, ForumService } from './../angular-xapi/angular-xapi.module';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { XapiService, UserService, ForumService, LMSService } from './../angular-xapi/angular-xapi.module';
 import * as I from "../angular-xapi/interfaces";
 import {FileService} from "../angular-xapi/file.service";
 
@@ -21,48 +22,40 @@ export class AppService {
 
 
     userData = {};
+
     constructor(
         public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public user: UserService,
         public forum: ForumService,
         public xapi: XapiService,
-        public file: FileService
+        public file: FileService,
+        public lms: LMSService
     ) {
 
         /// for page service
         window['a'] = {
-            open: this.open.bind( this ),
-            alert: this.alert.bind( this )
+            open: this.open.bind(this),
+            alert: this.alert.bind(this)
         };
 
         xapi.setServerUrl('https://www.sonub.com');
-        // // xapi.setServerUrl('https://sonub.com:8443');
+        xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');
         // // xapi.version().subscribe(re => console.log("Xapi version: ", re));
-        // console.log("login: ", user.isLogin);
-        user.data()
-            .subscribe(
-                re => this.userData = re,
-                e => {
-                    const o = xapi.getError(e);
-                    if ( o.code == xapi.ERROR.LOGIN_FIRST ) {
-                        console.log("User has not logged in, yet");
-                    }
-                    else {
-                        console.error("ERROR:", o);
-                    }
-                 } );
+        console.log("login: ", user.isLogin);
+        console.log("profile data: ", this.user.getProfile());
+
+
     }
 
+    /**
+     * Returns 'student' or 'teacher'.
+     */
     get userType() {
-        if ( this.userData['type'] ) {
-            if ( this.userData['type'] == 'T' ) return 'teacher';
-            else if ( this.userData['type'] == 'S' ) return 'student';
-            else return '';
-        }
-        else return '';
+        return this.lms.getUserType();
     }
+
 
 
     showLoader() {
@@ -93,49 +86,71 @@ export class AppService {
         this.navCtrl.setRoot(page, params, {
             animate: true,
             direction: 'forward'
-          });
+        });
     }
 
+    /**
+     * Displays an error message to user.
+     *
+     * @note it closes the 'loader' box. normally, 'loader' will be opened for http request.
+     *
+     * @param str error string or Error object.
+     *
+     * @code
+     *      x.subscribe(re => re, e => this.a.alert( e )
+     * @endcode
+     */
     alert(str): void {
+        console.log(str);
+        if (str instanceof Error) {
+            console.log("instanceof Error");
+            str = this.xapi.getError(str).message;
+        }
+        else if (str instanceof HttpErrorResponse) {
+            console.log("instanceof HttpErrorResponse");
+            const e = str['error'];
+            str = e['error']['message'] + "\n\n" + e['text'];
+        }
         alert(str);
+        this.hideLoaader(); // #
         return;
     }
 
     showAlert(title = '', content = '') {
-      let alert = this.alertCtrl.create({
-        title: title,
-        subTitle: content,
-        buttons: ['OK']
-      });
-      alert.present();
+        let alert = this.alertCtrl.create({
+            title: title,
+            subTitle: content,
+            buttons: ['OK']
+        });
+        alert.present();
     }
 
-    showError(err: I.ERROR_RESPONSE){
-      console.log(err);
-      let alert = this.alertCtrl.create({
-        title: 'Error' + err['code'],
-        subTitle: err['message'],
-        buttons: ['OK']
-      });
-      alert.present();
+    showError(err: I.ERROR_RESPONSE) {
+        console.log(err);
+        let alert = this.alertCtrl.create({
+            title: 'Error' + err['code'],
+            subTitle: err['message'],
+            buttons: ['OK']
+        });
+        alert.present();
     }
 
 
     shortDate(stamp) {
 
-      let d = new Date(stamp * 1000);
-      let today = new Date();
+        let d = new Date(stamp * 1000);
+        let today = new Date();
 
-      let dt = '';
-      if (d.getFullYear() == today.getFullYear() && d.getMonth() == today.getMonth() && d.getDate() == today.getDate()) {
-        dt = d.toLocaleString();
-        dt = dt.substring(dt.indexOf(',') + 2).toLowerCase();
-        dt = dt.replace(/\:\d\d /, ' ');
-      }
-      else {
-        dt = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
-      }
-      return dt;
+        let dt = '';
+        if (d.getFullYear() == today.getFullYear() && d.getMonth() == today.getMonth() && d.getDate() == today.getDate()) {
+            dt = d.toLocaleString();
+            dt = dt.substring(dt.indexOf(',') + 2).toLowerCase();
+            dt = dt.replace(/\:\d\d /, ' ');
+        }
+        else {
+            dt = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+        }
+        return dt;
     }
 
 }

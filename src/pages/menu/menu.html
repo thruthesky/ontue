@@ -4,38 +4,34 @@
 
 <ion-content padding>
 
-
-  <button ion-button (click)="a.user.logout(); a.open('home')">
-
-    <ion-icon name="sign-out"></ion-icon>
-    Logout
-  </button>
-
-
-  <button ion-button (click)="a.open('settings')">
-
-    <ion-icon name="settings"></ion-icon>
-    Settings
-  </button>
-
-  <button ion-button menuToggle right>
-    <ion-icon name="menu"></ion-icon>
-    사이드 메뉴 열기
-  </button>
+  <ion-list class="pointers">
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="settings" item-start></ion-icon>
+      설정
+    </ion-item>
+    <ion-item menuToggle>
+      <ion-icon name="menu" item-start></ion-icon>
+      사이드 메뉴 열기
+    </ion-item>
 
 
+    <ion-item *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
+        <ion-icon name="log-out" item-start></ion-icon>
+        로그인
+      </ion-item>
 
-  <ion-item-group>
-    <ion-list-header color="light">Student Menu</ion-list-header>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
-  </ion-item-group>
+      <ion-item *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
+        <ion-icon name="log-out" item-start></ion-icon>
+        로그아웃
+      </ion-item>
 
-  <ion-item-group>
-    <ion-list-header color="light">Teacher Menu</ion-list-header>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
-  </ion-item-group>
+    <ion-item (click)="presentChooseUserTypeModal()">
+      <ion-icon name="repeat" item-start></ion-icon>
+      회원 분류 변경
+    </ion-item>
+  </ion-list>
+
+  
 
 
 </ion-content>

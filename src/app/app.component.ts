@@ -19,6 +19,8 @@ import { SchedulePage } from './../pages/schedule/schedule';
 import { MenuPage } from './../pages/menu/menu';
 import { ForumPage } from './../pages/forum/forum';
 import { PostPage } from './../pages/post/post';
+import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
+
 
 
 
@@ -62,8 +64,8 @@ export class MyApp {
     this.a.pages['register'] = RegisterPage;
 
     this.a.pages['post'] = PostPage;
+    this.a.pages['teacher-profile'] = TeacherProfilePage;
 
-    
 
     setTimeout(() => this.test(), 100);
 

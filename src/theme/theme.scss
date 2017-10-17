@@ -1,21 +1,20 @@
-
-
 // Themes
 // ---------------------------------
 @mixin list-style-none {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 @mixin list-dots() {
-    li:after {
-        display: inline-block;
-        padding: 0 .4em;
-        content: '•';
-    }
-    li:last-child:after {
-        display: none;
-    }
+  li:after {
+    display: inline-block;
+    padding: 0 .4em;
+    content: '•';
+  }
+  li:last-child:after {
+    display: none;
+  }
 }
 
 ul.buttons {
@@ -24,3 +23,123 @@ ul.buttons {
   @include list-dots();
 }
 
+.pointer {
+  cursor: pointer;
+}
+.pointers {
+  & > * {
+    cursor: pointer;
+  }
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+//
+.d-flex {
+  display: flex;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+// Box
+.box {
+  padding: .725em;
+  border: 0;
+  background-color: #eee;
+  &.box-blue {
+    color: white;
+    background-color: dodgerblue;
+  }
+}
+
+
+@each $animal in white,
+black,
+darkgrey,
+grey,
+dimgrey,
+slategrey,
+lightgrey,
+lightslategrey,
+blue,
+brown,
+red,
+darkred,
+salmon,
+lightsalmon,
+orange,
+darkorange,
+wheat,
+olive,
+yellowgreen,
+limegreen,
+green,
+darkgreen,
+darkviolet,
+slateblue,
+darkslateblue,
+indigo,
+teal,
+skyblue {
+  .#{$animal} {
+    color: #{$animal}!important;
+  }
+  .bg-#{$animal} {
+    background-color: #{$animal}!important;
+  }
+}
+
+// Bootstrap style padding & margin
+// You can use p-1 ~ p-9
+//
+// -------------------------------
+@for $i from 1 through 9 {
+  .p-#{$i} {
+    padding: 0.25em * $i!important;
+  }
+  .pt-#{$i} {
+    padding-top: 0.25em * $i!important;
+  }
+  .pl-#{$i} {
+    padding-left: 0.25em * $i!important;
+  }
+  .pr-#{$i} {
+    padding-right: 0.25em * $i!important;
+  }
+  .pb-#{$i} {
+    padding-bottom: 0.25em * $i!important;
+  }
+  .px-#{$i} {
+    padding-left: 0.25em * $i!important;
+    padding-right: 0.25em * $i!important;
+  }
+  .py-#{$i} {
+    padding-top: 0.25em * $i!important;
+    padding-bottom: 0.25em * $i!important;
+  }
+  .m-#{$i} {
+    margin: 0.25em * $i!important;
+  }
+  .mt-#{$i} {
+    margin-top: 0.25em * $i!important;
+  }
+  .ml-#{$i} {
+    margin-left: 0.25em * $i!important;
+  }
+  .mr-#{$i} {
+    margin-right: 0.25em * $i!important;
+  }
+  .mb-#{$i} {
+    margin-bottom: 0.25em * $i!important;
+  }
+  .mx-#{$i} {
+    margin-left: 0.25em * $i!important;
+    margin-right: 0.25em * $i!important;
+  }
+  .my-#{$i} {
+    margin-top: 0.25em * $i!important;
+    margin-bottom: 0.25em * $i!important;
+  }
+}
