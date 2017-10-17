@@ -3,6 +3,7 @@ import {NavController, LoadingController, AlertController} from 'ionic-angular';
 
 import { XapiService, UserService, ForumService } from './../angular-xapi/angular-xapi.module';
 import * as I from "../angular-xapi/interfaces";
+import {FileService} from "../angular-xapi/file.service";
 
 @Injectable()
 export class AppService {
@@ -25,7 +26,8 @@ export class AppService {
         public alertCtrl: AlertController,
         public user: UserService,
         public forum: ForumService,
-        public xapi: XapiService
+        public xapi: XapiService,
+        public file: FileService
     ) {
 
         /// for page service

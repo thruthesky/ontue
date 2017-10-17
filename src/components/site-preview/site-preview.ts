@@ -13,9 +13,7 @@ export class SitePreviewWidget {
 
   constructor(
     public app: AppService
-  ) {
-    console.log('SitePreview Init::', this.preview);
-  }
+  ) {}
 
   onClickDelete() {
     console.log("deleting site preview: ", this.preview.id );
