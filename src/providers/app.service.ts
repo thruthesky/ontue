@@ -3,7 +3,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { XapiService, UserService, ForumService, LMSService } from './../angular-xapi/angular-xapi.module';
-import * as I from "../angular-xapi/interfaces";
 import {FileService} from "../angular-xapi/file.service";
 
 @Injectable()
@@ -89,6 +88,22 @@ export class AppService {
         });
     }
 
+  postUserPhotoUrl(data) {
+    if (data && data.author && data.author.photoURL) return data.author.photoURL;
+    else return 'assets/img/student.png';
+  }
+
+  /**
+   * Returns true if 'data' is mine.
+   * @param data Post or Comment
+   */
+  my(data) {
+    if (!this.user.id) return false;
+    if (data && data['ID'] && data['post_author'] == this.user.id) return true;
+    if (data && data['comment_ID'] && data['user_id'] == this.user.id) return true;
+    return false;
+  }
+
     /**
      * Displays an error message to user.
      *
@@ -125,11 +140,12 @@ export class AppService {
         alert.present();
     }
 
-    showError(err: I.ERROR_RESPONSE) {
+    showError(err) {
         console.log(err);
+        let e = this.xapi.getError(err);
         let alert = this.alertCtrl.create({
-            title: 'Error' + err['code'],
-            subTitle: err['message'],
+            title: 'Error' + e['code'],
+            subTitle: e['message'],
             buttons: ['OK']
         });
         alert.present();

@@ -85,8 +85,10 @@ export class PostPage {
   onClickPostCreate() {
     const createPostModal = this.modalCtrl.create(PostCreateEditPage, { method: 'create', category: this.post_id});
     createPostModal.onDidDismiss( id => {
-      console.log('Success:: ID:: ', id);
-      this.insertPost(id);
+      if(id) {
+        console.log('ID:: ', id);
+        this.insertPost(id);
+      }
     });
     createPostModal.present();
   }

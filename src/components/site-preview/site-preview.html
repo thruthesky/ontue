@@ -1,5 +1,4 @@
-<ion-card *ngIf="preview['id']">
-  {{preview|json}}
+<ion-card *ngIf="preview?.id">
   <ion-card-content>
     <div class="site-preview-wrapper relative">
       <div *ngIf=" edit && preview?.id " class="fa-stack fa-lg absolute top right cursor" (click)="onClickDelete()">

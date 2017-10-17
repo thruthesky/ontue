@@ -74,7 +74,7 @@ export class FileService {
 
 
     getFileType(file: FILE ) {
-      console.log('getfiletype', file);
+      // console.log('getfiletype', file);
         if ( typeof file.type === 'string' ) return file.type.indexOf('image/') === -1 ? 'attachment' : 'image';
         else return 'attachment';
     }

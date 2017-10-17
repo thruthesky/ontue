@@ -1,5 +1,5 @@
 <ng-container *ngIf=" files && files.length ">
-  <div class="file-display-widget">
+  <div class="file-display-widget hello">
     <div class="files" [attr.count]="files.length" [attr.items]="files.length == 1 ? 'single' : 'many'">
       <div class="file" *ngFor=" let file of files " [attr.type]="a.file.getFileType(file)">
         <div [class]="a.file.getFileType(file)">

@@ -3,6 +3,10 @@
       </ion-header>
       <ion-content padding>
 
+        <ion-card>
+          <h1>{{post_id}}</h1>
+        </ion-card>
+
         <ion-fab top right>
           <button ion-fab (click)="onClickPostCreate()">
             <ion-icon name="add"></ion-icon>
@@ -51,6 +55,14 @@
                 </ion-note>
               </ion-col>
             </ion-row>
+
+            <comment-create-widget [post]="post"></comment-create-widget>
+
+            <div class="comments" *ngIf="post.comments && post.comments.length">
+              <ng-container *ngFor="let comment of post.comments">
+                <comment-view-widget [post]="post" [comment]="comment"></comment-view-widget>
+              </ng-container>
+            </div>
 
           </ion-card>
 

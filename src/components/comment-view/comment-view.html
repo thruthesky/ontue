@@ -1,0 +1,48 @@
+<div class="comment-view mb-3" [attr.comment-id]="comment.comment_ID" [attr.depth]="comment.depth">
+
+  <div class="comment-content-area fs-xs">
+    <table cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td>
+          <div class="mr-2">
+            <i class="fa fa-mail-forward fa-flip-vertical grey" aria-hidden="true"></i>
+          </div>
+        </td>
+        <td>
+          <img style="width: 36px" src="{{ a.postUserPhotoUrl( comment )}}">
+        </td>
+        <td>
+          <div class="comment-content ml-2 break-all">
+            <div class="mb-2">
+
+              <span class="author-name">{{ comment.author.name }}</span>
+
+              {{ a.shortDate( comment.meta.timestamp_create ) }}
+              {{ comment.comment_content }}
+            </div>
+            <file-display-widget [files]="comment.files"></file-display-widget>
+            <site-preview-widget [preview]="comment.site_preview"></site-preview-widget>
+
+            <ul class="buttons mt-2 pointers">
+
+              <li (click)="onClickLike( 'like' )">Like <span class="badge badge-dark" *ngIf="comment.meta['like']">{{ comment.meta['like'] }}</span>
+              </li>
+
+              <li (click)="showReply=!showReply">Reply</li>
+              <li *ngIf="a.my(comment)" (click)="onClickEdit()">Edit</li>
+              <li *ngIf="a.my(comment)" (click)="onClickDelete()">Delete</li>
+            </ul>
+          </div>
+
+          <comment-create-widget *ngIf="showReply" [post]="post" [comment]="comment"
+                                 (create)=" onCreate( $event ) "></comment-create-widget>
+
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
+
+
+</div>

@@ -22,6 +22,10 @@ export interface CATEGORY {
 //     category?: string;
 // };
 
+interface comment_ID {
+  comment_ID: number;
+}
+
 
 export interface ERROR_RESPONSE {
     code: number;
@@ -213,6 +217,40 @@ export interface COMMENT {
 };
 
 export type COMMENTS = Array<COMMENT>;
+
+export interface COMMENT_CREATE extends REQUEST {
+  comment_post_ID: number; // root post ID. to which post the comment will show up.
+  comment_author?: string; // fixed value - can be dynamic
+  comment_author_email?: string;  // fixed value - can be dynamic
+  comment_author_url?: string; // URL of the author or content or any url. fixed value - can be dynamic
+  comment_content?: string; // Comment messsage... //fixed value - can be dynamic
+  comment_parent?: number; // parent comment to reply under that comment. 0 if it's not a reply to another comment; if it's a reply, mention the parent comment ID here
+  fid?: Array<number>;
+  site_preview_id?: number;
+};
+
+export interface COMMENT_CREATE_RESPONSE {
+  post_ID: number;
+  comment_ID: number;
+  tokens: Array<string>;
+};
+
+export interface COMMENT_DATA extends REQUEST, comment_ID {
+  thumbnail?: THUMBNAIL_SIZES; // default thumbnail size.
+};
+
+/**
+ * This is being used by forum.commentData()
+ * COMMENT_DATA_RESPONSE is different from COMMENT which has 'depth'.
+ */
+export type COMMENT_DATA_RESPONSE = COMMENT;
+
+export interface COMMENT_DELETE extends REQUEST, comment_ID { };
+
+export interface COMMENT_DELETE_RESPONSE extends comment_ID {
+  mode: 'delete' | 'mark';
+}
+
 
 export interface AUTHOR {
   ID?: number;

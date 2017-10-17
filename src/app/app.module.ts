@@ -44,6 +44,8 @@ import { ChooseUserTypeModal } from './../components/choose-user-type-modal/choo
 import { SitePreviewWidget} from './../components/site-preview/site-preview';
 import { FileUploadWidget } from './../components/file-upload/file-upload';
 import { FileDisplayWidget } from  './../components/file-display/file-display';
+import { CommentCreateWidget } from './../pages/comment-create/comment-create';
+import { CommentViewWidget } from './../components/comment-view/comment-view';
 
 
 
@@ -72,6 +74,8 @@ export function createTranslateLoader(http: HttpClient) {
     SitePreviewWidget,
     FileUploadWidget,
     FileDisplayWidget,
+    CommentCreateWidget,
+    CommentViewWidget,
     TeacherProfilePage,
     ChooseUserTypeModal
   ],

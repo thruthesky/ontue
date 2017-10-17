@@ -1,18 +1,26 @@
 import {Injectable} from '@angular/core';
 import {XapiService} from './xapi.service';
 import {Observable} from 'rxjs/Observable';
-import {PAGE, POST, POST_DATA, POST_LIST, POST_LIST_RESPONSE, SITE_PREVIEW} from "./interfaces";
+import {
+  COMMENT_CREATE, COMMENT_CREATE_RESPONSE, COMMENT_DATA, COMMENT_DATA_RESPONSE, COMMENT_DELETE, COMMENT_DELETE_RESPONSE,
+  PAGE, POST,
+  POST_DATA, POST_LIST,
+  POST_LIST_RESPONSE,
+  SITE_PREVIEW
+} from "./interfaces";
 import {UserService} from "./user.service";
+import {Base} from "./base";
 
 
 
 @Injectable()
-export class ForumService {
+export class ForumService extends Base {
 
   constructor(
     private x: XapiService,
     private user: UserService
   ) {
+    super();
 
   }
 
@@ -35,6 +43,40 @@ export class ForumService {
 
   postList(req: POST_LIST): Observable<POST_LIST_RESPONSE> {
     return this.x.query(req)
+  }
+
+
+  /**
+   *
+   * @example test.service.ts
+   * @param req Comment create data
+   */
+  commentCreate(req: COMMENT_CREATE): Observable<COMMENT_CREATE_RESPONSE> {
+    if (!this.user.isLogin) return this.throw(this.ERROR.LOGIN_FIRST);
+
+    let data = Object.assign({}, req);
+    data.route = 'wordpress.wp_new_comment';
+    data.session_id = this.user.sessionId;
+    return this.x.post(data);
+  }
+
+  commentData(comment_ID): Observable<COMMENT_DATA_RESPONSE> {
+    let req: COMMENT_DATA = {
+      route: 'wordpress.get_comment',
+      session_id: this.user.sessionId,
+      comment_ID: comment_ID,
+      thumbnail: '200x200'
+    };
+    return this.x.post(req);
+  }
+
+  commentDelete(comment_ID: number): Observable<COMMENT_DELETE_RESPONSE> {
+    let req: COMMENT_DELETE = {
+      route: 'wordpress.wp_delete_comment',
+      session_id: this.user.sessionId,
+      comment_ID: comment_ID
+    };
+    return this.x.post(req);
   }
 
 

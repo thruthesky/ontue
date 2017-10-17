@@ -90,7 +90,7 @@ export class PostCreateEditPage {
   }
 
   onClickCancel() {
-    this.viewCtrl.dismiss('cancel');
+    this.viewCtrl.dismiss();
   }
 
 
