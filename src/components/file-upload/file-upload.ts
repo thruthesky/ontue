@@ -43,7 +43,7 @@ export class FileUpload {
   onClickCamera() {
     if (!this.a.xapi.isCordova()) return;
 
-    this.confirmCameraAction().then(code => this.takePhoto(code));
+    // this.confirmCameraAction().then(code => this.takePhoto(code));
 
   }
 
@@ -79,26 +79,26 @@ export class FileUpload {
 
   confirmCameraAction() {
 
-    const alert = this.alertCtrl.create({
-      title: 'Confirm purchase',
-      message: 'Do you want to buy this book?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Buy',
-          handler: () => {
-            console.log('Buy clicked');
-          }
-        }
-      ]
-    });
-    alert.present();
+    // const alert = this.alertCtrl.create({
+    //   title: 'Confirm purchase',
+    //   message: 'Do you want to buy this book?',
+    //   buttons: [
+    //     {
+    //       text: 'Cancel',
+    //       role: 'cancel',
+    //       handler: () => {
+    //         console.log('Cancel clicked');
+    //       }
+    //     },
+    //     {
+    //       text: 'Buy',
+    //       handler: () => {
+    //         console.log('Buy clicked');
+    //       }
+    //     }
+    //   ]
+    // });
+    // alert.present();
 
 
     // return this.a.confirm({
