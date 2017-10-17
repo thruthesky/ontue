@@ -43,15 +43,21 @@
 
         </button>
       </ion-col>
-      <ion-col>
 
+      <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
-
-          <ion-icon name="menu"></ion-icon>
-          {{ 'ALL MENU' | translate }}
-
+          <ion-icon name="settings"></ion-icon>
+          {{ 'Settings' | translate }}
         </button>
       </ion-col>
+
+      <ion-col>
+        <button (click)="a.open('menu')">
+          <ion-icon name="menu"></ion-icon>
+          {{ 'ALL MENU' | translate }}
+        </button>
+      </ion-col>
+
     </ion-row>
   </ion-grid>
 

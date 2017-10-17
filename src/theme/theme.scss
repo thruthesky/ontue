@@ -26,8 +26,9 @@ ul.buttons {
 .pointer {
   cursor: pointer;
 }
+
 .pointers {
-  & > * {
+  &>* {
     cursor: pointer;
   }
 }
@@ -40,23 +41,14 @@ ul.buttons {
 .d-flex {
   display: flex;
 }
+
 .justify-content-between {
   justify-content: space-between;
 }
-// Box
-.box {
-  padding: .725em;
-  border: 0;
-  background-color: #eee;
-  &.box-blue {
-    color: white;
-    background-color: dodgerblue;
-  }
-}
+
 
 // spinner
-
-
+// @TODO this is not working properly.
 .spinner-sm * {
   width: 16px;
   height: 16px;
@@ -64,12 +56,11 @@ ul.buttons {
   fill: #222;
 }
 
-
-
 // colors
-
 @each $animal in white,
 black,
+snow,
+ghostwhite,
 darkgrey,
 grey,
 dimgrey,
@@ -101,58 +92,5 @@ skyblue {
   }
   .bg-#{$animal} {
     background-color: #{$animal}!important;
-  }
-}
-
-// Bootstrap style padding & margin
-// You can use p-1 ~ p-9
-//
-// -------------------------------
-@for $i from 1 through 9 {
-  .p-#{$i} {
-    padding: 0.25em * $i!important;
-  }
-  .pt-#{$i} {
-    padding-top: 0.25em * $i!important;
-  }
-  .pl-#{$i} {
-    padding-left: 0.25em * $i!important;
-  }
-  .pr-#{$i} {
-    padding-right: 0.25em * $i!important;
-  }
-  .pb-#{$i} {
-    padding-bottom: 0.25em * $i!important;
-  }
-  .px-#{$i} {
-    padding-left: 0.25em * $i!important;
-    padding-right: 0.25em * $i!important;
-  }
-  .py-#{$i} {
-    padding-top: 0.25em * $i!important;
-    padding-bottom: 0.25em * $i!important;
-  }
-  .m-#{$i} {
-    margin: 0.25em * $i!important;
-  }
-  .mt-#{$i} {
-    margin-top: 0.25em * $i!important;
-  }
-  .ml-#{$i} {
-    margin-left: 0.25em * $i!important;
-  }
-  .mr-#{$i} {
-    margin-right: 0.25em * $i!important;
-  }
-  .mb-#{$i} {
-    margin-bottom: 0.25em * $i!important;
-  }
-  .mx-#{$i} {
-    margin-left: 0.25em * $i!important;
-    margin-right: 0.25em * $i!important;
-  }
-  .my-#{$i} {
-    margin-top: 0.25em * $i!important;
-    margin-bottom: 0.25em * $i!important;
   }
 }

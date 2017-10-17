@@ -23,6 +23,7 @@ export class HomePage {
     // a.alert( new Error('This is an error alert') );
 
 
+    // setTimeout(() => this.a.open('menu') , 200);
 
   }
 
@@ -35,8 +36,10 @@ export class HomePage {
   
 
   ngAfterViewInit() {
-    // setTimeout(() => this.a.open('menu') , 200);
+    // 
   }
 
+
+  
 
 }

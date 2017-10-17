@@ -13,6 +13,7 @@
   <div class="box mb-5 p-5 bg-indigo white">
     회원님이 학생인지 선생인지 선택을 하십시오.
   </div>
+  
   <ion-list radio-group>
     <ion-item>
       <ion-icon name="school" item-start></ion-icon>
@@ -26,8 +27,7 @@
     </ion-item>
   </ion-list>
 
-
-  <div class="d-flex justify-content-between">
+  <div class="box py-5 d-flex justify-content-between bg-ghostwhite">
     <button class="ml-4 bg-lightslategrey" ion-button icon-left [mode]="'ios'" (click)=" a.open('home'); dismiss(); ">
       <ion-icon name="home"></ion-icon>
       홈으로 돌아가기
@@ -39,6 +39,11 @@
     </button>
   </div>
 
+
+
+  <div class="p-3 mt-3 mb-5 text-center bg-darkslateblue white" *ngIf="newType">
+      {{ newType }}으로 변경되었습니다.
+    </div>
 
 
 </ion-content>

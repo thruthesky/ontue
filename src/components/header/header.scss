@@ -3,7 +3,7 @@
       padding: 0!important;
       text-align: center;
     button {
-      padding: .25em;
+      padding: .5em .25em;
       width: 100%;
       background-color: transparent!important;
       font-size: 1em;
@@ -11,7 +11,7 @@
       ion-icon {
         display: block;
         margin-bottom: .25em;
-        font-size: 1.725em;
+        font-size: 1.8em; // icon size.
       }
     }
   }

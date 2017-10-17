@@ -30,7 +30,7 @@ export class RegisterPage {
             console.log("user.register => success: re: ", re);
             this.a.open('home');
         }, reg => {
-            this.a.hideLoaader();
+            this.a.hideLoader();
             alert(reg.message);
         });
 
