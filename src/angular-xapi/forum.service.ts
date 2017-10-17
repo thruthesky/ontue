@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {XapiService} from './xapi.service';
 import {Observable} from 'rxjs/Observable';
-import {PAGE, POST, POST_LIST, POST_LIST_RESPONSE, SITE_PREVIEW} from "./interfaces";
+import {PAGE, POST, POST_DATA, POST_LIST, POST_LIST_RESPONSE, SITE_PREVIEW} from "./interfaces";
 import {UserService} from "./user.service";
 
 
@@ -21,6 +21,16 @@ export class ForumService {
     data.route = 'post.create';
     // console.log(data);
     return this.x.post(data);
+  }
+
+  postData(post_ID): Observable<POST> {
+    let data: POST_DATA = {
+      session_id: this.user.sessionId,
+      route: 'wordpress.get_post',
+      ID: post_ID,
+      thumbnail: '200x200'
+    };
+    return this.x.post(data)
   }
 
   postList(req: POST_LIST): Observable<POST_LIST_RESPONSE> {

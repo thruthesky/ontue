@@ -34,7 +34,7 @@ import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
 
 
 
-// 
+//
 // Components
 // -----------------------------
 import { LoginBoxComponent } from './../components/login-box/login-box';
@@ -42,6 +42,8 @@ import { HeaderComponent } from './../components/header/header';
 import { ChooseUserTypeComponent } from './../components/choose-user-type/choose-user-type';
 import { ChooseUserTypeModal } from './../components/choose-user-type-modal/choose-user-type-modal';
 import { SitePreviewWidget} from './../components/site-preview/site-preview';
+import { FileUploadWidget } from './../components/file-upload/file-upload';
+import { FileDisplayWidget } from  './../components/file-display/file-display';
 
 
 
@@ -68,6 +70,8 @@ export function createTranslateLoader(http: HttpClient) {
     ChooseUserTypeComponent,
     PostCreateEditPage,
     SitePreviewWidget,
+    FileUploadWidget,
+    FileDisplayWidget,
     TeacherProfilePage,
     ChooseUserTypeModal
   ],

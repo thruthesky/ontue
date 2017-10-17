@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { XapiService, UserService, ForumService, LMSService } from './../angular-xapi/angular-xapi.module';
 import * as I from "../angular-xapi/interfaces";
+import {FileService} from "../angular-xapi/file.service";
 
 @Injectable()
 export class AppService {
@@ -28,6 +29,7 @@ export class AppService {
         public user: UserService,
         public forum: ForumService,
         public xapi: XapiService,
+        public file: FileService,
         public lms: LMSService
     ) {
 
@@ -93,11 +95,11 @@ export class AppService {
 
     /**
      * Displays an error message to user.
-     * 
+     *
      * @note it closes the 'loader' box. normally, 'loader' will be opened for http request.
-     * 
+     *
      * @param str error string or Error object.
-     * 
+     *
      * @code
      *      x.subscribe(re => re, e => this.a.alert( e )
      * @endcode

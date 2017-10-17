@@ -134,6 +134,9 @@ export interface POST_CREATE_COMMON {
 export interface POST_CREATE extends REQUEST, ID_O, CATEGORY, POST_CREATE_COMMON {};
 export type POST_CREATE_RESPONSE = number;
 
+export interface POST_DATA extends REQUEST, ID {
+  thumbnail?: THUMBNAIL_SIZES;
+};
 
 export interface POST_READ_COMMON extends ID, POST_CREATE_COMMON {
   author: AUTHOR;

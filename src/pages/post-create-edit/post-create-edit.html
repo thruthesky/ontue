@@ -29,12 +29,10 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <!--<span class="stacked-camera-icon-with-file-box fa-stack fa-lg"-->
-              <!--(click)="fileUploadWidget.onClickCamera()">-->
-        <!--<i class="fa fa-circle fa-stack-2x" aria-hidden="true"></i>-->
-        <!--<i class="fa fa-camera fa-stack-1x fa-inverse" aria-hidden="true"></i>-->
-        <!--<input *ngIf=" ! a.xapi.isCordova() " type="file" (change)="fileUploadWidget.onChangeFile($event)">-->
-        <!--</span>-->
+        <span class="stacked-camera-icon-with-file-box fa-stack fa-lg"
+              (click)="fileUploadWidget.onClickCamera()">
+          <ion-input *ngIf=" ! a.xapi.isCordova() " type="file" (change)="fileUploadWidget.onChangeFile($event)"></ion-input>
+        </span>
       </ion-col>
       <ion-col>
         <button *ngIf="params['method'] == 'create' " ion-button class="post-create-button" (click)="onClickSubmit()">Submit Post</button>
@@ -43,5 +41,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files" [post_password]="post_password"></file-upload-widget>
   <site-preview-widget [preview]="preview.result" [edit]="true" [loading]="preview.loading"></site-preview-widget>
 </ion-content>
