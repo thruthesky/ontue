@@ -24,6 +24,7 @@ export class LMSService extends Base {
         super();
     }
 
+    
     /**
      * Returns 'student' or 'teacher'.
      */
