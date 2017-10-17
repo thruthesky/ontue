@@ -74,17 +74,18 @@ export class FileService {
 
 
     getFileType(file: FILE ) {
+      console.log('getfiletype', file);
         if ( typeof file.type === 'string' ) return file.type.indexOf('image/') === -1 ? 'attachment' : 'image';
         else return 'attachment';
     }
 
 
-    
+
     delete( req: FILE_DELETE ): Observable<number> {
         req.route =  'wordpress.delete_attachment';
         req.session_id = this.user.sessionId;
         return this.x.post(req);
     }
-    
+
 
 }

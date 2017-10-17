@@ -86,23 +86,23 @@ export class PostPage {
     const createPostModal = this.modalCtrl.create(PostCreateEditPage, { method: 'create', category: this.post_id});
     createPostModal.onDidDismiss( id => {
       console.log('Success:: ID:: ', id);
-      // this.insert Post(id);
+      this.insertPost(id);
     });
     createPostModal.present();
   }
 
-  // insertPost(post_ID) {
-  //   this.a.forum.postData(post_ID).subscribe(post => {
-  //     // console.log('this.posts:: ', this.pages);
-  //
-  //     if (!this.pages[0].posts) {
-  //       this.pages[0]['posts'] = [];
-  //     }
-  //     this.a.forum.pre( post );
-  //     this.pages[0].posts.unshift(post);
-  //
-  //   }, e => this.a.showError(e));
-  // }
+  insertPost(post_ID) {
+    this.a.forum.postData(post_ID).subscribe(post => {
+      // console.log('this.posts:: ', this.pages);
+
+      if (!this.pages[0].posts) {
+        this.pages[0]['posts'] = [];
+      }
+      this.a.forum.pre( post );
+      this.pages[0].posts.unshift(post);
+
+    }, e => this.a.showError(e));
+  }
 
 
 }

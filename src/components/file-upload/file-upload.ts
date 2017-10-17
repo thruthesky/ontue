@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http';
 
-import { AppService } from './../../providers/app.service';
+import {AppService} from './../../providers/app.service';
 import {FILES, FILE, FILE_DELETE} from './../../angular-xapi/interfaces';
+import {AlertController} from "ionic-angular";
 
 declare var Camera;
 declare var navigator;
@@ -10,11 +11,11 @@ declare var FileUploadOptions;
 declare var FileTransfer;
 
 @Component({
-  selector: 'file-upload',
+  selector: 'file-upload-widget',
   templateUrl: 'file-upload.html'
 })
-export class FileUpload {
-  url: string;// = environment.xapiUrl;
+export class FileUploadWidget {
+  url: string;
   progressPercentage = 0;
   @Input() files: FILES;
   @Input() post_password;
@@ -25,9 +26,8 @@ export class FileUpload {
 
   @Input() titleText = 'File Upload';
 
-  constructor(
-    public a: AppService
-  ) {
+  constructor(public a: AppService,
+              public alertCtrl: AlertController) {
     this.url = this.a.xapi.getServerUrl();
     document.addEventListener('deviceready', () => this.onDeviceReady(), false);
   }
@@ -43,8 +43,34 @@ export class FileUpload {
   onClickCamera() {
     if (!this.a.xapi.isCordova()) return;
 
-    // this.confirmCameraAction().then(code => this.takePhoto(code));
-
+    let confirm = this.alertCtrl.create({
+      title: 'Photo Upload',
+      message: 'Where do you want to get photo from?',
+      buttons: [
+        {
+          text: 'camera',
+          handler: () => {
+            console.log('camera');
+            this.takePhoto('camera');
+          }
+        },
+        {
+          text: 'gallery',
+          handler: () => {
+            console.log('gallery');
+            this.takePhoto('gallery');
+          }
+        },
+        {
+          text: 'cancel',
+          handler: () => {
+            console.log('cancel');
+            this.takePhoto('cancel');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   takePhoto(code) {
@@ -77,50 +103,12 @@ export class FileUpload {
     }, options);
   }
 
-  confirmCameraAction() {
-
-    // const alert = this.alertCtrl.create({
-    //   title: 'Confirm purchase',
-    //   message: 'Do you want to buy this book?',
-    //   buttons: [
-    //     {
-    //       text: 'Cancel',
-    //       role: 'cancel',
-    //       handler: () => {
-    //         console.log('Cancel clicked');
-    //       }
-    //     },
-    //     {
-    //       text: 'Buy',
-    //       handler: () => {
-    //         console.log('Buy clicked');
-    //       }
-    //     }
-    //   ]
-    // });
-    // alert.present();
-
-
-    // return this.a.confirm({
-    //   title: 'Photo Upload',
-    //   content: 'Where do you want to get photo from?',
-    //   buttons: [
-    //     { class: 'a', code: 'camera', text: 'Camera' },
-    //     { class: 'b', code: 'gallery', text: 'Gallery' },
-    //     { class: 'c', code: 'cancel', text: 'Cancel' }
-    //   ]
-    // })
-    //   .catch(res => console.log('dismissed'));
-
-
-  }
-
   cordovaTransferFile(filePath: string) {
     var options = new FileUploadOptions();
     options.fileKey = "userfile";
     options.fileName = filePath.substr(filePath.lastIndexOf('/') + 1) + '.jpg';
     options.mimeType = "image/jpeg";
-    var params = { route: 'file.upload', session_id: this.a.user.sessionId };
+    var params = {route: 'file.upload', session_id: this.a.user.sessionId};
     options.params = params;
 
 
@@ -128,7 +116,6 @@ export class FileUpload {
 
     let percentage = 0;
     ft.onprogress = progressEvent => {
-      // @todo This is not working....
       if (progressEvent.lengthComputable) {
         try {
           percentage = Math.round(progressEvent.loaded / progressEvent.total);
@@ -162,10 +149,10 @@ export class FileUpload {
         return;
       }
 
-      if ( re['code'] == 0 ) {
+      if (re['code'] == 0) {
         this.insertFile(re['data']);
       }
-      else this.a.showError( re );
+      else this.a.showError(re);
 
 
     }, e => {
@@ -177,7 +164,9 @@ export class FileUpload {
   }
 
   onChangeFile(event) {
-    if (this.a.xapi.isCordova) return;
+    // console.log('onChangeFile', event);
+    if (this.a.xapi.isCordova()) return;
+    // console.log('onChangeFile', event);
     this.a.file.uploadForm(event).subscribe(event => {
       // console.log(event);
       if (typeof event === 'number') {
@@ -191,6 +180,9 @@ export class FileUpload {
       }
       else if (event === null) {
         console.log("what is it?");
+      }
+      else if (event['code']) {
+        this.a.showError(event);
       }
     }, (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
@@ -221,7 +213,7 @@ export class FileUpload {
       // this.files = this.files.filter( file => file.id != id ); //
       let index = this.files.findIndex(file => file.id == id);
       this.files.splice(index, 1);
-      console.log('onClickDeleteButton::',this.files);
+      console.log('onClickDeleteButton::', this.files);
       this.a.xapi.render();
     }, err => this.a.showError(err));
   }
@@ -242,7 +234,6 @@ export class FileUpload {
   onUploadFailure() {
     this.progressPercentage = 0;
   }
-
 
 
 }
