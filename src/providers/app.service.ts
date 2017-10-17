@@ -77,10 +77,12 @@ export class AppService {
         this.navCtrl.pop();
     }
 
+
     open(page: any, params?) {
         if (typeof page === 'string') {
             if (!this.pages[page]) return this.alert('Wrong page name: ' + page);
             page = this.pages[page];
+            // console.log(page);
         }
         this.navCtrl.setRoot(page, params, {
             animate: true,
