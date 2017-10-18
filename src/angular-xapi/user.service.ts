@@ -79,7 +79,7 @@ export class UserService extends Base {
         return this.x.post({ route: 'user.load_profile', session_id: this.sessionId })
             .map(res => {
                 console.log("user profile loaded: ", res);
-                this.setUserProfile(res);
+                return this.setUserProfile(res);
             });
     }
 
