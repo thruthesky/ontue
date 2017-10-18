@@ -19,7 +19,7 @@ export class RegisterPage {
     }
 
     ngAfterViewInit() { // TEST
-        
+
     }
 
 

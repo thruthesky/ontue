@@ -1,0 +1,17 @@
+<ion-card>
+  <ion-textarea class="w-100" [(ngModel)]="comment_content" #textareaContent (keyup)="preview.typing.next(textareaContent.value)"></ion-textarea>
+  <div>
+        <span class="stacked-camera-icon-with-file-box fa-stack fa-lg" (click)="fileUploadWidget.onClickCamera()">
+                <input *ngIf=" ! a.isCordova " type="file" (change)="fileUploadWidget.onChangeFile($event)">
+            </span>
+  </div>
+  <div>
+    <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
+    <button ion-button type="button" (click)="onClickCancel()">Cancel</button>
+  </div>
+</ion-card>
+<hr>
+<file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false"
+                    [files]="files"></file-upload-widget>
+<site-preview-widget [preview]="preview?.result" [edit]="true" [loading]="preview.loading"></site-preview-widget>
+

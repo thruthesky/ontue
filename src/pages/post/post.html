@@ -26,6 +26,9 @@
             </ion-item>
             <ion-card-header>
               <b>{{post.post_title}}</b>
+              <button ion-button icon-only float-right (click)="postOption(post, page)">
+                <ion-icon name="more"></ion-icon>
+              </button>
             </ion-card-header>
 
             <file-display-widget [files]="post.files"></file-display-widget>

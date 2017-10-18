@@ -12,17 +12,17 @@ export class SitePreviewWidget {
   @Input() edit: boolean = false;
 
   constructor(
-    public app: AppService
+    public a: AppService
   ) {}
 
   onClickDelete() {
     console.log("deleting site preview: ", this.preview.id );
-    this.app.forum.deletePreview( this.preview.id ).subscribe( res => {
+    this.a.forum.deletePreview( this.preview.id ).subscribe( res => {
       this.preview.id = 0;
       this.preview.content = '';
       this.preview.title = '';
       this.preview.url = '';
       this.preview.url_image = '';
-    }, e => this.app.showError(e) );
+    }, e => this.a.showError(e) );
   }
 }
