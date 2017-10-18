@@ -94,3 +94,27 @@ skyblue {
     background-color: #{$animal}!important;
   }
 }
+
+
+
+// font size
+
+.fs-xs {
+  font-size: .8rem!important;
+}
+.fs-sm {
+  font-size: .9rem!important;
+}
+.fs-md {
+  font-size: 1rem!important;
+}
+.fs-lg {
+  font-size: 2rem!important;
+}
+.fs-xl {
+  font-size: 4rem!important;
+}
+
+.fw-bold {
+  font-weight: bold!important;
+}

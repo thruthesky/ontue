@@ -1,11 +1,10 @@
-
 <ion-header>
   <header-content></header-content>
 </ion-header>
 
 <ion-content>
 
-<!-- {{ a.user.getProfile() | json }}
+  <!-- {{ a.user.getProfile() | json }}
 {{ a.userType | json }} -->
   <choose-user-type-component *ngIf=" a.user.isLogin && a.userType == '' "></choose-user-type-component>
   <div [innerHTML]=" reminders "></div>
@@ -13,23 +12,15 @@
 
 
   <div class="alert alert-primary m-2 border-0 rounded-0 =">
-      <h3 class="alert-heading">온튜에 오신것을 환영합니다!</h3>
-  <ul class="ml-4 pl-2">
-    <li>잠깐!<br>
-      여러분은 온튜에 있습니다.</li>
-    <li>온튜는 12년 전통의 자유 매칭 화상영어 사이트입니다.</li>
-  </ul>
+      <div class="float-right p-3">일주일 동안 보지 않기 <span class="close ml-1 blue">&times;</span></div>
+    <h3 class="alert-heading">온튜에 오신것을 환영합니다!</h3>
+    <ul class="ml-4 pl-2">
+      <li>잠깐!
+        <br> 여러분은 온튜에 있습니다.</li>
+      <li>온튜는 12년 전통의 자유 매칭 화상영어 사이트입니다.</li>
+    </ul>
 
-  <ul>
-    <li>학생과 선생님이 모두 사용</li>
-    <li>Live chat 을 아이콘과 텍스로, 탭 박스위에 강조 해서 항상 표시 할 것.</li>
-    <li>사진을 찍어서 자유롭게 게시판이나 프로필 사진으로 등록하는 것 부터 할 것.</li>
-    <li>웹을 포기하더라도 앱으로 할 것. IE 에서 PHP 로 간단히만 표시.</li>
-  </ul>
-</div>
+  </div>
 
-  <p>
-    {{ 'SITE NAME' | translate }} 에 오신 것을 환영합니다.
-  </p>
 
 </ion-content>
