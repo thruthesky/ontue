@@ -3,9 +3,10 @@ import { XapiService } from './xapi.service';
 import { Observable } from 'rxjs/Observable';
 import {
   COMMENT_CREATE, COMMENT_CREATE_RESPONSE, COMMENT_DATA, COMMENT_DATA_RESPONSE, COMMENT_DELETE, COMMENT_DELETE_RESPONSE,
+  COMMENT_UPDATE,
   PAGE, POST,
-  POST_DATA, POST_LIST,
-  POST_LIST_RESPONSE,
+  POST_DATA, POST_DELETE, POST_DELETE_RESPONSE, POST_LIST,
+  POST_LIST_RESPONSE, POST_UPDATE,
   SITE_PREVIEW
 } from "./interfaces";
 import { UserService } from "./user.service";
@@ -41,6 +42,18 @@ export class ForumService extends Base {
     return this.x.post(data)
   }
 
+  postUpdate(data: POST_UPDATE): Observable<number> {
+    data.session_id = this.user.sessionId;
+    data.route = 'post.update';
+    return this.x.post(data);
+  }
+
+  postDelete(req: POST_DELETE): Observable<POST_DELETE_RESPONSE> {
+    req.session_id = this.user.sessionId;
+    req.route = 'wordpress.delete_post';
+    return this.x.post(req);
+  }
+
   postList(req: POST_LIST): Observable<POST_LIST_RESPONSE> {
     return this.x.query(req)
   }
@@ -67,6 +80,12 @@ export class ForumService extends Base {
       comment_ID: comment_ID,
       thumbnail: '200x200'
     };
+    return this.x.post(req);
+  }
+
+  commentUpdate(req: COMMENT_UPDATE): Observable<number> {
+    req.route = 'wordpress.wp_update_comment';
+    req.session_id = this.user.sessionId;
     return this.x.post(req);
   }
 

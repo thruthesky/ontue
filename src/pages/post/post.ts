@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {ModalController, NavParams} from 'ionic-angular';
+import {AlertController, ModalController, NavParams, PopoverController} from 'ionic-angular';
 import {AppService} from '../../providers/app.service';
-import {PAGES, POST, POST_LIST, POST_LIST_RESPONSE} from '../../angular-xapi/interfaces';
+import {PAGE, PAGES, POST, POST_LIST, POST_LIST_RESPONSE} from '../../angular-xapi/interfaces';
 import {PostCreateEditPage} from "../post-create-edit/post-create-edit";
+import {PostPopoverWidget} from "../../components/post-popover/post-popover";
 
 
 @Component({
@@ -15,13 +16,15 @@ export class PostPage {
 
   pages: PAGES = [];
 
-  
+
   pageNo: number = 0;
   noMorePosts: boolean = false;
 
   constructor(public navParams: NavParams,
               public a: AppService,
-              public modalCtrl: ModalController
+              public modalCtrl: ModalController,
+              public popoverCtrl: PopoverController,
+              public alertCtrl: AlertController
   ) {
 
     this.post_id = navParams.get('post_id');
@@ -104,6 +107,79 @@ export class PostPage {
       this.pages[0].posts.unshift(post);
 
     }, e => this.a.showError(e));
+  }
+
+  postOption(post, page){
+    let postPopover = this.popoverCtrl.create(PostPopoverWidget);
+    postPopover.onDidDismiss( re => {
+      if(re == 'edit') {
+        console.log('edit');
+        this.onClickPostEdit(post);
+      } else if( re == 'delete') {
+        console.log('delete');
+        this.onClickPostDelete(post, page);
+      }
+    });
+    postPopover.present();
+  }
+
+  onClickPostDelete(post: POST, page: PAGE) {
+
+    let confirm = this.alertCtrl.create({
+      title: 'Delete Post',
+      message: 'Are you sure you cant to delete this post?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('yes continue');
+            this.postDelete(page, post.ID);
+          }
+        },
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel');
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  postDelete(page, ID, password?) {
+    // debugger;
+    this.a.forum.postDelete({ ID: ID, post_password: password }).subscribe(res => {
+      console.log("file deleted: ", res);
+
+      let index = page.posts.findIndex(post => post.ID == res.ID);
+      if (res.mode == 'delete') {
+        page.posts.splice(index, 1);
+      }
+      else this.updatePost(page.posts[index]);
+
+
+    }, err => this.a.alert(err));
+  }
+
+  onClickPostEdit(post) {
+
+    const createPostModal = this.modalCtrl.create(PostCreateEditPage, { method: 'edit', post: post});
+    createPostModal.onDidDismiss( id => {
+      if(id) {
+        console.log('ID:: ', id);
+        this.updatePost(post);
+      }
+    });
+    createPostModal.present();
+  }
+
+  updatePost(post: POST) {
+    this.a.forum.postData(post.ID).subscribe(postData => {
+      console.log("post updated: ", postData);
+      Object.assign(post, postData);
+      this.a.forum.pre( post );
+    }, e => this.a.alert(e));
   }
 
 

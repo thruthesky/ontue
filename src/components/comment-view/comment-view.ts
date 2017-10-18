@@ -4,7 +4,8 @@ import {
   POST, FILES,
   COMMENT
 } from './../../angular-xapi/interfaces';
-import { AlertController } from "ionic-angular";
+import {AlertController, ModalController} from "ionic-angular";
+import {CommentEditPage} from "../comment-edit/comment-edit";
 
 
 @Component({
@@ -27,21 +28,25 @@ export class CommentViewWidget {
   likeLoader = false;
   constructor(
     public a: AppService,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
   ) {
 
   }
 
-  onCreate(comment_ID) {
+  onCreate() {
     this.showReply = false;
   }
 
   onClickEdit() {
-    // this.commentEditModal.open(this.post, this.comment).then(id => {
-    //   // console.log('comment edit success:', id);
-    //
-    // }, err => this.a.showError(err))
-    //   .catch( e => this.a.showError(e) );
+    const createCommentModal = this.modalCtrl.create(CommentEditPage, { post: this.post, comment: this.comment});
+    createCommentModal.onDidDismiss( comment => {
+      if(comment) {
+        console.log('ID:: ', comment);
+        this.updateComment(comment);
+      }
+    });
+    createCommentModal.present();
   }
 
   onClickDelete() {
@@ -91,7 +96,7 @@ export class CommentViewWidget {
   }
 
   onClickLike( choice: 'like' | 'dislike' ) {
-    
+
     this.likeLoader = true;
     this.a.forum.commentLike( this.comment.comment_ID, choice )
       .subscribe( re => {
@@ -104,29 +109,6 @@ export class CommentViewWidget {
         this.a.alert(e);
       });
   }
-
-
-  //
-  // onClickUserProfile(event: MouseEvent) {
-  //   if ( event ) event.stopPropagation();
-  //   this.profileDropdown.open();
-  // }
-
-
-  // onMouseEnterUserProfile(event: MouseEvent) {
-  //   this.mouse = 'in';
-  //   setTimeout(() => {
-  //     if ( this.mouse == 'in' ) this.profileDropdown.open();
-  //   }, this.timeout );
-  // }
-  //
-  // onMouseLeaveUserProfileMenu() {
-  //   this.mouse = 'out';
-  //   setTimeout( () => {
-  //     if ( this.mouse == 'out' ) this.profileDropdown.close();
-  //   }, this.closingTimeout);
-  // }
-  //
 
 }
 

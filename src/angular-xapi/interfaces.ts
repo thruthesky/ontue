@@ -18,9 +18,9 @@ export interface ID_O {
 export interface CATEGORY {
     category: string;
 };
-// interface CATEGORY_O {
-//     category?: string;
-// };
+interface CATEGORY_O {
+    category?: string;
+};
 
 interface comment_ID {
   comment_ID: number;
@@ -137,6 +137,18 @@ export interface POST_CREATE_COMMON {
 
 export interface POST_CREATE extends REQUEST, ID_O, CATEGORY, POST_CREATE_COMMON {};
 export type POST_CREATE_RESPONSE = number;
+export interface POST_UPDATE extends REQUEST, ID, CATEGORY_O, POST_CREATE_COMMON { };
+
+
+
+export interface POST_DELETE extends REQUEST, ID {
+  post_password?: string;
+};
+
+export interface POST_DELETE_RESPONSE {
+  ID: number;
+  mode: 'delete' | 'mark';
+}
 
 export interface POST_DATA extends REQUEST, ID {
   thumbnail?: THUMBNAIL_SIZES;
@@ -244,6 +256,18 @@ export interface COMMENT_DATA extends REQUEST, comment_ID {
  * COMMENT_DATA_RESPONSE is different from COMMENT which has 'depth'.
  */
 export type COMMENT_DATA_RESPONSE = COMMENT;
+
+export interface COMMENT_UPDATE extends REQUEST, comment_ID {
+  comment_content?: string;
+  fid?: Array<number>;
+  site_preview_id?: number;
+};
+export interface COMMENT_UPDATE extends REQUEST, comment_ID {
+  comment_content?: string;
+  fid?: Array<number>;
+  site_preview_id?: number;
+};
+
 
 export interface COMMENT_DELETE extends REQUEST, comment_ID { };
 

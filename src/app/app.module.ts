@@ -26,6 +26,7 @@ import { MainPage } from '../pages/main/main';
 import { SettingsPage } from '../pages/settings/settings';
 import { PostPage } from '../pages/post/post';
 import { PostCreateEditPage } from '../pages/post-create-edit/post-create-edit';
+import { CommentEditPage } from '../components/comment-edit/comment-edit';
 
 import { RegisterPage } from './../pages/register/register';
 import { LoginPage } from './../pages/login/login';
@@ -46,6 +47,7 @@ import { FileUploadWidget } from './../components/file-upload/file-upload';
 import { FileDisplayWidget } from  './../components/file-display/file-display';
 import { CommentCreateWidget } from './../pages/comment-create/comment-create';
 import { CommentViewWidget } from './../components/comment-view/comment-view';
+import { PostPopoverWidget } from '../components/post-popover/post-popover';
 
 
 
@@ -71,9 +73,11 @@ export function createTranslateLoader(http: HttpClient) {
     PostPage,
     ChooseUserTypeComponent,
     PostCreateEditPage,
+    PostPopoverWidget,
     SitePreviewWidget,
     FileUploadWidget,
     FileDisplayWidget,
+    CommentEditPage,
     CommentCreateWidget,
     CommentViewWidget,
     TeacherProfilePage,
@@ -105,8 +109,10 @@ export function createTranslateLoader(http: HttpClient) {
     MenuPage,
     PostPage,
     PostCreateEditPage,
+    CommentEditPage,
     TeacherProfilePage,
-    ChooseUserTypeModal
+    ChooseUserTypeModal,
+    PostPopoverWidget
   ],
 
   providers: [

@@ -28,7 +28,6 @@ export class CommentCreateWidget {
   @ViewChild('fileUploadWidget') fileUploadComponent: FileUploadWidget;
   files: FILES = [];
   comment_content: string;
-  @Output() create = new EventEmitter<number>();
 
 
   preview: SitePreview;
@@ -38,14 +37,6 @@ export class CommentCreateWidget {
   ) {
     this.preview = new SitePreview( a.forum );
     this.preview.listen();
-  }
-
-  get userPhotoURL() {
-
-    if (this.a.user.isLogin && this.a.user.profile.photoURL) {
-      return this.a.user.profile.photoURL;
-    }
-    else return null;
   }
 
   onSubmit() {
@@ -64,15 +55,9 @@ export class CommentCreateWidget {
       let id = re.comment_ID;
       console.log("comment created", re);
       this.insertComment(id);
-
-
       this.resetForm();
-
-      this.create.emit(id);
-
     }, err => {
       this.a.showError(err);
-      // this.alert.open("error !!");
     });
 
 
