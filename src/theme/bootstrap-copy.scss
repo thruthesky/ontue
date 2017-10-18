@@ -126,6 +126,29 @@ $nested-kbd-font-weight: $font-weight-bold !default;
 $list-inline-padding: 5px !default;
 $mark-bg: #fcf8e3 !default;
 
+
+// Close
+
+$close-font-size:             $font-size-base * 1.5 !default;
+$close-font-weight:           $font-weight-bold !default;
+$close-color:                 $black !default;
+$close-text-shadow:           0 1px 0 $white !default;
+
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-rounded:            true !default;
+$enable-shadows:            false !default;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  false !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
+
+
 // Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
@@ -194,8 +217,11 @@ $grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !defaul
 }
 
 .d-block {
-  display: block !important;
-}
+    display: block !important;
+  }
+  .d-inline-block {
+    display: inline-block !important;
+  }
 
 @media (min-width: 576px) {
   .d-sm-none {
@@ -203,6 +229,9 @@ $grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !defaul
   }
   .d-sm-block {
     display: block !important;
+  }
+  .d-sm-inline-block {
+    display: inline-block !important;
   }
 }
 
@@ -213,6 +242,9 @@ $grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !defaul
   .d-md-block {
     display: block !important;
   }
+  .d-md-inline-block {
+    display: inline-block !important;
+  }
 }
 
 @media (min-width: 992px) {
@@ -222,6 +254,9 @@ $grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !defaul
   .d-lg-block {
     display: block !important;
   }
+  .d-lg-inline-block {
+    display: inline-block !important;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -230,6 +265,9 @@ $grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !defaul
   }
   .d-xl-block {
     display: block !important;
+  }
+  .d-xl-inline-block {
+    display: inline-block !important;
   }
 }
 
@@ -358,3 +396,110 @@ $value in $theme-colors {
   border-radius: 0;
 }
 
+
+
+
+
+/// Floats
+@mixin float-left {
+    float: left !important;
+  }
+  @mixin float-right {
+    float: right !important;
+  }
+  @mixin float-none {
+    float: none !important;
+  }
+  
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  
+      .float#{$infix}-left  { @include float-left; }
+      .float#{$infix}-right { @include float-right; }
+      .float#{$infix}-none  { @include float-none; }
+    }
+  }
+
+  
+  @mixin hover {
+    // TODO: re-enable along with mq4-hover-shim
+  //  @if $enable-hover-media-query {
+  //    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
+  //    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+  //    @media (hover: hover) {
+  //      &:hover { @content }
+  //    }
+  //  }
+  //  @else {
+  // scss-lint:disable Indentation
+      &:hover { @content }
+  // scss-lint:enable Indentation
+  //  }
+  }
+  
+  
+  @mixin hover-focus {
+    @if $enable-hover-media-query {
+      &:focus { @content }
+      @include hover { @content }
+    } @else {
+      &:focus,
+      &:hover {
+        @content
+      }
+    }
+  }
+  
+  @mixin plain-hover-focus {
+    @if $enable-hover-media-query {
+      &,
+      &:focus {
+        @content
+      }
+      @include hover { @content }
+    } @else {
+      &,
+      &:focus,
+      &:hover {
+        @content
+      }
+    }
+  }
+  
+  @mixin hover-focus-active {
+    @if $enable-hover-media-query {
+      &:focus,
+      &:active {
+        @content
+      }
+      @include hover { @content }
+    } @else {
+      &:focus,
+      &:active,
+      &:hover {
+        @content
+      }
+    }
+  }
+  
+
+  // Close
+  
+  .close {
+    float: right;
+    font-size: $close-font-size;
+    font-weight: $close-font-weight;
+    line-height: 1;
+    color: $close-color;
+    text-shadow: $close-text-shadow;
+    opacity: .5;
+  
+    @include hover-focus {
+      color: $close-color;
+      text-decoration: none;
+      opacity: .75;
+    }
+  }
+
+  
