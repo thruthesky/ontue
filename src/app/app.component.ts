@@ -74,6 +74,12 @@ export class MyApp {
   test() {
     // this.a.open('menu');
 
+
+    
+
+    this.a.open('register');
+
+
   }
 
 

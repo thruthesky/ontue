@@ -3,9 +3,11 @@
       </ion-header>
       <ion-content padding>
 
-        <ion-card>
-          <h1>{{post_id}}</h1>
-        </ion-card>
+        
+          <div class="alert alert-primary border-0 rounded-0">{{ post_id | translate }}</div>
+          
+          
+
 
         <ion-fab top right>
           <button ion-fab (click)="onClickPostCreate()">
@@ -26,9 +28,11 @@
             </ion-item>
             <ion-card-header>
               <b>{{post.post_title}}</b>
+              
               <button ion-button icon-only float-right (click)="postOption(post, page)">
                 <ion-icon name="more"></ion-icon>
               </button>
+
             </ion-card-header>
 
             <file-display-widget [files]="post.files"></file-display-widget>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
@@ -17,12 +17,14 @@ export class AppService {
     navCtrl: NavController = null;
     pages = {};
 
+    anonymousPhotoURL = 'assets/img/anonymous.png';
 
 
 
     userData = {};
 
     constructor(
+        public ngZone: NgZone,
         public loadingCtrl: LoadingController,
         public alertCtrl: AlertController,
         public user: UserService,
@@ -192,6 +194,29 @@ export class AppService {
             dt = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
         }
         return dt;
+    }
+
+
+    
+
+    /**
+     * Returns true if the app is running as Cordova mobile app.
+     */
+    get isCordova(): boolean {
+        if (window['cordova']) return true;
+        return false;
+    }
+
+    get isWeb(): boolean {
+        if (document.URL.indexOf('http://') != -1
+            || document.URL.indexOf('https://') != -1) return true;
+        else return false;
+    }
+
+
+
+    render() {
+        this.ngZone.run( () => {} );
     }
 
 }

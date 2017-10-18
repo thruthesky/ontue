@@ -39,7 +39,10 @@
 
   "LOADING": "로딩 중입니다.",
 
-  "PAYMENT": "수업료결재"
+  "PAYMENT": "수업료결재",
+
+
+  "discussion": "자유토론"
 
 
 }

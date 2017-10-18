@@ -29,5 +29,7 @@
   "CANCEL": "Cancel",
   "DELETE": "Delete",
   "LOADING": "Please wait while loading...",
-  "PAYMENT": "Payments"
+  "PAYMENT": "Payments",
+
+  "discussion": "Discussion"
 }

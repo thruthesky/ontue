@@ -66,7 +66,7 @@ export type USER_DATA = REQUEST;
 
 
 export interface USER_REGISTER extends REQUEST {
-    user_email: string;
+    user_email?: string;
     user_pass?: string;
     user_login?: string;
     name?: string;
@@ -76,8 +76,8 @@ export interface USER_REGISTER extends REQUEST {
     address?: string;
     birthday?: string;
     landline?: string;
-    photoURL?: string;
-    photo?: FILE;
+    photoURL?: string; // This is used for registration and update only.
+    photo?: FILE; // This is used on backend response only
 };
 
 export type USER_UPDATE = USER_REGISTER;

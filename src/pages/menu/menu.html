@@ -16,14 +16,22 @@
 
 
     <ion-item *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
-        <ion-icon name="log-out" item-start></ion-icon>
-        로그인
-      </ion-item>
+      <ion-icon name="log-in" item-start></ion-icon>
+      로그인
+    </ion-item>
+    <ion-item *ngIf=" a.user.isLogout " (click)=" a.open('register') ">
+      <ion-icon name="person-add" item-start></ion-icon>
+      회원가입
+    </ion-item>
 
-      <ion-item *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
-        <ion-icon name="log-out" item-start></ion-icon>
-        로그아웃
-      </ion-item>
+    <ion-item *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
+      <ion-icon name="log-out" item-start></ion-icon>
+      {{ 'PROFILE' | translate }}
+    </ion-item>
+    <ion-item *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
+      <ion-icon name="log-out" item-start></ion-icon>
+      로그아웃
+    </ion-item>
 
     <ion-item (click)="presentChooseUserTypeModal()">
       <ion-icon name="repeat" item-start></ion-icon>
@@ -31,7 +39,7 @@
     </ion-item>
   </ion-list>
 
-  
+
 
 
 </ion-content>
