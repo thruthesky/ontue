@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, ModalController, NavParams, PopoverController} from 'ionic-angular';
+import {ModalController, NavParams, PopoverController} from 'ionic-angular';
 import {AppService} from '../../providers/app.service';
 import {PAGE, PAGES, POST, POST_LIST, POST_LIST_RESPONSE} from '../../angular-xapi/interfaces';
 import {PostCreateEditPage} from "../post-create-edit/post-create-edit";
@@ -23,8 +23,7 @@ export class PostPage {
   constructor(public navParams: NavParams,
               public a: AppService,
               public modalCtrl: ModalController,
-              public popoverCtrl: PopoverController,
-              public alertCtrl: AlertController
+              public popoverCtrl: PopoverController
   ) {
 
     this.post_id = navParams.get('post_id');
@@ -127,7 +126,7 @@ export class PostPage {
 
     let confirm = this.alertCtrl.create({
       title: 'Delete Post',
-      message: 'Are you sure you cant to delete this post?',
+      message: 'Are you sure you cant to delete this post',
       buttons: [
         {
           text: 'Yes',
@@ -146,20 +145,19 @@ export class PostPage {
     });
     confirm.present();
   }
-
   postDelete(page, ID, password?) {
     // debugger;
-    this.a.forum.postDelete({ ID: ID, post_password: password }).subscribe(res => {
+    this.app.forum.postDelete({ ID: ID, post_password: password }).subscribe(res => {
       console.log("file deleted: ", res);
 
       let index = page.posts.findIndex(post => post.ID == res.ID);
       if (res.mode == 'delete') {
         page.posts.splice(index, 1);
       }
-      else this.updatePost(page.posts[index]);
+      else this.forumShare.updatePost(page.posts[index]);
 
 
-    }, err => this.a.alert(err));
+    }, err => this.app.warning(err));
   }
 
   onClickPostEdit(post) {
