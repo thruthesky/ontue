@@ -1,5 +1,5 @@
 import {
-  Component, Input, Output, ViewChild, EventEmitter
+  Component, Input, ViewChild
 } from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
 
