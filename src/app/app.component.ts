@@ -38,7 +38,7 @@ export class MyApp {
   rootPage:any = HomePage;
 
   constructor(
-    private translate: TranslateService, 
+    private translate: TranslateService,
     platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService
@@ -75,9 +75,9 @@ export class MyApp {
     // this.a.open('menu');
 
 
-    
 
-    this.a.open('register');
+
+    // this.a.open('register');
 
 
   }
@@ -96,7 +96,7 @@ export class MyApp {
       console.log(values.BACK);
     });
   }
-  
+
 
   onClickHome() {
     this.a.open( HomePage );

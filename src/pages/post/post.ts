@@ -109,7 +109,7 @@ export class PostPage {
     }, e => this.a.showError(e));
   }
 
-  postOption(post, page){
+  postOption(event, post, page){
     let postPopover = this.popoverCtrl.create(PostPopoverWidget);
     postPopover.onDidDismiss( re => {
       if(re == 'edit') {
@@ -120,7 +120,7 @@ export class PostPage {
         this.onClickPostDelete(post, page);
       }
     });
-    postPopover.present();
+    postPopover.present({ev:event});
   }
 
   onClickPostDelete(post: POST, page: PAGE) {

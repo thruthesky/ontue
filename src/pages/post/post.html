@@ -3,10 +3,10 @@
       </ion-header>
       <ion-content padding>
 
-        
+
           <div class="alert alert-primary border-0 rounded-0">{{ post_id | translate }}</div>
-          
-          
+
+
 
 
         <ion-fab top right>
@@ -22,16 +22,13 @@
                 <img src="{{post.author.photoURL}}">
               </ion-avatar>
               <h2>{{post?.author?.name}}</h2>
-              <p *ngIf="post.meta && post.meta.timestamp_create">&nbsp;
-                <!--{{ a.shortDate( post.meta.timestamp_create ) }}-->
-              </p>
+              <button ion-button icon-only float-right (click)="postOption( $event, post, page)">
+                <ion-icon name="more"></ion-icon>
+              </button>
+
             </ion-item>
             <ion-card-header>
               <b>{{post.post_title}}</b>
-              
-              <button ion-button icon-only float-right (click)="postOption(post, page)">
-                <ion-icon name="more"></ion-icon>
-              </button>
 
             </ion-card-header>
 
