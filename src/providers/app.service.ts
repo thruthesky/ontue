@@ -40,8 +40,8 @@ export class AppService {
             alert: this.alert.bind(this)
         };
 
-        xapi.setServerUrl('https://www.sonub.com');
-        // xapi.setServerUrl('https://sonub.com:8443');
+        // xapi.setServerUrl('https://www.sonub.com');
+        xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');
         // // xapi.version().subscribe(re => console.log("Xapi version: ", re));
         console.log("login: ", user.isLogin);
