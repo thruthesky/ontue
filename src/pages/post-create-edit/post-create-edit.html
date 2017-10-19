@@ -32,6 +32,7 @@
         <span class="stacked-camera-icon-with-file-box fa-stack fa-lg"
               (click)="fileUploadWidget.onClickCamera()">
           <ion-input *ngIf=" ! a.xapi.isCordova() " type="file" (change)="fileUploadWidget.onChangeFile($event)"></ion-input>
+          <i class="fa fa-camera"></i>
         </span>
       </ion-col>
       <ion-col>

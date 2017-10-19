@@ -41,7 +41,7 @@ export class AppService {
         };
 
         xapi.setServerUrl('https://www.sonub.com');
-        xapi.setServerUrl('https://sonub.com:8443');
+        // xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');
         // // xapi.version().subscribe(re => console.log("Xapi version: ", re));
         console.log("login: ", user.isLogin);
@@ -121,7 +121,7 @@ export class AppService {
      *
      * @code
      *      x.subscribe(re => re, e => this.a.alert( e )
-     * 
+     *
             a.alert('Hello, Alert !');
             a.alert( { title: 'title', subTitle: 'subtitle', message: 'message', text: 'YES', callback: () => {
             console.log( this );
@@ -151,7 +151,7 @@ export class AppService {
             str = { title: 'Http Error', subTitle: e['error']['message'], message: e['text'] };
         }
         else if ( str['title'] !== void 0 || str['subTitle'] !== void 0 || str['message'] !== void 0  ) {
-            
+
         }
 
         let options = {};
@@ -163,10 +163,10 @@ export class AppService {
             text: str['text'] === void 0 ? 'OK' : str['text'],
             handler: str['callback'] === void 0 ? null : str['callback']
         } ];
-        
+
 
         this.alertCtrl.create( options ).present();
-        
+
     }
 
     showAlert(title = '', content = '') {
@@ -197,7 +197,7 @@ export class AppService {
     }
 
 
-    
+
 
     /**
      * Returns true if the app is running as Cordova mobile app.

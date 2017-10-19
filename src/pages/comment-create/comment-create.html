@@ -7,20 +7,20 @@
         <img src="{{ a.userPhotoUrl }}">
       </div>
       <div class="bb input-box">
-        <input #contentBox class="comment-content" name="comment_content" [(ngModel)]="comment_content" (keyup)=" preview.typing.next(contentBox.value)">
+        <input #contentBox class="comment-content" name="comment_content" [(ngModel)]="comment_content"
+               (keyup)=" preview.typing.next(contentBox.value)">
       </div>
       <div class="cc buttons">
                 <span class="icon camera" (click)="fileUploadWidget.onClickCamera()">
                     <i class="fa fa-icon-text fa-camera" aria-hidden="true"></i>
                     <input *ngIf=" ! a.isCordova " type="file" (change)="fileUploadComponent.onChangeFile($event)">
                 </span>
-        <span class="icon smile" (click)="true">
-                    <i class="fa fa-icon-text fa-smile-o" aria-hidden="true"></i>
+                <span class="icon smile" (click)="true">
+                    <i class="fa fa-smile-o fa-icon-text" aria-hidden="true"></i>
                 </span>
       </div>
     </div>
   </form>
-
 
 
   <site-preview-widget [preview]="preview.result" [edit]="true" [loading]="preview.loading"></site-preview-widget>
@@ -29,7 +29,8 @@
     <button class="btn btn-secondary" (click)="onSubmit()">SUBMIT COMMENT</button>
   </div>
 
-  <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files"></file-upload-widget>
+  <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false"
+                      [files]="files"></file-upload-widget>
   <div class="comment-submit" *ngIf="files && files.length">
     <button class="btn btn-secondary" (click)="onSubmit()">SUBMIT COMMENT</button>
   </div>
