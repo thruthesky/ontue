@@ -52,6 +52,7 @@ export class CommentCreateWidget {
 
     if (this.comment && this.comment.comment_ID) req.comment_parent = this.comment.comment_ID;
     this.a.forum.commentCreate(req).subscribe((re: COMMENT_CREATE_RESPONSE) => {
+      console.log("COMMENT CREATE RE: ", re);
       let id = re.comment_ID;
       console.log("comment created", re);
       this.insertComment(id);
@@ -59,6 +60,7 @@ export class CommentCreateWidget {
     }, err => {
       this.a.showError(err);
     });
+
 
 
   }
