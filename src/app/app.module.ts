@@ -32,6 +32,7 @@ import { RegisterPage } from './../pages/register/register';
 import { LoginPage } from './../pages/login/login';
 import { MenuPage } from './../pages/menu/menu';
 import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
+import { StudentProfilePage } from './../pages/student-profile/student-profile';
 
 
 
@@ -81,6 +82,7 @@ export function createTranslateLoader(http: HttpClient) {
     CommentCreateWidget,
     CommentViewWidget,
     TeacherProfilePage,
+    StudentProfilePage,
     ChooseUserTypeModal
   ],
   imports: [
@@ -111,6 +113,7 @@ export function createTranslateLoader(http: HttpClient) {
     PostCreateEditPage,
     CommentEditPage,
     TeacherProfilePage,
+    StudentProfilePage,
     ChooseUserTypeModal,
     PostPopoverWidget
   ],

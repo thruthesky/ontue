@@ -24,9 +24,9 @@
       회원가입
     </ion-item>
 
-    <ion-item *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
+    <ion-item *ngIf=" a.user.isLogin " (click)=" a.isTeacher ? a.open('teacher-profile') : a.open('student-profile')">
       <ion-icon name="log-out" item-start></ion-icon>
-      {{ 'PROFILE' | translate }}
+      {{ 'PROFILE' | translate }} {{ a.isTeacher | json }}
     </ion-item>
     <ion-item *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
       <ion-icon name="log-out" item-start></ion-icon>
