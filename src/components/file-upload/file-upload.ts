@@ -117,8 +117,9 @@ export class FileUploadWidget {
     let percentage = 0;
     ft.onprogress = progressEvent => {
       if (progressEvent.lengthComputable) {
+        // console.log(`percentage: ${progressEvent.loaded} / ${progressEvent.total}`);
         try {
-          percentage = Math.round(progressEvent.loaded / progressEvent.total);
+          percentage = Math.round(progressEvent.loaded / progressEvent.total * 100);
         }
         catch (e) {
           // console.error( 'percentage computation error' );
