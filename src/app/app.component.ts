@@ -74,14 +74,8 @@ export class MyApp {
   }
 
   test() {
-    // this.a.open('menu');
-
-
-
-
+    this.a.open('student-profile');
     // this.a.open('register');
-
-
   }
 
 

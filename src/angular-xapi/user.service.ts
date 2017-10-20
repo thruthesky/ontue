@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { XapiService } from './xapi.service';
 import {
-    KEY_LOGIN,
-    REQUEST,
-    USER_LOGIN, USER_LOGIN_RESPONSE,
-    USER_REGISTER, USER_REGISTER_RESPONSE,
-    USER_UPDATE, USER_UPDATE_RESPONSE,
-    USER_CHANGE_PASSWORD,
-    USER_DATA
+  KEY_LOGIN,
+  REQUEST,
+  USER_LOGIN, USER_LOGIN_RESPONSE,
+  USER_REGISTER, USER_REGISTER_RESPONSE,
+  USER_UPDATE, USER_UPDATE_RESPONSE,
+  USER_CHANGE_PASSWORD,
+  USER_DATA, FILE
 } from './interfaces';
 
 import { Base } from './base';
@@ -134,6 +134,11 @@ export class UserService extends Base {
         else return '';
     }
 
+    get photo(): FILE {
+      if (this.profile && this.profile.photo) return this.profile.photo;
+      else return null;
+    }
+
 
     get photoURL(): string {
         if (this.profile && this.profile.photoURL) return this.profile.photoURL;
@@ -178,7 +183,7 @@ export class UserService extends Base {
 
     /**
      * Gets user data from server
-     * 
+     *
      * @code
         user.data()
             .subscribe(

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { AppService } from './../../providers/app.service';
+import {Component, Input} from '@angular/core';
+import {AppService} from './../../providers/app.service';
 import {
   POST, FILES,
   COMMENT
@@ -26,11 +26,10 @@ export class CommentViewWidget {
   closingTimeout = 400;
 
   likeLoader = false;
-  constructor(
-    public a: AppService,
-    public alertCtrl: AlertController,
-    public modalCtrl: ModalController,
-  ) {
+
+  constructor(public a: AppService,
+              public alertCtrl: AlertController,
+              public modalCtrl: ModalController,) {
 
   }
 
@@ -39,9 +38,9 @@ export class CommentViewWidget {
   }
 
   onClickEdit() {
-    const createCommentModal = this.modalCtrl.create(CommentEditPage, { post: this.post, comment: this.comment});
-    createCommentModal.onDidDismiss( comment => {
-      if(comment) {
+    const createCommentModal = this.modalCtrl.create(CommentEditPage, {post: this.post, comment: this.comment});
+    createCommentModal.onDidDismiss(comment => {
+      if (comment) {
         console.log('ID:: ', comment);
         this.updateComment(comment);
       }
@@ -51,7 +50,7 @@ export class CommentViewWidget {
 
   onClickDelete() {
 
-    if(this.a.user.isLogin){
+    if (this.a.user.isLogin) {
 
       let confirm = this.alertCtrl.create({
         title: 'Delete Comment',
@@ -61,16 +60,22 @@ export class CommentViewWidget {
             text: 'Yes',
             handler: () => {
               console.log('Yes');
+              this.a.showLoader();
               this.a.forum.commentDelete(this.comment.comment_ID).subscribe(res => {
-                        console.log('success delete: ', res);
-                        if ( res.mode == 'mark' ) {
-                          this.updateComment( this.comment );
-                        }
-                        else {
-                          let index = this.post.comments.findIndex( comment => comment.comment_ID == res.comment_ID );
-                          this.post.comments.splice( index, 1 );
-                        }
-                      }, e => this.a.showError(e));
+                console.log('success delete: ', res);
+                if (res.mode == 'mark') {
+                  this.updateComment(this.comment);
+                }
+                else {
+                  let index = this.post.comments.findIndex(comment => comment.comment_ID == res.comment_ID);
+                  this.post.comments.splice(index, 1);
+                }
+
+                this.a.hideLoader();
+              }, e => {
+                this.a.showError(e);
+                this.a.hideLoader();
+              });
             }
           },
           {
@@ -85,21 +90,26 @@ export class CommentViewWidget {
     }
   }
 
-  updateComment( oComment: COMMENT ) {
+  updateComment(oComment: COMMENT) {
+    this.a.showLoader();
     this.a.forum.commentData(oComment.comment_ID).subscribe((comment: COMMENT) => {
       let depth = oComment.depth;
-      Object.assign( oComment, comment );
+      Object.assign(oComment, comment);
       oComment.depth = depth;
       console.log('commentData: ', comment);
-      console.log( oComment );
-    }, e => this.a.showError(e));
+      console.log(oComment);
+      this.a.hideLoader();
+    }, e => {
+      this.a.showError(e);
+      this.a.hideLoader();
+    });
   }
 
-  onClickLike( choice: 'like' | 'dislike' ) {
+  onClickLike(choice: 'like' | 'dislike') {
 
     this.likeLoader = true;
-    this.a.forum.commentLike( this.comment.comment_ID, choice )
-      .subscribe( re => {
+    this.a.forum.commentLike(this.comment.comment_ID, choice)
+      .subscribe(re => {
         this.likeLoader = false;
         console.log("like: ", re);
         this.comment.meta['like'] = re['like'];

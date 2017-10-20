@@ -39,8 +39,8 @@ export class AppService {
             alert: this.alert.bind(this)
         };
 
-        xapi.setServerUrl('https://www.sonub.com');
-        // xapi.setServerUrl('https://sonub.com:8443');
+        // xapi.setServerUrl('https://www.sonub.com');
+        xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');
         // // xapi.version().subscribe(re => console.log("Xapi version: ", re));
         console.log("login: ", user.isLogin);
@@ -59,7 +59,7 @@ export class AppService {
     get isTeacher(): boolean {
         return this.lms.getUserType() === 'teacher';
     }
-    
+
     get isStudent(): boolean {
         return this.lms.getUserType() === 'student';
     }
@@ -175,7 +175,7 @@ export class AppService {
 
     }
 
-    showAlert(title = '', content = '') {
+    showAlert(title: any, content = '') {
         this.alert( { title: title, message: content } );
     }
 

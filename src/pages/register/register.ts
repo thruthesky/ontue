@@ -17,7 +17,7 @@ export class RegisterPage {
 
     files: FILES = [];
     @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget;
-    
+
     constructor(
         public navCtrl: NavController,
         public a: AppService
@@ -56,6 +56,7 @@ export class RegisterPage {
         this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
             this.a.render();
         }, err => {
+          this.a.alert(err);
             // console.log('error while updating user profile picture', err);
         });
     }

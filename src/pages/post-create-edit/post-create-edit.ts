@@ -73,6 +73,8 @@ export class PostCreateEditPage {
 
 
   onClickSubmit() {
+
+    this.a.showLoader();
     let data: POST_CREATE = {
       category: this.params['category'],
       post_title: this.post_title,
@@ -83,16 +85,20 @@ export class PostCreateEditPage {
     data.fid = this.files.reduce((_, file) => { _.push(file.id); return _; }, []);
     console.log(data);
     this.a.forum.postCreate(data).subscribe((ID: POST_CREATE_RESPONSE) => {
-      console.log(ID);
+      console.log('postCreate',ID);
+      this.a.hideLoader();
       this.viewCtrl.dismiss(ID);
     }, err => {
       console.log('onClickSubmit::error::',err);
       this.a.showError(err);
+      this.a.hideLoader();
     });
   }
 
 
   onClickEdit() {
+
+    this.a.showLoader();
     let data: POST_UPDATE = {
       ID: this.post.ID,
       post_title: this.post_title,
@@ -103,8 +109,12 @@ export class PostCreateEditPage {
 
     this.a.forum.postUpdate(data).subscribe(ID => {
       console.log("update: ", ID);
+      this.a.hideLoader();
       this.viewCtrl.dismiss(ID);
-    }, err => this.a.alert(err));
+    }, err => {
+      this.a.alert(err);
+      this.a.hideLoader();
+    });
   }
 
   onClickCancel() {

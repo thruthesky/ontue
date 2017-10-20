@@ -1,8 +1,79 @@
 <ion-header>
     <header-content></header-content>
   </ion-header>
-  
-  <ion-content padding>
+<ion-content padding>
+
+  <div class="box header bg-darkslateblue">
     Student profile page
-  </ion-content>
-  
+  </div>
+
+  <div class="text-center mt-5">
+    <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
+      <input *ngIf=" ! a.xapi.isCordova "
+             class="p-absolute z-100 t-0 l-0 size-15 bg-grey"
+             style="opacity: 0.001"
+             type="file" (change)="fileUpload.onChangeFile($event)">
+
+
+      <div class="profile-user-photo">
+        <img
+          class="size-10 rounded-50"
+          src="{{files.length > 0 ? files[0]?.url : a.anonymousPhotoURL}}"
+
+        >
+      </div>
+      <button class="btn submit fs-lg"
+              [class.skip]="files && files.length"
+      >
+        <i class="fa fa-camera mr-2"></i>
+        {{ 'UPLOAD PHOTO' | translate }}
+      </button>
+      <file-upload-widget #fileUploadWidget
+                          [title]="false"
+                          [fileSelectionButton]="false"
+                          [files]="files"
+                          [showUploadedFiles]="false"
+                          (success)="onSuccessUploadPicture()"></file-upload-widget>
+
+
+    </div>
+
+  </div>
+
+  {{account|json}}
+
+  <form (submit)="onSubmit()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
+      </ion-item>
+
+      <!--<ion-item>-->
+        <!--<ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>-->
+        <!--<ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>-->
+      <!--</ion-item>-->
+
+
+      <ion-item>
+        <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.display_name" name="display_name"></ion-input>
+      </ion-item>
+
+
+      <div padding>
+        <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>
+
+
+

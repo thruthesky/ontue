@@ -41,6 +41,7 @@ export class CommentEditPage {
   }
 
   onClickSubmit() {
+    this.a.showLoader();
     let req: COMMENT_UPDATE = {
       comment_ID: this.comment.comment_ID,
       comment_content: this.comment_content,
@@ -50,8 +51,12 @@ export class CommentEditPage {
 
     console.log('onClickSubmit:',req);
     this.a.forum.commentUpdate(req).subscribe(id => {
+      this.a.hideLoader();
       this.viewCtrl.dismiss(this.comment);
-    }, err => this.a.alert(err));
+    }, err => {
+      this.a.alert(err);
+      this.a.hideLoader();
+    });
   }
 
   onClickCancel() {

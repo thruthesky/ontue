@@ -41,6 +41,7 @@ export class CommentCreateWidget {
 
   onSubmit() {
 
+    this.a.showLoader();
     console.log(this.comment_content);
     let req: COMMENT_CREATE = {
       comment_post_ID: this.post.ID,
@@ -57,8 +58,10 @@ export class CommentCreateWidget {
       console.log("comment created", re);
       this.insertComment(id);
       this.resetForm();
+      this.a.hideLoader();
     }, err => {
       this.a.showError(err);
+      this.a.hideLoader();
     });
 
 
@@ -72,6 +75,7 @@ export class CommentCreateWidget {
   }
 
   insertComment(comment_ID) {
+    this.a.showLoader();
     this.a.forum.commentData(comment_ID).subscribe((comment: COMMENT) => {
       console.log(comment);
       if (!this.post.comments) this.post['comments'] = [];
@@ -90,7 +94,11 @@ export class CommentCreateWidget {
           this.post.comments.splice(index + 1, 0, comment);
         }
       }
-    }, e => this.a.showError(e));
+      this.a.hideLoader();
+    }, e => {
+      this.a.showError(e);
+      this.a.hideLoader();
+    });
   }
 
 

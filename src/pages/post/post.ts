@@ -97,6 +97,7 @@ export class PostPage {
   }
 
   insertPost(post_ID) {
+    this.a.showLoader();
     this.a.forum.postData(post_ID).subscribe(post => {
       // console.log('this.posts:: ', this.pages);
 
@@ -105,8 +106,11 @@ export class PostPage {
       }
       this.a.forum.pre( post );
       this.pages[0].posts.unshift(post);
-
-    }, e => this.a.showError(e));
+      this.a.hideLoader();
+    }, e => {
+      this.a.showError(e);
+      this.a.hideLoader();
+    });
   }
 
   postOption(event, post, page){
@@ -148,7 +152,7 @@ export class PostPage {
   }
 
   postDelete(page, ID, password?) {
-    // debugger;
+    this.a.showLoader();
     this.a.forum.postDelete({ ID: ID, post_password: password }).subscribe(res => {
       console.log("file deleted: ", res);
 
@@ -157,13 +161,15 @@ export class PostPage {
         page.posts.splice(index, 1);
       }
       else this.updatePost(page.posts[index]);
+      this.a.hideLoader();
 
-
-    }, err => this.a.alert(err));
+    }, err => {
+      this.a.alert(err);
+      this.a.hideLoader();
+    });
   }
 
   onClickPostEdit(post) {
-
     const createPostModal = this.modalCtrl.create(PostCreateEditPage, { method: 'edit', post: post});
     createPostModal.onDidDismiss( id => {
       if(id) {
@@ -175,11 +181,16 @@ export class PostPage {
   }
 
   updatePost(post: POST) {
+    this.a.showLoader();
     this.a.forum.postData(post.ID).subscribe(postData => {
       console.log("post updated: ", postData);
       Object.assign(post, postData);
       this.a.forum.pre( post );
-    }, e => this.a.alert(e));
+      this.a.hideLoader();
+    }, e => {
+      this.a.alert(e);
+      this.a.hideLoader();
+    });
   }
 
 
