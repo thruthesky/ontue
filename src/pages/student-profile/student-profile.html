@@ -47,12 +47,12 @@
 
       <ion-item>
         <ion-label floating>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+        <ion-input type="text" [readonly]="readonly" [(ngModel)]="account.name" name="name"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
+        <ion-input type="email" [readonly]="readonly" [(ngModel)]="account.user_email" name="email"></ion-input>
       </ion-item>
 
       <!--<ion-item>-->
@@ -63,13 +63,21 @@
 
       <ion-item>
         <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.display_name" name="display_name"></ion-input>
+        <ion-input type="text" [readonly]="readonly" [(ngModel)]="account.display_name" name="display_name"></ion-input>
       </ion-item>
 
 
-      <div padding>
-        <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
-      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button *ngIf="!readonly" ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
+            <button *ngIf="readonly" (click)="readonly = !readonly " ion-button color="secondary" block>Edit Profile</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button (click)="a.open('home')" color="primary" block>Cancel</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
     </ion-list>
   </form>

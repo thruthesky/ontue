@@ -11,6 +11,7 @@ import {FileUploadWidget} from '../../components/file-upload/file-upload';
 export class StudentProfilePage {
 
   account = <USER_UPDATE>{};
+  readonly: boolean = true;
 
   files: FILES = [];
   @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget;
@@ -36,10 +37,12 @@ export class StudentProfilePage {
   }
 
   onSubmit() {
+    if(this.readonly) return this.readonly = false;
     this.a.showLoader();
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
       console.log('updateUserInfo:', res);
       this.a.hideLoader();
+      this.readonly = true;
     }, err => {
       this.a.alert(err);
       this.a.hideLoader();

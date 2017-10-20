@@ -126,7 +126,7 @@ export class FileUploadWidget {
         }
       }
       else percentage = 10; // progressive does not work. it is not computable.
-      // console.log('percentage: ', percentage);
+      console.log('percentage: ', percentage);
       this.onProgress(percentage);
     };
 
