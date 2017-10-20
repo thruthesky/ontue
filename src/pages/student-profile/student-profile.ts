@@ -22,7 +22,7 @@ export class StudentProfilePage {
     if( !a.user.isLogin ) {
       this.a.showAlert(this.a.xapi.ERROR.LOGIN_FIRST, 'User must login');
       this.a.open('login');
-    };
+    }
 
 
     this.a.user.data().subscribe( (userData:USER_DATA_RESPONSE) => {
