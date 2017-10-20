@@ -7,9 +7,11 @@
     Student profile page
   </div>
 
+  {{a.user.profile|json}}
+
   <div class="text-center mt-5">
     <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
-      <input *ngIf=" ! a.xapi.isCordova "
+      <input *ngIf=" ! a.isCordova "
              class="p-absolute z-100 t-0 l-0 size-15 bg-grey"
              style="opacity: 0.001"
              type="file" (change)="fileUpload.onChangeFile($event)">
@@ -39,8 +41,6 @@
     </div>
 
   </div>
-
-  {{account|json}}
 
   <form (submit)="onSubmit()">
     <ion-list>

@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
-import { FILES, USER_UPDATE, USER_UPDATE_RESPONSE } from './../../angular-xapi/interfaces';
+import {FILES, USER_DATA_RESPONSE, USER_UPDATE, USER_UPDATE_RESPONSE} from './../../angular-xapi/interfaces';
 import {FileUploadWidget} from '../../components/file-upload/file-upload';
 
 @Component({
@@ -21,14 +21,18 @@ export class StudentProfilePage {
 
     if( !a.user.isLogin ) {
       this.a.showAlert(this.a.xapi.ERROR.LOGIN_FIRST, 'User must login');
-      this.a.open('register');
+      this.a.open('login');
     };
-    this.account = {
-      user_email: this.a.user.email,
-      name: this.a.user.name,
-      display_name: this.a.user.name
-    };
-    if( this.a.user.photo ) this.files[0] = this.a.user.photo;
+
+
+    this.a.user.data().subscribe( (userData:USER_DATA_RESPONSE) => {
+      console.log('userData::', userData);
+      this.account.user_email = userData.user_email;
+      this.account.name = userData.name;
+      this.account.display_name = userData.display_name;
+      if( userData.photo ) this.files[0] = userData.photo;
+    }, error => this.a.alert(error));
+
   }
 
   onSubmit() {
@@ -47,6 +51,7 @@ export class StudentProfilePage {
   onSuccessUploadPicture() {
     // console.log("onSuccessUpdateProfilePicture::", this.files);
     let data: USER_UPDATE = {
+      user_email: this.account.user_email,
       photoURL: this.files[0].url
     };
     if( this.files.length > 1 ) {
@@ -54,6 +59,7 @@ export class StudentProfilePage {
       setTimeout( () => this.fileUpload.deleteFile( this.files[0] ), 1 );
     }
     this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
+      this.files[0] = res.photo;
       this.a.render();
     }, err => {
       this.a.alert(err);
