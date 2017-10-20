@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+
 
 
 @Component({
@@ -8,7 +8,7 @@ import { NavController } from 'ionic-angular';
 })
 export class TeacherProfilePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor() {
 
   }
 

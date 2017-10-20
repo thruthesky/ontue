@@ -20,7 +20,6 @@ export class AppService {
     anonymousPhotoURL = 'assets/img/anonymous.png';
 
 
-
     userData = {};
 
     constructor(
@@ -57,6 +56,13 @@ export class AppService {
         return this.lms.getUserType();
     }
 
+    get isTeacher(): boolean {
+        return this.lms.getUserType() === 'teacher';
+    }
+    
+    get isStudent(): boolean {
+        return this.lms.getUserType() === 'student';
+    }
 
 
     showLoader() {

@@ -20,6 +20,7 @@ import { MenuPage } from './../pages/menu/menu';
 import { ForumPage } from './../pages/forum/forum';
 import { PostPage } from './../pages/post/post';
 import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
+import { StudentProfilePage } from './../pages/student-profile/student-profile';
 
 
 
@@ -65,6 +66,7 @@ export class MyApp {
 
     this.a.pages['post'] = PostPage;
     this.a.pages['teacher-profile'] = TeacherProfilePage;
+    this.a.pages['student-profile'] = StudentProfilePage;
 
 
     setTimeout(() => this.test(), 100);
