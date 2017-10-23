@@ -25,15 +25,18 @@ export class StudentProfilePage {
       this.a.open('login');
     }
 
+    this.loadData();
 
+  }
+
+  loadData(){
     this.a.user.data().subscribe( (userData:USER_DATA_RESPONSE) => {
       console.log('userData::', userData);
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
-      this.account.display_name = userData.display_name;
+      this.account['nickname'] = userData['nickname'];
       if( userData.photo ) this.files[0] = userData.photo;
     }, error => this.a.alert(error));
-
   }
 
   onSubmit() {
@@ -42,6 +45,7 @@ export class StudentProfilePage {
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
       console.log('updateUserInfo:', res);
       this.a.hideLoader();
+      this.loadData();
       this.readonly = true;
     }, err => {
       this.a.alert(err);
