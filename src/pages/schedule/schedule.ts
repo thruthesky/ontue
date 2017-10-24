@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
+import { AppService } from './../../providers/app.service';
+import { AddSchedule } from './../../components/add-schedule/add-schedule';
+
+
 
 
 @Component({
@@ -8,8 +12,17 @@ import { NavController } from 'ionic-angular';
 })
 export class SchedulePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public modalCtrl: ModalController,
+    public a: AppService
+  ) {
 
+    setTimeout(() => this.onClickAddSchedule(), 500);
   }
 
+
+  onClickAddSchedule() {
+    const modal = this.modalCtrl.create( AddSchedule );
+    modal.present();
+  }
 }

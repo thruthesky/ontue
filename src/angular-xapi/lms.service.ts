@@ -1,11 +1,29 @@
 import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { XapiService } from './xapi.service';
 import { UserService } from './user.service';
 
 
 import { Base } from './base';
 
+export interface SCHEDULE_EDIT {
+    point: number;
+    prere: string;
+    class_begin_hour: number;
+    class_begin_minute: number;
+    duration: number;
+    sunday: string;
+    monday: string;
+    tuesday: string;
+    wednesday: string;
+    thursday: string;
+    friday: string;
+    saturday: string;
+};
+
+
+export interface SCHEDULE_EDIT_RESPOSE {
+};
 
 
 
@@ -45,5 +63,15 @@ export class LMSService extends Base {
         };
         return this.x.post(data);
     }
+
+    schedule_edit(data: SCHEDULE_EDIT): Observable<SCHEDULE_EDIT_RESPOSE> {
+        const defaults = {
+            route: 'lms.schedule_edit',
+            session_id: this.user.sessionId
+        };
+        data = Object.assign( defaults, data );
+        return this.x.post( data );
+    }
+    
 
 }

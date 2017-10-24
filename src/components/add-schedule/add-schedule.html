@@ -1,0 +1,72 @@
+<ion-header>
+        <ion-toolbar>
+          <ion-title>ADD SCHEDULE</ion-title>
+          <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+              <span ion-text color="primary">Cancel</span>
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content>
+        <div class="box mb-5 p-5 bg-indigo white">
+          You can add schedule.
+        </div>
+        
+
+
+        <div>
+          Class Begin:
+          <input class="w-5" type="text" name="point" [(ngModel)]="data.class_begin_hour">
+          :
+          <input class="w-5" type="text" name="point" [(ngModel)]="data.class_begin_minute">
+          Ex) 12:30
+        </div>
+
+
+        <div>
+            Class Duration:
+            <input type="text" name="point" [(ngModel)]="data.duration">
+            <small class="muted">How many minutes do you want to have the class?</small>
+          </div>
+
+
+      
+
+      <div>
+        POINT:  <input type="text" name="point" [(ngModel)]="data.point">
+      </div>
+        
+  <table>
+      <tr>
+          <td>Sun</td>
+          <td>Mon</td>
+          <td>Tue</td>
+          <td>Wed</td>
+          <td>Thu</td>
+          <td>Fri</td>
+          <td>Sat</td>
+      </tr>
+      <tr>
+          <td><input type="checkbox" name="" [(ngModel)]="data.sunday"></td>
+          <td><input type="checkbox" name="" [(ngModel)]="data.monday"></td>
+          <td><input type="checkbox" name="" [(ngModel)]="data.tuesday"></td>
+          <td><input type="checkbox" name="" [(ngModel)]="data.wednesday"></td>
+          <td><input type="checkbox" name="" [(ngModel)]="data.thursday"></td>
+          <td><input type="checkbox" name="" [(ngModel)]="data.friday"></td>
+          <td><input type="checkbox" name="" [(ngModel)]="data.saturday"></td>
+      </tr>
+    </table>
+
+
+    <div>
+        PreRe:  <input type="text" name="point" [(ngModel)]="data.prere">
+      </div>
+
+
+    <input type="submit" value="submit" (click)="onSubmit()">
+      
+      
+      </ion-content>
+      

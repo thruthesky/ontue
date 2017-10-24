@@ -1,3 +1,6 @@
+/**
+ * This component is used when the user did not select whether his is a student or a teacher.
+ */
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './../../providers/app.service';
 

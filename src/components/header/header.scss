@@ -1,19 +1,31 @@
 #header-icons {
   ion-col {
-      padding: 0!important;
-      text-align: center;
+    padding: 0!important;
+    text-align: center;
+
     button {
+
       padding: .5em .25em;
       width: 100%;
-      background-color: transparent!important;
       font-size: 1em;
       font-weight: 100;
-      ion-icon {
-        display: block;
-        margin-bottom: .25em;
-        font-size: 1.8em; // icon size.
+      background-color: transparent!important;
+
+      .svg-inline--fa {
+        font-size: 2.4rem!important;
       }
+
+      div {
+        margin-top: 0.4rem!important;
+      }
+      
+      
+      
+      // ion-icon {
+      //   display: block;
+      //   margin-bottom: .25em;
+      //   font-size: 1.8em; // icon size.
+      // }
     }
   }
 }
-

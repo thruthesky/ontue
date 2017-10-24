@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { AppService } from './../../providers/app.service';
+
 
 
 @Component({
@@ -8,8 +9,10 @@ import { NavController } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController) {
+  
+  constructor(public a: AppService) {
 
+    
   }
 
 }

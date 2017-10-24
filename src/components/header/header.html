@@ -5,32 +5,36 @@
     <ion-row id="header-icons">
       <ion-col>
         <button (click)="a.open( 'home' )">
-
-          <ion-icon name="home"></ion-icon>
-          {{ 'HOME' | translate }}
-
+          <i class='fa fa-home'></i>
+          <div>{{ 'HOME' | translate }}</div>
         </button>
-
       </ion-col>
 
 
-      <ion-col>
-        <button (click)="a.open( 'schedule' )">
-
-          <ion-icon name="calendar"></ion-icon>
-          {{ 'SCHEDULE' | translate }}
-
-        </button>
-
-      </ion-col>
+      <ion-col *ngIf="a.isTeacher">
+          <button (click)="a.open( 'schedule' )">
+            <i class="fa fa-calendar-plus"></i>
+            <div>{{ 'SCHEDULE' | translate }}</div>
+          </button>
+        </ion-col>
+  
+      
+        <ion-col *ngIf='a.isStudent'>
+            <button (click)="a.open( 'teacher-list' )">
+              <i class="fa fa-calendar-plus"></i>
+              <div>{{ 'RESERVE' | translate }}</div>
+            </button>
+          </ion-col>
+    
+            
 
 
       <ion-col>
 
         <button (click)="a.open('forum')">
 
-          <ion-icon name="chatbubbles"></ion-icon>
-          {{ 'FORUM' | translate }}
+          <i class="fa fa-comments"></i>
+          <div>{{ 'FORUM' | translate }}</div>
 
         </button>
       </ion-col>
@@ -38,16 +42,19 @@
 
         <button>
 
-          <ion-icon name="list-box"></ion-icon>
-          {{ 'RESERVATION' | translate }}
+          <i class="fa fa-table"></i>
+          <div>{{ 'RESERVATION' | translate }}</div>
 
         </button>
       </ion-col>
 
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
-          <ion-icon name="card"></ion-icon>
-          {{ 'PAYMENT' | translate }}
+
+          <i class="fa fa-credit-card"></i>
+          <div>{{ 'PAYMENT' | translate }}</div>
+
+
         </button>
       </ion-col>
 
@@ -87,8 +94,11 @@
 
       <ion-col>
         <button (click)="a.open('menu')">
-          <ion-icon name="menu"></ion-icon>
-          {{ 'ALL MENU' | translate }}
+
+          <i class="fa fa-bars"></i>
+          <div>{{ 'ALL MENU' | translate }}</div>
+
+
         </button>
       </ion-col>
 

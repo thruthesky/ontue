@@ -49,6 +49,7 @@ import { FileDisplayWidget } from  './../components/file-display/file-display';
 import { CommentCreateWidget } from './../pages/comment-create/comment-create';
 import { CommentViewWidget } from './../components/comment-view/comment-view';
 import { PostPopoverWidget } from '../components/post-popover/post-popover';
+import { AddSchedule } from '../components/add-schedule/add-schedule';
 
 
 
@@ -83,7 +84,8 @@ export function createTranslateLoader(http: HttpClient) {
     CommentViewWidget,
     TeacherProfilePage,
     StudentProfilePage,
-    ChooseUserTypeModal
+    ChooseUserTypeModal,
+    AddSchedule
   ],
   imports: [
     BrowserModule,
@@ -115,7 +117,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherProfilePage,
     StudentProfilePage,
     ChooseUserTypeModal,
-    PostPopoverWidget
+    PostPopoverWidget,
+    AddSchedule
   ],
 
   providers: [

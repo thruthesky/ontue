@@ -3,9 +3,23 @@
 </ion-header>
 
 <ion-content padding>
-  SChedule page
+  Schedule : Teacher can see this schedule table.
 
   <p>
     좁은 화면에서 어떻게 수업을 잘 보여 줄 수 있을까?
   </p>
+
+
+  <button ion-button (click)='onClickAddSchedule()'>Add Scedule</button>
+  <table>
+    <tr>
+        <td>Sun</td>
+        <td>Mon</td>
+        <td>Tue</td>
+        <td>Wed</td>
+        <td>Thu</td>
+        <td>Fri</td>
+        <td>Sat</td>
+    </tr>
+  </table>
 </ion-content>

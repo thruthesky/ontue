@@ -1,6 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { TranslateService } from '@ngx-translate/core';
+
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { XapiService, UserService, ForumService, LMSService } from './../angular-xapi/angular-xapi.module';
 import {FileService} from "../angular-xapi/file.service";
@@ -30,7 +32,8 @@ export class AppService {
         public forum: ForumService,
         public xapi: XapiService,
         public file: FileService,
-        public lms: LMSService
+        public lms: LMSService,
+        private translate: TranslateService
     ) {
 
         /// for page service
@@ -224,5 +227,34 @@ export class AppService {
     render() {
         this.ngZone.run( () => {} );
     }
+
+
+    get(key:string) {
+        return this.xapi.get(key);
+    }
+    set( key:string, value: any ) {
+        return this.xapi.set( key, value );
+    }
+
+    setLanguage( lang ) {
+        this.set( 'language', lang );
+        this.initTranslate();
+    }
+    getLanguage() {
+        return this.get('language');
+    }
+
+
+
+  initTranslate() {
+    this.translate.setDefaultLang('en');
+    let lang;
+    lang = this.getLanguage();
+    if ( ! lang ) lang = this.translate.getBrowserLang();
+    if ( ! lang ) lang = 'en';
+    this.translate.use( lang );
+  }
+
+
 
 }
