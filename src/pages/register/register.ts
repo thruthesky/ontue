@@ -23,6 +23,8 @@ export class RegisterPage {
         public a: AppService
     ) {
 
+
+
     }
 
     ngAfterViewInit() { // TEST
@@ -36,6 +38,12 @@ export class RegisterPage {
         this.account.photoURL = this.files.length ? this.files[0].url : '';
         this.a.user.register( this.account ).subscribe(re => {
             console.log("user.register => success: re: ", re);
+
+            const offset = this.a.lms.getUserLocalTimezoneOffset();
+            this.a.lms.timezone_set( offset ).subscribe( re => {}, e => {
+                
+            });
+                
             this.a.open('home');
         }, reg => {
             this.a.hideLoader();

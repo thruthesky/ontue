@@ -23,14 +23,38 @@
         
           <ion-item>
             <ion-label>Japanese</ion-label>
-            <ion-radio value="jp"></ion-radio>
+            <ion-radio value="jp" [checked]=" a.getLanguage() == 'jp' " (ionSelect)="a.setLanguage('jp')"></ion-radio>
           </ion-item>
         
           <ion-item>
             <ion-label>Chineese</ion-label>
-            <ion-radio value="cn"></ion-radio>
+            <ion-radio value="cn" [checked]=" a.getLanguage() == 'cn' " (ionSelect)="a.setLanguage('cn')"></ion-radio>
           </ion-item>
         
+        </ion-list>
+
+        <hr>
+
+
+
+
+
+    <ion-list radio-group>
+        
+          <ion-list-header>
+            Select your timezone
+            <div>
+              Do not consider other's timezone.
+              {{ localTz }}
+            </div>
+          </ion-list-header>
+        
+          <ion-item *ngFor="let t of keysTimezone()">
+              <ion-label>{{ tz[t].name }} ( UTC {{ format(t) }} )</ion-label>
+              <ion-radio value="{{ t }}" (ionSelect)=' onClickTimezone( t ) '></ion-radio>
+            </ion-item>
+          
+          
         </ion-list>
 
   </ion-content>

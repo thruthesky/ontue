@@ -42,7 +42,7 @@ export class LMSService extends Base {
         super();
     }
 
-    
+
     /**
      * Returns 'student' or 'teacher'.
      */
@@ -55,7 +55,7 @@ export class LMSService extends Base {
         }
         else return '';
     }
-    setUserType( type ) {
+    setUserType(type) {
         let data = {
             session_id: this.user.sessionId,
             route: 'lms.set_user_type',
@@ -69,9 +69,93 @@ export class LMSService extends Base {
             route: 'lms.schedule_edit',
             session_id: this.user.sessionId
         };
-        data = Object.assign( defaults, data );
+        data = Object.assign(defaults, data);
+        return this.x.post(data);
+    }
+
+
+    getUserLocalTimezoneOffset() {
+
+        const localTz = (new Date).getTimezoneOffset() / 60;
+
+        let offset = Math.abs( Math.floor(localTz) );
+        if ( localTz < 0 ) {
+            offset = Math.abs( localTz );
+        }
+        else {
+            offset = -1 * offset;
+        }
+
+        return offset;
+    
+    }
+
+    timezone(): Observable<string> {
+        const data = {
+            route: 'lms.timezone_info',
+            session_id: this.user.sessionId
+        };
+        return this.x.post(data);
+    }
+
+
+
+    /**
+     * Get all the timezones.
+     */
+    timezones(): Observable<any> {
+        const data = {
+            route: 'lms.timezones_info'
+        };
+        return this.x.post(data);
+    }
+
+    timezone_set( offset ): Observable<any> {
+        const data = {
+            route: 'lms.timezone_set',
+            session_id: this.user.sessionId,
+            timezone: offset
+        };
+        return this.x.post(data);
+    }
+
+
+    localeString(offset) {
+        // console.log('offset: ', offset);
+        const d = new Date();
+        const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+        const newDate = new Date(utc + (3600000 * offset));
+        return newDate.toLocaleString();
+    }
+
+
+
+    my_schedules(): Observable<any> {
+
+        let data = {
+            route: 'lms.schedule_search',
+            session_id: this.user.sessionId,
+            teachers: [ this.user.id ],
+        };
+
         return this.x.post( data );
     }
-    
+
+    schedule_search( data ) {
+
+        data = {
+            route: 'lms.schedule_search',
+            session_id: this.user.sessionId
+        };
+
+        return this.x.post( data );
+
+    }
+
+    user_search( data ) {
+        data['route'] = 'lms.user_search';
+        return this.x.post( data );
+    }
+
 
 }

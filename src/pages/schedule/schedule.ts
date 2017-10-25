@@ -17,7 +17,11 @@ export class SchedulePage {
     public a: AppService
   ) {
 
-    setTimeout(() => this.onClickAddSchedule(), 500);
+    // setTimeout(() => this.onClickAddSchedule(), 500);
+
+
+
+    a.lms.my_schedules().subscribe( re => console.log(re), e => a.alert(e) );
   }
 
 

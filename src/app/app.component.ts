@@ -22,6 +22,7 @@ import { PostPage } from './../pages/post/post';
 import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
 import { StudentProfilePage } from './../pages/student-profile/student-profile';
 import { AddSchedule } from './../components/add-schedule/add-schedule';
+import { TeacherListPage } from './../pages/teacher-list/teacher-list';
 
 
 
@@ -47,6 +48,7 @@ export class MyApp {
     });
   }
 
+
   ngAfterViewInit() {
     this.a.navCtrl = this.nav;
     this.a.pages['home'] = HomePage;
@@ -62,6 +64,7 @@ export class MyApp {
     this.a.pages['student-profile'] = StudentProfilePage;
 
     this.a.pages['add-schedule'] = AddSchedule;
+    this.a.pages['teacher-list'] = TeacherListPage;
 
 
     
@@ -72,7 +75,9 @@ export class MyApp {
 
   test() {
 
-    this.a.open('schedule');
+    this.a.open('teacher-list');
+
+    // this.a.open('register');
 
 
 

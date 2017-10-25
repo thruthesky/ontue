@@ -178,6 +178,14 @@ export class AppService {
 
     }
 
+    /**
+     * This reports ( logs ) error message into backend.
+     * @param msg Message to report to server.
+     */
+    reportServerError( msg ) {
+        
+    }
+
     showAlert(title: any, content = '') {
         this.alert( { title: title, message: content } );
     }
