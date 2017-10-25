@@ -47,13 +47,20 @@ export class AddSchedule {
         this.viewCtrl.dismiss();
     }
 
-    
-    onSubmit() {
 
+    onSubmit() {
+      this.a.showLoader();
         this.a.lms.schedule_edit( this.data ).subscribe( re => {
             console.log('re: ', re);
-            this.a.alert("SUCESS: A schedule has been added.");
-        }, e => this.a.alert( e ) );
+            this.a.hideLoader();
+            if( re['idx']) {
+              this.a.showAlert('Create Success', "New Schedule was created.");
+              this.viewCtrl.dismiss();
+            }
+        }, e => {
+          this.a.alert( e );
+          this.a.hideLoader();
+        })
     }
 
 
