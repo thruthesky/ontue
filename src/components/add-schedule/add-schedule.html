@@ -54,28 +54,32 @@
         <td>Thu</td>
         <td>Fri</td>
         <td>Sat</td>
+        <td>All</td>
       </tr>
       <tr>
         <td>
-          <input type="checkbox" name="sunday" [(ngModel)]="data.sunday">
+          <input type="checkbox" name="sunday" [(ngModel)]="data.sunday" (change)="allDays=false">
         </td>
         <td>
-          <input type="checkbox" name="monday" [(ngModel)]="data.monday">
+          <input type="checkbox" name="monday" [(ngModel)]="data.monday" (change)="allDays=false">
         </td>
         <td>
-          <input type="checkbox" name="tuesday" [(ngModel)]="data.tuesday">
+          <input type="checkbox" name="tuesday" [(ngModel)]="data.tuesday" (change)="allDays=false">
         </td>
         <td>
-          <input type="checkbox" name="wednesday" [(ngModel)]="data.wednesday">
+          <input type="checkbox" name="wednesday" [(ngModel)]="data.wednesday" (change)="allDays=false">
         </td>
         <td>
-          <input type="checkbox" name="thursday" [(ngModel)]="data.thursday">
+          <input type="checkbox" name="thursday" [(ngModel)]="data.thursday" (change)="allDays=false">
         </td>
         <td>
-          <input type="checkbox" name="friday" [(ngModel)]="data.friday">
+          <input type="checkbox" name="friday" [(ngModel)]="data.friday" (change)="allDays=false">
         </td>
         <td>
-          <input type="checkbox" name="saturday" [(ngModel)]="data.saturday">
+          <input type="checkbox" name="saturday" [(ngModel)]="data.saturday" (change)="allDays=false">
+        </td>
+        <td>
+          <input type="checkbox" name="allDays" [(ngModel)]="allDays" (click)="onClickAllDays()">
         </td>
       </tr>
     </table>

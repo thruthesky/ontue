@@ -6,24 +6,38 @@ import { UserService } from './user.service';
 
 import { Base } from './base';
 
-export interface SCHEDULE_EDIT {
+export interface SCHEDULE_EDIT extends DAYS{
     point: number;
     prere: string;
     class_begin_hour: number;
     class_begin_minute: number;
     duration: number;
-    sunday: string;
-    monday: string;
-    tuesday: string;
-    wednesday: string;
-    thursday: string;
-    friday: string;
-    saturday: string;
-};
+}
+
+export interface SCHEDULE extends DAYS {
+  idx: number;
+  idx_teacher: number;
+  class_begin: number;
+  class_end: number;
+  original_class_begin: number;
+  original_class_end: number;
+  point: number;
+  prere: string;
+  stamp_created: number;
+}
 
 
-export interface SCHEDULE_EDIT_RESPOSE {
-};
+export type SCHEDULE_EDIT_RESPONSE = Array<SCHEDULE>
+
+export interface DAYS {
+  sunday: boolean;
+  monday: boolean;
+  tuesday: boolean;
+  wednesday: boolean;
+  thursday: boolean;
+  friday: boolean;
+  saturday: boolean;
+}
 
 
 
@@ -64,13 +78,23 @@ export class LMSService extends Base {
         return this.x.post(data);
     }
 
-    schedule_edit(data: SCHEDULE_EDIT): Observable<SCHEDULE_EDIT_RESPOSE> {
+    schedule_edit(data: SCHEDULE_EDIT): Observable<SCHEDULE_EDIT_RESPONSE> {
         const defaults = {
             route: 'lms.schedule_edit',
             session_id: this.user.sessionId
         };
         data = Object.assign(defaults, data);
         return this.x.post(data);
+    }
+
+    schedule_delete(idx) {
+      let data = {
+        route: 'lms.schedule_delete',
+        session_id: this.user.sessionId,
+        idx: idx
+      };
+      return this.x.post(data);
+
     }
 
 
@@ -87,7 +111,7 @@ export class LMSService extends Base {
         }
 
         return offset;
-    
+
     }
 
     timezone(): Observable<string> {

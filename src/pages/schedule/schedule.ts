@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import {AlertController, ModalController} from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
 import { AddSchedule } from './../../components/add-schedule/add-schedule';
+import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
 
 
@@ -12,8 +13,11 @@ import { AddSchedule } from './../../components/add-schedule/add-schedule';
 })
 export class SchedulePage {
 
+  schedules: SCHEDULE_EDIT_RESPONSE;
+
   constructor(
     public modalCtrl: ModalController,
+    public alertCtrl: AlertController,
     public a: AppService
   ) {
 
@@ -21,12 +25,57 @@ export class SchedulePage {
 
 
 
-    a.lms.my_schedules().subscribe( re => console.log(re), e => a.alert(e) );
+    this.getMySchedule();
   }
 
 
   onClickAddSchedule() {
     const modal = this.modalCtrl.create( AddSchedule );
+    modal.onDidDismiss(()=> {
+      this.getMySchedule();
+    });
     modal.present();
   }
+
+  getMySchedule(){
+    this.a.lms.my_schedules().subscribe( re =>{
+      console.log(re);
+      this.schedules = re;
+    } , e => this.a.alert(e) );
+  }
+
+  onClickDelete(idx){
+    if (this.a.user.isLogin) {
+      let confirm = this.alertCtrl.create({
+        title: 'Delete Schedule',
+        message: 'Are you sure you cant to delete?',
+        buttons: [
+          {
+            text: 'Yes',
+            handler: () => {
+              console.log('Yes');
+              this.a.showLoader();
+              this.a.lms.schedule_delete(idx).subscribe(res => {
+                console.log('success delete: ', res);
+                this.getMySchedule();
+                this.a.hideLoader();
+              }, e => {
+                this.a.showError(e);
+                this.a.hideLoader();
+              });
+            }
+          },
+          {
+            text: 'cancel',
+            handler: () => {
+              console.log('cancel');
+            }
+          }
+        ]
+      });
+      confirm.present();
+    }
+
+  }
+
 }

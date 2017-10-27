@@ -11,8 +11,9 @@
 
 
   <button ion-button (click)='onClickAddSchedule()'>Add Scedule</button>
-  <table>
+  <table class="schedule">
     <tr>
+        <td>Time</td>
         <td>Sun</td>
         <td>Mon</td>
         <td>Tue</td>
@@ -20,6 +21,19 @@
         <td>Thu</td>
         <td>Fri</td>
         <td>Sat</td>
+        <td>Action</td>
     </tr>
+    <tr *ngFor="let s of schedules">
+      <td>{{s.class_begin}}</td>
+      <td><div *ngIf="s.sunday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.monday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.tuesday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.wednesday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.thursday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.friday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.saturday">{{s.prere}} {{s.point}}</div></td>
+      <td (click)="onClickDelete(s.idx)">Delete</td>
+    </tr>
+
   </table>
 </ion-content>

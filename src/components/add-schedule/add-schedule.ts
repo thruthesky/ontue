@@ -15,6 +15,7 @@ export class AddSchedule {
     time = '';
     timer = 0;
     data:SCHEDULE_EDIT = <SCHEDULE_EDIT> {};
+    allDays: boolean = false;
     constructor(
         public a: AppService,
         public viewCtrl: ViewController
@@ -42,13 +43,14 @@ export class AddSchedule {
     ngOnDestroy() {
         if ( this.timer ) clearTimeout( this.timer );
     }
-    
+
     dismiss() {
         this.viewCtrl.dismiss();
     }
 
 
     onSubmit() {
+      // return console.log('data::', this.data);
       this.a.showLoader();
         this.a.lms.schedule_edit( this.data ).subscribe( re => {
             console.log('re: ', re);
@@ -62,6 +64,26 @@ export class AddSchedule {
           this.a.hideLoader();
         })
     }
+
+  onClickAllDays() {
+      if(!this.allDays) {
+        this.data['sunday'] = true;
+        this.data['monday'] = true;
+        this.data['tuesday'] = true;
+        this.data['wednesday'] = true;
+        this.data['thursday'] = true;
+        this.data['friday'] = true;
+        this.data['saturday'] = true;
+      } else {
+        this.data['sunday'] = false;
+        this.data['monday'] = false;
+        this.data['tuesday'] = false;
+        this.data['wednesday'] = false;
+        this.data['thursday'] = false;
+        this.data['friday'] = false;
+        this.data['saturday'] = false;
+      }
+  }
 
 
 

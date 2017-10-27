@@ -67,7 +67,7 @@ export class MyApp {
     this.a.pages['teacher-list'] = TeacherListPage;
 
 
-    
+
 
     setTimeout(() => this.test(), 100);
 
@@ -75,7 +75,7 @@ export class MyApp {
 
   test() {
 
-    this.a.open('teacher-list');
+    this.a.open('schedule');
 
     // this.a.open('register');
 
