@@ -155,9 +155,15 @@ export class AppService {
         }
         else if (str instanceof HttpErrorResponse) {
             console.log("instanceof HttpErrorResponse");
-            const e = str['error'];
+            const HER = str;
+            let message = '';
+            let text = '';
+            if ( HER.message !== void 0 ) message = HER.message;
+            if ( HER.error.message !== void 0 ) message = HER.error.message;
+            if ( HER.error.text !== void 0 ) text = HER.error.text;
+
             // str = e['error']['message'] + "\n\n" + e['text'];
-            str = { title: 'Http Error', subTitle: e['error']['message'], message: e['text'] };
+            str = { title: 'Http Error', subTitle: message, message: text };
         }
         else if ( str['title'] !== void 0 || str['subTitle'] !== void 0 || str['message'] !== void 0  ) {
 

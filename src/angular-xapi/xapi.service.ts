@@ -42,7 +42,7 @@ export class XapiService extends Base {
      * 
      */
     post(data): Observable<any> {
-        // console.log('url: ', this.serverUrl);
+        console.log('xapi.service::post() url: ', this.serverUrl, ' data: ', data);
         return this.http.post(this.serverUrl, data)
             .map(e => this.checkResult(e, data))
     }
@@ -76,7 +76,7 @@ export class XapiService extends Base {
 
 
     checkResult(res, data) {
-        // console.log("res: ", res);
+        console.log("checkResult() => res: ", res, " data: ", data);
         if (!res) {
             console.error("Response from backend is empty");
             console.log("Requested data(that cause empty response): ", data);
