@@ -2,10 +2,10 @@
   <header-content></header-content>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
-  <!-- {{ a.user.getProfile() | json }}
-{{ a.userType | json }} -->
+  {{ a.user.getProfile() | json }}
+{{ a.userType | json }}
   <choose-user-type-component *ngIf=" a.user.isLogin && a.userType == '' "></choose-user-type-component>
   <div [innerHTML]=" reminders "></div>
   <login-box-component *ngIf="a.user.isLogout"></login-box-component>

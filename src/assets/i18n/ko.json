@@ -9,10 +9,12 @@
   "CLOSE": "닫기",
 
   "ALL MENU": "전체 메뉴",
-  "SCHEDULE": "수업예약",
   "FORUM": "게시판",
 
-  "RESERVATION": "시간표",
+
+  "SCHEDULE": "수업예약",
+  "RESERVATIONS": "시간표",
+  "RESERVE": "예약",
 
   "NAME": "이름",
   "NICKNAME": "닉네임",
