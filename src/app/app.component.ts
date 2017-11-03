@@ -75,7 +75,8 @@ export class MyApp {
 
   test() {
 
-    this.a.open('schedule');
+    this.a.open('teacher-list');
+    //this.a.open('schedule');
 
     // this.a.open('register');
 
