@@ -48,7 +48,7 @@ export class SchedulePage {
     if (this.a.user.isLogin) {
       let confirm = this.alertCtrl.create({
         title: 'Delete Schedule',
-        message: 'Are you sure you cant to delete?',
+        message: 'Are you sure you want to delete?',
         buttons: [
           {
             text: 'Yes',

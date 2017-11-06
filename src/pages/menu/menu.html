@@ -9,10 +9,68 @@
       <ion-icon name="settings" item-start></ion-icon>
       설정
     </ion-item>
+
     <ion-item menuToggle>
       <ion-icon name="menu" item-start></ion-icon>
       사이드 메뉴 열기
     </ion-item>
+
+
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'TEACHER LIST' | translate }}
+    </ion-item>
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'STUDENT LIST' | translate }}
+    </ion-item>
+
+
+
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'RESERVATION HISTORY' | translate }}
+    </ion-item>
+
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'PAYMENT LONG TEXT' | translate }}
+    </ion-item>
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'PAYMENT HISTORY' | translate }}
+    </ion-item>
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'RESERVATIONS LONG TEXT' | translate }}
+    </ion-item>
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'PASTS LONG TEXT' | translate }}
+    </ion-item>
+
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'PRIVATE QUERY' | translate }}
+    </ion-item>
+
+
+    <ion-item (click)="a.open('settings')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'FORUM' | translate }}
+    </ion-item>
+
+
+
+
 
 
     <ion-item *ngIf=" a.user.isLogout " (click)=" a.open('login') ">

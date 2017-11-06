@@ -12,22 +12,27 @@
 
 
       <ion-col *ngIf="a.isTeacher">
-          <button (click)="a.open( 'schedule' )">
-            <i class="fa fa-calendar-plus"></i>
-            <div>{{ 'SCHEDULE' | translate }}</div>
-          </button>
-        </ion-col>
-  
-      
-        <ion-col>
-            <button (click)="a.open( 'teacher-list' )">
-              <i class="fa fa-calendar-plus"></i>
-              <div>{{ 'RESERVE' | translate }}</div>
-            </button>
-          </ion-col>
-    
-            
+        <button (click)="a.open( 'schedule' )">
+          <i class="fa fa-calendar-plus"></i>
+          <div>{{ 'SCHEDULE' | translate }}</div>
+        </button>
+      </ion-col>
 
+
+      <ion-col>
+        <button (click)="a.open( 'teacher-list' )">
+          <i class="fa fa-calendar-plus"></i>
+          <div>{{ 'RESERVE' | translate }}</div>
+        </button>
+      </ion-col>
+
+
+      <ion-col>
+        <button (click)="a.open( 'teacher-list' )">
+          <i class="fa fa-calendar-plus"></i>
+          <div>{{ 'TEACHER LIST' | translate }}</div>
+        </button>
+      </ion-col>
 
       <ion-col>
 
@@ -38,46 +43,50 @@
 
         </button>
       </ion-col>
+      
       <ion-col>
-
         <button>
-
           <i class="fa fa-table"></i>
           <div>{{ 'RESERVATIONS' | translate }}</div>
+        </button>
+      </ion-col>
 
+      <ion-col>
+        <button>
+          <i class="fa fa-table"></i>
+          <div>{{ 'PASTS' | translate }}</div>
         </button>
       </ion-col>
 
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
-
           <i class="fa fa-credit-card"></i>
           <div>{{ 'PAYMENT' | translate }}</div>
-
-
         </button>
       </ion-col>
 
+
+
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
-          <ion-icon name="card"></ion-icon>
-          {{ 'TEACHERS' | translate }}
-        </button>
-      </ion-col>
-      <ion-col class="d-none d-sm-block">
-        <button (click)="a.open('menu')">
-          <ion-icon name="card"></ion-icon>
-          {{ 'STUDENTS' | translate }}
+          <i class="fa fa-credit-card"></i>
+          <div>{{ 'PAYMENT HISTORY' | translate }}</div>
         </button>
       </ion-col>
 
       
+
+
+      
+
+
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
-          <ion-icon name="card"></ion-icon>
-          {{ 'STUDENTS' | translate }}
+          <i class="fa fa-credit-card"></i>
+          <div>{{ 'RESERVATION HISTORY' | translate }}</div>
         </button>
       </ion-col>
+
 
       <ion-col>
         <button (click)="a.open('menu')">

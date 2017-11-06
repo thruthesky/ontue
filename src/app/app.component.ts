@@ -83,6 +83,11 @@ export class MyApp {
 
     // this.a.open('student-profile');
     // this.a.open('register');
+
+    this.a.open('menu');
+
+
+    
   }
 
 

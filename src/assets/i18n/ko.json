@@ -12,8 +12,13 @@
   "FORUM": "게시판",
 
 
-  "SCHEDULE": "수업예약",
-  "RESERVATIONS": "시간표",
+  "SCHEDULE": "시간표",
+  "RESERVATIONS": "예약목록",
+  "RESERVATIONS LONG TEXT": "예약된 수업 목록",
+  
+  "PASTS": "지난수업",
+  "PASTS LONG TEXT": "지난 수업 목록",
+
   "RESERVE": "예약",
 
   "NAME": "이름",
@@ -33,7 +38,8 @@
   "SKIP": "건너뛰기",
   "CONTINUE": "계속",
 
-  "EDIT_PROFILE": "프로필 수정",
+  "PROFILE": "회원 정보",
+  "EDIT_PROFILE": "회원 정보 수정",
 
   "DONE": "완료",
   "CANCEL": "취소",
@@ -43,10 +49,18 @@
 
   "LOADING": "로딩 중입니다.",
 
-  "PAYMENT": "수업료결재",
+  "PAYMENT": "수업료결제",
+  "PAYMENT LONG TEXT": "수업료 결제하기",
 
 
-  "discussion": "자유토론"
+  "discussion": "자유토론",
+
+  "TEACHER LIST": "강사목록",
+  "STUDENT LIST": "학생목록",
+  "PAYMENT HISTORY": "결제목록",
+  "RESERVATION HISTORY": "예약기록",
+  "PROFILE UPDATE BUTTON": "회원 정보 업데이트",
+  "PRIVATE QUERY": "일대일 상담하기"
 
 
 }

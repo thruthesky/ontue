@@ -76,10 +76,10 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <button *ngIf="!readonly" ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
+            <button *ngIf="!readonly" ion-button color="primary" block>{{ 'PROFILE UPDATE BUTTON' | translate }}</button>
           </ion-col>
           <ion-col>
-            <button ion-button (click)="a.open('home')" color="primary" block>Cancel</button>
+            <button ion-button type="button" (click)="a.open('home')" color="primary" block>{{ 'CANCEL' | translate }}</button>
           </ion-col>
         </ion-row>
       </ion-grid>
