@@ -14,15 +14,16 @@ import { AppService } from './../providers/app.service';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { SettingsPage } from './../pages/settings/settings';
-import { SchedulePage } from './../pages/schedule/schedule';
-import { MenuPage } from './../pages/menu/menu';
-import { ForumPage } from './../pages/forum/forum';
-import { PostPage } from './../pages/post/post';
-import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
-import { StudentProfilePage } from './../pages/student-profile/student-profile';
-import { AddSchedule } from './../components/add-schedule/add-schedule';
-import { TeacherListPage } from './../pages/teacher-list/teacher-list';
+import { SettingsPage } from '../pages/settings/settings';
+import { SchedulePage } from '../pages/schedule/schedule';
+import { MenuPage } from '../pages/menu/menu';
+import { ForumPage } from '../pages/forum/forum';
+import { PostPage } from '../pages/post/post';
+import { TeacherProfilePage } from '../pages/teacher-profile/teacher-profile';
+import { StudentProfilePage } from '../pages/student-profile/student-profile';
+import { AddSchedule } from '../components/add-schedule/add-schedule';
+import { TeacherListPage } from '../pages/teacher-list/teacher-list';
+import { TeacherSchedulePage } from '../pages/teacher-schedule/teacher-schedule';
 
 
 
@@ -66,6 +67,8 @@ export class MyApp {
     this.a.pages['add-schedule'] = AddSchedule;
     this.a.pages['teacher-list'] = TeacherListPage;
 
+    this.a.pages['teacher-schedule'] = TeacherSchedulePage;
+
 
 
 
@@ -75,7 +78,8 @@ export class MyApp {
 
   test() {
 
-    // this.a.open('schedule');
+    this.a.open('teacher-list');
+    //this.a.open('schedule');
 
     // this.a.open('register');
 

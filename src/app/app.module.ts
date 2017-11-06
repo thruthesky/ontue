@@ -34,6 +34,7 @@ import { MenuPage } from './../pages/menu/menu';
 import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
 import { StudentProfilePage } from './../pages/student-profile/student-profile';
 import { TeacherListPage } from './../pages/teacher-list/teacher-list';
+import { TeacherSchedulePage } from './../pages/teacher-schedule/teacher-schedule';
 
 
 
@@ -87,7 +88,8 @@ export function createTranslateLoader(http: HttpClient) {
     StudentProfilePage,
     ChooseUserTypeModal,
     AddSchedule,
-    TeacherListPage
+    TeacherListPage,
+    TeacherSchedulePage
   ],
   imports: [
     BrowserModule,
@@ -121,7 +123,8 @@ export function createTranslateLoader(http: HttpClient) {
     ChooseUserTypeModal,
     PostPopoverWidget,
     AddSchedule,
-    TeacherListPage
+    TeacherListPage,
+    TeacherSchedulePage
   ],
 
   providers: [

@@ -17,7 +17,7 @@ export class CommentEditPage {
   comment_content;
   params;
 
-  // origial post, comment
+  // original post, comment
   post: POST;
   comment: COMMENT;
   files: FILES = [];

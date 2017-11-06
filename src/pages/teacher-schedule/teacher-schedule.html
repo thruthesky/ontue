@@ -1,0 +1,35 @@
+<ion-header>
+  <header-content></header-content>
+</ion-header>
+
+<ion-content padding>
+  Teacher Schedule
+
+  <p>
+    Show the teacher schedule for the student
+  </p>
+  <table class="schedule">
+    <tr>
+      <td>Time</td>
+      <td>Sun</td>
+      <td>Mon</td>
+      <td>Tue</td>
+      <td>Wed</td>
+      <td>Thu</td>
+      <td>Fri</td>
+      <td>Sat</td>
+    </tr>
+    <tr *ngFor="let s of schedules">
+      <td>{{s.class_begin}}</td>
+      <td><div *ngIf="s.sunday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.monday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.tuesday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.wednesday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.thursday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.friday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.saturday">{{s.prere}} {{s.point}}</div></td>
+    </tr>
+
+  </table>
+
+</ion-content>
