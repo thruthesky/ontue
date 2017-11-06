@@ -39,6 +39,17 @@ export interface DAYS {
   saturday: boolean;
 }
 
+export interface TEACHER_LIST {
+  ID: number;
+  bookable_time: number;
+  class_id: string;
+  display_name:string;
+  grade: number;
+  list_order: number;
+}
+
+export type TEACHERS_LIST = Array<TEACHER_LIST>
+
 
 
 @Injectable()
@@ -165,12 +176,13 @@ export class LMSService extends Base {
         return this.x.post( data );
     }
 
-    schedule_search( data ) {
+    schedule_search( IDs: Array<number> ) {
 
-        data = {
-            route: 'lms.schedule_search',
-            session_id: this.user.sessionId
-        };
+      let data = {
+        route: 'lms.schedule_search',
+        session_id: this.user.sessionId,
+        teachers: IDs,
+      };
 
         return this.x.post( data );
 
