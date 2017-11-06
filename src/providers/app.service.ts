@@ -5,7 +5,10 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { XapiService, UserService, ForumService, LMSService } from './../angular-xapi/angular-xapi.module';
-import {FileService} from "../angular-xapi/file.service";
+import { FileService } from "../angular-xapi/file.service";
+
+
+
 
 @Injectable()
 export class AppService {
@@ -23,6 +26,9 @@ export class AppService {
 
 
     userData = {};
+
+    i18n = {}; // This holds translated text from ngx-translation. Some texts needs to be loaded beforehand.
+
 
     constructor(
         public ngZone: NgZone,
@@ -101,21 +107,21 @@ export class AppService {
         });
     }
 
-  postUserPhotoUrl(data) {
-    if (data && data.author && data.author.photoURL) return data.author.photoURL;
-    else return 'assets/img/student.png';
-  }
+    postUserPhotoUrl(data) {
+        if (data && data.author && data.author.photoURL) return data.author.photoURL;
+        else return 'assets/img/student.png';
+    }
 
-  /**
-   * Returns true if 'data' is mine.
-   * @param data Post or Comment
-   */
-  my(data) {
-    if (!this.user.id) return false;
-    if (data && data['ID'] && data['post_author'] == this.user.id) return true;
-    if (data && data['comment_ID'] && data['user_id'] == this.user.id) return true;
-    return false;
-  }
+    /**
+     * Returns true if 'data' is mine.
+     * @param data Post or Comment
+     */
+    my(data) {
+        if (!this.user.id) return false;
+        if (data && data['ID'] && data['post_author'] == this.user.id) return true;
+        if (data && data['comment_ID'] && data['user_id'] == this.user.id) return true;
+        return false;
+    }
 
     /**
      * Displays an error message to user.
@@ -140,11 +146,11 @@ export class AppService {
      * @endcode
      */
     alert(str): void {
-        if ( ! str ) {
+        if (!str) {
             str = { title: 'No alert information was given.' };
         }
         console.log(str);
-        if ( typeof str === 'string' ) {
+        if (typeof str === 'string') {
             str = { message: str };
         }
         else if (str instanceof Error) {
@@ -155,26 +161,38 @@ export class AppService {
         }
         else if (str instanceof HttpErrorResponse) {
             console.log("instanceof HttpErrorResponse");
-            const e = str['error'];
-            // str = e['error']['message'] + "\n\n" + e['text'];
-            str = { title: 'Http Error', subTitle: e['error']['message'], message: e['text'] };
+            const HER = str;
+            let title = 'HTTP_ERROR';
+            let subTitle = '';
+            let message = '';
+            if (HER.message !== void 0) subTitle = HER.message;
+            if (HER.error.message !== void 0) subTitle = HER.error.message;
+            if (HER.error.text !== void 0) message = HER.error.text;
+
+            if ( HER.status == 0 ) {
+                // subTitle = 'HTTP_ERROR_DESC';
+                message = 'HTTP_ERROR_DESC';
+            }
+
+            console.log("i18n:", this.i18n);
+            str = { title: this.i18n[ title ], subTitle: this.i18n[ subTitle ], message: this.i18n[ message ] };
+            console.log('str: ', str);
         }
-        else if ( str['title'] !== void 0 || str['subTitle'] !== void 0 || str['message'] !== void 0  ) {
+        else if (str['title'] !== void 0 || str['subTitle'] !== void 0 || str['message'] !== void 0) {
 
         }
 
         let options = {};
-        if ( str['title'] ) options['title'] = str['title'];
-        if ( str['subTitle'] ) options['subTitle'] = str['subTitle'];
-        if ( str['message'] ) options['message'] = str['message'];
+        if (str['title']) options['title'] = str['title'];
+        if (str['subTitle']) options['subTitle'] = str['subTitle'];
+        if (str['message']) options['message'] = str['message'];
 
-        options['buttons'] = [ {
+        options['buttons'] = [{
             text: str['text'] === void 0 ? 'OK' : str['text'],
             handler: str['callback'] === void 0 ? null : str['callback']
-        } ];
+        }];
 
-
-        this.alertCtrl.create( options ).present();
+        this.alertCtrl.create(options).present();
 
     }
 
@@ -182,17 +200,17 @@ export class AppService {
      * This reports ( logs ) error message into backend.
      * @param msg Message to report to server.
      */
-    reportServerError( msg ) {
-        
+    reportServerError(msg) {
+
     }
 
     showAlert(title: any, content = '') {
-        this.alert( { title: title, message: content } );
+        this.alert({ title: title, message: content });
     }
 
     showError(err) {
         let e = this.xapi.getError(err);
-        this.showAlert( 'Error' + e['code'], e['message'] );
+        this.showAlert('Error' + e['code'], e['message']);
     }
 
 
@@ -233,19 +251,19 @@ export class AppService {
 
 
     render() {
-        this.ngZone.run( () => {} );
+        this.ngZone.run(() => { });
     }
 
 
-    get(key:string) {
+    get(key: string) {
         return this.xapi.get(key);
     }
-    set( key:string, value: any ) {
-        return this.xapi.set( key, value );
+    set(key: string, value: any) {
+        return this.xapi.set(key, value);
     }
 
-    setLanguage( lang ) {
-        this.set( 'language', lang );
+    setLanguage(lang) {
+        this.set('language', lang);
         this.initTranslate();
     }
     getLanguage() {
@@ -254,14 +272,21 @@ export class AppService {
 
 
 
-  initTranslate() {
-    this.translate.setDefaultLang('en');
-    let lang;
-    lang = this.getLanguage();
-    if ( ! lang ) lang = this.translate.getBrowserLang();
-    if ( ! lang ) lang = 'en';
-    this.translate.use( lang );
-  }
+    initTranslate() {
+        this.translate.setDefaultLang('en');
+        let lang;
+        lang = this.getLanguage();
+        if (!lang) lang = this.translate.getBrowserLang();
+        if (!lang) lang = 'en';
+        this.translate.use(lang);
+
+        this.translate.get(['HTTP_ERROR', 'HTTP_ERROR_DESC']).subscribe(re => {
+            this.i18n = re;
+        });
+
+
+
+    }
 
 
 

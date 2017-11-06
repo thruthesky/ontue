@@ -1,5 +1,9 @@
 {
 
+  "HTTP ERROR": "Connection Error",
+  "HTTP ERROR DESC": "Connection to the server has failed. Please notify this error to admin immediately.",
+
+
   "SITE NAME": "온튜",
 
   "CLOSE": "Close",
