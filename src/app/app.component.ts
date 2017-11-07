@@ -15,7 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { SettingsPage } from '../pages/settings/settings';
-import { SchedulePage } from '../pages/schedule/schedule';
+import { ScheduleEditPage } from '../pages/schedule-edit/schedule-edit';
 import { MenuPage } from '../pages/menu/menu';
 import { ForumPage } from '../pages/forum/forum';
 import { PostPage } from '../pages/post/post';
@@ -23,7 +23,7 @@ import { TeacherProfilePage } from '../pages/teacher-profile/teacher-profile';
 import { StudentProfilePage } from '../pages/student-profile/student-profile';
 import { AddSchedule } from '../components/add-schedule/add-schedule';
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
-import { TeacherSchedulePage } from '../pages/teacher-schedule/teacher-schedule';
+import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
 
 
 
@@ -56,7 +56,7 @@ export class MyApp {
     this.a.pages['menu'] = MenuPage;
     this.a.pages['forum'] = ForumPage;
     this.a.pages['settings'] = SettingsPage;
-    this.a.pages['schedule'] = SchedulePage;
+    this.a.pages['schedule-edit'] = ScheduleEditPage;
     this.a.pages['login'] = LoginPage;
     this.a.pages['register'] = RegisterPage;
 
@@ -67,7 +67,7 @@ export class MyApp {
     this.a.pages['add-schedule'] = AddSchedule;
     this.a.pages['teacher-list'] = TeacherListPage;
 
-    this.a.pages['teacher-schedule'] = TeacherSchedulePage;
+    this.a.pages['schedule-table'] = ScheduleTablePage;
 
 
 
@@ -78,8 +78,16 @@ export class MyApp {
 
   test() {
 
-    this.a.open('teacher-list');
-    //this.a.open('schedule');
+    
+
+
+    this.a.open('schedule-table', { ID: 806 });
+    
+
+    // this.a.open('teacher-list');
+
+
+    // this.a.open('schedule-edit');
 
     // this.a.open('register');
 
@@ -88,7 +96,7 @@ export class MyApp {
     // this.a.open('student-profile');
     // this.a.open('register');
 
-    this.a.open('menu');
+    // this.a.open('menu');
 
 
     

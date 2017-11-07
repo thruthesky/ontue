@@ -20,9 +20,8 @@ import { AppService } from './../providers/app.service';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-import { SchedulePage } from '../pages/schedule/schedule';
+import { ScheduleEditPage } from '../pages/schedule-edit/schedule-edit';
 import { ForumPage } from '../pages/forum/forum';
-import { MainPage } from '../pages/main/main';
 import { SettingsPage } from '../pages/settings/settings';
 import { PostPage } from '../pages/post/post';
 import { PostCreateEditPage } from '../pages/post-create-edit/post-create-edit';
@@ -34,7 +33,7 @@ import { MenuPage } from './../pages/menu/menu';
 import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
 import { StudentProfilePage } from './../pages/student-profile/student-profile';
 import { TeacherListPage } from './../pages/teacher-list/teacher-list';
-import { TeacherSchedulePage } from './../pages/teacher-schedule/teacher-schedule';
+import { ScheduleTablePage } from './../pages/schedule-table/schedule-table';
 
 
 
@@ -65,9 +64,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     MyApp,
     HomePage,
-    SchedulePage,
+    ScheduleEditPage,
     ForumPage,
-    MainPage,
     SettingsPage,
     RegisterPage,
     LoginPage,
@@ -89,7 +87,7 @@ export function createTranslateLoader(http: HttpClient) {
     ChooseUserTypeModal,
     AddSchedule,
     TeacherListPage,
-    TeacherSchedulePage
+    ScheduleTablePage
   ],
   imports: [
     BrowserModule,
@@ -108,9 +106,8 @@ export function createTranslateLoader(http: HttpClient) {
   entryComponents: [
     MyApp,
     HomePage,
-    SchedulePage,
+    ScheduleEditPage,
     ForumPage,
-    MainPage,
     SettingsPage,
     RegisterPage,
     LoginPage,
@@ -124,7 +121,7 @@ export function createTranslateLoader(http: HttpClient) {
     PostPopoverWidget,
     AddSchedule,
     TeacherListPage,
-    TeacherSchedulePage
+    ScheduleTablePage
   ],
 
   providers: [

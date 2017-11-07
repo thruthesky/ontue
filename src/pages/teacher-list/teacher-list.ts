@@ -31,7 +31,7 @@ export class TeacherListPage {
   onClickTeacher(teacher) {
     console.log(teacher);
 
-    this.a.open('teacher-schedule', teacher);
+    this.a.open('schedule-table', teacher);
   }
 
 

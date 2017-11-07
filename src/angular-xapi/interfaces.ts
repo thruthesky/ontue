@@ -92,6 +92,7 @@ export interface USER_LOGIN_RESPONSE extends ID {
     photoURL: string;
     photo: FILE;
     provider: string;
+    timezone: string;
 };
 export type USER_REGISTER_RESPONSE = USER_LOGIN_RESPONSE;
 export type USER_UPDATE_RESPONSE = USER_LOGIN_RESPONSE;

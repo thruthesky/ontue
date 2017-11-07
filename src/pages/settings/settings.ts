@@ -35,7 +35,10 @@ export class SettingsPage {
 
   onClickTimezone( offset ) {
     console.log(offset);
-    this.a.lms.timezone_set( offset ).subscribe( re => console.log(re), e => this.a.alert(e) );
+    this.a.lms.timezone_set( offset ).subscribe( re => {
+      console.log(re);
+      this.a.user.loadProfile().subscribe( () => {} );
+    }, e => this.a.alert(e) );
   }
 
 

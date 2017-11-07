@@ -9,9 +9,9 @@ import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
 @Component({
   selector: 'page-schedule',
-  templateUrl: 'schedule.html'
+  templateUrl: 'schedule-edit.html'
 })
-export class SchedulePage {
+export class ScheduleEditPage {
 
   schedules: SCHEDULE_EDIT_RESPONSE;
 

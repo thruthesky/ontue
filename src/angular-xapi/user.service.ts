@@ -134,6 +134,11 @@ export class UserService extends Base {
         else return '';
     }
 
+    get timezone(): string {
+        if (this.profile && this.profile.timezone) return this.profile.timezone;
+        else return '0';
+    }
+
     get photo(): FILE {
       if (this.profile && this.profile.photo) return this.profile.photo;
       else return null;

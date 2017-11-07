@@ -6,7 +6,7 @@ import { UserService } from './user.service';
 
 import { Base } from './base';
 
-export interface SCHEDULE_EDIT extends DAYS{
+export interface SCHEDULE_EDIT extends DAYS {
     point: number;
     prere: string;
     class_begin_hour: number;
@@ -15,37 +15,37 @@ export interface SCHEDULE_EDIT extends DAYS{
 }
 
 export interface SCHEDULE extends DAYS {
-  idx: number;
-  idx_teacher: number;
-  class_begin: number;
-  class_end: number;
-  original_class_begin: number;
-  original_class_end: number;
-  point: number;
-  prere: string;
-  stamp_created: number;
+    idx: number;
+    idx_teacher: number;
+    class_begin: number;
+    class_end: number;
+    original_class_begin: number;
+    original_class_end: number;
+    point: number;
+    prere: string;
+    stamp_created: number;
 }
 
 
 export type SCHEDULE_EDIT_RESPONSE = Array<SCHEDULE>
 
 export interface DAYS {
-  sunday: boolean;
-  monday: boolean;
-  tuesday: boolean;
-  wednesday: boolean;
-  thursday: boolean;
-  friday: boolean;
-  saturday: boolean;
+    sunday: boolean;
+    monday: boolean;
+    tuesday: boolean;
+    wednesday: boolean;
+    thursday: boolean;
+    friday: boolean;
+    saturday: boolean;
 }
 
 export interface TEACHER_LIST {
-  ID: number;
-  bookable_time: number;
-  class_id: string;
-  display_name:string;
-  grade: number;
-  list_order: number;
+    ID: number;
+    bookable_time: number;
+    class_id: string;
+    display_name: string;
+    grade: number;
+    list_order: number;
 }
 
 export type TEACHERS_LIST = Array<TEACHER_LIST>
@@ -99,12 +99,12 @@ export class LMSService extends Base {
     }
 
     schedule_delete(idx) {
-      let data = {
-        route: 'lms.schedule_delete',
-        session_id: this.user.sessionId,
-        idx: idx
-      };
-      return this.x.post(data);
+        let data = {
+            route: 'lms.schedule_delete',
+            session_id: this.user.sessionId,
+            idx: idx
+        };
+        return this.x.post(data);
 
     }
 
@@ -113,9 +113,9 @@ export class LMSService extends Base {
 
         const localTz = (new Date).getTimezoneOffset() / 60;
 
-        let offset = Math.abs( Math.floor(localTz) );
-        if ( localTz < 0 ) {
-            offset = Math.abs( localTz );
+        let offset = Math.abs(Math.floor(localTz));
+        if (localTz < 0) {
+            offset = Math.abs(localTz);
         }
         else {
             offset = -1 * offset;
@@ -145,7 +145,7 @@ export class LMSService extends Base {
         return this.x.post(data);
     }
 
-    timezone_set( offset ): Observable<any> {
+    timezone_set(offset): Observable<any> {
         const data = {
             route: 'lms.timezone_set',
             session_id: this.user.sessionId,
@@ -170,27 +170,31 @@ export class LMSService extends Base {
         let data = {
             route: 'lms.schedule_search',
             session_id: this.user.sessionId,
-            teachers: [ this.user.id ],
+            teachers: [this.user.id],
         };
 
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
-    schedule_search( IDs: Array<number> ) {
-
-      let data = {
-        route: 'lms.schedule_search',
-        session_id: this.user.sessionId,
-        teachers: IDs,
-      };
-
-        return this.x.post( data );
-
+    schedule_search(data) {
+        data['route'] = 'lms.schedule_search';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post(data);
     }
 
-    user_search( data ) {
+
+    schedule_table(data) {
+        data['route'] = 'lms.schedule_table';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post(data);
+    }
+
+
+
+
+    user_search(data) {
         data['route'] = 'lms.user_search';
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
 
