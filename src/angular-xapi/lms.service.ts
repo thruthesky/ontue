@@ -203,4 +203,12 @@ export class LMSService extends Base {
         data['session_id'] = this.user.sessionId;
         return this.x.post( data );
     }
+
+
+    my_point() {
+        let data = {};
+        data['route'] = 'lms.my_point';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
 }

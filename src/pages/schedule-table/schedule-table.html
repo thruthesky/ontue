@@ -38,8 +38,9 @@
   <br> Show reserved/avaailable session.
   <br>
 
-  <hr> Your timezone: {{ a.user.timezone }}
-  <!--   
+  <hr> Your timezone: {{ a.user.timezone }},
+  Your point: <span *ngIf="!showLoaderPointUpdate">{{ my_point | number }}</span> <ion-spinner *ngIf="showLoaderPointUpdate"></ion-spinner>
+  <!--
     {{ re.header | json }} -->
 
 
@@ -75,14 +76,19 @@
       </td>
 
       <td *ngFor=" let session of sessions ">
-        <div class="session yes pointer" text-center *ngIf=" session.session != 'N' " (click)="onClickReserve( session )">
-          <ion-icon class="fs-3rem orange" name="{{  session.session == 'R' ? 'radio-button-on' : 'radio-button-off' }}" *ngIf=" ! session.in_progress "></ion-icon>
-          <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
+        <div class="session yes pointer" text-center *ngIf=" session.status != 'N' " (click)="onClickSession( session )">
+          <div class="status-icon" *ngIf="! session.in_progress">
+              <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'Y' "></ion-icon>
+              <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'R' && !session.owner"></ion-icon>
+              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'R' && session.owner == 'me' "></ion-icon>
+          </div>
+          <div class="loader-icon"><ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner></div>
           <div>{{ session.point }}</div>
+          <div *ngIf=" session.status == 'R' ">{{ session.student_name }}</div>
           <div>{{ session.prere }}</div>
         </div>
 
-        <div class="session no" *ngIf=" session.session == 'N' "></div>
+        <div class="session no" *ngIf=" session.status == 'N' "></div>
 
       </td>
 
@@ -92,4 +98,19 @@
 
   </table>
 
+
+  <ul>
+      <li>
+          <ion-icon name="radio-button-off"></ion-icon> - Reservable
+      </li>
+      <li>
+          <ion-icon name="radio-button-on"></ion-icon> - Reserved by me. It's your class. you can cancel it.
+      </li>
+      <li>
+          <ion-icon name="close"></ion-icon> - Reserved by other student.
+      </li>
+  </ul>
+  
 </ion-content>
+
+

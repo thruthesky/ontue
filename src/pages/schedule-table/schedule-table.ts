@@ -43,6 +43,9 @@ export class ScheduleTablePage {
 
 
 
+  my_point = 0;
+  showLoaderPointUpdate = false;
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -56,6 +59,7 @@ export class ScheduleTablePage {
     // this.getTeacherSchedule(this.params.ID);
 
     this.loadScheduleTable( this.request() );
+    this.a.lms.my_point().subscribe( re => this.my_point = re, e => this.a.alert( e ) );
   }
 
 
@@ -123,16 +127,44 @@ export class ScheduleTablePage {
     this.loadScheduleTable( this.request( { navigate: navigate } ) );
   }
 
-  onClickReserve( session ) {
+  onClickSession( session ) {
+    if ( session.status == 'Y' ) this.reserveSession( session );
+    else if ( session.status == 'R' && session.owner == 'me' ) this.cancelSession( session );
+
+
+
+
+  }
+
+  reserveSession( session ) {
+
     session.in_progress = true;
     this.a.lms.class_reserve({ idx_schedule: session.idx_schedule, date: session.date }).subscribe( re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
-      session.session = 'R';
+      session.status = 'R';
+      session.owner = 'me';
+      session.student_name = re.student_name;
+      session.point = re.point;
+      this.updatePoint();
     }, e => {
       session.in_progress = false;
       this.a.alert(e);
     });
 
+  }
+
+  cancelSession( session ) {
+    /// 
+  }
+
+
+
+  updatePoint() {
+    this.showLoaderPointUpdate = true;
+    this.a.lms.my_point().subscribe( re => {
+      this.my_point = re;
+      this.showLoaderPointUpdate = false;
+     }, e => this.a.alert(e) );
   }
 }
