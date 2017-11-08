@@ -25,7 +25,7 @@ export class ScheduleTablePage {
   };
 
   /// search options
-  days = 35;
+  days = 5;
   min_duration = 10;
   max_duration = 0;
 
@@ -37,6 +37,10 @@ export class ScheduleTablePage {
   thursday;
   friday;
   saturday;
+
+  min_point = 0;
+  max_point = 0;
+
 
 
   constructor(
@@ -70,7 +74,9 @@ export class ScheduleTablePage {
       wednesday: this.wednesday ? 'Y' : '',
       thursday: this.thursday ? 'Y' : '',
       friday: this.friday ? 'Y' : '',
-      saturday: this.saturday ? 'Y' : ''
+      saturday: this.saturday ? 'Y' : '',
+      min_point: this.min_point,
+      max_point: this.max_point
     };
     
     const req = Object.assign( defaults, options );
@@ -115,5 +121,18 @@ export class ScheduleTablePage {
 
   onClickNavigate( navigate ) {
     this.loadScheduleTable( this.request( { navigate: navigate } ) );
+  }
+
+  onClickReserve( session ) {
+    session.in_progress = true;
+    this.a.lms.class_reserve({ idx_schedule: session.idx_schedule, date: session.date }).subscribe( re => {
+      console.log("class_reserve: ", re);
+      session.in_progress = false;
+      session.session = 'R';
+    }, e => {
+      session.in_progress = false;
+      this.a.alert(e);
+    });
+
   }
 }

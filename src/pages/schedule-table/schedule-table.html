@@ -1,91 +1,95 @@
 <ion-header>
-    <header-content></header-content>
-  </ion-header>
-  
-  <ion-content padding>
-    Teacher Schedule Table
-  
-    <hr>
-    TODO: Sort by time.
-    <hr>
-    Search Option:<br>
+  <header-content></header-content>
+</ion-header>
 
-    Session Duration:
-    
-        <select name="days" [(ngModel)]="min_duration" (change)="onChangeSearchOption()">
-            <option *ngFor="let i of [0,5,10,15,25,30,35,40,50,60,70,80,90,100]" value="{{ i }}">{{ i }}</option>
-          </select>
-          ~
-          <select name="days" [(ngModel)]="max_duration" (change)="onChangeSearchOption()">
-              <option *ngFor="let i of [5,10,15,25,30,35,40,50,60,70,80,90,100]" value="{{ i }}">{{ i }}</option>
-            </select>
-          <br>
+<ion-content padding>
+  Teacher Schedule Table
 
+  <hr> TODO: Sort by time.
+  <hr> Search Option:
+  <br> Session Duration:
 
-    Select/Display teachers: Group of Levels 0,1,2,3,4,5. Male, Female, Age<br>
-    Select/Search points: greater than or less than, point between
+  <select name="days" [(ngModel)]="min_duration" (change)="onChangeSearchOption()">
+    <option *ngFor="let i of [0,5,10,15,25,30,35,40,50,60,70,80,90,100]" value="{{ i }}">{{ i }}</option>
+  </select>
+  ~
+  <select name="days" [(ngModel)]="max_duration" (change)="onChangeSearchOption()">
+    <option value="0"></option>
+    <option *ngFor="let i of [5,10,15,25,30,35,40,50,60,70,80,90,100]" value="{{ i }}">{{ i }}</option>
+  </select>
+  <br> Select/Display teachers: Group of Levels 0,1,2,3,4,5. Male, Female, Age
+  <br> Points between
+  <input type="text" name="min_point" [(ngModel)]="min_point"> ~
+  <input type="text" name="max_point" [(ngModel)]="max_point">
+  <button (click)="onChangeSearchOption()">Update</button>
+  <hr> Display Options: Display what days: select:
+  <input (change)="onChangeSearchOption()" type="checkbox" name="sunday" [(ngModel)]="sunday"> Sunday
+  <input (change)="onChangeSearchOption()" type="checkbox" name="monday" [(ngModel)]="monday"> Monday
+  <input (change)="onChangeSearchOption()" type="checkbox" name="tuesday" [(ngModel)]="tuesday"> Tuesday
+  <input (change)="onChangeSearchOption()" type="checkbox" name="wednesday" [(ngModel)]="wednesday"> Wednesday
+  <input (change)="onChangeSearchOption()" type="checkbox" name="thursday" [(ngModel)]="thursday"> Thursday
+  <input (change)="onChangeSearchOption()" type="checkbox" name="friday" [(ngModel)]="friday"> Firday
+  <input (change)="onChangeSearchOption()" type="checkbox" name="saturday" [(ngModel)]="saturday"> Saturday
+  <br> How many days( Columns ):
+  <select name="days" [(ngModel)]="days" (change)="onChangeSearchOption()">
+    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]"
+      value="{{ i }}">{{ i }}</option>
+  </select>
+  <br> Show reserved/avaailable session.
+  <br>
 
-    <hr>
-    Display Options:
-    Display what days: select: 
-    <input (change)="onChangeSearchOption()" type="checkbox" name="sunday" [(ngModel)]="sunday"> Sunday
-    <input (change)="onChangeSearchOption()" type="checkbox" name="monday" [(ngModel)]="monday"> Monday
-    <input (change)="onChangeSearchOption()" type="checkbox" name="tuesday" [(ngModel)]="tuesday"> Tuesday
-    <input (change)="onChangeSearchOption()" type="checkbox" name="wednesday" [(ngModel)]="wednesday"> Wednesday
-    <input (change)="onChangeSearchOption()" type="checkbox" name="thursday" [(ngModel)]="thursday"> Thursday
-    <input (change)="onChangeSearchOption()" type="checkbox" name="friday" [(ngModel)]="friday"> Firday
-    <input (change)="onChangeSearchOption()" type="checkbox" name="saturday" [(ngModel)]="saturday"> Saturday
-    <br>
-    How many days( Columns ):
-    <select name="days" [(ngModel)]="days" (change)="onChangeSearchOption()">
-      <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]" value="{{ i }}">{{ i }}</option>  
-    </select><br>
-    
-    Show reserved/avaailable session.<br>
-  
-    <hr>
-  
-  
-    Your timezone: {{ a.user.timezone }}
-<!--   
+  <hr> Your timezone: {{ a.user.timezone }}
+  <!--   
     {{ re.header | json }} -->
-    
 
-    <div class="buttons">
+
+  <div class="buttons">
     <button (click)="onClickNavigate('previous-month')">Previous Month</button>
     <button (click)="onClickNavigate('previous-week')">Previous Week</button>
     <button (click)="onClickNavigate('today')">Today</button>
     <button (click)="onClickNavigate('next-week')">Next Week</button>
     <button (click)="onClickNavigate('next-month')">Next Month</button>
   </div>
-    <table class="schedule-table" *ngIf=" re && re.table ">
-      <tr>
-        <td>Teacher</td>
-        <td>Time</td>
-        <td *ngFor="let header of re.header">
-          <div (click)="onClickNavigate( header.date )">
-            {{ header.display_date }}<br>
-            {{ header.day }}
-          </div>
-        </td>
-      </tr>
-  
-  
-      <tr *ngFor="let sessions of re.table">
-          <td>{{ schedule( sessions[0].idx_schedule ).idx_teacher }}</td>
-          <td>
-            {{ schedule( sessions[0].idx_schedule ).class_begin }}<br>
-            {{ schedule( sessions[0].idx_schedule ).duration }}
-          </td>
-  
-          <td *ngFor = " let session of sessions" >
-            <div> <u>{{ session.idx_schedule }}</u><br>{{ session.prere }} {{ session.point }}</div>
-          </td>
-  
-        </tr>
-  
-  
-        
-    </table>
-  
-  </ion-content>
+  <table class="schedule-table" *ngIf=" re && re.table ">
+    <tr>
+      <td>Teacher</td>
+      <td>Time</td>
+      <td *ngFor="let header of re.header">
+        <div (click)="onClickNavigate( header.date )">
+          {{ header.display_date }}
+          <br> {{ header.day }}
+        </div>
+      </td>
+    </tr>
+
+
+    <tr valign="top" *ngFor="let sessions of re.table">
+      <td>
+        {{ sessions[0].idx_schedule }}<br>
+        {{ schedule( sessions[0].idx_schedule ).idx_teacher }}<br>
+        {{ schedule( sessions[0].idx_schedule ).teacher_name }}
+      </td>
+      <td>
+        {{ schedule( sessions[0].idx_schedule ).user_time_class_begin }}
+        <br> {{ schedule( sessions[0].idx_schedule ).duration }}
+      </td>
+
+      <td *ngFor=" let session of sessions ">
+        <div class="session yes pointer" text-center *ngIf=" session.session != 'N' " (click)="onClickReserve( session )">
+          <ion-icon class="fs-3rem orange" name="{{  session.session == 'R' ? 'radio-button-on' : 'radio-button-off' }}" *ngIf=" ! session.in_progress "></ion-icon>
+          <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
+          <div>{{ session.point }}</div>
+          <div>{{ session.prere }}</div>
+        </div>
+
+        <div class="session no" *ngIf=" session.session == 'N' "></div>
+
+      </td>
+
+    </tr>
+
+
+
+  </table>
+
+</ion-content>

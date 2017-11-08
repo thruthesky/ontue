@@ -198,4 +198,9 @@ export class LMSService extends Base {
     }
 
 
+    class_reserve( data ) {
+        data['route'] = 'lms.class_reserve';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
 }
