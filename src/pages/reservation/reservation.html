@@ -7,11 +7,38 @@
     , Reservations:
 
 
-    <section class="books" *ngIf = " books.length ">
+    <!--<section class="books" *ngIf = " books.length ">-->
+            <!--<div class="book" *ngFor="let book of books">-->
+              <!--{{ book.idx }}-->
+              <!---->
+              <!---->
+            <!--</div>-->
+    <!--</section>-->
 
-            <div class="book" *ngFor="let book of books">
-                    {{ book.idx }}
-                </div>
-    </section>
+    <table class="books" *ngIf = " books.length ">
+      <tr>
+        <td>class#</td>
+        <td>Date</td>
+        <td>Time</td>
+        <td>Teacher</td>
+        <td>Student</td>
+        <td>Point</td>
+
+      </tr>
+
+      <tr *ngFor="let book of books">
+        <td>{{book.idx_schedule}}</td>
+        <td>{{book.date}}</td>
+        <td>{{book.class_begin}}~{{book.class_end}}</td>
+        <td>{{book.idx_teacher}}</td>
+        <td>{{book.idx_student}}</td>
+        <td>{{book.point}}</td>
+      </tr>
+
+
+
+    </table>
+
+
 
 </ion-content>
