@@ -155,7 +155,21 @@ export class ScheduleTablePage {
   }
 
   cancelSession( session ) {
-    /// 
+
+    session.in_progress = true;
+    console.log("Going to cancel : ", session );
+    this.a.lms.class_cancel( session.idx_reservation ).subscribe( re => {
+      console.log("cancel success", re);
+      session.in_progress = false;
+      session.status = 'Y';
+      session.owner = '';
+      session.student_name = '';
+      session.point = this.schedule( session.idx_schedule ).point;
+      this.updatePoint();
+    }, e => {
+      session.in_progress = false;
+      this.a.alert(e);
+    });
   }
 
 

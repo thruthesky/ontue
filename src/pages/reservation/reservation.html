@@ -1,0 +1,17 @@
+<ion-header>
+  <header-content></header-content>
+</ion-header>
+
+<ion-content padding>
+    {{ a.user.name }}
+    , Reservations:
+
+
+    <section class="books" *ngIf = " books.length ">
+
+            <div class="book" *ngFor="let book of books">
+                    {{ book.idx }}
+                </div>
+    </section>
+
+</ion-content>

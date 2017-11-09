@@ -38,7 +38,9 @@
   <br> Show reserved/avaailable session.
   <br>
 
-  <hr> Your timezone: {{ a.user.timezone }},
+  <hr>
+  Welcome {{ a.user.name }}
+  Your timezone: {{ a.user.timezone }},
   Your point: <span *ngIf="!showLoaderPointUpdate">{{ my_point | number }}</span> <ion-spinner *ngIf="showLoaderPointUpdate"></ion-spinner>
   <!--
     {{ re.header | json }} -->

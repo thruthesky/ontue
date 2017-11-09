@@ -24,6 +24,7 @@ import { StudentProfilePage } from '../pages/student-profile/student-profile';
 import { AddSchedule } from '../components/add-schedule/add-schedule';
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
 import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
+import { ReservationPage } from '../pages/reservation/reservation';
 
 
 
@@ -69,6 +70,7 @@ export class MyApp {
 
     this.a.pages['schedule-table'] = ScheduleTablePage;
 
+    this.a.pages['reservation'] = ReservationPage;
 
 
 
@@ -79,9 +81,11 @@ export class MyApp {
   test() {
 
     
+    this.a.open('reservation');
+    
 
 
-    this.a.open('schedule-table', { ID: 806 });
+    // this.a.open('schedule-table', { ID: 806 });
     
 
     // this.a.open('teacher-list');

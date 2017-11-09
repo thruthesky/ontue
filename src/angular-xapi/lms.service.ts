@@ -204,6 +204,20 @@ export class LMSService extends Base {
         return this.x.post( data );
     }
 
+    class_cancel( idx_reservation ) {
+        let data = { idx_reservation: idx_reservation };
+        data['route'] = 'lms.class_cancel';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
+
+
+    class_search(data) {
+        data['route'] = 'lms.class_search';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post(data);
+    }
+
 
     my_point() {
         let data = {};
