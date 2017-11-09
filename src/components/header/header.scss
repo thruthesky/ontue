@@ -4,6 +4,9 @@
     text-align: center;
 
     button {
+      @media all and ( min-width: $sm ) {
+        margin-top: .4em!important;
+      }
 
       padding: .5em .25em;
       width: 100%;
@@ -16,7 +19,10 @@
       }
 
       div {
-        margin-top: 0.4rem!important;
+        margin-top: 0.5rem!important;
+        @media all and ( min-width: $sm ) {
+          margin-top: .8em!important;
+        }
       }
       
       

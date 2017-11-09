@@ -60,7 +60,11 @@
   "PAYMENT HISTORY": "결제목록",
   "RESERVATION HISTORY": "예약기록",
   "PROFILE UPDATE BUTTON": "회원 정보 업데이트",
-  "PRIVATE QUERY": "일대일 상담하기"
+  "PRIVATE QUERY": "일대일 상담하기",
+
+  "CLASS COMMENTS": "수업후기",
+  "FREE CLASS": "무료체험",
+  "CURICULUMS": "교재안내"
 
 
 }

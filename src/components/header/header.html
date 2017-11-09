@@ -29,7 +29,7 @@
 
       <ion-col>
         <button (click)="a.open( 'teacher-list' )">
-          <i class="fa fa-calendar-plus"></i>
+          <i class="fa fa-users"></i>
           <div>{{ 'TEACHER LIST' | translate }}</div>
         </button>
       </ion-col>
@@ -45,23 +45,23 @@
       </ion-col>
       
       <ion-col>
-        <button>
-          <i class="fa fa-table"></i>
+        <button (click)=" a.open('reservation') ">
+          <i class="fa fa-th blue"></i>
           <div>{{ 'RESERVATIONS' | translate }}</div>
         </button>
       </ion-col>
 
       <ion-col>
         <button>
-          <i class="fa fa-table"></i>
+          <i class="fa fa-tasks grey"></i>
           <div>{{ 'PASTS' | translate }}</div>
         </button>
       </ion-col>
 
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
-          <i class="fa fa-credit-card"></i>
-          <div>{{ 'PAYMENT' | translate }}</div>
+          <i class="fa fa-credit-card-front"></i>
+          <div>{{ 'CURICULUMS' | translate }}</div>
         </button>
       </ion-col>
 
@@ -70,7 +70,7 @@
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
           <i class="fa fa-credit-card"></i>
-          <div>{{ 'PAYMENT HISTORY' | translate }}</div>
+          <div>{{ 'FREE CLASS' | translate }}</div>
         </button>
       </ion-col>
 
@@ -83,7 +83,7 @@
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
           <i class="fa fa-credit-card"></i>
-          <div>{{ 'RESERVATION HISTORY' | translate }}</div>
+          <div>{{ 'CLASS COMMENTS' | translate }}</div>
         </button>
       </ion-col>
 
