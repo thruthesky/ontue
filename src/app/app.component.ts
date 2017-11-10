@@ -80,13 +80,13 @@ export class MyApp {
 
   test() {
 
-    
-    this.a.open('reservation');
-    
+
+    this.a.open('student-profile');
+
 
 
     // this.a.open('schedule-table', { ID: 806 });
-    
+
 
     // this.a.open('teacher-list');
 
@@ -103,7 +103,7 @@ export class MyApp {
     // this.a.open('menu');
 
 
-    
+
   }
 
 

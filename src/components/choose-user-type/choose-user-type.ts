@@ -26,7 +26,7 @@ export class ChooseUserTypeComponent implements OnInit {
             if (re.user_type == this.a.lms.userType.student) {
                 this.a.user.loadProfile()
                 .subscribe(
-                    re => this.a.open('schedule'),
+                    re => this.a.open('teacher-list'),
                     e => this.a.alert( e )
                 );
             }
