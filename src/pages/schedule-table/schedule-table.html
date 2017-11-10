@@ -19,8 +19,8 @@
   </select>
   <br> Select/Display teachers: Group of Levels 0,1,2,3,4,5. Male, Female, Age
   <br> Points between
-  <input type="text" name="min_point" [(ngModel)]="min_point"> ~
-  <input type="text" name="max_point" [(ngModel)]="max_point">
+  <input type="text" name="min_point" [(ngModel)]="min_point" (keyup)="onChangeValue()"> ~
+  <input type="text" name="max_point" [(ngModel)]="max_point" (keyup)="onChangeValue()">
   <button (click)="onChangeSearchOption()">Update</button>
   <hr> Display Options: Display what days: select:
   <input (change)="onChangeSearchOption()" type="checkbox" name="sunday" [(ngModel)]="sunday"> Sunday
@@ -30,6 +30,12 @@
   <input (change)="onChangeSearchOption()" type="checkbox" name="thursday" [(ngModel)]="thursday"> Thursday
   <input (change)="onChangeSearchOption()" type="checkbox" name="friday" [(ngModel)]="friday"> Firday
   <input (change)="onChangeSearchOption()" type="checkbox" name="saturday" [(ngModel)]="saturday"> Saturday
+  ~
+  <span (click)="monday=tuesday=wednesday=thursday=friday=true">M-F</span>~
+  <span (click)="monday=wednesday=friday=true">M-W-F</span>~
+  <span (click)="tuesday=thursday=true">T-TH</span>~
+  <span (click)="sunday=saturday=true">Sun-Sat</span>~
+  <span (click)="sunday=monday=tuesday=wednesday=thursday=friday=saturday=true">All</span>
   <br> How many days( Columns ):
   <select name="days" [(ngModel)]="days" (change)="onChangeSearchOption()">
     <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]"
