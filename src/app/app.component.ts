@@ -81,7 +81,7 @@ export class MyApp {
   test() {
 
 
-    this.a.open('settings');
+    this.a.open('register');
 
     // this.a.open('schedule-table', { ID: 806 });
 

@@ -11,7 +11,7 @@ import { FileUploadWidget } from '../../components/file-upload/file-upload';
 })
 export class RegisterPage {
 
-    account = <USER_REGISTER>{};
+    account: USER_REGISTER = <USER_REGISTER>{};
 
     tz = {};
     offset;
@@ -37,7 +37,17 @@ export class RegisterPage {
 
 
     onSubmit() {
+      console.log('Submit', this.account);
+      if( !this.account.name || !this.account.name.length ) return this.a.showAlert(-80021, '*Name is required...');
+      if( !this.account.user_email || !this.account.user_email.length ) return this.a.showAlert(-80022, '*Email is required...');
+      if( !this.account.user_pass || !this.account.user_pass.length ) return this.a.showAlert(-80023, '*Password is required...');
+      //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
         this.a.showLoader();
+
+
+
+
+
         this.account.user_login = this.account.user_email;
         this.account.photoURL = this.files.length ? this.files[0].url : '';
         this.a.user.register( this.account ).subscribe(re => {
