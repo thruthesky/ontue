@@ -199,20 +199,35 @@ export class ScheduleTablePage {
 
   clearDaySelected(){
     this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=false;
+    this.onChangeSearchOption();
   }
 
   selectMonToFri(){
     this.clearDaySelected();
     this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=true;
+    this.onChangeSearchOption();
   }
   selectMWF(){
     this.clearDaySelected();
     this.monday=this.wednesday=this.friday=true;
+    this.onChangeSearchOption();
+  }
+  selectTTh(){
+    this.clearDaySelected();
+    this.tuesday=this.thursday=true;
+    this.onChangeSearchOption();
   }
 
-  clearDaySelected(){
-    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=false;
+  selectSunSat(){
+    this.clearDaySelected();
+    this.sunday=this.saturday=true;
+    this.onChangeSearchOption();
   }
+  selectAll(){
+    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=true;
+    this.onChangeSearchOption();
+  }
+
 
 
 }
