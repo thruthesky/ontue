@@ -13,7 +13,8 @@ export class RegisterPage {
 
     account = <USER_REGISTER>{};
 
-
+    tz = {};
+    offset;
 
     files: FILES = [];
     @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget;
@@ -22,8 +23,11 @@ export class RegisterPage {
         public navCtrl: NavController,
         public a: AppService
     ) {
-
-
+      this.offset = this.a.lms.getUserLocalTimezoneOffset();
+      a.lms.timezones().subscribe( re => {
+        console.log( re);
+        this.tz = re;
+      });
 
     }
 
@@ -39,11 +43,7 @@ export class RegisterPage {
         this.a.user.register( this.account ).subscribe(re => {
             console.log("user.register => success: re: ", re);
 
-            const offset = this.a.lms.getUserLocalTimezoneOffset();
-            this.a.lms.timezone_set( offset ).subscribe( re => {}, e => {
-                
-            });
-                
+            this.a.lms.timezone_set( this.offset ).subscribe( () => {}, () => {});
             this.a.open('home');
         }, reg => {
             this.a.hideLoader();
@@ -68,6 +68,19 @@ export class RegisterPage {
             // console.log('error while updating user profile picture', err);
         });
     }
+
+
+
+  keysTimezone() {
+    return Object.keys( this.tz ).sort( ( a: any, b: any ) => a - b );
+  }
+
+  format( offset ) {
+    if ( offset > 0 ) {
+      return '+' + offset;
+    }
+    else return offset;
+  }
 
 }
 

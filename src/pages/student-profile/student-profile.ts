@@ -1,5 +1,4 @@
 import {Component, ViewChild} from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
 import {FILES, USER_DATA_RESPONSE, USER_UPDATE, USER_UPDATE_RESPONSE} from './../../angular-xapi/interfaces';
 import {FileUploadWidget} from '../../components/file-upload/file-upload';
@@ -17,8 +16,8 @@ export class StudentProfilePage {
   @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget;
 
   constructor(
-    public navCtrl: NavController,
-    public a: AppService) {
+    public a: AppService
+  ) {
 
     if( !a.user.isLogin ) {
       this.a.showAlert(this.a.xapi.ERROR.LOGIN_FIRST, 'User must login');

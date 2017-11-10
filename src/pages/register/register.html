@@ -48,6 +48,13 @@
     <ion-list>
 
       <ion-item>
+        <ion-label floating>{{ 'TIMEZONE' | translate }}</ion-label>
+        <ion-select [(ngModel)] = "offset" name="timezone">
+          <ion-option *ngFor="let t of keysTimezone()" value="{{ t }}">{{ format(t) }} {{ tz[t].name }}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
         <ion-label floating>{{ 'NAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
       </ion-item>

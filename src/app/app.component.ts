@@ -81,9 +81,7 @@ export class MyApp {
   test() {
 
 
-    this.a.open('student-profile');
-
-
+    this.a.open('settings');
 
     // this.a.open('schedule-table', { ID: 806 });
 
