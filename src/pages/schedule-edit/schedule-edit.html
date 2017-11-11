@@ -35,7 +35,7 @@
       <td><div *ngIf="s.thursday">{{s.prere}} {{s.point}}</div></td>
       <td><div *ngIf="s.friday">{{s.prere}} {{s.point}}</div></td>
       <td><div *ngIf="s.saturday">{{s.prere}} {{s.point}}</div></td>
-      <td>Edit</td>
+      <td (click)="onClickEditSchedule(s)">Edit</td>
       <td (click)="onClickDelete(s.idx)">Delete</td>
     </tr>
 
@@ -44,6 +44,6 @@
   <div *ngIf=" ! schedules ">
     <i class="fa fa-spinner fa-spin"></i> Loadnig...
   </div>
-  
+
 
 </ion-content>

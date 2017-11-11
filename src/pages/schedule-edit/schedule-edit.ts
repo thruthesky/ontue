@@ -37,10 +37,19 @@ export class ScheduleEditPage {
     modal.present();
   }
 
+  onClickEditSchedule(schedule) {
+    const modal = this.modalCtrl.create( AddSchedule, {schedule: schedule}  );
+    modal.onDidDismiss(()=> {
+      this.getMySchedule();
+    });
+    modal.present();
+  }
+
+
   getMySchedule(){
     this.a.lms.my_schedules().subscribe( re =>{
-      console.log(re);
-      this.schedules = re;
+      console.log('getMySchedule', re);
+      this.schedules = re['schedules'];
     } , e => this.a.alert(e) );
   }
 
@@ -75,7 +84,6 @@ export class ScheduleEditPage {
       });
       confirm.present();
     }
-
   }
 
 }

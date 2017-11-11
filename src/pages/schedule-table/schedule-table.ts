@@ -65,7 +65,7 @@ export class ScheduleTablePage {
     // this.getTeacherSchedule(this.params.ID);
 
     this.loadScheduleTable( this.request() );
-    this.a.lms.my_point().subscribe( re => this.my_point = re, e => this.a.alert( e ) );
+    this.a.lms.my_point().subscribe( re => this.my_point = re['point'], e => this.a.alert( e ) );
 
     this.typing
       .debounceTime(300)
@@ -189,7 +189,7 @@ export class ScheduleTablePage {
   updatePoint() {
     this.showLoaderPointUpdate = true;
     this.a.lms.my_point().subscribe( re => {
-      this.my_point = re;
+      this.my_point = re['point'];
       this.showLoaderPointUpdate = false;
      }, e => this.a.alert(e) );
   }

@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { Base } from './base';
 
 export interface SCHEDULE_EDIT extends DAYS {
+    idx?:number;
     point: number;
     prere: string;
     class_begin_hour: number;

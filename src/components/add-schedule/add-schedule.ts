@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import {NavParams, ViewController} from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
 import { SCHEDULE_EDIT } from './../../angular-xapi/lms.service';
 
@@ -16,11 +16,33 @@ export class AddSchedule {
     timer = 0;
     data:SCHEDULE_EDIT = <SCHEDULE_EDIT> {};
     allDays: boolean = false;
+    params;
     constructor(
         public a: AppService,
-        public viewCtrl: ViewController
+        public viewCtrl: ViewController,
+        public navParams: NavParams
     ) {
+        this.params = navParams.data;
+        console.log('params', this.params['schedule']);
         this.updateTime();
+        if( this.params.schedule && this.params.schedule.idx ) {
+          let s = this.params.schedule;
+          this.data = {
+            idx: s.idx,
+            point: s.point,
+            prere: s.prere,
+            class_begin_hour: s.user_time_class_begin[0],
+            class_begin_minute: s.user_time_class_begin[1],
+            duration: s.duration,
+            sunday: s.sunday,
+            monday: s.monday,
+            tuesday: s.tuesday,
+            wednesday: s.wednesday,
+            thursday: s.thursday,
+            friday: s.friday,
+            saturday: s.saturday
+          }
+        }
     }
 
 
@@ -55,7 +77,7 @@ export class AddSchedule {
         this.a.lms.schedule_edit( this.data ).subscribe( re => {
             console.log('re: ', re);
             this.a.hideLoader();
-            if( re['idx']) {
+            if( re['schedule']['idx']) {
               this.a.showAlert('Create Success', "New Schedule was created.");
               this.viewCtrl.dismiss();
             }
