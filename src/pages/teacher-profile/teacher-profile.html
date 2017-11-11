@@ -7,6 +7,9 @@
     Teacher profile page
   </div>
 
+
+  {{account|json}}
+
   <div class="text-center mt-5">
     <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
       <input *ngIf=" ! a.xapi.isCordova "
@@ -18,7 +21,7 @@
       <div class="profile-user-photo">
         <img
           class="size-10 rounded-50"
-          src="{{files.length > 0 ? files[0]?.url : a.anonymousPhotoURL}}"
+          src="{{files.length > 0 && files[0].url ? files[0]?.url : a.anonymousPhotoURL}}"
 
         >
       </div>
@@ -40,7 +43,7 @@
 
   </div>
 
-  {{account|json}}
+
 
   <form (submit)="onSubmit()">
     <ion-list>
@@ -76,10 +79,10 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <button *ngIf="!readonly" ion-button color="primary" block>{{ 'PROFILE UPDATE BUTTON' | translate }}</button>
+            <button *ngIf="!readonly" ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
           </ion-col>
           <ion-col>
-            <button ion-button type="button" (click)="a.open('home')" color="primary" block>{{ 'CANCEL' | translate }}</button>
+            <button ion-button (click)="a.open('home')" color="primary" block>Cancel</button>
           </ion-col>
         </ion-row>
       </ion-grid>

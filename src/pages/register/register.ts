@@ -11,9 +11,10 @@ import { FileUploadWidget } from '../../components/file-upload/file-upload';
 })
 export class RegisterPage {
 
-    account = <USER_REGISTER>{};
+    account: USER_REGISTER = <USER_REGISTER>{};
 
-
+    tz = {};
+    offset;
 
     files: FILES = [];
     @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget;
@@ -22,8 +23,11 @@ export class RegisterPage {
         public navCtrl: NavController,
         public a: AppService
     ) {
-
-
+      this.offset = this.a.lms.getUserLocalTimezoneOffset();
+      a.lms.timezones().subscribe( re => {
+        console.log( re);
+        this.tz = re;
+      });
 
     }
 
@@ -33,17 +37,23 @@ export class RegisterPage {
 
 
     onSubmit() {
+      console.log('Submit', this.account);
+      if( !this.account.name || !this.account.name.length ) return this.a.showAlert(-80021, '*Name is required...');
+      if( !this.account.user_email || !this.account.user_email.length ) return this.a.showAlert(-80022, '*Email is required...');
+      if( !this.account.user_pass || !this.account.user_pass.length ) return this.a.showAlert(-80023, '*Password is required...');
+      //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
         this.a.showLoader();
+
+
+
+
+
         this.account.user_login = this.account.user_email;
         this.account.photoURL = this.files.length ? this.files[0].url : '';
         this.a.user.register( this.account ).subscribe(re => {
             console.log("user.register => success: re: ", re);
 
-            const offset = this.a.lms.getUserLocalTimezoneOffset();
-            this.a.lms.timezone_set( offset ).subscribe( re => {}, e => {
-                
-            });
-                
+            this.a.lms.timezone_set( this.offset ).subscribe( () => {}, () => {});
             this.a.open('home');
         }, reg => {
             this.a.hideLoader();
@@ -68,6 +78,19 @@ export class RegisterPage {
             // console.log('error while updating user profile picture', err);
         });
     }
+
+
+
+  keysTimezone() {
+    return Object.keys( this.tz ).sort( ( a: any, b: any ) => a - b );
+  }
+
+  format( offset ) {
+    if ( offset > 0 ) {
+      return '+' + offset;
+    }
+    else return offset;
+  }
 
 }
 

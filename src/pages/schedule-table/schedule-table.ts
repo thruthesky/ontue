@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
 import {NavParams} from "ionic-angular";
+import {Subject} from "rxjs/Subject";
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
 
@@ -46,6 +47,11 @@ export class ScheduleTablePage {
   my_point = 0;
   showLoaderPointUpdate = false;
 
+
+  point_range: { lower: number, upper: number } = { lower: 33, upper: 60 };
+
+  private typing = new Subject<string>();
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -60,6 +66,12 @@ export class ScheduleTablePage {
 
     this.loadScheduleTable( this.request() );
     this.a.lms.my_point().subscribe( re => this.my_point = re, e => this.a.alert( e ) );
+
+    this.typing
+      .debounceTime(300)
+      .subscribe(() => {
+        this.onChangeSearchOption();
+      });
   }
 
 
@@ -82,7 +94,7 @@ export class ScheduleTablePage {
       min_point: this.min_point,
       max_point: this.max_point
     };
-    
+
     const req = Object.assign( defaults, options );
     console.log("Request: ", req );
     return req;
@@ -120,6 +132,10 @@ export class ScheduleTablePage {
 
 
     this.loadScheduleTable( this.request() );
+  }
+
+  onChangeValue() {
+    this.typing.next();
   }
 
 
@@ -170,8 +186,6 @@ export class ScheduleTablePage {
     });
   }
 
-
-
   updatePoint() {
     this.showLoaderPointUpdate = true;
     this.a.lms.my_point().subscribe( re => {
@@ -179,4 +193,39 @@ export class ScheduleTablePage {
       this.showLoaderPointUpdate = false;
      }, e => this.a.alert(e) );
   }
+
+
+  clearDaySelected(){
+    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=false;
+    this.onChangeSearchOption();
+  }
+
+  selectMonToFri(){
+    this.clearDaySelected();
+    this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=true;
+    this.onChangeSearchOption();
+  }
+  selectMWF(){
+    this.clearDaySelected();
+    this.monday=this.wednesday=this.friday=true;
+    this.onChangeSearchOption();
+  }
+  selectTTh(){
+    this.clearDaySelected();
+    this.tuesday=this.thursday=true;
+    this.onChangeSearchOption();
+  }
+
+  selectSunSat(){
+    this.clearDaySelected();
+    this.sunday=this.saturday=true;
+    this.onChangeSearchOption();
+  }
+  selectAll(){
+    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=true;
+    this.onChangeSearchOption();
+  }
+
+
+
 }

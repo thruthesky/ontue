@@ -9,6 +9,7 @@
 
   {{a.user.profile|json}}
 
+
   <div class="text-center mt-5">
     <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
       <input *ngIf=" ! a.isCordova "
@@ -20,7 +21,7 @@
       <div class="profile-user-photo">
         <img
           class="size-10 rounded-50"
-          src="{{files.length > 0 ? files[0]?.url : a.anonymousPhotoURL}}"
+          src="{{files.length > 0 && files[0].url ? files[0]?.url : a.anonymousPhotoURL}}"
 
         >
       </div>
