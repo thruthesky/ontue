@@ -88,6 +88,8 @@
           <div>{{ session.point }}</div>
           <div *ngIf=" session.status == 'R' ">{{ session.student_name }}</div>
           <div>{{ session.prere }}</div>
+          <div>{{ session.idx_reservation }}</div>
+          <div>{{ session.day }}</div>
         </div>
 
         <div class="session no" *ngIf=" session.status == 'N' "></div>

@@ -25,7 +25,7 @@ export class ScheduleTablePage {
   };
 
   /// search options
-  days = 5;
+  days = 10;
   min_duration = 10;
   max_duration = 0;
 
@@ -65,12 +65,12 @@ export class ScheduleTablePage {
 
   request( options = {} ) {
     let defaults = {
-      teachers: [],
+      teachers: [ 810 ],
       days: this.days,
       min_duration: this.min_duration,
       max_duration: this.max_duration,
       limit: 1000,
-      navigate: '',
+      navigate: '20171109',
       starting_day: this.re.starting_day,
       sunday: this.sunday ? 'Y' : '',
       monday: this.monday ? 'Y'  : '',
@@ -131,9 +131,6 @@ export class ScheduleTablePage {
     if ( session.status == 'Y' ) this.reserveSession( session );
     else if ( session.status == 'R' && session.owner == 'me' ) this.cancelSession( session );
 
-
-
-
   }
 
   reserveSession( session ) {
@@ -146,6 +143,7 @@ export class ScheduleTablePage {
       session.owner = 'me';
       session.student_name = re.student_name;
       session.point = re.point;
+      session.idx_reservation = re.idx_reservation;
       this.updatePoint();
     }, e => {
       session.in_progress = false;
@@ -157,7 +155,7 @@ export class ScheduleTablePage {
   cancelSession( session ) {
 
     session.in_progress = true;
-    console.log("Going to cancel : ", session );
+    console.log("Going to cancel with : ", session.idx_reservation );
     this.a.lms.class_cancel( session.idx_reservation ).subscribe( re => {
       console.log("cancel success", re);
       session.in_progress = false;

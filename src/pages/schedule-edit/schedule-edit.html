@@ -10,6 +10,9 @@
   </p>
 
 
+
+
+  <!-- {{ schedules | json }} -->
   <button ion-button (click)='onClickAddSchedule()'>Add Scedule</button>
   <table class="schedule">
     <tr>
@@ -24,7 +27,7 @@
         <td>Action</td>
     </tr>
     <tr *ngFor="let s of schedules">
-      <td>{{s.class_begin}}</td>
+      <td>{{s.user_time_class_begin}}</td>
       <td><div *ngIf="s.sunday">{{s.prere}} {{s.point}}</div></td>
       <td><div *ngIf="s.monday">{{s.prere}} {{s.point}}</div></td>
       <td><div *ngIf="s.tuesday">{{s.prere}} {{s.point}}</div></td>
