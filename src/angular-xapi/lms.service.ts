@@ -25,6 +25,15 @@ export interface SCHEDULE extends DAYS {
     point: number;
     prere: string;
     stamp_created: number;
+    user_time_days: {
+        sunday: 'Y' | '',
+        monday: 'Y' | '',
+        tuesday: 'Y' | '',
+        wednesday: 'Y' | '',
+        thursday: 'Y' | '',
+        friday: 'Y' | '',
+        saturday: 'Y' | '',
+    }
 }
 
 
@@ -185,7 +194,7 @@ export class LMSService extends Base {
 
 
     schedule_table(data) {
-        data['route'] = 'lms.schedule_table';
+        data['route'] = 'lms.new_schedule_table';
         data['session_id'] = this.user.sessionId;
         return this.x.post(data);
     }

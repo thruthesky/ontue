@@ -26,8 +26,8 @@ export class ScheduleTablePage {
   };
 
   /// search options
-  days = 10;
-  min_duration = 10;
+  days = 18;
+  min_duration = 1;
   max_duration = 0;
 
 
@@ -77,7 +77,7 @@ export class ScheduleTablePage {
 
   request( options = {} ) {
     let defaults = {
-      teachers: [ 810 ],
+      teachers: [ ],
       days: this.days,
       min_duration: this.min_duration,
       max_duration: this.max_duration,
@@ -144,15 +144,19 @@ export class ScheduleTablePage {
   }
 
   onClickSession( session ) {
-    if ( session.status == 'Y' ) this.reserveSession( session );
-    else if ( session.status == 'R' && session.owner == 'me' ) this.cancelSession( session );
+    if ( session.status == 'open' ) this.reserveSession( session );
+    else if ( session.status == 'reserved' && session.owner == 'me' ) this.cancelSession( session );
 
   }
 
   reserveSession( session ) {
 
+    console.log("reserve: session: ", session);
+    const schedule = this.schedule( session.idx_schedule );
+    console.log("reserve: schedule: ", schedule);
+
     session.in_progress = true;
-    this.a.lms.class_reserve({ idx_schedule: session.idx_schedule, date: session.date }).subscribe( re => {
+    this.a.lms.class_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
       session.status = 'R';

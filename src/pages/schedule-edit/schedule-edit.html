@@ -28,13 +28,13 @@
     </tr>
     <tr *ngFor="let s of schedules">
       <td>{{s.user_time_class_begin}}</td>
-      <td><div *ngIf="s.sunday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.monday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.tuesday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.wednesday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.thursday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.friday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.saturday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.user_time_days.monday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.user_time_days.tuesday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.user_time_days.wednesday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.user_time_days.thursday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.user_time_days.friday">{{s.prere}} {{s.point}}</div></td>
+      <td><div *ngIf="s.user_time_days.saturday">{{s.prere}} {{s.point}}</div></td>
       <td (click)="onClickEditSchedule(s)">Edit</td>
       <td (click)="onClickDelete(s.idx)">Delete</td>
     </tr>

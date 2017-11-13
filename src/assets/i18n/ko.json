@@ -64,7 +64,17 @@
 
   "CLASS COMMENTS": "수업후기",
   "FREE CLASS": "무료체험",
-  "CURICULUMS": "교재안내"
+  "CURICULUMS": "교재안내",
+
+  "sunday": "일",
+  "monday": "월",
+  "tuesday": "화",
+  "wednesday": "수",
+  "thursday": "목",
+  "friday": "금",
+  "saturday": "토"
+  
+
 
 
 }
