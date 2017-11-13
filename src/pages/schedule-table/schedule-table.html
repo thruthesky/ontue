@@ -73,9 +73,10 @@
 
       <tr valign="top" *ngFor="let sessions of re.table">
         <td>
+
           {{ sessions[0].idx_schedule }}
           <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }}
-          <br> {{ schedule( sessions[0].idx_schedule ).teacher_name }}
+          <br> {{ schedule( sessions[0].idx_schedule ).teacher.name }}
         </td>
         <td>
           {{ schedule( sessions[0].idx_schedule ).user_time_class_begin }}
@@ -84,10 +85,11 @@
 
         <td *ngFor=" let session of sessions ">
           <div class="session not-empty pointer bg-indigo white" text-center *ngIf=" session.status != 'N' " (click)="onClickSession( session )">
-            <div class="status-icon" *ngIf="! session.in_progress">
-              <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'Y' "></ion-icon>
-              <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'R' && !session.owner"></ion-icon>
-              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'R' && session.owner == 'me' "></ion-icon>
+            <!--{{session |json}}-->
+            <div class="status-icon" *ngIf=" session.status != 'past' ">
+              <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'open' "></ion-icon>
+              <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'reserve' && !session.owner"></ion-icon>
+              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'reserve' && session.owner == 'me' "></ion-icon>
             </div>
             <div class="loader-icon">
               <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>

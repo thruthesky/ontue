@@ -13,6 +13,11 @@ import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 })
 export class ScheduleEditPage {
 
+  timezone_offset = 0;
+  timezone_name = 0;
+  time = '';
+  timer = 0;
+
   schedules: SCHEDULE_EDIT_RESPONSE;
 
   constructor(
@@ -21,11 +26,25 @@ export class ScheduleEditPage {
     public a: AppService
   ) {
 
+
+    this.a.lms.timezone().subscribe( re => {
+      this.timezone_name = re['name'];
+      this.timezone_offset = parseInt(re['offset']);
+    } );
+    this.updateTime();
+
     // setTimeout(() => this.onClickAddSchedule(), 500);
-
-
-
     this.getMySchedule();
+
+  }
+
+  updateTime() {
+    if ( this.timezone_name ) {
+      // console.log('this. timezone ', this.timezone_offset)
+      this.time = this.a.lms.localeString( this.timezone_offset );
+      // console.log( this.time );
+    }
+    this.timer = setTimeout( () => this.updateTime(), 1000 );
   }
 
 
