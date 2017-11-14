@@ -64,6 +64,7 @@
         <td>Time</td>
         <td *ngFor="let header of re.header">
           <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
+            {{ header | json }}
             {{ header.display_date }}
             <br> {{ header.user_time_day | translate }}
           </div>

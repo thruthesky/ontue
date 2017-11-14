@@ -156,10 +156,10 @@ export class ScheduleTablePage {
     console.log("reserve: schedule: ", schedule);
 
     session.in_progress = true;
-    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
+    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.user_time_date, class_begin: schedule.class_begin }).subscribe( re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
-      session.status = 'R';
+      session.status = 'reserve';
       session.owner = 'me';
       session.student_name = re.student_name;
       session.point = re.point;
@@ -179,7 +179,7 @@ export class ScheduleTablePage {
     this.a.lms.class_cancel( session.idx_reservation ).subscribe( re => {
       console.log("cancel success", re);
       session.in_progress = false;
-      session.status = 'Y';
+      session.status = 'open';
       session.owner = '';
       session.student_name = '';
       session.point = this.schedule( session.idx_schedule ).point;
