@@ -82,7 +82,7 @@ export class ScheduleTablePage {
       min_duration: this.min_duration,
       max_duration: this.max_duration,
       limit: 1000,
-      navigate: '20171109',
+      navigate: 'today',
       starting_day: this.re.starting_day,
       sunday: this.sunday ? 'Y' : '',
       monday: this.monday ? 'Y'  : '',
@@ -156,7 +156,7 @@ export class ScheduleTablePage {
     console.log("reserve: schedule: ", schedule);
 
     session.in_progress = true;
-    this.a.lms.class_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
+    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
       session.status = 'R';

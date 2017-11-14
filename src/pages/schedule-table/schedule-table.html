@@ -84,8 +84,8 @@
         </td>
 
         <td *ngFor=" let session of sessions ">
-          <div class="session not-empty pointer bg-indigo white" text-center *ngIf=" session.status != 'N' " (click)="onClickSession( session )">
-            <!--{{session |json}}-->
+          <div class="session not-empty pointer bg-indigo white" text-center *ngIf=" session.status != 'past' " (click)="onClickSession( session )">
+            {{session |json}}
             <div class="status-icon" *ngIf=" session.status != 'past' ">
               <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'open' "></ion-icon>
               <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'reserve' && !session.owner"></ion-icon>

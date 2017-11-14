@@ -78,7 +78,8 @@ export class AddSchedule {
             console.log('re: ', re);
             this.a.hideLoader();
             if( re['schedule']['idx']) {
-              this.a.showAlert('Create Success', "New Schedule was created.");
+              if( this.data.idx ) this.a.showAlert('Update Success', "Schedule was update successful.");
+              else this.a.showAlert('Create Success', "New Schedule was created.");
               this.viewCtrl.dismiss();
             }
         }, e => {
