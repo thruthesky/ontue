@@ -82,6 +82,8 @@
         <td>
           {{ schedule( sessions[0].idx_schedule ).user_time_class_begin }}
           <br> {{ schedule( sessions[0].idx_schedule ).duration }}
+          <hr>
+          {{ schedule( sessions[0].idx_schedule ) | json }}
         </td>
 
         <td *ngFor=" let session of sessions ">

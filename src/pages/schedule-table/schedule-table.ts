@@ -156,7 +156,7 @@ export class ScheduleTablePage {
     console.log("reserve: schedule: ", schedule);
 
     session.in_progress = true;
-    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.user_time_date, class_begin: schedule.class_begin }).subscribe( re => {
+    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
       session.status = 'reserve';
