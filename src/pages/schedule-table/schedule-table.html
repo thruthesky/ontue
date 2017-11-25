@@ -87,18 +87,18 @@
         </td>
 
         <td *ngFor=" let session of sessions ">
-          <div class="session not-empty pointer bg-indigo white" text-center *ngIf=" session.status != 'past' " (click)="onClickSession( session )">
+          <div class="session not-empty pointer" text-center *ngIf=" session.status != 'past' " (click)="onClickSession( session )">
             {{session |json}}
             <div class="status-icon" *ngIf=" session.status != 'past' ">
               <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'open' "></ion-icon>
               <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'reserve' && !session.owner"></ion-icon>
-              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'reserve' && session.owner == 'me' "></ion-icon>
+              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'reserved' && session.owner == 'me' "></ion-icon>
             </div>
             <div class="loader-icon">
               <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
             </div>
             <div>{{ session.point }}</div>
-            <div *ngIf=" session.status == 'reserve' ">{{ session.student_name }}</div>
+            <div *ngIf=" session.status == 'reserved' ">{{ session.student_name }}</div>
             <div>{{ session.prere }}</div>
             <div>{{ session.idx_reservation }}</div>
             <!-- <div>{{ session.day }}</div> -->

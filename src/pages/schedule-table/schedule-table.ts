@@ -144,6 +144,9 @@ export class ScheduleTablePage {
   }
 
   onClickSession( session ) {
+
+    console.log('onClickSession', session);
+
     if ( session.status == 'open' ) this.reserveSession( session );
     else if ( session.status == 'reserved' && session.owner == 'me' ) this.cancelSession( session );
 
@@ -159,7 +162,7 @@ export class ScheduleTablePage {
     this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
-      session.status = 'reserve';
+      session.status = 'reserved';
       session.owner = 'me';
       session.student_name = re.student_name;
       session.point = re.point;
