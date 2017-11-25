@@ -62,6 +62,7 @@
       <tr>
         <td>Teacher</td>
         <td>Time</td>
+        <td>Reserve Visible</td>
         <td *ngFor="let header of re.header">
           <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
             {{ header | json }}
@@ -83,9 +84,9 @@
           {{ schedule( sessions[0].idx_schedule ).user_time_class_begin }}
           <br> {{ schedule( sessions[0].idx_schedule ).duration }}
           <hr>
-          {{ schedule( sessions[0].idx_schedule ) | json }}
+          <!--{{ schedule( sessions[0].idx_schedule ) | json }}-->
         </td>
-
+        <td><button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button><button class="btn btn-primary" (click)="onClickReserveCancel(sessions)">Cancel</button> </td>
         <td *ngFor=" let session of sessions ">
           <div class="session not-empty pointer" text-center *ngIf=" session.status != 'past' " (click)="onClickSession( session )">
             {{session |json}}

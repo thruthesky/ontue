@@ -233,6 +233,30 @@ export class ScheduleTablePage {
     this.onChangeSearchOption();
   }
 
+  onClickReserveVisible(sessions){
 
+    console.log('onClickReserveVisible',sessions);
+
+
+    sessions.forEach( session => {
+      if(session.status == 'open'){
+        // console.log(session)
+        this.reserveSession( session);
+      }
+
+    });
+
+  }
+
+  onClickReserveCancel(sessions) {
+
+    sessions.forEach( session => {
+      if(session.status == 'reserved' && session.owner && session.owner == 'me'){
+        // console.log(session)
+        this.cancelSession( session);
+      }
+
+    });
+  }
 
 }
