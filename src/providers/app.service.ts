@@ -30,6 +30,7 @@ export class AppService {
     i18n = {}; // This holds translated text from ngx-translation. Some texts needs to be loaded beforehand.
 
 
+    inLoadingMyPoint = false;
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -121,6 +122,24 @@ export class AppService {
         if (data && data['ID'] && data['post_author'] == this.user.id) return true;
         if (data && data['comment_ID'] && data['user_id'] == this.user.id) return true;
         return false;
+    }
+
+    /**
+     * Loads user point.
+     * @note inLoadingMyPoint will be set true on loading.
+     * @param callback callback
+     */
+    loadMyPoint( callback ) {
+        this.inLoadingMyPoint = true;
+        this.lms.my_point().subscribe(re => {
+            let point = re['point'];
+            point = point.toString().split('').reverse().reduce( (t, v, i, a ) => {
+                return t += v + ( i < a.length -1 && (i+1) % 3 == 0 ? ',' : '' );
+              }, '' ).split('').reverse().join('');
+              this.inLoadingMyPoint = false;
+              callback(point);
+        }, e => this.alert(e));
+    
     }
 
     /**

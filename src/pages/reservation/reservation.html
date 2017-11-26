@@ -6,14 +6,10 @@
     {{ a.user.name }}
     , Reservations:
 
+    <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
+    <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
 
-    <!--<section class="books" *ngIf = " books.length ">-->
-            <!--<div class="book" *ngFor="let book of books">-->
-              <!--{{ book.idx }}-->
-              <!---->
-              <!---->
-            <!--</div>-->
-    <!--</section>-->
+    <button ion-button (click)="onClickCancelAll()">Cancel All</button>
 
     <table class="books" *ngIf = " books.length ">
       <tr>
@@ -23,6 +19,7 @@
         <td>Teacher</td>
         <td>Student</td>
         <td>Point</td>
+        <td></td>
 
       </tr>
 
@@ -33,6 +30,11 @@
         <td>{{book.idx_teacher}}</td>
         <td>{{book.idx_student}}</td>
         <td>{{book.point}}</td>
+        <td>
+          <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>
+          <!-- <i class="fa fa-spinner fa-spin" aria-hidden="true" *ngIf=" book.process "></i> -->
+          <ion-spinner *ngIf=" book.process "></ion-spinner>
+        </td>
       </tr>
 
 
