@@ -3,12 +3,12 @@
       </ion-header>
       
       <ion-content padding>
-          {{ a.user.name }}
-          , Reservations:
+          {{ a.user.getProfile() | json }}
+          , Past:
       
           <table class="books" *ngIf = " books.length ">
             <tr>
-              <td>class#</td>
+              <td>Session No.</td>
               <td>Date</td>
               <td>Time</td>
               <td>Teacher</td>
@@ -18,12 +18,16 @@
             </tr>
       
             <tr *ngFor="let book of books">
-              <td>{{book.idx_schedule}}</td>
+              <td>{{book.idx}}</td>
               <td>{{book.date}}</td>
               <td>{{book.class_begin}}~{{book.class_end}}</td>
               <td>{{book.idx_teacher}}</td>
               <td>{{book.idx_student}}</td>
               <td>{{book.point}}</td>
+
+              <!-- <td>
+                <button ion-button (click)='onClickCancel(book)'>Cancel</button>
+              </td> -->
             </tr>
       
       
