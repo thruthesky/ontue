@@ -222,8 +222,8 @@ export class LMSService extends Base {
     }
 
 
-    class_search(data) {
-        data['route'] = 'lms.class_search';
+    search_reservation(data) {
+        data['route'] = 'lms.search_reservation';
         data['session_id'] = this.user.sessionId;
         return this.x.post(data);
     }
@@ -235,4 +235,7 @@ export class LMSService extends Base {
         data['session_id'] = this.user.sessionId;
         return this.x.post( data );
     }
+
+
+
 }
