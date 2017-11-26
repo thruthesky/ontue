@@ -23,12 +23,12 @@
 
       </tr>
 
-      <tr *ngFor="let book of books">
+      <tr *ngFor="let book of books; let i = index;">
         <td>{{book.idx}}</td>
-        <td>{{book.date}}</td>
-        <td>{{book.class_begin}}~{{book.class_end}}</td>
-        <td>{{book.idx_teacher}}</td>
-        <td>{{book.idx_student}}</td>
+        <td>date:{{book.date}}</td>
+        <td>class time:{{book.class_begin}}~{{book.class_end}}</td>
+        <td>teacher:{{book.idx_teacher}}</td>
+        <td>student:{{book.idx_student}}</td>
         <td>{{book.point}}</td>
         <td>
           <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>

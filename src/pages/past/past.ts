@@ -9,10 +9,19 @@ export class PastPage {
     books = [];
     constructor( public a: AppService ) {
 
-        // a.lms.class_search({ user: 'me' }).subscribe( re => {
-        //     console.log("Result of class_search(): ", re);
-        //     this.books = re;
-        // }, e => this.a.alert(e));
+
+
+        a.lms.session_search({ user: 'me', past: true }).subscribe( re => {
+            console.log("Result of class_search(): ", re);
+            this.books = re['books'];
+        }, e => this.a.alert(e));
 
     }
+
+
+    // onClickCancel(book) {
+    //     this.a.lms.session_cancel( book.idx ).subscribe( re => {
+    //         console.log(re);
+    //     }, e => this.a.alert(e ));
+    // }
 }

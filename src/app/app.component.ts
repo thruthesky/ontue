@@ -25,6 +25,7 @@ import { AddSchedule } from '../components/add-schedule/add-schedule';
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
 import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
 import { ReservationPage } from '../pages/reservation/reservation';
+import { PastPage } from '../pages/past/past';
 
 
 
@@ -71,6 +72,7 @@ export class MyApp {
     this.a.pages['schedule-table'] = ScheduleTablePage;
 
     this.a.pages['reservation'] = ReservationPage;
+    this.a.pages['past'] = PastPage;
 
 
 
@@ -85,27 +87,21 @@ export class MyApp {
 
     // this.a.open('schedule-table', { ID: 806 });
 
-
     // this.a.open('teacher-list');
-
 
     // this.a.open('schedule-edit');
 
     // this.a.open('register');
 
-
-
     // this.a.open('student-profile');
     // this.a.open('register');
-
     // this.a.open('menu');
 
-
     this.a.open('reservation');
-    
+
+    // this.a.open('past');
 
   }
-
 
 
   onClickHome() {
