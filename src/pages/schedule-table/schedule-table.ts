@@ -179,7 +179,7 @@ export class ScheduleTablePage {
 
     session.in_progress = true;
     console.log("Going to cancel with : ", session.idx_reservation );
-    this.a.lms.class_cancel( session.idx_reservation ).subscribe( re => {
+    this.a.lms.session_cancel( session.idx_reservation ).subscribe( re => {
       console.log("cancel success", re);
       session.in_progress = false;
       session.status = 'open';

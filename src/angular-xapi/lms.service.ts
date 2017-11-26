@@ -214,9 +214,9 @@ export class LMSService extends Base {
         return this.x.post( data );
     }
 
-    class_cancel( idx_reservation ) {
+    session_cancel( idx_reservation ) {
         let data = { idx_reservation: idx_reservation };
-        data['route'] = 'lms.class_cancel';
+        data['route'] = 'lms.session_cancel';
         data['session_id'] = this.user.sessionId;
         return this.x.post( data );
     }
