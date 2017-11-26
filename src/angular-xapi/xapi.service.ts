@@ -86,7 +86,10 @@ export class XapiService extends Base {
             console.log("Requested data(that cause empty response): ", data);
             this.throw(-4008, 'Response from backend is empty');
         }
-        else if (res['code'] === void 0) this.throw(-4009, 'Response has no code');
+        else if (res['code'] === void 0) {
+            console.log("=========> re: ", res);
+            this.throw(-4009, 'Response has no code');
+        }
         else if (res['code'] !== 0) {
             // console.log("WordPressApiService::checkResult => error : ", res);
             if ( res['message'] === void 0 ) res['message'] = 'no message';
