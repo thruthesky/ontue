@@ -223,6 +223,7 @@ export class LMSService extends Base {
 
 
     session_search(data) {
+
         data['route'] = 'lms.session_search';
         data['session_id'] = this.user.sessionId;
         return this.x.post(data);

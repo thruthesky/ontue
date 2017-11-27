@@ -99,12 +99,12 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    // this.a.open('reservation');
+    this.a.open('reservation');
 
     // this.a.open('past');
 
-    this.a.open('dayoff');
-    
+    // this.a.open('dayoff');
+
   }
 
 

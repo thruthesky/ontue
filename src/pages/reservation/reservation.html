@@ -4,9 +4,34 @@
 
 <ion-content padding>
 
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Teacher's Name</ion-label>
+      <ion-input type="text" (keyup)="onChangeValue()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <input (change)="onChangeSearchOption()" type="checkbox" name="sunday" [(ngModel)]="sunday"> Sunday
+      <input (change)="onChangeSearchOption()" type="checkbox" name="monday" [(ngModel)]="monday"> Monday
+      <input (change)="onChangeSearchOption()" type="checkbox" name="tuesday" [(ngModel)]="tuesday"> Tuesday
+      <input (change)="onChangeSearchOption()" type="checkbox" name="wednesday" [(ngModel)]="wednesday"> Wednesday
+      <input (change)="onChangeSearchOption()" type="checkbox" name="thursday" [(ngModel)]="thursday"> Thursday
+      <input (change)="onChangeSearchOption()" type="checkbox" name="friday" [(ngModel)]="friday"> Firday
+      <input (change)="onChangeSearchOption()" type="checkbox" name="saturday" [(ngModel)]="saturday"> Saturday -
+      <span class="pointer" (click)="selectMonToFri()">M-F</span>~
+      <span class="pointer" (click)="selectMWF()">M-W-F</span>~
+      <span class="pointer" (click)="selectTTh()">T-TH</span>~
+      <span class="pointer" (click)="selectSunSat()">Sun-Sat</span>~
+      <span class="pointer" (click)="selectAll()">All</span>
+    </ion-item>
+
+  </ion-list>
+
     {{ a.user.name }}
     You are {{ a.userType }}!
-    
+
     , Reservations:
 
     <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>

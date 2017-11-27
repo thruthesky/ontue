@@ -14,7 +14,7 @@ export class HomePage {
     public navCtrl: NavController,
     public a: AppService
   ) {
-    a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e));
+    // a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e));
 
     // a.alert('Hello, Alert !');
     // a.alert( { title: 'title', subTitle: 'subtitle', message: 'message', text: 'YES', callback: () => {
@@ -29,18 +29,17 @@ export class HomePage {
 
 
   ionViewDidLoad() {
-    
+
   }
 
 
-  
 
   ngAfterViewInit() {
-    // 
+    //
   }
 
 
 
-  
+
 
 }
