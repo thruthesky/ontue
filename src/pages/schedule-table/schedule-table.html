@@ -65,7 +65,7 @@
         <td>Reserve Visible</td>
         <td *ngFor="let header of re.header">
           <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
-            {{ header | json }}
+            <!--{{ header | json }}-->
             {{ header.display_date }}
             <br> {{ header.user_time_day | translate }}
           </div>
@@ -89,7 +89,7 @@
         <td><button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button><button class="btn btn-primary" (click)="onClickReserveCancel(sessions)">Cancel</button> </td>
         <td *ngFor=" let session of sessions ">
           <div class="session not-empty pointer" text-center *ngIf=" session.status != 'past' " (click)="onClickSession( session )">
-            {{session |json}}
+            <!--{{session |json}}-->
             <div class="status-icon" *ngIf=" session.status != 'past' ">
               <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'open' "></ion-icon>
               <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'reserve' && !session.owner"></ion-icon>
