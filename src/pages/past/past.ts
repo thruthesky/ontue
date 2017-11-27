@@ -9,6 +9,8 @@ export class PastPage {
     books = [];
     constructor( public a: AppService ) {
 
+
+
         a.lms.session_search({ user: 'me', past: true }).subscribe( re => {
             console.log("Result of class_search(): ", re);
             this.books = re['books'];
