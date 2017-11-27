@@ -1,0 +1,23 @@
+<ion-header>
+  <header-content></header-content>
+</ion-header>
+
+<ion-content>
+  <h1>Dayoff</h1>
+
+  <button ion-button (click)='onClickCreateDayoff()'>Create a Day-off</button>
+
+  <section *ngIf="showForm">
+    <form>
+      <ion-item-group>
+        <ion-item>
+          <ion-label>Select Date</ion-label>
+          <ion-datetime name="date" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
+        </ion-item>
+      </ion-item-group>
+      
+      <button ion-button type="submit">Create</button>
+    </form>
+  </section>
+  <hr> {{ dayoffs | json }}
+</ion-content>

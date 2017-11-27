@@ -236,6 +236,12 @@ export class LMSService extends Base {
         return this.x.post( data );
     }
 
+    get_dayoffs() {
+        let data = {};
+        data['route'] = 'lms.dayoff_get';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
 
 
 }

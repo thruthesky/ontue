@@ -19,13 +19,20 @@
       </ion-col>
 
 
-      <ion-col>
-        <button (click)="a.open( 'teacher-list' )">
-          <i class="fa fa-calendar-plus"></i>
-          <div>{{ 'RESERVE' | translate }}</div>
-        </button>
-      </ion-col>
+      <ion-col *ngIf=" a.isTeacher ">
+          <button (click)="a.open( 'dayoff' )">
+            <i class="fa fa-calendar-plus"></i>
+            <div>Day-Offs</div>
+          </button>
+        </ion-col>
 
+        <ion-col *ngIf=" a.isStudent ">
+            <button (click)="a.open( 'teacher-list' )">
+              <i class="fa fa-calendar-plus"></i>
+              <div>{{ 'RESERVE' | translate }}</div>
+            </button>
+          </ion-col>
+      
 
       <ion-col>
         <button (click)="a.open( 'teacher-list' )">

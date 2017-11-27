@@ -37,6 +37,7 @@ import { ScheduleTablePage } from './../pages/schedule-table/schedule-table';
 import { ReservationPage } from './../pages/reservation/reservation';
 
 import { PastPage } from './../pages/past/past';
+import { TeacherDayoffPage } from './../pages/teacher-dayoff/teacher-dayoff';
 
 
 
@@ -92,7 +93,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherListPage,
     ScheduleTablePage,
     ReservationPage,
-    PastPage
+    PastPage,
+    TeacherDayoffPage
   ],
   imports: [
     BrowserModule,
@@ -128,7 +130,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherListPage,
     ScheduleTablePage,
     ReservationPage,
-    PastPage
+    PastPage,
+    TeacherDayoffPage
   ],
 
   providers: [

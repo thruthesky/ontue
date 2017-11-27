@@ -26,6 +26,7 @@ import { TeacherListPage } from '../pages/teacher-list/teacher-list';
 import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
 import { ReservationPage } from '../pages/reservation/reservation';
 import { PastPage } from '../pages/past/past';
+import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
 
 
 
@@ -73,6 +74,7 @@ export class MyApp {
 
     this.a.pages['reservation'] = ReservationPage;
     this.a.pages['past'] = PastPage;
+    this.a.pages['dayoff'] = TeacherDayoffPage;
 
 
 
@@ -97,10 +99,12 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    this.a.open('reservation');
+    // this.a.open('reservation');
 
     // this.a.open('past');
 
+    this.a.open('dayoff');
+    
   }
 
 

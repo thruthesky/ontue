@@ -3,7 +3,10 @@
 </ion-header>
 
 <ion-content padding>
+
     {{ a.user.name }}
+    You are {{ a.userType }}!
+    
     , Reservations:
 
     <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
