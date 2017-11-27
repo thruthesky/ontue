@@ -5,29 +5,43 @@
 <ion-content padding>
 
 
-  <ion-list>
 
-    <ion-item>
-      <ion-label floating>Teacher's Name</ion-label>
-      <ion-input type="text" (keyup)="onChangeValue()"></ion-input>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+          <ion-item>
+              <ion-label>Begin Date</ion-label>
+              <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin"></ion-datetime>
+            </ion-item>
+
+      </ion-col>
+      <ion-col>
+
+
+  <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end"></ion-datetime>
     </ion-item>
 
-    <ion-item>
-      <input (change)="onChangeSearchOption()" type="checkbox" name="sunday" [(ngModel)]="sunday"> Sunday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="monday" [(ngModel)]="monday"> Monday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="tuesday" [(ngModel)]="tuesday"> Tuesday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="wednesday" [(ngModel)]="wednesday"> Wednesday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="thursday" [(ngModel)]="thursday"> Thursday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="friday" [(ngModel)]="friday"> Firday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="saturday" [(ngModel)]="saturday"> Saturday -
-      <span class="pointer" (click)="selectMonToFri()">M-F</span>~
-      <span class="pointer" (click)="selectMWF()">M-W-F</span>~
-      <span class="pointer" (click)="selectTTh()">T-TH</span>~
-      <span class="pointer" (click)="selectSunSat()">Sun-Sat</span>~
-      <span class="pointer" (click)="selectAll()">All</span>
-    </ion-item>
+    
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  </ion-list>
+<br>
+<div *ngIf=" my_teachers ">
+<div *ngFor="let teacher of my_teachers">
+    <label><input type="checkbox">
+    {{ teacher.name }}</label>
+</div>
+</div>
+  <hr>
+
+
+  <button ion-button (click)="onClickSearch()">
+    SUBMIT
+  </button>
 
     {{ a.user.name }}
     You are {{ a.userType }}!
@@ -53,9 +67,9 @@
 
       <tr *ngFor="let book of books; let i = index;">
         <td>{{book.idx}}</td>
-        <td>date:{{book.date}}</td>
-        <td>class time:{{book.class_begin}}~{{book.class_end}}</td>
-        <td>teacher:{{book.idx_teacher}}</td>
+        <td>{{book.date_display}}</td>
+        <td>{{book.class_begin_display}}<br>{{book.duration}}mins</td>
+        <td>{{book.teacher_name}}</td>
         <td>student:{{book.idx_student}}</td>
         <td>{{book.point}}</td>
         <td>

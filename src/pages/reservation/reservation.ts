@@ -8,16 +8,15 @@ import {Subject} from "rxjs/Subject";
 })
 export class ReservationPage {
   books = [];
+  my_teachers = [];
 
   my_point;
 
-  sunday;
-  monday;
-  tuesday;
-  wednesday;
-  thursday;
-  friday;
-  saturday;
+  
+
+
+  date_begin = null;
+  date_end = null;
 
   private typing = new Subject<string>();
 
@@ -31,21 +30,18 @@ export class ReservationPage {
       .subscribe(() => {
         this.onChangeSearchOption();
       });
+
+
+      
   }
 
 
   request( options = {} ) {
     let defaults = {
-      user: 'me',
-      future: true,
-      // teaceher_name: '',
-      // sunday: this.sunday ? 'Y' : '',
-      // monday: this.monday ? 'Y'  : '',
-      // tuesday: this.tuesday ? 'Y' : '',
-      // wednesday: this.wednesday ? 'Y' : '',
-      // thursday: this.thursday ? 'Y' : '',
-      // friday: this.friday ? 'Y' : '',
-      // saturday: this.saturday ? 'Y' : '',
+      // future: true,
+      // date_begin: '20171201',
+      // date_end: '20171201',
+      orderby: 'date ASC, class_begin ASC'
     };
     const req = Object.assign( defaults, options );
     console.log("Request: ", req );
@@ -83,6 +79,7 @@ export class ReservationPage {
     this.a.lms.session_search(options).subscribe(re => {
       console.log("Result of class_search(): ", re);
       this.books = re['books'];
+      this.my_teachers = re['my_teachers'];
     }, e => this.a.alert(e));
 
   }
@@ -93,34 +90,14 @@ export class ReservationPage {
   }
 
 
-  clearDaySelected(){
-    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=false;
-    this.onChangeSearchOption();
-  }
+  
+  onClickSearch() {
+    let date_begin = this.date_begin.replace(/\-/g, '');
+    let date_end = this.date_begin.replace(/\-/g, '');
 
-  selectMonToFri(){
-    this.clearDaySelected();
-    this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=true;
-    this.onChangeSearchOption();
-  }
-  selectMWF(){
-    this.clearDaySelected();
-    this.monday=this.wednesday=this.friday=true;
-    this.onChangeSearchOption();
-  }
-  selectTTh(){
-    this.clearDaySelected();
-    this.tuesday=this.thursday=true;
-    this.onChangeSearchOption();
-  }
 
-  selectSunSat(){
-    this.clearDaySelected();
-    this.sunday=this.saturday=true;
-    this.onChangeSearchOption();
-  }
-  selectAll(){
-    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=true;
-    this.onChangeSearchOption();
+    this.a.lms.session_search( { date_begin: date_begin, date_end: date_end } ).subscribe( re => {
+      console.log(re);
+    }, e => this.a.alert(e) );
   }
 }

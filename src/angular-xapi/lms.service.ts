@@ -245,4 +245,15 @@ export class LMSService extends Base {
     }
 
 
+    set_dayoff( date ) {
+        let data = { route: 'lms.dayoff_set', session_id: this.user.sessionId, date: date };
+        return this.x.post( data );
+    }
+
+    delete_dayoff( date ) {
+        let data = { route: 'lms.dayoff_delete', session_id: this.user.sessionId, date: date };
+        return this.x.post( data );
+    }
+
+
 }
