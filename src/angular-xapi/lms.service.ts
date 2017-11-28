@@ -175,7 +175,7 @@ export class LMSService extends Base {
 
     my_schedules(): Observable<any> {
         let data = {
-            route: 'lms.my_schedule_search',
+            route: 'lms.my_schedule',
             session_id: this.user.sessionId
         };
         return this.x.post(data);

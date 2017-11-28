@@ -34,8 +34,9 @@ export class ScheduleEditPage {
     } );
     this.updateTime();
 
-    setTimeout(() => this.onClickAddSchedule(), 500);
     this.getMySchedule();
+
+
 
   }
 
@@ -50,7 +51,12 @@ export class ScheduleEditPage {
 
 
   onClickAddSchedule() {
-    const modal = this.modalCtrl.create( AddSchedule );
+    const modal = this.modalCtrl.create( AddSchedule,
+      { php_to_kwr: this.data['php_to_kwr'],
+        usd_to_kwr: this.data['usd_to_kwr'],
+        share_teacher: this.data['share_teacher'],
+        max_point_per_minute: this.data['max_point_per_minute']
+      } );
     modal.onDidDismiss(()=> {
       this.getMySchedule();
     });
@@ -58,7 +64,13 @@ export class ScheduleEditPage {
   }
 
   onClickEditSchedule(schedule) {
-    const modal = this.modalCtrl.create( AddSchedule, {schedule: schedule}  );
+    const modal = this.modalCtrl.create( AddSchedule, {
+      schedule: schedule,
+      php_to_kwr: this.data['php_to_kwr'],
+      usd_to_kwr: this.data['usd_to_kwr'],
+      share_teacher: this.data['share_teacher'],
+      max_point_per_minute: this.data['max_point_per_minute']
+    });
     modal.onDidDismiss(()=> {
       this.getMySchedule();
     });
@@ -71,6 +83,7 @@ export class ScheduleEditPage {
       console.log('getMySchedule', re);
       this.data = re;
 
+      // this.onClickAddSchedule(); // TEST
     } , e => this.a.alert(e) );
   }
 

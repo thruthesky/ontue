@@ -17,13 +17,24 @@ export class AddSchedule {
     data:SCHEDULE_EDIT = <SCHEDULE_EDIT> {};
     allDays: boolean = false;
     params;
+
+    php_to_kwr;
+    usd_to_kwr;
+    share_teacher;
+    max_point_per_minute;
     constructor(
         public a: AppService,
         public viewCtrl: ViewController,
         public navParams: NavParams
     ) {
         this.params = navParams.data;
+        this.php_to_kwr = this.params['php_to_kwr'];
+        this.usd_to_kwr = this.params['usd_to_kwr'];
+        this.share_teacher = this.params['share_teacher'];
+        this.max_point_per_minute = this.params['max_point_per_minute'];
+        
         console.log('params', this.params['schedule']);
+
         this.updateTime();
         if( this.params.schedule && this.params.schedule.idx ) {
           let s = this.params.schedule;
@@ -109,7 +120,37 @@ export class AddSchedule {
   }
 
 
+  calculateEarning() {
+    let c = this.countSelectedDays();
+    let point = this.data.point * c * 4; // 20 days.
+    if ( ! point ) return 0;
+    point = Math.ceil( point );
+    let php = parseFloat(this.php_to_kwr);
+    // console.log("php: ", php);
+    return Math.round( point / php * this.share_teacher / 100 );
+  }
 
+  countSelectedDays() {
+
+    let c = 0;
+    if ( this.data['sunday'] ) c ++;
+    if ( this.data['monday'] ) c ++;
+    if ( this.data['tuesday']  ) c ++;
+    if ( this.data['wednesday']  ) c ++;
+    if ( this.data['thursday']  ) c ++;
+    if ( this.data['friday']  ) c ++;
+    if ( this.data['saturday']  ) c ++;
+
+    return c;
+
+  }
+
+
+  maxPoint() {
+      if ( ! this.data['point'] ) return 0;
+      if ( ! this.data['duration'] ) return 0;
+      return this.data['point'] > this.data['duration'] * this.max_point_per_minute;
+  }
 }
 
 
