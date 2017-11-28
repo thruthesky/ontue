@@ -20,7 +20,7 @@ export class TeacherListPage {
 
 
 
-    a.lms.user_search( { type: 'T' }).subscribe( re => {
+    a.lms.teacher_list( { type: 'T' }).subscribe( re => {
         console.log("user search: ", re);
         this.teachersList = re['users'];
     }, e => a.alert(e));

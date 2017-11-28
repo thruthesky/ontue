@@ -197,10 +197,11 @@ export class LMSService extends Base {
 
 
 
-    user_search(data) {
-        data['route'] = 'lms.user_search';
+    teacher_list(data) {
+        data['route'] = 'lms.teacher_list';
         return this.x.post(data);
     }
+
 
 
     session_reserve( data ) {
