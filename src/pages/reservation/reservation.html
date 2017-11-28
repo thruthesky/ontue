@@ -10,32 +10,54 @@
     <ion-row>
       <ion-col>
 
-          <ion-item>
-              <ion-label>Begin Date</ion-label>
-              <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin"></ion-datetime>
-            </ion-item>
+        <ion-item>
+          <ion-label>Begin Date</ion-label>
+          <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+        </ion-item>
 
       </ion-col>
       <ion-col>
 
 
-  <ion-item>
-      <ion-label>End Date</ion-label>
-      <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end"></ion-datetime>
-    </ion-item>
+        <ion-item>
+          <ion-label>End Date</ion-label>
+          <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+        </ion-item>
 
-    
+
       </ion-col>
     </ion-row>
   </ion-grid>
-
-<br>
-<div *ngIf=" my_teachers ">
-<div *ngFor="let teacher of my_teachers">
-    <label><input type="checkbox">
-    {{ teacher.name }}</label>
-</div>
-</div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <label>
+            <input type="checkbox" name="class" [(ngModel)]="future_class" (change)="onChangeSearchOption()"> Future Class
+          </label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <label>
+            <input type="checkbox" name="class" [(ngModel)]="past_class" (change)="onChangeSearchOption()"> Past Class
+          </label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <hr>
+  <ion-grid *ngIf=" my_teachers ">
+    <ion-row>
+      <ion-col *ngFor="let teacher of my_teachers">
+        <label>
+          <input type="radio" value="{{teacher.idx}}" name="show_teacher" [(ngModel)]="show_teacher">
+          {{ teacher.name }}
+          <!--{{teacher| json}}-->
+        </label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <hr>
 
 
@@ -43,45 +65,45 @@
     SUBMIT
   </button>
 
-    {{ a.user.name }}
-    You are {{ a.userType }}!
+  {{ a.user.name }}
+  You are {{ a.userType }}!
 
-    , Reservations:
+  , Reservations:
 
-    <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
-    <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+  <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
+  <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
 
-    <button ion-button (click)="onClickCancelAll()">Cancel All</button>
+  <button ion-button (click)="onClickCancelAll()">Cancel All</button>
 
-    <table class="books" *ngIf = " books.length ">
-      <tr>
-        <td>Class No.</td>
-        <td>Date</td>
-        <td>Time</td>
-        <td>Teacher</td>
-        <td>Student</td>
-        <td>Point</td>
-        <td></td>
+  <table class="books" *ngIf = " books.length ">
+    <tr>
+      <td>Class No.</td>
+      <td>Date</td>
+      <td>Time</td>
+      <td>Teacher</td>
+      <td>Student</td>
+      <td>Point</td>
+      <td></td>
 
-      </tr>
+    </tr>
 
-      <tr *ngFor="let book of books; let i = index;">
-        <td>{{book.idx}}</td>
-        <td>{{book.date_display}}</td>
-        <td>{{book.class_begin_display}}<br>{{book.duration}}mins</td>
-        <td>{{book.teacher_name}}</td>
-        <td>student:{{book.idx_student}}</td>
-        <td>{{book.point}}</td>
-        <td>
-          <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>
-          <!-- <i class="fa fa-spinner fa-spin" aria-hidden="true" *ngIf=" book.process "></i> -->
-          <ion-spinner *ngIf=" book.process "></ion-spinner>
-        </td>
-      </tr>
+    <tr *ngFor="let book of books; let i = index;">
+      <td>{{book.idx}}</td>
+      <td>{{book.date_display}}</td>
+      <td>{{book.class_begin_display}}<br>{{book.duration}}mins</td>
+      <td>{{book.teacher_name}}</td>
+      <td>student:{{book.idx_student}}</td>
+      <td>{{book.point}}</td>
+      <td>
+        <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>
+        <!-- <i class="fa fa-spinner fa-spin" aria-hidden="true" *ngIf=" book.process "></i> -->
+        <ion-spinner *ngIf=" book.process "></ion-spinner>
+      </td>
+    </tr>
 
 
 
-    </table>
+  </table>
 
 
 
