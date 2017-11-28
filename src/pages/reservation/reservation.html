@@ -4,7 +4,14 @@
 
 <ion-content padding>
 
+  <h1>My Reservation</h1>
 
+  {{ a.user.name }}
+  You are {{ a.userType }}!
+
+  , My Points:
+  <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
+  <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
 
   <ion-grid>
     <ion-row>
@@ -28,32 +35,23 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <label>
-            <input type="checkbox" name="class" [(ngModel)]="future_class" (change)="onChangeSearchOption()"> Future Class
-          </label>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <label>
-            <input type="checkbox" name="class" [(ngModel)]="past_class" (change)="onChangeSearchOption()"> Past Class
-          </label>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
   <hr>
   <ion-grid *ngIf=" my_teachers ">
     <ion-row>
+      <h3>My Teacher's</h3>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <label>
+          <input type="radio" [value]="0" name="show_teacher" [(ngModel)]="show_teacher" (change)="onChangeSearchOption()">
+          All
+        </label>
+      </ion-col>
       <ion-col *ngFor="let teacher of my_teachers">
         <label>
-          <input type="radio" value="{{teacher.idx}}" name="show_teacher" [(ngModel)]="show_teacher">
+          <input type="radio" [value]="teacher.idx" name="show_teacher" [(ngModel)]="show_teacher" (change)="onChangeSearchOption()">
           {{ teacher.name }}
-          <!--{{teacher| json}}-->
         </label>
       </ion-col>
     </ion-row>
@@ -62,17 +60,9 @@
 
 
   <button ion-button (click)="onClickSearch()">
-    SUBMIT
+    SEARCH
   </button>
-
-  {{ a.user.name }}
-  You are {{ a.userType }}!
-
-  , Reservations:
-
-  <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
-  <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
-
+<hr>
   <button ion-button (click)="onClickCancelAll()">Cancel All</button>
 
   <table class="books" *ngIf = " books.length ">

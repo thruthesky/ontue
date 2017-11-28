@@ -1,40 +1,90 @@
 <ion-header>
         <header-content></header-content>
       </ion-header>
-      
+
       <ion-content padding>
-          {{ a.user.getProfile() | json }}
-          , Past:
-      
+        <h1>Past Reservation</h1>
+        {{ a.user.name }}
+        You are {{ a.userType }}!
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+
+                <ion-item>
+                  <ion-label>Begin Date</ion-label>
+                  <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+                </ion-item>
+
+              </ion-col>
+              <ion-col>
+
+
+                <ion-item>
+                  <ion-label>End Date</ion-label>
+                  <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+                </ion-item>
+
+
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <hr>
+        <ion-grid *ngIf=" my_teachers ">
+          <ion-row>
+            <h3>My Teacher's</h3>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <label>
+                <input type="radio" [value]="0" name="show_teacher" [(ngModel)]="show_teacher" (change)="onChangeSearchOption()">
+                All
+              </label>
+            </ion-col>
+            <ion-col *ngFor="let teacher of my_teachers">
+              <label>
+                <input type="radio" [value]="teacher.idx" name="show_teacher" [(ngModel)]="show_teacher" (change)="onChangeSearchOption()">
+                {{ teacher.name }}
+              </label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+          <hr>
+
+
+          <button ion-button (click)="onClickSearch()">
+            SEARCH
+          </button>
+
+
+
           <table class="books" *ngIf = " books.length ">
             <tr>
-              <td>Session No.</td>
+              <td>Class No.</td>
               <td>Date</td>
               <td>Time</td>
               <td>Teacher</td>
               <td>Student</td>
               <td>Point</td>
-      
-            </tr>
-      
-            <tr *ngFor="let book of books">
-              <td>{{book.idx}}</td>
-              <td>{{book.date}}</td>
-              <td>{{book.class_begin}}~{{book.class_end}}</td>
-              <td>{{book.idx_teacher}}</td>
-              <td>{{book.idx_student}}</td>
-              <td>{{book.point}}</td>
 
-              <!-- <td>
-                <button ion-button (click)='onClickCancel(book)'>Cancel</button>
-              </td> -->
             </tr>
-      
-      
-      
+
+            <tr *ngFor="let book of books; let i = index;">
+              <td>{{book.idx}}</td>
+              <td>{{book.date_display}}</td>
+              <td>{{book.class_begin_display}}<br>{{book.duration}}mins</td>
+              <td>{{book.teacher_name}}</td>
+              <td>student:{{book.idx_student}}</td>
+              <td>{{book.point}}</td>
+            </tr>
+
+
+
           </table>
-      
-      
-      
+
+
+
+
+
       </ion-content>
-      

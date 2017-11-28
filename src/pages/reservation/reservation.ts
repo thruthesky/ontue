@@ -8,12 +8,10 @@ import { AppService } from './../../providers/app.service';
 export class ReservationPage {
   books = [];
   my_teachers = [];
+  show_teacher: number = 0;
 
 
   my_point;
-
-  future_class:boolean = false;
-  past_class:boolean = false;
 
 
   date_begin = null;
@@ -30,15 +28,11 @@ export class ReservationPage {
 
   request( options = {} ) {
     let defaults = {
-      // date_begin: '20171201',
-      // date_end: '20171201',
+      future: true,
       orderby: 'date ASC, class_begin ASC'
     };
 
-    if(this.future_class != this.past_class ) {
-      if( this.future_class ) defaults['future']= this.future_class;
-      if( this.past_class ) defaults['past']= this.past_class;
-    }
+    if( this.show_teacher > 0 ) defaults['idx_teacher'] = this.show_teacher;
     if( this.date_begin ) defaults['date_begin']= this.date_begin.replace(/\-/g, '');
     if( this.date_end ) defaults['date_end']= this.date_end.replace(/\-/g, '');
     const req = Object.assign( defaults, options );
