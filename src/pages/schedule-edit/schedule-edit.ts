@@ -18,6 +18,7 @@ export class ScheduleEditPage {
   time = '';
   timer = 0;
 
+  data = null;
   schedules: SCHEDULE_EDIT_RESPONSE;
 
   constructor(
@@ -33,7 +34,7 @@ export class ScheduleEditPage {
     } );
     this.updateTime();
 
-    // setTimeout(() => this.onClickAddSchedule(), 500);
+    setTimeout(() => this.onClickAddSchedule(), 500);
     this.getMySchedule();
 
   }
@@ -68,7 +69,8 @@ export class ScheduleEditPage {
   getMySchedule(){
     this.a.lms.my_schedules().subscribe( re =>{
       console.log('getMySchedule', re);
-      this.schedules = re['schedules'];
+      this.data = re;
+
     } , e => this.a.alert(e) );
   }
 

@@ -85,7 +85,7 @@ export class MyApp {
   test() {
 
 
-    // this.a.open('schedule-edit');
+    this.a.open('schedule-edit');
 
     // this.a.open('schedule-table', { ID: 806 });
 
@@ -101,7 +101,7 @@ export class MyApp {
 
     // this.a.open('reservation');
 
-    this.a.open('past');
+    // this.a.open('past');
 
     // this.a.open('dayoff');
 

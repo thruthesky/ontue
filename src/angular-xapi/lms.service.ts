@@ -173,16 +173,11 @@ export class LMSService extends Base {
         return newDate.toLocaleString();
     }
 
-
-
     my_schedules(): Observable<any> {
-
         let data = {
-            route: 'lms.schedule_search',
-            session_id: this.user.sessionId,
-            teachers: [this.user.id],
+            route: 'lms.my_schedule_search',
+            session_id: this.user.sessionId
         };
-
         return this.x.post(data);
     }
 

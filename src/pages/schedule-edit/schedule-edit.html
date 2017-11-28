@@ -15,7 +15,12 @@
   and your time is now: {{ time }}<br>
   <!-- {{ schedules | json }} -->
   <button ion-button (click)='onClickAddSchedule()'>Add Scedule</button>
-  <table class="schedule">
+
+  <div class="alert alert-warning" *ngIf="data && !data.low_price_class">
+    {{ data.low_price_class_message }}
+  </div>
+
+  <table class="schedule" *ngIf=" data ">
     <tr>
         <td>Time</td>
         <td>Sun</td>
@@ -27,7 +32,7 @@
         <td>Sat</td>
         <td>Action</td>
     </tr>
-    <tr *ngFor="let s of schedules">
+    <tr *ngFor="let s of data.schedules">
       <td>{{s.user_time_class_begin}}</td>
       <td><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
       <td><div *ngIf="s.user_time_days.monday">{{s.prere}} {{s.point}}</div></td>
@@ -42,7 +47,8 @@
 
   </table>
 
-  <div *ngIf=" ! schedules ">
+
+  <div *ngIf=" ! data ">
     <i class="fa fa-spinner fa-spin"></i> Loadnig...
   </div>
 
