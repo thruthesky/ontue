@@ -96,10 +96,16 @@
     </div>
 
 
-    <div class="alert alert-info">
+    <div class="alert alert-info" *ngIf=" calculateEarning() ">
       You will earn 
       {{ calculateEarning() }}
-      peoso in a month ( {{ countSelectedDays() * 4 }} days a month )
+      peoso in a month (
+        {{ countSelectedDays() * 4 }} days a month
+        with
+        <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="paypal"> paypal or
+        <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="western-union"> western union
+        )
+
       Approximately.
       @see Policy
 

@@ -83,7 +83,7 @@ export class ScheduleEditPage {
       console.log('getMySchedule', re);
       this.data = re;
 
-      // this.onClickAddSchedule(); // TEST
+      this.onClickAddSchedule(); // TEST
     } , e => this.a.alert(e) );
   }
 

@@ -94,6 +94,8 @@ export class MyApp {
   test() {
 
 
+
+    
     // this.a.open('schedule-edit');
 
     // this.a.open('schedule-table', { ID: 806 });
@@ -108,14 +110,14 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    // this.a.open('reservation', { past: true });
+    this.a.open('reservation', { past: true });
 
     // this.a.open('past');
 
     // this.a.open('dayoff');
     // this.a.open('message');
 
-    this.a.open('evaluate', {idx: 1639} );
+    // this.a.open('evaluate', {idx: 1639} );
 
 
   }

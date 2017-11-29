@@ -22,6 +22,10 @@ export class AddSchedule {
     usd_to_kwr;
     share_teacher;
     max_point_per_minute;
+
+
+    payment_method = 'paypal';
+
     constructor(
         public a: AppService,
         public viewCtrl: ViewController,
@@ -126,8 +130,16 @@ export class AddSchedule {
     if ( ! point ) return 0;
     point = Math.ceil( point );
     let php = parseFloat(this.php_to_kwr);
-    // console.log("php: ", php);
-    return Math.round( point / php * this.share_teacher / 100 );
+    console.log("php: ", this.payment_method);
+
+
+    let amount = Math.round( point / php * this.share_teacher / 100 );
+    if ( this.payment_method == 'western-union' ) {
+        amount = Math.round( amount * 94 / 100 ); // @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.yjz5bpwzcj9j
+    }
+
+    return amount;
+
   }
 
   countSelectedDays() {
