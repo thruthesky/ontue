@@ -1,0 +1,17 @@
+<ion-header>
+    <header-content></header-content>
+</ion-header>
+<ion-content padding>
+
+        <h1>Mesage</h1>
+
+        <button ion-button (click)="onClickBox( 'inbox' )">InBox</button>
+        <button ion-button (click)="onClickBox( 'sent' )">Sent</button>
+        
+
+        <div *ngIf=" data ">
+            <div class="alert alert-info" *ngFor=" let message of data.messages ">
+                {{ message.title }}
+            </div>
+        </div>
+</ion-content>

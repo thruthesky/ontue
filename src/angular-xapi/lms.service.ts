@@ -252,4 +252,10 @@ export class LMSService extends Base {
     }
 
 
+    message( data ) {
+        data['route'] = 'lms.message';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
+
 }

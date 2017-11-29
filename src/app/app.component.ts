@@ -28,6 +28,8 @@ import { ReservationPage } from '../pages/reservation/reservation';
 
 import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
 
+import { MessagePage } from '../pages/message/message';
+
 
 
 @Component({
@@ -75,6 +77,7 @@ export class MyApp {
     this.a.pages['reservation'] = ReservationPage;
     
     this.a.pages['dayoff'] = TeacherDayoffPage;
+    this.a.pages['message'] = MessagePage;
 
 
 
@@ -99,11 +102,12 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    this.a.open('reservation');
+    // this.a.open('reservation');
 
     // this.a.open('past');
 
     // this.a.open('dayoff');
+    this.a.open('message');
 
   }
 
