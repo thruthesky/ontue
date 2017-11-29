@@ -10,6 +10,19 @@ export class EvaluatePage {
 
 
     idx;
+
+    student_absent: boolean;
+    class_successfull: boolean;
+    expression: number;
+    vocabulary: number;
+    grammar: number;
+    pronounciation: number;
+    speed: number;
+    comment: string;
+    book_use: string;
+    book_next: string;
+
+
     constructor(
         navParams: NavParams,
         public a: AppService
