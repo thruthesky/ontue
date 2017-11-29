@@ -81,11 +81,8 @@ export class MyApp {
     
     this.a.pages['dayoff'] = TeacherDayoffPage;
     this.a.pages['message'] = MessagePage;
-
-
+    
     this.a.pages['evaluate'] = EvaluatePage;
-
-
 
     setTimeout(() => this.test(), 100);
 
@@ -95,7 +92,7 @@ export class MyApp {
 
 
 
-    
+
     // this.a.open('schedule-edit');
 
     // this.a.open('schedule-table', { ID: 806 });

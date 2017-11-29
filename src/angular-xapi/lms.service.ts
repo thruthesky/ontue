@@ -258,4 +258,32 @@ export class LMSService extends Base {
         return this.x.post( data );
     }
 
+    session_refund_request( data ) {
+        data['route'] = 'lms.session_refund_request';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
+    session_cancel_refund_request( idx ) {
+        let data = {};
+        data['route'] = 'lms.session_cancel_refund_request';
+        data['session_id'] = this.user.sessionId;
+        data['idx_reservation'] = idx;
+        return this.x.post( data );
+    }
+
+    session_refund( idx ) {
+        let data = {
+            idx_reservation: idx,
+            route: 'lms.session_refund',
+            session_id: this.user.sessionId
+        };
+        return this.x.post( data );
+    }
+
+    session_refund_reject( data ) {
+        data['route'] = 'lms.session_refund_reject';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
+
 }

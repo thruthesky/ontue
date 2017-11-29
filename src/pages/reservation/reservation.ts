@@ -93,4 +93,46 @@ export class ReservationPage {
       console.log(re);
     }, e => this.a.alert(e) );
   }
+
+  onClickRefundRequest( book ) {
+    console.log(book);
+    this.a.lms.session_refund_request( { idx_reservation: book['idx'], 'refund_request_message': 'test'}).subscribe( re => {
+      book['refund_request_at'] = 1;
+    }, e => this.a.alert(e));
+  }
+  
+  onClickCancelRefundRequest( book ) {
+    console.log(book);
+    this.a.lms.session_cancel_refund_request( book['idx']).subscribe( re => {
+      book['refund_request_at'] = 0;
+    }, e => this.a.alert(e));
+  }
+  
+  refund_request(book) {
+    if ( book['refund_request_at'] > 0 ) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  refunded( book ) {
+    return book['refund_done_at'] > 0;
+  }
+  rejected( book ) {
+    return book['refund_reject_at'] > 0;
+  }
+  onClickRefund( book ) {
+    this.a.lms.session_refund( book['idx'] ).subscribe( re => {
+      console.log(re);
+      book['refund_done_at'] = 1;
+    }, e => this.a.alert(e));
+  }
+
+  onClickRejectRefundRequest( book ) {
+    this.a.lms.session_refund_reject( { idx_reservation: book['idx'], refund_reject_message: 'test reject' }).subscribe( re => {
+      console.log(re);
+      book['refund_reject_at'] = 1;
+    }, e => this.a.alert(e));
+  }
 }
