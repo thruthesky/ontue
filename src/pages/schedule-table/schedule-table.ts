@@ -53,8 +53,7 @@ export class ScheduleTablePage {
 
   status = {
     future: "radio-button-off",
-    past: "remove",
-
+    past: "remove"
   };
 
   private typing = new Subject<string>();
@@ -85,6 +84,34 @@ export class ScheduleTablePage {
       });
   }
 
+  icon( session ) {
+    if ( session['status'] == 'future' ) { 
+      if ( session['open'] == 'open' ) { // open to reserve
+        if ( session['dayoff'] == 'dayoff' ) return 'cloud-circle';
+        else return 'radio-button-off';
+      }
+      else if ( session['open'] == 'reserved' ) { // reserved.
+        if ( session['dayoff'] == 'dayoff' ) return 'cloud-done';
+        else return 'checkmark';
+      }
+      else if ( session['open'] == 'no-schedule' ) { // teacher didn't open a session on this day of his schedule table.
+         return '';
+      }
+    }
+    else { /// past classes.
+      if ( session['open'] == 'open' ) { // past class. but open.
+        return '';
+      }
+      else { // past & reserved.
+
+        if ( session['dayoff'] == 'dayoff' ) return '';
+        else return 'lock';
+
+      }
+    }
+
+
+  }
 
   request( options = {} ) {
     let defaults = {
@@ -158,8 +185,8 @@ export class ScheduleTablePage {
 
     console.log('onClickSession', session);
 
-    if ( session.status == 'open' ) this.reserveSession( session );
-    else if ( session.status == 'reserved' && session.owner == 'me' ) this.cancelSession( session );
+    if ( session.open == 'open' ) this.reserveSession( session );
+    else if ( session.open == 'reserved' && session.owner == 'me' ) this.cancelSession( session );
 
   }
 
@@ -173,7 +200,9 @@ export class ScheduleTablePage {
     this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
-      session.status = 'reserved';
+      session.open = 'reserved';
+      session.dayoff = '';
+      session.status = 'future';
       session.owner = 'me';
       session.student_name = re.student_name;
       session.point = re.point;
@@ -193,7 +222,8 @@ export class ScheduleTablePage {
     this.a.lms.session_cancel( session.idx_reservation ).subscribe( re => {
       console.log("cancel success", re);
       session.in_progress = false;
-      session.status = 'open';
+      session.status = 'future';
+      session.open = 'open';
       session.owner = '';
       session.student_name = '';
       session.point = this.schedule( session.idx_schedule ).point;

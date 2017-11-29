@@ -1,10 +1,6 @@
 section.schedule-table {
-    .not-empty {
-        
-    }
-
-
-    .dayoff {
-        
+    
+    [owner="me"] {
+        color: purple;
     }
 }

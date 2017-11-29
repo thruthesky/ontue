@@ -66,6 +66,16 @@
         </button>
       </ion-col>
 
+
+
+      <ion-col class="d-none d-sm-block">
+          <button (click)="a.open('message')">
+            <i class="fa fa-comment"></i>
+            <div>{{ 'MESSAGE' | translate }}</div>
+          </button>
+        </ion-col>
+
+        
       <ion-col class="d-none d-sm-block">
         <button (click)="a.open('menu')">
           <i class="fa fa-credit-card-front"></i>
