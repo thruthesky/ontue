@@ -1,34 +1,66 @@
 <ion-header>
-    <header-content></header-content>
+  <header-content></header-content>
 </ion-header>
 <ion-content padding>
-    <h1>Evaluate</h1>
-
-    {{ idx }}
+  <h1>Evaluate</h1>
 
 
+  <ion-list>
+    <ion-item> Session No.: {{ idx }}</ion-item>
+    <ion-item>Point: </ion-item>
+    <ion-item>Student was absent: <input type="checkbox" [(ngModel)]="student_absent"></ion-item>
+      <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="class_unsuccessfull"> Any problem in the class?</ion-item>
+        <ion-item>Level of the session: </ion-item>
 
-    Session No.: <br>
-    Point: <br>
-    Student was absent: <input type="checkbox"><br>
-    Class was unsuccessful: <input type="checkbox"> Any problem in the class?<br>
+    <ion-item>
+      Expression:
+      <select [(ngModel)]="expression">
+        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+        </option>
+      </select> (Rate how well the student can express)
+    </ion-item>
+    <ion-item>
+      Vocabulary:
+      <select [(ngModel)]="vocabulary">
+        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+        </option>
+      </select>
+      (Rate if the student use proper words, cluases)
+    </ion-item>
+    <ion-item>
+      Grammar:
+      <select [(ngModel)]="grammar">
+        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+        </option>
+      </select> (Rate on student grammar)
+    </ion-item>
+    <ion-item>
+      Pronounciaton:
+      <select [(ngModel)]="pronounciation">
+        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+        </option>
+      </select> (Rate on student accent and intonation)
+    </ion-item>
+    <ion-item>
+      Speed of Speach:
+      <select [(ngModel)]="speed">
+        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+        </option>
+      </select> (Rate on how fast and fluently the student speaks.)
+    </ion-item>
+    <ion-item>
+      <textarea rows="10" cols="100" [(ngModel)]="comment"></textarea>
+      <div>Comment: Leave comment of the session. Or Leave any message if the class was unsuccessful.</div>
+    </ion-item>
 
-
-    Level of the session: <br>
-
-    Expression: (Rate how well the student can express)<br>
-    Vocabulary: (Rate if the student use proper words, cluases)<br>
-    Grammar: (Rate on student grammar)<br>
-    Pronounciaton: (Rate on student accent and intonation)<br>
-    Speed of Speach: (Rate on how fast and fluently the student speaks.)<br>
-
-    Comment: Leave comment of the session. Or Leave any message if the class was unsuccessful.
-    <textarea></textarea>
-<br>
-
-    Book(Page) used in the session: <input><br>
-    Book(Page) will be used in next session: <input><br>
-
-    <input type="submit" value="SUBMIT">
-    
+    <ion-item>
+      Book(Page) used in the session: <input type="text" [(ngModel)]="book_use">
+    </ion-item>
+    <ion-item>
+      Book(Page) will be used in next session: <input type="text" [(ngModel)]="book_next">
+    </ion-item>
+    <ion-item>
+      <input type="submit" value="SUBMIT">
+    </ion-item>
+  </ion-list>
 </ion-content>
