@@ -52,14 +52,15 @@
       </ion-col>
       
       <ion-col>
-        <button (click)=" a.open('reservation') ">
+        <button (click)=" a.open('reservation', {future: true}) ">
           <i class="fa fa-th blue"></i>
           <div>{{ 'RESERVATIONS' | translate }}</div>
         </button>
       </ion-col>
 
+
       <ion-col>
-        <button (click)=" a.open('past') ">
+        <button (click)=" a.open('reservation', {past: true}) ">
           <i class="fa fa-tasks grey"></i>
           <div>{{ 'PASTS' | translate }}</div>
         </button>

@@ -88,16 +88,24 @@
         </td>
         <td><button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button><button class="btn btn-primary" (click)="onClickReserveCancel(sessions)">Cancel</button> </td>
         <td *ngFor=" let session of sessions ">
-          <div class="session not-empty pointer" text-center *ngIf=" session.status != 'past' " (click)="onClickSession( session )">
-            <!--{{session |json}}-->
-            <div class="status-icon" *ngIf=" session.status != 'past' ">
-              <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'open' "></ion-icon>
-              <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'reserve' && !session.owner"></ion-icon>
-              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'reserved' && session.owner == 'me' "></ion-icon>
+          <div class="session pointer" [attr.status]=" session['status'] " text-center (click)="onClickSession( session )">
+            <!-- show icon -->
+            <div class="status-icon">
+                <ion-icon class="fs-3rem grey" name="remove" *ngIf=" session.status == 'past-reserved' "></ion-icon>
+                <ion-icon class="fs-3rem orange" name="radio-button-off" *ngIf=" session.status == 'open' "></ion-icon>
+              <ion-icon class="fs-3rem grey" name="close" *ngIf=" session.status == 'open-reserved' && !session.owner"></ion-icon>
+              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'open-reserved' && session.owner == 'me' "></ion-icon>
+              <ion-icon class="me fs-3rem indigo" name="hand" *ngIf=" session.status == 'open-dayoff' "></ion-icon>
+              <ion-icon class="me fs-3rem indigo" name="radio-button-on" *ngIf=" session.status == 'reserved-dayoff' "></ion-icon>
+
             </div>
+
+            <!-- show loader -->
             <div class="loader-icon">
               <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
             </div>
+
+            <!-- show class informatio -->
             <div>{{ session.point }}</div>
             <div *ngIf=" session.status == 'reserved' ">{{ session.student_name }}</div>
             <div>{{ session.prere }}</div>

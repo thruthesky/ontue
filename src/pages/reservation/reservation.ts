@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
+import { NavParams } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-reservation',
@@ -18,10 +20,13 @@ export class ReservationPage {
   date_end = null;
 
 
-  constructor(public a: AppService) {
+  constructor(
+    navParams: NavParams,
+    public a: AppService
+  ) {
     this.a.loadMyPoint( p => this.my_point = p );
 
-    this.sessionSearch(this.request( { future: true }));
+    this.sessionSearch(this.request( navParams.data ));
     this.updatePoint();
 
   }
@@ -54,7 +59,10 @@ export class ReservationPage {
       console.log(re);
       this.books = this.books.filter( book => book.idx != re['idx_reservation'] );
       this.updatePoint();
-    }, e => this.a.alert(e ));
+    }, e => {
+      book['process'] = false;
+      this.a.alert(e );
+    });
 
   }
 
