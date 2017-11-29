@@ -50,6 +50,13 @@ export class ScheduleTablePage {
 
   point_range: { lower: number, upper: number } = { lower: 33, upper: 60 };
 
+
+  status = {
+    future: "radio-button-off",
+    past: "remove",
+
+  };
+
   private typing = new Subject<string>();
 
   constructor(
@@ -70,7 +77,7 @@ export class ScheduleTablePage {
     // this.a.loadMyPoint( p => this.my_point = p );
 
     this.updatePoint();
-    
+
     this.typing
       .debounceTime(300)
       .subscribe(() => {
@@ -200,7 +207,7 @@ export class ScheduleTablePage {
   updatePoint() {
 
     this.a.loadMyPoint( p => this.my_point = p );
-    
+
 
   }
 
