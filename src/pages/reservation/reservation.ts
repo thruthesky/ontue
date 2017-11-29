@@ -21,20 +21,25 @@ export class ReservationPage {
   constructor(public a: AppService) {
     this.a.loadMyPoint( p => this.my_point = p );
 
-    this.sessionSearch(this.request());
+    this.sessionSearch(this.request( { future: true }));
     this.updatePoint();
 
   }
 
   request( options = {} ) {
     let defaults = {
-      future: true,
       orderby: 'date ASC, class_begin ASC'
     };
 
+
+
     if( this.show_teacher > 0 ) defaults['idx_teacher'] = this.show_teacher;
-    if( this.date_begin ) defaults['date_begin']= this.date_begin.replace(/\-/g, '');
-    if( this.date_end ) defaults['date_end']= this.date_end.replace(/\-/g, '');
+    if( this.date_begin ) {
+      defaults['date_begin']= this.date_begin.replace(/\-/g, '');
+    }
+    if( this.date_end ) {
+      defaults['date_end']= this.date_end.replace(/\-/g, '');
+    }
     const req = Object.assign( defaults, options );
     console.log("Request: ", req );
     return req;

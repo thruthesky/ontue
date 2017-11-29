@@ -89,7 +89,7 @@ export class MyApp {
 
     // this.a.open('schedule-table', { ID: 806 });
 
-    this.a.open('teacher-list');
+    // this.a.open('teacher-list');
 
     // this.a.open('schedule-edit');
 
@@ -99,7 +99,7 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    // this.a.open('reservation');
+    this.a.open('reservation');
 
     // this.a.open('past');
 

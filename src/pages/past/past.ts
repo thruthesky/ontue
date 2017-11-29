@@ -20,13 +20,12 @@ export class PastPage {
 
 
 
-    this.sessionSearch(this.request());
+    this.sessionSearch(this.request( { past: true }));
 
   }
 
   request( options = {} ) {
     let defaults = {
-      past: true,
       orderby: 'date ASC, class_begin ASC'
     };
     if( this.show_teacher > 0 ) defaults['idx_teacher'] = this.show_teacher;

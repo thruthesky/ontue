@@ -25,12 +25,10 @@
       </ion-col>
       <ion-col>
 
-
         <ion-item>
           <ion-label>End Date</ion-label>
           <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
         </ion-item>
-
 
       </ion-col>
     </ion-row>
@@ -85,9 +83,14 @@
       <td>student:{{book.idx_student}}</td>
       <td>{{book.point}}</td>
       <td>
-        <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>
-        <!-- <i class="fa fa-spinner fa-spin" aria-hidden="true" *ngIf=" book.process "></i> -->
-        <ion-spinner *ngIf=" book.process "></ion-spinner>
+        <ng-container *ngIf=" book.past ">
+          <button>Evaluate</button>
+          <button>View Evalute</button>
+        </ng-container>
+        <ng-container *ngIf=" ! book.past ">
+            <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>
+            <ion-spinner *ngIf=" book.process "></ion-spinner>
+        </ng-container>
       </td>
     </tr>
 
