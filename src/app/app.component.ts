@@ -30,6 +30,9 @@ import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
 
 import { MessagePage } from '../pages/message/message';
 
+import { EvaluatePage } from '../pages/evaluate/evaluate';
+
+
 
 
 @Component({
@@ -80,6 +83,9 @@ export class MyApp {
     this.a.pages['message'] = MessagePage;
 
 
+    this.a.pages['evaluate'] = EvaluatePage;
+
+
 
     setTimeout(() => this.test(), 100);
 
@@ -102,12 +108,15 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    // this.a.open('reservation');
+    // this.a.open('reservation', { past: true });
 
     // this.a.open('past');
 
     // this.a.open('dayoff');
-    this.a.open('message');
+    // this.a.open('message');
+
+    this.a.open('evaluate', {idx: 1639} );
+
 
   }
 

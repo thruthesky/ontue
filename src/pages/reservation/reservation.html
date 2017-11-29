@@ -84,7 +84,7 @@
       <td>{{book.point}}</td>
       <td>
         <ng-container *ngIf=" book.past ">
-          <button>Evaluate</button>
+          <button ion-button (click)=" a.open('evaluate', {idx: book.idx}) ">Evaluate</button>
           <button>View Evalute</button>
         </ng-container>
         <ng-container *ngIf=" ! book.past ">

@@ -29,6 +29,8 @@ export class ReservationPage {
     this.sessionSearch(this.request( navParams.data ));
     this.updatePoint();
 
+
+
   }
 
   request( options = {} ) {
