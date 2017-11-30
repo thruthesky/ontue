@@ -36,18 +36,23 @@ export class AddSchedule {
         this.usd_to_kwr = this.params['usd_to_kwr'];
         this.share_teacher = this.params['share_teacher'];
         this.max_point_per_minute = this.params['max_point_per_minute'];
-        
+
         console.log('params', this.params['schedule']);
+      // console.log(this.params.schedule.user_time_class_begin);
+      // console.log(this.params.schedule.user_time_class_begin.substring(0,2));
+      //   console.log(this.params.schedule.user_time_class_begin.substring(2,2));
 
         this.updateTime();
         if( this.params.schedule && this.params.schedule.idx ) {
           let s = this.params.schedule;
+          let hh = s.user_time_class_begin.substring(0,2);
+          let ii = s.user_time_class_begin.substring(2,2);
           this.data = {
             idx: s.idx,
             point: s.point,
             prere: s.prere,
-            class_begin_hour: s.user_time_class_begin[0],
-            class_begin_minute: s.user_time_class_begin[1],
+            class_begin_hour: hh ? hh: "00",
+            class_begin_minute: ii ? ii : "00",
             duration: s.duration,
             sunday: s.sunday,
             monday: s.monday,
