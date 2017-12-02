@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
-import { USER_REGISTER, FILES, USER_UPDATE, USER_UPDATE_RESPONSE } from './../../angular-xapi/interfaces';
+import { USER_REGISTER, FILES, USER_UPDATE } from './../../angular-xapi/interfaces';
 import { FileUploadWidget } from '../../components/file-upload/file-upload';
 
 
@@ -71,12 +71,14 @@ export class RegisterPage {
             data['photoURL']= this.files[1].url;
             setTimeout( () => this.fileUpload.deleteFile( this.files[0] ), 1 );
         }
-        this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
-            this.a.render();
-        }, err => {
-          this.a.alert(err);
-            // console.log('error while updating user profile picture', err);
-        });
+
+
+        // this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
+        //     this.a.render();
+        // }, err => {
+        //   this.a.alert(err);
+        //     // console.log('error while updating user profile picture', err);
+        // });
     }
 
 
