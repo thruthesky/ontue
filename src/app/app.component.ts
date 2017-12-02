@@ -105,7 +105,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    // this.a.open('register');
+    this.a.open('register');
 
     // this.a.open('student-profile');
     // this.a.open('register');
@@ -121,7 +121,7 @@ export class MyApp {
     // this.a.open('evaluate', {idx: 1639} );
 
 
-    this.a.open('settings-payment-info');
+    // this.a.open('settings-payment-info');
     
   }
 
