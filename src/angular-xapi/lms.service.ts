@@ -286,4 +286,16 @@ export class LMSService extends Base {
         return this.x.post( data );
     }
 
+
+    payment_information_update( data ) {
+        data['route'] = 'lms.payment_information_update';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
+    payment_information() {
+        let data = {};
+        data['route'] = 'lms.payment_information';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post( data );
+    }
 }

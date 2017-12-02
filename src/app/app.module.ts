@@ -41,6 +41,8 @@ import { TeacherDayoffPage } from './../pages/teacher-dayoff/teacher-dayoff';
 
 import { MessagePage } from '../pages/message/message';
 import { EvaluatePage } from '../pages/evaluate/evaluate';
+import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings-payment-info';
+
 
 
 
@@ -100,7 +102,8 @@ export function createTranslateLoader(http: HttpClient) {
     ReservationPage,
     TeacherDayoffPage,
     MessagePage,
-    EvaluatePage
+    EvaluatePage,
+    SettingsPaymentInfoPage
   ],
   imports: [
     BrowserModule,
@@ -139,7 +142,8 @@ export function createTranslateLoader(http: HttpClient) {
     
     TeacherDayoffPage,
     MessagePage,
-    EvaluatePage
+    EvaluatePage,
+    SettingsPaymentInfoPage
   ],
 
   providers: [

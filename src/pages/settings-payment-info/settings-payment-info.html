@@ -1,0 +1,30 @@
+<ion-header>
+    <header-content></header-content>
+</ion-header>
+
+
+<ion-content padding>
+<h1>settings-payment-info</h1>
+
+<div>first name <input type="text" name="first_name" [(ngModel)]="payment_information['first_name']"></div>
+<div>middle name <input type="text" name="middle_name" [(ngModel)]="payment_information['middle_name']"></div>
+<div>last name <input type="text" name="last_name" [(ngModel)]="payment_information['last_name']"></div>
+<div>phone numbr <input type="text" name="phone_number" [(ngModel)]="payment_information['phone_number']"></div>
+<div>email <input type="text" name="email" [(ngModel)]="payment_information['email']"></div>
+<div>country <input type="text" name="country" [(ngModel)]="payment_information['country']"></div>
+<div>province <input type="text" name="province" [(ngModel)]="payment_information['province']"></div>
+<div>city <input type="text" name="city" [(ngModel)]="payment_information['city']"></div>
+<div>address <input type="text" name="address" [(ngModel)]="payment_information['address']"></div>
+<div>zipcode <input type="text" name="zipcode" [(ngModel)]="payment_information['zipcode']"></div>
+<div>payment <input type="text" name="payment_method" [(ngModel)]="payment_information['payment_method']"></div>
+
+<button ion-button (click)="onClickSubmit()">SUBMIT</button>
+
+
+
+<hr>
+<button ion-button>History</button>
+<hr>
+@TODO
+1. when a teacher clicks on history, it will show last 100 changes.
+</ion-content>

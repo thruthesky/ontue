@@ -7,13 +7,19 @@
   <ion-list class="pointers">
     <ion-item (click)="a.open('settings')">
       <ion-icon name="settings" item-start></ion-icon>
-      설정
+      {{ 'SETTINGS' | translate }}
     </ion-item>
 
     <ion-item menuToggle>
       <ion-icon name="menu" item-start></ion-icon>
-      사이드 메뉴 열기
+      {{ 'SIDE MENU' | translate }}
     </ion-item>
+
+
+    <ion-item (click)="a.open('settings-payment-info')">
+        <ion-icon name="archive" item-start></ion-icon>
+        {{ 'PAYMENT INFO' | translate }}
+      </ion-item>
 
 
 

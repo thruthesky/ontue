@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { XapiService } from './../angular-xapi/angular-xapi.module';
 import { AppService } from './../providers/app.service';
+import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings-payment-info';
+
 
 
 
@@ -81,8 +83,10 @@ export class MyApp {
     
     this.a.pages['dayoff'] = TeacherDayoffPage;
     this.a.pages['message'] = MessagePage;
-    
+
     this.a.pages['evaluate'] = EvaluatePage;
+    this.a.pages['settings-payment-info'] = SettingsPaymentInfoPage;
+
 
     setTimeout(() => this.test(), 100);
 
@@ -107,7 +111,7 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    this.a.open('reservation', { past: true });
+    // this.a.open('reservation', { past: true });
 
     // this.a.open('past');
 
@@ -117,6 +121,8 @@ export class MyApp {
     // this.a.open('evaluate', {idx: 1639} );
 
 
+    this.a.open('settings-payment-info');
+    
   }
 
 
