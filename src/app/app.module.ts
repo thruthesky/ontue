@@ -45,6 +45,8 @@ import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings
 
 
 
+import { PaymentPage } from '../pages/payment/payment';
+
 
 
 
@@ -103,7 +105,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherDayoffPage,
     MessagePage,
     EvaluatePage,
-    SettingsPaymentInfoPage
+    SettingsPaymentInfoPage,
+    PaymentPage
   ],
   imports: [
     BrowserModule,
@@ -143,7 +146,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherDayoffPage,
     MessagePage,
     EvaluatePage,
-    SettingsPaymentInfoPage
+    SettingsPaymentInfoPage,
+    PaymentPage
   ],
 
   providers: [

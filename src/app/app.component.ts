@@ -33,7 +33,7 @@ import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
 import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';
-
+import { PaymentPage } from '../pages/payment/payment';
 
 
 
@@ -87,6 +87,9 @@ export class MyApp {
     this.a.pages['evaluate'] = EvaluatePage;
     this.a.pages['settings-payment-info'] = SettingsPaymentInfoPage;
 
+    
+    this.a.pages['payment'] = PaymentPage;
+
 
     setTimeout(() => this.test(), 100);
 
@@ -105,7 +108,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    this.a.open('register');
+    // this.a.open('register');
 
     // this.a.open('student-profile');
     // this.a.open('register');
@@ -122,6 +125,8 @@ export class MyApp {
 
 
     // this.a.open('settings-payment-info');
+
+    this.a.open('payment');
     
   }
 
