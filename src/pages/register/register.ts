@@ -23,11 +23,11 @@ export class RegisterPage {
         public navCtrl: NavController,
         public a: AppService
     ) {
-      this.offset = this.a.lms.getUserLocalTimezoneOffset();
-      a.lms.timezones().subscribe( re => {
-        console.log( re);
-        this.tz = re;
-      });
+        this.offset = this.a.lms.getUserLocalTimezoneOffset();
+        a.lms.timezones().subscribe(re => {
+            console.log(re);
+            this.tz = re;
+        });
 
     }
 
@@ -37,27 +37,27 @@ export class RegisterPage {
 
 
     onSubmit() {
-      console.log('Submit', this.account);
-      if( !this.account.name || !this.account.name.length ) return this.a.showAlert(-80021, '*Name is required...');
-      if( !this.account.user_email || !this.account.user_email.length ) return this.a.showAlert(-80022, '*Email is required...');
-      if( !this.account.user_pass || !this.account.user_pass.length ) return this.a.showAlert(-80023, '*Password is required...');
-      //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
+        console.log('Submit', this.account);
+        if (!this.account.name || !this.account.name.length) return this.a.showAlert(-80021, '*Name is required...');
+        if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(-80022, '*Email is required...');
+        if (!this.account.user_pass || !this.account.user_pass.length) return this.a.showAlert(-80023, '*Password is required...');
+        //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
         this.a.showLoader();
 
-
-
-
+        
 
         this.account.user_login = this.account.user_email;
         this.account.photoURL = this.files.length ? this.files[0].url : '';
-        this.a.user.register( this.account ).subscribe(re => {
+        this.a.user.register(this.account).subscribe(re => {
             console.log("user.register => success: re: ", re);
-
-            this.a.lms.timezone_set( this.offset ).subscribe( () => {}, () => {});
+            
+            this.a.lms.timezone_set(this.offset).subscribe(() => { }, () => { });
             this.a.open('home');
         }, reg => {
+            
             this.a.hideLoader();
-            alert(reg.message);
+            // alert(reg.message);
+            this.a.alert(reg);
         });
 
     }
@@ -67,9 +67,9 @@ export class RegisterPage {
         let data: USER_UPDATE = {
             photoURL: this.files[0].url
         };
-        if( this.files.length > 1 ) {
-            data['photoURL']= this.files[1].url;
-            setTimeout( () => this.fileUpload.deleteFile( this.files[0] ), 1 );
+        if (this.files.length > 1) {
+            data['photoURL'] = this.files[1].url;
+            setTimeout(() => this.fileUpload.deleteFile(this.files[0]), 1);
         }
 
 
@@ -83,16 +83,16 @@ export class RegisterPage {
 
 
 
-  keysTimezone() {
-    return Object.keys( this.tz ).sort( ( a: any, b: any ) => a - b );
-  }
-
-  format( offset ) {
-    if ( offset > 0 ) {
-      return '+' + offset;
+    keysTimezone() {
+        return Object.keys(this.tz).sort((a: any, b: any) => a - b);
     }
-    else return offset;
-  }
+
+    format(offset) {
+        if (offset > 0) {
+            return '+' + offset;
+        }
+        else return offset;
+    }
 
 }
 

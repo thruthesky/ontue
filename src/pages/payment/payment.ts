@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, NgZone } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { AppService } from './../../providers/app.service';
 
 @Component({
@@ -11,8 +11,8 @@ export class PaymentPage implements AfterViewInit {
     paypal_ready = false;
     amount = 5000;
 
+    php_error = null;
     constructor(
-        private ngZone: NgZone,
         public a: AppService
     ) {
 
@@ -35,10 +35,10 @@ export class PaymentPage implements AfterViewInit {
         if (!paypal) this.a.alert("Paypal initialization has failed.");
 
 
-        let CREATE_PAYMENT_URL = 'https://sonub.com:8443/wp-content/plugins/xapi-2/lms/paypal-create-payment.php';
-        let EXECUTE_PAYMENT_URL = 'https://sonub.com:8443/wp-content/plugins/xapi-2/lms/paypal-execute-payment.php';
+        let CREATE_PAYMENT_URL = window['url_backend'] + '/wp-content/plugins/xapi-2/lms/paypal-create-payment.php';
+        let EXECUTE_PAYMENT_URL = window['url_backend'] + '/wp-content/plugins/xapi-2/lms/paypal-execute-payment.php';
         paypal.Button.render({
-            env: 'sandbox', // sandbox | production
+            env: 'production', // sandbox | production
             commit: true, // Show a 'Pay Now' button
             style: {
                 color: 'gold',
@@ -48,16 +48,17 @@ export class PaymentPage implements AfterViewInit {
                 console.log("amont: ", this.amount);
                 return paypal.request.post(CREATE_PAYMENT_URL, { amount: this.amount, session_id: this.a.user.sessionId })
                     .then((res) => {
+                        // console.log("Response from php: ", res);
                         if (res['code']) { // error.
                             // alert(res['message']); // alert() is not working
                             console.log("ERROR from create-payment.php", res );
+                            this.php_error = res['message'];
                             return 0;
                         }
                         else return res.paymentID;
                     });
             },
             onAuthorize: function (data, actions) {
-
                 let execute_data = {
                     paymentID: data.paymentID,
                     payerID: data.payerID
@@ -74,6 +75,7 @@ export class PaymentPage implements AfterViewInit {
             },
             onError: (err) => {
                 if (this.a.user.isLogout) alert("앗, 로그인을 해 주세요. Please login");
+                else if ( this.php_error ) alert( this.php_error );
                 else alert('앗, 결제 중에 에러가 발생하였습니다. An error occurred during the transaction');
             }
         }, '#paypal-button')

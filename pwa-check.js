@@ -3,10 +3,16 @@
 var fs = require('fs');
 var contents = fs.readFileSync('src/index.html').toString();
 
+if ( contents.indexOf("// url_backend = 'https://www.ontue.com';") != -1 ) {
+    console.log("WARNING\nPlease Enable Real Backend URL in index.html\n");
+    process.exit(11);
+}
+
 if ( contents.indexOf("// if ('serviceWorker' in navigator) {") != -1 ) {
-    console.log("WARNING:\nPlease comment out pwa code in index.html\n");
+    console.log("WARNING:\nPlease Enable PWA code in index.html\n");
     process.exit(1);
 }
+
 
 if ( contents.indexOf('<!-- <script src="cordova.js"></script> -->') == -1 ) {
     console.log("WARNING:\nPlease comment out cordova script tag in index.html\n");

@@ -10,7 +10,7 @@
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "node app-check.js && ionic-app-scripts serve",
-    "publish": "node pwa-check.js && npm run ionic:build -- --prod",
+    "publish": "node pwa-check.js && npm run ionic:build -- --prod && npm run scp",
     "serve": "node app-check.js && ionic-app-scripts serve",
     "scp": "cd www && scp -r * ontue@ontue.com:./www"
   },
