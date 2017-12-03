@@ -45,7 +45,9 @@ export class MyApp {
   rootPage:any = HomePage;
 
   constructor(
-    platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
+    platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService
   ) {
@@ -56,7 +58,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      alert("I am on cordova!");
     });
+
   }
 
 
