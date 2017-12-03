@@ -9,8 +9,8 @@
     <ion-item> Session No.: {{ idx }}</ion-item>
     <ion-item>Point: </ion-item>
     <ion-item>Student was absent: <input type="checkbox" [(ngModel)]="student_absent"></ion-item>
-      <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="class_unsuccessfull"> Any problem in the class?</ion-item>
-        <ion-item>Level of the session: </ion-item>
+    <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="class_successfull"> Any problem in the class?</ion-item>
+    <ion-item>Level of the session: </ion-item>
 
     <ion-item>
       Expression:
@@ -60,7 +60,7 @@
       Book(Page) will be used in next session: <input type="text" [(ngModel)]="book_next">
     </ion-item>
     <ion-item>
-      <input type="submit" value="SUBMIT">
+      <input type="submit" (click)="onClickSubmitEvaluation()" value="SUBMIT">
     </ion-item>
   </ion-list>
 </ion-content>

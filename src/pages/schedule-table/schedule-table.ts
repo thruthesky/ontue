@@ -85,7 +85,7 @@ export class ScheduleTablePage {
   }
 
   icon( session ) {
-    if ( session['status'] == 'future' ) { 
+    if ( session['status'] == 'future' ) {
       if ( session['open'] == 'open' ) { // open to reserve
         if ( session['dayoff'] == 'dayoff' ) return 'cloud-circle';
         else return 'radio-button-off';
@@ -279,7 +279,7 @@ export class ScheduleTablePage {
 
 
     sessions.forEach( session => {
-      if(session.status == 'open'){
+      if(session.open == 'open'){
         // console.log(session)
         this.reserveSession( session);
       }
@@ -291,7 +291,7 @@ export class ScheduleTablePage {
   onClickReserveCancel(sessions) {
 
     sessions.forEach( session => {
-      if(session.status == 'reserved' && session.owner && session.owner == 'me'){
+      if(session.open == 'reserved' && session.owner && session.owner == 'me'){
         // console.log(session)
         this.cancelSession( session);
       }
