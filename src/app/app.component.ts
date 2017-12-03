@@ -59,7 +59,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      alert("I am on cordova!");
+      // alert("I am on cordova!");
     });
 
   }
