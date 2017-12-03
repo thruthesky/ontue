@@ -72,7 +72,9 @@
   "wednesday": "수",
   "thursday": "목",
   "friday": "금",
-  "saturday": "토"
+  "saturday": "토",
+
+  "LOGIN_BEFORE_PAYMENT": "앗! 수업료 결제하기 전에 먼저 로그인을 해 주세요."
   
 
 

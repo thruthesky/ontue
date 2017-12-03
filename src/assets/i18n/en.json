@@ -35,5 +35,9 @@
   "LOADING": "Please wait while loading...",
   "PAYMENT": "Payments",
 
-  "discussion": "Discussion"
+  "discussion": "Discussion",
+
+
+  "LOGIN_BEFORE_PAYMENT": "Please login before you are going to pay for tuition fee."
+
 }
