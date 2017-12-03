@@ -48,13 +48,13 @@ export class AddSchedule {
             class_begin_hour: s.user_time_class_begin.substr(0,2),
             class_begin_minute: s.user_time_class_begin.substr(2,2),
             duration: s.duration,
-            sunday: s.sunday,
-            monday: s.monday,
-            tuesday: s.tuesday,
-            wednesday: s.wednesday,
-            thursday: s.thursday,
-            friday: s.friday,
-            saturday: s.saturday
+            sunday: s.user_time_days.sunday,
+            monday: s.user_time_days.monday,
+            tuesday: s.user_time_days.tuesday,
+            wednesday: s.user_time_days.wednesday,
+            thursday: s.user_time_days.thursday,
+            friday: s.user_time_days.friday,
+            saturday: s.user_time_days.saturday
           }
         }
     }

@@ -15,19 +15,18 @@
           <ion-datetime name="date" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
         </ion-item>
       </ion-item-group>
-      
+
       <button ion-button type="submit" (click)="onClickSubmit()">Create</button>
     </form>
   </section>
-  <hr> {{ dayoffs | json }}
-
+  <hr>
 
   <ion-item-group *ngIf=" dayoffs ">
-      
+
         <button ion-item *ngFor="let dayoff of dayoffs" (click)=" onClickDeleteDate( dayoff ) ">
           {{ dayoff.date }}
           <ion-icon name="trash"></ion-icon>
         </button>
-        
+
   </ion-item-group>
 </ion-content>

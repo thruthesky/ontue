@@ -88,7 +88,7 @@
         </td>
         <td><button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button><button class="btn btn-primary" (click)="onClickReserveCancel(sessions)">Cancel</button> </td>
         <td *ngFor=" let session of sessions ">
-          <!-- {{session|json}}  -->
+           <!--{{session|json}}-->
           <div class="session pointer" [attr.status]=" session['status'] " [attr.owner]=" session['owner'] " text-center (click)="onClickSession( session )">
             <!-- show icon -->
             <div class="status-icon">

@@ -29,4 +29,11 @@ export class EvaluatePage {
     ) {
         this.idx = navParams.data['idx'];
     }
+
+
+  onClickSubmitEvaluation() {
+
+
+
+  }
 }
