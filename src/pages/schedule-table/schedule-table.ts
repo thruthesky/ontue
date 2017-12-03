@@ -184,7 +184,8 @@ export class ScheduleTablePage {
   onClickSession( session ) {
 
     console.log('onClickSession', session);
-
+    if( session.status == 'past' ) return;
+    
     if ( session.open == 'open' ) this.reserveSession( session );
     else if ( session.open == 'reserved' && session.owner == 'me' ) this.cancelSession( session );
 

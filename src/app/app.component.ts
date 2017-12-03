@@ -80,14 +80,14 @@ export class MyApp {
     this.a.pages['schedule-table'] = ScheduleTablePage;
 
     this.a.pages['reservation'] = ReservationPage;
-    
+
     this.a.pages['dayoff'] = TeacherDayoffPage;
     this.a.pages['message'] = MessagePage;
 
     this.a.pages['evaluate'] = EvaluatePage;
     this.a.pages['settings-payment-info'] = SettingsPaymentInfoPage;
 
-    
+
     this.a.pages['payment'] = PaymentPage;
 
 
@@ -102,7 +102,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    // this.a.open('schedule-table', { ID: 806 });
+    this.a.open('schedule-table', { ID: 806 });
 
     // this.a.open('teacher-list');
 
@@ -126,8 +126,8 @@ export class MyApp {
 
     // this.a.open('settings-payment-info');
 
-    this.a.open('payment');
-    
+    // this.a.open('payment');
+
   }
 
 

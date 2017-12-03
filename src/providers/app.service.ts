@@ -49,6 +49,7 @@ export class AppService {
             alert: this.alert.bind(this)
         };
 
+        // xapi.setServerUrl('https://www.ontue.com');
         // xapi.setServerUrl('https://www.sonub.com');
         xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');
@@ -139,7 +140,7 @@ export class AppService {
               this.inLoadingMyPoint = false;
               callback(point);
         }, e => this.alert(e));
-    
+
     }
 
     /**
