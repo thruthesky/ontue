@@ -52,7 +52,12 @@ export class RegisterPage {
             console.log("user.register => success: re: ", re);
             
             this.a.lms.timezone_set(this.offset).subscribe(() => { }, () => { });
-            this.a.open('home');
+
+            // this.a.open('home');
+
+            this.a.hideLoader();
+            this.a.alert('registered');
+
         }, reg => {
             
             this.a.hideLoader();

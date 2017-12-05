@@ -31,6 +31,9 @@ export class AppService {
 
 
     inLoadingMyPoint = false;
+
+
+    platform = null;
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,

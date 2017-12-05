@@ -47,6 +47,32 @@
   <form (submit)="onSubmit()">
     <ion-list>
 
+
+
+        <ion-item>
+          
+          <ion-grid>
+            <ion-row>
+              <ion-col col-3>I am a</ion-col>
+              <ion-col col-9>
+                  <label>
+                    <input type="radio" name="user_type" value="student">
+                    Student
+                  </label>
+                  <label>
+                    <input type="radio" name="user_type" value="teacher">
+                    Teacher
+                  </label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <small class="text-muted">Choose user user-type.</small>
+
+          </ion-item>
+
+
+
+
       <ion-item>
         <ion-label floating>{{ 'TIMEZONE' | translate }}</ion-label>
         <ion-select [(ngModel)] = "offset" name="timezone">
@@ -71,14 +97,30 @@
 
 
       <ion-item>
-        <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.nickname" name="nickname"></ion-input>
-      </ion-item>
-
-
+          <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.nickname" name="nickname"></ion-input>
+        </ion-item>
+  
+  
+  
+      
+        <ion-item>
+            <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
+          </ion-item>
+          
+      
+          Upload QR Mark
+    
+    
+    
+      
+          
       <div padding>
         <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
       </div>
+
+
 
     </ion-list>
   </form>

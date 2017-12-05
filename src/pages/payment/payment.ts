@@ -16,6 +16,9 @@ export class PaymentPage implements AfterViewInit {
         public a: AppService
     ) {
 
+
+        if ( a.platform.is('ios') ) alert( '@Warning Developer needs to check if the paypal express checkout is working on ios app.' );
+
     }
 
 
