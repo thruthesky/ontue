@@ -51,7 +51,7 @@ export class MyApp {
     xapi: XapiService,
     public a: AppService
   ) {
-      this.a.initTranslate();
+    this.a.initTranslate();
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -116,7 +116,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    this.a.open('register');
+    // this.a.open('register');
 
     // this.a.open('student-profile');
     // this.a.open('register');
@@ -130,7 +130,7 @@ export class MyApp {
     // this.a.open('message');
 
     // this.a.open('evaluate', {idx: 1639} );
-    // this.a.open('evaluate', {idx: 9707} );
+    this.a.open('evaluate', {idx: 9707} );
 
 
     // this.a.open('settings-payment-info');

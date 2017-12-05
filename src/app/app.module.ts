@@ -57,8 +57,6 @@ import { PaymentPage } from '../pages/payment/payment';
 // -----------------------------
 import { LoginBoxComponent } from './../components/login-box/login-box';
 import { HeaderComponent } from './../components/header/header';
-import { ChooseUserTypeComponent } from './../components/choose-user-type/choose-user-type';
-import { ChooseUserTypeModal } from './../components/choose-user-type-modal/choose-user-type-modal';
 import { SitePreviewWidget} from './../components/site-preview/site-preview';
 import { FileUploadWidget } from './../components/file-upload/file-upload';
 import { FileDisplayWidget } from  './../components/file-display/file-display';
@@ -88,7 +86,6 @@ export function createTranslateLoader(http: HttpClient) {
     LoginBoxComponent,
     HeaderComponent,
     PostPage,
-    ChooseUserTypeComponent,
     PostCreateEditPage,
     PostPopoverWidget,
     SitePreviewWidget,
@@ -99,7 +96,6 @@ export function createTranslateLoader(http: HttpClient) {
     CommentViewWidget,
     TeacherProfilePage,
     StudentProfilePage,
-    ChooseUserTypeModal,
     AddSchedule,
     TeacherListPage,
     ScheduleTablePage,
@@ -138,13 +134,11 @@ export function createTranslateLoader(http: HttpClient) {
     CommentEditPage,
     TeacherProfilePage,
     StudentProfilePage,
-    ChooseUserTypeModal,
     PostPopoverWidget,
     AddSchedule,
     TeacherListPage,
     ScheduleTablePage,
     ReservationPage,
-
     TeacherDayoffPage,
     MessagePage,
     EvaluatePage,

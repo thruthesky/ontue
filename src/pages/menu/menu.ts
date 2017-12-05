@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
-import { ChooseUserTypeModal } from './../../components/choose-user-type-modal/choose-user-type-modal';
 
 
 @Component({
@@ -12,7 +10,6 @@ export class MenuPage {
 
 
   constructor(
-    public modalCtrl: ModalController,
     public a: AppService
   ) {
 
@@ -20,14 +17,6 @@ export class MenuPage {
 
     // test
     // setTimeout(() => this.presentChooseUserTypeModal(), 50);
-  }
-
-
-
-
-  presentChooseUserTypeModal() {
-    const modal = this.modalCtrl.create(ChooseUserTypeModal);
-    modal.present();
   }
 
 }

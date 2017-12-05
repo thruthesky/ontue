@@ -4,27 +4,25 @@
 <ion-content padding>
   <h1>Evaluate</h1>
 
-
-  <h2 *ngIf="an">Array {{an}}</h2>
-  <h3 *ngIf="ob">Object {{ob|json}}</h3>
-
   <ion-list>
     <ion-item> Session No.: {{ idx }}</ion-item>
-    <ion-item>Point: </ion-item>
+    <ion-item>Point: {{point}}</ion-item>
     <ion-item>Student was absent: <input type="checkbox" [(ngModel)]="student_absent"></ion-item>
     <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="unsuccessful"> Any problem in the class?</ion-item>
-    <ion-item>Level of the session: </ion-item>
+    <ion-item>Level of the session:  {{level}}</ion-item>
 
     <ion-item>
       Expression:
-      <select [(ngModel)]="expression">
+      <select [(ngModel)]="expression" (ngModelChange)="onChangeChecklevel()">
+        <option [value]="0">Select...</option>
         <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
         </option>
       </select> (Rate how well the student can express)
     </ion-item>
     <ion-item>
       Vocabulary:
-      <select [(ngModel)]="vocabulary">
+      <select [(ngModel)]="vocabulary" (ngModelChange)="onChangeChecklevel()">
+        <option [value]="0">Select...</option>
         <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
         </option>
       </select>
@@ -32,21 +30,24 @@
     </ion-item>
     <ion-item>
       Grammar:
-      <select [(ngModel)]="grammar">
+      <select [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
+        <option [value]="0">Select...</option>
         <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
         </option>
       </select> (Rate on student grammar)
     </ion-item>
     <ion-item>
       Pronunciaton:
-      <select [(ngModel)]="pronunciation">
+      <select [(ngModel)]="pronunciation" (ngModelChange)="onChangeChecklevel()">
+        <option [value]="0">Select...</option>
         <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
         </option>
       </select> (Rate on student accent and intonation)
     </ion-item>
     <ion-item>
       Speed of Speach:
-      <select [(ngModel)]="speed">
+      <select [(ngModel)]="speed" (ngModelChange)="onChangeChecklevel()">
+        <option [value]="0">Select...</option>
         <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
         </option>
       </select> (Rate on how fast and fluently the student speaks.)
@@ -57,7 +58,7 @@
     </ion-item>
 
     <ion-item>
-      Book(Page) used in the session: <input type="text" [(ngModel)]="book_use">
+      Book(Page) used in the session: <input type="text" [(ngModel)]="book_used">
     </ion-item>
     <ion-item>
       Book(Page) will be used in next session: <input type="text" [(ngModel)]="book_next">
