@@ -23,11 +23,16 @@ export class EvaluatePage {
     book_next: string;
 
 
+
+    an = [];
+    ob = {};
+
     constructor(
         navParams: NavParams,
         public a: AppService
     ) {
         this.idx = navParams.data['idx'];
+        console.log(this.idx);
     }
 
 
