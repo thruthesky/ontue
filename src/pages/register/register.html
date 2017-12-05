@@ -1,4 +1,3 @@
-
 <ion-header>
   <header-content></header-content>
 </ion-header>
@@ -12,41 +11,30 @@
   </div>
 
 
-  <div class="text-center mt-5">
-    <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
-      <input *ngIf=" ! a.isCordova "
-             class="p-absolute z-100 t-0 l-0 size-15 bg-grey"
-             style="opacity: 0.001"
-             type="file" (change)="fileUpload.onChangeFile($event)">
-
-
-      <div class="profile-user-photo">
-        <img
-          class="size-10 rounded-50"
-          src="{{files.length > 0 ? files[0].url : a.anonymousPhotoURL}}"
-
-        >
-      </div>
-      <button class="btn submit fs-lg"
-              [class.skip]="files && files.length"
-      >
-        <i class="fa fa-camera mr-2"></i>
-        {{ 'PRIMARY PHOTO' | translate }}
-      </button>
-      <file-upload-widget #fileUploadWidget
-                          [title]="false"
-                          [fileSelectionButton]="false"
-                          [files]="files"
-                          [showUploadedFiles]="false"
-                          (success)="onSuccessUploadPicture()"></file-upload-widget>
+<div class="text-center mt-5">
+  <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
+    <input *ngIf=" ! a.isCordova " class="p-absolute z-100 t-0 l-0 size-15 bg-grey" style="opacity: 0.001" type="file" (change)="fileUpload.onChangeFile($event)">
+    <div class="profile-user-photo">
+      <img class="size-10 rounded-50" src="{{files.length > 0 ? files[0].url : a.anonymousPhotoURL}}">
     </div>
+    <button class="btn submit fs-lg" [class.skip]="files && files.length">
+      <i class="fa fa-camera mr-2"></i>
+      {{ 'PRIMARY PHOTO' | translate }}
+    </button>
+    <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files" [showUploadedFiles]="false"
+      (success)="onSuccessUploadPicture()"></file-upload-widget>
   </div>
+</div>
 
   <hr>
 
   <form (submit)="onSubmit()">
+
+
+
     <ion-list>
-      <ion-grid>
+
+      <!-- <ion-grid *ngIf="a.user.isLogin; else selectUserType">
         <ion-row>
           <ion-col class="pointer text-center {{user_type == 'S' ? 'bg-grey white': ''}}" col-6>
             <label class="d-block">
@@ -66,14 +54,23 @@
             </label>
           </ion-col>
         </ion-row>
-      </ion-grid>
+      </ion-grid> -->
+
+
+      I am a
+
+      <input type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()"> student or teacher
+
+      <input type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()"> student
+
+
 
       <hr>
 
 
       <ion-item>
         <ion-label floating>{{ 'TIMEZONE' | translate }}</ion-label>
-        <ion-select [(ngModel)] = "offset" name="timezone">
+        <ion-select [(ngModel)]="offset" name="timezone">
           <ion-option *ngFor="let t of keysTimezone()" value="{{ t }}">{{ format(t) }} {{ tz[t].name }}</ion-option>
         </ion-select>
       </ion-item>
@@ -104,8 +101,7 @@
         <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
       </ion-item>
 
-      <ion-item>
-
+      <ion-item *ngIf="a.user.isLogin">
         Upload QR Mark
       </ion-item>
 
@@ -121,5 +117,3 @@
     </ion-list>
   </form>
 </ion-content>
-
-

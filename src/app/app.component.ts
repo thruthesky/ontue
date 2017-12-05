@@ -119,7 +119,7 @@ export class MyApp {
     // this.a.open('register');
 
     // this.a.open('student-profile');
-    // this.a.open('register');
+    this.a.open('register');
     // this.a.open('menu');
 
     // this.a.open('reservation', { past: true });
@@ -130,7 +130,7 @@ export class MyApp {
     // this.a.open('message');
 
     // this.a.open('evaluate', {idx: 1639} );
-    this.a.open('evaluate', {idx: 9707} );
+    // this.a.open('evaluate', {idx: 9707} );
 
 
     // this.a.open('settings-payment-info');

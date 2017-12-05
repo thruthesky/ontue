@@ -1,3 +1,7 @@
+/**
+ * 
+ * @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
+ */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {HttpErrorResponse} from '@angular/common/http';
 
@@ -203,7 +207,11 @@ export class FileUploadWidget {
     this.deleteFile(file);
   }
 
-  deleteFile(file: FILE) {
+  deleteFile(file: FILE, successCallback=null, failureCallback=null) {
+    if ( ! file || !file.id ) {
+      alert("File is empty. No file.id");
+      return;
+    }
     let data: FILE_DELETE = {};
 
     data.id = file.id;
@@ -215,8 +223,13 @@ export class FileUploadWidget {
       let index = this.files.findIndex(file => file.id == id);
       this.files.splice(index, 1);
       console.log('onClickDeleteButton::', this.files);
+      if ( successCallback ) successCallback();
       this.a.xapi.render();
-    }, err => this.a.showError(err));
+    }, err => {
+      if ( failureCallback ) failureCallback();
+      this.a.showError(err);
+    });
+
   }
 
   onProgress(p: number) {

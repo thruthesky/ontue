@@ -1,11 +1,15 @@
-import {Component, ViewChild} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {AppService} from './../../providers/app.service';
+/**
+ * 
+ * @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
+ */
+import { Component, ViewChild } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { AppService } from './../../providers/app.service';
 import {
   USER_REGISTER, FILES, USER_UPDATE, USER_DATA_RESPONSE,
   USER_UPDATE_RESPONSE
 } from './../../angular-xapi/interfaces';
-import {FileUploadWidget} from '../../components/file-upload/file-upload';
+import { FileUploadWidget } from '../../components/file-upload/file-upload';
 
 
 @Component({
@@ -20,11 +24,11 @@ export class RegisterPage {
   offset;
 
   files: FILES = [];
-  @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget;
+  @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget; // @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
   user_type: string;
 
   constructor(public navCtrl: NavController,
-              public a: AppService) {
+    public a: AppService) {
     this.offset = this.a.lms.getUserLocalTimezoneOffset();
     a.lms.timezones().subscribe(re => {
       console.log(re);
@@ -72,7 +76,7 @@ export class RegisterPage {
     }
     else { // REGISTER
       console.log('GOING TO REGISTER');
-      // this.profile_register();
+      this.profile_register();
     }
 
   }
@@ -110,17 +114,30 @@ export class RegisterPage {
 
 
   onSuccessUploadPicture() {
-    // console.log("onSuccessUpdateProfilePicture::", this.files);
-    let data: USER_UPDATE = {
-      photoURL: this.files[0].url
-    };
-    if (this.files.length > 1) {
-      data['photoURL'] = this.files[1].url;
-      setTimeout(() => this.fileUpload.deleteFile(this.files[0]), 1);
-    }
+    console.log("onSuccessUpdateProfilePicture::", this.files);
 
+
+    /**
+     * Delete previous photo.
+     * 
+     * file[0]
+     */
+    if (this.files.length > 1) { /// If there are two files, one for prvious photo, the other is for new photo.
+      this.fileUpload.deleteFile(this.files[0], () => this.updatePrimaryPhoto() );
+    }
+    else this.updatePrimaryPhoto();
+
+
+  }
+
+  updatePrimaryPhoto() {
+
+    let data: USER_UPDATE = {
+      photoURL: this.files[0].url,
+      user_email: this.account.user_email
+    };
+    
     if (this.a.user.isLogin) {
-      data['user_email'] = this.account.user_email;
       this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
         this.files[0] = res.photo;
         this.a.render();
@@ -128,7 +145,10 @@ export class RegisterPage {
         this.a.alert(err);
       });
     }
+
   }
+
+  
 
   keysTimezone() {
     return Object.keys(this.tz).sort((a: any, b: any) => a - b);
@@ -148,14 +168,14 @@ export class RegisterPage {
     this.a.lms.setUserType(this.user_type).subscribe(re => { // update on server
       this.a.user.loadProfile() // reload user profile.
         .subscribe(re => {
-            console.log(re);
-            this.user_type = re['user_type'];
-            this.a.hideLoader();
-          },
-          e => {
-            this.a.alert(e);
-            this.a.hideLoader();
-          });
+          console.log(re);
+          this.user_type = re['user_type'];
+          this.a.hideLoader();
+        },
+        e => {
+          this.a.alert(e);
+          this.a.hideLoader();
+        });
     }, e => {
       this.a.alert(e);
       this.a.hideLoader();
