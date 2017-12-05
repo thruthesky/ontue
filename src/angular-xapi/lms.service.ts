@@ -298,4 +298,20 @@ export class LMSService extends Base {
         data['session_id'] = this.user.sessionId;
         return this.x.post( data );
     }
+
+    session_evaluate(data){
+      data['route'] = 'lms.session_evaluate';
+      data['session_id'] = this.user.sessionId;
+      console.log(data);
+      return this.x.post( data );
+    }
+
+    get_session_evaluation(idx){
+      let data = {};
+      data['route'] = 'lms.get_session_evaluation';
+      data['session_id'] = this.user.sessionId;
+      data['idx'] = idx;
+      return this.x.post( data );
+
+    }
 }

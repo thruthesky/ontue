@@ -5,14 +5,14 @@
   <h1>Evaluate</h1>
 
 
-  <h2 *ngIf="an">Array</h2>
-  <h3 *ngIf="ob">Object</h3>
+  <h2 *ngIf="an">Array {{an}}</h2>
+  <h3 *ngIf="ob">Object {{ob|json}}</h3>
 
   <ion-list>
     <ion-item> Session No.: {{ idx }}</ion-item>
     <ion-item>Point: </ion-item>
     <ion-item>Student was absent: <input type="checkbox" [(ngModel)]="student_absent"></ion-item>
-    <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="class_successfull"> Any problem in the class?</ion-item>
+    <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="unsuccessful"> Any problem in the class?</ion-item>
     <ion-item>Level of the session: </ion-item>
 
     <ion-item>
@@ -38,8 +38,8 @@
       </select> (Rate on student grammar)
     </ion-item>
     <ion-item>
-      Pronounciaton:
-      <select [(ngModel)]="pronounciation">
+      Pronunciaton:
+      <select [(ngModel)]="pronunciation">
         <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
         </option>
       </select> (Rate on student accent and intonation)

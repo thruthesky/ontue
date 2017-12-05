@@ -132,6 +132,7 @@ export class MyApp {
 
 
     // this.a.open('settings-payment-info');
+    // this.a.open('settings-payment-info');
 
     // this.a.open('payment');
 

@@ -21,13 +21,13 @@ export class SettingsPaymentInfoPage {
 
         this.a.lms.payment_information_update( this.payment_information ).subscribe( re => {
             console.log(re);
+            this.a.alert("Success");
         }, e => this.a.alert(e) );
     }
 
 
 
     loadPaymentInformation() {
-
         this.a.lms.payment_information().subscribe( re => {
             console.log(re);
             if ( re['payment_information']) this.payment_information = re['payment_information'];

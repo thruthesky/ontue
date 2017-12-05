@@ -16,7 +16,12 @@
 <div>city <input type="text" name="city" [(ngModel)]="payment_information['city']"></div>
 <div>address <input type="text" name="address" [(ngModel)]="payment_information['address']"></div>
 <div>zipcode <input type="text" name="zipcode" [(ngModel)]="payment_information['zipcode']"></div>
-<div>payment <input type="text" name="payment_method" [(ngModel)]="payment_information['payment_method']"></div>
+
+<div>Payment Method:
+        <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash"> GCAsh
+        <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="western-union"> Western Union
+        <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal"> Paypal
+</div>
 
 <button ion-button (click)="onClickSubmit()">SUBMIT</button>
 
