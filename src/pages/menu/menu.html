@@ -88,7 +88,7 @@
       회원가입
     </ion-item>
 
-    <ion-item *ngIf=" a.user.isLogin " (click)=" a.isTeacher ? a.open('teacher-profile') : a.open('student-profile')">
+    <ion-item *ngIf=" a.user.isLogin " (click)=" a.open('register')">
       <ion-icon name="log-out" item-start></ion-icon>
       {{ 'PROFILE' | translate }} {{ a.isTeacher | json }}
     </ion-item>

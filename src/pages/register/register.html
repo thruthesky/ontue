@@ -1,76 +1,74 @@
 
 <ion-header>
-    <header-content></header-content>
-  </ion-header>
+  <header-content></header-content>
+</ion-header>
 
 
 <ion-content>
 
   <div class="box header bg-darkslateblue">
-    {{ 'REGISTER' | translate }}
+    <span *ngIf="a.user.isLogout">{{ 'REGISTER' | translate }}</span>
+    <span *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE' | translate }}</span>
   </div>
 
 
-    <div class="text-center mt-5">
-        <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
-            <input *ngIf=" ! a.isCordova "
-            class="p-absolute z-100 t-0 l-0 size-15 bg-grey"
-            style="opacity: 0.001"
-            type="file" (change)="fileUpload.onChangeFile($event)">
+  <div class="text-center mt-5">
+    <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
+      <input *ngIf=" ! a.isCordova "
+             class="p-absolute z-100 t-0 l-0 size-15 bg-grey"
+             style="opacity: 0.001"
+             type="file" (change)="fileUpload.onChangeFile($event)">
 
 
-                <div class="profile-user-photo">
-                        <img
-                          class="size-10 rounded-50"
-                          src="{{files.length > 0 ? files[0].url : a.anonymousPhotoURL}}"
+      <div class="profile-user-photo">
+        <img
+          class="size-10 rounded-50"
+          src="{{files.length > 0 ? files[0].url : a.anonymousPhotoURL}}"
 
-                        >
-                    </div>
-              <button class="btn submit fs-lg"
-                      [class.skip]="files && files.length"
-              >
-              <i class="fa fa-camera mr-2"></i>
-              {{ 'UPLOAD PHOTO' | translate }}
-              </button>
-              <file-upload-widget #fileUploadWidget
-              [title]="false"
-              [fileSelectionButton]="false"
-              [files]="files"
-              [showUploadedFiles]="false"
-              (success)="onSuccessUploadPicture()"></file-upload-widget>
-
-
-        </div>
-
+        >
       </div>
+      <button class="btn submit fs-lg"
+              [class.skip]="files && files.length"
+      >
+        <i class="fa fa-camera mr-2"></i>
+        {{ 'PRIMARY PHOTO' | translate }}
+      </button>
+      <file-upload-widget #fileUploadWidget
+                          [title]="false"
+                          [fileSelectionButton]="false"
+                          [files]="files"
+                          [showUploadedFiles]="false"
+                          (success)="onSuccessUploadPicture()"></file-upload-widget>
+    </div>
+  </div>
+
+  <hr>
 
   <form (submit)="onSubmit()">
     <ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="pointer text-center {{user_type == 'S' ? 'bg-grey white': ''}}" col-6>
+            <label class="d-block">
+              <img src="assets/img/student.png">
+              <h3>학생입니까?</h3>
+              <p>무료 수업을 예약해 보세요.</p>
+              <input type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()">
+            </label>
+          </ion-col>
 
+          <ion-col class="pointer text-center {{user_type == 'T' ? 'bg-grey white': ''}}" col-6>
+            <label class="d-block">
+              <img src="assets/img/teacher.png">
+              <h3>선생님이십니까?</h3>
+              <p>수업 시간표를 만들어 보세요.</p>
+              <input type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()">
+            </label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
-
-        <ion-item>
-          
-          <ion-grid>
-            <ion-row>
-              <ion-col col-3>I am a</ion-col>
-              <ion-col col-9>
-                  <label>
-                    <input type="radio" name="user_type" value="student">
-                    Student
-                  </label>
-                  <label>
-                    <input type="radio" name="user_type" value="teacher">
-                    Teacher
-                  </label>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-          <small class="text-muted">Choose user user-type.</small>
-
-          </ion-item>
-
-
+      <hr>
 
 
       <ion-item>
@@ -90,32 +88,30 @@
         <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item *ngIf="a.user.isLogout">
         <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>
       </ion-item>
 
 
       <ion-item>
-          <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
-          <ion-input type="text" [(ngModel)]="account.nickname" name="nickname"></ion-input>
-        </ion-item>
-  
-  
-  
-      
-        <ion-item>
-            <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
-            <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
-          </ion-item>
-          
-      
-          Upload QR Mark
-    
-    
-    
-      
-          
+        <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.nickname" name="nickname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
+      </ion-item>
+
+      <ion-item>
+
+        Upload QR Mark
+      </ion-item>
+
+
+
+
       <div padding>
         <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
       </div>

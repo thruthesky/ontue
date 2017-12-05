@@ -66,9 +66,11 @@ export type USER_DATA = REQUEST;
 
 
 export interface USER_REGISTER extends REQUEST {
+    ID?: number;
     user_email?: string;
     user_pass?: string;
     user_login?: string;
+    user_type?: string;
     name?: string;
     display_name?: string;
     nickname?: string;
@@ -77,6 +79,7 @@ export interface USER_REGISTER extends REQUEST {
     address?: string;
     birthday?: string;
     landline?: string;
+    kakaotalk_id?: string;
     photoURL?: string; // This is used for registration and update only.
     photo?: FILE; // This is used on backend response only
 };
