@@ -34,27 +34,7 @@
 
     <ion-list>
 
-      <!-- <ion-grid *ngIf="a.user.isLogin; else selectUserType">
-        <ion-row>
-          <ion-col class="pointer text-center {{user_type == 'S' ? 'bg-grey white': ''}}" col-6>
-            <label class="d-block">
-              <img src="assets/img/student.png">
-              <h3>학생입니까?</h3>
-              <p>무료 수업을 예약해 보세요.</p>
-              <input type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()">
-            </label>
-          </ion-col>
-
-          <ion-col class="pointer text-center {{user_type == 'T' ? 'bg-grey white': ''}}" col-6>
-            <label class="d-block">
-              <img src="assets/img/teacher.png">
-              <h3>선생님이십니까?</h3>
-              <p>수업 시간표를 만들어 보세요.</p>
-              <input type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()">
-            </label>
-          </ion-col>
-        </ion-row>
-      </ion-grid> -->
+      
 
 
       I am a
@@ -93,7 +73,7 @@
 
       <ion-item>
         <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.nickname" name="nickname"></ion-input>
+        <ion-input type="text" [(ngModel)]="account.display_name" name="nickname"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -103,14 +83,20 @@
 
       <ion-item *ngIf="a.user.isLogin">
         Upload QR Mark
+        <file-upload-widget #fileUploadWidget
+        [title]="true"
+        [fileSelectionButton]="true"
+        [files]="qrmarks"
+        [showUploadedFiles]="true"
+        (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
       </ion-item>
-
 
 
 
       <div padding>
         <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
       </div>
+
 
 
 

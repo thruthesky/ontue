@@ -207,6 +207,18 @@ export class FileUploadWidget {
     this.deleteFile(file);
   }
 
+  /**
+   * 
+   * Deletes a file.
+   * 
+   * @param file - file information.
+   *            It is passed by reference
+   *            BUT IT IS SAFE to do something with the file information on parent
+   *            BECAUSE it is copying the id, post_password and use it on its own memory.
+   * 
+   * @param successCallback 
+   * @param failureCallback 
+   */
   deleteFile(file: FILE, successCallback=null, failureCallback=null) {
     if ( ! file || !file.id ) {
       alert("File is empty. No file.id");

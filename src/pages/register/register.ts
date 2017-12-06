@@ -6,7 +6,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
 import {
-  USER_REGISTER, FILES, USER_UPDATE, USER_DATA_RESPONSE,
+  USER_REGISTER, FILES, FILE, USER_UPDATE, USER_DATA_RESPONSE,
   USER_UPDATE_RESPONSE
 } from './../../angular-xapi/interfaces';
 import { FileUploadWidget } from '../../components/file-upload/file-upload';
@@ -24,6 +24,7 @@ export class RegisterPage {
   offset;
 
   files: FILES = [];
+  qrmarks: FILES = [];
   @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget; // @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
   user_type: string;
 
@@ -51,7 +52,7 @@ export class RegisterPage {
       console.log('userData::', userData);
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
-      this.account['nickname'] = userData['nickname'];
+      this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
       if (userData.photo) this.files[0] = userData.photo;
@@ -123,7 +124,7 @@ export class RegisterPage {
      * file[0]
      */
     if (this.files.length > 1) { /// If there are two files, one for prvious photo, the other is for new photo.
-      this.fileUpload.deleteFile(this.files[0], () => this.updatePrimaryPhoto() );
+      this.fileUpload.deleteFile(this.files[0], () => this.updatePrimaryPhoto(), () => this.updatePrimaryPhoto());
     }
     else this.updatePrimaryPhoto();
 
@@ -136,7 +137,7 @@ export class RegisterPage {
       photoURL: this.files[0].url,
       user_email: this.account.user_email
     };
-    
+
     if (this.a.user.isLogin) {
       this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
         this.files[0] = res.photo;
@@ -148,7 +149,7 @@ export class RegisterPage {
 
   }
 
-  
+
 
   keysTimezone() {
     return Object.keys(this.tz).sort((a: any, b: any) => a - b);
@@ -183,5 +184,19 @@ export class RegisterPage {
 
   }
 
+  onSuccessUploadQRMark(file: FILE) {
+
+    if (this.qrmarks.length > 1) {
+      this.fileUpload.deleteFile(this.qrmarks[0], () => {}, e => this.a.alert(e));
+    }
+
+    let data: USER_UPDATE = {
+      kakao_qrmark_URL: file.url,
+      user_email: this.account.user_email
+    };
+    this.a.user.update(data).subscribe(() => {}, e => this.a.alert(e));
+    this.qrmarks = [file];
+    this.a.render();
+  }
 }
 
