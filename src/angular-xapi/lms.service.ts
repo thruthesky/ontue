@@ -314,4 +314,27 @@ export class LMSService extends Base {
       return this.x.post( data );
 
     }
+
+
+    
+    /**
+     * Gets a page
+     * @param req request data
+     * 
+     * @code
+     * a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e.message));
+     * @endcode
+     */
+    page( req ) : any {
+        req['route'] = 'lms.page';
+        console.log(req);
+        return this.x.post(req)
+            .map( e => {
+                const re = this.x.safe(e);
+                this.x.render(500);  
+                return re;      
+             } );
+    }
+
+
 }

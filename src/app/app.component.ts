@@ -8,6 +8,7 @@ import { XapiService } from './../angular-xapi/angular-xapi.module';
 import { AppService } from './../providers/app.service';
 import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings-payment-info';
 
+import { PolicyPage } from '../pages/policy/policy';
 
 
 
@@ -97,6 +98,7 @@ export class MyApp {
 
 
     this.a.pages['payment'] = PaymentPage;
+    this.a.pages['policy'] = PolicyPage;
 
 
     setTimeout(() => this.test(), 100);
@@ -119,7 +121,7 @@ export class MyApp {
     // this.a.open('register');
 
     // this.a.open('student-profile');
-    this.a.open('register');
+    // this.a.open('register');
     // this.a.open('menu');
 
     // this.a.open('reservation', { past: true });
@@ -138,6 +140,8 @@ export class MyApp {
 
     // this.a.open('payment');
 
+    this.a.open('policy');
+    
 
   }
 

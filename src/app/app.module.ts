@@ -48,6 +48,7 @@ import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings
 
 
 import { PaymentPage } from '../pages/payment/payment';
+import { PolicyPage } from '../pages/policy/policy';
 
 
 
@@ -64,6 +65,8 @@ import { CommentCreateWidget } from './../pages/comment-create/comment-create';
 import { CommentViewWidget } from './../components/comment-view/comment-view';
 import { PostPopoverWidget } from '../components/post-popover/post-popover';
 import { AddSchedule } from '../components/add-schedule/add-schedule';
+import { PageComponent } from '../components/page/page';
+
 
 
 
@@ -104,7 +107,9 @@ export function createTranslateLoader(http: HttpClient) {
     MessagePage,
     EvaluatePage,
     SettingsPaymentInfoPage,
-    PaymentPage
+    PaymentPage,
+    PageComponent,
+    PolicyPage
   ],
   imports: [
     BrowserModule,
@@ -143,7 +148,9 @@ export function createTranslateLoader(http: HttpClient) {
     MessagePage,
     EvaluatePage,
     SettingsPaymentInfoPage,
-    PaymentPage
+    PaymentPage,
+    PageComponent,
+    PolicyPage
   ],
 
   providers: [
