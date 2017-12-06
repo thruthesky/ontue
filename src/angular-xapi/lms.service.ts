@@ -336,5 +336,11 @@ export class LMSService extends Base {
              } );
     }
 
+    update_kakao_qrmark_string() {
+      let data = {};
+      data['route'] = 'lms.update_kakao_qrmark_string';
+      data['session_id'] = this.user.sessionId;
+      return this.x.post( data );
+    }
 
 }

@@ -79,6 +79,9 @@
           {{ sessions[0].idx_schedule }}
           <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }}
           <br> {{ schedule( sessions[0].idx_schedule ).teacher.name }}
+          <div *ngIf=" schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string ">
+            <a href="{{ schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string }}">Add Kakao Friend</a>
+          </div>
         </td>
         <td>
           {{ schedule( sessions[0].idx_schedule ).user_time_class_begin }}

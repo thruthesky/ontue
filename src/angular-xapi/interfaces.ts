@@ -83,7 +83,8 @@ export interface USER_REGISTER extends REQUEST {
     kakaotalk_id?: string;
     kakao_qrmark_URL?: string;
     kakao_qrmark_string?: string;
-    photo?: FILE; // This is used on backend response only
+    primary_photo?: FILE; // This is used on backend response only
+    kakao_qrmark_photo?: FILE;
 };
 
 export type USER_UPDATE = USER_REGISTER;

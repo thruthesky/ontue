@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+// import { SplashScreen } from '@ionic-native/splash-screen';
+// import { StatusBar } from '@ionic-native/status-bar';
 
 
 
@@ -32,8 +32,7 @@ import { CommentEditPage } from '../components/comment-edit/comment-edit';
 import { RegisterPage } from './../pages/register/register';
 import { LoginPage } from './../pages/login/login';
 import { MenuPage } from './../pages/menu/menu';
-import { TeacherProfilePage } from './../pages/teacher-profile/teacher-profile';
-import { StudentProfilePage } from './../pages/student-profile/student-profile';
+
 import { TeacherListPage } from './../pages/teacher-list/teacher-list';
 import { ScheduleTablePage } from './../pages/schedule-table/schedule-table';
 import { ReservationPage } from './../pages/reservation/reservation';
@@ -97,8 +96,6 @@ export function createTranslateLoader(http: HttpClient) {
     CommentEditPage,
     CommentCreateWidget,
     CommentViewWidget,
-    TeacherProfilePage,
-    StudentProfilePage,
     AddSchedule,
     TeacherListPage,
     ScheduleTablePage,
@@ -137,8 +134,6 @@ export function createTranslateLoader(http: HttpClient) {
     PostPage,
     PostCreateEditPage,
     CommentEditPage,
-    TeacherProfilePage,
-    StudentProfilePage,
     PostPopoverWidget,
     AddSchedule,
     TeacherListPage,
@@ -154,8 +149,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
 
   providers: [
-    StatusBar,
-    SplashScreen,
+    // StatusBar,
+    // SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AppService
   ]

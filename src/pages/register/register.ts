@@ -55,7 +55,8 @@ export class RegisterPage {
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
-      if (userData.photo) this.files[0] = userData.photo;
+      if ( userData.primary_photo.id ) this.files[0] = userData.primary_photo;
+      if ( userData.kakao_qrmark_photo.id ) this.qrmarks = [ userData.kakao_qrmark_photo ];
     }, error => this.a.alert(error));
   }
 
@@ -194,9 +195,13 @@ export class RegisterPage {
       kakao_qrmark_URL: file.url,
       user_email: this.account.user_email
     };
-    this.a.user.update(data).subscribe(() => {}, e => this.a.alert(e));
+    this.a.user.update(data).subscribe(() => {
+      this.a.lms.update_kakao_qrmark_string().subscribe(re => console.log(re), e => this.a.alert(e));
+    }, e => this.a.alert(e));
     this.qrmarks = [file];
     this.a.render();
+
+    
   }
 }
 
