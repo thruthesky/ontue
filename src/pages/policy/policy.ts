@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppService } from '../../providers/app.service';
 @Component({
     selector: 'policy-page',
