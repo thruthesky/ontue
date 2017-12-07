@@ -109,7 +109,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    this.a.open('schedule-table', { ID: 806 });
+    // this.a.open('schedule-table', { ID: 806 });
 
     // this.a.open('teacher-list');
 
@@ -138,6 +138,7 @@ export class MyApp {
     // this.a.open('payment');
 
     // this.a.open('policy');
+    this.a.open('forum');
 
 
 
