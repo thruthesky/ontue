@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-// import { SplashScreen } from '@ionic-native/splash-screen';
-// import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 
 
 
@@ -14,6 +14,10 @@ import { AngularXapiModule } from '../angular-xapi/angular-xapi.module';
 
 
 import { AppService } from './../providers/app.service';
+
+
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+
 
 
 //
@@ -149,9 +153,10 @@ export function createTranslateLoader(http: HttpClient) {
   ],
 
   providers: [
-    // StatusBar,
-    // SplashScreen,
+    StatusBar,
+    SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    YoutubeVideoPlayer,
     AppService
   ]
 })

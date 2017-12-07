@@ -74,7 +74,7 @@ export interface USER_REGISTER extends REQUEST {
     name?: string;
     display_name?: string;
     nickname?: string;
-    mobile?: string;
+    phone_number?: string;
     gender?: string;
     address?: string;
     birthday?: string;

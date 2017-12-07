@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-// import { StatusBar } from '@ionic-native/status-bar';
-// import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 
 import { XapiService } from './../angular-xapi/angular-xapi.module';
@@ -46,24 +47,27 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    // statusBar: StatusBar,
-    // splashScreen: SplashScreen,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
     xapi: XapiService,
-    public a: AppService
+    public a: AppService,
+    private youtube: YoutubeVideoPlayer
   ) {
     this.a.initTranslate();
 
-    // platform.ready().then(() => {
-    //   // Okay, so the platform is ready and our plugins are available.
-    //   // Here you can do any higher level native things you might need.
-    //   statusBar.styleDefault();
-    //   splashScreen.hide();
+    platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      statusBar.styleDefault();
+      splashScreen.hide();
 
-    //   this.a.platform = platform;
+      this.a.platform = platform;
+
+      this.youtube.openVideo('VbdfKmgpqjc');
 
 
-    //   // alert("I am on cordova!");
-    // });
+      // alert("I am on cordova!");
+    });
 
   }
 
@@ -126,6 +130,7 @@ export class MyApp {
     // this.a.open('past');
 
     // this.a.open('dayoff');
+    
     // this.a.open('message');
 
     // this.a.open('evaluate', {idx: 1639} );
@@ -138,7 +143,11 @@ export class MyApp {
     // this.a.open('payment');
 
     // this.a.open('policy');
-    this.a.open('forum');
+    // this.a.open('forum');
+
+
+    // this.a.open('settings');
+
 
 
 

@@ -20,6 +20,7 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="5000" />
+    <preference name="YouTubeDataApiKey" value="ontue-188317" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -83,10 +84,12 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <plugin name="cordova-plugin-camera" spec="~2.4.1" />
-    <plugin name="cordova-plugin-file-transfer" spec="~1.6.3" />
     <allow-navigation href="http://192.168.0.25:8100" />
-    <engine name="android" spec="~6.1.2" />
     <engine name="ios" spec="~4.5.4" />
     <allow-navigation href="http://192.168.0.67:8100" />
     <allow-navigation href="http://192.168.0.109:8100" />
+    <plugin name="cordova-plugin-youtube-video-player" spec="~1.0.6" />
+    <engine name="android" spec="~6.1.2" />
+    <plugin name="cordova-plugin-file" spec="~4.3.3" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.7.0" />
 </widget>
