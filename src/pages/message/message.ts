@@ -9,19 +9,23 @@ export class MessagePage {
 
 
     data = null;
+    page_no = 1;
+    message_count;
+    no_of_post;
+    box = "inbox";
 
     constructor(
         public a: AppService
     ) {
 
-        this.loadMessage( { box: 'inbox' } );
+        this.loadMessage( { box: this.box } );
 
     }
 
 
     onClickBox( box ) {
-
-        this.loadMessage( { box: box } );
+        this.box = box;
+        this.loadMessage( { box: this.box } );
     }
 
 
@@ -32,6 +36,19 @@ export class MessagePage {
             console.log(re);
             this.data = re;
         }, e => this.a.alert(e) );
-        
+
     }
+
+    onClickPrevious() {
+      this.page_no--;
+      this.loadMessage({box: this. box});
+    }
+
+    onClickNext() {
+      this.page_no++;
+      this.loadMessage({box: this. box});
+    }
+
+
+
 }

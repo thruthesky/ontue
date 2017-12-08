@@ -1,17 +1,33 @@
 <ion-header>
-    <header-content></header-content>
+  <header-content></header-content>
 </ion-header>
 <ion-content padding>
 
-        <h1>Mesage</h1>
+  <h1>Mesage</h1>
 
-        <button ion-button (click)="onClickBox( 'inbox' )">InBox</button>
-        <button ion-button (click)="onClickBox( 'sent' )">Sent</button>
-        
+  <button ion-button (click)="onClickBox( 'inbox' )">InBox</button>
+  <button ion-button (click)="onClickBox( 'sent' )">Sent</button>
 
-        <div *ngIf=" data ">
-            <div class="alert alert-info" *ngFor=" let message of data.messages ">
-                {{ message.title }}
-            </div>
-        </div>
+
+  <!--<div *ngIf=" data ">-->
+  <!--<div class="alert alert-info" *ngFor=" let message of data.messages ">-->
+  <!--{{ message.title }}-->
+  <!--</div>-->
+  <!--</div>-->
+
+  <ion-list *ngIf=" data ">
+      <ion-item *ngFor=" let message of data.messages " (click)="message.view = !message.view ">
+        <ion-avatar item-start vertical-align-top>
+          <img src="{{a.anonymousPhotoURL}}">
+        </ion-avatar>
+        <h2>Sender{{message.sender}}</h2>
+        <h3 text-wrap>{{message.title}}</h3>
+        <p text-wrap *ngIf="message.view">{{message.content}}</p>
+      </ion-item>
+      <ion-item>
+
+        <button ion-button *ngIf="page_no > 1" (click)="onClickPrevious()">Previous</button>
+        <button ion-button *ngIf="message_count == no_of_post" (click)="onClickNext()">Next</button>
+      </ion-item>
+  </ion-list>
 </ion-content>
