@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 
 import { XapiService } from './../angular-xapi/angular-xapi.module';
@@ -49,7 +50,8 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     xapi: XapiService,
-    public a: AppService
+    public a: AppService,
+    private youtube: YoutubeVideoPlayer
   ) {
     this.a.initTranslate();
 
@@ -60,6 +62,8 @@ export class MyApp {
       splashScreen.hide();
 
       this.a.platform = platform;
+
+      this.youtube.openVideo('VbdfKmgpqjc');
 
 
       // alert("I am on cordova!");
@@ -128,6 +132,8 @@ export class MyApp {
     // this.a.open('dayoff');
     this.a.open('message');
 
+    // this.a.open('message');
+
     // this.a.open('evaluate', {idx: 1639} );
     // this.a.open('evaluate', {idx: 9707} );
 
@@ -138,6 +144,11 @@ export class MyApp {
     // this.a.open('payment');
 
     // this.a.open('policy');
+    // this.a.open('forum');
+
+
+    // this.a.open('settings');
+
 
 
 

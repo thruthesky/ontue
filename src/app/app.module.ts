@@ -16,6 +16,10 @@ import { AngularXapiModule } from '../angular-xapi/angular-xapi.module';
 import { AppService } from './../providers/app.service';
 
 
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+
+
+
 //
 // Pages
 // -----------------------------------------------
@@ -152,6 +156,7 @@ export function createTranslateLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    YoutubeVideoPlayer,
     AppService
   ]
 })

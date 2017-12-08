@@ -57,11 +57,6 @@
       </ion-item>
 
       <ion-item>
-        <ion-label floating>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
-      </ion-item>
-
-      <ion-item>
         <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
         <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
       </ion-item>
@@ -73,9 +68,23 @@
 
 
       <ion-item>
+          <ion-label floating>{{ 'NAME' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+        </ion-item>
+
+        
+      <ion-item>
         <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.display_name" name="nickname"></ion-input>
       </ion-item>
+
+
+      <ion-item>
+          <ion-label floating>{{ 'PHONE NUMBER' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.phone_number" name="phone_number"></ion-input>
+        </ion-item>
+  
+
 
       <ion-item>
         <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
@@ -92,9 +101,13 @@
         (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
       </ion-item>
       
+
+      <ion-item *ngIf="a.lms.getUserType() == 'teacher' ">
+        bookable time
+      </ion-item>
       
 
-
+      
       <div padding>
         <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
       </div>

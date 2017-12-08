@@ -10,8 +10,8 @@
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "node app-check.js && ionic-app-scripts serve",
-    "publish": "node pwa-check.js && npm run ionic:build -- --prod && npm run scp",
-    "publish:all": "node pwa-check.js && npm run ionic:build -- --prod && npm run scp:all",
+    "publish": "node pwa-check.js && npm run ionic:build -- --aot --prod && node pwa-patch.js && npm run scp",
+    "publish:all": "node pwa-check.js && npm run ionic:build -- --prod && node pwa-patch.js && npm run scp:all",
     "serve": "node app-check.js && ionic-app-scripts serve",
     "scp": "cd www && scp -r *.js *.html build ontue@ontue.com:./www",
     "scp:all": "cd www && scp -r * ontue@ontue.com:./www",
@@ -31,6 +31,7 @@
     "@ionic-native/file-transfer": "^4.3.2",
     "@ionic-native/splash-screen": "4.3.0",
     "@ionic-native/status-bar": "4.3.0",
+    "@ionic-native/youtube-video-player": "^4.4.2",
     "@ionic/storage": "2.0.1",
     "@ngx-translate/core": "8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
@@ -42,7 +43,7 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.4.5",
-    "@ionic/app-scripts": "3.0.0",
+    "@ionic/app-scripts": "^3.1.5",
     "typescript": "2.3.4"
   },
   "description": "An Ionic project"
