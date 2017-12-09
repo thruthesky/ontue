@@ -83,7 +83,7 @@ export class MyApp {
     this.a.pages['register'] = RegisterPage;
 
     this.a.pages['post'] = PostPage;
-    
+
     this.a.pages['add-schedule'] = AddSchedule;
     this.a.pages['teacher-list'] = TeacherListPage;
 
@@ -130,7 +130,8 @@ export class MyApp {
     // this.a.open('past');
 
     // this.a.open('dayoff');
-    
+    this.a.open('message');
+
     // this.a.open('message');
 
     // this.a.open('evaluate', {idx: 1639} );
