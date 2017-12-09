@@ -237,7 +237,9 @@ export class ScheduleTablePage {
 
   updatePoint() {
 
-    this.a.loadMyPoint( p => this.my_point = p );
+    if ( this.a.user.isLogin ) {
+      this.a.loadMyPoint( p => this.my_point = p );
+    }
 
 
   }

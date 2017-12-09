@@ -44,9 +44,12 @@
     <br> Show reserved/avaailable session.
     <br>
 
-    <hr> Welcome {{ a.user.name }} Your timezone: {{ a.user.timezone }}, Your point:
-    <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
-    <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+    <div *ngIf=" a.user.isLogin ">
+      <hr> Welcome {{ a.user.name }} Your timezone: {{ a.user.timezone }}, Your point:
+      <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
+      <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+    </div>
+
     <!--
     {{ re.header | json }} -->
 
@@ -58,6 +61,8 @@
       <button (click)="onClickNavigate('next-week')">Next Week</button>
       <button (click)="onClickNavigate('next-month')">Next Month</button>
     </div>
+
+    <ion-spinner *ngIf=" re.table.length == 0 "></ion-spinner>
     <table class="schedule-table" *ngIf=" re && re.table " border="1">
       <tr>
         <td>Teacher</td>
