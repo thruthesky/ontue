@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
  */
 import { Component, ViewChild } from '@angular/core';
@@ -26,6 +26,7 @@ export class RegisterPage {
   files: FILES = [];
   qrmarks: FILES = [];
   @ViewChild('fileUploadWidget') fileUpload: FileUploadWidget; // @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
+  @ViewChild('fileUploadWidgetQRMARK') fileUploadQRMark: FileUploadWidget;
   user_type: string;
 
   constructor(public navCtrl: NavController,
@@ -67,6 +68,7 @@ export class RegisterPage {
     if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(-80022, '*Email is required...');
     if (this.a.user.isLogout && (!this.account.user_pass || !this.account.user_pass.length)) return this.a.showAlert(-80023, '*Password is required...');
     if (!this.user_type || !this.user_type.length) return this.a.showAlert(-80024, '*Please Choose User Type...');
+    if (this.user_type == "T" && !this.qrmarks.length ) return this.a.showAlert(-80025, '*Teacher must upload QR Mark...');
     //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
 
     this.account.photoURL = this.files.length ? this.files[0].url : '';
@@ -121,7 +123,7 @@ export class RegisterPage {
 
     /**
      * Delete previous photo.
-     * 
+     *
      * file[0]
      */
     if (this.files.length > 1) { /// If there are two files, one for prvious photo, the other is for new photo.
@@ -188,7 +190,7 @@ export class RegisterPage {
   onSuccessUploadQRMark(file: FILE) {
 
     if (this.qrmarks.length > 1) {
-      this.fileUpload.deleteFile(this.qrmarks[0], () => {}, e => this.a.alert(e));
+      this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {}, e => this.a.alert(e));
     }
 
     let data: USER_UPDATE = {
@@ -196,12 +198,21 @@ export class RegisterPage {
       user_email: this.account.user_email
     };
     this.a.user.update(data).subscribe(() => {
-      this.a.lms.update_kakao_qrmark_string().subscribe(re => console.log(re), e => this.a.alert(e));
+      this.a.lms.update_kakao_qrmark_string().subscribe(re => {
+        console.log("update_kakao_qrmark_string",re);
+        if( !re.kakao_qrmark_string ) {
+          this.a.alert("Invalid QR MARK, Please try again");
+          this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {
+            this.qrmarks = [];
+            this.a.render();
+          }, e => this.a.alert(e));
+        }
+        else {
+          this.qrmarks = [file];
+          this.a.render();
+        }
+      }, e => this.a.alert(e));
     }, e => this.a.alert(e));
-    this.qrmarks = [file];
-    this.a.render();
-
-    
   }
 }
 
