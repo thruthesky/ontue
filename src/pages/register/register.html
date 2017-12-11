@@ -10,7 +10,7 @@
     <span *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE' | translate }}</span>
   </div>
 
-  
+
 
 <div class="text-center mt-5">
   <div class="profile-user p-relative d-inline-block w-10 of-hidden text-center" (click)="fileUpload.onClickCamera()">
@@ -35,14 +35,14 @@
 
     <ion-list>
 
-      
+
 
 
       I am a
 
-      <input type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()"> student or teacher
+      <input type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()"> Student
 
-      <input type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()"> student
+      <input type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()"> Teacher
 
 
 
@@ -72,7 +72,7 @@
           <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
         </ion-item>
 
-        
+
       <ion-item>
         <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.display_name" name="nickname"></ion-input>
@@ -83,7 +83,7 @@
           <ion-label floating>{{ 'PHONE NUMBER' | translate }}</ion-label>
           <ion-input type="text" [(ngModel)]="account.phone_number" name="phone_number"></ion-input>
         </ion-item>
-  
+
 
 
       <ion-item>
@@ -100,14 +100,14 @@
         [showUploadedFiles]="true"
         (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
       </ion-item>
-      
+
 
       <ion-item *ngIf="a.lms.getUserType() == 'teacher' ">
         bookable time
       </ion-item>
-      
 
-      
+
+
       <div padding>
         <button ion-button color="primary" block>{{ 'REGISTER BUTTON' | translate }}</button>
       </div>
