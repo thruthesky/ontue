@@ -122,7 +122,7 @@ export class MyApp {
     // this.a.open('register');
 
     // this.a.open('student-profile');
-    this.a.open('register');
+    // this.a.open('register');
     // this.a.open('menu');
 
     // this.a.open('reservation', { past: true });
@@ -130,7 +130,7 @@ export class MyApp {
     // this.a.open('past');
 
     // this.a.open('dayoff');
-    // this.a.open('message');
+    this.a.open('message');
 
     // this.a.open('message');
 
