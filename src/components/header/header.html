@@ -42,16 +42,6 @@
       </ion-col>
 
       <ion-col>
-
-        <button (click)="a.open('forum')">
-
-          <i class="fa fa-comments"></i>
-          <div>{{ 'FORUM' | translate }}</div>
-
-        </button>
-      </ion-col>
-      
-      <ion-col>
         <button (click)=" a.open('reservation', {future: true}) ">
           <i class="fa fa-th blue"></i>
           <div>{{ 'RESERVATIONS' | translate }}</div>
@@ -61,7 +51,7 @@
 
       <ion-col>
         <button (click)=" a.open('reservation', {past: true}) ">
-          <i class="fa fa-tasks grey"></i>
+          <i class="fa fa-archive grey"></i>
           <div>{{ 'PASTS' | translate }}</div>
         </button>
       </ion-col>
@@ -95,6 +85,16 @@
       
 
 
+      <ion-col class="d-none d-sm-block">
+        
+                <button (click)="a.open('forum')">
+        
+                  <i class="fa fa-comments"></i>
+                  <div>{{ 'FORUM' | translate }}</div>
+        
+                </button>
+              </ion-col>
+              
       
 
 

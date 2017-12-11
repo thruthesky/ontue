@@ -142,7 +142,10 @@ export class AppService {
               }, '' ).split('').reverse().join('');
               this.inLoadingMyPoint = false;
               callback(point);
-        }, e => this.alert(e));
+        }, e => {
+            this.inLoadingMyPoint = false;
+            this.alert(e);
+        });
 
     }
 

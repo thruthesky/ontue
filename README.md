@@ -1,3 +1,19 @@
+# TODO
+
+* Convert OLD OnTue teachers and Student to new OnTue.
+  ** In that way, we can really show that we are not just a starter. We have a plenty of experience.
+
+* Display no of teachers and no of student.
+* Display teachers who are avaible for booking at this time.
+* Customize text by domain.
+  ** you can test on localhost:8100, work.org:8100, local.philgo.com:8100
+````
+
+
+
+````
+
+
 #known Error
 
 ## Mobile Server Connection Error
