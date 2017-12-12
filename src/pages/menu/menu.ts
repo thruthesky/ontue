@@ -8,16 +8,24 @@ import { AppService } from './../../providers/app.service';
 })
 export class MenuPage {
 
-
+  date_today;
+  today = new Date();
   constructor(
     public a: AppService
   ) {
 
+      this.date_today = this.today.getFullYear() + '-' + this.add0(this.today.getMonth()+1) + '-' + this.add0(this.today.getDate());
 
 
     // test
     // setTimeout(() => this.presentChooseUserTypeModal(), 50);
   }
+
+  add0(n: number): string {
+    if (!n) return;
+    return n < 10 ? '0' + n : n.toString();
+  }
+
 
 }
 

@@ -47,7 +47,7 @@ import { IntroPage } from '../pages/intro/intro';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  
+
   constructor(
     platform: Platform,
     statusBar: StatusBar,
@@ -134,16 +134,15 @@ export class MyApp {
 
     // this.a.open('register');
 
-    // this.a.open('student-profile');
     // this.a.open('register');
-    // this.a.open('menu');
+    this.a.open('menu');
 
     // this.a.open('reservation', { past: true });
 
     // this.a.open('past');
 
     // this.a.open('dayoff');
-    this.a.open('message');
+    // this.a.open('message');
 
     // this.a.open('message');
 
@@ -164,7 +163,7 @@ export class MyApp {
 
 
 
-    // this.a.open('intro'); 
+    // this.a.open('intro');
 
 
 
