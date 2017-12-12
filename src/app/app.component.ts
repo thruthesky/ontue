@@ -135,7 +135,7 @@ export class MyApp {
     // this.a.open('register');
 
     // this.a.open('register');
-    this.a.open('menu');
+    // this.a.open('menu');
 
     // this.a.open('reservation', { past: true });
 
