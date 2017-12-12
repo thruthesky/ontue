@@ -5,7 +5,7 @@
 <ion-content padding>
 
   <ion-list class="pointers">
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-settings" (click)="a.open('settings')">
       <ion-icon name="settings" item-start></ion-icon>
       {{ 'SETTINGS' | translate }}
     </ion-item>
@@ -16,14 +16,14 @@
     </ion-item>
 
 
-    <ion-item (click)="a.open('settings-payment-info')">
+    <ion-item class="menu-settings-payment-info" (click)="a.open('settings-payment-info')">
         <ion-icon name="archive" item-start></ion-icon>
         {{ 'PAYMENT INFO' | translate }}
       </ion-item>
 
 
 
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'TEACHER LIST' | translate }}
     </ion-item>
@@ -36,34 +36,34 @@
 
 
 
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-reservation" (click)="a.open('reservation')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'RESERVATION HISTORY' | translate }}
     </ion-item>
 
 
-    <ion-item (click)="a.open('payment')">
+    <ion-item class="menu-payment" (click)="a.open('payment')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'PAYMENT LONG TEXT' | translate }}
     </ion-item>
 
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-payment-history" (click)="a.open('payment-history')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'PAYMENT HISTORY' | translate }}
     </ion-item>
 
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-reservation-long" (click)="a.open('reservation')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'RESERVATIONS LONG TEXT' | translate }}
     </ion-item>
 
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-past-long" (click)="a.open('past')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'PASTS LONG TEXT' | translate }}
     </ion-item>
 
 
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-reservation-today" (click)="a.open('reservation', date_today)">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'Available Session at This time' | translate }}
     </ion-item>
@@ -75,44 +75,36 @@
     </ion-item>
 
 
-    <ion-item (click)="a.open('settings')">
+    <ion-item class="menu-forum" (click)="a.open('forum')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'FORUM' | translate }}
     </ion-item>
 
 
-    <ion-item (click)="a.open('policy')">
+    <ion-item class="menu-policy" (click)="a.open('policy')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'POLICY' | translate }}
     </ion-item>
 
 
-
-
-
-
-    <ion-item *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
+    <ion-item class="menu-login" *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
       <ion-icon name="log-in" item-start></ion-icon>
       로그인
     </ion-item>
-    <ion-item *ngIf=" a.user.isLogout " (click)=" a.open('register') ">
+    <ion-item class="menu-registration" *ngIf=" a.user.isLogout " (click)=" a.open('register') ">
       <ion-icon name="person-add" item-start></ion-icon>
       회원가입
     </ion-item>
 
-    <ion-item *ngIf=" a.user.isLogin " (click)=" a.open('register')">
+    <ion-item class="menu-profile" *ngIf=" a.user.isLogin " (click)=" a.open('register')">
       <ion-icon name="log-out" item-start></ion-icon>
       {{ 'PROFILE' | translate }} {{ a.isTeacher | json }}
     </ion-item>
-    <ion-item *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
+    <ion-item class="menu-logout" *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
       <ion-icon name="log-out" item-start></ion-icon>
       로그아웃
     </ion-item>
 
-    <ion-item (click)="presentChooseUserTypeModal()">
-      <ion-icon name="repeat" item-start></ion-icon>
-      회원 분류 변경
-    </ion-item>
   </ion-list>
 
 
