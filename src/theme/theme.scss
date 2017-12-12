@@ -146,7 +146,7 @@ $length in $sizers {
 // top, left, right, bottom
 @each $abbr, $position in (t: top, l: left, r: right, b: bottom ) {
   @each $size, $length in $sizers {
-    .#{$abbr}-#{$size} {
+    .#{$position}-#{$size} {
       #{$position}: #{$length};
     }
   }

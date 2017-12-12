@@ -36,6 +36,9 @@ import { MessagePage } from '../pages/message/message';
 import { EvaluatePage } from '../pages/evaluate/evaluate';
 import { PaymentPage } from '../pages/payment/payment';
 
+import { IntroPage } from '../pages/intro/intro';
+
+
 
 
 @Component({
@@ -43,8 +46,8 @@ import { PaymentPage } from '../pages/payment/payment';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = HomePage;
 
+  
   constructor(
     platform: Platform,
     statusBar: StatusBar,
@@ -70,6 +73,14 @@ export class MyApp {
     });
 
   }
+
+  get rootPage() {
+    let noOfVisit = this.a.get('no-of-visit');
+    if ( noOfVisit < 3 ) {
+      return IntroPage;
+    }
+    else return HomePage;
+  };
 
 
   ngAfterViewInit() {
@@ -100,6 +111,8 @@ export class MyApp {
 
     this.a.pages['payment'] = PaymentPage;
     this.a.pages['policy'] = PolicyPage;
+
+    this.a.pages['intro'] = IntroPage;
 
 
     setTimeout(() => this.test(), 100);
@@ -150,6 +163,8 @@ export class MyApp {
     // this.a.open('settings');
 
 
+
+    // this.a.open('intro'); 
 
 
 

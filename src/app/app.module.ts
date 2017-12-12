@@ -52,6 +52,8 @@ import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings
 
 import { PaymentPage } from '../pages/payment/payment';
 import { PolicyPage } from '../pages/policy/policy';
+import { IntroPage } from '../pages/intro/intro';
+
 
 
 
@@ -110,7 +112,8 @@ export function createTranslateLoader(http: HttpClient) {
     SettingsPaymentInfoPage,
     PaymentPage,
     PageComponent,
-    PolicyPage
+    PolicyPage,
+    IntroPage
   ],
   imports: [
     BrowserModule,
@@ -149,7 +152,8 @@ export function createTranslateLoader(http: HttpClient) {
     SettingsPaymentInfoPage,
     PaymentPage,
     PageComponent,
-    PolicyPage
+    PolicyPage,
+    IntroPage
   ],
 
   providers: [
