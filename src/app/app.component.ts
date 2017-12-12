@@ -143,7 +143,7 @@ export class MyApp {
     // this.a.open('past');
 
     // this.a.open('dayoff');
-    // this.a.open('message');
+    this.a.open('message');
 
     // this.a.open('message');
 
