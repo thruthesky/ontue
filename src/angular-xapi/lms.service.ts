@@ -258,6 +258,15 @@ export class LMSService extends Base {
         return this.x.post( data );
     }
 
+    message_opened( idx ) {
+      let data = {
+        idx: idx,
+        route: 'lms.message_opened',
+        session_id: this.user.sessionId
+      };
+      return this.x.post( data );
+    }
+
     session_refund_request( data ) {
         data['route'] = 'lms.session_refund_request';
         data['session_id'] = this.user.sessionId;
@@ -316,11 +325,11 @@ export class LMSService extends Base {
     }
 
 
-    
+
     /**
      * Gets a page
      * @param req request data
-     * 
+     *
      * @code
      * a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e.message));
      * @endcode
@@ -331,8 +340,8 @@ export class LMSService extends Base {
         return this.x.post(req)
             .map( e => {
                 const re = this.x.safe(e);
-                this.x.render(500);  
-                return re;      
+                this.x.render(500);
+                return re;
              } );
     }
 
