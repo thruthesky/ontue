@@ -72,6 +72,7 @@ export interface USER_REGISTER extends REQUEST {
     user_login?: string;
     user_type?: string;
     name?: string;
+    fullname?: string;
     display_name?: string;
     nickname?: string;
     phone_number?: string;
@@ -85,6 +86,14 @@ export interface USER_REGISTER extends REQUEST {
     kakao_qrmark_string?: string;
     primary_photo?: FILE; // This is used on backend response only
     kakao_qrmark_photo?: FILE;
+    introduction?: string;
+    last_education?: string;
+    major?: string;
+    civil_status?: string;
+    experience?: string;
+    nationality?: string;
+    hobby?: string;
+    youtube_video_url?: string;
 };
 
 export type USER_UPDATE = USER_REGISTER;

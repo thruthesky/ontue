@@ -43,6 +43,7 @@ import { ReservationPage } from './../pages/reservation/reservation';
 
 
 import { TeacherDayoffPage } from './../pages/teacher-dayoff/teacher-dayoff';
+import { TeacherCurriculumVitaePage } from './../pages/teacher-curriculum-vitae/teacher-curriculum-vitae';
 
 import { MessagePage } from '../pages/message/message';
 import { EvaluatePage } from '../pages/evaluate/evaluate';
@@ -113,7 +114,8 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentPage,
     PageComponent,
     PolicyPage,
-    IntroPage
+    IntroPage,
+    TeacherCurriculumVitaePage
   ],
   imports: [
     BrowserModule,
@@ -153,7 +155,8 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentPage,
     PageComponent,
     PolicyPage,
-    IntroPage
+    IntroPage,
+    TeacherCurriculumVitaePage
   ],
 
   providers: [

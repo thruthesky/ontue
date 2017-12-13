@@ -3,7 +3,6 @@
  * @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
  */
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
 import {
   USER_REGISTER, FILES, FILE, USER_UPDATE, USER_DATA_RESPONSE,
@@ -29,8 +28,9 @@ export class RegisterPage {
   @ViewChild('fileUploadWidgetQRMARK') fileUploadQRMark: FileUploadWidget;
   user_type: string;
 
-  constructor(public navCtrl: NavController,
-    public a: AppService) {
+  constructor(
+    public a: AppService
+  ) {
     this.offset = this.a.lms.getUserLocalTimezoneOffset();
     a.lms.timezones().subscribe(re => {
       console.log(re);

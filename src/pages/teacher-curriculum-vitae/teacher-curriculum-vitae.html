@@ -1,0 +1,109 @@
+<ion-header>
+  <header-content></header-content>
+</ion-header>
+<ion-content>
+
+  <h1>Teacher Curriculum Vitae</h1>
+  <form (submit)="onSubmitUpdate()">
+
+    <ion-list>
+      <ion-item>
+        <ion-label>{{ 'TEACHER ID' | translate }}</ion-label>
+        <ion-input type="text" readonly [(ngModel)]="account.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'FULL NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.fullname" name="fullname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'NICKNAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.display_name" name="display_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.user_email" name="user_email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'PHONE NO' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.phone_number" name="phone_number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3>{{ 'GENDER' | translate }}</ion-col>
+            <ion-col col-9>
+              <label class="mr-5">
+                <input type="radio" name="male" [(ngModel)]="account.gender" value="M">
+                Male
+              </label>
+              <label>
+                <input type="radio" name="female" [(ngModel)]="account.gender" value="F">
+                Female
+              </label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.birthday" name="birthday"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'ADDRESS' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.address" name="address"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        Profile Picture
+      </ion-item>
+
+
+      <ion-item>
+        <label class="pr-3">{{ 'NATIONALITY' | translate }}</label>
+        <select [(ngModel)]="account.nationality" name="nationality">
+          <option value="">Select...</option>
+          <option value="philippines">Philippines</option>
+          <option value="korea">Korea</option>
+          <option value="usa">USA</option>
+          <option value="canada">Canada</option>
+        </select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>{{ 'EDUCATION' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.last_education" name="last_education"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'MAJOR' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.major" name="major"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>{{ 'Year you start teaching' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.experience" name="experience"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'GREETINGS' | translate }}</ion-label>
+        <ion-textarea class="w-100" [(ngModel)]="account.introduction" name="introduction"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button color="primary" block>{{ 'UPDATE BUTTON' | translate }}</button>
+      </ion-item>
+    </ion-list>
+  </form>
+
+
+</ion-content>

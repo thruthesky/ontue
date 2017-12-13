@@ -30,7 +30,7 @@ import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
 import { ReservationPage } from '../pages/reservation/reservation';
 
 import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
-
+import { TeacherCurriculumVitaePage } from '../pages/teacher-curriculum-vitae/teacher-curriculum-vitae';
 import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';
@@ -114,14 +114,15 @@ export class MyApp {
 
     this.a.pages['intro'] = IntroPage;
 
+    this.a.pages['teacher-curriculum-vitae'] = TeacherCurriculumVitaePage;
+
 
     setTimeout(() => this.test(), 100);
 
   }
 
   test() {
-
-
+    this.a.open('teacher-curriculum-vitae');
 
 
     // this.a.open('schedule-edit');
