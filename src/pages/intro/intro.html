@@ -1,78 +1,113 @@
-<section class="position-relative">
-  <img src="/assets/tmp/intro.jpg">
-  <header class="position-absolute top-0 left-0 right-0 header-height d-flex justify-content-between" style="background-color: rgba(255, 255, 255, .5)">
-    <div class="p-3 white">
-      카톡잉글리시
-    </div>
-    <div class="p-3">
-      <i class="fa fa-bars white fs-xl"></i>
-    </div>
-  </header>
-  <div class="text position-absolute mt-6 top-0 white fs-xl">
-    어줍짢은 인강, 거품뿐인 화상영어
-    <br> 가라
-    <br>
-  </div>
-</section>
-<section>
+<ion-content>
+  <section class="position-relative">
+    <header class="position-absolute top-0 left-0 right-0 header-height d-flex justify-content-between" style="z-index: 987654321; background-color: rgba(255, 255, 255, .5);">
+      <div class="p-3 white fs-xl">
+        카톡잉글리시
+      </div>
+      <div class="p-3">
+        <i class="fa fa-bars white fs-xl"></i>
+      </div>
+    </header>
 
-  <h1>강사의 품격</h1>
 
-  진정한 천하제일 화상영어 - 카톡잉글리시!
 
-  <hr>
-  일반 화상영어 교육 업체에서 영어 강사들은 적은 임금을 받고 정해진 틀에 따라 수업을 합니다.
+    <ion-slides (ionSlideDidChange)="slideChanged()">
+      <ion-slide>
+        <img src="/assets/tmp/intro.jpg">
+        <div class="text position-absolute mt-6 top-0 white fs-xl">
+          <div>어줍짢은 인강, 거품뿐인 화상영어</div>
+          <div>가라</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <img src="/assets/tmp/intro2.jpg">
+        <div class="text position-absolute mt-6 top-0 white fs-xl">
+          <div>어줍짢은 인강, 거품뿐인 화상영어</div>
+          <div>강사의 품격</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <img src="/assets/tmp/intro3.jpg">
+        <div class="text position-absolute mt-6 top-0 white fs-xl">
+          <div>카카오톡으로 거침없는 소통</div>
+          <div>학생의 참여도 높임</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <img src="/assets/tmp/intro4.jpg">
+        <div class="text position-absolute mt-6 top-0 white fs-xl">
+          <div>천하제일의 길</div>
+          <div>소통하는 길</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <img src="/assets/tmp/intro5.jpg">
+        <div class="text position-absolute mt-6 top-0 white fs-xl">
+          <div>나만의 1:1 강사</div>
+          <div>소통하는 길</div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+
+    <nav class="position-absolute left-0 right-0 bottom-0 white d-flex fs-3rem" style="z-index: 987654321; justify-content:center;">
+      <div [class.selected]="on == 0">•</div>
+      <div [class.selected]="on == 1">•</div>
+      <div [class.selected]="on == 2">•</div>
+      <div [class.selected]="on == 3">•</div>
+      <div [class.selected]="on == 4">•</div>
+    </nav>
+
+
+  </section>
   
-  카톡잉글리시는 영어 강사가 직접 수업료를 정하며 그 중 85% 를 강사가 배당받습니다.
+    <div *ngIf="on == 0">
 
-  천하제일 카톡잉글리시의 첫번째 미션은 강사를 만족시키는 것이었습니다.
+            <h1>강사의 품격</h1>
+            
+                진정한 천하제일 화상영어 - 카톡잉글리시!
+            
+                <hr> 일반 화상영어 교육 업체에서 영어 강사들은 적은 임금을 받고 정해진 틀에 따라 수업을 합니다. 카톡잉글리시는 영어 강사가 직접 수업료를 정하며 그 중 85% 를 강사가 배당받습니다. 천하제일 카톡잉글리시의 첫번째
+                미션은 강사를 만족시키는 것이었습니다.
+            
+    </div>
 
-</section>
+    <div *ngIf="on == 1">
 
-<h1>카카오톡으로 수업</h1>
+  <h1>카카오톡으로 수업</h1>
+  
+    카카오톡은 대한민국 모든 사람이 사용하는 화상채팅 앱으로 매우 편리합니다. 카톡을 사용해서 화상영어 수업과 질문, 첨삭, 과제 등을 진행하므로 학생이 쉽게 참여 할 수 있습니다. 천하제일 카톡잉글리시의 두번째 미션은
+    학생의 참여도를 최강으로 높이는 것이었습니다.
+  
+  
+    </div>
 
-카카오톡은 대한민국 모든 사람이 사용하는 화상채팅 앱으로 매우 편리합니다.
+    <div *ngIf="on == 2">
 
-카톡을 사용해서 화상영어 수업과 질문, 첨삭, 과제 등을 진행하므로 학생이 쉽게 참여 할 수 있습니다.
+  <h1>나만의 1:1 강사</h1>
+  
+    영어는 말로하는 것이며 일대일 대화를 통해서 완벽해지는 것입니다. 말을 하지 않는다면 언어는 무용지물입니다. 새로운 누군가를 만나고 익숙해질 수 있다면 대화를 시작 할 수 있습니다. 저희 수업 시스템에서는 자유롭게 선생님과
+    수업 시간표를 선택하여 1:1 수업을 할 수 있습니다. 천하제일 카톡잉글리시의 세번째 미션은 말하는 것입니다.
+  
+    </div>
 
-천하제일 카톡잉글리시의 두번째 미션은 학생의 참여도를 최강으로 높이는 것이었습니다.
+    <div *ngIf="on == 3">
 
+  <h1>천하제일의 길</h1>
+  
+    천하제일의 길이란 시장 경제원리에 따라 수요자와 공급자 사이에서 수요자에 최대의 혜택을 주며 동시에 공급자에 최대의 혜택을 주는 것이라 믿습니다. 각자의 영역을 장악한 구글, 애플, 네이버 등은 검색 광고비나 앱 판매
+    금액 중 70% 이상을 개발자에게 돌려줍니다. 세계 택시 시장을 장악한 우버는 운전기사에게 80%의 수익을 돌려줍니다. 최대의 수익이 공급자에게 주어지므로 공급자는 혼신을 다해 서비스를 하는 것입니다. 강사에게 85%의
+    수익금을 드리는 것은 공급자에게 최대의 혜택을 드리는 것이라 의심 할 여지가 없으며 대신 1만5천여명의 강사 중 교양있으며 책임과 성심을 다하는 강사를 엄선하여 학생에게 권하고 있습니다. 높은 수익률에 따라 강사는
+    최선을 다해서 영어 교육을 할 것입니다. 또한 강사가 타 업체 수업료의 절반만 받아도 강사에게는 매우 큰 수익이 되며 저희 카톡잉글리시에서 평균 수업료를 타 업체의 절반 가격이하로 적절히 조정하고 있습니다. 이로
+    인해 학생은 낮은 수업료를 통해서 고 품격 화상영어 수업을 받을 수 있으며 또한 카톡을 통해 거침없이 강사와 소통 할 수 있습니다. 카톡잉글리시의 마지막 미션은 강사를 만족시키고 학생의 참여도를 높여 강사와 학생이
+    소통하게 하것입니다.
+  
+    </div>
 
+    <div *ngIf="on == 4">
+        <h1>소통하라</h1>
 
-<h1>나만의 1:1 강사</h1>
+        여기가 끝 인트로입니다.
+    </div>
 
-영어는 말로하는 것이며 일대일 대화를 통해서 완벽해지는 것입니다.
-
-말을 하지 않는다면 언어는 무용지물입니다.
-
-새로운 누군가를 만나고 익숙해질 수 있다면 대화를 시작 할 수 있습니다.
-
-저희 수업 시스템에서는 자유롭게 선생님과 수업 시간표를 선택하여 1:1 수업을 할 수 있습니다.
-
-천하제일 카톡잉글리시의 세번째 미션은 말하는 것입니다.
-
-
-<h1>천하제일의 길</h1>
-
-천하제일의 길이란
-
-시장 경제원리에 따라 수요자와 공급자 사이에서 수요자에 최대의 혜택을 주며 동시에 공급자에 최대의 혜택을 주는 것이라 믿습니다.
-
-각자의 영역을 장악한 구글, 애플, 네이버 등은 검색 광고비나 앱 판매 금액 중 70% 이상을 개발자에게 돌려줍니다.
-
-세계 택시 시장을 장악한 우버는 운전기사에게 80%의 수익을 돌려줍니다.
-
-최대의 수익이 공급자에게 주어지므로 공급자는 혼신을 다해 서비스를 하는 것입니다.
-
-강사에게 85%의 수익금을 드리는 것은 공급자에게 최대의 혜택을 드리는 것이라 의심 할 여지가 없으며
-
-대신 1만5천여명의 강사 중 교양있으며 책임과 성심을 다하는 강사를 엄선하여 학생에게 권하고 있습니다.
-
-높은 수익률에 따라 강사는 최선을 다해서 영어 교육을 할 것입니다.
-
-또한 강사가 타 업체 수업료의 절반만 받아도 강사에게는 매우 큰 수익이 되며 저희 카톡잉글리시에서 평균 수업료를 타 업체의 절반 가격이하로 적절히 조정하고 있습니다.
-
-이로 인해 학생은 낮은 수업료를 통해서 고 품격 화상영어 수업을 받을 수 있으며 또한 카톡을 통해 거침없이 강사와 소통 할 수 있습니다.
-
-카톡잉글리시의 마지막 미션은 강사를 만족시키고 학생의 참여도를 높여 강사와 학생이 소통하게 하것입니다.
-
+</ion-content>

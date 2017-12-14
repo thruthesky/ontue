@@ -122,7 +122,6 @@ export class MyApp {
   }
 
   test() {
-
     this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
 
