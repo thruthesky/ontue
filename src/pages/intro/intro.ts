@@ -16,13 +16,15 @@ export class IntroPage implements OnInit {
 
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        setTimeout(x => this.slides.slideTo(2), 100);
+    }
 
     slideChanged() {
         let currentIndex = this.slides.getActiveIndex();
-        if ( currentIndex > 4 ) currentIndex = 4; // bug
-        this.on = currentIndex;
         console.log('Current index is', currentIndex);
+        if ( currentIndex > 2 ) currentIndex = 2; // bug
+        this.on = currentIndex;
     }
 
 }
