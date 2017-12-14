@@ -87,6 +87,13 @@
     </ion-item>
 
 
+    <ion-item *ngIf="a.isTeacher" class="menu-curriculum-vitae" (click)="a.open('teacher-curriculum-vitae')">
+      <ion-icon name="person" item-start></ion-icon>
+      {{ 'Curriculum Vitae' | translate }}
+    </ion-item>
+
+
+
     <ion-item class="menu-login" *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
       <ion-icon name="log-in" item-start></ion-icon>
       로그인

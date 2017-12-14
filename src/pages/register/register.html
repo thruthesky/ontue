@@ -24,7 +24,8 @@
       </button>
       <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files"
                           [showUploadedFiles]="false"
-                          (success)="onSuccessUploadPicture()"></file-upload-widget>
+                          (success)="onSuccessUploadPicture($event)"></file-upload-widget>
+
     </div>
   </div>
 
