@@ -52,7 +52,7 @@
 
       <ion-item>
         <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.birthday" name="birthday"></ion-input>
+        <ion-datetime name="birhtday" max="{{minYear}}" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY" [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
       </ion-item>
 
       <ion-item>
@@ -101,20 +101,18 @@
 
       <ion-item>
         <ion-label>{{ 'MAJOR' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.major" name="major"></ion-input>
+        <ion-input text-wrap type="text" [(ngModel)]="account.major" name="major"></ion-input>
       </ion-item>
-
 
       <ion-item>
         <ion-label>{{ 'Year you start teaching' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.experience" name="experience"></ion-input>
+        <ion-datetime displayFormat="YYYY" [(ngModel)]="account.experience" name="experience"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>{{ 'GREETINGS' | translate }}</ion-label>
         <ion-textarea rows="8" [(ngModel)]="account.introduction" name="introduction"></ion-textarea>
       </ion-item>
-
 
       <ion-item>
         <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>

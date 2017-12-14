@@ -21,10 +21,15 @@ export class TeacherCurriculumVitaePage {
   @ViewChild('fileUploadWidgetQRMARK') fileUploadQRMark: FileUploadWidget;
 
   showQRMark: boolean = false;
-
+  birthday;
+  today = new Date();
+  minYear: number;
   constructor(
     public a: AppService
   ) {
+    this.minYear = this.today.getFullYear() - 10;
+
+
     if (a.user.isLogin && a.isTeacher) {
       this.loadData();
     }
@@ -45,7 +50,10 @@ export class TeacherCurriculumVitaePage {
       this.account.user_email = userData.user_email;
       this.account.phone_number = userData.phone_number;
       this.account.gender = userData.gender;
-      this.account.birthday = userData.birthday;
+      if ( userData.birthday.length > 0 ) {
+        this.birthday = userData.birthday.substr(0,4) + '-' + userData.birthday.substr(4,2) + '-' + userData.birthday.substr(6,2);
+        this.account.birthday = this.birthday;
+      }
       this.account.address = userData.address;
       this.account.nationality = userData.nationality;
       this.account.last_education = userData.last_education;
@@ -152,5 +160,10 @@ export class TeacherCurriculumVitaePage {
   }
 
 
+  onChangeBirthDate() {
+    console.log("Birthday:: ",this.birthday);
+    this.account.birthday = this.birthday.replace(/\-/g, '');
+    console.log("Birthday:: ",this.account.birthday);
+  }
 
 }
