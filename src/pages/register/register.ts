@@ -28,6 +28,9 @@ export class RegisterPage {
   @ViewChild('fileUploadWidgetQRMARK') fileUploadQRMark: FileUploadWidget;
   user_type: string;
 
+
+  showQRMark: boolean = false;
+
   constructor(
     public a: AppService
   ) {
@@ -56,8 +59,11 @@ export class RegisterPage {
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
-      if ( userData.primary_photo.id ) this.files[0] = userData.primary_photo;
-      if ( userData.kakao_qrmark_photo.id ) this.qrmarks = [ userData.kakao_qrmark_photo ];
+      if ( userData.primary_photo.id ) this.files = [ userData.primary_photo ];
+      if ( userData.kakao_qrmark_photo.id ) {
+        this.qrmarks = [ userData.kakao_qrmark_photo ];
+        this.showQRMark = true;
+      }
     }, error => this.a.alert(error));
   }
 
@@ -117,7 +123,7 @@ export class RegisterPage {
   }
 
 
-  onSuccessUploadPicture() {
+  onSuccessUploadPicture(file) {
     console.log("onSuccessUpdateProfilePicture::", this.files);
 
 
@@ -127,14 +133,14 @@ export class RegisterPage {
      * file[0]
      */
     if (this.files.length > 1) { /// If there are two files, one for prvious photo, the other is for new photo.
-      this.fileUpload.deleteFile(this.files[0], () => this.updatePrimaryPhoto(), () => this.updatePrimaryPhoto());
+      this.fileUpload.deleteFile(this.files[0], () => this.updatePrimaryPhoto(file), () => this.updatePrimaryPhoto(file));
     }
-    else this.updatePrimaryPhoto();
+    else this.updatePrimaryPhoto(file);
 
 
   }
 
-  updatePrimaryPhoto() {
+  updatePrimaryPhoto(file) {
 
     let data: USER_UPDATE = {
       photoURL: this.files[0].url,
@@ -143,7 +149,9 @@ export class RegisterPage {
 
     if (this.a.user.isLogin) {
       this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
-        this.files[0] = res.photo;
+
+        console.log("updatePrimaryPhoto", file);
+        this.files[0] = file;
         this.a.render();
       }, err => {
         this.a.alert(err);
@@ -188,7 +196,7 @@ export class RegisterPage {
   }
 
   onSuccessUploadQRMark(file: FILE) {
-
+    this.showQRMark = false;
     if (this.qrmarks.length > 1) {
       this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {}, e => this.a.alert(e));
     }
@@ -209,6 +217,7 @@ export class RegisterPage {
         }
         else {
           this.qrmarks = [file];
+          this.showQRMark = true;
           this.a.render();
         }
       }, e => this.a.alert(e));
