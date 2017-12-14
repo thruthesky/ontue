@@ -22,8 +22,8 @@
       <ion-slide>
         <img src="/assets/tmp/intro2.jpg">
         <div class="text position-absolute mt-6 top-0 white fs-xl">
-          <div>어줍짢은 인강, 거품뿐인 화상영어</div>
-          <div>강사의 품격</div>
+          <div>무한경쟁</div>
+          <div>학생의 요구와 영어 능력 향상을 극대화</div>
         </div>
       </ion-slide>
       <ion-slide>
@@ -50,12 +50,12 @@
     </ion-slides>
 
 
-    <nav class="position-absolute left-0 right-0 bottom-0 white d-flex fs-3rem" style="z-index: 987654321; justify-content:center;">
-      <div [class.selected]="on == 0">•</div>
-      <div [class.selected]="on == 1">•</div>
-      <div [class.selected]="on == 2">•</div>
-      <div [class.selected]="on == 3">•</div>
-      <div [class.selected]="on == 4">•</div>
+    <nav class="position-absolute left-0 right-0 bottom-0 white d-flex fs-4rem pointers" style="z-index: 987654321; justify-content:center;">
+      <div [class.selected]="on == 0" (click)="slides.slideTo(0)">•</div>
+      <div [class.selected]="on == 1" (click)="slides.slideTo(1)">•</div>
+      <div [class.selected]="on == 2" (click)="slides.slideTo(2)">•</div>
+      <div [class.selected]="on == 3" (click)="slides.slideTo(3)">•</div>
+      <div [class.selected]="on == 4" (click)="slides.slideTo(4)">•</div>
     </nav>
 
 
@@ -63,23 +63,40 @@
   
     <div *ngIf="on == 0">
 
-            <h1>강사의 품격</h1>
+            <h1>강사를 위한 절대만족</h1>
+            카톡잉글리시에서는
+
+            1. 강사가 직접 수업료를 정합니다.
+            2. 학생은 강사의 프로필과 스케쥴 수업료를 보고 선택합니다.
+            3. 강사가 수업료의 85%를 받습니다.
+
+            강사가 수업료 중 85% 를 받는 것은 매우 큰, 절대적인 혜택입니다. (타 업체 5% 에서 20% 정도)
             
-                진정한 천하제일 화상영어 - 카톡잉글리시!
-            
-                <hr> 일반 화상영어 교육 업체에서 영어 강사들은 적은 임금을 받고 정해진 틀에 따라 수업을 합니다. 카톡잉글리시는 영어 강사가 직접 수업료를 정하며 그 중 85% 를 강사가 배당받습니다. 천하제일 카톡잉글리시의 첫번째
-                미션은 강사를 만족시키는 것이었습니다.
+            전 세계의 1만5천명이 넘는 전문 강사들이 저희와 함께하고 있으며
+
+            그 수는 매일 증가하고 있습니다.
             
     </div>
 
     <div *ngIf="on == 1">
 
   <h1>카카오톡으로 수업</h1>
+
+  화상영어 수업 프로그램 설치 및 관리에 대한 시간 낭비는 불가피하며
   
-    카카오톡은 대한민국 모든 사람이 사용하는 화상채팅 앱으로 매우 편리합니다. 카톡을 사용해서 화상영어 수업과 질문, 첨삭, 과제 등을 진행하므로 학생이 쉽게 참여 할 수 있습니다. 천하제일 카톡잉글리시의 두번째 미션은
-    학생의 참여도를 최강으로 높이는 것이었습니다.
-  
-  
+  매우 빈번하게 문제가 생겨 수업이 중단되기 일 수 입니다.
+
+카카오톡은 대한민국의 국민 화상채팅 앱으로
+
+마이크나 헤드셋의 고장 염려가 없으며 화상영어 수업과 질문, 첨삭, 과제 등을 편리하게 진행하므로 학생의 참여도를 높일 수 있습니다.
+
+다른 업체에서 카카오톡으로 수업을 하지 않는 이유는 단 하나뿐입니다.
+
+학생과 강사가 직접 매일 같이, 매 순간마다, 매우 손 쉽게 소통함으로써 학생과 강사가 수업료를 직접 주고 받는 것을 방지하고자 하기 위함입니다.
+
+일반적으로 업체에서는 학생과 강사의 소통을 원천적으로 단절시키려고합니다.
+
+하지만 저희는 과감하게 카카오톡으로 바꾸어 학생과 강사의 수업 참여도를 최대로 끌어 올리고자 합니다.
     </div>
 
     <div *ngIf="on == 2">
