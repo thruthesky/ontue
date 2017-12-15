@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import { AppService } from '../../providers/app.service';
 @Component({
     selector: 'intro-page',
     templateUrl: 'intro.html'
@@ -12,7 +13,9 @@ export class IntroPage implements OnInit {
 
     on = 0;
 
-    constructor() {
+    constructor(
+        public a: AppService
+    ) {
 
     }
 
