@@ -114,6 +114,21 @@
         <ion-textarea rows="8" [(ngModel)]="account.introduction" name="introduction"></ion-textarea>
       </ion-item>
 
+
+      <ion-item>
+        <ion-label floating>{{ 'YOUTUBE VIDEO' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.youtube_video_url" name="youtube_video_url"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="youtube_thumbnail_url">
+        <img  *ngIf="!play_video" (click)="play_video = true" src="{{youtube_thumbnail_url}}"/>
+        <iframe class="youtube-video" *ngIf="play_video"
+                [src]="youtube_video_url">
+        </iframe>
+        <div class="fs-lg mt-2" text-wrap>Add only the youtube url. ( Right Click on your youtube video and choose copy URL and paste it here )
+        </div>
+      </ion-item>
+
+
       <ion-item>
         <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
@@ -131,6 +146,9 @@
           My QR Code > Click Download.
         </div>
       </ion-item>
+
+
+
 
 
 
