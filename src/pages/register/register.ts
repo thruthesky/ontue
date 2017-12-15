@@ -74,7 +74,7 @@ export class RegisterPage {
     if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(-80022, '*Email is required...');
     if (this.a.user.isLogout && (!this.account.user_pass || !this.account.user_pass.length)) return this.a.showAlert(-80023, '*Password is required...');
     if (!this.user_type || !this.user_type.length) return this.a.showAlert(-80024, '*Please Choose User Type...');
-    if (this.user_type == "T" && !this.qrmarks.length ) return this.a.showAlert(-80025, '*Teacher must upload QR Mark...');
+    if (this.a.user.isLogin && this.user_type == "T" && !this.qrmarks.length ) return this.a.showAlert(-80025, '*Teacher must upload QR Mark...');
     //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
 
     this.account.photoURL = this.files.length ? this.files[0].url : '';

@@ -33,17 +33,18 @@ import { PostPage } from '../pages/post/post';
 import { PostCreateEditPage } from '../pages/post-create-edit/post-create-edit';
 import { CommentEditPage } from '../components/comment-edit/comment-edit';
 
-import { RegisterPage } from './../pages/register/register';
-import { LoginPage } from './../pages/login/login';
-import { MenuPage } from './../pages/menu/menu';
+import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
+import { MenuPage } from '../pages/menu/menu';
 
-import { TeacherListPage } from './../pages/teacher-list/teacher-list';
-import { ScheduleTablePage } from './../pages/schedule-table/schedule-table';
-import { ReservationPage } from './../pages/reservation/reservation';
+import { TeacherListPage } from '../pages/teacher-list/teacher-list';
+import { TeacherListVideoPage } from '../pages/teacher-list-video/teacher-list-video';
+import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
+import { ReservationPage } from '../pages/reservation/reservation';
 
 
-import { TeacherDayoffPage } from './../pages/teacher-dayoff/teacher-dayoff';
-import { TeacherCurriculumVitaePage } from './../pages/teacher-curriculum-vitae/teacher-curriculum-vitae';
+import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
+import { TeacherCurriculumVitaePage } from '../pages/teacher-curriculum-vitae/teacher-curriculum-vitae';
 
 import { MessagePage } from '../pages/message/message';
 import { EvaluatePage } from '../pages/evaluate/evaluate';
@@ -115,7 +116,8 @@ export function createTranslateLoader(http: HttpClient) {
     PageComponent,
     PolicyPage,
     IntroPage,
-    TeacherCurriculumVitaePage
+    TeacherCurriculumVitaePage,
+    TeacherListVideoPage
   ],
   imports: [
     BrowserModule,
@@ -156,7 +158,8 @@ export function createTranslateLoader(http: HttpClient) {
     PageComponent,
     PolicyPage,
     IntroPage,
-    TeacherCurriculumVitaePage
+    TeacherCurriculumVitaePage,
+    TeacherListVideoPage
   ],
 
   providers: [

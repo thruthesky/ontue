@@ -70,7 +70,7 @@ export class TeacherCurriculumVitaePage {
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
 
-      if( userData.youtube_video_url && userData.youtube_video_url.length > 0 ){
+      if( userData.youtube_video_url ){
         this.account.youtube_video_url = userData.youtube_video_url;
         if (userData.youtube_video_url.match(/^http:\/\//i)) userData.youtube_video_url = userData.youtube_video_url.replace(/^http:\/\//i, 'https://');//replace http to https
         if (userData.youtube_video_url.match(/youtu.be/g)) userData.youtube_video_url = userData.youtube_video_url.replace(/youtu.be/g, 'youtube.com/embed');//replace youtu.be to youtube.com/embed
