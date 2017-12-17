@@ -4,6 +4,7 @@ import {
   FILES, USER_UPDATE, USER_DATA_RESPONSE, USER_UPDATE_RESPONSE, FILE,
 } from './../../angular-xapi/interfaces';
 import {FileUploadWidget} from '../../components/file-upload/file-upload';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 
 @Component({
@@ -24,8 +25,14 @@ export class TeacherCurriculumVitaePage {
   birthday;
   today = new Date();
   minYear: number;
+
+  youtube_thumbnail_url: string = "";
+  youtube_video_url: SafeResourceUrl = "";
+  play_video: boolean = false;
+
   constructor(
-    public a: AppService
+    public a: AppService,
+    public sanitizer: DomSanitizer
   ) {
     this.minYear = this.today.getFullYear() - 10;
 
@@ -62,6 +69,33 @@ export class TeacherCurriculumVitaePage {
       this.account.introduction = userData.introduction;
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
+
+      if( userData.youtube_video_url ){
+        this.account.youtube_video_url = userData.youtube_video_url;
+        if (userData.youtube_video_url.match(/^http:\/\//i)) userData.youtube_video_url = userData.youtube_video_url.replace(/^http:\/\//i, 'https://');//replace http to https
+        if (userData.youtube_video_url.match(/youtu.be/g)) userData.youtube_video_url = userData.youtube_video_url.replace(/youtu.be/g, 'youtube.com/embed');//replace youtu.be to youtube.com/embed
+
+        let imageUrl:any = userData.youtube_video_url.replace(/embed/g, "vi");
+        this.youtube_thumbnail_url = imageUrl.match(/youtube.com/g, "img.youtube.com") ? imageUrl.replace(/youtube.com/g, "img.youtube.com") + "/mqdefault.jpg":'assets/images/teacher/no-video.jpg';
+        // this.youtube_thumbnail_url = this.sanitizer.bypassSecurityTrustUrl(this.youtube_thumbnail_url);
+
+        console.log("youtube_thumbnail_url", this.youtube_thumbnail_url);
+
+        console.log("userData.youtube_video_url", userData.youtube_video_url);
+
+        if( userData.youtube_video_url ) {
+          let videoUrl = userData.youtube_video_url + "?autoplay=1&loop=1";
+          this.youtube_video_url = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+        }
+        else this.youtube_video_url = "";
+
+      } else {
+        this.account.youtube_video_url = "";
+      }
+
+      console.log("youtube_video_url", this.youtube_video_url);
+      console.log("youtube_thumbnail_url", this.youtube_thumbnail_url);
+
       if (userData.primary_photo.id) this.files = [ userData.primary_photo ];
       if (userData.kakao_qrmark_photo.id){
         this.qrmarks = [ userData.kakao_qrmark_photo ];

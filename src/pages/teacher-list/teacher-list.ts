@@ -26,7 +26,7 @@ export class TeacherListPage {
     }, e => a.alert(e));
 
 
-    this.onClickTeacher( '' );
+    // this.onClickTeacher( '' );
 
   }
 

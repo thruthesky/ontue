@@ -4,7 +4,7 @@
   <ion-grid no-padding>
     <ion-row id="header-icons">
       <ion-col>
-        <button (click)="a.open( 'home' )">
+        <button class="header-home" (click)="a.open( 'home' )">
           <i class='fa fa-home'></i>
           <div>{{ 'HOME' | translate }}</div>
         </button>
@@ -12,7 +12,7 @@
 
 
       <ion-col *ngIf="a.isTeacher">
-        <button (click)="a.open( 'schedule-edit' )">
+        <button class="header-schedule-edit" (click)="a.open( 'schedule-edit' )">
           <i class="fa fa-calendar-plus"></i>
           <div>{{ 'SCHEDULE' | translate }}</div>
         </button>
@@ -20,29 +20,29 @@
 
 
       <ion-col *ngIf=" a.isTeacher ">
-          <button (click)="a.open( 'dayoff' )">
-            <i class="fa fa-calendar-plus"></i>
-            <div>Day-Offs</div>
-          </button>
-        </ion-col>
+        <button class="header-dayoff" (click)="a.open( 'dayoff' )">
+          <i class="fa fa-calendar-plus"></i>
+          <div>Day-Offs</div>
+        </button>
+      </ion-col>
 
-        <ion-col *ngIf=" a.isStudent ">
-            <button (click)="a.open( 'teacher-list' )">
-              <i class="fa fa-calendar-plus"></i>
-              <div>{{ 'RESERVE' | translate }}</div>
-            </button>
-          </ion-col>
-      
+      <ion-col *ngIf=" a.isStudent ">
+        <button class="header-reserve" (click)="a.open( 'teacher-list' )">
+          <i class="fa fa-calendar-plus"></i>
+          <div>{{ 'RESERVE' | translate }}</div>
+        </button>
+      </ion-col>
+
 
       <ion-col>
-        <button (click)="a.open( 'teacher-list' )">
+        <button class="header-teacher-list" (click)="a.open( 'teacher-list' )">
           <i class="fa fa-users"></i>
           <div>{{ 'TEACHER LIST' | translate }}</div>
         </button>
       </ion-col>
 
       <ion-col>
-        <button (click)=" a.open('reservation', {future: true}) ">
+        <button class="header-reservation" (click)=" a.open('reservation', {future: true}) ">
           <i class="fa fa-th blue"></i>
           <div>{{ 'RESERVATIONS' | translate }}</div>
         </button>
@@ -50,56 +50,50 @@
 
 
       <ion-col>
-        <button (click)=" a.open('reservation', {past: true}) ">
+        <button class="header-past-reservation" (click)=" a.open('reservation', {past: true}) ">
           <i class="fa fa-archive grey"></i>
           <div>{{ 'PASTS' | translate }}</div>
         </button>
       </ion-col>
 
 
-
       <ion-col class="d-none d-sm-block">
-          <button (click)="a.open('message')">
-            <i class="fa fa-comment"></i>
-            <div>{{ 'MESSAGE' | translate }}</div>
-          </button>
-        </ion-col>
-
-        
-      <ion-col class="d-none d-sm-block">
-        <button (click)="a.open('menu')">
-          <i class="fa fa-credit-card-front"></i>
-          <div>{{ 'CURICULUMS' | translate }}</div>
+        <button class="header-message" (click)="a.open('message')">
+          <i class="fa fa-comment"></i>
+          <div>{{ 'MESSAGE' | translate }}</div>
         </button>
       </ion-col>
 
 
+      <ion-col class="d-none d-sm-block">
+        <button class="header-curriculum" (click)="a.open('menu')">
+          <i class="fa fa-credit-card-front"></i>
+          <div>{{ 'CURRICULUM' | translate }}</div>
+        </button>
+      </ion-col>
+
 
       <ion-col class="d-none d-sm-block">
-        <button (click)="a.open('menu')">
+        <button class="header-free-class" (click)="a.open('menu')">
           <i class="fa fa-credit-card"></i>
           <div>{{ 'FREE CLASS' | translate }}</div>
         </button>
       </ion-col>
 
-      
+
+      <ion-col class="d-none d-sm-block">
+
+        <button class="header-forum" (click)="a.open('forum')">
+
+          <i class="fa fa-comments"></i>
+          <div>{{ 'FORUM' | translate }}</div>
+
+        </button>
+      </ion-col>
 
 
       <ion-col class="d-none d-sm-block">
-        
-                <button (click)="a.open('forum')">
-        
-                  <i class="fa fa-comments"></i>
-                  <div>{{ 'FORUM' | translate }}</div>
-        
-                </button>
-              </ion-col>
-              
-      
-
-
-      <ion-col class="d-none d-sm-block">
-        <button (click)="a.open('menu')">
+        <button class="header-class-comment" (click)="a.open('menu')">
           <i class="fa fa-credit-card"></i>
           <div>{{ 'CLASS COMMENTS' | translate }}</div>
         </button>
@@ -107,7 +101,7 @@
 
 
       <ion-col>
-        <button (click)="a.open('menu')">
+        <button class="header-menu" (click)="a.open('menu')">
 
           <i class="fa fa-bars"></i>
           <div>{{ 'ALL MENU' | translate }}</div>
