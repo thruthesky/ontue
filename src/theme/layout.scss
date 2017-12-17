@@ -1,8 +1,19 @@
+@media (min-width: $lg) {
+  header-content ion-grid {
+    max-width: $lg+48!important;
+  }
+  ion-content {
+      position: relative!important;
+      width: $lg!important;
+      margin: auto!important;
+  }
+}
+
 ion-header {
-    header-content {
-        ion-toolbar {
-            padding-top: 0!important;
-            padding-bottom: 0!important;
-        }
+  header-content {
+    ion-toolbar {
+      padding-top: 0!important;
+      padding-bottom: 0!important;
     }
+  }
 }

@@ -167,6 +167,7 @@ export class MyApp {
 
     // this.a.open('intro');
 
+    this.a.open('home');
 
 
   }

@@ -20,7 +20,7 @@ export class IntroPage implements OnInit {
     }
 
     ngOnInit() {
-        setTimeout(x => this.slides.slideTo(2), 100);
+        // setTimeout(x => this.slides.slideTo(2), 100);
     }
 
     slideChanged() {
