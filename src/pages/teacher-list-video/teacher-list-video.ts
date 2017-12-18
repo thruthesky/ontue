@@ -17,9 +17,46 @@ export class TeacherListVideoPage {
   ) {
 
     a.lms.teacher_list( { type: 'T' }).subscribe( re => {
-      console.log("user search: ", re);
+      // console.log("user search: ", re);
       this.teachersList = re['users'];
+      this.pre(re['users']);
     }, e => a.alert(e));
+  }
+
+  pre(teachers) {
+
+
+    teachers.forEach( teacher => {
+
+      if( teacher.youtube_video_url ){
+        if (teacher.youtube_video_url.match(/^http:\/\//i)) teacher.youtube_video_url = teacher.youtube_video_url.replace(/^http:\/\//i, 'https://');//replace http to https
+        if (teacher.youtube_video_url.match(/youtu.be/g)) teacher.youtube_video_url = teacher.youtube_video_url.replace(/youtu.be/g, 'youtube.com/embed');//replace youtu.be to youtube.com/embed
+
+        let imageUrl:any = teacher.youtube_video_url.replace(/embed/g, "vi");
+        teacher.youtube_thumbnail_url = imageUrl.match(/youtube.com/g, "img.youtube.com") ? imageUrl.replace(/youtube.com/g, "img.youtube.com") + "/mqdefault.jpg":'assets/images/teacher/no-video.jpg';
+        // this.youtube_thumbnail_url = this.sanitizer.bypassSecurityTrustUrl(this.youtube_thumbnail_url);
+
+        // console.log("youtube_thumbnail_url", teacher.youtube_thumbnail_url);
+        //
+        // console.log("userData.youtube_video_url", teacher.youtube_video_url);
+
+        if( teacher.youtube_video_url ) {
+          let videoUrl = teacher.youtube_video_url + "?autoplay=1&loop=1";
+          teacher.youtube_video_url = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+        }
+        else teacher.youtube_video_url = "";
+
+      } else {
+        teacher.youtube_video_url = "";
+      }
+    });
+
+  }
+
+  onClickTeacher(teacher) {
+    // console.log(teacher);
+
+    this.a.open('schedule-table', teacher);
   }
 
 }

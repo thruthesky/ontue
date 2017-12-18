@@ -86,6 +86,11 @@
       {{ 'POLICY' | translate }}
     </ion-item>
 
+    <ion-item class="menu-teacher-list-video" (click)="a.open('teacher-list-video')">
+      <ion-icon name="play" item-start></ion-icon>
+      {{ 'TEACHER LIST VIDEO' | translate }}
+    </ion-item>
+
 
     <ion-item *ngIf="a.isTeacher" class="menu-curriculum-vitae" (click)="a.open('teacher-curriculum-vitae')">
       <ion-icon name="clipboard" item-start></ion-icon>
