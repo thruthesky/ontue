@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
 import { TEACHERS_LIST } from "../../angular-xapi/lms.service";
 import { DomSanitizer } from '@angular/platform-browser';
+import {YoutubeVideoPlayer} from "@ionic-native/youtube-video-player";
 
 
 @Component({
@@ -13,7 +14,8 @@ export class TeacherListVideoPage {
   teachersList: TEACHERS_LIST = [];
 
   constructor(public a: AppService,
-              public sanitizer: DomSanitizer
+              public sanitizer: DomSanitizer,
+              private youtube: YoutubeVideoPlayer
   ) {
 
     a.lms.teacher_list( { type: 'T' }).subscribe( re => {
@@ -41,10 +43,15 @@ export class TeacherListVideoPage {
         // console.log("userData.youtube_video_url", teacher.youtube_video_url);
 
         if( teacher.youtube_video_url ) {
+          let video = teacher.youtube_video_url.split( "\/");
+          teacher.video_id = video[video.length-1];
           let videoUrl = teacher.youtube_video_url + "?autoplay=1&loop=1";
           teacher.youtube_video_url = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
+          console.log(teacher);
         }
         else teacher.youtube_video_url = "";
+
+
 
       } else {
         teacher.youtube_video_url = "";
@@ -55,8 +62,19 @@ export class TeacherListVideoPage {
 
   onClickTeacher(teacher) {
     // console.log(teacher);
-
     this.a.open('schedule-table', teacher);
+  }
+
+
+  onClickShowVideo(teacher) {
+    console.log(teacher);
+    if(this.a.isCordova) {
+      console.log("platform is::", this.a.isCordova);
+      console.log("video_id", teacher.video_id);
+      this.youtube.openVideo(teacher.video_id);
+    } else if(!teacher.play_video){
+      teacher.play_video = true
+    }
   }
 
 }
