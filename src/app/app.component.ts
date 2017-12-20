@@ -37,7 +37,7 @@ import { MessagePage } from '../pages/message/message';
 import { EvaluatePage } from '../pages/evaluate/evaluate';
 import { PaymentPage } from '../pages/payment/payment';
 
-import { IntroPage } from '../pages/intro/intro';
+// import { IntroPage } from '../pages/intro/intro';
 
 
 
@@ -76,11 +76,12 @@ export class MyApp {
   }
 
   get rootPage() {
-    let noOfVisit = this.a.get('no-of-visit');
-    if ( noOfVisit < 3 ) {
-      return IntroPage;
-    }
-    else return HomePage;
+    // let noOfVisit = this.a.get('no-of-visit');
+    // if ( noOfVisit < 3 ) {
+    //   return IntroPage;
+    // }
+    // else 
+    return HomePage;
   };
 
 
@@ -113,7 +114,7 @@ export class MyApp {
     this.a.pages['payment'] = PaymentPage;
     this.a.pages['policy'] = PolicyPage;
 
-    this.a.pages['intro'] = IntroPage;
+    // this.a.pages['intro'] = IntroPage;
 
     this.a.pages['teacher-curriculum-vitae'] = TeacherCurriculumVitaePage;
     this.a.pages['teacher-list-video'] = TeacherListVideoPage;
@@ -168,7 +169,7 @@ export class MyApp {
 
 
 
-    this.a.open('intro');
+    // this.a.open('intro');
 
     // this.a.open('home');
 
