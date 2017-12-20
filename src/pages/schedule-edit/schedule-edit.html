@@ -14,7 +14,7 @@
   Your timezone: {{ timezone_name }}
   and your time is now: {{ time }}<br>
   <!-- {{ schedules | json }} -->
-  <button ion-button (click)='onClickAddSchedule()' *ngIf="data">Add Scedule</button>
+  <button ion-button (click)='onClickAddSchedule()' *ngIf="data">Add Schedule</button>
 
   <div class="alert alert-warning" *ngIf="data && !data.low_price_class">
     {{ data.low_price_class_message }}
