@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { StatusBar } from '@ionic-native/status-bar';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 
@@ -36,6 +36,7 @@ import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';
 import { PaymentPage } from '../pages/payment/payment';
+import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 
 import { IntroPage } from '../pages/intro/intro';
 
@@ -51,27 +52,27 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
+    // statusBar: StatusBar,
+    // splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService,
     private youtube: YoutubeVideoPlayer
   ) {
     this.a.initTranslate();
 
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
-
-      this.a.platform = platform;
-
-      this.youtube.openVideo('VbdfKmgpqjc');
-
-
-      // alert("I am on cordova!");
-    });
+    // platform.ready().then(() => {
+    //   // Okay, so the platform is ready and our plugins are available.
+    //   // Here you can do any higher level native things you might need.
+    //   statusBar.styleDefault();
+    //   splashScreen.hide();
+    //
+    //   this.a.platform = platform;
+    //
+    //   this.youtube.openVideo('VbdfKmgpqjc');
+    //
+    //
+    //   // alert("I am on cordova!");
+    // });
 
   }
 
@@ -111,6 +112,7 @@ export class MyApp {
 
 
     this.a.pages['payment'] = PaymentPage;
+    this.a.pages['payment-history'] = PaymentHistoryPage;
     this.a.pages['policy'] = PolicyPage;
 
     this.a.pages['intro'] = IntroPage;
@@ -126,8 +128,8 @@ export class MyApp {
   test() {
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
-    this.a.open('teacher-list-video');
-
+    // this.a.open('teacher-list-video');
+    // this.a.open('payment-history');
 
     // this.a.open('schedule-edit');
 

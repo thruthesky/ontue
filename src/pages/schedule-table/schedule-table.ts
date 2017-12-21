@@ -115,7 +115,7 @@ export class ScheduleTablePage {
 
   request( options = {} ) {
     let defaults = {
-      teachers: [ ],
+      teachers: [],
       days: this.days,
       min_duration: this.min_duration,
       max_duration: this.max_duration,
@@ -167,8 +167,6 @@ export class ScheduleTablePage {
   }
 
   onChangeSearchOption() {
-
-
     this.loadScheduleTable( this.request() );
   }
 
@@ -185,7 +183,7 @@ export class ScheduleTablePage {
 
     console.log('onClickSession', session);
     if( session.status == 'past' ) return;
-    
+
     if ( session.open == 'open' ) this.reserveSession( session );
     else if ( session.open == 'reserved' && session.owner == 'me' ) this.cancelSession( session );
 
