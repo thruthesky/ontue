@@ -1,6 +1,28 @@
-<ion-toolbar>
+<section class="mobile-toolbar d-md-none d-flex justify-content-between">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <div class="pl-3 fs-2rem" (click)="a.open('menu')">
+              <i class="fas fa-bars"></i>
+            </div>
+      </ion-col>
+      <ion-col>
+          <h1 class="m-0 p-0" (click)="a.open('home')">카톡영어</h1>
+      </ion-col>
+      <ion-col>
+          <div class="p-2">
+              로그인 | 회원가입
+            </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  
+
+</section>
 
 
+<ion-toolbar class="d-none d-md-block">
   <ion-grid no-padding>
     <ion-row id="header-icons">
       <ion-col>

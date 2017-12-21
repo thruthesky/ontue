@@ -3,11 +3,11 @@ import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { AppService } from '../../providers/app.service';
 @Component({
-    selector: 'intro-page',
+    selector: 'intro-component',
     templateUrl: 'intro.html'
 })
 
-export class IntroPage implements OnInit {
+export class IntroComponent implements OnInit {
 
     @ViewChild(Slides) slides: Slides;
 

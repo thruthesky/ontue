@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-// import { SplashScreen } from '@ionic-native/splash-screen';
-// import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 
 
 
@@ -55,7 +55,7 @@ import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings
 import { PaymentPage } from '../pages/payment/payment';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { PolicyPage } from '../pages/policy/policy';
-import { IntroPage } from '../pages/intro/intro';
+import { IntroComponent } from '../components/intro/intro';
 
 
 
@@ -116,7 +116,7 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentPage,
     PageComponent,
     PolicyPage,
-    IntroPage,
+    IntroComponent,
     TeacherCurriculumVitaePage,
     TeacherListVideoPage,
     PaymentHistoryPage
@@ -159,15 +159,15 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentPage,
     PageComponent,
     PolicyPage,
-    IntroPage,
+    IntroComponent,
     TeacherCurriculumVitaePage,
     TeacherListVideoPage,
     PaymentHistoryPage
   ],
 
   providers: [
-    // StatusBar,
-    // SplashScreen,
+    StatusBar,
+    SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     YoutubeVideoPlayer,
     AppService
