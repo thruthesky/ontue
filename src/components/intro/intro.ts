@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { AppService } from '../../providers/app.service';
@@ -7,7 +7,9 @@ import { AppService } from '../../providers/app.service';
     templateUrl: 'intro.html'
 })
 
-export class IntroComponent implements OnInit {
+export class IntroComponent
+    // implements OnInit
+    {
 
     @ViewChild(Slides) slides: Slides;
 
@@ -19,9 +21,9 @@ export class IntroComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-        // setTimeout(x => this.slides.slideTo(2), 100);
-    }
+    // ngOnInit() {
+    //     setTimeout(x => this.slides.slideTo(2), 200);
+    // }
 
     slideChanged() {
         let currentIndex = this.slides.getActiveIndex();
