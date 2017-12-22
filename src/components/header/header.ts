@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { AppService } from './../../providers/app.service';
 
@@ -10,15 +10,14 @@ import { AppService } from './../../providers/app.service';
 })
 export class HeaderComponent {
 
-    
+    @Input() page = '';
     constructor(
         public a: AppService
     ) {
 
     }
 
-    ngAfterViewInit() {
-    }
+    
 
 
 }
