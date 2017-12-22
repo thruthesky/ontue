@@ -36,6 +36,7 @@ import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';
 import { PaymentPage } from '../pages/payment/payment';
+import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 
 // import { IntroPage } from '../pages/intro/intro';
 
@@ -80,7 +81,7 @@ export class MyApp {
     // if ( noOfVisit < 3 ) {
     //   return IntroPage;
     // }
-    // else 
+    // else
     return HomePage;
   };
 
@@ -112,6 +113,7 @@ export class MyApp {
 
 
     this.a.pages['payment'] = PaymentPage;
+    this.a.pages['payment-history'] = PaymentHistoryPage;
     this.a.pages['policy'] = PolicyPage;
 
     // this.a.pages['intro'] = IntroPage;
@@ -128,7 +130,7 @@ export class MyApp {
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
     // this.a.open('teacher-list-video');
-
+    // this.a.open('payment-history');
 
     // this.a.open('schedule-edit');
 

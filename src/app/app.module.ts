@@ -53,6 +53,7 @@ import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings
 
 
 import { PaymentPage } from '../pages/payment/payment';
+import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { PolicyPage } from '../pages/policy/policy';
 import { IntroComponent } from '../components/intro/intro';
 
@@ -117,7 +118,8 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-    TeacherListVideoPage
+    TeacherListVideoPage,
+    PaymentHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -159,7 +161,8 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-    TeacherListVideoPage
+    TeacherListVideoPage,
+    PaymentHistoryPage
   ],
 
   providers: [

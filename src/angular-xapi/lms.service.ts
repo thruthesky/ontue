@@ -352,4 +352,11 @@ export class LMSService extends Base {
       return this.x.post( data );
     }
 
+    get_payment_history() {
+      let data = {};
+      data['route'] = 'lms.get_payment_history';
+      data['session_id'] = this.user.sessionId;
+      return this.x.post( data );
+    }
+
 }

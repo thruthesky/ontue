@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>ADD SCHEDULE</ion-title>
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">
+      <button ion-button class="cancel" (click)="dismiss()">
         <span ion-text color="primary">Cancel</span>
       </button>
     </ion-buttons>
@@ -21,7 +21,7 @@
   <div>
       Your timezone: {{ timezone_name }}
       and your time is now: {{ time }}<br>
-      <button ion-button (click)="dismiss(); a.open('settings')">Update Timezone</button>
+      <button ion-button class="update-tz" (click)="dismiss(); a.open('settings')">Update Timezone</button>
     </div>
 
     <div>
@@ -93,14 +93,14 @@
 
     <div>
       PreRe:
-      <input type="text" name="point" [(ngModel)]="data.prere">
+      <input type="text" name="prere" [(ngModel)]="data.prere">
     </div>
 
 
     <div class="alert alert-info" *ngIf=" calculateEarning() ">
-      You will earn 
+      You will earn
       {{ calculateEarning() }}
-      peoso in a month (
+      peso in a month (
         {{ countSelectedDays() * 4 }} days a month
         with
         <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="paypal"> paypal or
@@ -112,7 +112,7 @@
 
     </div>
 
-    <input type="submit" value="submit" (click)="onSubmit()">
+    <button ion-button type="submit" (click)="onSubmit()">Submit</button>
 
   </div>
 
