@@ -3,14 +3,12 @@ import {AppService} from '../../providers/app.service';
 import {NavParams,ViewController} from 'ionic-angular';
 
 @Component({
-  selector: 'evaluate-view',
-  templateUrl: 'evaluate-view.html'
+  selector: 'payment-receipt',
+  templateUrl: 'payment-receipt.html'
 })
-export class EvaluateView {
+export class PaymentReceipt {
 
-
-  session;
-  level;
+  data;
 
   constructor(
     public a: AppService,
@@ -18,18 +16,9 @@ export class EvaluateView {
     public viewCtrl: ViewController,
   ) {
 
-    let idx = navParams.data['idx'];
-    console.log( idx );
+    this.data = navParams.data;
+    console.log( this.data );
 
-    this.a.lms.get_session_evaluation( idx ).subscribe(res => {
-      console.log("get_session_evaluation:: " , res.session);
-      let s = res.session;
-      this.session = s;
-
-      this.level = Math.floor(( this.toInt(s.expression) + this.toInt(s.vocabulary) + this.toInt(s.grammar) + this.toInt(s.pronunciation) + this.toInt(s.speed)  ) / 5);
-    }, e => {
-      this.a.alert(e);
-    })
   }
 
   dismiss() {

@@ -13,4 +13,16 @@
     }
   }
 
+  #not-to-print {
+    display: none!important;
+  }
+
+  #show-on-print {
+    display: block!important;
+  }
+
+}
+
+#show-on-print {
+  display: none;
 }

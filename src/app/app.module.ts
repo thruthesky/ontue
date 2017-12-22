@@ -75,6 +75,7 @@ import { PostPopoverWidget } from '../components/post-popover/post-popover';
 import { AddSchedule } from '../components/add-schedule/add-schedule';
 import { PageComponent } from '../components/page/page';
 import { EvaluateView } from '../components/evaluate-view/evaluate-view';
+import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
 
 
 
@@ -121,7 +122,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherCurriculumVitaePage,
     TeacherListVideoPage,
     PaymentHistoryPage,
-    EvaluateView
+    EvaluateView,
+    PaymentReceipt
   ],
   imports: [
     BrowserModule,
@@ -165,7 +167,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherCurriculumVitaePage,
     TeacherListVideoPage,
     PaymentHistoryPage,
-    EvaluateView
+    EvaluateView,
+    PaymentReceipt
   ],
 
   providers: [

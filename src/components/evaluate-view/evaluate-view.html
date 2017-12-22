@@ -8,7 +8,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content id="section-to-print">
   <ion-list>
     <ion-item>Session No. {{ session?.idx }}</ion-item>
     <ion-item>Points: {{ session?.point }}</ion-item>
@@ -22,5 +22,6 @@
     <ion-item><span text-wrap>Book(Page) used in the session: {{ session?.book_used }}</span></ion-item>
     <ion-item><span text-wrap>Book(Page) will be used in next session: {{ session?.book_next }}</span></ion-item>
   </ion-list>
+  <button ion-button (click)="onClickPrint()" id="not-to-print">Print</button>
 
 </ion-content>
