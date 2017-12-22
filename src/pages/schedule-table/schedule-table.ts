@@ -280,7 +280,7 @@ export class ScheduleTablePage {
 
 
     sessions.forEach( session => {
-      if(session.open == 'open'){
+      if(session.open == 'open' && session.status != 'past'){
         // console.log(session)
         this.reserveSession( session);
       }

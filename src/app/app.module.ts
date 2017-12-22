@@ -64,16 +64,17 @@ import { IntroComponent } from '../components/intro/intro';
 //
 // Components
 // -----------------------------
-import { LoginBoxComponent } from './../components/login-box/login-box';
-import { HeaderComponent } from './../components/header/header';
-import { SitePreviewWidget} from './../components/site-preview/site-preview';
-import { FileUploadWidget } from './../components/file-upload/file-upload';
-import { FileDisplayWidget } from  './../components/file-display/file-display';
-import { CommentCreateWidget } from './../pages/comment-create/comment-create';
-import { CommentViewWidget } from './../components/comment-view/comment-view';
+import { LoginBoxComponent } from '../components/login-box/login-box';
+import { HeaderComponent } from '../components/header/header';
+import { SitePreviewWidget} from '../components/site-preview/site-preview';
+import { FileUploadWidget } from '../components/file-upload/file-upload';
+import { FileDisplayWidget } from  '../components/file-display/file-display';
+import { CommentCreateWidget } from '../pages/comment-create/comment-create';
+import { CommentViewWidget } from '../components/comment-view/comment-view';
 import { PostPopoverWidget } from '../components/post-popover/post-popover';
 import { AddSchedule } from '../components/add-schedule/add-schedule';
 import { PageComponent } from '../components/page/page';
+import { EvaluateView } from '../components/evaluate-view/evaluate-view';
 
 
 
@@ -119,7 +120,8 @@ export function createTranslateLoader(http: HttpClient) {
     IntroComponent,
     TeacherCurriculumVitaePage,
     TeacherListVideoPage,
-    PaymentHistoryPage
+    PaymentHistoryPage,
+    EvaluateView
   ],
   imports: [
     BrowserModule,
@@ -162,7 +164,8 @@ export function createTranslateLoader(http: HttpClient) {
     IntroComponent,
     TeacherCurriculumVitaePage,
     TeacherListVideoPage,
-    PaymentHistoryPage
+    PaymentHistoryPage,
+    EvaluateView
   ],
 
   providers: [

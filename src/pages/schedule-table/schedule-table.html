@@ -94,7 +94,10 @@
           <hr>
           <!--{{ schedule( sessions[0].idx_schedule ) | json }}-->
         </td>
-        <td><button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button><button class="btn btn-primary" (click)="onClickReserveCancel(sessions)">Cancel</button> </td>
+        <td>
+          <button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button>
+          <!--<button class="btn btn-primary" (click)="onClickReserveCancel(sessions)">Cancel</button> -->
+        </td>
         <td *ngFor=" let session of sessions ">
            <!--{{session|json}}-->
           <div class="session pointer" [attr.status]=" session['status'] " [attr.owner]=" session['owner'] " text-center (click)="onClickSession( session )">

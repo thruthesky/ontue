@@ -35,6 +35,8 @@ import { TeacherListVideoPage } from '../pages/teacher-list-video/teacher-list-v
 import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';
+import { EvaluateView } from '../components/evaluate-view/evaluate-view';
+
 import { PaymentPage } from '../pages/payment/payment';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 
@@ -121,6 +123,8 @@ export class MyApp {
     this.a.pages['teacher-curriculum-vitae'] = TeacherCurriculumVitaePage;
     this.a.pages['teacher-list-video'] = TeacherListVideoPage;
 
+    this.a.pages['evaluate-view'] = EvaluateView;
+
 
     setTimeout(() => this.test(), 100);
 
@@ -145,7 +149,7 @@ export class MyApp {
     // this.a.open('register');
     // this.a.open('menu');
 
-    // this.a.open('reservation', { past: true });
+    // this.a.open('reservation', {past: true})
 
     // this.a.open('past');
 
@@ -156,6 +160,8 @@ export class MyApp {
 
     // this.a.open('evaluate', {idx: 1639} );
     // this.a.open('evaluate', {idx: 9707} );
+
+    // this.a.open('evaluate-view', {idx: 9707} );
 
 
     // this.a.open('settings-payment-info');
