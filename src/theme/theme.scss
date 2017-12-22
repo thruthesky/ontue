@@ -121,26 +121,23 @@ skyblue {
 $sizer: 1rem !default;
 $sizers: ( 0: 0, 1: ($spacer * .25), 2: ($spacer * .5), 3: $spacer,
 4: ($spacer * 1.5), 5: ($spacer * 3), 6: ($spacer * 5), 7: ($spacer * 7),
-8: ($spacer * 10), 9: ($spacer * 12), 10: ($spacer * 14),
-11: ($spacer * 16), 12: ($spacer * 18), 13: ($spacer * 18),
-14: ($spacer * 20), 15: ($spacer * 25)
+8: ($spacer * 8), 9: ($spacer * 9), 10: ($spacer * 10),
+11: ($spacer * 11), 12: ($spacer * 12), 13: ($spacer * 13),
+14: ($spacer * 14), 15: ($spacer * 15)
 ) !default;
 // width, height, size, z-index
 // colors
 @each $size,
 $length in $sizers {
   .size-#{$size} {
-    width: #{$length};
-    height: #{$length};
+    width: #{$length}!important;
+    height: #{$length}!important;
   }
   .w-#{$size} {
-    width: #{$length};
+    width: #{$length}!important;
   }
   .h-#{$size} {
-    height: #{$length};
-  }
-  .z-#{$size} {
-    z-index: #{$length}00;
+    height: #{$length}!important;
   }
 }
 
@@ -205,6 +202,13 @@ $length in $sizers {
 .fs-sl {
   // super large
   font-size: 12rem!important;
+}
+
+.fs-90 {
+  font-size: 90%!important;
+}
+.fs-110 {
+  font-size: 110%!important;
 }
 
 .fw-bold {

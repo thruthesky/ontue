@@ -1,12 +1,27 @@
 
-<section class="position-relative">
+<section class="position-relative h-12 of-hidden">
+
+    <nav class="position-absolute left-0 right-0 mr-4 white d-flex fs-4rem pointers"
+        style="z-index: 987654321; justify-content:flex-end; bottom: -1.5rem;">
+        <div [class.selected]="on == 0" (click)="slides.slideTo(0)">•</div>
+        <div [class.selected]="on == 1" (click)="slides.slideTo(1)">•</div>
+        <div [class.selected]="on == 2" (click)="slides.slideTo(2)">•</div>
+      </nav>
   
     <ion-slides (ionSlideDidChange)="slideChanged()">
       <ion-slide>
-        <img src="/assets/tmp/intro.jpg">
-        <div class="text position-absolute mt-6 top-0 white fs-xl" style="background-color: rgba(200, 200, 200, .5);">
-          <div>어줍짢은 인강, 거품뿐인 화상영어</div>
-          <div>가라</div>
+        <section class="h-12 w-100" style="background-color: black;">
+          <div class="p-4">
+          <div class="size-9 of-hidden bg-white rounded-50">
+              <img src="assets/img/front/slide1.png">
+          </div>
+        </div>
+          
+        </section>
+        <div class="text position-absolute mt-4 mr-4 top-0 right-0 white" text-right>
+            <div class="fs-90">어줍짢은 인강, 거품뿐인 화상영어</div>
+            <div class="fs-110">가라</div>
+            <div class="fs-90 yellow">하루 25분 월 8만8천원!</div>
         </div>
       </ion-slide>
       <ion-slide>
@@ -38,15 +53,6 @@
         </div>
       </ion-slide> -->
     </ion-slides>
-
-
-    <nav class="position-absolute left-0 right-0 bottom-0 white d-flex fs-4rem pointers" style="z-index: 987654321; justify-content:center;">
-      <div [class.selected]="on == 0" (click)="slides.slideTo(0)">•</div>
-      <div [class.selected]="on == 1" (click)="slides.slideTo(1)">•</div>
-      <div [class.selected]="on == 2" (click)="slides.slideTo(2)">•</div>
-      <!-- <div [class.selected]="on == 3" (click)="slides.slideTo(3)">•</div>
-      <div [class.selected]="on == 4" (click)="slides.slideTo(4)">•</div> -->
-    </nav>
 
 
   </section>
