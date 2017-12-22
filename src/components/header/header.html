@@ -1,8 +1,8 @@
-<section class="mobile-toolbar d-md-none d-flex justify-content-between">
-  <ion-grid>
+<section class="mobile-toolbar d-md-none">
+  <ion-grid class="px-0" [class.pb-0]=" page != 'home' ">
     <ion-row>
       <ion-col col-3>
-          <div class="pl-3 fs-2rem" (click)="a.open('menu')">
+          <div class="pl-3 pt-sm-3 fs-2rem" (click)="a.open('menu')">
               <i class="fas fa-bars"></i>
             </div>
       </ion-col>
@@ -11,16 +11,23 @@
             <img src="assets/img/logo/katalk-english.png">
           </div>
       </ion-col>
-      <ion-col col-4>
-          <div class="p-2">
-              <span (click)="a.open('login')">로그인</span>
-              <span (click)="a.open('register')">회원가입</span>
+      <ion-col col-4 class="">
+          <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
+              <span (click)="a.open('payment')">수강료</span>
+              <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>
             </div>
       </ion-col>
     </ion-row>
   </ion-grid>
   
-  
+  <nav class="" *ngIf=" page != 'home' ">
+    <ul class="m-0 p-0 d-flex bg-grey white" style="list-style: none; justify-content:space-around;">
+        <li class="p-3">무료체험</li>
+        <li class="p-3">실시간예약</li>
+        <li class="p-3">예약된수업</li>
+        <li class="p-3">수업평가</li>
+    </ul>
+  </nav>
 
 </section>
 

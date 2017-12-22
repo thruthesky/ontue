@@ -129,6 +129,7 @@ export class AddSchedule {
     if ( ! point ) return 0;
     point = Math.ceil( point );
     let php = parseFloat(this.php_to_kwr);
+    if ( ! php ) return 0;
     console.log("php: ", this.payment_method);
 
 
