@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
-import { NavParams } from 'ionic-angular';
+import {ModalController, NavParams} from 'ionic-angular';
+import {EvaluateView} from "../../components/evaluate-view/evaluate-view";
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ReservationPage {
 
   constructor(
     navParams: NavParams,
-    public a: AppService
+    public a: AppService,
+    public modalCtrl: ModalController,
   ) {
     this.a.loadMyPoint( p => this.my_point = p );
 
@@ -100,14 +102,14 @@ export class ReservationPage {
       book['refund_request_at'] = 1;
     }, e => this.a.alert(e));
   }
-  
+
   onClickCancelRefundRequest( book ) {
     console.log(book);
     this.a.lms.session_cancel_refund_request( book['idx']).subscribe( re => {
       book['refund_request_at'] = 0;
     }, e => this.a.alert(e));
   }
-  
+
   refund_request(book) {
     if ( book['refund_request_at'] > 0 ) {
       return true;
@@ -134,5 +136,12 @@ export class ReservationPage {
       console.log(re);
       book['refund_reject_at'] = 1;
     }, e => this.a.alert(e));
+  }
+
+  onClickEvaluateView(idx) {
+    const modal = this.modalCtrl.create( EvaluateView,
+      {idx: idx} );
+    modal.onDidDismiss(()=> {});
+    modal.present();
   }
 }

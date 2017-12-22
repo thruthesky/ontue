@@ -14,11 +14,17 @@ export class PaymentHistoryPage {
     public a: AppService
   ) {
     this.a.lms.get_payment_history().subscribe( res => {
-      console.log("get_payment_history", res);
+      console.log("get_payment_history", res['payments']);
+      this.payments = res['payments'];
     }, e => {
       this.a.alert(e);
     });
 
+  }
+
+
+  onClickPrint() {
+    window.print();
   }
 
 }

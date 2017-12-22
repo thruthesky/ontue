@@ -56,7 +56,6 @@
     SEARCH
   </button>
   <hr>
-  <button ion-button (click)="onClickCancelAll()">Cancel All</button>
 
   <table class="books" *ngIf=" books.length ">
     <tr>
@@ -100,7 +99,7 @@
 
           <div class="student" *ngIf=" a.lms.getUserType() == 'student' ">
 
-            <button>View Evalute</button>
+            <button ion-button (click)=" onClickEvaluateView(book.idx)">Evaluation</button>
 
 
             <ng-container *ngIf=" rejected( book ) ">
