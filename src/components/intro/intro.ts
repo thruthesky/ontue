@@ -21,9 +21,9 @@ export class IntroComponent
 
     }
 
-    // ngOnInit() {
-    //     setTimeout(x => this.slides.slideTo(2), 200);
-    // }
+    ngOnInit() {
+        setTimeout(x => this.slides.slideTo(2), 250);
+    }
 
     slideChanged() {
         let currentIndex = this.slides.getActiveIndex();

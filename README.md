@@ -13,6 +13,14 @@
 
 ````
 
+# Publish
+
+## Git Repository
+````
+$ git remote -v
+````
+
+
 
 #known Error
 
