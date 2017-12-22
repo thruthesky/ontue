@@ -5,6 +5,7 @@
 
   <div id="section-to-print">
     <h1>Payment History</h1>
+    <button ion-button (click)="onClickPrint()" id="not-to-print">Print</button>
     <table width="100%">
       <tr>
         <td class="p-2">ID</td>
@@ -15,7 +16,6 @@
         <td class="p-2">Amount</td>
       </tr>
       <tr *ngFor="let payment of payments; even as o" class=" {{o ? 'bg-lightgrey': ''}}">
-
         <td class="p-2">{{ payment.idx }}</td>
         <td class="p-2">{{ payment.paymentID }}</td>
         <td class="p-2">{{ a.shortDate( payment.stamp_end ) }}</td>
@@ -23,8 +23,7 @@
         <td class="p-2">{{ payment.point }}</td>
         <td class="p-2">{{ payment.amount }} {{ payment.currency }}</td>
       </tr>
-
     </table>
   </div>
-  <button ion-button (click)="onClickPrint()" id="not-to-print">Print</button>
+
 </ion-content>

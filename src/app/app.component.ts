@@ -39,6 +39,7 @@ import { EvaluateView } from '../components/evaluate-view/evaluate-view';
 
 import { PaymentPage } from '../pages/payment/payment';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
+import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
 
 // import { IntroPage } from '../pages/intro/intro';
 
@@ -124,6 +125,7 @@ export class MyApp {
     this.a.pages['teacher-list-video'] = TeacherListVideoPage;
 
     this.a.pages['evaluate-view'] = EvaluateView;
+    this.a.pages['payment-receipt'] = PaymentReceipt;
 
 
     setTimeout(() => this.test(), 100);
