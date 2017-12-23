@@ -20,10 +20,14 @@
     </ion-row>
   </ion-grid>
 
-  <nav class="" *ngIf=" page != 'home' ">
-    <ul class="m-0 p-0 d-flex bg-grey white" style="list-style: none; justify-content:space-around;">
-      <li class="p-3">무료체험</li>
-      <li class="p-3">실시간예약</li>
+  <nav class="">
+    <ul class="m-0 p-0 d-flex"
+    [class.front-page]=" page == 'home' "
+    [class.sub-page] = " page != 'home' "
+    
+    style="list-style: none; justify-content:space-around;">
+      <li class="p-3" (click)=" a.open('teacher-list') ">무료체험</li>
+      <li class="p-3">즉시수업</li>
       <li class="p-3">예약된수업</li>
       <li class="p-3">수업평가</li>
     </ul>

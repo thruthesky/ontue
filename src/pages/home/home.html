@@ -4,6 +4,8 @@
 
 <ion-content>
 
+    <hook-content-top></hook-content-top>
+
   <ng-container *ngIf=" a.lms.getUserType() != 'teacher' ">
 
     <intro-component></intro-component>
@@ -28,4 +30,6 @@
   </ng-container>
 
 
+
+  <hook-content-bottom></hook-content-bottom>
 </ion-content>

@@ -21,6 +21,7 @@ export class AppService {
     loader;
     navCtrl: NavController = null;
     pages = {};
+    pageName = 'home';
 
     anonymousPhotoURL = 'assets/img/anonymous.png';
 
@@ -103,13 +104,19 @@ export class AppService {
     open(page: any, params?) {
         if (typeof page === 'string') {
             if (!this.pages[page]) return this.alert('Wrong page name: ' + page);
+
+            this.pageName = page; /// set current page name.
+            // alert('page: ' + page);
             page = this.pages[page];
             // console.log(page);
         }
         this.navCtrl.setRoot(page, params, {
             animate: true,
             direction: 'forward'
+        }).then( () => {
+            // alert(page);
         });
+
     }
 
     postUserPhotoUrl(data) {

@@ -2,6 +2,7 @@
   <header-content></header-content>
 </ion-header>
 <ion-content padding>
+    <hook-content-top></hook-content-top>
 
   <h1>Mesage</h1>
 
@@ -24,4 +25,6 @@
         <button ion-button *ngIf="message_count == limit" (click)="onClickNext()">Next</button>
       </ion-item>
   </ion-list>
+
+  <hook-content-bottom></hook-content-bottom>
 </ion-content>

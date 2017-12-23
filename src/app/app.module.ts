@@ -76,6 +76,8 @@ import { AddSchedule } from '../components/add-schedule/add-schedule';
 import { PageComponent } from '../components/page/page';
 import { EvaluateView } from '../components/evaluate-view/evaluate-view';
 import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
+import { HookContentBottomComponent } from '../components/hook-content-bottom/hook-content-bottom';
+import { HookContentTopComponent } from '../components/hook-content-top/hook-content-top';
 
 
 
@@ -123,7 +125,9 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherListVideoPage,
     PaymentHistoryPage,
     EvaluateView,
-    PaymentReceipt
+    PaymentReceipt,
+    HookContentBottomComponent,
+    HookContentTopComponent
   ],
   imports: [
     BrowserModule,
@@ -168,7 +172,9 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherListVideoPage,
     PaymentHistoryPage,
     EvaluateView,
-    PaymentReceipt
+    PaymentReceipt,
+    HookContentBottomComponent,
+    HookContentTopComponent
   ],
 
   providers: [
