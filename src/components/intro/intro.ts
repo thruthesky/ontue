@@ -15,6 +15,7 @@ export class IntroComponent
 
     on = 0;
 
+    show_detail = false;
     constructor(
         public a: AppService
     ) {

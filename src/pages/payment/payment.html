@@ -1,38 +1,38 @@
 <ion-header>
-    <header-content></header-content>
+  <header-content></header-content>
 </ion-header>
 <ion-content padding>
-    <h1>Paypal Credit Card Payment</h1>
-    
-
-
-    <div class="alert alert-warning" *ngIf="a.user.isLogout">{{ 'LOGIN_BEFORE_PAYMENT' | translate }}</div>
+  <h1>Paypal Credit Card Payment</h1>
 
 
 
-    <select name="amount" [(ngModel)]="amount" *ngIf="paypal_ready">
-        <option value="2000">2,000 원</option>
-        <option value="5000">5,000 원</option>
-            <option value="10000">10,000 원</option>
-            <option value="20000">20,000 원</option>
-            <option value="30000">30,000 원</option>
-            <option value="50000">50,000 원</option>
-            <option value="100000">100,000 원</option>
-            <option value="200000">200,000 원</option>
-            <option value="300000">300,000 원</option>
-            <option value="500000">500,000 원</option>
-    </select>
+  <div class="alert alert-warning" *ngIf="a.user.isLogout">{{ 'LOGIN_BEFORE_PAYMENT' | translate }}</div>
 
 
 
-    <button id="paypal-button"></button>
-    
-    <div class="alert alert-info">
-        {{ 'NOTE_TAX_EXCLUSIVE' | translate }}
-    </div>
+  <select name="amount" [(ngModel)]="amount" *ngIf="paypal_ready">
+    <option value="1000">1,000 원</option>
+    <option value="2000">2,000 원</option>
+    <option value="5000">5,000 원</option>
+    <option value="10000">10,000 원</option>
+    <option value="20000">20,000 원</option>
+    <option value="30000">30,000 원</option>
+    <option value="50000">50,000 원</option>
+    <option value="100000">100,000 원</option>
+    <option value="200000">200,000 원</option>
+    <option value="300000">300,000 원</option>
+    <option value="500000">500,000 원</option>
+  </select>
 
-    <div class="alert alert-info">
-        If you do not want to pay in paypal, you can pay it with Western Union.
-        Western Union
-    </div>
+
+
+  <button id="paypal-button"></button>
+
+  <div class="alert alert-info">
+    {{ 'NOTE_TAX_EXCLUSIVE' | translate }}
+  </div>
+
+  <div class="alert alert-info">
+    If you do not want to pay in paypal, you can pay it with Western Union. Western Union
+  </div>
 </ion-content>

@@ -50,6 +50,11 @@ ul.buttons {
   justify-content: space-between;
 }
 
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+
 // box
 .box {
   padding: 1em;
@@ -62,11 +67,24 @@ ul.buttons {
 
 // button
 .btn {
-  padding: 1em;
+  padding: .8em 1em;
+  border: 0;
   background-color: dodgerblue;
   color: white;
-  font-weight: bold;
+  font-weight: 100;
+  font-size: 1rem;
 }
+
+button.link {
+  padding: .8em 1em;
+  border: 0;
+  background: rgb(238, 238, 238);
+  cursor: pointer;
+  font-weight: 100;
+  font-size: 1rem;
+}
+
+
 
 // spinner
 // @TODO this is not working properly.
@@ -219,3 +237,4 @@ $length in $sizers {
 .w-100 {
   width:100%;
 }
+
