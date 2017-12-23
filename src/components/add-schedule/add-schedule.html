@@ -40,9 +40,9 @@
       POINT:
       <input type="text" name="point" [(ngModel)]="data.point">
       <p>
-        * If you think you are the best, put 6,000 POINT for 25 minutes session.<br>
+        * If you think you are a good teacher, put 6,000 POINT for 25 minutes session.<br>
         * Our recommendation for 25 minutes session is 2,000 POINT.<br>
-        * Our recommendation for native is 7,400 PIONT for 25 minutes session.
+        * Our recommendation for native is 7,000 PIONT for 25 minutes session.
       </p>
     </div>
     <div class="alert alert-warning" *ngIf=" maxPoint() ">
@@ -100,7 +100,9 @@
     <div class="alert alert-info" *ngIf=" calculateEarning() ">
       You will earn
       {{ calculateEarning() }}
-      peso in a month (
+      peso in a month
+      (
+        {{ data.duration }} minutes /
         {{ countSelectedDays() * 4 }} days a month
         with
         <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="paypal"> paypal or

@@ -1,33 +1,57 @@
-<section class="mobile-toolbar d-md-none">
+<section class="mobile-toolbar d-md-none" *ngIf=" a.lms.getUserType() != 'teacher' ">
   <ion-grid class="px-0" [class.pb-0]=" page != 'home' ">
     <ion-row>
       <ion-col col-3>
-          <div class="pl-3 pt-sm-3 fs-2rem" (click)="a.open('menu')">
-              <i class="fal fa-bars"></i>
-            </div>
+        <div class="pl-3 pt-sm-3 fs-2rem" (click)="a.open('menu')">
+          <i class="fal fa-bars"></i>
+        </div>
       </ion-col>
       <ion-col col-5>
-          <div class="m-0 p-0 pt-1" (click)="a.open('home')">
-            <img src="assets/img/logo/katalk-english.png">
-          </div>
+        <div class="m-0 p-0 pt-1" (click)="a.open('home')">
+          <img src="assets/img/logo/katalk-english.png">
+        </div>
       </ion-col>
       <ion-col col-4 class="">
-          <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
-              <span (click)="a.open('payment')">수강료</span>
-              <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>
-            </div>
+        <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
+          <span (click)="a.open('payment')">수강료</span>
+          <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  
+
   <nav class="" *ngIf=" page != 'home' ">
     <ul class="m-0 p-0 d-flex bg-grey white" style="list-style: none; justify-content:space-around;">
-        <li class="p-3">무료체험</li>
-        <li class="p-3">실시간예약</li>
-        <li class="p-3">예약된수업</li>
-        <li class="p-3">수업평가</li>
+      <li class="p-3">무료체험</li>
+      <li class="p-3">실시간예약</li>
+      <li class="p-3">예약된수업</li>
+      <li class="p-3">수업평가</li>
     </ul>
   </nav>
+</section>
+
+
+
+<section class="mobile-toolbar d-md-none d-flex p-2" *ngIf=" a.lms.getUserType() == 'teacher' ">
+
+
+  <ion-icon class="px-2 fs-xl" name="menu" style="margin-top: .28em" (click)=" a.open('menu') "></ion-icon>
+  <div class="p-2" (click)=" a.open('home') ">Home</div>
+
+  <ng-container *ngIf=" a.user.isLogin; else userLogout ">
+
+      <div class="p-2" (click)=" a.open('reservation', {future: true}) ">Reserved</div>
+      <div class="p-2" (click)=" a.open('reservation', {past: true}) ">Past</div>
+      <div class="p-2" (click)=" a.open('schedule-edit') ">Schedule</div>
+      <div class="p-2" (click)=" a.user.logout() ">Logout</div>
+
+  </ng-container>
+  
+  <ng-template #userLogout>
+
+      <div class="p-2" (click)=" a.open('login') ">Login</div>
+      
+  </ng-template>
 
 </section>
 

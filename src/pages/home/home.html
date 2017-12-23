@@ -1,29 +1,31 @@
-
 <ion-header>
   <header-content [page]=" 'home' "></header-content>
 </ion-header>
 
 <ion-content>
 
-  <intro-component></intro-component>
+  <ng-container *ngIf=" a.lms.getUserType() != 'teacher' ">
 
-  <page name="ontue.reminders"></page>
+    <intro-component></intro-component>
+    <login-box-component *ngIf="a.user.isLogout"></login-box-component>
+    <div class="alert alert-primary m-2 border-0 rounded-0">
+      <div class="float-right p-3">일주일 동안 보지 않기
+        <span class="close ml-1 blue">&times;</span>
+      </div>
+      <h3 class="alert-heading">온튜에 오신것을 환영합니다!</h3>
+      <ul class="ml-4 pl-2">
+        <li>잠깐!
+          <br> 여러분은 온튜에 있습니다.</li>
+        <li>온튜는 12년 전통의 자유 매칭 화상영어 사이트입니다.</li>
+      </ul>
+    </div>
+  
+  </ng-container>
 
-  <login-box-component *ngIf="a.user.isLogout"></login-box-component>
-
-  <page name="ontue.policy"></page>
-
-  <div class="alert alert-primary m-2 border-0 rounded-0">
-      <div class="float-right p-3">일주일 동안 보지 않기<span class="close ml-1 blue">&times;</span></div>
-    <h3 class="alert-heading">온튜에 오신것을 환영합니다!</h3>
-    <ul class="ml-4 pl-2">
-      <li>잠깐!
-        <br> 여러분은 온튜에 있습니다.</li>
-      <li>온튜는 12년 전통의 자유 매칭 화상영어 사이트입니다.</li>
-    </ul>
-
-  </div>
+  <ng-container *ngIf=" a.lms.getUserType() == 'teacher' ">
+    <page name="ontue.reminders"></page>
+    <page name="ontue.policy"></page>
+  </ng-container>
 
 
 </ion-content>
-

@@ -10,11 +10,7 @@
       {{ 'SETTINGS' | translate }}
     </ion-item>
 
-    <ion-item menuToggle>
-      <ion-icon name="menu" item-start></ion-icon>
-      {{ 'SIDE MENU' | translate }}
-    </ion-item>
-
+    
 
     <ion-item class="menu-settings-payment-info" (click)="a.open('settings-payment-info')">
         <ion-icon name="archive" item-start></ion-icon>
@@ -106,7 +102,7 @@
 
     <ion-item class="menu-login" *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
       <ion-icon name="log-in" item-start></ion-icon>
-      로그인
+      {{ 'LOGIN' | translate }}
     </ion-item>
     <ion-item class="menu-registration" *ngIf=" a.user.isLogout " (click)=" a.open('register') ">
       <ion-icon name="person-add" item-start></ion-icon>
