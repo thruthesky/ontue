@@ -19,10 +19,11 @@ export class IntroComponent
         public a: AppService
     ) {
 
+
     }
 
     ngOnInit() {
-        setTimeout(x => this.slides.slideTo(2), 250);
+        // setTimeout(x => this.slides.slideTo(2), 2050);
     }
 
     slideChanged() {

@@ -1,3 +1,39 @@
+# ONTUE Development
+
+# Environment
+
+* How to get ionic info
+````
+$ ionic info
+````
+
+## Repository
+* It uses github and ionic repo.
+* How to get repository info
+````
+$ git remove -v
+````
+
+
+
+# RUN
+
+* Refer [OnTue Buildguide](https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.p0dmivnwef0t) for details.
+
+* How to serve with LAB
+````
+$ npm run serve --lab -l -c
+````
+
+* How to serve (with livereload) in iOS.
+````
+$ ionic cordova run ios -l
+$ cordova run ios --list
+$ ionic cordova run -l ios --target "iPhone-7"
+$ ionic cordova emulate -l ios --target "iPhone-SE"
+````
+
+
 # TODO
 
 * Convert OLD OnTue teachers and Student to new OnTue.
@@ -15,11 +51,11 @@
 
 # Publish
 
-## Git Repository
-````
-$ git remote -v
-````
+## PWA
 
+````
+$ npm run publish
+````
 
 
 #known Error
