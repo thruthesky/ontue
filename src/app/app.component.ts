@@ -21,7 +21,7 @@ import { RegisterPage } from '../pages/register/register';
 import { SettingsPage } from '../pages/settings/settings';
 import { ScheduleEditPage } from '../pages/schedule-edit/schedule-edit';
 import { MenuPage } from '../pages/menu/menu';
-import { ForumPage } from '../pages/forum/forum';
+// import { ForumPage } from '../pages/forum/forum';
 import { PostPage } from '../pages/post/post';
 
 import { AddSchedule } from '../components/add-schedule/add-schedule';
@@ -93,7 +93,7 @@ export class MyApp {
     this.a.navCtrl = this.nav;
     this.a.pages['home'] = HomePage;
     this.a.pages['menu'] = MenuPage;
-    this.a.pages['forum'] = ForumPage;
+    // this.a.pages['forum'] = ForumPage;
     this.a.pages['settings'] = SettingsPage;
     this.a.pages['schedule-edit'] = ScheduleEditPage;
     this.a.pages['login'] = LoginPage;

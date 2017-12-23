@@ -1,7 +1,3 @@
-<section *ngIf=" a.user.isLogout && a.pageName != 'home' ">
-    
-    <div class="alert alert-warning border-0 rounded-0">
-        앗! 로그인 또는 회원 가입을 먼저 해 주세요.
-    </div>
-
+<section *ngIf=" a.pageName != 'home' ">
+    <login-box-component></login-box-component>
 </section>

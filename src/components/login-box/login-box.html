@@ -1,22 +1,10 @@
-<ion-card>
-  <ion-card-header>
-    <ion-icon name="alert"></ion-icon>
-    {{ 'LOGIN REQUIRED' | translate}}
-  </ion-card-header>
-  <ion-card-content>
-    {{ 'LOGIN REQUIRED DESCRIPTION' | translate }}
-    <hr>
+<section *ngIf=" a.user.isLogout ">
+    
+    <div class="alert alert-warning border-0 rounded-0">
+        앗!
+        <span class="fw-bold" (click)="a.open('login')">로그인</span>
+        또는
+        <span class="fw-bold" (click)="a.open('register')">회원 가입</span>을 먼저 해 주세요.
+    </div>
 
-
-    <button ion-button icon-left (click)="a.open('login')">
-                    <ion-icon name="log-in"></ion-icon>
-                    {{ 'LOGIN' | translate }}
-                  </button>
-
-    <button id="login-page-register-button" ion-button icon-left (click)="a.open('register')">
-                    <ion-icon name="person-add"></ion-icon>
-                {{ 'REGISTER' | translate }}
-                  </button>
-
-  </ion-card-content>
-</ion-card>
+</section>

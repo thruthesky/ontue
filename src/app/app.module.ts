@@ -27,7 +27,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { ScheduleEditPage } from '../pages/schedule-edit/schedule-edit';
-import { ForumPage } from '../pages/forum/forum';
+// import { ForumPage } from '../pages/forum/forum';
 import { SettingsPage } from '../pages/settings/settings';
 import { PostPage } from '../pages/post/post';
 import { PostCreateEditPage } from '../pages/post-create-edit/post-create-edit';
@@ -93,7 +93,7 @@ export function createTranslateLoader(http: HttpClient) {
     MyApp,
     HomePage,
     ScheduleEditPage,
-    ForumPage,
+    // ForumPage,
     SettingsPage,
     RegisterPage,
     LoginPage,
@@ -147,7 +147,7 @@ export function createTranslateLoader(http: HttpClient) {
     MyApp,
     HomePage,
     ScheduleEditPage,
-    ForumPage,
+    // ForumPage,
     SettingsPage,
     RegisterPage,
     LoginPage,
