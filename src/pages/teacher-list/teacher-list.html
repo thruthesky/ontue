@@ -13,6 +13,9 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let teacher of teachersList" col-6 col-md-4 col-lg-3>
+        <div class="rounded-50 of-hidden">
+          <img class="w-100" src="{{ teacher.photoURL }}">
+        </div>
         <div (click)="onClickTeacher(teacher)">{{teacher.display_name}}</div>
       </ion-col>
     </ion-row>

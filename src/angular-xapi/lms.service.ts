@@ -56,6 +56,8 @@ export interface TEACHER_LIST {
     display_name: string;
     grade: number;
     list_order: number;
+    photoURL: string;
+    kakao_qrmark_string: string;
 }
 
 export type TEACHERS_LIST = Array<TEACHER_LIST>
