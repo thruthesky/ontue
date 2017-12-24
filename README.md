@@ -91,5 +91,8 @@ https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/
 
 
 
-## Page
-* How to load pages on backend and display it on app.
+
+## Page Service and Page Page
+
+* How to load a page from backend and display it as a component(directive).
+* How to load a page from backend and display it as a page.

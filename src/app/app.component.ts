@@ -41,10 +41,8 @@ import { PaymentPage } from '../pages/payment/payment';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
 
-// import { IntroPage } from '../pages/intro/intro';
 
-
-
+import { PagePage } from '../pages/page/page';
 
 @Component({
   templateUrl: 'app.html'
@@ -127,6 +125,8 @@ export class MyApp {
     this.a.pages['evaluate-view'] = EvaluateView;
     this.a.pages['payment-receipt'] = PaymentReceipt;
 
+
+    this.a.pages['page'] = PagePage;
 
     setTimeout(() => this.test(), 100);
 

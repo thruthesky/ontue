@@ -57,6 +57,8 @@ import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { PolicyPage } from '../pages/policy/policy';
 import { IntroComponent } from '../components/intro/intro';
 
+import { PagePage } from '../pages/page/page';
+
 
 
 
@@ -127,7 +129,8 @@ export function createTranslateLoader(http: HttpClient) {
     EvaluateView,
     PaymentReceipt,
     HookContentBottomComponent,
-    HookContentTopComponent
+    HookContentTopComponent,
+    PagePage
   ],
   imports: [
     BrowserModule,
@@ -174,7 +177,8 @@ export function createTranslateLoader(http: HttpClient) {
     EvaluateView,
     PaymentReceipt,
     HookContentBottomComponent,
-    HookContentTopComponent
+    HookContentTopComponent,
+    PagePage
   ],
 
   providers: [
