@@ -359,4 +359,8 @@ export class LMSService extends Base {
       return this.x.post( data );
     }
 
+    stats() {
+        return this.x.post( { route: 'lms.stats' } );
+    }
+
 }

@@ -307,18 +307,32 @@ export class AppService {
 
     initTranslate() {
         this.translate.setDefaultLang('en');
-        let lang;
-        lang = this.getLanguage();
-        if (!lang) lang = this.translate.getBrowserLang();
-        if (!lang) lang = 'en';
-        this.translate.use(lang);
+
+        // let lang;
+        // lang = this.getLanguage();
+        // if (!lang) lang = this.translate.getBrowserLang();
+        // if (!lang) lang = 'en';
+
+        this.translate.use( this.getUserLanguage() );
 
         this.translate.get(['HTTP_ERROR', 'HTTP_ERROR_DESC']).subscribe(re => {
             this.i18n = re;
         });
 
+    }
 
-
+    /**
+     * Returns user language in 'en' or 'ko'
+     * 
+     * @use when you need to get user's language.
+     * @warning `getLanguage()` returns only from localStroage while `getUserLanguage()` returns browser language IF localStorage has no value.
+     */
+    getUserLanguage() {
+        let lang;
+        lang = this.getLanguage();
+        if (!lang) lang = this.translate.getBrowserLang();
+        if (!lang) lang = 'en';
+        return lang;
     }
 
 

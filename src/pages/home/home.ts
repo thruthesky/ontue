@@ -10,6 +10,7 @@ import { AppService } from './../../providers/app.service';
 export class HomePage {
 
   reminders = '';
+  stats;
   constructor(
     public navCtrl: NavController,
     public a: AppService
@@ -25,6 +26,7 @@ export class HomePage {
 
     // setTimeout(() => this.a.open('menu') , 200);
 
+    a.lms.stats().subscribe( re => this.stats = re, e => a.alert(e) );
   }
 
 

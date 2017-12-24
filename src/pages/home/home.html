@@ -9,7 +9,6 @@
   <ng-container *ngIf=" a.lms.getUserType() != 'teacher' ">
 
     <intro-component></intro-component>
-    <login-box-component *ngIf="a.user.isLogout"></login-box-component>
   
   </ng-container>
 
@@ -19,11 +18,43 @@
   </ng-container>
 
   
+  
+  <hr>
+  <ion-grid class="stats" *ngIf=" stats ">
+    <ion-row>
+      <ion-col>
+        <div class="item teacher">
+          <div class="text">강사수</div>
+          <div class="number">{{ stats.teacher }}</div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="item reservation">
+          <div class="text">예약된수업</div>
+          <div class="number">{{ stats.reservation }}</div>
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <div class="item leveltest">
+          <div class="text">레벨테스트</div>
+          <div class="number">{{ stats.leveltest }}</div>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+    
+  <hr>
   <h2>@TODO : 현재 강사 수, 예약된 수업 수, 오늘 레벨테스트 정보</h2>
+
   <h2>@TODO : 수업후기</h2>
   <h2>@TODO : 선착순 10명 7만5천원 스타강사와 수업하기 광고 배너</h2>
   <h2>@TODO : 강사 목록 보여주기 및 강사 더 보기 링크</h2>
 
 
+
+
+  <login-box-component *ngIf="a.user.isLogout"></login-box-component>
   <hook-content-bottom></hook-content-bottom>
 </ion-content>
