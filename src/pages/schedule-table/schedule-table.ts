@@ -68,9 +68,10 @@ export class ScheduleTablePage {
 
     console.log('data params', this.params);
 
-    // this.getTeacherSchedule(this.params.ID);
 
-    this.loadScheduleTable( this.request() );
+    let opt = {};
+    if ( this.params.ID ) opt['teachers'] =  [ this.params.ID ];
+    this.loadScheduleTable( this.request( opt ) );
     // this.a.lms.my_point().subscribe( re => this.my_point = re['point'], e => this.a.alert( e ) );
 
     // this.a.loadMyPoint( p => this.my_point = p );

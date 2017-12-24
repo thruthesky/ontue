@@ -36,6 +36,12 @@
       {{ 'TEACHER LIST' | translate }}
     </ion-item>
 
+    <ion-item class="menu-teacher-list" (click)="a.open('schedule-table')">
+      <ion-icon name="archive" item-start></ion-icon>
+      {{ 'ALL SCHEDULE TABLE' | translate }}
+    </ion-item>
+
+
     <ion-item (click)="a.open('settings')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'STUDENT LIST' | translate }}
