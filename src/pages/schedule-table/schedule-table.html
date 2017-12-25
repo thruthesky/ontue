@@ -148,9 +148,10 @@
 
 
     <div *ngIf=" a.user.isLogin ">
-      <hr> Welcome {{ a.user.name }} Your timezone: {{ a.user.timezone }}, Your point:
+      Welcome {{ a.user.name }},
+      Your point:
       <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
-      <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+      <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
     </div>
 
     <!--
@@ -218,7 +219,7 @@
           <!--{{session|json}}-->
           <div class="session pointer" [attr.status]=" session['status'] " [attr.open]=" session['option'] " [attr.owner]=" session['owner'] " text-center (click)="onClickSession( session )">
             <!-- show icon -->
-            <div class="status-icon">
+            <div class="status-icon" *ngIf=" !session.in_progress ">
               <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
             </div>
 
