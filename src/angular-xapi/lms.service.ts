@@ -54,6 +54,7 @@ export interface TEACHER_LIST {
     bookable_time: number;
     class_id: string;
     display_name: string;
+    age: number;
     grade: number;
     list_order: number;
     photoURL: string;

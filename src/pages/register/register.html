@@ -81,6 +81,13 @@
 
 
       <ion-item>
+          <ion-label floating>{{ 'BIRTHDAY' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="account.birthday" name="birthday"></ion-input>
+        </ion-item>
+
+        
+
+      <ion-item>
         <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
         <ion-input type="text" [(ngModel)]="account.display_name" name="nickname"></ion-input>
       </ion-item>

@@ -59,6 +59,7 @@ export class RegisterPage {
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
+      this.account.birthday = userData.birthday;
       if ( userData.primary_photo.id ) this.files = [ userData.primary_photo ];
       if ( userData.kakao_qrmark_photo.id ) {
         this.qrmarks = [ userData.kakao_qrmark_photo ];
@@ -79,6 +80,7 @@ export class RegisterPage {
 
     this.account.photoURL = this.files.length ? this.files[0].url : '';
     this.account.user_type = this.user_type;
+    
     console.log("isLogin::", this.a.user.isLogin);
     if (this.a.user.isLogin) { // UPDATE
       console.log('GOING TO UPDATE');

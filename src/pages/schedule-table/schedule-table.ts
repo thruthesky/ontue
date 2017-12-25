@@ -58,6 +58,7 @@ export class ScheduleTablePage {
 
   private typing = new Subject<string>();
 
+  singleTeacher = null;
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -65,6 +66,8 @@ export class ScheduleTablePage {
 
 
     this.params = navParams.data;
+    this.singleTeacher = this.params.ID;
+    
 
     console.log('data params', this.params);
 
