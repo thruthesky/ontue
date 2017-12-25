@@ -10,21 +10,24 @@
       <table *ngIf="teacher_name(); else singleTeacherLoader">
         <tr>
           <td>
-            <div class="size-12 of-hidden">
+            <div class="of-hidden" style="width: 100px; height:120px;">
               <img class="w-100" src="{{ teacher_photoURL() }}">
             </div>
           </td>
           <td valign="top">
-            <div class="teacher-info ml-2">
+            <div class="teacher-info ml-4">
 
-                <div class="fs-2rem">{{ teacher_name() }} 선생님</div>
-                <div>수업시간표</div>
-                <div>
-                  나이: {{ teacher_age() }}
-                </div>
-                <div>
-                  성별: {{ teacher_gender() }}
-                </div>
+              <div class="fs-2rem">{{ teacher_name() }} 선생님</div>
+              <div>수업시간표</div>
+              <div>
+                나이: {{ teacher_age() }}
+              </div>
+              <div>
+                성별: {{ teacher_gender() }}
+              </div>
+              <div>
+                <img class="size-5" src="assets/img/kakao-friend-add.jpg"> 카톡 친구추가
+              </div>
 
             </div>
           </td>
@@ -33,49 +36,116 @@
       <ng-template #singleTeacherLoader>
         <ion-spinner></ion-spinner> 선생님 정보를 로드중입니다.</ng-template>
     </div>
+    <div class="multiple-teachers"  *ngIf=" ! singleTeacher ">
+      <section class="page-header">
+        <h2>전체 강사 수업 시간표</h2>
+      </section>
+    </div><!--/multiple-teachers-->
 
-    <div class="multiple-teacher" *ngIf=" !singleTeacher ">
-      <h1>Teacher Schedule Table</h1>
+    <button ion-button full (click)=" display_options = !display_options " *ngIf=" ! display_options ">{{ 'SEARCH OPTIONS' | translate }}</button>
+   
+    <div class="search-options mt-3 bg-lightgrey" *ngIf=" display_options ">
+      <h2>{{'SCHEDULE TABLE SEARCH OPTIONS'|translate}}</h2>
+      <button ion-button (click)=" a.open('schedule-table') ">모든 강사 표시</button>
+      <ion-list>
+        <ion-item>
+          <ion-label class="blue">{{'HOW MANY DAYS'|translate}}</ion-label>
+          <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?'}">
+            <ion-option value="5">5 일 표시</ion-option>
+            <ion-option value="6">6 일 표시</ion-option>
+            <ion-option value="7">7 일 표시</ion-option>
+            <ion-option value="10">10 일 표시</ion-option>
+            <ion-option value="15">15 일 표시</ion-option>
+            <ion-option value="20">20 일 표시</ion-option>
+            <ion-option value="25">25 일 표시</ion-option>
+            <ion-option value="30">30 일 표시</ion-option>
+          </ion-select>
+        </ion-item>
 
-      <select name="days" [(ngModel)]="min_duration" (change)="onChangeSearchOption()">
-        <option *ngFor="let i of [0,5,10,15,25,30,35,40,50,60,70,80,90,100]" value="{{ i }}">{{ i }}</option>
-      </select>
-      ~
-      <select name="days" [(ngModel)]="max_duration" (change)="onChangeSearchOption()">
-        <option value="0"></option>
-        <option *ngFor="let i of [5,10,15,25,30,35,40,50,60,70,80,90,100]" value="{{ i }}">{{ i }}</option>
-      </select>
-      <br> Select/Display teachers: Group of Levels 0,1,2,3,4,5. Male, Female, Age
-      <br> Points between
-      <input type="text" name="min_point" [(ngModel)]="min_point" (keyup)="onChangeValue()"> ~
-      <input type="text" name="max_point" [(ngModel)]="max_point" (keyup)="onChangeValue()">
-      <button (click)="onChangeSearchOption()">Update</button>
-      <hr> Display Options: Display what days: select:
-      <input (change)="onChangeSearchOption()" type="checkbox" name="sunday" [(ngModel)]="sunday"> Sunday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="monday" [(ngModel)]="monday"> Monday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="tuesday" [(ngModel)]="tuesday"> Tuesday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="wednesday" [(ngModel)]="wednesday"> Wednesday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="thursday" [(ngModel)]="thursday"> Thursday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="friday" [(ngModel)]="friday"> Firday
-      <input (change)="onChangeSearchOption()" type="checkbox" name="saturday" [(ngModel)]="saturday"> Saturday -
+        <ion-item>
+          <ion-label class="blue">{{ 'HOW MANY MINUTES' | translate }}</ion-label>
+          <ion-select [(ngModel)]="min_duration" (ionChange)="onChangeSearchOption()">
+            <ion-option value="0">0분 부터</ion-option>
+            <ion-option value="5">5분 부터</ion-option>
+            <ion-option value="10">19분 부터</ion-option>
+            <ion-option value="15">15분 부터</ion-option>
+            <ion-option value="20">20분 부터</ion-option>
+            <ion-option value="25">25분 부터</ion-option>
+            <ion-option value="30">30분 부터</ion-option>
+            <ion-option value="40">40분 부터</ion-option>
+            <ion-option value="50">50분 부터</ion-option>
+            <ion-option value="60">60분 부터</ion-option>
+            <ion-option value="80">80분 부터</ion-option>
+            <ion-option value="120">120분 부터</ion-option>
+          </ion-select>
+          <ion-select [(ngModel)]="max_duration" (ionChange)="onChangeSearchOption()">
+            <ion-option value="5">5분 사이</ion-option>
+            <ion-option value="10">10분 사이</ion-option>
+            <ion-option value="15">15분 사이</ion-option>
+            <ion-option value="20">20분 사이</ion-option>
+            <ion-option value="25">25분 사이</ion-option>
+            <ion-option value="30">30분 사이</ion-option>
+            <ion-option value="40">40분 사이</ion-option>
+            <ion-option value="50">50분 사이</ion-option>
+            <ion-option value="60">60분 사이</ion-option>
+            <ion-option value="80">80분 사이</ion-option>
+            <ion-option value="120">120분 사이</ion-option>
+            <ion-option value="160">160분 사이</ion-option>
+          </ion-select>
 
-      <span class="pointer" (click)="selectMonToFri()">M-F</span>~
-      <span class="pointer" (click)="selectMWF()">M-W-F</span>~
-      <span class="pointer" (click)="selectTTh()">T-TH</span>~
-      <span class="pointer" (click)="selectSunSat()">Sun-Sat</span>~
-      <span class="pointer" (click)="selectAll()">All</span>
-    </div>
+        </ion-item>
+        <ion-item>
+
+            <ion-label class="blue">{{ 'HOW MANY POINT' | translate }}</ion-label>
+            <ion-select [(ngModel)]="min_point" (ionChange)="onChangeSearchOption()">
+              <ion-option value="0">0 포인트 이상</ion-option>
+              <ion-option value="500">500 포인트 이상</ion-option>
+              <ion-option value="1000">1,000 포인트 이상</ion-option>
+              <ion-option value="1500">1,500 포인트 이상</ion-option>
+              <ion-option value="2000">2,000 포인트 이상</ion-option>
+              <ion-option value="2500">2,500 포인트 이상</ion-option>
+              <ion-option value="3000">3,000 포인트 이상</ion-option>
+              <ion-option value="4000">4,000 포인트 이상</ion-option>
+              <ion-option value="5000">5,000 포인트 이상</ion-option>
+              <ion-option value="6000">6,000 포인트 이상</ion-option>
+              <ion-option value="8000">8,000 포인트 이상</ion-option>
+              <ion-option value="12000">12,000 포인트 이상</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="max_point" (ionChange)="onChangeSearchOption()">
+                <ion-option value="500">500 포인트 이하</ion-option>
+                <ion-option value="1000">1,000 포인트 이하</ion-option>
+                <ion-option value="1500">1,500 포인트 이하</ion-option>
+                <ion-option value="2000">2,000 포인트 이하</ion-option>
+                <ion-option value="2500">2,500 포인트 이하</ion-option>
+                <ion-option value="3000">3,000 포인트 이하</ion-option>
+                <ion-option value="4000">4,000 포인트 이하</ion-option>
+                <ion-option value="5000">5,000 포인트 이하</ion-option>
+                <ion-option value="6000">6,000 포인트 이하</ion-option>
+                <ion-option value="8000">8,000 포인트 이하</ion-option>
+                <ion-option value="12000">1만2천 포인트 이하</ion-option>
+                <ion-option value="16000">1만6천 포인트 이하</ion-option>
+                <ion-option value="24000">2만4천 포인트 이하</ion-option>
+                <ion-option value="100000">10만 이하</ion-option>
+            </ion-select>
+          
+            
+            
+
+        </ion-item>
+        <ion-item>
+          <ion-label class="blue">{{ 'DISPLAY WEEKENDS' | translate }}</ion-label>
+          <ion-toggle [(ngModel)]="displayWeekends" (ionChange)="onChangeSearchOption()"></ion-toggle>
+        </ion-item>
+      </ion-list>
+
+      <!-- <button ion-button (click)="onChangeSearchOption()">Update</button> -->
+
+      <button ion-button full (click)="display_options = false">CLOSE</button>
+      
+    </div><!--/search-options-->
 
 
 
-    <br> How many days( Columns ):
-    <select name="days" [(ngModel)]="days" (change)="onChangeSearchOption()">
-      <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]"
-        value="{{ i }}">{{ i }}</option>
-    </select>
-
-    <br> Show reserved/available session.
-    <br>
 
     <div *ngIf=" a.user.isLogin ">
       <hr> Welcome {{ a.user.name }} Your timezone: {{ a.user.timezone }}, Your point:
@@ -116,7 +186,7 @@
 
 
       <tr valign="top" *ngFor="let sessions of re.table">
-        <td *ngIf=" ! singleTeacher ">
+        <td class='pointer' *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
 
           <!-- {{ sessions[0].idx_schedule }}
           <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
@@ -134,8 +204,10 @@
 
         <td>
 
-          {{ schedule( sessions[0].idx_schedule ).user_time_class_begin }}
-          <br> {{ schedule( sessions[0].idx_schedule ).duration }}
+          {{ session_time( sessions[0] ) }}
+          <div>
+            {{ schedule( sessions[0].idx_schedule ).duration }} 분
+          </div>
 
         </td>
         <!-- <td>
@@ -144,10 +216,10 @@
 
         <td *ngFor=" let session of sessions ">
           <!--{{session|json}}-->
-          <div class="session pointer" [attr.status]=" session['status'] " [attr.owner]=" session['owner'] " text-center (click)="onClickSession( session )">
+          <div class="session pointer" [attr.status]=" session['status'] " [attr.open]=" session['option'] " [attr.owner]=" session['owner'] " text-center (click)="onClickSession( session )">
             <!-- show icon -->
             <div class="status-icon">
-              <ion-icon class="fs-3rem" name="{{ icon(session) }}"></ion-icon>
+              <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
             </div>
 
             <!-- show loader -->
@@ -159,7 +231,8 @@
             <div>{{ session.point }}</div>
             <div *ngIf=" session.status == 'reserved' ">{{ session.student_name }}</div>
             <div>{{ session.prere }}</div>
-            <div>{{ session.idx_reservation }}</div>
+            <div class="fs-lg">{{ session_text(session) }}</div>
+            <!-- <div>{{ session.idx_reservation }}</div> -->
             <!-- <div>{{ session.day }}</div> -->
           </div>
           <div class="session empty" *ngIf=" session.status == 'empty' "></div>
@@ -169,16 +242,34 @@
     </table>
     <ul>
       <li>
-        <ion-icon name="radio-button-off"></ion-icon> - 예약 가능(아무도 예약하지 않았음)
+        <ion-icon name="radio-button-off" icon-name="radio-button-off"></ion-icon> - 예약 가능(아무도 예약하지 않았음)
       </li>
       <li>
-        <ion-icon name="radio-button-on"></ion-icon> - 내가 예약한 수업. 취소 가능.
+        <ion-icon name="radio-button-on" owner="me"></ion-icon> - 내가 예약한 수업. 취소 가능.
       </li>
       <li>
-        <ion-icon name="checkmark"></ion-icon> - 다른 학생에 의해 예약된 수업.
+        <ion-icon name="checkmark" icon-name="checkmark"></ion-icon> - 다른 학생에 의해 예약된 수업.
       </li>
       <li>
-        <ion-icon name="lock"></ion-icon> - 지난 수업.
+        <ion-icon name="lock" icon-name="lock"></ion-icon> - 지난 수업 (예약됨).
+      </li>
+      
+      <li>
+        <ion-icon name="square" icon-name="square"></ion-icon> - 지난 수업 (예약안됨).
+      </li>
+      <li>
+        <ion-icon name="qr-scanner" icon-name="qr-scanner"></ion-icon> - 수업이 없는 날.
+      </li>
+
+      <li>
+          <ion-icon name="cloud-circle"></ion-icon> - 강사 쉬는 날.
+        </li>
+        <li>
+          <ion-icon name="cloud-done"></ion-icon> - 강사 쉬는 날(예약이 있음).
+        </li>
+        
+      <li>
+        강사의 사진을 클릭하면 해당 강사의 수업 시간표만 볼 수 있습니다.
       </li>
     </ul>
 

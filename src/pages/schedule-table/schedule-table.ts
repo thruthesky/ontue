@@ -14,6 +14,7 @@ import {Subject} from "rxjs/Subject";
 export class ScheduleTablePage {
 
 
+  display_options = false;
   params;
 
   // schedules: SCHEDULE_EDIT_RESPONSE;
@@ -22,25 +23,21 @@ export class ScheduleTablePage {
     starting_day: '',
     header: [],
     schedule: {},
-    table: []
+    table: [],
+    teacher: { age: 0, gender: '', name: '', idx: 0, photoURL: ''}
   };
 
   /// search options
   days = 0; // 7 for mobile and single teacher. 6 for mobile and multiple teachers. 20 for web.
-  min_duration = 1;
-  max_duration = 0;
+  min_duration = 0;
+  max_duration = 160;
 
 
-  sunday;
-  monday;
-  tuesday;
-  wednesday;
-  thursday;
-  friday;
-  saturday;
+  
+  displayWeekends = false;
 
   min_point = 0;
-  max_point = 0;
+  max_point = 100000;
 
 
 
@@ -84,7 +81,7 @@ export class ScheduleTablePage {
     this.updatePoint();
 
     this.typing
-      .debounceTime(300)
+      .debounceTime(800)
       .subscribe(() => {
         this.onChangeSearchOption();
       });
@@ -97,16 +94,19 @@ export class ScheduleTablePage {
         else return 'radio-button-off'; // reservable
       }
       else if ( session['open'] == 'reserved' ) { // already reserved.
-        if ( session['dayoff'] == 'dayoff' ) return 'cloud-done'; // already reserved and day-off
+        if ( session['owner'] == 'me' ) {
+          return 'radio-button-on';
+        }
+        else if ( session['dayoff'] == 'dayoff' ) return 'cloud-done'; // already reserved and day-off
         else return 'checkmark'; // reserved
       }
       else if ( session['open'] == 'no-schedule' ) { // teacher didn't open a session on this day of his schedule table.
-         return '';
+         return 'qr-scanner'; // no schedule on this day.
       }
     }
     else { /// past classes.
       if ( session['open'] == 'open' ) { // past class. but open.
-        return '';
+        return 'square';
       }
       else { // past & reserved.
         if ( session['dayoff'] == 'dayoff' ) return ''; // past class and dayoff.
@@ -114,26 +114,30 @@ export class ScheduleTablePage {
 
       }
     }
-
-
+  }
+  session_text( session ) {
+    if ( session['status'] == 'future' ) {
+      if ( session['open'] == 'reserved' ) {
+        if ( session['owner'] == 'me' ) {
+          return '취소하기';
+        }
+      }
+    }
   }
 
   request( options = {} ) {
+    let teachers = [];
+    if ( this.singleTeacher ) teachers = [ this.singleTeacher ];
+    
     let defaults = {
-      teachers: [],
+      teachers: teachers,
       days: this.days,
       min_duration: this.min_duration,
       max_duration: this.max_duration,
       limit: 1000,
       navigate: 'today',
       starting_day: this.re.starting_day,
-      sunday: this.sunday ? 'Y' : '',
-      monday: this.monday ? 'Y'  : '',
-      tuesday: this.tuesday ? 'Y' : '',
-      wednesday: this.wednesday ? 'Y' : '',
-      thursday: this.thursday ? 'Y' : '',
-      friday: this.friday ? 'Y' : '',
-      saturday: this.saturday ? 'Y' : '',
+      display_weekends: this.displayWeekends ? 'Y' : 'N',
       min_point: this.min_point,
       max_point: this.max_point
     };
@@ -188,32 +192,37 @@ export class ScheduleTablePage {
    * @param session a session
    */
   teacher_name( session = null ) {
-    let s;
-    if ( session ) s = this.schedule( session.idx_schedule );
-    else s = this.first_schedule();
-    if ( ! s ) return '';
-    let name = s.teacher.name;
-    if ( name.length > 8 ) name = name.substr(0, 8);
-    return name;
+    if ( session ) {
+      let name = this.schedule( session.idx_schedule ).teacher.name;
+      if ( name.length > 8 ) name = name.substr(0, 8);
+      return name;
+    }
+    else return this.re.teacher.name;
   }
   teacher_photoURL( session = null ) {
     if ( session ) return this.schedule( session.idx_schedule ).teacher.photoURL;
-    else {
-      const s = this.first_schedule();
-      if ( s ) return s.teacher.photoURL;
-      else return '';
-    }
+    else return this.re.teacher.photoURL;
+  }
+  teacher_ID( session = null ) {
+    if ( session ) return this.schedule( session.idx_schedule ).teacher.idx;
+    else return this.re.teacher.idx;
   }
 
   teacher_age() {
-    return this.first_schedule().teacher.age;
+    return this.re.teacher.age;
   }
   teacher_gender() {
-    let g = this.first_schedule().teacher.gender;
+    let g = this.re.teacher.gender;
     if ( g == 'M' ) return '남자';
     else return '여자';
   }
 
+  session_time( session ) {
+    const begin = this.schedule( session.idx_schedule ).user_time_class_begin;
+    const hour = begin.substr(0,2);
+    const minute = begin.substr(2,2);
+    return hour + ':' + minute;
+  }
   onChangeSearchOption() {
     this.loadScheduleTable( this.request() );
   }
@@ -291,36 +300,7 @@ export class ScheduleTablePage {
   }
 
 
-  clearDaySelected(){
-    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=false;
-    this.onChangeSearchOption();
-  }
-
-  selectMonToFri(){
-    this.clearDaySelected();
-    this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=true;
-    this.onChangeSearchOption();
-  }
-  selectMWF(){
-    this.clearDaySelected();
-    this.monday=this.wednesday=this.friday=true;
-    this.onChangeSearchOption();
-  }
-  selectTTh(){
-    this.clearDaySelected();
-    this.tuesday=this.thursday=true;
-    this.onChangeSearchOption();
-  }
-
-  selectSunSat(){
-    this.clearDaySelected();
-    this.sunday=this.saturday=true;
-    this.onChangeSearchOption();
-  }
-  selectAll(){
-    this.sunday=this.monday=this.tuesday=this.wednesday=this.thursday=this.friday=this.saturday=true;
-    this.onChangeSearchOption();
-  }
+  
 
   onClickReserveVisible(sessions){
 
@@ -346,6 +326,11 @@ export class ScheduleTablePage {
       }
 
     });
+  }
+
+  onToggleDisplayWeekends( $event ) {
+    console.log($event['checked']);
+    
   }
 
 }

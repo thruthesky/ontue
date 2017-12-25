@@ -1,6 +1,25 @@
 section.schedule-table {
     
+
+    [icon-name="lock"] {
+        color: #ddd;
+    }
+    [icon-name="square"] {
+        color: #eee;
+    }
+    [icon-name="qr-scanner"] {
+        color: #eee;
+    }
+    [icon-name="radio-button-off"] {
+        color: #88f;
+    }
+    [icon-name="checkmark"] {
+        color: grey;
+    }
+    
+
+
     [owner="me"] {
-        color: purple;
+        color: #d00!important;
     }
 }

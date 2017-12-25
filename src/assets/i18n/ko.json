@@ -78,7 +78,13 @@
   "NOTE_TAX_EXCLUSIVE": "세금은 포함되지 않았으며 별도 지불해야합니다.",
   
 
-  "ALL SCHEDULE TABLE": "전체 시간표"
+  "ALL SCHEDULE TABLE": "전체 시간표",
+  "HOW MANY DAYS": "수업 시간표에 표시 일 수"
 
 
+  , "SCHEDULE TABLE SEARCH OPTIONS": "시간표 검색 옵션"
+
+  , "HOW MANY MINUTES": "수업 분 선택"
+  , "HOW MANY POINT": "포인트 선택"
+  , "DISPLAY WEEKENDS": "주말 표시"
 }
