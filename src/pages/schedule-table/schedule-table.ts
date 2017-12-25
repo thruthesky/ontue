@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
-import {NavParams} from "ionic-angular";
-import {Subject} from "rxjs/Subject";
+import { NavParams } from "ionic-angular";
+import { Subject } from "rxjs/Subject";
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
 
@@ -24,7 +24,7 @@ export class ScheduleTablePage {
     header: [],
     schedule: {},
     table: [],
-    teacher: { age: 0, gender: '', name: '', idx: 0, photoURL: ''}
+    teacher: { age: 0, gender: '', name: '', idx: 0, photoURL: '' }
   };
 
   /// search options
@@ -33,11 +33,12 @@ export class ScheduleTablePage {
   max_duration = 160;
 
 
-  
+
   displayWeekends = false;
 
   min_point = 0;
   max_point = 100000;
+
 
 
 
@@ -56,6 +57,8 @@ export class ScheduleTablePage {
   private typing = new Subject<string>();
 
   singleTeacher = null;
+  time = null;
+  timer = null;
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -64,16 +67,16 @@ export class ScheduleTablePage {
 
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
-    
-    if ( this.singleTeacher ) this.days = 7;
+
+    if (this.singleTeacher) this.days = 7;
     else this.days = 6;
 
     console.log('data params', this.params);
 
 
     let opt = {};
-    if ( this.params.ID ) opt['teachers'] =  [ this.params.ID ];
-    this.loadScheduleTable( this.request( opt ) );
+    if (this.params.ID) opt['teachers'] = [this.params.ID];
+    this.loadScheduleTable(this.request(opt));
     // this.a.lms.my_point().subscribe( re => this.my_point = re['point'], e => this.a.alert( e ) );
 
     // this.a.loadMyPoint( p => this.my_point = p );
@@ -85,50 +88,58 @@ export class ScheduleTablePage {
       .subscribe(() => {
         this.onChangeSearchOption();
       });
+
+    this.updateTime();
   }
 
-  icon( session ) {
-    if ( session['status'] == 'future' ) {
-      if ( session['open'] == 'open' ) { // open to reserve
-        if ( session['dayoff'] == 'dayoff' ) return 'cloud-circle'; // but day off
+
+  ngOnDestroy() {
+    if (this.timer) clearTimeout(this.timer);
+  }
+
+
+  icon(session) {
+    if (session['status'] == 'future') {
+      if (session['open'] == 'open') { // open to reserve
+        if (session['dayoff'] == 'dayoff') return 'cloud-circle'; // but day off
         else return 'radio-button-off'; // reservable
       }
-      else if ( session['open'] == 'reserved' ) { // already reserved.
-        if ( session['owner'] == 'me' ) {
+      else if (session['open'] == 'reserved') { // already reserved.
+        if (session['owner'] == 'me') {
           return 'radio-button-on';
         }
-        else if ( session['dayoff'] == 'dayoff' ) return 'cloud-done'; // already reserved and day-off
+        else if (session['dayoff'] == 'dayoff') return 'cloud-done'; // already reserved and day-off
         else return 'checkmark'; // reserved
       }
-      else if ( session['open'] == 'no-schedule' ) { // teacher didn't open a session on this day of his schedule table.
-         return 'qr-scanner'; // no schedule on this day.
+      else if (session['open'] == 'no-schedule') { // teacher didn't open a session on this day of his schedule table.
+        return 'qr-scanner'; // no schedule on this day.
       }
     }
     else { /// past classes.
-      if ( session['open'] == 'open' ) { // past class. but open.
+      if (session['open'] == 'open') { // past class. but open.
         return 'square';
       }
       else { // past & reserved.
-        if ( session['dayoff'] == 'dayoff' ) return ''; // past class and dayoff.
+        if (session['dayoff'] == 'dayoff') return ''; // past class and dayoff.
         else return 'lock'; // past class and reserved.
 
       }
     }
   }
-  session_text( session ) {
-    if ( session['status'] == 'future' ) {
-      if ( session['open'] == 'reserved' ) {
-        if ( session['owner'] == 'me' ) {
+  session_text(session) {
+    if (session['status'] == 'future') {
+      if (session['open'] == 'reserved') {
+        if (session['owner'] == 'me') {
           return '취소하기';
         }
       }
     }
   }
 
-  request( options = {} ) {
+  request(options = {}) {
     let teachers = [];
-    if ( this.singleTeacher ) teachers = [ this.singleTeacher ];
-    
+    if (this.singleTeacher) teachers = [this.singleTeacher];
+
     let defaults = {
       teachers: teachers,
       days: this.days,
@@ -142,8 +153,8 @@ export class ScheduleTablePage {
       max_point: this.max_point
     };
 
-    const req = Object.assign( defaults, options );
-    console.log("Request: ", req );
+    const req = Object.assign(defaults, options);
+    console.log("Request: ", req);
     return req;
   }
   // getTeacherSchedule( ID ) {
@@ -156,13 +167,13 @@ export class ScheduleTablePage {
   // }
 
 
-  loadScheduleTable( options ) {
-    this.a.lms.schedule_table( options ).subscribe( re => {
+  loadScheduleTable(options) {
+    this.a.lms.schedule_table(options).subscribe(re => {
       this.displayScheduleTable(re);
-      if ( Object.keys(re['schedule']).length == 0 ) {
+      if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
       }
-      
+
     }, e => this.a.alert(e));
   }
 
@@ -177,34 +188,40 @@ export class ScheduleTablePage {
   }
 
 
-  schedule( idx_schedule ) {
-    return this.re.schedule[ idx_schedule ];
+  schedule(idx_schedule) {
+    return this.re.schedule[idx_schedule];
   }
 
   first_schedule() {
     const keys = Object.keys(this.re.schedule);
-    return this.re.schedule[ keys[0] ];
+    return this.re.schedule[keys[0]];
   }
 
+  updateTime() {
+    if (this.re && this.re['student'] && this.re['student']['timezone']) {
+      this.time = this.a.lms.localeString(this.re['student']['timezone']);
+    }
+    this.timer = setTimeout(() => this.updateTime(), 1000);
+  }
 
   /**
    * Returns teacher name after sanitizing ( shorten )
    * @param session a session
    */
-  teacher_name( session = null ) {
-    if ( session ) {
-      let name = this.schedule( session.idx_schedule ).teacher.name;
-      if ( name.length > 8 ) name = name.substr(0, 8);
+  teacher_name(session = null) {
+    if (session) {
+      let name = this.schedule(session.idx_schedule).teacher.name;
+      if (name.length > 8) name = name.substr(0, 8);
       return name;
     }
     else return this.re.teacher.name;
   }
-  teacher_photoURL( session = null ) {
-    if ( session ) return this.schedule( session.idx_schedule ).teacher.photoURL;
+  teacher_photoURL(session = null) {
+    if (session) return this.schedule(session.idx_schedule).teacher.photoURL;
     else return this.re.teacher.photoURL;
   }
-  teacher_ID( session = null ) {
-    if ( session ) return this.schedule( session.idx_schedule ).teacher.idx;
+  teacher_ID(session = null) {
+    if (session) return this.schedule(session.idx_schedule).teacher.idx;
     else return this.re.teacher.idx;
   }
 
@@ -213,18 +230,18 @@ export class ScheduleTablePage {
   }
   teacher_gender() {
     let g = this.re.teacher.gender;
-    if ( g == 'M' ) return '남자';
+    if (g == 'M') return '남자';
     else return '여자';
   }
 
-  session_time( session ) {
-    const begin = this.schedule( session.idx_schedule ).user_time_class_begin;
-    const hour = begin.substr(0,2);
-    const minute = begin.substr(2,2);
+  session_time(session) {
+    const begin = this.schedule(session.idx_schedule).user_time_class_begin;
+    const hour = begin.substr(0, 2);
+    const minute = begin.substr(2, 2);
     return hour + ':' + minute;
   }
   onChangeSearchOption() {
-    this.loadScheduleTable( this.request() );
+    this.loadScheduleTable(this.request());
   }
 
   onChangeValue() {
@@ -232,28 +249,28 @@ export class ScheduleTablePage {
   }
 
 
-  onClickNavigate( navigate ) {
-    this.loadScheduleTable( this.request( { navigate: navigate } ) );
+  onClickNavigate(navigate) {
+    this.loadScheduleTable(this.request({ navigate: navigate }));
   }
 
-  onClickSession( session ) {
+  onClickSession(session) {
 
     console.log('onClickSession', session);
-    if( session.status == 'past' ) return;
+    if (session.status == 'past') return;
 
-    if ( session.open == 'open' ) this.reserveSession( session );
-    else if ( session.open == 'reserved' && session.owner == 'me' ) this.cancelSession( session );
+    if (session.open == 'open') this.reserveSession(session);
+    else if (session.open == 'reserved' && session.owner == 'me') this.cancelSession(session);
 
   }
 
-  reserveSession( session ) {
+  reserveSession(session) {
 
     console.log("reserve: session: ", session);
-    const schedule = this.schedule( session.idx_schedule );
+    const schedule = this.schedule(session.idx_schedule);
     console.log("reserve: schedule: ", schedule);
 
     session.in_progress = true;
-    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe( re => {
+    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe(re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
       session.open = 'reserved';
@@ -271,18 +288,18 @@ export class ScheduleTablePage {
 
   }
 
-  cancelSession( session ) {
+  cancelSession(session) {
 
     session.in_progress = true;
-    console.log("Going to cancel with : ", session.idx_reservation );
-    this.a.lms.session_cancel( session.idx_reservation ).subscribe( re => {
+    console.log("Going to cancel with : ", session.idx_reservation);
+    this.a.lms.session_cancel(session.idx_reservation).subscribe(re => {
       console.log("cancel success", re);
       session.in_progress = false;
       session.status = 'future';
       session.open = 'open';
       session.owner = '';
       session.student_name = '';
-      session.point = this.schedule( session.idx_schedule ).point;
+      session.point = this.schedule(session.idx_schedule).point;
       this.updatePoint();
     }, e => {
       session.in_progress = false;
@@ -292,25 +309,25 @@ export class ScheduleTablePage {
 
   updatePoint() {
 
-    if ( this.a.user.isLogin ) {
-      this.a.loadMyPoint( p => this.my_point = p );
+    if (this.a.user.isLogin) {
+      this.a.loadMyPoint(p => this.my_point = p);
     }
 
 
   }
 
 
-  
-
-  onClickReserveVisible(sessions){
-
-    console.log('onClickReserveVisible',sessions);
 
 
-    sessions.forEach( session => {
-      if(session.open == 'open' && session.status != 'past'){
+  onClickReserveVisible(sessions) {
+
+    console.log('onClickReserveVisible', sessions);
+
+
+    sessions.forEach(session => {
+      if (session.open == 'open' && session.status != 'past') {
         // console.log(session)
-        this.reserveSession( session);
+        this.reserveSession(session);
       }
 
     });
@@ -319,18 +336,18 @@ export class ScheduleTablePage {
 
   onClickReserveCancel(sessions) {
 
-    sessions.forEach( session => {
-      if(session.open == 'reserved' && session.owner && session.owner == 'me'){
+    sessions.forEach(session => {
+      if (session.open == 'reserved' && session.owner && session.owner == 'me') {
         // console.log(session)
-        this.cancelSession( session);
+        this.cancelSession(session);
       }
 
     });
   }
 
-  onToggleDisplayWeekends( $event ) {
+  onToggleDisplayWeekends($event) {
     console.log($event['checked']);
-    
+
   }
 
 }

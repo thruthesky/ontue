@@ -122,6 +122,9 @@ export class LMSService extends Base {
     }
 
 
+    /**
+     * Returns the timezone offset based on user's browser.
+     */
     getUserLocalTimezoneOffset() {
 
         const localTz = (new Date).getTimezoneOffset() / 60;
@@ -168,6 +171,10 @@ export class LMSService extends Base {
     }
 
 
+    /**
+     * Returns a time of timezone offset.
+     * @param offset timezone offset
+     */
     localeString(offset) {
         // console.log('offset: ', offset);
         const d = new Date();
