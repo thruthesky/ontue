@@ -126,6 +126,7 @@ export class ScheduleTablePage {
       }
     }
   }
+
   session_text(session) {
     if (session['status'] == 'future') {
       if (session['open'] == 'reserved') {
@@ -173,20 +174,15 @@ export class ScheduleTablePage {
       if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
       }
-
     }, e => this.a.alert(e));
   }
 
   displayScheduleTable(re) {
-
     console.log(re);
     this.re = re;
-
   }
   displaySession() {
-
   }
-
 
   schedule(idx_schedule) {
     return this.re.schedule[idx_schedule];
@@ -199,7 +195,16 @@ export class ScheduleTablePage {
 
   updateTime() {
     if (this.re && this.re['student'] && this.re['student']['timezone']) {
-      this.time = this.a.lms.localeString(this.re['student']['timezone']);
+      // this.time = this.a.lms.localeString(this.re['student']['timezone']);
+      let date = this.a.lms.userDate(this.re['student']['timezone']);
+      let hour = date.getHours();
+      let ap = '';
+      if ( hour < 12 ) ap = '오전';
+      else ap = '오후';
+      if ( hour != 12 ) hour = hour % 12;
+    
+
+      this.time = date.getDate() + '일 ' + ap + ' ' + hour + '시 ' + date.getMinutes() + '분 ' + date.getSeconds() + '초';
     }
     this.timer = setTimeout(() => this.updateTime(), 1000);
   }
@@ -289,7 +294,6 @@ export class ScheduleTablePage {
   }
 
   cancelSession(session) {
-
     session.in_progress = true;
     console.log("Going to cancel with : ", session.idx_reservation);
     this.a.lms.session_cancel(session.idx_reservation).subscribe(re => {

@@ -89,10 +89,12 @@ https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/
 
 ## Schedule Table
 
-
+### Schedule Table Menu
+https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.e9dgvd5lyd72
 
 
 ## Page Service and Page Page
 
 * How to load a page from backend and display it as a component(directive).
 * How to load a page from backend and display it as a page.
+

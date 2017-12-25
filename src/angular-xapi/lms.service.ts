@@ -171,17 +171,26 @@ export class LMSService extends Base {
     }
 
 
+
+    /**
+     * Returns user Date object.
+     * @param offset timezone offset
+     */
+    userDate( offset ) {
+        const d = new Date();
+        const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+        return new Date(utc + (3600000 * offset));
+    }
+
     /**
      * Returns a time of timezone offset.
      * @param offset timezone offset
      */
     localeString(offset) {
         // console.log('offset: ', offset);
-        const d = new Date();
-        const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-        const newDate = new Date(utc + (3600000 * offset));
-        return newDate.toLocaleString();
+        return this.userDate(offset).toLocaleString();
     }
+    
 
     my_schedules(): Observable<any> {
         let data = {

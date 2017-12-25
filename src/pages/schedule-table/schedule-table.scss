@@ -1,5 +1,9 @@
 section.schedule-table {
-    
+    .schedule-body-table {
+        &, th, td {
+            border: 1px solid #ddd;
+        }
+    }
 
     [icon-name="lock"] {
         color: #ddd;
