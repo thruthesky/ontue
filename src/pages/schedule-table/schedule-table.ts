@@ -21,12 +21,12 @@ export class ScheduleTablePage {
   re = {
     starting_day: '',
     header: [],
-    schedule: [],
+    schedule: {},
     table: []
   };
 
   /// search options
-  days = 18;
+  days = 0; // 7 for mobile and single teacher. 6 for mobile and multiple teachers. 20 for web.
   min_duration = 1;
   max_duration = 0;
 
@@ -68,6 +68,8 @@ export class ScheduleTablePage {
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
     
+    if ( this.singleTeacher ) this.days = 7;
+    else this.days = 6;
 
     console.log('data params', this.params);
 
@@ -91,12 +93,12 @@ export class ScheduleTablePage {
   icon( session ) {
     if ( session['status'] == 'future' ) {
       if ( session['open'] == 'open' ) { // open to reserve
-        if ( session['dayoff'] == 'dayoff' ) return 'cloud-circle';
-        else return 'radio-button-off';
+        if ( session['dayoff'] == 'dayoff' ) return 'cloud-circle'; // but day off
+        else return 'radio-button-off'; // reservable
       }
-      else if ( session['open'] == 'reserved' ) { // reserved.
-        if ( session['dayoff'] == 'dayoff' ) return 'cloud-done';
-        else return 'checkmark';
+      else if ( session['open'] == 'reserved' ) { // already reserved.
+        if ( session['dayoff'] == 'dayoff' ) return 'cloud-done'; // already reserved and day-off
+        else return 'checkmark'; // reserved
       }
       else if ( session['open'] == 'no-schedule' ) { // teacher didn't open a session on this day of his schedule table.
          return '';
@@ -107,9 +109,8 @@ export class ScheduleTablePage {
         return '';
       }
       else { // past & reserved.
-
-        if ( session['dayoff'] == 'dayoff' ) return '';
-        else return 'lock';
+        if ( session['dayoff'] == 'dayoff' ) return ''; // past class and dayoff.
+        else return 'lock'; // past class and reserved.
 
       }
     }
@@ -152,7 +153,13 @@ export class ScheduleTablePage {
 
 
   loadScheduleTable( options ) {
-    this.a.lms.schedule_table( options ).subscribe( re => this.displayScheduleTable(re), e => this.a.alert(e));
+    this.a.lms.schedule_table( options ).subscribe( re => {
+      this.displayScheduleTable(re);
+      if ( Object.keys(re['schedule']).length == 0 ) {
+        this.a.alert('선생님의 수업 시간표가 없습니다.');
+      }
+      
+    }, e => this.a.alert(e));
   }
 
   displayScheduleTable(re) {
@@ -168,6 +175,43 @@ export class ScheduleTablePage {
 
   schedule( idx_schedule ) {
     return this.re.schedule[ idx_schedule ];
+  }
+
+  first_schedule() {
+    const keys = Object.keys(this.re.schedule);
+    return this.re.schedule[ keys[0] ];
+  }
+
+
+  /**
+   * Returns teacher name after sanitizing ( shorten )
+   * @param session a session
+   */
+  teacher_name( session = null ) {
+    let s;
+    if ( session ) s = this.schedule( session.idx_schedule );
+    else s = this.first_schedule();
+    if ( ! s ) return '';
+    let name = s.teacher.name;
+    if ( name.length > 8 ) name = name.substr(0, 8);
+    return name;
+  }
+  teacher_photoURL( session = null ) {
+    if ( session ) return this.schedule( session.idx_schedule ).teacher.photoURL;
+    else {
+      const s = this.first_schedule();
+      if ( s ) return s.teacher.photoURL;
+      else return '';
+    }
+  }
+
+  teacher_age() {
+    return this.first_schedule().teacher.age;
+  }
+  teacher_gender() {
+    let g = this.first_schedule().teacher.gender;
+    if ( g == 'M' ) return '남자';
+    else return '여자';
   }
 
   onChangeSearchOption() {

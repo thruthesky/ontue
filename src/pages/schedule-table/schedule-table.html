@@ -7,8 +7,33 @@
 
 
     <div class="single-teacher" *ngIf=" singleTeacher ">
-      <h1>Teacher xxxxx</h1>
+      <table *ngIf="teacher_name(); else singleTeacherLoader">
+        <tr>
+          <td>
+            <div class="size-12 of-hidden">
+              <img class="w-100" src="{{ teacher_photoURL() }}">
+            </div>
+          </td>
+          <td valign="top">
+            <div class="teacher-info ml-2">
+
+                <div class="fs-2rem">{{ teacher_name() }} 선생님</div>
+                <div>수업시간표</div>
+                <div>
+                  나이: {{ teacher_age() }}
+                </div>
+                <div>
+                  성별: {{ teacher_gender() }}
+                </div>
+
+            </div>
+          </td>
+        </tr>
+      </table>
+      <ng-template #singleTeacherLoader>
+        <ion-spinner></ion-spinner> 선생님 정보를 로드중입니다.</ng-template>
     </div>
+
     <div class="multiple-teacher" *ngIf=" !singleTeacher ">
       <h1>Teacher Schedule Table</h1>
 
@@ -71,11 +96,15 @@
     </div>
 
     <ion-spinner *ngIf=" re.table.length == 0 "></ion-spinner>
-    <table class="schedule-table" *ngIf=" re && re.table " border="1">
+    <table class="schedule-table" *ngIf=" re && re.table " border="0" width="100%">
       <tr>
-        <td>Teacher</td>
-        <td>Time</td>
-        <td>Reserve Visible</td>
+        <td *ngIf=" ! singleTeacher ">
+          <div>Teacher</div>
+        </td>
+        <td>
+          <div>Time</div>
+        </td>
+        <!-- <td>Reserve Visible</td> -->
         <td *ngFor="let header of re.header">
           <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
             <!--{{ header | json }}-->
@@ -87,25 +116,32 @@
 
 
       <tr valign="top" *ngFor="let sessions of re.table">
+        <td *ngIf=" ! singleTeacher ">
+
+          <!-- {{ sessions[0].idx_schedule }}
+          <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
+
+          <div class="size-6 of-hidden">
+            <img class="w-100" src="{{ teacher_photoURL( sessions[0] ) }}">
+          </div>
+          <div>{{ teacher_name( sessions[0] ) }}</div>
+
+          <!-- <div *ngIf=" schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string ">
+            <a href="{{ schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string }}">Add Kakao Friend</a>
+          </div> -->
+
+        </td>
+
         <td>
 
-          {{ sessions[0].idx_schedule }}
-          <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }}
-          <br> {{ schedule( sessions[0].idx_schedule ).teacher.name }}
-          <div *ngIf=" schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string ">
-            <a href="{{ schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string }}">Add Kakao Friend</a>
-          </div>
-        </td>
-        <td>
           {{ schedule( sessions[0].idx_schedule ).user_time_class_begin }}
           <br> {{ schedule( sessions[0].idx_schedule ).duration }}
-          <hr>
-          <!--{{ schedule( sessions[0].idx_schedule ) | json }}-->
+
         </td>
-        <td>
+        <!-- <td>
           <button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button>
-          <!--<button class="btn btn-primary" (click)="onClickReserveCancel(sessions)">Cancel</button> -->
-        </td>
+        </td> -->
+
         <td *ngFor=" let session of sessions ">
           <!--{{session|json}}-->
           <div class="session pointer" [attr.status]=" session['status'] " [attr.owner]=" session['owner'] " text-center (click)="onClickSession( session )">
@@ -133,13 +169,16 @@
     </table>
     <ul>
       <li>
-        <ion-icon name="radio-button-off"></ion-icon> - Reservable
+        <ion-icon name="radio-button-off"></ion-icon> - 예약 가능(아무도 예약하지 않았음)
       </li>
       <li>
-        <ion-icon name="radio-button-on"></ion-icon> - Reserved by me. It's your class. you can cancel it.
+        <ion-icon name="radio-button-on"></ion-icon> - 내가 예약한 수업. 취소 가능.
       </li>
       <li>
-        <ion-icon name="close"></ion-icon> - Reserved by other student.
+        <ion-icon name="checkmark"></ion-icon> - 다른 학생에 의해 예약된 수업.
+      </li>
+      <li>
+        <ion-icon name="lock"></ion-icon> - 지난 수업.
       </li>
     </ul>
 

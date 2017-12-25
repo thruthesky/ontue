@@ -60,6 +60,7 @@ export class RegisterPage {
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
       this.account.birthday = userData.birthday;
+      this.account.gender = userData.gender;
       if ( userData.primary_photo.id ) this.files = [ userData.primary_photo ];
       if ( userData.kakao_qrmark_photo.id ) {
         this.qrmarks = [ userData.kakao_qrmark_photo ];
@@ -82,6 +83,7 @@ export class RegisterPage {
     this.account.user_type = this.user_type;
     
     console.log("isLogin::", this.a.user.isLogin);
+    console.log(this.account);
     if (this.a.user.isLogin) { // UPDATE
       console.log('GOING TO UPDATE');
       this.profile_update();
