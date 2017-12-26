@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AppService } from './../../providers/app.service';
 import { NavParams } from "ionic-angular";
 import { Subject } from "rxjs/Subject";
@@ -13,6 +13,8 @@ import { Subject } from "rxjs/Subject";
 })
 export class ScheduleTablePage {
 
+
+  @ViewChild('content') content;
 
   display_options = false;
   params;
@@ -235,8 +237,8 @@ export class ScheduleTablePage {
   }
   teacher_gender() {
     let g = this.re.teacher.gender;
-    if (g == 'M') return '남자';
-    else return '여자';
+    if (g == 'M') return '남';
+    else return '여';
   }
 
   session_time(session) {
@@ -352,6 +354,11 @@ export class ScheduleTablePage {
   onToggleDisplayWeekends($event) {
     console.log($event['checked']);
 
+  }
+
+  onClickFabOptions() {
+    this.display_options = true;
+    this.content.scrollTo(0,0);
   }
 
 }

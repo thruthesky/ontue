@@ -37,7 +37,7 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
+  light:      rgba(233, 233, 233, 0.82),
   dark:       #222
 );
 
@@ -93,5 +93,5 @@ $colors: (
 @import "./theme.scss";
 @import "./layout.scss";
 @import "./state.scss";
-@import "./page-header.scss";
+@import "./page-layout.scss";
 

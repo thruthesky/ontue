@@ -13,8 +13,20 @@
       </ion-col>
       <ion-col col-4 class="">
         <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
-          <span (click)="a.open('payment')">수강료</span>
-          <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>
+
+          <ng-container [ngSwitch]="page">
+            <ng-container *ngSwitchCase=" 'schedule-table' ">
+                <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
+                <span (click)="a.open('home')">홈</span>
+                <span class="pl-2" (click)="a.open('menu')">메뉴</span>
+                <span class="pl-2" (click)="a.open('reservation')">나의수업</span>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                <span (click)="a.open('payment')">수강료</span>
+                <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
+                <span class="pl-2" (click)="a.open('reservation')">나의수업</span>
+            </ng-container>
+          </ng-container>
         </div>
       </ion-col>
     </ion-row>
