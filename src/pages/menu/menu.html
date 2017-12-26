@@ -118,6 +118,13 @@
 
 
 
+    <ion-item (click)="a.open('message')">
+        <ion-icon name="chatboxes" item-start></ion-icon>
+        {{ 'MESSAGE' | translate }}
+      </ion-item>
+
+      
+
     <ion-item class="menu-login" *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
       <ion-icon name="log-in" item-start></ion-icon>
       {{ 'LOGIN' | translate }}
