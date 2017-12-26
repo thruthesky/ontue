@@ -37,13 +37,13 @@
         <ion-spinner></ion-spinner> 선생님 정보를 로드중입니다.</ng-template>
     </div>
     <div class="multiple-teachers" *ngIf=" ! singleTeacher ">
-      <section class="page-header d-flex">
+      <section class="page-header d-flex justify-content-between">
         <h2>전체 강사 수업 시간표</h2>
 
-        <button ion-button icon-start (click)=" display_options = !display_options " *ngIf=" ! display_options ">
+        <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
           <ion-icon name="options"></ion-icon>
           {{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}
-        </button>
+        </div>
 
       </section>
     </div>
@@ -187,12 +187,12 @@
 
       <ng-container *ngFor="let sessions of re.table; let i = index">
 
-        <tr *ngIf=" i % 10 == 0 ">
+        <tr class="schedule-table-dates" *ngIf=" i % 10 == 0 ">
           <td *ngIf=" ! singleTeacher ">
-            <div>Teacher</div>
+            <div class="text-center">{{ 'TEACHER' | translate }}</div>
           </td>
           <td>
-            <div>Time</div>
+            <div class="text-center">{{ 'TIME' | translate }}</div>
           </td>
           <!-- <td>Reserve Visible</td> -->
           <td *ngFor="let header of re.header">

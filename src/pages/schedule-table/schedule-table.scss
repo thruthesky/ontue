@@ -5,6 +5,11 @@ section.schedule-table {
         }
     }
 
+    .schedule-table-dates {
+        td {
+            background-color: #ddd;
+        }
+    }
     [icon-name="lock"] {
         color: #ddd;
     }

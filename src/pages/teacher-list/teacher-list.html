@@ -5,13 +5,15 @@
 <ion-content padding>
   <hook-content-top></hook-content-top>
   
-  <h1>강사목록</h1>
+  <section class="page-header">
+      <h1>강사목록</h1>
+  </section>
 
   <p>
     현재 12,343 명의 강사가 있습니다. 반드시 등급이 1 이상인 강사와 수업을 하시기 바랍니다.
   </p>
 
-  <ion-grid>
+  <ion-grid *ngIf="teachersList; else teacherLoader">
     <ion-row>
       <ion-col *ngFor="let teacher of teachersList" col-6 col-md-4 col-lg-3  (click)="onClickTeacher(teacher)">
         <div class="size-10 rounded-50 of-hidden">
@@ -22,6 +24,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ng-template #teacherLoader>
+    <ion-spinner></ion-spinner> Loading...
+  </ng-template>
 
   <div>강사 더보기...</div>
   <hook-content-bottom></hook-content-bottom>
