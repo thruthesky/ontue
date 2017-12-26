@@ -26,7 +26,7 @@ export class EvaluateView {
       let s = res.session;
       this.session = s;
 
-      this.level = Math.floor(( this.toInt(s.expression) + this.toInt(s.vocabulary) + this.toInt(s.grammar) + this.toInt(s.pronunciation) + this.toInt(s.speed)  ) / 5);
+      this.level = Math.floor(( this.a.toInt(s.expression) + this.a.toInt(s.vocabulary) + this.a.toInt(s.grammar) + this.a.toInt(s.pronunciation) + this.a.toInt(s.speed)  ) / 5);
     }, e => {
       this.a.alert(e);
     })

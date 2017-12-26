@@ -195,9 +195,9 @@ export class TeacherCurriculumVitaePage {
 
 
   onChangeBirthDate() {
-    console.log("Birthday:: ",this.birthday);
+    // console.log("Birthday:: ",this.birthday);
     this.account.birthday = this.birthday.replace(/\-/g, '');
-    console.log("Birthday:: ",this.account.birthday);
+    // console.log("Birthday:: ",this.account.birthday);
   }
 
 }

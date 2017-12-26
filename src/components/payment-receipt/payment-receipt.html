@@ -1,12 +1,28 @@
 <ion-header>
-  <header-content></header-content>
+  <ion-toolbar>
+    <ion-title>Payment Receipt</ion-title>
+    <ion-buttons start>
+      <button ion-button class="cancel" (click)="dismiss()">
+        <span ion-text color="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 <ion-content padding>
 
   <div id="section-to-print">
-    <h1>Payment History</h1>
+    <h1>Payment Receipt</h1>
     <button ion-button (click)="onClickPrint()" id="not-to-print">Print</button>
-    Payment Receipt
+
+    <pre>
+    Receipt #: {{ payment?.paymentID }}
+    Date: {{ a.shortDate( payment?.stamp_end ) }}
+    Receive From {{ a.user.name }}
+    Amount Paid {{ payment.amount }} {{ payment.currency }}
+    For Payment of {{ payment.point }} english tutorial points
+    Paid by {{ payment.payment_method }}
+    </pre>
+
   </div>
 
 </ion-content>

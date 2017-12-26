@@ -1,0 +1,154 @@
+<ion-header>
+  <header-content></header-content>
+</ion-header>
+
+<ion-content padding>
+
+  <h1>My Reservation</h1>
+
+  {{ a.user.name }} You are {{ a.userType }}! , My Points:
+  <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
+  <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+        <ion-item>
+          <ion-label>Begin Date</ion-label>
+          <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+        </ion-item>
+
+      </ion-col>
+      <ion-col>
+
+        <ion-item>
+          <ion-label>End Date</ion-label>
+          <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <hr>
+
+  <ion-grid *ngIf=" my_teachers ">
+    <ion-row>
+      <h3>My Teacher's</h3>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <label>
+          <input type="radio" [value]="0" name="show_teacher" [(ngModel)]="show_teacher" (change)="onChangeSearchOption()"> All
+        </label>
+      </ion-col>
+      <ion-col *ngFor="let teacher of my_teachers">
+        <label>
+          <input type="radio" [value]="teacher.idx" name="show_teacher" [(ngModel)]="show_teacher" (change)="onChangeSearchOption()"> {{ teacher.name }}
+        </label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <hr>
+
+
+  <button ion-button (click)="onClickSearch()">
+    SEARCH
+  </button>
+  <hr>
+
+
+  <!--<div>-->
+  <!--<ion-list>-->
+  <!--<ion-item>Session No. {{ session?.idx }}</ion-item>-->
+  <!--<ion-item>Point: {{ session?.point }}</ion-item>-->
+  <!--<ion-item>Teacher Name: {{ session?.point }}</ion-item>-->
+  <!--<ion-item>Date: {{level}}</ion-item>-->
+  <!--<ion-item>Expression: {{ session?.expression }}</ion-item>-->
+  <!--<ion-item>Vocabulary: {{ session?.vocabulary }}</ion-item>-->
+  <!--<ion-item>Grammar: {{ session?.grammar }}</ion-item>-->
+  <!--<ion-item>Pronunciation: {{ session?.pronunciation }}</ion-item>-->
+  <!--<ion-item>Speed of Speech: {{ session?.speed }}</ion-item>-->
+  <!--<ion-item><span text-wrap>Comment: {{ session?.comment }}</span></ion-item>-->
+  <!--<ion-item><span text-wrap>Book(Page) used in the session: {{ session?.book_used }}</span></ion-item>-->
+  <!--<ion-item><span text-wrap>Book(Page) will be used in next session: {{ session?.book_next }}</span></ion-item>-->
+  <!--</ion-list>-->
+
+  <!--</div>-->
+
+  <table class="books" *ngIf=" books.length ">
+    <tr>
+      <td>Class No.</td>
+      <td>Date</td>
+      <td>Time</td>
+      <td>Teacher</td>
+      <td>Student</td>
+      <td>Point</td>
+      <td></td>
+
+    </tr>
+
+    <tr *ngFor="let book of books; let i = index;">
+      <td>{{book.idx}}</td>
+      <td>{{book.date_display}}</td>
+      <td>{{book.class_begin_display}}
+        <br>{{book.duration}}mins</td>
+      <td>{{book.teacher_name}}</td>
+      <td>{{book.student_name}}</td>
+      <td>{{book.point}}</td>
+      <td>
+        <div class="past" *ngIf=" book.past ">
+          <div class="teacher" *ngIf=" a.lms.getUserType() == 'teacher' ">
+            <button ion-button (click)=" a.open('evaluate', {idx: book.idx}) ">Evaluate</button>
+
+            <ng-container *ngIf=" rejected( book ) ">
+              <span class="alert alert-warning">Point Refuned Request Rejected</span>
+            </ng-container>
+
+            <ng-container *ngIf=" ! rejected( book ) ">
+              <span class="alert alert-info" *ngIf=" refunded(book) ">Refunded</span>
+              <ng-container *ngIf=" ! refunded( book ) ">
+                <button ion-button (click)=" onClickRefund( book ) " *ngIf="!refund_request(book)">Refund</button>
+                <button ion-button color="danger" (click)=" onClickRefund( book ) " *ngIf="refund_request(book)">Accept Refund Request</button>
+                <button ion-button color="danger" (click)=" onClickRejectRefundRequest( book ) " *ngIf="refund_request(book)">Reject Refund Request</button>
+              </ng-container>
+            </ng-container>
+
+          </div>
+
+          <div class="student" *ngIf=" a.lms.getUserType() == 'student' ">
+
+            <button ion-button (click)=" onClickEvaluateView(book.idx)">Evaluation</button>
+
+
+            <ng-container *ngIf=" rejected( book ) ">
+              <span class="alert alert-warning">Point Refuned Request Rejected</span>
+            </ng-container>
+
+            <ng-container *ngIf=" ! rejected( book ) ">
+              <span class="alert alert-info" *ngIf=" refunded(book) ">Refunded</span>
+              <ng-container *ngIf=" ! refunded( book ) ">
+                <ng-container *ngIf=" book.refund_request_at > 0 ">
+                  <button ion-button color="light" (click)=" onClickCancelRefundRequest( book )">Cancel Refund Request</button>
+                </ng-container>
+                <ng-container *ngIf=" book.refund_request_at == 0 ">
+                  <button ion-button (click)=" onClickRefundRequest( book )">Request Refund</button>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+
+          </div>
+
+        </div>
+        <ng-container *ngIf=" ! book.past ">
+          <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>
+          <ion-spinner *ngIf=" book.process "></ion-spinner>
+        </ng-container>
+      </td>
+    </tr>
+  </table>
+
+
+
+</ion-content>

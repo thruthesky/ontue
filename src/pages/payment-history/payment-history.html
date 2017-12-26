@@ -4,9 +4,8 @@
 <ion-content padding>
     <hook-content-top></hook-content-top>
 
-  <div id="section-to-print">
+  <div>
     <h1>Payment History</h1>
-    <button ion-button (click)="onClickPrint()" id="not-to-print">Print</button>
     <table width="100%">
       <tr>
         <td class="p-2">ID</td>
@@ -15,18 +14,20 @@
         <td class="p-2">method</td>
         <td class="p-2">points</td>
         <td class="p-2">Amount</td>
+        <td class="p-2">Print</td>
       </tr>
-      <tr *ngFor="let payment of payments; even as o" class=" {{o ? 'bg-lightgrey': ''}}">
+      <tr *ngFor="let payment of payments; even as o" class=" {{o ? 'bg-ghostwhite': ''}}">
         <td class="p-2">{{ payment.idx }}</td>
         <td class="p-2">{{ payment.paymentID }}</td>
         <td class="p-2">{{ a.shortDate( payment.stamp_end ) }}</td>
         <td class="p-2">{{ payment.payment_method }}</td>
         <td class="p-2">{{ payment.point }}</td>
         <td class="p-2">{{ payment.amount }} {{ payment.currency }}</td>
+        <td class="p-2" (click)="onClickPrintPreview(payment)"><button ion-button small><ion-icon name="print"></ion-icon></button></td>
       </tr>
     </table>
   </div>
 
   <hook-content-bottom></hook-content-bottom>
-  
+
 </ion-content>
