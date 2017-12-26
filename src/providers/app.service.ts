@@ -113,7 +113,7 @@ export class AppService {
         this.navCtrl.setRoot(page, params, {
             animate: true,
             direction: 'forward'
-        }).then( () => {
+        }).then(() => {
             // alert(page);
         });
 
@@ -140,15 +140,15 @@ export class AppService {
      * @note inLoadingMyPoint will be set true on loading.
      * @param callback callback
      */
-    loadMyPoint( callback ) {
+    loadMyPoint(callback) {
         this.inLoadingMyPoint = true;
         this.lms.my_point().subscribe(re => {
             let point = re['point'];
-            point = point.toString().split('').reverse().reduce( (t, v, i, a ) => {
-                return t += v + ( i < a.length -1 && (i+1) % 3 == 0 ? ',' : '' );
-              }, '' ).split('').reverse().join('');
-              this.inLoadingMyPoint = false;
-              callback(point);
+            point = point.toString().split('').reverse().reduce((t, v, i, a) => {
+                return t += v + (i < a.length - 1 && (i + 1) % 3 == 0 ? ',' : '');
+            }, '').split('').reverse().join('');
+            this.inLoadingMyPoint = false;
+            callback(point);
         }, e => {
             this.inLoadingMyPoint = false;
             this.alert(e);
@@ -202,13 +202,13 @@ export class AppService {
             if (HER.error.message !== void 0) subTitle = HER.error.message;
             if (HER.error.text !== void 0) message = HER.error.text;
 
-            if ( HER.status == 0 ) {
+            if (HER.status == 0) {
                 // subTitle = 'HTTP_ERROR_DESC';
                 message = 'HTTP_ERROR_DESC';
             }
 
             console.log("i18n:", this.i18n);
-            str = { title: this.i18n[ title ], subTitle: this.i18n[ subTitle ], message: this.i18n[ message ] };
+            str = { title: this.i18n[title], subTitle: this.i18n[subTitle], message: this.i18n[message] };
             console.log('str: ', str);
         }
         else if (str['title'] !== void 0 || str['subTitle'] !== void 0 || str['message'] !== void 0) {
@@ -313,7 +313,7 @@ export class AppService {
         // if (!lang) lang = this.translate.getBrowserLang();
         // if (!lang) lang = 'en';
 
-        this.translate.use( this.getUserLanguage() );
+        this.translate.use(this.getUserLanguage());
 
         this.translate.get(['HTTP_ERROR', 'HTTP_ERROR_DESC']).subscribe(re => {
             this.i18n = re;
@@ -337,11 +337,15 @@ export class AppService {
 
 
 
-    toInt(n:any){
-        if( typeof n == 'string' ) {
-            return parseInt( n );
+    /**
+     * Returns number from a string.
+     * @param n number
+     */
+    toInt(n: any) {
+        if (typeof n == 'string') {
+            return parseInt(n);
         }
-        else if( typeof n == 'number' ){
+        else if (typeof n == 'number') {
             return n;
         }
         else {
@@ -349,9 +353,7 @@ export class AppService {
         }
     }
 
-
-    getYoutubeID( url ) {
-        console.log("getYoutubeID", url);
+    getYoutubeID(url) {
         let arr = url.split('v=');
         let rest = arr[1].split('&');
         return rest[0];
@@ -360,7 +362,7 @@ export class AppService {
      * Returns url of embeded youtube.
      * @param ID Youtube video ID
      */
-    getYoutubeUrl( ID ) {
+    getYoutubeUrl(ID) {
         let url = "https://www.youtube.com/embed/" + ID;
         url += "?autoplay=1&loop=1";
         return url;
