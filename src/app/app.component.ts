@@ -136,7 +136,7 @@ export class MyApp {
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
     // this.a.open('teacher-list-video');
-    // this.a.open('payment-history');
+    this.a.open('payment-history');
 
     // this.a.open('schedule-edit');
 

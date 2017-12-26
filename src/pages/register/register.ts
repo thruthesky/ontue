@@ -18,6 +18,7 @@ import { FileUploadWidget } from '../../components/file-upload/file-upload';
 export class RegisterPage {
 
   account: USER_REGISTER = <USER_REGISTER>{};
+  birthday;
 
   tz = {};
   offset;
@@ -59,7 +60,10 @@ export class RegisterPage {
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
-      this.account.birthday = userData.birthday;
+      if ( userData.birthday.length > 0 ) {
+        this.birthday = userData.birthday.substr(0,4) + '-' + userData.birthday.substr(4,2) + '-' + userData.birthday.substr(6,2);
+        this.account.birthday = this.birthday;
+      }
       this.account.gender = userData.gender;
       if ( userData.primary_photo.id ) this.files = [ userData.primary_photo ];
       if ( userData.kakao_qrmark_photo.id ) {
@@ -72,16 +76,17 @@ export class RegisterPage {
 
   onSubmit() {
     console.log('Submit', this.account);
+    if (!this.user_type || !this.user_type.length) return this.a.showAlert(-80024, '*Please Choose User Type...');
     if (!this.account.name || !this.account.name.length) return this.a.showAlert(-80021, '*Name is required...');
     if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(-80022, '*Email is required...');
     if (this.a.user.isLogout && (!this.account.user_pass || !this.account.user_pass.length)) return this.a.showAlert(-80023, '*Password is required...');
-    if (!this.user_type || !this.user_type.length) return this.a.showAlert(-80024, '*Please Choose User Type...');
     if (this.a.user.isLogin && this.user_type == "T" && !this.qrmarks.length ) return this.a.showAlert(-80025, '*Teacher must upload QR Mark...');
+    if (this.user_type == "S" && !this.account.phone_number ) return this.a.showAlert(-80026, '*Phone Number is Required...');
     //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
 
     this.account.photoURL = this.files.length ? this.files[0].url : '';
     this.account.user_type = this.user_type;
-    
+
     console.log("isLogin::", this.a.user.isLogin);
     console.log(this.account);
     if (this.a.user.isLogin) { // UPDATE
@@ -227,5 +232,15 @@ export class RegisterPage {
       }, e => this.a.alert(e));
     }, e => this.a.alert(e));
   }
+
+
+  onChangeBirthDate() {
+    // console.log("Birthday:: ",this.birthday);
+    this.account.birthday = this.birthday.replace(/\-/g, '');
+    // console.log("Birthday:: ",this.account.birthday);
+  }
+
+
+
 }
 

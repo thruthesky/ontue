@@ -323,7 +323,7 @@ export class AppService {
 
     /**
      * Returns user language in 'en' or 'ko'
-     * 
+     *
      * @use when you need to get user's language.
      * @warning `getLanguage()` returns only from localStroage while `getUserLanguage()` returns browser language IF localStorage has no value.
      */
@@ -333,6 +333,20 @@ export class AppService {
         if (!lang) lang = this.translate.getBrowserLang();
         if (!lang) lang = 'en';
         return lang;
+    }
+
+
+
+    toInt(n:any){
+        if( typeof n == 'string' ) {
+            return parseInt( n );
+        }
+        else if( typeof n == 'number' ){
+            return n;
+        }
+        else {
+            return 0;
+        }
     }
 
 

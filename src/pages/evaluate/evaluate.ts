@@ -84,20 +84,8 @@ export class EvaluatePage {
 
   onChangeChecklevel(){
     if(this.expression  && this.vocabulary && this.grammar && this.pronunciation && this.speed) {
-      this.level = Math.floor(( this.toInt(this.expression) + this.toInt(this.vocabulary) + this.toInt(this.grammar) + this.toInt(this.pronunciation) + this.toInt(this.speed)  ) / 5);
+      this.level = Math.floor(( this.a.toInt(this.expression) + this.a.toInt(this.vocabulary) + this.a.toInt(this.grammar) + this.a.toInt(this.pronunciation) + this.a.toInt(this.speed)  ) / 5);
     } else this.level = 0;
-  }
-
-  toInt(n:any){
-    if( typeof n == 'string' ) {
-      return parseInt( n );
-    }
-    else if( typeof n == 'number' ){
-      return n;
-    }
-    else {
-      return 0;
-    }
   }
 
 

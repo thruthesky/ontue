@@ -3,45 +3,29 @@ import {AppService} from '../../providers/app.service';
 import {NavParams,ViewController} from 'ionic-angular';
 
 @Component({
-  selector: 'payment-receipt',
-  templateUrl: 'payment-receipt.html'
+    selector: 'payment-receipt',
+    templateUrl: 'payment-receipt.html'
 })
 export class PaymentReceipt {
+    payment;
+    constructor(
+        public a: AppService,
+        public navParams: NavParams,
+        public viewCtrl: ViewController,
+    ) {
 
-  data;
+        this.payment = navParams.data['payment'];
+        console.log( "PaymentReceipt", this.payment );
 
-  constructor(
-    public a: AppService,
-    public navParams: NavParams,
-    public viewCtrl: ViewController,
-  ) {
-
-    this.data = navParams.data;
-    console.log( this.data );
-
-  }
-
-  dismiss() {
-    this.viewCtrl.dismiss();
-  }
-
-
-  toInt(n:any){
-    if( typeof n == 'string' ) {
-      return parseInt( n );
     }
-    else if( typeof n == 'number' ){
-      return n;
-    }
-    else {
-      return 0;
-    }
-  }
 
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
 
-  onClickPrint(){
-    window.print();
-  }
+    onClickPrint(){
+        window.print();
+    }
 
 
 

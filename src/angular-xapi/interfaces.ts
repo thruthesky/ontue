@@ -104,6 +104,7 @@ export type USER_DATA_RESPONSE = USER_REGISTER;
 export interface USER_LOGIN_RESPONSE extends ID {
     user_email: string;
     display_name: string;
+    fullname:string;
     session_id: string;
     photoURL: string;
     photo: FILE;

@@ -80,6 +80,7 @@ import { EvaluateView } from '../components/evaluate-view/evaluate-view';
 import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
 import { HookContentBottomComponent } from '../components/hook-content-bottom/hook-content-bottom';
 import { HookContentTopComponent } from '../components/hook-content-top/hook-content-top';
+import { SessionList } from '../components/session-list/session-list';
 
 
 
@@ -130,7 +131,8 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentReceipt,
     HookContentBottomComponent,
     HookContentTopComponent,
-    PagePage
+    PagePage,
+    SessionList
   ],
   imports: [
     BrowserModule,
@@ -178,7 +180,8 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentReceipt,
     HookContentBottomComponent,
     HookContentTopComponent,
-    PagePage
+    PagePage,
+    SessionList
   ],
 
   providers: [

@@ -129,7 +129,13 @@ export class UserService extends Base {
         else return '';
     }
 
-    get email(): string {
+    get fullname(): string {
+      if (this.profile && this.profile.fullname) return this.profile.fullname;
+      else return '';
+    }
+
+
+  get email(): string {
         if (this.profile && this.profile.user_email) return this.profile.user_email;
         else return '';
     }

@@ -78,23 +78,28 @@
           <ion-label floating>{{ 'NAME' | translate }}</ion-label>
           <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
         </ion-item>
-  
+
         <ion-item>
 
             {{ 'GENDER' | translate }}
-            
+
             <input [(ngModel)]="account.gender" type="radio" name="gender" value="M" [checked]=" account.gender == 'M' "> Male,
             <input [(ngModel)]="account.gender" type="radio" name="gender" value="F" [checked]=" account.gender == 'F' "> Female
         </ion-item>
 
 
-          
+
       <ion-item>
           <ion-label floating>{{ 'BIRTHDAY' | translate }}</ion-label>
           <ion-input type="text" [(ngModel)]="account.birthday" name="birthday"></ion-input>
         </ion-item>
 
-        
+      <ion-item>
+        <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
+        <ion-datetime name="birthday" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY" [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
+      </ion-item>
+
+
 
       <ion-item>
         <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
