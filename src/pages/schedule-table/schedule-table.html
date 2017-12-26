@@ -3,55 +3,57 @@
 </ion-header>
 
 <ion-content #content>
-    <div class="single-teacher p-2" *ngIf=" singleTeacher ">
-        <table *ngIf="teacher_name(); else singleTeacherLoader">
-          <tr>
-            <td>
-              <div class="of-hidden" style="width: 100px; height:120px;">
-                <img class="w-100" src="{{ teacher_photoURL() }}">
-              </div>
-            </td>
-            <td valign="top">
-              <div class="teacher-info ml-4">
-                <div class="fs-2rem">{{ teacher_name() }} 선생님 레벨: ****</div>
-                <div class="meta pl-1">
-                    <div>
-                      {{ teacher_age() }}세 ({{ teacher_gender() }})
-                    </div>
-                    <div>학교: </div>
-                    <div>
-                      참여: 000 회 학생 수업
-                    </div>
-                    <div>
-                      강사 평가하기
-                    </div>
-                </div>
-
-                <div class="kakao d-flex">
-                    <div>
-                        <img class="size-5" src="assets/img/kakao-friend-add.jpg">
-                    </div>
-                    <div class="p-2">카톡 친구추가</div>
-                  </div>
-
-              </div>
-            </td>
-          </tr>
-        </table>
-        <ng-template #singleTeacherLoader>
-          <ion-spinner></ion-spinner> 선생님 정보를 로드중입니다.</ng-template>
-      </div><!--/single-teacher-->
-      <div class="multiple-teachers" *ngIf=" ! singleTeacher ">
-        <section class="page-header d-flex justify-content-between">
-          <h2 class="title">{{ "ALL SCHEDULE" | translate }}</h2>
-  
-          <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
-            <ion-icon name="options"></ion-icon>
-            {{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}
+  <div class="single-teacher p-2" *ngIf=" singleTeacher ">
+    <table *ngIf="teacher_name(); else singleTeacherLoader">
+      <tr>
+        <td>
+          <div class="teacher-profile-photo">
+            <img  src="{{ teacher_photoURL() }}">
           </div>
-  
-        </section>
-      </div><!--/multiple-teachers-->
+        </td>
+        <td valign="top">
+          <div class="teacher-info ml-4">
+            <div class="fs-2rem">{{ teacher_name() }} 선생님 레벨: ****</div>
+            <div class="meta pl-1">
+              <div>
+                {{ teacher_age() }}세 ({{ teacher_gender() }})
+              </div>
+              <div>학교: </div>
+              <div>
+                참여: 000 회 학생 수업
+              </div>
+              <div>
+                강사 평가하기
+              </div>
+            </div>
+
+            <div class="kakao d-flex">
+              <div>
+                <img class="size-5" src="assets/img/kakao-friend-add.jpg">
+              </div>
+              <div class="p-2">카톡 친구추가</div>
+            </div>
+
+          </div>
+        </td>
+      </tr>
+    </table>
+    <ng-template #singleTeacherLoader>
+      <ion-spinner></ion-spinner> 선생님 정보를 로드중입니다.</ng-template>
+  </div>
+  <!--/single-teacher-->
+  <div class="multiple-teachers" *ngIf=" ! singleTeacher ">
+    <section class="page-header d-flex justify-content-between">
+      <h2 class="title">{{ "ALL SCHEDULE" | translate }}</h2>
+
+      <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
+        <ion-icon name="options"></ion-icon>
+        {{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}
+      </div>
+
+    </section>
+  </div>
+  <!--/multiple-teachers-->
 
   <section class="schedule-table page-body">
 
@@ -161,7 +163,8 @@
 
 
     <div class="alert alert-info border-0 rounded-0" *ngIf=" a.user.isLogin ">
-      <div>{{ a.user.name }}님, 도움이 필요하시면 <b>질문</b>을 해 주세요.</div>
+      <div>{{ a.user.name }}님, 도움이 필요하시면
+        <b>질문</b>을 해 주세요.</div>
       포인트:
       <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
       <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
@@ -173,11 +176,17 @@
     {{ re.header | json }} -->
 
 
-    <div class="buttons d-flex justify-content-between">
-      <div (click)="onClickNavigate('previous-week')"><ion-icon name="arrow-back"></ion-icon> {{ 'PREVIOUS WEEK' | translate }}</div>
-      <div (click)="onClickNavigate('today')"><ion-icon name="refresh"></ion-icon> {{"TODAY" | translate}}</div>
-      <div (click)="onClickNavigate('next-week')"><ion-icon name="arrow-forward"></ion-icon> {{"NEXT WEEK" | translate}}</div>
-      <div (click)="onClickNavigate('next-month')"><ion-icon name="fastforward"></ion-icon> {{"NEXT MONTH" | translate}}</div>
+    <div class="buttons d-flex justify-content-between mb-1">
+      <div>
+        <span class="grey" (click)="onClickNavigate('previous-week')">
+          <ion-icon name="arrow-back"></ion-icon> {{ 'PREVIOUS WEEK' | translate }}</span>
+        <span class="ml-2 dodgerblue" (click)="onClickNavigate('today')">
+          <ion-icon name="refresh"></ion-icon> {{"TODAY" | translate}}</span>
+        <span class="ml-2 dimgrey" (click)="onClickNavigate('next-week')">
+          <ion-icon name="arrow-forward"></ion-icon> {{"NEXT WEEK" | translate}}</span>
+        <span class="ml-2 dimgrey" (click)="onClickNavigate('next-month')">
+          <ion-icon name="fastforward"></ion-icon> {{"NEXT MONTH" | translate}}</span>
+      </div>
       <div (click)=" display_options = !display_options " *ngIf=" singleTeacher && ! display_options ">
         <ion-icon name="options"></ion-icon>
         {{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}

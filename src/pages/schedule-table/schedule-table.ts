@@ -36,7 +36,7 @@ export class ScheduleTablePage {
 
 
 
-  displayWeekends = false;
+  displayWeekends = true;
 
   min_point = 0;
   max_point = 100000;

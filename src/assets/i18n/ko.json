@@ -96,4 +96,12 @@
   , "TEACHER": "강사"
   , "TIME": "시간"
   , "ALL SCHEDULE": "전체 시간표"
+  , "OPTIONS": "옵션"
+  , "GENDER": "성별"
+  , "MALE": "남"
+  , "FEMALE": "여"
+  , "ALL": "전체"
+  , "TEACHER GRADE": "강사 추천"
+  , "RECOMMENDED TEACHER": "추천 강사"
+  , "NOT RECOMMENED TEACHER": "비추천 강사"
 }
