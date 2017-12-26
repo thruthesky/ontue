@@ -35,6 +35,9 @@
             </div>
 
           </div>
+          
+          <ion-icon class="red fs-4rem pointer" name="play" (click)=" playTeacherYoutube(); "></ion-icon>
+          <iframe class="youtube-video" [src]=" urlYoutube " *ngIf=" urlYoutube "></iframe>
         </td>
       </tr>
     </table>

@@ -1,7 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from './../../providers/app.service';
 import { NavParams } from "ionic-angular";
 import { Subject } from "rxjs/Subject";
+
+import {YoutubeVideoPlayer} from "@ionic-native/youtube-video-player";
+
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
 
@@ -61,9 +65,12 @@ export class ScheduleTablePage {
   singleTeacher = null;
   time = null;
   timer = null;
+  urlYoutube = null;
   constructor(
     public a: AppService,
     public navParams: NavParams,
+    public domSanitizer: DomSanitizer,
+    public youtube: YoutubeVideoPlayer
   ) {
 
 
@@ -361,4 +368,17 @@ export class ScheduleTablePage {
     this.content.scrollTo(0,0);
   }
 
+  // playYoutube() {
+  //   let youtubeID = this.a.getYoutubeID( this.re.teacher['youtube_video_url'] );
+  // }
+  playTeacherYoutube() {
+    const ID =  this.a.getYoutubeID( this.re.teacher['youtube_video_url'] );
+    if ( this.a.isCordova ) {
+      this.youtube.openVideo( ID );
+    }
+    else {
+      this.urlYoutube = this.domSanitizer.bypassSecurityTrustResourceUrl( this.a.getYoutubeUrl( ID ));
+    }
+
+  }
 }

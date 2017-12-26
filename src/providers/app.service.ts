@@ -350,5 +350,19 @@ export class AppService {
     }
 
 
+    getYoutubeID( url ) {
+        let arr = url.split('v=');
+        let rest = arr[1].split('&');
+        return rest[0];
+    }
+    /**
+     * Returns url of embeded youtube.
+     * @param ID Youtube video ID
+     */
+    getYoutubeUrl( ID ) {
+        let url = "https://www.youtube.com/embed/" + ID;
+        url += "?autoplay=1&loop=1";
+        return url;
+    }
 
 }
