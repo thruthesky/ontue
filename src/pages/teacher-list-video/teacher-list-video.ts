@@ -20,8 +20,8 @@ export class TeacherListVideoPage {
 
     a.lms.teacher_list( { type: 'T' }).subscribe( re => {
       // console.log("user search: ", re);
-      this.teachersList = re['users'];
-      this.pre(re['users']);
+      this.teachersList = re['teachers'];
+      this.pre(re['teachers']);
     }, e => a.alert(e));
   }
 

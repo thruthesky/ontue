@@ -1,0 +1,29 @@
+.teacher-profile-photo {
+    padding: .25em;
+    overflow: hidden;
+    width: 100px;
+    height: 120px;
+    border: 1px solid lightgrey;
+    img {
+        width: 100%;
+    }
+}
+
+
+.grade {
+    &[grade="5"] {
+        color: rgb(240, 96, 0);
+    }
+    &[grade="4"] {
+        color: rgb(255, 153, 0);
+    }
+    &[grade="3"] {
+        color: rgb(74, 141, 35);
+    }
+    &[grade="2"] {
+        color: rgb(39, 39, 117);
+    }
+    &[grade="1"] {
+        color: rgb(39, 39, 39);
+    }
+}

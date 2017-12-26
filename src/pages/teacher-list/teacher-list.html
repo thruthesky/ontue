@@ -2,32 +2,72 @@
   <header-content></header-content>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <hook-content-top></hook-content-top>
-  
-  <section class="page-header">
-      <h1>강사목록</h1>
+
+
+  <section class="page-header d-flex justify-content-between">
+    <h2 class="title">{{ "TEACHER LIST" | translate }}</h2>
+    <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
+      <ion-icon name="options"></ion-icon>
+      {{ 'OPTIONS' | translate }}
+    </div>
   </section>
 
-  <p>
-    현재 12,343 명의 강사가 있습니다. 반드시 등급이 1 이상인 강사와 수업을 하시기 바랍니다.
-  </p>
+  <section class="options">
 
-  <ion-grid *ngIf="teachersList; else teacherLoader">
-    <ion-row>
-      <ion-col *ngFor="let teacher of teachersList" col-6 col-md-4 col-lg-3  (click)="onClickTeacher(teacher)">
-        <div class="size-10 rounded-50 of-hidden">
-          <img class="w-100" src="{{ teacher.photoURL }}">
-        </div>
-        <div>{{teacher.display_name}} ({{teacher.age}})</div>
-        <div>등급: ***</div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ng-template #teacherLoader>
-    <ion-spinner></ion-spinner> Loading...
-  </ng-template>
 
-  <div>강사 더보기...</div>
+    <ion-list>
+      <ion-list-header>{{ "OPTIONS" | translate }}</ion-list-header>
+      <ion-item>
+        <ion-label>{{ "GENDER" | translate }}</ion-label>
+        <ion-select [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
+          <ion-option value="F">{{"FEMALE" | translate}}</ion-option>
+          <ion-option value="M">{{"MALE" | translate}}</ion-option>
+          <ion-option value="">{{"ALL" | translate}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
+          <ion-select [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
+            <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
+            <ion-option value="N">{{"NOT RECOMMENED TEACHER" | translate}}</ion-option>
+            <ion-option value="">{{"ALL" | translate}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+    </ion-list>
+
+    
+
+  </section>
+
+  <section class="page-body">
+
+    <p *ngIf=" re ">
+      총 강사 수: {{ re.total }} 추천 강사와 수업을 하십시오.
+    </p>
+    <ion-grid *ngIf="re; else teacherLoader">
+      <ion-row>
+        <ion-col *ngFor="let teacher of re.teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
+          <div class="teacher-profile-photo">
+            <img src="{{ teacher.photoURL }}">
+          </div>
+          <div>{{teacher.display_name}} ({{teacher.age}})</div>
+          <div class="grade" [attr.grade]=" teacher.grade ">
+            추천:
+            <ion-icon name="star" *ngFor="let i of countStar(teacher.grade)"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ng-template #teacherLoader>
+      <ion-spinner></ion-spinner> Loading...
+    </ng-template>
+
+    <div>강사 더보기...</div>
+  </section>
+
   <hook-content-bottom></hook-content-bottom>
 </ion-content>

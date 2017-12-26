@@ -14,10 +14,7 @@ export class HeaderComponent {
     constructor(
         public a: AppService
     ) {
-
+        
     }
-
-    
-
 
 }
