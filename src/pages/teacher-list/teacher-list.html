@@ -14,14 +14,14 @@
     </div>
   </section>
 
-  <section class="options">
+  <section class="options" *ngIf=" display_options ">
 
 
     <ion-list>
-      <ion-list-header>{{ "OPTIONS" | translate }}</ion-list-header>
+      <ion-list-header>{{ "TEACHER LIST OPTIONS" | translate }}</ion-list-header>
       <ion-item>
         <ion-label>{{ "GENDER" | translate }}</ion-label>
-        <ion-select [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
+        <ion-select (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
           <ion-option value="F">{{"FEMALE" | translate}}</ion-option>
           <ion-option value="M">{{"MALE" | translate}}</ion-option>
           <ion-option value="">{{"ALL" | translate}}</ion-option>
@@ -30,14 +30,15 @@
 
       <ion-item>
           <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
-          <ion-select [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
+          <ion-select (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
             <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
-            <ion-option value="N">{{"NOT RECOMMENED TEACHER" | translate}}</ion-option>
-            <ion-option value="">{{"ALL" | translate}}</ion-option>
+            <ion-option value="">{{"ALL TEACHER" | translate}}</ion-option>
           </ion-select>
         </ion-item>
 
     </ion-list>
+
+    <button ion-button full color="light" (click)=" display_options = false ">{{ "CLOSE" | translate }}</button>
 
     
 
@@ -48,9 +49,9 @@
     <p *ngIf=" re ">
       총 강사 수: {{ re.total }} 추천 강사와 수업을 하십시오.
     </p>
-    <ion-grid *ngIf="re; else teacherLoader">
+    <ion-grid *ngIf=" re ">
       <ion-row>
-        <ion-col *ngFor="let teacher of re.teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
+        <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
           <div class="teacher-profile-photo">
             <img src="{{ teacher.photoURL }}">
           </div>
@@ -62,11 +63,17 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ng-template #teacherLoader>
-      <ion-spinner></ion-spinner> Loading...
-    </ng-template>
+    <div class="alert alert-warning d-flex" *ngIf=" loading ">
+      <div><ion-spinner></ion-spinner></div>
+      <div class="p-2">로딩 중 ...</div>
+    </div>
 
-    <div>강사 더보기...</div>
+
+    <button ion-button full (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers ">강사 더보기...</button>
+
+    <!-- <div class="alert alert-info rounded-0 border-0" *ngIf=" noMoreTeachers ">
+      더 이상 강사가 없습니다.
+    </div> -->
   </section>
 
   <hook-content-bottom></hook-content-bottom>

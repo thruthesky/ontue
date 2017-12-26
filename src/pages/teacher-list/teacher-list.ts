@@ -15,19 +15,25 @@ export class TeacherListPage {
   teachersList: TEACHERS_LIST = [];
 
   re: any;
+  teachers = [];
 
   gender = '';
   recommend = 'Y';
+  page_no: number;
+  limit = 60;
+
+  noMoreTeachers: boolean;
+  loading: boolean;
   constructor(
     public a: AppService
   ) {
-
-
+    this.init();
     this.loadTeachers();
-
-
-    // this.onClickTeacher( '' );
-
+  }
+  init() {
+    this.teachers = [];
+    this.page_no = 1;
+    this.noMoreTeachers = false;
   }
 
   onClickTeacher(teacher) {
@@ -38,13 +44,21 @@ export class TeacherListPage {
 
 
   loadTeachers() {
-
-    this.a.lms.teacher_list({ type: 'T' }).subscribe(re => {
+    this.loading = true;
+    this.a.lms.teacher_list({
+      gender: this.gender,
+      recommend: this.recommend,
+      page_no: this.page_no,
+      limit: this.limit
+    }).subscribe(re => {
+      this.loading = false;
+      console.log(re);
       this.re = re;
-      // console.log("user search: ", re);
-      // this.teachersList = re['teachers'];
+      this.teachers = this.teachers.concat( this.re.teachers );
+      if ( this.re.teachers.length < this.limit ) {
+        this.noMoreTeachers = true;
+      }
     }, e => this.a.alert(e));
-
   }
 
 
@@ -52,6 +66,20 @@ export class TeacherListPage {
     let re = Array( parseInt(grade) ).fill(true);
     // console.log(grade,re);
     return re;
+  }
+
+  onChangeRecommend() {
+    this.init();
+    this.loadTeachers();
+  }
+  onChangeGender() {
+    this.init();
+    this.loadTeachers();
+  }
+
+  onClickShowMoreTeacher() {
+    this.page_no ++;
+    this.loadTeachers();
   }
 
 }
