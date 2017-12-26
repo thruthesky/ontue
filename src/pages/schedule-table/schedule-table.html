@@ -7,8 +7,9 @@
     <table *ngIf="teacher_name(); else singleTeacherLoader">
       <tr>
         <td>
-          <div class="teacher-profile-photo">
-            <img  src="{{ teacher_photoURL() }}">
+          <div class="teacher-profile-photo position-relative" (click)=" playTeacherYoutube(); ">
+            <img src="{{ teacher_photoURL() }}">
+            <i class="fab fa-youtube position-absolute bottom-0 right-0 mr-3 mb-2 red fs-3rem pointer"></i>
           </div>
         </td>
         <td valign="top">
@@ -35,13 +36,16 @@
             </div>
 
           </div>
-          
-          <ion-icon class="red fs-4rem pointer" name="play" (click)=" playTeacherYoutube(); "></ion-icon>
-          <iframe class="youtube-video" [src]=" urlYoutube " *ngIf=" urlYoutube "></iframe>
-          
+
+
         </td>
       </tr>
     </table>
+
+    <div class="video-container" *ngIf=" urlYoutube ">
+    <iframe class="youtube-video border-0" [src]=" urlYoutube "></iframe>
+</div>
+
     <ng-template #singleTeacherLoader>
       <ion-spinner></ion-spinner> 선생님 정보를 로드중입니다.</ng-template>
   </div>
