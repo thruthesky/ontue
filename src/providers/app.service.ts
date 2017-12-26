@@ -351,6 +351,7 @@ export class AppService {
 
 
     getYoutubeID( url ) {
+        console.log("getYoutubeID", url);
         let arr = url.split('v=');
         let rest = arr[1].split('&');
         return rest[0];
