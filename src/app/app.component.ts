@@ -139,7 +139,7 @@ export class MyApp {
 
     // this.a.open('schedule-table', { ID: 809 });
 
-    // this.a.open('teacher-list');
+    this.a.open('teacher-list');
 
     // this.a.open('schedule-edit');
 
