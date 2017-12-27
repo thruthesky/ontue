@@ -26,13 +26,9 @@ page-home {
       }
     }
   }
-  .about-katalkenglish {
-    margin-bottom: 1em;
-    padding: 1em;
-    background-color: #efefef;
-  }
+
   .my-own-plan {
-    padding: 2em 0.25em;
+    padding: 3.5em 0.25em;
     background-color: rgb(230, 230, 230);
     h2 {
       margin: 0!important;
@@ -51,7 +47,7 @@ page-home {
     animation: a1234 .2s 1;
     animation-timing-function: ease-in;
     position: relative;
-    margin: 0 .25em .75em;
+    margin: 1em .25em 0;
     padding: 1em;
     box-sizing: border-box;
     color: white;
@@ -66,3 +62,50 @@ page-home {
     }
   }
 }
+
+
+
+.about-katalkenglish {
+  padding: 4em 1em;
+  background-color: #ffffff;
+
+  h2 {
+    margin: .25em 0 0;
+    padding: 0;
+  }
+}
+.more-about-katalkenglish {
+  margin-bottom: 2em;
+  .inner {
+    padding: 1em;
+    background: #f5db00;
+  }
+  .text {
+    margin: .5em 0;
+    animation: animoreabout 1s 1;
+
+    &.no1 {
+      color: #0068ca;
+    }
+    &.no2 {
+      color: #df6603;
+    }
+    &.no3 {
+      color: #075347;
+    }
+    &.no4 {
+      color: #494949;
+    }
+  }
+}
+
+
+@keyframes animoreabout {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
