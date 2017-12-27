@@ -3,9 +3,11 @@
     max-width: $lg+48!important;
   }
   ion-content {
+    .page {
       position: relative!important;
-      width: $lg!important;
       margin: auto!important;
+      width: $lg!important;
+    }
   }
 }
 

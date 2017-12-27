@@ -1,4 +1,4 @@
-<section class="position-relative h-12 of-hidden">
+<section class="position-relative h-14 of-hidden">
 
   <nav class="position-absolute left-0 right-0 bottom-0 white d-flex fs-3rem pointers" style="margin-right: 4.4rem; z-index: 987654321; justify-content:flex-end;">
     <div [class.selected]="on == 0" (click)="slides.slideTo(0)">•</div>
@@ -10,7 +10,7 @@
   <ion-slides (ionSlideDidChange)="slideChanged()">
 
     <ion-slide class="" style="background-color: rgb(245, 218, 0);">
-      <section class="h-12 w-100">
+      <section class="">
         <div class="p-4">
           <div class="size-9 of-hidden bg-white rounded-50">
             <img src="assets/img/front/slide1.png">
@@ -27,7 +27,6 @@
           <i class="fal fa-angle-right fs-3rem"></i>
         </div>
       </div>
-
     </ion-slide>
 
 
@@ -37,7 +36,7 @@
         <div class="ml-3" (click)="slides.slideTo(0)" style="margin-top: 4.3rem;">
           <i class="fal fa-angle-left fs-3rem white"></i>
         </div>
-        <div class="ml-1 h-12 w-100">
+        <div class="ml-1 ">
           <div class="p-4">
             <div class="size-9 of-hidden bg-white rounded-50">
               <img src="assets/img/front/slide1.png">
@@ -59,12 +58,11 @@
 
 
     <ion-slide class="bg-indigo">
-
       <section class="d-flex">
         <div class="ml-3" (click)="slides.slideTo(1)" style="margin-top: 4.5rem;">
           <i class="fal fa-angle-left fs-3rem white"></i>
         </div>
-        <div class="ml-1 h-12 w-100">
+        <div class="ml-1 ">
           <div class="p-4">
             <div class="size-9 of-hidden bg-white rounded-50">
               <img src="assets/img/front/slide1.png">

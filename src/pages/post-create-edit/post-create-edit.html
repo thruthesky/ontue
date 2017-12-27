@@ -13,6 +13,7 @@
 </ion-header>
 
 <ion-content>
+    <div class="page">
   <ion-list>
     <ion-item>
       <ion-label floating>Title</ion-label>
@@ -44,4 +45,5 @@
   </ion-grid>
   <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files" [post_password]="post_password"></file-upload-widget>
   <site-preview-widget [preview]="preview.result" [edit]="true" [loading]="preview.loading"></site-preview-widget>
+  </div>
 </ion-content>

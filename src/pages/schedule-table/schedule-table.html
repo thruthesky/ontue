@@ -3,6 +3,7 @@
 </ion-header>
 
 <ion-content #content>
+    <div class="page">
   <div class="single-teacher p-2" *ngIf=" singleTeacher ">
     <table *ngIf="teacher_name(); else singleTeacherLoader">
       <tr>
@@ -343,5 +344,8 @@
       </button>
     </ion-fab-list>
   </ion-fab>
+
+
+</div>
 
 </ion-content>
