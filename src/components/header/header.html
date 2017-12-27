@@ -36,7 +36,7 @@
     <ul class="m-0 p-0 d-flex"
     [class.front-page]=" page == 'home' "
     [class.sub-page] = " page != 'home' "
-    
+
     style="list-style: none; justify-content:space-around;">
     <li class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">이용안내</li>
       <li class="p-3" (click)=" a.open('teacher-list') ">무료체험</li>
@@ -62,11 +62,11 @@
       <div class="p-2" (click)=" a.user.logout() ">Logout</div>
 
   </ng-container>
-  
+
   <ng-template #userLogout>
 
       <div class="p-2" (click)=" a.open('login') ">Login</div>
-      
+
   </ng-template>
 
 </section>
@@ -114,7 +114,7 @@
       </ion-col>
 
       <ion-col>
-        <button class="header-reservation" (click)=" a.open('reservation', {future: true}) ">
+        <button class="header-reservation" (click)=" a.open('session-future') ">
           <i class="fal fa-th blue"></i>
           <div>{{ 'RESERVATIONS' | translate }}</div>
         </button>
@@ -122,7 +122,7 @@
 
 
       <ion-col>
-        <button class="header-past-reservation" (click)=" a.open('reservation', {past: true}) ">
+        <button class="header-past-reservation" (click)=" a.open('session-past') ">
           <i class="fal fa-archive grey"></i>
           <div>{{ 'PASTS' | translate }}</div>
         </button>

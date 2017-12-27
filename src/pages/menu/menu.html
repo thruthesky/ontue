@@ -11,7 +11,7 @@
       {{ 'SETTINGS' | translate }}
     </ion-item>
 
-    
+
 
     <ion-item class="menu-settings-payment-info" (click)="a.open('settings-payment-info')">
         <ion-icon name="archive" item-start></ion-icon>
@@ -24,14 +24,14 @@
           <ion-icon name="archive" item-start></ion-icon>
           수업후기
         </ion-item>
-    
+
 
         <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
             <ion-icon name="archive" item-start></ion-icon>
             질문하기
           </ion-item>
-      
-      
+
+
     <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'TEACHER LIST' | translate }}
@@ -89,7 +89,7 @@
       {{ 'PRIVATE QUERY' | translate }}
     </ion-item>
 
-<!-- 
+<!--
     <ion-item class="menu-forum" (click)="a.open('forum')">
       <ion-icon name="archive" item-start></ion-icon>
       {{ 'FORUM' | translate }}
@@ -101,10 +101,6 @@
       {{ 'POLICY' | translate }}
     </ion-item>
 
-    <ion-item class="menu-teacher-list-video" (click)="a.open('teacher-list-video')">
-      <ion-icon name="play" item-start></ion-icon>
-      {{ 'TEACHER LIST VIDEO' | translate }}
-    </ion-item>
 
     <ion-item *ngIf="a.isStudent" class="menu-payment-history" (click)="a.open('payment-history')">
       <ion-icon name="card" item-start></ion-icon>
@@ -124,7 +120,7 @@
         {{ 'MESSAGE' | translate }}
       </ion-item>
 
-      
+
 
     <ion-item class="menu-login" *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
       <ion-icon name="log-in" item-start></ion-icon>

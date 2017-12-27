@@ -353,6 +353,11 @@ export class AppService {
         }
     }
 
+    add0(n: number): string {
+      if (!n) return;
+      return n < 10 ? '0' + n : n.toString();
+    }
+
     getYoutubeID(url) {
         if ( ! url ) return '';
         let arr = url.split('v=');

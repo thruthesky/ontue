@@ -38,9 +38,7 @@ import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
 
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
-import { TeacherListVideoPage } from '../pages/teacher-list-video/teacher-list-video';
 import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
-import { ReservationPage } from '../pages/reservation/reservation';
 
 
 import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
@@ -58,6 +56,9 @@ import { PolicyPage } from '../pages/policy/policy';
 import { IntroComponent } from '../components/intro/intro';
 
 import { PagePage } from '../pages/page/page';
+
+import { SessionPastPage } from '../pages/session-past/session-past';
+import { SessionFuturePage } from '../pages/session-future/session-future';
 
 
 
@@ -115,7 +116,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddSchedule,
     TeacherListPage,
     ScheduleTablePage,
-    ReservationPage,
     TeacherDayoffPage,
     MessagePage,
     EvaluatePage,
@@ -125,14 +125,15 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-    TeacherListVideoPage,
     PaymentHistoryPage,
     EvaluateView,
     PaymentReceipt,
     HookContentBottomComponent,
     HookContentTopComponent,
     PagePage,
-    SessionList
+    SessionList,
+    SessionPastPage,
+    SessionFuturePage
   ],
   imports: [
     BrowserModule,
@@ -164,7 +165,6 @@ export function createTranslateLoader(http: HttpClient) {
     AddSchedule,
     TeacherListPage,
     ScheduleTablePage,
-    ReservationPage,
     TeacherDayoffPage,
     MessagePage,
     EvaluatePage,
@@ -174,14 +174,15 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-    TeacherListVideoPage,
     PaymentHistoryPage,
     EvaluateView,
     PaymentReceipt,
     HookContentBottomComponent,
     HookContentTopComponent,
     PagePage,
-    SessionList
+    SessionList,
+    SessionPastPage,
+    SessionFuturePage
   ],
 
   providers: [
