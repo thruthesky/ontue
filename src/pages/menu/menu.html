@@ -131,9 +131,14 @@
       회원가입
     </ion-item>
 
+    <ion-item class="menu-password" *ngIf=" a.user.isLogin " (click)=" a.open('password-change')">
+      <ion-icon name="key" item-start></ion-icon>
+      {{ 'Change Password' | translate }}
+    </ion-item>
+
     <ion-item class="menu-profile" *ngIf=" a.user.isLogin " (click)=" a.open('register')">
       <ion-icon name="log-out" item-start></ion-icon>
-      {{ 'PROFILE' | translate }} {{ a.isTeacher | json }}
+      {{ 'PROFILE' | translate }}
     </ion-item>
     <ion-item class="menu-logout" *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
       <ion-icon name="log-out" item-start></ion-icon>
