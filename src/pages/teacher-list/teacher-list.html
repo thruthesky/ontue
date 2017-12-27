@@ -68,17 +68,23 @@
     <ion-grid *ngIf=" re ">
       <ion-row>
         <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
-          <div class="teacher-profile-photo">
-            <img src="{{ teacher.photoURL }}">
+          <div class="d-flex justify-content-center">
+              <div class="teacher-profile-photo">
+                  <img src="{{ teacher.photoURL }}">
+                </div>
           </div>
-          <div>{{teacher.display_name}}</div>
-          <div class="grade" [attr.grade]=" teacher.grade ">
-            추천:
-            <ion-icon name="star" *ngFor="let i of countStar(teacher.grade)"></ion-icon>
+          <div class="text-center mt-1 mb-3">
+              <div>{{ a.preTeacherName( teacher.display_name )}}</div>
+              <div class="grade" [attr.grade]=" teacher.grade ">
+                추천:
+                <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i><i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
+                
+              </div>
+              <div>
+                ({{ teacher.total_reservation }} 명 참여)
+              </div>
           </div>
-          <div>
-            {{ teacher.total_reservation }} 명 참여
-          </div>
+
         </ion-col>
       </ion-row>
     </ion-grid>

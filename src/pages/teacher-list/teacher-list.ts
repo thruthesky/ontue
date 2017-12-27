@@ -30,6 +30,7 @@ export class TeacherListPage {
     this.init();
     this.loadTeachers();
   }
+
   init() {
     this.teachers = [];
     this.page_no = 1;
@@ -38,7 +39,6 @@ export class TeacherListPage {
 
   onClickTeacher(teacher) {
     console.log(teacher);
-
     this.a.open('schedule-table', teacher);
   }
 
@@ -62,11 +62,6 @@ export class TeacherListPage {
   }
 
 
-  countStar( grade ) {
-    let re = Array( parseInt(grade) ).fill(true);
-    // console.log(grade,re);
-    return re;
-  }
 
   onChangeRecommend() {
     this.init();

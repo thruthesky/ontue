@@ -30,7 +30,7 @@ export class ScheduleTablePage {
     header: [],
     schedule: {},
     table: [],
-    teacher: { age: 0, gender: '', name: '', idx: 0, photoURL: '' }
+    teacher: { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0 }
   };
 
   /// search options
@@ -241,6 +241,9 @@ export class ScheduleTablePage {
 
   teacher_age() {
     return this.re.teacher.age;
+  }
+  teacher_grade() {
+    return this.re.teacher.grade;
   }
   teacher_gender() {
     let g = this.re.teacher.gender;

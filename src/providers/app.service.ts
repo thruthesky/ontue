@@ -379,4 +379,18 @@ export class AppService {
         return url;
     }
 
+
+  countStar( grade ) {
+    let re = Array( parseInt(grade) ).fill(true);
+    return re;
+  }
+
+  countEmptyStar( grade ) {
+    let re = Array( 5 - parseInt(grade) ).fill(true);
+    return re;
+  }
+
+
+  
+
 }
