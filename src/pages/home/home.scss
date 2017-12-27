@@ -1,40 +1,54 @@
+@keyframes a1234 {
+    from { left: 100%; }
+    to { left: 0; }
+}
+
 page-home {
-
-
-    .stats {
-        .item {
-            
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-
-            &.teacher {
-                background-color: rgb(120, 121, 81);
-            }
-            &.reservation {
-                background-color: rgb(92, 132, 205);
-            }
-            &.leveltest {
-                background-color: indianred;
-            }
-            .text {
-                margin-top: 2rem;
-                text-align: center;
-                color: white;
-                font-size: 1.6rem;
-            }
-            .number {
-                text-align: center;
-                color: white;
-                font-size: 3rem;
-            }
-        }
+  .stats {
+    .item {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      &.teacher {
+        background-color: rgb(120, 121, 81);
+      }
+      &.reservation {
+        background-color: rgb(92, 132, 205);
+      }
+      &.leveltest {
+        background-color: indianred;
+      }
+      .text {
+        margin-top: 2rem;
+        text-align: center;
+        color: white;
+        font-size: 1.6rem;
+      }
+      .number {
+        text-align: center;
+        color: white;
+        font-size: 3rem;
+      }
     }
-    
-    .about-katalkenglish {
-        margin-bottom: 1em;
-        padding: 1em;
-        background-color: #efefef;
+  }
+  .about-katalkenglish {
+    margin-bottom: 1em;
+    padding: 1em;
+    background-color: #efefef;
+  }
+  .my-own-plan {
+    padding: 2em 0.25em;
+    background-color: rgb(230, 230, 230);
+    h2 {
+      margin: 0!important;
+      padding: 0!important;
     }
-
+  }
+  .moreMyOwnPlan {
+    animation: a1234 .5s 1;
+    position: relative;
+    margin: .25em 0;
+    width: 100%;
+    background-color: rgb(105, 119, 179);
+  }
 }

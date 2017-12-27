@@ -6,6 +6,38 @@
   <div class="page">
     <hook-content-top></hook-content-top>
 
+
+
+    <div class="my-own-plan">
+        <ion-grid>
+            <ion-row>
+              <ion-col col-5>
+                <img class="w-15" src="assets/img/my-own-calendar.png">
+              </ion-col>
+              <ion-col col-7>
+                <h2>내가 정하는<br>나만의 학습 스케쥴</h2>
+                <div class="text mt-2">
+                    365일 밤/낮 언제 어디서나<br>
+                    카톡 1:1 화상영어 수업<br>
+                    선생님과 수업료를 내가 정하는<br>
+                    완벽한 자유 예약 시스템
+                </div>
+                
+                <div class="mt-2 pointer" (click)=" showMoreMyOwnPlan() ">
+                  더보기<i class="fal fa-ellipsis-h"></i>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <div class="position-relative">
+            <div class="moreMyOwnPlan" *ngIf=" showMoreMyOwnPlan_1 ">카톡잉글리시에서는 학생이 직접 수업료를 정하고 선생님을 정합니다.</div>
+            <div class="moreMyOwnPlan" *ngIf=" showMoreMyOwnPlan_2 ">카톡잉글리시의 자유 예약 시스템은 매우 직관적이고 편리합니다. 무료 체험 수업을 해 보면 쉽게 이해가 됩니다.</div>
+            <div class="moreMyOwnPlan" *ngIf=" showMoreMyOwnPlan_3 ">카카오톡을 이용해서 화상영어 수업을 합니다. 카카오톡은 매우 편리하며 선생님과 언제 어디서나 채팅을 할 수 있습니다.</div>
+          </div>
+    </div>
+
+
     <ng-container *ngIf=" a.lms.getUserType() != 'teacher' ">
 
       <intro-component></intro-component>
@@ -68,21 +100,6 @@
       </ul>
 
     </div>
-
-
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <img src="assets/img/my-own-calendar.png">
-        </ion-col>
-        <ion-col>
-          <h2>내가 정하는 나만의 학습 스케쥴</h2>
-          24시간 365일 언제 어디서나 카톡으로 1:1 화상영어 수업
-          <br> 선생님과 수업료를 내가 직접 정하는
-          <br> 완벽한 자유 예약 시스템
-        </ion-col>
-      </ion-row>
-    </ion-grid>
 
 
 

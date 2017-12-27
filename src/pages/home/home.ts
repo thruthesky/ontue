@@ -11,6 +11,9 @@ export class HomePage {
 
   reminders = '';
   stats;
+  showMoreMyOwnPlan_1 = false;
+  showMoreMyOwnPlan_2 = false;
+  showMoreMyOwnPlan_3 = false;
   constructor(
     public navCtrl: NavController,
     public a: AppService
@@ -27,6 +30,8 @@ export class HomePage {
     // setTimeout(() => this.a.open('menu') , 200);
 
     a.lms.stats().subscribe( re => this.stats = re, e => a.alert(e) );
+
+    // this.showMoreMyOwnPlan();
   }
 
 
@@ -40,6 +45,11 @@ export class HomePage {
     //
   }
 
+  showMoreMyOwnPlan() {
+    setTimeout( () => this.showMoreMyOwnPlan_1 = true, 100 );
+    setTimeout( () => this.showMoreMyOwnPlan_2 = true, 250 );
+    setTimeout( () => this.showMoreMyOwnPlan_3 = true, 400 );
+  }
 
 
 
