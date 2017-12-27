@@ -3,7 +3,7 @@ import { AppService } from '../../providers/app.service';
 @Component({
     selector: 'page',
     template: `
-    <section class="page {{name}}" [innerHTML]=" content "></section>
+    <section class="{{name}}" [innerHTML]=" content "></section>
     `
 })
 export class PageComponent {
