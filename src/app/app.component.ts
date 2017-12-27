@@ -44,7 +44,8 @@ import { SessionPastPage } from '../pages/session-past/session-past';
 
 
 import { PagePage } from '../pages/page/page';
-import {SessionFuturePage} from "../pages/session-future/session-future";
+import { SessionFuturePage } from "../pages/session-future/session-future";
+import { PasswordChangePage } from "../pages/password-change/password-change";
 
 @Component({
   templateUrl: 'app.html'
@@ -123,6 +124,7 @@ export class MyApp {
 
     this.a.pages['session-past'] = SessionPastPage;
     this.a.pages['session-future'] = SessionFuturePage;
+    this.a.pages['password-change'] = PasswordChangePage;
 
     setTimeout(() => this.test(), 100);
 
@@ -182,6 +184,7 @@ export class MyApp {
 
     // this.a.open('session-past');
     // this.a.open('session-future');
+    // this.a.open('password-change');
 
 
   }
