@@ -60,6 +60,8 @@ import { PagePage } from '../pages/page/page';
 import { SessionPastPage } from '../pages/session-past/session-past';
 import { SessionFuturePage } from '../pages/session-future/session-future';
 
+import { PasswordChangePage } from '../pages/password-change/password-change';
+
 
 
 
@@ -133,7 +135,8 @@ export function createTranslateLoader(http: HttpClient) {
     PagePage,
     SessionList,
     SessionPastPage,
-    SessionFuturePage
+    SessionFuturePage,
+    PasswordChangePage
   ],
   imports: [
     BrowserModule,
@@ -174,7 +177,7 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-    
+
     PaymentHistoryPage,
     EvaluateView,
     PaymentReceipt,
@@ -183,7 +186,8 @@ export function createTranslateLoader(http: HttpClient) {
     PagePage,
     SessionList,
     SessionPastPage,
-    SessionFuturePage
+    SessionFuturePage,
+    PasswordChangePage
   ],
 
   providers: [
