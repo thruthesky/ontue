@@ -21,6 +21,8 @@ export class HomePage {
   moreAbout3 = false;
   moreAbout4 = false;
   
+  teachers = [];
+  total_teachers = 0;
   constructor(
     public navCtrl: NavController,
     public a: AppService
@@ -39,6 +41,8 @@ export class HomePage {
     a.lms.stats().subscribe( re => this.stats = re, e => a.alert(e) );
 
     // this.showMoreMyOwnPlan();
+
+    this.loadTeachers();
   }
 
 
@@ -70,5 +74,16 @@ export class HomePage {
 
   }
 
+  loadTeachers() {
+      this.a.lms.teacher_list({
+        recommend: true,
+        page_no: 1,
+        limit: 6
+      }).subscribe(re => {
+        console.log("teachers: ", re);
+        this.teachers = re['teachers'];
+        this.total_teachers = re['total'];
+      });
+  }
 
 }
