@@ -141,7 +141,7 @@ export class MyApp {
 
     // this.a.open('schedule-table', { ID: 809 });
 
-    this.a.open('teacher-list');
+    // this.a.open('teacher-list');
 
     // this.a.open('schedule-edit');
 
@@ -183,7 +183,7 @@ export class MyApp {
     // this.a.open('home');
 
     // this.a.open('session-past');
-    // this.a.open('session-future');
+    this.a.open('session-future');
     // this.a.open('password-change');
 
 
