@@ -9,9 +9,10 @@ import { EvaluateView} from '../../components/evaluate-view/evaluate-view';
   templateUrl: 'session-list.html'
 })
 export class SessionList {
-  @Input() _data: {past:false;future:false};
-  @Input() textTitle: string = 'Reservation';
-
+  @Input() data: {past:false;future:false};
+  
+  
+  re = null;
   books = [];
   my_teachers = [];
   show_teacher: number = 0;
@@ -19,6 +20,9 @@ export class SessionList {
   date_begin = null;
   date_end = null;
   today = new Date();
+  show_refund_in_progress = false;
+  show_refunded = false;
+  @Input() showOptions = false;
   constructor(
     public a: AppService,
     public modalCtrl: ModalController,
@@ -30,14 +34,14 @@ export class SessionList {
 
   ngOnInit() {
     let now =  this.today.getFullYear() + '-' + this.a.add0(this.today.getMonth()+1) + '-' + this.a.add0(this.today.getDate());
-    if( this._data.future ) {
+    if( this.data.future ) {
       this.date_begin = now;
-    } else if ( this._data.past ) {
+    } else if ( this.data.past ) {
       let _begin = new Date(this.today.getTime() - 24*60*60*1000 * this.a.DEFAULT_DAYS_TO_SHOW_ON_PAST_PAGE);
       this.date_begin = _begin.getFullYear() + '-' + this.a.add0(_begin.getMonth()+1) + '-' + this.a.add0(_begin.getDate());
       this.date_end = now;
     }
-    this.sessionSearch(this.request( this._data ));
+    this.sessionSearch(this.request( this.data ));
   }
 
   request( options = {} ) {
@@ -45,6 +49,8 @@ export class SessionList {
       orderby: 'date ASC, class_begin ASC'
     };
 
+    defaults['show_refund_in_progress'] = this.show_refund_in_progress;
+    defaults['show_refunded'] = this.show_refunded;
     if( this.show_teacher > 0 ) defaults['idx_teacher'] = this.show_teacher;
     if( this.date_begin ) {
       defaults['date_begin']= this.date_begin.replace(/\-/g, '');
@@ -81,12 +87,13 @@ export class SessionList {
   }
 
   onChangeSearchOption() {
-    this.sessionSearch(this.request( this._data ));
+    this.sessionSearch(this.request( this.data ));
   }
 
   sessionSearch( options ) {
     this.a.lms.session_search(options).subscribe(re => {
       console.log("Result of class_search(): ", re);
+      this.re = re;
       this.books = re['books'];
       this.my_teachers = re['my_teachers'];
     }, e => this.a.alert(e));

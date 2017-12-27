@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from '../../providers/app.service';
 
 @Component({
   selector: 'page-session-future',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 export class SessionFuturePage {
 
   constructor(
+    public a: AppService
   ) {
     console.log("Future Sessions");
   }

@@ -42,6 +42,7 @@
   "EDIT_PROFILE": "회원 정보 수정",
 
   "DONE": "완료",
+  "OK": "예",
   "CANCEL": "취소",
   "DELETE": "삭제",
   "LOGIN REQUIRED": "로그인을 하세요.",
@@ -106,4 +107,8 @@
   , "NOT RECOMMENED TEACHER": "비추천 강사"
   , "ALL TEACHER": "전체 강사"
   , "TEACHER LIST OPTIONS": "강사 검색 옵션"
+  , "SELECT TEACHER": "선생님 선택"
+  , "SELECT_TEACHER_TITLE": "선생님을 선택하세요."
+  , "PAST LIST PAGE": "지난수업"
+  , "RESERVATION LIST PAGE": "예약된수업"
 }

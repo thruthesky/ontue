@@ -319,7 +319,7 @@ export class AppService {
 
         this.translate.use(this.getUserLanguage());
 
-        this.translate.get(['HTTP_ERROR', 'HTTP_ERROR_DESC']).subscribe(re => {
+        this.translate.get(['HTTP_ERROR', 'HTTP_ERROR_DESC', "SELECT_TEACHER_TITLE"]).subscribe(re => {
             this.i18n = re;
         });
 
@@ -358,14 +358,14 @@ export class AppService {
     }
 
     add0(n: number): string {
-      if (!n) return;
-      return n < 10 ? '0' + n : n.toString();
+        if (!n) return;
+        return n < 10 ? '0' + n : n.toString();
     }
 
     getYoutubeID(url) {
-        if ( ! url ) return '';
+        if (!url) return '';
         let arr = url.split('v=');
-        if ( arr.length == 1 ) return '';
+        if (arr.length == 1) return '';
         let rest = arr[1].split('&');
         return rest[0];
     }
@@ -380,17 +380,25 @@ export class AppService {
     }
 
 
-  countStar( grade ) {
-    let re = Array( parseInt(grade) ).fill(true);
-    return re;
-  }
+    countStar(grade) {
+        let re = Array(parseInt(grade)).fill(true);
+        return re;
+    }
 
-  countEmptyStar( grade ) {
-    let re = Array( 5 - parseInt(grade) ).fill(true);
-    return re;
-  }
+    countEmptyStar(grade) {
+        let re = Array(5 - parseInt(grade)).fill(true);
+        return re;
+    }
 
 
-  
+    /**
+     * Return teacher name after sanitizing it.
+     * @param name Teacher name
+     */
+    preTeacherName(name) {
+        if (!name) return 'No Name';
+        if (name.length > 8) name = name.substr(0, 8);
+        return name;
+    }
 
 }

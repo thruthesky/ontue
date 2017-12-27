@@ -1,10 +1,31 @@
-<ion-header>
-  <header-content></header-content>
-</ion-header>
 
-<ion-content padding>
-  <session-list
-    [textTitle]=" 'Past Reservation' "
-    [_data]=" {past:true} "
-  ></session-list>
-</ion-content>
+
+<ion-header>
+    <header-content></header-content>
+   </ion-header>
+   <ion-content>
+    <div class="page">
+      <hook-content-top></hook-content-top>
+       <section class="page-header d-flex justify-content-between">
+         <h2 class="title">{{ "PAST LIST PAGE" | translate }}</h2>
+         <div class="d-flex">
+            <div class="mr-3 pointer" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
+            
+            <div class="pointer" (click)=" showOptions = !showOptions ">
+                <ion-icon name="options"></ion-icon> {{ "OPTIONS" | translate }}
+            </div>
+            
+
+         </div>
+       </section>
+       <section class="page-body">
+          <session-list
+          [showOptions]=" showOptions "
+          [data]="{past:true}"
+        ></session-list>
+       </section>
+      <hook-content-bottom></hook-content-bottom>
+    </div><!--/page-->
+   </ion-content>
+
+   
