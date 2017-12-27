@@ -29,12 +29,12 @@ export class SessionList {
 
 
   ngOnInit() {
-    console.log("this.data:: ", this._data);
     let now =  this.today.getFullYear() + '-' + this.a.add0(this.today.getMonth()+1) + '-' + this.a.add0(this.today.getDate());
     if( this._data.future ) {
       this.date_begin = now;
     } else if ( this._data.past ) {
-      this.date_begin = now;
+      let _begin = new Date(this.today.getTime() - 24*60*60*1000 * this.a.DEFAULT_DAYS_TO_SHOW_ON_PAST_PAGE);
+      this.date_begin = _begin.getFullYear() + '-' + this.a.add0(_begin.getMonth()+1) + '-' + this.a.add0(_begin.getDate());
       this.date_end = now;
     }
     this.sessionSearch(this.request( this._data ));
