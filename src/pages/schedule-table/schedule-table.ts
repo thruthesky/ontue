@@ -373,6 +373,7 @@ export class ScheduleTablePage {
   // }
   playTeacherYoutube() {
     const ID =  this.a.getYoutubeID( this.re.teacher['youtube_video_url'] );
+    if ( ! ID ) return this.a.alert('본 강사는 유튜브 동영상을 등록하지 않았습니다.');
     if ( this.a.isCordova ) {
       this.youtube.openVideo( ID );
     }

@@ -354,7 +354,9 @@ export class AppService {
     }
 
     getYoutubeID(url) {
+        if ( ! url ) return '';
         let arr = url.split('v=');
+        if ( arr.length == 1 ) return '';
         let rest = arr[1].split('&');
         return rest[0];
     }

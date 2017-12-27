@@ -18,18 +18,18 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <!-- cordova.js required for cordova apps -->
-  <!-- <script src="cordova.js"></script> -->
+  <script src="cordova.js"></script>
 
 
   <script>
     var url_backend;
     url_backend = 'https://sonub.com:8443';
-    url_backend = 'https://www.ontue.com';
-    if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(() => console.log('service worker installed'))
-      .catch(err => console.error('Error', err));
-    }
+    // url_backend = 'https://www.ontue.com';
+    // if ('serviceWorker' in navigator) {
+    // navigator.serviceWorker.register('service-worker.js')
+    //   .then(() => console.log('service worker installed'))
+    //   .catch(err => console.error('Error', err));
+    // }
 
   </script>
 
@@ -55,9 +55,10 @@
 
 
   <script defer src="assets/font-awesome/fa-light.min.js"></script>
+  <script defer src="assets/font-awesome/fa-brands.min.js"></script>
   <script defer src="assets/font-awesome/fontawesome.min.js"></script>
 
-  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+  <script defer src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 
 
