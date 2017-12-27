@@ -177,7 +177,6 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-
     PaymentHistoryPage,
     EvaluateView,
     PaymentReceipt,
