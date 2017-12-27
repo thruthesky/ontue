@@ -27,11 +27,13 @@ import { PostPage } from '../pages/post/post';
 import { AddSchedule } from '../components/add-schedule/add-schedule';
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
 import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
-import { ReservationPage } from '../pages/reservation/reservation';
 
 import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
 import { TeacherCurriculumVitaePage } from '../pages/teacher-curriculum-vitae/teacher-curriculum-vitae';
+<<<<<<< HEAD
 
+=======
+>>>>>>> f685b31d48836a594d53c13a54f020d05e09746d
 import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';
@@ -42,7 +44,11 @@ import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
 
 
+import { SessionPastPage } from '../pages/session-past/session-past';
+
+
 import { PagePage } from '../pages/page/page';
+import {SessionFuturePage} from "../pages/session-future/session-future";
 
 @Component({
   templateUrl: 'app.html'
@@ -62,11 +68,11 @@ export class MyApp {
     this.a.initTranslate();
 
     platform.ready().then(() => {
-      
+
       statusBar.styleDefault();
       splashScreen.hide();
       this.a.platform = platform;
-    
+
     });
 
   }
@@ -98,8 +104,6 @@ export class MyApp {
 
     this.a.pages['schedule-table'] = ScheduleTablePage;
 
-    this.a.pages['reservation'] = ReservationPage;
-
     this.a.pages['dayoff'] = TeacherDayoffPage;
     this.a.pages['message'] = MessagePage;
 
@@ -115,12 +119,14 @@ export class MyApp {
 
     this.a.pages['teacher-curriculum-vitae'] = TeacherCurriculumVitaePage;
 
-
     this.a.pages['evaluate-view'] = EvaluateView;
     this.a.pages['payment-receipt'] = PaymentReceipt;
 
 
     this.a.pages['page'] = PagePage;
+
+    this.a.pages['session-past'] = SessionPastPage;
+    this.a.pages['session-future'] = SessionFuturePage;
 
     setTimeout(() => this.test(), 100);
 
@@ -129,7 +135,6 @@ export class MyApp {
   test() {
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
-    // this.a.open('teacher-list-video');
     // this.a.open('payment-history');
 
     // this.a.open('schedule-edit');
@@ -178,6 +183,9 @@ export class MyApp {
     // this.a.open('intro');
 
     // this.a.open('home');
+
+    this.a.open('session-past');
+    // this.a.open('session-future');
 
 
   }

@@ -14,7 +14,7 @@ export class MenuPage {
     public a: AppService
   ) {
 
-      this.date_today = this.today.getFullYear() + '-' + this.add0(this.today.getMonth()+1) + '-' + this.add0(this.today.getDate());
+      this.date_today = this.today.getFullYear() + '-' + this.a.add0(this.today.getMonth()+1) + '-' + this.a.add0(this.today.getDate());
 
 
     // test

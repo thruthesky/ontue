@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AppService } from '../../providers/app.service';
-import { ModalController, NavParams} from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { EvaluateView} from '../../components/evaluate-view/evaluate-view';
 
 
@@ -9,38 +9,41 @@ import { EvaluateView} from '../../components/evaluate-view/evaluate-view';
   templateUrl: 'session-list.html'
 })
 export class SessionList {
+  @Input() _data: {past:false;future:false};
+  @Input() textTitle: string = 'Reservation';
+
   books = [];
   my_teachers = [];
   show_teacher: number = 0;
-
-
   my_point;
-
-
   date_begin = null;
   date_end = null;
-
-
+  today = new Date();
   constructor(
-    navParams: NavParams,
     public a: AppService,
     public modalCtrl: ModalController,
   ) {
     this.a.loadMyPoint( p => this.my_point = p );
-
-    this.sessionSearch(this.request( navParams.data ));
     this.updatePoint();
+  }
 
 
-
+  ngOnInit() {
+    console.log("this.data:: ", this._data);
+    let now =  this.today.getFullYear() + '-' + this.a.add0(this.today.getMonth()+1) + '-' + this.a.add0(this.today.getDate());
+    if( this._data.future ) {
+      this.date_begin = now;
+    } else if ( this._data.past ) {
+      this.date_begin = now;
+      this.date_end = now;
+    }
+    this.sessionSearch(this.request( this._data ));
   }
 
   request( options = {} ) {
     let defaults = {
       orderby: 'date ASC, class_begin ASC'
     };
-
-
 
     if( this.show_teacher > 0 ) defaults['idx_teacher'] = this.show_teacher;
     if( this.date_begin ) {
@@ -78,7 +81,7 @@ export class SessionList {
   }
 
   onChangeSearchOption() {
-    this.sessionSearch( this.request() );
+    this.sessionSearch(this.request( this._data ));
   }
 
   sessionSearch( options ) {

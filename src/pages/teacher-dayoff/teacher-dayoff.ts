@@ -16,7 +16,7 @@ export class TeacherDayoffPage {
     today = new Date();
     constructor(public a: AppService) {
 
-      this.date = this.today.getFullYear() + '-' + this.add0(this.today.getMonth()+1) + '-' + this.add0(this.today.getDate());
+      this.date = this.today.getFullYear() + '-' + this.a.add0(this.today.getMonth()+1) + '-' + this.a.add0(this.today.getDate());
 
         this.loadDayoffs();
 
@@ -47,10 +47,7 @@ export class TeacherDayoffPage {
         }, e => this.a.alert(e) );
     }
 
-    add0(n: number): string {
-      if (!n) return;
-      return n < 10 ? '0' + n : n.toString();
-    }
+
 
 }
 
