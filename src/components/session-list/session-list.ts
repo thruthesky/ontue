@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { AppService } from '../../providers/app.service';
 import { ModalController, NavParams} from 'ionic-angular';
 import { EvaluateView} from '../../components/evaluate-view/evaluate-view';
