@@ -1,10 +1,4 @@
-<ion-header>
-  <header-content></header-content>
-</ion-header>
-
-<ion-content padding>
-
-  <h1>My Reservation</h1>
+<h1>My Reservation</h1>
 
   {{ a.user.name }} You are {{ a.userType }}! , My Points:
   <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
@@ -58,24 +52,6 @@
   </button>
   <hr>
 
-
-  <!--<div>-->
-  <!--<ion-list>-->
-  <!--<ion-item>Session No. {{ session?.idx }}</ion-item>-->
-  <!--<ion-item>Point: {{ session?.point }}</ion-item>-->
-  <!--<ion-item>Teacher Name: {{ session?.point }}</ion-item>-->
-  <!--<ion-item>Date: {{level}}</ion-item>-->
-  <!--<ion-item>Expression: {{ session?.expression }}</ion-item>-->
-  <!--<ion-item>Vocabulary: {{ session?.vocabulary }}</ion-item>-->
-  <!--<ion-item>Grammar: {{ session?.grammar }}</ion-item>-->
-  <!--<ion-item>Pronunciation: {{ session?.pronunciation }}</ion-item>-->
-  <!--<ion-item>Speed of Speech: {{ session?.speed }}</ion-item>-->
-  <!--<ion-item><span text-wrap>Comment: {{ session?.comment }}</span></ion-item>-->
-  <!--<ion-item><span text-wrap>Book(Page) used in the session: {{ session?.book_used }}</span></ion-item>-->
-  <!--<ion-item><span text-wrap>Book(Page) will be used in next session: {{ session?.book_next }}</span></ion-item>-->
-  <!--</ion-list>-->
-
-  <!--</div>-->
 
   <table class="books" *ngIf=" books.length ">
     <tr>
@@ -149,6 +125,3 @@
     </tr>
   </table>
 
-
-
-</ion-content>
