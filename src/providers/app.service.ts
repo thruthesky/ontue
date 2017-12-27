@@ -13,6 +13,10 @@ import { FileService } from "../angular-xapi/file.service";
 @Injectable()
 export class AppService {
 
+
+    DEFAULT_DAYS_TO_SHOW_ON_PAST_PAGE = 90; // 90 days.
+
+
     test = {
         register: false,
         login: false

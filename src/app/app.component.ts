@@ -30,10 +30,6 @@ import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
 
 import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
 import { TeacherCurriculumVitaePage } from '../pages/teacher-curriculum-vitae/teacher-curriculum-vitae';
-<<<<<<< HEAD
-
-=======
->>>>>>> f685b31d48836a594d53c13a54f020d05e09746d
 import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';

@@ -38,10 +38,6 @@ import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
 
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
-<<<<<<< HEAD
-
-=======
->>>>>>> f685b31d48836a594d53c13a54f020d05e09746d
 import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
 
 
@@ -178,10 +174,7 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-<<<<<<< HEAD
     
-=======
->>>>>>> f685b31d48836a594d53c13a54f020d05e09746d
     PaymentHistoryPage,
     EvaluateView,
     PaymentReceipt,
