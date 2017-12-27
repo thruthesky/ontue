@@ -14,6 +14,13 @@ export class HomePage {
   showMoreMyOwnPlan_1 = false;
   showMoreMyOwnPlan_2 = false;
   showMoreMyOwnPlan_3 = false;
+  moreAboutKatalkEnglish = false;
+
+  moreAbout1 = false;
+  moreAbout2 = false;
+  moreAbout3 = false;
+  moreAbout4 = false;
+  
   constructor(
     public navCtrl: NavController,
     public a: AppService
@@ -52,6 +59,16 @@ export class HomePage {
   }
 
 
+  showMoreAboutKatalkEnglish() {
+
+    this.moreAboutKatalkEnglish = true;
+
+    setTimeout( () => this.moreAbout1 = true, 100 );
+    setTimeout( () => this.moreAbout2 = true, 1000 );
+    setTimeout( () => this.moreAbout3 = true, 2000 );
+    setTimeout( () => this.moreAbout4 = true, 3000 );
+
+  }
 
 
 }
