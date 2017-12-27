@@ -31,7 +31,7 @@ import { ReservationPage } from '../pages/reservation/reservation';
 
 import { TeacherDayoffPage } from '../pages/teacher-dayoff/teacher-dayoff';
 import { TeacherCurriculumVitaePage } from '../pages/teacher-curriculum-vitae/teacher-curriculum-vitae';
-import { TeacherListVideoPage } from '../pages/teacher-list-video/teacher-list-video';
+
 import { MessagePage } from '../pages/message/message';
 
 import { EvaluatePage } from '../pages/evaluate/evaluate';
@@ -114,7 +114,7 @@ export class MyApp {
     // this.a.pages['intro'] = IntroPage;
 
     this.a.pages['teacher-curriculum-vitae'] = TeacherCurriculumVitaePage;
-    this.a.pages['teacher-list-video'] = TeacherListVideoPage;
+
 
     this.a.pages['evaluate-view'] = EvaluateView;
     this.a.pages['payment-receipt'] = PaymentReceipt;

@@ -47,8 +47,8 @@ export class HomePage {
 
   showMoreMyOwnPlan() {
     setTimeout( () => this.showMoreMyOwnPlan_1 = true, 100 );
-    setTimeout( () => this.showMoreMyOwnPlan_2 = true, 250 );
-    setTimeout( () => this.showMoreMyOwnPlan_3 = true, 400 );
+    setTimeout( () => this.showMoreMyOwnPlan_2 = true, 300 );
+    setTimeout( () => this.showMoreMyOwnPlan_3 = true, 500 );
   }
 
 

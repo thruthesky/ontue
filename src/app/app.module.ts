@@ -38,7 +38,7 @@ import { LoginPage } from '../pages/login/login';
 import { MenuPage } from '../pages/menu/menu';
 
 import { TeacherListPage } from '../pages/teacher-list/teacher-list';
-import { TeacherListVideoPage } from '../pages/teacher-list-video/teacher-list-video';
+
 import { ScheduleTablePage } from '../pages/schedule-table/schedule-table';
 import { ReservationPage } from '../pages/reservation/reservation';
 
@@ -125,7 +125,6 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-    TeacherListVideoPage,
     PaymentHistoryPage,
     EvaluateView,
     PaymentReceipt,
@@ -174,7 +173,7 @@ export function createTranslateLoader(http: HttpClient) {
     PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
-    TeacherListVideoPage,
+    
     PaymentHistoryPage,
     EvaluateView,
     PaymentReceipt,

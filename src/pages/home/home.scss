@@ -1,8 +1,3 @@
-@keyframes a1234 {
-    from { left: 100%; }
-    to { left: 0; }
-}
-
 page-home {
   .stats {
     .item {
@@ -44,11 +39,30 @@ page-home {
       padding: 0!important;
     }
   }
+  @keyframes a1234 {
+    from {
+      left: 100%;
+    }
+    to {
+      left: 0;
+    }
+  }
   .moreMyOwnPlan {
-    animation: a1234 .5s 1;
+    animation: a1234 .2s 1;
+    animation-timing-function: ease-in;
     position: relative;
-    margin: .25em 0;
-    width: 100%;
-    background-color: rgb(105, 119, 179);
+    margin: 0 .25em .75em;
+    padding: 1em;
+    box-sizing: border-box;
+    color: white;
+    &.no1 {
+      background-color: rgb(57, 91, 105);  
+    }
+    &.no2 {
+      background-color: #d8aa02;  
+    }
+    &.no3 {
+      background-color: rgb(136, 63, 41);  
+    }
   }
 }
