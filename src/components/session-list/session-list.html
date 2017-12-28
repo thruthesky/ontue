@@ -64,11 +64,11 @@
 
 
   <section class="list-information" *ngIf=" re ">
-    Total: {{ re.total }} sessions.
-    <br> Searched: {{ re.books.length }} sessions.
-    <br> Total Point: 1234567 points.
-    <br> Refunded: xxx sessions.
-    <br> In process of refund: xxx sessions.
+    Total: {{ re.total_sessions }} sessions.
+    <br> Searched: {{ books.length }} sessions.
+    <br> Total Point: {{re.total_points}} points.
+    <br> Refunded: {{re.total_session_refunded}} sessions.
+    <br> In process of refund: {{re.total_session_refund_in_progress}} sessions.
     <br>
   </section>
 
@@ -98,7 +98,7 @@
             <button ion-button (click)=" a.open('evaluate', {idx: book.idx}) ">Evaluate</button>
 
             <ng-container *ngIf=" rejected( book ) ">
-              <span class="alert alert-warning">Point Refuned Request Rejected</span>
+              <span class="alert alert-warning">Point Refund Request Rejected</span>
             </ng-container>
 
             <ng-container *ngIf=" ! rejected( book ) ">
@@ -118,7 +118,7 @@
 
 
             <ng-container *ngIf=" rejected( book ) ">
-              <span class="alert alert-warning">Point Refuned Request Rejected</span>
+              <span class="alert alert-warning">Point Refund Request Rejected</span>
             </ng-container>
 
             <ng-container *ngIf=" ! rejected( book ) ">
