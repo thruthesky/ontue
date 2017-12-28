@@ -409,6 +409,7 @@ export class AppService {
      * 1. if any one(even if the user is student) access ontue.com site, app will show teacher theme.
      * 2. domain is not ontue.com ( may be user is in other domain or using app )
      *      => depending on login user type, it returns true/false
+     *      => Teacher may access 'localhost' or app. so, if a user logs in as a teacher, app must show teacher theme.
      * 3. domain is not ontue.com and user is not logged in
      *      => return true.
      */

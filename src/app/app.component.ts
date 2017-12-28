@@ -60,16 +60,13 @@ export class MyApp {
     splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService
-    // private youtube: YoutubeVideoPlayer
   ) {
     this.a.initTranslate();
 
     platform.ready().then(() => {
-
       statusBar.styleDefault();
       splashScreen.hide();
       this.a.platform = platform;
-
     });
 
   }
