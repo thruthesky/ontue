@@ -39,6 +39,7 @@ export class AppService {
 
 
     platform = null;
+    hostname = window.location.hostname;
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -399,6 +400,26 @@ export class AppService {
         if (!name) return 'No Name';
         if (name.length > 8) name = name.substr(0, 8);
         return name;
+    }
+
+
+    /**
+     * Return true if the app should display student theme.
+     * 
+     * 1. if any one(even if the user is student) access ontue.com site, app will show teacher theme.
+     * 2. domain is not ontue.com ( may be user is in other domain or using app )
+     *      => depending on login user type, it returns true/false
+     * 3. domain is not ontue.com and user is not logged in
+     *      => return true.
+     */
+    get studentTheme() {
+        if ( this.hostname == "ontue.com" || this.hostname == 'www.ontue.com') return false;
+        else if ( this.lms.getUserType() == "student" ) return true;
+        else if ( this.lms.getUserType() == "teacher" ) return false;
+        else return true;
+    }
+    get teacherTheme() {
+        return ! this.studentTheme;
     }
 
 }

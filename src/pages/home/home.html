@@ -6,11 +6,10 @@
   <div class="page">
     <hook-content-top></hook-content-top>
 
-    <ion-grid class="p-0" *ngIf=" a.lms.getUserType() != 'teacher' ">
+    <ion-grid class="p-0" *ngIf=" a.studentTheme ">
       <!-- Student RWD Grid -->
       <ion-row>
         <ion-col class="left pr-sm-2 p-0" col-12 col-sm-6>
-
 
           <div class="mb-5">
             <intro-component></intro-component>
@@ -201,15 +200,11 @@
 
 
 
-    <ng-container *ngIf=" a.lms.getUserType() == 'teacher' ">
+    <ng-container *ngIf=" a.teacherTheme ">
       <page name="ontue.reminders"></page>
       <page name="ontue.policy"></page>
       <page name="ontue.guideline"></page>
     </ng-container>
-
-
-
-
 
     <login-box-component *ngIf="a.user.isLogout"></login-box-component>
 
