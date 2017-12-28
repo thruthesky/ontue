@@ -1,23 +1,28 @@
-
 <ion-header>
-    <header-content></header-content>
-   </ion-header>
-   <ion-content>
-    <div class="page">
-      <hook-content-top></hook-content-top>
-       <section class="page-header">
-         <h2 class="title">{{ "RESERVATION LIST PAG" | translate }}</h2>
+  <header-content></header-content>
+</ion-header>
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+    <section class="page-header d-flex justify-content-between">
+      <h2 class="title">{{ "RESERVATION LIST PAGE" | translate }}</h2>
 
-         <div class="" (click)=" a.open('session-past') ">{{ "PAST LIST PAGE " | translate }}</div>
-         <ion-icon name="options"></ion-icon>
-       </section>
-       <section class="page-body">
-          <session-list
-          [data]="{future:true}"
-        ></session-list>
-       </section>
-      <hook-content-bottom></hook-content-bottom>
-    </div><!--/page-->
-   </ion-content>
+      <div class="d-flex">
+        <div class="mr-3 pointer" (click)=" a.open('session-past') ">{{ "PAST LIST PAGE" | translate }}</div>
 
-   
+        <div class="pointer" (click)=" showOptions = !showOptions ">
+          <ion-icon name="options"></ion-icon>
+          {{ "OPTIONS" | translate }}
+        </div>
+      </div>
+    </section>
+    <section class="page-body">
+      <session-list
+        [showOptions]=" showOptions "
+        [data]="{future:true}"
+      ></session-list>
+    </section>
+    <hook-content-bottom></hook-content-bottom>
+  </div><!--/page-->
+</ion-content>
+
