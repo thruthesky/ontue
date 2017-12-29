@@ -1,4 +1,4 @@
-import { Component, ViewChild, } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from './../../providers/app.service';
 import { NavParams } from "ionic-angular";
@@ -66,6 +66,9 @@ export class ScheduleTablePage {
   time = null;
   timer = null;
   urlYoutube = null;
+
+  no_of_schedules = 0;
+  no_of_schedule_limit = 0;
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -99,6 +102,14 @@ export class ScheduleTablePage {
       });
 
     this.updateTime();
+  }
+
+
+  // Wait until the view inits before disconnecting
+  ngAfterViewInit() {
+    // Since we know the list is not going to change
+    // let's request that this component not undergo change detection at all
+    // this.cdr.detach();
   }
 
 
@@ -155,7 +166,7 @@ export class ScheduleTablePage {
       days: this.days,
       min_duration: this.min_duration,
       max_duration: this.max_duration,
-      limit: 1000,
+      // limit: 10000, // Leave default to backend.
       navigate: 'today',
       starting_day: this.re.starting_day,
       display_weekends: this.displayWeekends ? 'Y' : 'N',
@@ -188,7 +199,10 @@ export class ScheduleTablePage {
 
   displayScheduleTable(re) {
     console.log(re);
-    this.re = re;
+    /// 시간표 속도 : https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.xxaqipe33arp
+    this.no_of_schedules = re.no_of_schedules;
+    this.no_of_schedule_limit = re.no_of_schedule_limit;
+    setTimeout( () => this.re = re, 50 );
   }
   displaySession() {
   }
@@ -326,7 +340,11 @@ export class ScheduleTablePage {
   updatePoint() {
 
     if (this.a.user.isLogin) {
-      this.a.loadMyPoint(p => this.my_point = p);
+      this.a.loadMyPoint(p => {
+        this.my_point = p;
+        // this.cdr.detectChanges();
+      });
+      
     }
 
 
