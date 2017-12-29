@@ -345,15 +345,32 @@ export class AppService {
     /**
      * Returns number from a string.
      * @param n number
+     * 
+     * 
      */
     toInt(n: any) {
-        if (typeof n == 'string') {
-            return parseInt(n);
+        try {
+            return parseInt( n );
         }
-        else if (typeof n == 'number') {
-            return n;
+        catch ( e ) {
+            return 0;
         }
-        else {
+        // if (typeof n == 'string') {
+        //     return parseInt(n);
+        // }
+        // else if (typeof n == 'number') {
+        //     return n;
+        // }
+        // else {
+        //     return 0;
+        // }
+    }
+
+    toFloat( n ) {
+        try {
+            return parseFloat( n );
+        }
+        catch( e ) {
             return 0;
         }
     }

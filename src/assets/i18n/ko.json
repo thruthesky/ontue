@@ -76,7 +76,7 @@
   "saturday": "토",
 
   "LOGIN_BEFORE_PAYMENT": "앗! 수업료 결제하기 전에 먼저 로그인을 해 주세요.",
-  "NOTE_TAX_EXCLUSIVE": "세금은 포함되지 않았으며 별도 지불해야합니다.",
+  "NOTE_TAX_EXCLUSIVE": "세금은 별도이며 지불하는 금액의 8%입니다.",
   
 
   "ALL SCHEDULE TABLE": "전체 시간표",
