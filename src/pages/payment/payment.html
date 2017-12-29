@@ -5,35 +5,38 @@
   <div class="page">
     <hook-content-top></hook-content-top>
 
+
     <h1>수업료 결제</h1>
 
-    자유 예약 시스템입니다. 원하는 만큼 결제하고 원하는 만큼 수업하세요.
+    원하는 만큼 결제하고 원하는 만큼 수업하세요.
 
+    <section class="alert alert-warning rounded-0 my-2 p-3" *ngIf=" errorOnExchangeRate ">
+      앗, 환율 책정 문제 발생하여 결제를 할 수 없습니다. 관리자에게 알려주세요.
+    </section>
 
     <div class="alert alert-warning" *ngIf="a.user.isLogout">{{ 'LOGIN_BEFORE_PAYMENT' | translate }}</div>
 
-
-
-    <select name="amount" [(ngModel)]="amount" *ngIf="paypal_ready">
-      <option value="1000">1,000 원</option>
-      <option value="2000">2,000 원</option>
-      <option value="5000">5,000 원</option>
-      <option value="10000">10,000 원</option>
-      <option value="20000">20,000 원</option>
-      <option value="30000">30,000 원</option>
-      <option value="50000">50,000 원</option>
-      <option value="100000">100,000 원</option>
-      <option value="200000">200,000 원</option>
-      <option value="300000">300,000 원</option>
-      <option value="500000">500,000 원</option>
-    </select>
-
-
+    <div *ngIf=" ! errorOnExchangeRate ">
+        <select name="amount" [(ngModel)]="amount" *ngIf="paypal_ready">
+            <option value="1000">1,000 원</option>
+            <option value="2000">2,000 원</option>
+            <option value="5000">5,000 원</option>
+            <option value="10000">10,000 원</option>
+            <option value="20000">20,000 원</option>
+            <option value="30000">30,000 원</option>
+            <option value="50000">50,000 원</option>
+            <option value="100000">100,000 원</option>
+            <option value="200000">200,000 원</option>
+            <option value="300000">300,000 원</option>
+            <option value="500000">500,000 원</option>
+          </select>
+    </div>
 
     <button id="paypal-button"></button>
 
-    <div class="alert alert-info">
-      {{ 'NOTE_TAX_EXCLUSIVE' | translate }}
+    <div class="alert alert-info" *ngIf=" amount_in_usd_with_tax() ">
+      {{ amount }} 원 결제(세금 {{ payment_rate.paypal_student_fee }} 별도)를 선택하였습니다.
+      결제는 미국 달러로 진행되며 약 {{ amount_in_usd_with_tax() }} 달러(세금 포함)가 결제됩니다.
     </div>
 
     <div class="alert alert-info">

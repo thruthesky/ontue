@@ -389,4 +389,8 @@ export class LMSService extends Base {
         });
     }
 
+    payment_rate() {
+        return this.x.post({ route: 'lms.payment_rate'} );
+    }
+
 }
