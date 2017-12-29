@@ -140,7 +140,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    // this.a.open('schedule-table');
+    this.a.open('schedule-table');
 
     // this.a.open('schedule-table', { ID: 809 });
 
@@ -168,7 +168,7 @@ export class MyApp {
     // this.a.open('evaluate-view', {idx: 9707} );
 
 
-    this.a.open('payment');
+    // this.a.open('payment');
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 
