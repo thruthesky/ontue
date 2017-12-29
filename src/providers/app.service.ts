@@ -382,12 +382,16 @@ export class AppService {
 
 
     countStar(grade) {
-        let re = Array(parseInt(grade)).fill(true);
+        grade = parseInt(grade);
+        if ( grade >= 5 ) grade = 5;
+        let re = Array(grade).fill(true);
         return re;
     }
 
     countEmptyStar(grade) {
-        let re = Array(5 - parseInt(grade)).fill(true);
+        grade = parseInt(grade);
+        if ( grade >= 5 ) grade = 5;
+        let re = Array(5 - grade).fill(true);
         return re;
     }
 

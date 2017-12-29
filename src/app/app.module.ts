@@ -62,6 +62,7 @@ import { SessionFuturePage } from '../pages/session-future/session-future';
 
 import { PasswordChangePage } from '../pages/password-change/password-change';
 
+import { ScheduleAvailablePage } from '../pages/schedule-available/schedule-available';
 
 
 
@@ -136,7 +137,8 @@ export function createTranslateLoader(http: HttpClient) {
     SessionList,
     SessionPastPage,
     SessionFuturePage,
-    PasswordChangePage
+    PasswordChangePage,
+    ScheduleAvailablePage
   ],
   imports: [
     BrowserModule,
@@ -186,7 +188,8 @@ export function createTranslateLoader(http: HttpClient) {
     SessionList,
     SessionPastPage,
     SessionFuturePage,
-    PasswordChangePage
+    PasswordChangePage,
+    ScheduleAvailablePage
   ],
 
   providers: [

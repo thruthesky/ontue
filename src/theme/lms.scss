@@ -12,7 +12,7 @@
 
 .grade {
     font-size: 1.25rem;
-    &[grade="5"] {
+    &[grade="5"],&[grade="6"],&[grade="7"],&[grade="8"] {
         color: rgb(240, 96, 0);
     }
     &[grade="4"] {

@@ -166,7 +166,7 @@
                       </div>
                     </div>
                     <div class="text-center mt-1 mb-3">
-                      <div>{{ a.preTeacherName( teacher.display_name )}}</div>
+                      <div>{{ a.preTeacherName( teacher.name )}}</div>
                       <div class="grade" [attr.grade]=" teacher.grade ">
                         추천:
                         <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>

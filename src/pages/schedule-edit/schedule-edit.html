@@ -11,6 +11,7 @@
 
 
 
+  Your No.: {{ a.user.id }}
   Your timezone: {{ timezone_name }}
   and your time is now: {{ time }}<br>
   <!-- {{ schedules | json }} -->
@@ -22,6 +23,7 @@
 
   <table class="schedule" *ngIf=" data ">
     <tr>
+      <td>No.</td>
         <td>Time</td>
         <td>Sun</td>
         <td>Mon</td>
@@ -33,6 +35,7 @@
         <td>Action</td>
     </tr>
     <tr *ngFor="let s of data.schedules">
+      <td>{{ s.idx }}</td>
       <td>{{s.user_time_class_begin}}</td>
       <td><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
       <td><div *ngIf="s.user_time_days.monday">{{s.prere}} {{s.point}}</div></td>

@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 import { Base } from './base';
 
 export interface SCHEDULE_EDIT extends DAYS {
-    idx?:number;
+    idx?: number;
     point: number;
     prere: string;
     class_begin_hour: number;
@@ -53,7 +53,7 @@ export interface TEACHER_LIST {
     ID: number;
     bookable_time: number;
     class_id: string;
-    display_name: string;
+    name: string;
     age: number;
     grade: number;
     list_order: number;
@@ -176,7 +176,7 @@ export class LMSService extends Base {
      * Returns user Date object.
      * @param offset timezone offset
      */
-    userDate( offset ) {
+    userDate(offset) {
         const d = new Date();
         const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
         return new Date(utc + (3600000 * offset));
@@ -190,7 +190,7 @@ export class LMSService extends Base {
         // console.log('offset: ', offset);
         return this.userDate(offset).toLocaleString();
     }
-    
+
 
     my_schedules(): Observable<any> {
         let data = {
@@ -223,17 +223,17 @@ export class LMSService extends Base {
 
 
 
-    session_reserve( data ) {
+    session_reserve(data) {
         data['route'] = 'lms.session_reserve';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
-    session_cancel( idx_reservation ) {
+    session_cancel(idx_reservation) {
         let data = { idx_reservation: idx_reservation };
         data['route'] = 'lms.session_cancel';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
 
@@ -249,97 +249,97 @@ export class LMSService extends Base {
         let data = {};
         data['route'] = 'lms.my_point';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
     get_dayoffs() {
         let data = {};
         data['route'] = 'lms.dayoff_get';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
 
-    set_dayoff( date ) {
+    set_dayoff(date) {
         let data = { route: 'lms.dayoff_set', session_id: this.user.sessionId, date: date };
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
-    delete_dayoff( date ) {
+    delete_dayoff(date) {
         let data = { route: 'lms.dayoff_delete', session_id: this.user.sessionId, date: date };
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
 
-    message( data ) {
+    message(data) {
         data['route'] = 'lms.message';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
-    message_opened( idx ) {
-      let data = {
-        idx: idx,
-        route: 'lms.message_opened',
-        session_id: this.user.sessionId
-      };
-      return this.x.post( data );
+    message_opened(idx) {
+        let data = {
+            idx: idx,
+            route: 'lms.message_opened',
+            session_id: this.user.sessionId
+        };
+        return this.x.post(data);
     }
 
-    session_refund_request( data ) {
+    session_refund_request(data) {
         data['route'] = 'lms.session_refund_request';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
-    session_cancel_refund_request( idx ) {
+    session_cancel_refund_request(idx) {
         let data = {};
         data['route'] = 'lms.session_cancel_refund_request';
         data['session_id'] = this.user.sessionId;
         data['idx_reservation'] = idx;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
-    session_refund( idx ) {
+    session_refund(idx) {
         let data = {
             idx_reservation: idx,
             route: 'lms.session_refund',
             session_id: this.user.sessionId
         };
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
-    session_refund_reject( data ) {
+    session_refund_reject(data) {
         data['route'] = 'lms.session_refund_reject';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
 
-    payment_information_update( data ) {
+    payment_information_update(data) {
         data['route'] = 'lms.payment_information_update';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
     payment_information() {
         let data = {};
         data['route'] = 'lms.payment_information';
         data['session_id'] = this.user.sessionId;
-        return this.x.post( data );
+        return this.x.post(data);
     }
 
-    session_evaluate(data){
-      data['route'] = 'lms.session_evaluate';
-      data['session_id'] = this.user.sessionId;
-      console.log(data);
-      return this.x.post( data );
+    session_evaluate(data) {
+        data['route'] = 'lms.session_evaluate';
+        data['session_id'] = this.user.sessionId;
+        console.log(data);
+        return this.x.post(data);
     }
 
-    get_session_evaluation(idx){
-      let data = {};
-      data['route'] = 'lms.get_session_evaluation';
-      data['session_id'] = this.user.sessionId;
-      data['idx'] = idx;
-      return this.x.post( data );
+    get_session_evaluation(idx) {
+        let data = {};
+        data['route'] = 'lms.get_session_evaluation';
+        data['session_id'] = this.user.sessionId;
+        data['idx'] = idx;
+        return this.x.post(data);
 
     }
 
@@ -353,33 +353,40 @@ export class LMSService extends Base {
      * a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e.message));
      * @endcode
      */
-    page( req ) : any {
+    page(req): any {
         req['route'] = 'lms.page';
         console.log(req);
         return this.x.post(req)
-            .map( e => {
+            .map(e => {
                 const re = this.x.safe(e);
                 this.x.render(500);
                 return re;
-             } );
+            });
     }
 
     update_kakao_qrmark_string() {
-      let data = {};
-      data['route'] = 'lms.update_kakao_qrmark_string';
-      data['session_id'] = this.user.sessionId;
-      return this.x.post( data );
+        let data = {};
+        data['route'] = 'lms.update_kakao_qrmark_string';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post(data);
     }
 
     get_payment_history() {
-      let data = {};
-      data['route'] = 'lms.get_payment_history';
-      data['session_id'] = this.user.sessionId;
-      return this.x.post( data );
+        let data = {};
+        data['route'] = 'lms.get_payment_history';
+        data['session_id'] = this.user.sessionId;
+        return this.x.post(data);
     }
 
     stats() {
-        return this.x.post( { route: 'lms.stats' } );
+        return this.x.post({ route: 'lms.stats' });
+    }
+
+    schedule_available() {
+        return this.x.post({
+            route: 'lms.schedule_available',
+            session_id: this.user.sessionId
+        });
     }
 
 }

@@ -1,0 +1,65 @@
+<ion-header>
+  <header-content></header-content>
+</ion-header>
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+    <section class="page-header">
+      <h2 class="title">{{ "SCHEDULE AVAILABLE PAGE" | translate }}</h2>
+
+    </section>
+    <section class="page-body">
+
+      <div *ngIf=" pageInLoading; else pageLoaded ">
+        <ion-spinner></ion-spinner> {{ 'IN LOADING' | translate }}
+      </div>
+      <ng-template #pageLoaded>
+          <div>
+              <ion-grid *ngIf=" re ">
+                  <ion-row>
+                    <ion-col *ngFor="let schedule of re.available_schedules" col-4 col-md-4 col-lg-3>
+                      <div class="d-flex justify-content-center">
+                        <div class="teacher-profile-photo">
+                          <img src="{{ schedule.teacher.photoURL }}">
+                        </div>
+                      </div>
+                      <div class="text-center mt-1 mb-3">
+                        <div>{{ a.preTeacherName( schedule.teacher.name )}}</div>
+                        <div class="grade" [attr.grade]=" schedule.teacher.grade ">
+                          추천:
+                          <i class="star fas fa-star" *ngFor="let i of a.countStar(schedule.teacher.grade)"></i>
+                          <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(schedule.teacher.grade)"></i>
+          
+                        </div>
+                        <div>
+                          ({{ schedule.teacher.total_reservation }} 명 참여)
+                        </div>
+
+<div>
+  {{ schedule.user_time_class_begin }} for {{ schedule.duration }} minutes
+</div>
+                        <div>
+                            {{ schedule.point }} 포인트
+                          </div>
+
+                        <div class="alert alert-danger rounded-0 border-0 pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
+                            {{ 'RESERVE NOW' | translate }}
+                        </div>
+                        <div *ngIf=" loading[schedule.idx] ">
+                            <ion-spinner></ion-spinner> {{ 'IN RESERVING' | translate }}
+                        </div>
+
+                      </div>
+          
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+          </div>
+      </ng-template>
+      
+    </section>
+
+    <hook-content-bottom></hook-content-bottom>
+  </div>
+  <!--/page-->
+</ion-content>

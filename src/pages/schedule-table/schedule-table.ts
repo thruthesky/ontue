@@ -223,12 +223,12 @@ export class ScheduleTablePage {
    * @param session a session
    */
   teacher_name(session = null) {
+    let name = 'NoName';
     if (session) {
-      let name = this.schedule(session.idx_schedule).teacher.name;
-      if (name.length > 8) name = name.substr(0, 8);
-      return name;
+      name = this.schedule(session.idx_schedule).teacher.name;
     }
-    else return this.re.teacher.name;
+    else name = this.re.teacher['name'];
+    return this.a.preTeacherName( name );
   }
   teacher_photoURL(session = null) {
     if (session) return this.schedule(session.idx_schedule).teacher.photoURL;
@@ -287,7 +287,7 @@ export class ScheduleTablePage {
     console.log("reserve: schedule: ", schedule);
 
     session.in_progress = true;
-    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date, class_begin: schedule.class_begin }).subscribe(re => {
+    this.a.lms.session_reserve({ idx_schedule: session.idx_schedule, date: session.date }).subscribe(re => {
       console.log("class_reserve: ", re);
       session.in_progress = false;
       session.open = 'reserved';

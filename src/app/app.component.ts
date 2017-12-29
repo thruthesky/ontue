@@ -47,6 +47,9 @@ import { PagePage } from '../pages/page/page';
 import { SessionFuturePage } from "../pages/session-future/session-future";
 import { PasswordChangePage } from "../pages/password-change/password-change";
 
+import { ScheduleAvailablePage } from '../pages/schedule-available/schedule-available';
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -123,6 +126,9 @@ export class MyApp {
     this.a.pages['session-future'] = SessionFuturePage;
     this.a.pages['password-change'] = PasswordChangePage;
 
+    this.a.pages['schedule-available'] = ScheduleAvailablePage;
+
+
     setTimeout(() => this.test(), 100);
 
   }
@@ -180,9 +186,11 @@ export class MyApp {
     // this.a.open('home');
 
     // this.a.open('session-past');
-    // this.a.open('session-future');
+    this.a.open('session-future');
     // this.a.open('password-change');
 
+
+    // this.a.open('schedule-available');
 
   }
 

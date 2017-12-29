@@ -74,10 +74,10 @@
 
   <table class="books" *ngIf=" books.length ">
     <tr>
+        <td>Teacher</td>
       <td>Class No.</td>
       <td>Date</td>
       <td>Time</td>
-      <td>Teacher</td>
       <td>Student</td>
       <td>Point</td>
       <td></td>
@@ -85,11 +85,16 @@
     </tr>
 
     <tr *ngFor="let book of books; let i = index;">
+        <td>
+          <div class="pointer" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
+            <img class="d-block size-8" src="{{ book.teacher_photoURL }}">
+          {{book.teacher_name}}
+        </div>
+        </td>
       <td>{{book.idx}}</td>
       <td>{{book.date_display}}</td>
       <td>{{book.class_begin_display}}
         <br>{{book.duration}}mins</td>
-      <td>{{book.teacher_name}}</td>
       <td>{{book.student_name}}</td>
       <td>{{book.point}}</td>
       <td>
