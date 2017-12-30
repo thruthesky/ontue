@@ -13,7 +13,7 @@
       <ion-item-group>
         <ion-item>
           <ion-label>Select Date</ion-label>
-          <ion-datetime name="date" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
+          <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
         </ion-item>
       </ion-item-group>
 
