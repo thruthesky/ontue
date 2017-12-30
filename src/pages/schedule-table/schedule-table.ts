@@ -256,7 +256,7 @@ export class ScheduleTablePage {
       min_duration: this.min_duration,
       max_duration: this.max_duration,
       // limit: 10000, // Leave default to backend.
-      navigate: 'today',
+      navigate: this.navigate,
       starting_day: this.starting_day,
       display_weekends: this.displayWeekends ? 'Y' : 'N',
       min_point: this.min_point,
@@ -283,6 +283,7 @@ export class ScheduleTablePage {
     let opt = {};
     if (this.params.ID) opt['teachers'] = [this.params.ID];
     opt = this.request( opt );
+    // console.log(opt);
     this.status = "서버에 수업 스케쥴을 요청합니다.";
     this.a.lms.schedule_table(opt).subscribe(re => {
       this.displayScheduleTable(re);
@@ -320,7 +321,10 @@ export class ScheduleTablePage {
     this.in_displaying_schedule = true;
     this.teachers = re.teachers;
 
-    this.delayPush( re.table );
+    if ( this.singleTeacher ) {
+      this.schedule_table_rows = re.table;
+    }
+    else this.delayPush( re.table );
 
   }
 
