@@ -32,6 +32,7 @@ interface SCHEDULE {
   b: any;
   u: any;
   p: any;
+  a: any;
 };
 
 
@@ -57,6 +58,7 @@ export class ScheduleTablePage {
   IDX_TEACHER = 't';
   CLASS_BEGIN = 'b';
   USER_TIME_CLASS_BEGIN = 'u';
+  DURATION = 'a';
 
 
   default_photo_url = window['url_backend'] + "/wp-content/plugins/xapi-2/lms/img/default-teacher-photo.jpg"
@@ -90,7 +92,7 @@ export class ScheduleTablePage {
   ___teacher = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0 };
   teachers = [];
 
-  
+
 
 
 
@@ -137,8 +139,8 @@ export class ScheduleTablePage {
 
   begin_hours = Array(24).fill(0).map( (e, i) => i );
   end_hours = Array(24).fill(0).map( (e, i) => i+1 );
-  class_begin_hour = 12;
-  class_end_hour = 13;
+  class_begin_hour = 0;
+  class_end_hour = 0;
 
 
   in_displaying_schedule = false; ///
@@ -157,10 +159,19 @@ export class ScheduleTablePage {
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
 
-    if (this.singleTeacher) this.days = 7;
-    else this.days = 6;
+    if (this.singleTeacher) {
+      this.days = 7;
+      this.class_begin_hour = 0;
+      this.class_end_hour = 24;
+    }
+    else {
+      this.days = 6;
+      this.class_begin_hour = 18;
+      this.class_end_hour = 23;
+    }
 
     console.log('data params', this.params);
+
 
 
     this.loadScheduleTable();
@@ -176,11 +187,13 @@ export class ScheduleTablePage {
         this.onChangeSearchOption();
       });
 
+
+
     this.updateTime();
   }
 
 
-  
+
   ngAfterViewInit() {
   }
 
@@ -196,8 +209,9 @@ export class ScheduleTablePage {
         if (session[ this.DAYOFF ] == 'dayoff') return 'cloud-circle'; // but day off
         else return 'radio-button-off'; // reservable
       }
+      
       else if (session[ this.OPEN ] == 'reserved') { // already reserved.
-        if (session[ this.OWNER ] == 'me') {
+        if (session[ this.OWNER ] == 'me' && ! session[ this.DAYOFF ] ) {
           return 'radio-button-on';
         }
         else if (session[ this.DAYOFF ] == 'dayoff') return 'cloud-done'; // already reserved and day-off
@@ -309,7 +323,7 @@ export class ScheduleTablePage {
     this.delayPush( re.table );
 
   }
-  
+
   delayPush( table ) {
     setTimeout( () => {
       if ( ! table || ! table.length ) {
@@ -327,6 +341,8 @@ export class ScheduleTablePage {
         this.delayPush( table );
       }
     }, 200 );
+
+    console.log("schedule_table_rows:: ", this.schedule_table_rows);
   }
 
   schedule(idx_schedule): SCHEDULE {
@@ -351,7 +367,7 @@ export class ScheduleTablePage {
       if ( hour < 12 ) ap = '오전';
       else ap = '오후';
       if ( hour != 12 ) hour = hour % 12;
-    
+
 
       this.time = date.getDate() + '일 ' + ap + ' ' + hour + '시 ' + date.getMinutes() + '분 ' + date.getSeconds() + '초';
     }
@@ -392,8 +408,8 @@ export class ScheduleTablePage {
   }
 
   /**
-   * 
-   * @param session 
+   *
+   * @param session
    */
   teacher_photoURL(session = null) {
     // console.log("session: ", session.idx_teacher);
@@ -406,9 +422,11 @@ export class ScheduleTablePage {
     else return this.___teacher.photoURL;
   }
   teacher_ID(session = null) {
-    const teacher = this.teacher( session );
-    if ( teacher ) return teacher.idx;
-    else return this.___teacher.idx;
+    // const teacher = this.teacher( session );
+    const idx_teacher = this.schedules[ session[ this.IDX_SCHEDULE ] ][ this.IDX_TEACHER ];
+    return idx_teacher;
+    // if ( teacher ) return teacher.idx;
+    // else return this.___teacher.idx;
   }
 
   teacher_age() {
@@ -507,7 +525,7 @@ export class ScheduleTablePage {
         this.my_point = p;
         // this.cdr.detectChanges();
       });
-      
+
     }
 
 

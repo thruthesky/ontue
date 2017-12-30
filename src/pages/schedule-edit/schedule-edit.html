@@ -1,59 +1,66 @@
 <ion-header>
   <header-content></header-content>
 </ion-header>
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
 
-<ion-content padding>
-  Schedule : Teacher can see this schedule table.
+    <section class="page-header">
+      <h2 class="title">{{ "TEACHER SCHEDULE" | translate }}</h2>
+    </section>
 
-  <p>
-    좁은 화면에서 어떻게 수업을 잘 보여 줄 수 있을까?
-  </p>
-
-
-
-  Your No.: {{ a.user.id }}
-  Your timezone: {{ timezone_name }}
-  and your time is now: {{ time }}<br>
-  <!-- {{ schedules | json }} -->
-  <button ion-button class="add-schedule" *ngIf="data" (click)='onClickAddSchedule()'>Add Schedule</button>
-
-  <div class="alert alert-warning" *ngIf="data && !data.low_price_class">
-    {{ data.low_price_class_message }}
-  </div>
-
-  <table class="schedule" *ngIf=" data ">
-    <tr>
-      <td>No.</td>
-        <td>Time</td>
-        <td>Sun</td>
-        <td>Mon</td>
-        <td>Tue</td>
-        <td>Wed</td>
-        <td>Thu</td>
-        <td>Fri</td>
-        <td>Sat</td>
-        <td>Action</td>
-    </tr>
-    <tr *ngFor="let s of data.schedules">
-      <td>{{ s.idx }}</td>
-      <td>{{s.user_time_class_begin}}</td>
-      <td><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.user_time_days.monday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.user_time_days.tuesday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.user_time_days.wednesday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.user_time_days.thursday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.user_time_days.friday">{{s.prere}} {{s.point}}</div></td>
-      <td><div *ngIf="s.user_time_days.saturday">{{s.prere}} {{s.point}}</div></td>
-      <td class="edit" (click)="onClickEditSchedule(s)">Edit</td>
-      <td class="delete" (click)="onClickDelete(s.idx)">Delete</td>
-    </tr>
-
-  </table>
+    <section class="page-body">
 
 
-  <div *ngIf=" ! data ">
-    <i class="fa fa-spinner fa-spin"></i> Loading...
-  </div>
+
+      Your No.: {{ a.user.id }}
+      Your timezone: {{ timezone_name }}
+      and your time is now: {{ time }}<br>
+      <!-- {{ schedules | json }} -->
+      <button ion-button class="add-schedule" *ngIf="data" (click)='onClickAddSchedule()'>Add Schedule</button>
+
+      <div class="alert alert-warning" *ngIf="data && !data.low_price_class">
+        {{ data.low_price_class_message }}
+      </div>
+
+      <table class="schedule" *ngIf=" data ">
+        <tr>
+          <td>No.</td>
+          <td>Time</td>
+          <td>Sun</td>
+          <td>Mon</td>
+          <td>Tue</td>
+          <td>Wed</td>
+          <td>Thu</td>
+          <td>Fri</td>
+          <td>Sat</td>
+          <td>Action</td>
+        </tr>
+        <tr *ngFor="let s of data.schedules">
+          <td>{{ s.idx }}</td>
+          <td>{{s.user_time_class_begin}}</td>
+          <td><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
+          <td><div *ngIf="s.user_time_days.monday">{{s.prere}} {{s.point}}</div></td>
+          <td><div *ngIf="s.user_time_days.tuesday">{{s.prere}} {{s.point}}</div></td>
+          <td><div *ngIf="s.user_time_days.wednesday">{{s.prere}} {{s.point}}</div></td>
+          <td><div *ngIf="s.user_time_days.thursday">{{s.prere}} {{s.point}}</div></td>
+          <td><div *ngIf="s.user_time_days.friday">{{s.prere}} {{s.point}}</div></td>
+          <td><div *ngIf="s.user_time_days.saturday">{{s.prere}} {{s.point}}</div></td>
+          <td class="edit" (click)="onClickEditSchedule(s)">Edit</td>
+          <td class="delete" (click)="onClickDelete(s.idx)">Delete</td>
+        </tr>
+
+      </table>
 
 
+      <div *ngIf=" ! data ">
+        <i class="fa fa-spinner fa-spin"></i> Loading...
+      </div>
+
+
+      
+    </section>
+
+    <hook-content-bottom></hook-content-bottom>
+  </div><!--/page-->
 </ion-content>

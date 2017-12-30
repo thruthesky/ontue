@@ -8,14 +8,16 @@
         <ion-col>
           <ion-item>
             <ion-label>Begin Date</ion-label>
-            <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+            <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin"
+                          (ngModelChange)="onChangeSearchOption()"></ion-datetime>
           </ion-item>
         </ion-col>
         <ion-col>
 
           <ion-item>
             <ion-label>End Date</ion-label>
-            <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+            <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end"
+                          (ngModelChange)="onChangeSearchOption()"></ion-datetime>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -24,8 +26,9 @@
     <ion-list *ngIf=" my_teachers ">
       <ion-item>
         <ion-label class="blue">{{'SELECT TEACHER'|translate}}</ion-label>
-        <ion-select [(ngModel)]="show_teacher" (ionChange)="onChangeSearchOption()" okText="{{ 'OK' | translate }}" cancelText="{{ 'CANCEL' | translate }}"
-          [selectOptions]="{ title: a.i18n.SELECT_TEACHER_TITLE }">
+        <ion-select [(ngModel)]="show_teacher" (ionChange)="onChangeSearchOption()" okText="{{ 'OK' | translate }}"
+                    cancelText="{{ 'CANCEL' | translate }}"
+                    [selectOptions]="{ title: a.i18n.SELECT_TEACHER_TITLE, cssClass:'select-teacher' }">
           <ion-option *ngFor="let teacher of my_teachers" [value]=" teacher.idx ">{{ teacher.name }}</ion-option>
           <ion-option [value]="0">{{ "ALL TEACHER" | translate }}</ion-option>
         </ion-select>
@@ -34,7 +37,8 @@
 
     <ion-list *ngIf=" data['past'] ">
       <ion-item>
-        <ion-checkbox [(ngModel)]="show_refund_in_progress" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="show_refund_in_progress" color="vibrant"
+                      (ionChange)="onChangeSearchOption()"></ion-checkbox>
         <ion-label>Display sessions in progress of Refund</ion-label>
       </ion-item>
       <ion-item>
@@ -42,7 +46,6 @@
         <ion-label>Display refunded sessions</ion-label>
       </ion-item>
     </ion-list>
-
 
 
     <hr>
@@ -63,39 +66,41 @@
   <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
 
 
-  <section class="list-information" *ngIf=" re ">
-    Total: {{ re.total_sessions }} sessions.
-    <br> Searched: {{ books.length }} sessions.
-    <br> Total Point: {{re.total_points}} points.
-    <br> Refunded: {{re.total_session_refunded}} sessions.
-    <br> In process of refund: {{re.total_session_refund_in_progress}} sessions.
-    <br>
+  <section class="list-information mb-3" *ngIf=" re ">
+    <div>Total no of {{data.past?'past':''}}{{data.future?'future':''}} Sessions: {{ re.total_sessions }} sessions.</div>
+    <div>Total no of sessions in this Searched: {{ books.length }} sessions.</div>
+    <div>Total Point in this Searched: {{re.total_points}} points.</div>
+    <div>Refunded sessions in this Searched: {{re.total_session_refunded}} sessions.</div>
+    <div>Refund on progress in this Searched: {{re.total_session_refund_in_progress}} sessions.</div>
   </section>
 
   <table class="books" *ngIf=" books.length ">
     <tr>
-        <td>Teacher</td>
+      <td *ngIf="a.isStudent">Teacher</td>
+      <td *ngIf="a.isTeacher">Student</td>
       <td>Class No.</td>
       <td>Date</td>
       <td>Time</td>
-      <td>Student</td>
       <td>Point</td>
       <td></td>
 
     </tr>
 
     <tr *ngFor="let book of books; let i = index;">
-        <td>
-          <div class="pointer" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
-            <img class="d-block size-8" src="{{ book.teacher_photoURL }}">
+      <td *ngIf="a.isStudent">
+        <div class="pointer" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
+          <img class="d-block size-8" src="{{ book.teacher_photoURL ? book.teacher_photoURL : a.anonymousPhotoURL  }}">
           {{book.teacher_name}}
         </div>
-        </td>
+      </td>
+      <td *ngIf="a.isTeacher">
+        {{book.student_name}}
+      </td>
       <td>{{book.idx}}</td>
       <td>{{book.date_display}}</td>
       <td>{{book.class_begin_display}}
-        <br>{{book.duration}}mins</td>
-      <td>{{book.student_name}}</td>
+        <br>{{book.duration}}mins
+      </td>
       <td>{{book.point}}</td>
       <td>
         <div class="past" *ngIf=" book.past ">
@@ -110,8 +115,12 @@
               <span class="alert alert-info" *ngIf=" refunded(book) ">Refunded</span>
               <ng-container *ngIf=" ! refunded( book ) ">
                 <button ion-button (click)=" onClickRefund( book ) " *ngIf="!refund_request(book)">Refund</button>
-                <button ion-button color="danger" (click)=" onClickRefund( book ) " *ngIf="refund_request(book)">Accept Refund Request</button>
-                <button ion-button color="danger" (click)=" onClickRejectRefundRequest( book ) " *ngIf="refund_request(book)">Reject Refund Request</button>
+                <button ion-button color="danger" (click)=" onClickRefund( book ) " *ngIf="refund_request(book)">Accept
+                  Refund Request
+                </button>
+                <button ion-button color="danger" (click)=" onClickRejectRefundRequest( book ) "
+                        *ngIf="refund_request(book)">Reject Refund Request
+                </button>
               </ng-container>
             </ng-container>
 
@@ -130,7 +139,8 @@
               <span class="alert alert-info" *ngIf=" refunded(book) ">Refunded</span>
               <ng-container *ngIf=" ! refunded( book ) ">
                 <ng-container *ngIf=" book.refund_request_at > 0 ">
-                  <button ion-button color="light" (click)=" onClickCancelRefundRequest( book )">Cancel Refund Request</button>
+                  <button ion-button color="light" (click)=" onClickCancelRefundRequest( book )">Cancel Refund Request
+                  </button>
                 </ng-container>
                 <ng-container *ngIf=" book.refund_request_at == 0 ">
                   <button ion-button (click)=" onClickRefundRequest( book )">Request Refund</button>

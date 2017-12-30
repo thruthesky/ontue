@@ -88,7 +88,7 @@
               
           <ion-item>
             <ion-label class="blue">{{'HOW MANY DAYS'|translate}}</ion-label>
-            <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?'}">
+            <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?', cssClass:'select-no-of-day'}">
               <ion-option value="5">5 일 표시</ion-option>
               <ion-option value="6">6 일 표시</ion-option>
               <ion-option value="7">7 일 표시</ion-option>
@@ -104,7 +104,7 @@
 
           <ion-item>
             <ion-label class="blue">{{ 'HOW MANY MINUTES' | translate }}</ion-label>
-            <ion-select [(ngModel)]="min_duration" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="min_duration" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-minute'}">
               <ion-option value="0">0분 부터</ion-option>
               <ion-option value="5">5분 부터</ion-option>
               <ion-option value="10">19분 부터</ion-option>
@@ -118,7 +118,7 @@
               <ion-option value="80">80분 부터</ion-option>
               <ion-option value="120">120분 부터</ion-option>
             </ion-select>
-            <ion-select [(ngModel)]="max_duration" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="max_duration" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-duration'}">
               <ion-option value="5">5분 사이</ion-option>
               <ion-option value="10">10분 사이</ion-option>
               <ion-option value="15">15분 사이</ion-option>
@@ -137,7 +137,7 @@
 
           <ion-item>
             <ion-label class="blue">{{ 'HOW MANY POINT' | translate }}</ion-label>
-            <ion-select [(ngModel)]="min_point" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="min_point" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-min-point'}">
               <ion-option value="0">0 포인트 이상</ion-option>
               <ion-option value="500">500 포인트 이상</ion-option>
               <ion-option value="1000">1,000 포인트 이상</ion-option>
@@ -151,7 +151,7 @@
               <ion-option value="8000">8,000 포인트 이상</ion-option>
               <ion-option value="12000">12,000 포인트 이상</ion-option>
             </ion-select>
-            <ion-select [(ngModel)]="max_point" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="max_point" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-max-point'}">
               <ion-option value="500">500 포인트 이하</ion-option>
               <ion-option value="1000">1,000 포인트 이하</ion-option>
               <ion-option value="1500">1,500 포인트 이하</ion-option>
@@ -249,7 +249,7 @@
 
       <ion-spinner *ngIf=" schedule_table_rows.length == 0 "></ion-spinner>
       <div class="table schedule-body-table" *ngIf=" schedule_table_rows.length " width="100%">
-        
+
         <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
 
 
@@ -269,12 +269,12 @@
                   </div>
                 </div>
               </div>
-    
-    
+
+
               <div class="tr d-flex" valign="top">
 
                 <div class='td teacher-profile pointer' *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
-    
+
                   <!-- {{ sessions[0].idx_schedule }}
               <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
     
@@ -284,19 +284,17 @@
                   </div>
                   <div>{{ teacher_name( sessions[0] ) }}</div>
     
-                  
-    
             </div>
-    
+
                 <div class="td session-datetime">
                   {{ i }},
                   {{ session_time( sessions[0] ) }}
                   <div>
-                    {{ schedule( sessions[0] ).duration }} 분
+                    {{ schedule( sessions[0] )[ DURATION ] }} 분
                   </div>
-    
+
                 </div>
-    
+
                 <div class="td session-wrapper" *ngFor=" let session of sessions ">
                   <!--{{session|json}}-->
                   <div class="session pointer" [attr.status]=" session[ STATUS ] " [attr.open]=" session[ OPEN ] " [attr.owner]=" session[ OWNER ] "
@@ -305,12 +303,12 @@
                     <div class="status-icon" *ngIf=" !session.in_progress ">
                       <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
                     </div>
-    
+
                     <!-- show loader -->
                     <div class="loader-icon">
                       <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
                     </div>
-    
+
                     <!-- show class informatio -->
                     <div>{{ session[ POINT ] }}</div>
                     <div *ngIf=" session.status == 'reserved' ">{{ session[ STUDENT_NAME ] }}</div>
@@ -320,16 +318,16 @@
                     <!-- <div>{{ session.day }}</div> -->
                   </div>
                   <div class="session empty" *ngIf=" session.status == 'empty' "></div>
-    
+
                 </div>
-                
+
               </div>
 
         </ng-container>
       </div>
       <!--/schedule-body-table-->
 
-      
+
       <div class="alert alert-info" *ngIf=" in_displaying_schedule ">
         <ion-spinner></ion-spinner> 시간표를 표시하는 중 입니다.
       </div>

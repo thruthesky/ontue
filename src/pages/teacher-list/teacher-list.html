@@ -22,7 +22,7 @@
       <ion-list-header>{{ "TEACHER LIST OPTIONS" | translate }}</ion-list-header>
       <ion-item>
         <ion-label>{{ "GENDER" | translate }}</ion-label>
-        <ion-select (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
+        <ion-select (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
           <ion-option value="F">{{"FEMALE" | translate}}</ion-option>
           <ion-option value="M">{{"MALE" | translate}}</ion-option>
           <ion-option value="">{{"ALL" | translate}}</ion-option>
@@ -31,7 +31,7 @@
 
       <ion-item>
           <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
-          <ion-select (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.'}">
+          <ion-select (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-grade'}">
             <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
             <ion-option value="">{{"ALL TEACHER" | translate}}</ion-option>
           </ion-select>
@@ -44,7 +44,7 @@
       {{ "CLOSE" | translate }}
     </button>
 
-    
+
 
   </section>
 
@@ -52,7 +52,7 @@
 
     <div *ngIf=" re ">
       <div>
-        
+
       총 강사 수: {{ re.total }}
       총 예약된 수업 :
       레벨테스트
@@ -78,7 +78,7 @@
               <div class="grade" [attr.grade]=" teacher.grade ">
                 추천:
                 <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i><i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
-                
+
               </div>
               <div>
                 ({{ teacher.total_reservation }} 명 참여)
