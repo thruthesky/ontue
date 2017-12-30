@@ -25,7 +25,7 @@
                 </div>
                 <div>학교: </div>
                 <div>
-                  참여: {{ re['teacher']['total_reservation'] }} 명 참여
+                  참여: {{ teacher['total_reservation'] }} 명 참여
                 </div>
                 <div>
                   강사 평가
@@ -230,86 +230,91 @@
       </div>
 
       <ion-spinner *ngIf=" schedule_table_rows.length == 0 "></ion-spinner>
-      <table class="schedule-body-table" *ngIf=" schedule_table_rows.length " width="100%">
+      <div class="table schedule-body-table" *ngIf=" schedule_table_rows.length " width="100%">
         
         <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
 
-          <tr class="schedule-table-dates" *ngIf=" i % 10 == 0 ">
-            <td *ngIf=" ! singleTeacher ">
-              <div class="text-center">{{ 'TEACHER' | translate }}</div>
-            </td>
-            <td>
-              <div class="text-center">{{ 'TIME' | translate }}</div>
-            </td>
-            <!-- <td>Reserve Visible</td> -->
-            <td *ngFor="let header of header">
-              <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
-                <!--{{ header | json }}-->
-                {{ header.display_date }}
-                <br> {{ header.user_time_day | translate }}
-              </div>
-            </td>
-          </tr>
 
-
-          <tr valign="top">
-            <td class='pointer' *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
-
-              <!-- {{ sessions[0].idx_schedule }}
-          <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
-
-              <div class="size-6 of-hidden">
-                <img class="w-100" src="{{ teacher_photoURL( sessions[0] ) }}">
-              </div>
-              <div>{{ teacher_name( sessions[0] ) }}</div>
-
-              <!-- <div *ngIf=" schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string ">
-            <a href="{{ schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string }}">Add Kakao Friend</a>
-          </div> -->
-
-            </td>
-
-            <td>
-              
-              {{ session_time( sessions[0] ) }}
-              <div>
-                {{ schedule( sessions[0].idx_schedule ).duration }} 분
-              </div>
-
-            </td>
-            <!-- <td>
-          <button class="btn btn-primary mb-2" (click)="onClickReserveVisible(sessions)">All</button>
-        </td> -->
-
-            <td *ngFor=" let session of sessions ">
-              <!--{{session|json}}-->
-              <div class="session pointer" [attr.status]=" session['status'] " [attr.open]=" session['option'] " [attr.owner]=" session['owner'] "
-                text-center (click)="onClickSession( session )">
-                <!-- show icon -->
-                <div class="status-icon" *ngIf=" !session.in_progress ">
-                  <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
+            <div class="tr header schedule-table-dates d-flex" *ngIf=" i % 10 == 0 ">
+                <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
+                  <div class="text-center">{{ 'TEACHER' | translate }}</div>
                 </div>
-
-                <!-- show loader -->
-                <div class="loader-icon">
-                  <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
+                <div class="td session-datetime">
+                  <div class="text-center">{{ 'TIME' | translate }}</div>
                 </div>
-
-                <!-- show class informatio -->
-                <div>{{ session.point }}</div>
-                <div *ngIf=" session.status == 'reserved' ">{{ session.student_name }}</div>
-                <div>{{ session.prere }}</div>
-                <div class="fs-lg">{{ session_text(session) }}</div>
-                <!-- <div>{{ session.idx_reservation }}</div> -->
-                <!-- <div>{{ session.day }}</div> -->
+                <!-- <td>Reserve Visible</td> -->
+                <div class="td session-wrapper" *ngFor="let header of header">
+                  <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
+                    <!--{{ header | json }}-->
+                    {{ header.display_date }}
+                    <br> {{ header.user_time_day | translate }}
+                  </div>
+                </div>
               </div>
-              <div class="session empty" *ngIf=" session.status == 'empty' "></div>
+    
+    
+              <div class="tr d-flex" valign="top">
 
-            </td>
-          </tr>
+                <div class='td teacher-profile pointer' *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
+    
+                  <!-- {{ sessions[0].idx_schedule }}
+              <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
+    
+                  <div class="size-6 of-hidden">
+                    <img class="w-100" src="{{ teacher_photoURL( sessions[0] ) }}">
+                  </div>
+                  <div>{{ teacher_name( sessions[0] ) }}</div>
+    
+                  <!-- <div *ngIf=" schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string ">
+                <a href="{{ schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string }}">Add Kakao Friend</a>
+              </div> -->
+    
+            </div>
+    
+                <div class="td session-datetime">
+                  {{ session_time( sessions[0] ) }}
+                  <div>
+                    {{ schedule( sessions[0].idx_schedule ).duration }} 분
+                  </div>
+    
+                </div>
+    
+                <div class="td session-wrapper" *ngFor=" let session of sessions ">
+                  <!--{{session|json}}-->
+                  <div class="session pointer" [attr.status]=" session['status'] " [attr.open]=" session['option'] " [attr.owner]=" session['owner'] "
+                    text-center (click)="onClickSession( session )">
+                    <!-- show icon -->
+                    <div class="status-icon" *ngIf=" !session.in_progress ">
+                      <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
+                    </div>
+    
+                    <!-- show loader -->
+                    <div class="loader-icon">
+                      <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
+                    </div>
+    
+                    <!-- show class informatio -->
+                    <div>{{ session.point }}</div>
+                    <div *ngIf=" session.status == 'reserved' ">{{ session.student_name }}</div>
+                    <div>{{ session.prere }}</div>
+                    <div class="fs-lg">{{ session_text(session) }}</div>
+                    <!-- <div>{{ session.idx_reservation }}</div> -->
+                    <!-- <div>{{ session.day }}</div> -->
+                  </div>
+                  <div class="session empty" *ngIf=" session.status == 'empty' "></div>
+    
+                </div>
+                
+              </div>
+
         </ng-container>
-      </table>
+      </div>
       <!--/schedule-body-table-->
+
+      
+      <div class="alert alert-info" *ngIf=" in_displaying_schedule ">
+        <ion-spinner></ion-spinner> 시간표를 표시하는 중 입니다.
+      </div>
       <ul>
         <li>
           <ion-icon name="radio-button-off" icon-name="radio-button-off"></ion-icon> - 예약 가능(아무도 예약하지 않았음)
