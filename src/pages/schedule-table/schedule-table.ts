@@ -89,11 +89,14 @@ export class ScheduleTablePage {
   class_begin_hour = 0;
   class_end_hour = 1;
 
+
+  in_displaying_schedule = false; ///
   constructor(
     public a: AppService,
     public navParams: NavParams,
     public domSanitizer: DomSanitizer,
-    public youtube: YoutubeVideoPlayer
+    public youtube: YoutubeVideoPlayer,
+    // public cdr: ChangeDetectorRef
   ) {
 
 
@@ -123,11 +126,8 @@ export class ScheduleTablePage {
   }
 
 
-  // Wait until the view inits before disconnecting
+  
   ngAfterViewInit() {
-    // Since we know the list is not going to change
-    // let's request that this component not undergo change detection at all
-    // this.cdr.detach();
   }
 
 
@@ -169,8 +169,11 @@ export class ScheduleTablePage {
     if (session['status'] == 'future') {
       if (session['open'] == 'reserved') {
         if (session['owner'] == 'me') {
-          return '취소하기';
+          return '취소';
         }
+      }
+      else if ( session['open'] == 'open' ) {
+        return '예약';
       }
     }
   }
@@ -233,23 +236,34 @@ export class ScheduleTablePage {
     this.___teacher = re.teacher;
 
 
-    setTimeout(() => {
-      this.schedule_table_rows = re.table;
-      console.log(this.schedule_table_rows);
-      // this.re = re;
-    }, 100);
+    // setTimeout(() => {
+    //   // this.schedule_table_rows = re.table;
+    //   console.log(this.schedule_table_rows);
+    //   // this.re = re;
+    // }, 100);
 
+    this.schedule_table_rows = [];
+    this.in_displaying_schedule = true;
+
+    // this.cdr.detach();
     this.delayPush( re.table );
 
   }
   
   delayPush( table ) {
     setTimeout( () => {
-      this.schedule_table_rows.push( table.shift() );
-      this.schedule_table_rows.push( table.shift() );
-      this.schedule_table_rows.push( table.shift() );
+      if ( ! table || ! table.length ) {
+        // this.cdr.reattach();
+        this.in_displaying_schedule = false;
+        return;
+      }
+      const len = table.length;
+      for( let i = 0; i < 30 && i < len; i ++ ) {
+        this.schedule_table_rows.push( table.shift() );
+      }
+      // this.cdr.detectChanges();
       this.delayPush( table );
-    }, 1000 );
+    }, 200 );
   }
 
   schedule(idx_schedule) {

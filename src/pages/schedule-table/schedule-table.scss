@@ -55,3 +55,19 @@ section.schedule-table {
 	width:100%;
 	height:100%;
 }
+
+.teacher-profile {
+    width: 56px;
+    overflow: hidden;
+}
+.session-datetime {
+    width: 42px;
+    overflow: hidden;
+}
+.tr.header .session-wrapper {
+    background-color: #ddd;
+}
+.session-wrapper {
+    width: 40px;
+    overflow: hiden;
+}
