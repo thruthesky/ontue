@@ -41,7 +41,7 @@ export class ScheduleTablePage {
   student = {};
   ___teacher = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0 };
 
-  
+
 
 
 
@@ -126,7 +126,7 @@ export class ScheduleTablePage {
   }
 
 
-  
+
   ngAfterViewInit() {
   }
 
@@ -143,7 +143,7 @@ export class ScheduleTablePage {
         else return 'radio-button-off'; // reservable
       }
       else if (session['open'] == 'reserved') { // already reserved.
-        if (session['owner'] == 'me') {
+        if (session['owner'] == 'me' && !session['dayoff']) {
           return 'radio-button-on';
         }
         else if (session['dayoff'] == 'dayoff') return 'cloud-done'; // already reserved and day-off
@@ -249,7 +249,7 @@ export class ScheduleTablePage {
     this.delayPush( re.table );
 
   }
-  
+
   delayPush( table ) {
     setTimeout( () => {
       if ( ! table || ! table.length ) {
@@ -262,8 +262,11 @@ export class ScheduleTablePage {
         this.schedule_table_rows.push( table.shift() );
       }
       // this.cdr.detectChanges();
+
       this.delayPush( table );
     }, 200 );
+
+    console.log("schedule_table_rows:: ", this.schedule_table_rows);
   }
 
   schedule(idx_schedule) {
@@ -285,7 +288,7 @@ export class ScheduleTablePage {
       if ( hour < 12 ) ap = '오전';
       else ap = '오후';
       if ( hour != 12 ) hour = hour % 12;
-    
+
 
       this.time = date.getDate() + '일 ' + ap + ' ' + hour + '시 ' + date.getMinutes() + '분 ' + date.getSeconds() + '초';
     }
@@ -319,8 +322,8 @@ export class ScheduleTablePage {
   }
 
   /**
-   * 
-   * @param session 
+   *
+   * @param session
    */
   teacher_photoURL(session = null) {
     // console.log("session: ", session);
@@ -430,7 +433,7 @@ export class ScheduleTablePage {
         this.my_point = p;
         // this.cdr.detectChanges();
       });
-      
+
     }
 
 

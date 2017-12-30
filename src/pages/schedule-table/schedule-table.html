@@ -88,7 +88,7 @@
             </ion-select>
           </ion-item>
 
-          
+
           <ion-item>
               <ion-label class="blue">{{ 'SELECT HOURS' | translate }}</ion-label>
               <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()">
@@ -215,14 +215,14 @@
         </div>
       </div>
 
-      
+
       <div class="alert alert-warning" *ngIf=" no_of_schedules > no_of_schedule_limit ">
         앗, 스케쥴이 너무 많아서
         {{ no_of_schedule_limit }} 개로 제한하였습니다.
         검색 옵션을 통해서 더 많은 시간표를 보세요.
         오전 수업 보기, 오후 수업 보기.
 
-        
+
         <div class="x d-flex justify-content-end" (click)="a.alert('하루 동안 숨길 것.')">
           <i class="fal fa-times fa-2x pt-1 pr-2"></i>
           <span class="mt-2">하루 동안 표시하지 않기</span>
@@ -231,7 +231,7 @@
 
       <ion-spinner *ngIf=" schedule_table_rows.length == 0 "></ion-spinner>
       <div class="table schedule-body-table" *ngIf=" schedule_table_rows.length " width="100%">
-        
+
         <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
 
 
@@ -251,34 +251,34 @@
                   </div>
                 </div>
               </div>
-    
-    
+
+
               <div class="tr d-flex" valign="top">
 
                 <div class='td teacher-profile pointer' *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
-    
+
                   <!-- {{ sessions[0].idx_schedule }}
               <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
-    
+
                   <div class="size-6 of-hidden">
                     <img class="w-100" src="{{ teacher_photoURL( sessions[0] ) }}">
                   </div>
                   <div>{{ teacher_name( sessions[0] ) }}</div>
-    
+
                   <!-- <div *ngIf=" schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string ">
                 <a href="{{ schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string }}">Add Kakao Friend</a>
               </div> -->
-    
+
             </div>
-    
+
                 <div class="td session-datetime">
                   {{ session_time( sessions[0] ) }}
                   <div>
                     {{ schedule( sessions[0].idx_schedule ).duration }} 분
                   </div>
-    
+
                 </div>
-    
+
                 <div class="td session-wrapper" *ngFor=" let session of sessions ">
                   <!--{{session|json}}-->
                   <div class="session pointer" [attr.status]=" session['status'] " [attr.open]=" session['option'] " [attr.owner]=" session['owner'] "
@@ -287,12 +287,12 @@
                     <div class="status-icon" *ngIf=" !session.in_progress ">
                       <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
                     </div>
-    
+
                     <!-- show loader -->
                     <div class="loader-icon">
                       <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
                     </div>
-    
+
                     <!-- show class informatio -->
                     <div>{{ session.point }}</div>
                     <div *ngIf=" session.status == 'reserved' ">{{ session.student_name }}</div>
@@ -302,16 +302,16 @@
                     <!-- <div>{{ session.day }}</div> -->
                   </div>
                   <div class="session empty" *ngIf=" session.status == 'empty' "></div>
-    
+
                 </div>
-                
+
               </div>
 
         </ng-container>
       </div>
       <!--/schedule-body-table-->
 
-      
+
       <div class="alert alert-info" *ngIf=" in_displaying_schedule ">
         <ion-spinner></ion-spinner> 시간표를 표시하는 중 입니다.
       </div>
