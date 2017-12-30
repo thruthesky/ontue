@@ -74,6 +74,18 @@
         <h2>{{'SCHEDULE TABLE SEARCH OPTIONS'|translate}}</h2>
         <button ion-button (click)=" a.open('schedule-table') ">모든 강사 표시</button>
         <ion-list>
+
+            <ion-item>
+                <ion-label class="blue">{{ 'SELECT HOURS' | translate }}</ion-label>
+                <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()">
+                  <ion-option *ngFor=" let h of begin_hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
+                </ion-select>
+                <ion-select [(ngModel)]="class_end_hour" (ionChange)="onChangeSearchOption()">
+                    <ion-option *ngFor=" let h of end_hours " value="{{ h }}">{{ h }} 시 까지</ion-option>
+                </ion-select>
+              </ion-item>
+
+              
           <ion-item>
             <ion-label class="blue">{{'HOW MANY DAYS'|translate}}</ion-label>
             <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?'}">
@@ -89,16 +101,6 @@
           </ion-item>
 
           
-          <ion-item>
-              <ion-label class="blue">{{ 'SELECT HOURS' | translate }}</ion-label>
-              <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()">
-                <ion-option *ngFor=" let h of hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
-              </ion-select>
-              <ion-select [(ngModel)]="class_end_hour" (ionChange)="onChangeSearchOption()">
-                  <ion-option *ngFor=" let h of hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
-              </ion-select>
-            </ion-item>
-
 
           <ion-item>
             <ion-label class="blue">{{ 'HOW MANY MINUTES' | translate }}</ion-label>
@@ -216,17 +218,33 @@
       </div>
 
       
-      <div class="alert alert-warning" *ngIf=" no_of_schedules > no_of_schedule_limit ">
-        앗, 스케쥴이 너무 많아서
-        {{ no_of_schedule_limit }} 개로 제한하였습니다.
-        검색 옵션을 통해서 더 많은 시간표를 보세요.
-        오전 수업 보기, 오후 수업 보기.
+      <div>
+          <i class="fas fa-spinner fa-spin"></i> {{ status }}
+      </div>
+      <div class="alert alert-warning" *ngIf=" ! singleTeacher ">
+       
 
-        
-        <div class="x d-flex justify-content-end" (click)="a.alert('하루 동안 숨길 것.')">
-          <i class="fal fa-times fa-2x pt-1 pr-2"></i>
-          <span class="mt-2">하루 동안 표시하지 않기</span>
-        </div>
+       <div *ngIf=" ! show.more_total_schedule_warning ">
+          주의! 전체 선생님 수업 시간표는 시간이 걸립니다.
+       </div>
+       <div class="d-none" [class.d-block]=" show.more_total_schedule_warning ">
+          전체 선생님 수업 시간표를 표시 할 경우,
+          수업 시간표가 너무 많아서 서버로 부터 시간표 데이터를 가져오는데 시간이 걸리며,
+          속도가 느려질 수 있습니다.
+          반드시 검색 옵션을 통해서 표시 할 시간표를 조정해 주세요.
+         </div>
+
+         <div class="d-flex justify-content-between">
+           <div class="d-flex">
+            <div (click)=" show.more_total_schedule_warning = true "><i class="fal fa-arrow-alt-down"></i> 자세히<i class="fal fa-ellipsis-h"></i></div>
+            <div class="ml-3" (click)=" show.more_total_schedule_warning = true "><i class="fal fa-cog"></i> 검색 옵션</div>
+          </div>
+            <div class="x" (click)="a.alert('하루 동안 숨길 것.')">
+               <i class="fal fa-times"></i>
+               닫기
+            </div>
+         </div>
+
       </div>
 
       <ion-spinner *ngIf=" schedule_table_rows.length == 0 "></ion-spinner>
@@ -260,28 +278,28 @@
                   <!-- {{ sessions[0].idx_schedule }}
               <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
     
+              <!-- {{ sessions[0] | json }} -->
                   <div class="size-6 of-hidden">
                     <img class="w-100" src="{{ teacher_photoURL( sessions[0] ) }}">
                   </div>
                   <div>{{ teacher_name( sessions[0] ) }}</div>
     
-                  <!-- <div *ngIf=" schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string ">
-                <a href="{{ schedule( sessions[0].idx_schedule ).teacher.kakao_qrmark_string }}">Add Kakao Friend</a>
-              </div> -->
+                  
     
             </div>
     
                 <div class="td session-datetime">
+                  {{ i }},
                   {{ session_time( sessions[0] ) }}
                   <div>
-                    {{ schedule( sessions[0].idx_schedule ).duration }} 분
+                    {{ schedule( sessions[0] ).duration }} 분
                   </div>
     
                 </div>
     
                 <div class="td session-wrapper" *ngFor=" let session of sessions ">
                   <!--{{session|json}}-->
-                  <div class="session pointer" [attr.status]=" session['status'] " [attr.open]=" session['option'] " [attr.owner]=" session['owner'] "
+                  <div class="session pointer" [attr.status]=" session[ STATUS ] " [attr.open]=" session[ OPEN ] " [attr.owner]=" session[ OWNER ] "
                     text-center (click)="onClickSession( session )">
                     <!-- show icon -->
                     <div class="status-icon" *ngIf=" !session.in_progress ">
@@ -294,9 +312,9 @@
                     </div>
     
                     <!-- show class informatio -->
-                    <div>{{ session.point }}</div>
-                    <div *ngIf=" session.status == 'reserved' ">{{ session.student_name }}</div>
-                    <div>{{ session.prere }}</div>
+                    <div>{{ session[ POINT ] }}</div>
+                    <div *ngIf=" session.status == 'reserved' ">{{ session[ STUDENT_NAME ] }}</div>
+                    <div>{{ session[ PRERE ] }}</div>
                     <div class="fs-lg">{{ session_text(session) }}</div>
                     <!-- <div>{{ session.idx_reservation }}</div> -->
                     <!-- <div>{{ session.day }}</div> -->
