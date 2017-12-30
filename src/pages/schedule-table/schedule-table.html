@@ -76,7 +76,7 @@
         <ion-list>
           <ion-item>
             <ion-label class="blue">{{'HOW MANY DAYS'|translate}}</ion-label>
-            <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?'}">
+            <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?', cssClass:'select-no-of-day'}">
               <ion-option value="5">5 일 표시</ion-option>
               <ion-option value="6">6 일 표시</ion-option>
               <ion-option value="7">7 일 표시</ion-option>
@@ -91,10 +91,10 @@
 
           <ion-item>
               <ion-label class="blue">{{ 'SELECT HOURS' | translate }}</ion-label>
-              <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()">
+              <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-begin-hour'}">
                 <ion-option *ngFor=" let h of hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
               </ion-select>
-              <ion-select [(ngModel)]="class_end_hour" (ionChange)="onChangeSearchOption()">
+              <ion-select [(ngModel)]="class_end_hour" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-end-hour'}">
                   <ion-option *ngFor=" let h of hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
               </ion-select>
             </ion-item>
@@ -102,7 +102,7 @@
 
           <ion-item>
             <ion-label class="blue">{{ 'HOW MANY MINUTES' | translate }}</ion-label>
-            <ion-select [(ngModel)]="min_duration" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="min_duration" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-minute'}">
               <ion-option value="0">0분 부터</ion-option>
               <ion-option value="5">5분 부터</ion-option>
               <ion-option value="10">19분 부터</ion-option>
@@ -116,7 +116,7 @@
               <ion-option value="80">80분 부터</ion-option>
               <ion-option value="120">120분 부터</ion-option>
             </ion-select>
-            <ion-select [(ngModel)]="max_duration" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="max_duration" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-duration'}">
               <ion-option value="5">5분 사이</ion-option>
               <ion-option value="10">10분 사이</ion-option>
               <ion-option value="15">15분 사이</ion-option>
@@ -135,7 +135,7 @@
 
           <ion-item>
             <ion-label class="blue">{{ 'HOW MANY POINT' | translate }}</ion-label>
-            <ion-select [(ngModel)]="min_point" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="min_point" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-min-point'}">
               <ion-option value="0">0 포인트 이상</ion-option>
               <ion-option value="500">500 포인트 이상</ion-option>
               <ion-option value="1000">1,000 포인트 이상</ion-option>
@@ -149,7 +149,7 @@
               <ion-option value="8000">8,000 포인트 이상</ion-option>
               <ion-option value="12000">12,000 포인트 이상</ion-option>
             </ion-select>
-            <ion-select [(ngModel)]="max_point" (ionChange)="onChangeSearchOption()">
+            <ion-select [(ngModel)]="max_point" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-max-point'}">
               <ion-option value="500">500 포인트 이하</ion-option>
               <ion-option value="1000">1,000 포인트 이하</ion-option>
               <ion-option value="1500">1,500 포인트 이하</ion-option>

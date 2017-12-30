@@ -63,7 +63,7 @@
 
         <ion-item>
           <ion-label floating>{{ 'TIMEZONE' | translate }}</ion-label>
-          <ion-select [(ngModel)]="offset" name="timezone">
+          <ion-select [(ngModel)]="offset" name="timezone" [selectOptions]="{cssClass:'select-timezone'}">
             <ion-option *ngFor="let t of keysTimezone()" value="{{ t }}">{{ format(t) }} {{ tz[t].name }}</ion-option>
           </ion-select>
         </ion-item>
@@ -93,7 +93,7 @@
           <input [(ngModel)]="account.gender" type="radio" name="gender" value="F" [checked]=" account.gender == 'F' ">
           Female
         </ion-item>
-        
+
 
         <ion-item>
           <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
