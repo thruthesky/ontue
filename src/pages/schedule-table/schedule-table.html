@@ -88,6 +88,18 @@
             </ion-select>
           </ion-item>
 
+          
+          <ion-item>
+              <ion-label class="blue">{{ 'SELECT HOURS' | translate }}</ion-label>
+              <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()">
+                <ion-option *ngFor=" let h of hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
+              </ion-select>
+              <ion-select [(ngModel)]="class_end_hour" (ionChange)="onChangeSearchOption()">
+                  <ion-option *ngFor=" let h of hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
+              </ion-select>
+            </ion-item>
+
+
           <ion-item>
             <ion-label class="blue">{{ 'HOW MANY MINUTES' | translate }}</ion-label>
             <ion-select [(ngModel)]="min_duration" (ionChange)="onChangeSearchOption()">
@@ -120,8 +132,8 @@
             </ion-select>
 
           </ion-item>
-          <ion-item>
 
+          <ion-item>
             <ion-label class="blue">{{ 'HOW MANY POINT' | translate }}</ion-label>
             <ion-select [(ngModel)]="min_point" (ionChange)="onChangeSearchOption()">
               <ion-option value="0">0 포인트 이상</ion-option>
@@ -153,11 +165,8 @@
               <ion-option value="24000">2만4천 포인트 이하</ion-option>
               <ion-option value="100000">10만 이하</ion-option>
             </ion-select>
-
-
-
-
           </ion-item>
+
           <ion-item>
             <ion-label class="blue">{{ 'DISPLAY WEEKENDS' | translate }}</ion-label>
             <ion-toggle [(ngModel)]="displayWeekends" (ionChange)="onChangeSearchOption()"></ion-toggle>
@@ -186,7 +195,7 @@
       </div>
 
       <!--
-    {{ re.header | json }} -->
+    {{ header | json }} -->
 
 
       <div class="buttons d-flex justify-content-between mb-1">
@@ -209,7 +218,9 @@
       
       <div class="alert alert-warning" *ngIf=" no_of_schedules > no_of_schedule_limit ">
         앗, 스케쥴이 너무 많아서
-        한번에 {{ no_of_schedule_limit }} 개씩 표시하며 맨 밑으로 스크롤 하면 계속 볼 수 있습니다.
+        {{ no_of_schedule_limit }} 개로 제한하였습니다.
+        검색 옵션을 통해서 더 많은 시간표를 보세요.
+        오전 수업 보기, 오후 수업 보기.
 
         
         <div class="x d-flex justify-content-end" (click)="a.alert('하루 동안 숨길 것.')">
@@ -218,10 +229,10 @@
         </div>
       </div>
 
-      <ion-spinner *ngIf=" re.table.length == 0 "></ion-spinner>
-      <table class="schedule-body-table" *ngIf="re.table.length " width="100%">
-
-        <ng-container *ngFor="let sessions of re.table; let i = index">
+      <ion-spinner *ngIf=" schedule_table_rows.length == 0 "></ion-spinner>
+      <table class="schedule-body-table" *ngIf=" schedule_table_rows.length " width="100%">
+        
+        <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
 
           <tr class="schedule-table-dates" *ngIf=" i % 10 == 0 ">
             <td *ngIf=" ! singleTeacher ">
@@ -231,7 +242,7 @@
               <div class="text-center">{{ 'TIME' | translate }}</div>
             </td>
             <!-- <td>Reserve Visible</td> -->
-            <td *ngFor="let header of re.header">
+            <td *ngFor="let header of header">
               <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
                 <!--{{ header | json }}-->
                 {{ header.display_date }}
@@ -259,7 +270,7 @@
             </td>
 
             <td>
-
+              
               {{ session_time( sessions[0] ) }}
               <div>
                 {{ schedule( sessions[0].idx_schedule ).duration }} 분
@@ -363,5 +374,8 @@
       </ion-fab-list>
     </ion-fab>
 
+    <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll> -->
 
 </ion-content>
