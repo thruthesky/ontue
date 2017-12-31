@@ -116,5 +116,8 @@
   , "MESSAGE": "쪽지"
   , "AVAILABLE SESSIONS": "즉시수업"
   , "AVAILABLE SESSIONS LONG": "즉시 수업하기"
+  , "PAYMENT PAGE TITLE": "원하는 만큼 결제하고 원하는 만큼 수업하세요."
+  , "SELECT AMOUNT": "금액 선택"
+  , "LOADING PAYMENT INFORMATION": "결제 정보를 로드 중. 잠시만 기다려주세요."
   
 }

@@ -9,7 +9,7 @@ export class PaymentPage implements AfterViewInit {
 
 
     paypal_ready = false;
-    amount = 5000;
+    amount = 50000;
     tax = 7.4;
 
     php_error = null;
@@ -17,11 +17,13 @@ export class PaymentPage implements AfterViewInit {
         usd_exchange_rate: 0,
         paypal_student_fee: 0
     };
+    inLoadingPaymentRate = true;
     constructor(
         public a: AppService
     ) {
         a.lms.payment_rate().subscribe( re => {
-            console.log(re);
+            // console.log(re);
+            this.inLoadingPaymentRate = false;
             this.payment_rate = re;
          } );
     }
@@ -59,10 +61,20 @@ export class PaymentPage implements AfterViewInit {
         paypal.Button.render({
             env: 'production', // sandbox | production
             commit: true, // Show a 'Pay Now' button
-            style: {
-                color: 'gold',
-                size: 'small'
-            },
+            // style: {
+            //     color: 'gold',
+            //     size: 'small'
+            // },
+
+        style: {
+            label: 'buynow',
+            fundingicons: true, // optional
+            branding: true, // optional
+            size:  'responsive', // small | medium | large | responsive
+            shape: 'rect',   // pill | rect
+            color: 'gold'   // gold | blue | silve | black
+        },
+
             payment: () => {
                 console.log("amont: ", this.amount);
                 console.log("debug url: ", CREATE_PAYMENT_URL + '?amount=' + this.amount + '&session_id=' + this.a.user.sessionId );

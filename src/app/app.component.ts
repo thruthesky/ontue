@@ -153,7 +153,7 @@ export class MyApp {
     // this.a.open('register');
 
     // this.a.open('register');
-    this.a.open('menu');
+    // this.a.open('menu');
 
     // this.a.open('reservation', {past: true})
 
@@ -174,7 +174,7 @@ export class MyApp {
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 
-    // this.a.open('payment');
+    this.a.open('payment');
 
     // this.a.open('policy');
     // this.a.open('forum');
