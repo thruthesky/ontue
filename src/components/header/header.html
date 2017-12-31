@@ -106,8 +106,8 @@
 
   <ng-container *ngIf=" a.user.isLogin; else userLogout ">
 
-    <div class="p-2" (click)=" a.open('reservation', {future: true}) ">Reserved</div>
-    <div class="p-2" (click)=" a.open('reservation', {past: true}) ">Past</div>
+    <div class="p-2" (click)=" a.open('session-future') ">Reserved</div>
+    <div class="p-2" (click)=" a.open('session-past') ">Past</div>
     <div class="p-2" (click)=" a.open('schedule-edit') ">Schedule</div>
     <div class="p-2" (click)=" a.user.logout() ">Logout</div>
 

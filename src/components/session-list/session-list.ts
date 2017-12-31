@@ -125,6 +125,12 @@ export class SessionList {
       return false;
     }
   }
+  paid( book ) {
+    return this.a.toInt(book['paid']);
+  }
+  refundable( book ) {
+    return ! this.paid( book );
+  }
   refunded( book ) {
     return book['refund_done_at'] > 0;
   }
@@ -150,5 +156,22 @@ export class SessionList {
       {idx: idx} );
     modal.onDidDismiss(()=> {});
     modal.present();
+  }
+
+  date( d: string ) {
+    let new_date = d.split('-');
+    new_date.shift();
+    return new_date.join('/');
+  }
+  evaluated( book ) {
+    // console.log('book: ', book);
+    if ( ! book.comment ) return false;
+    if ( ! book.comment.length ) return false;
+    if ( book.comment.length < 30 ) return false;
+    return true;
+  }
+  point( book ) {
+    if ( this.refunded( book ) ) return '';
+    else return this.a.number_format(book['point']);
   }
 }

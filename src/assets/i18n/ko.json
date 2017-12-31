@@ -126,5 +126,11 @@
   , "SEARCHED POINT": "검색된 포인트"
   , "REFUNDED SESSIONS": "복구된 수업"
   , "SESSIONS IN REFUND PROGRESS": "복구 중인 수업"
-  
+  , "CLASS NO": "번호"
+  , "DATE": "날짜"
+  , "POINT": "포인트"
+  , "STUDENT": "학생"
+  , "EVALUATION": "평가"
+  , "REQUEST REFUND": "복구신청"
+  , "CANCEL REFUND REQUEST": "복구취소"
 }

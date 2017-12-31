@@ -152,18 +152,20 @@ export class AppService {
         this.inLoadingMyPoint = true;
         this.lms.my_point().subscribe(re => {
             let point = re['point'];
-            point = point.toString().split('').reverse().reduce((t, v, i, a) => {
-                return t += v + (i < a.length - 1 && (i + 1) % 3 == 0 ? ',' : '');
-            }, '').split('').reverse().join('');
+            point = this.number_format( point );
             this.inLoadingMyPoint = false;
             callback(point);
         }, e => {
             this.inLoadingMyPoint = false;
             this.alert(e);
         });
-
     }
 
+    number_format( n ) {
+        return n.toString().split('').reverse().reduce((t, v, i, a) => {
+            return t += v + (i < a.length - 1 && (i + 1) % 3 == 0 ? ',' : '');
+        }, '').split('').reverse().join('');
+    }
     /**
      * Displays an error message to user.
      *
