@@ -4,23 +4,31 @@
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
-    <section class="page-header d-flex justify-content-end">
-      <div class="d-flex justify-content-end">
-        <div class="pointer" (click)=" show.options = true ">
-          <ion-icon name="options"></ion-icon>
-          {{ "OPTIONS" | translate }}
-        </div>
-      </div>
-    </section>
+    <section class="page-header d-flex justify-content-between">
 
-    {{ show | json }}
+      <div>
+        {{ a.user.name }} 님, 포인트:
+
+        <span *ngIf=" a.inLoadingMyPoint ">
+            <i class="fal fa-spinner fa-spin"></i>
+        </span>
+
+        <span *ngIf=" ! a.inLoadingMyPoint ">
+          {{ share.point }}
+        </span>
+        
+      </div>
+
+      <div class="pointer" (click)=" share.options = true ">
+        <ion-icon name="options"></ion-icon>
+        {{ "OPTIONS" | translate }}
+      </div>
+
+    </section>
     <section class="page-body">
-      <session-list
-        [show]=" show "
-        [data]="{future:true}"
-      ></session-list>
+      <session-list [share]=" share " [data]="{future:true}"></session-list>
     </section>
     <hook-content-bottom></hook-content-bottom>
-  </div><!--/page-->
+  </div>
+  <!--/page-->
 </ion-content>
-

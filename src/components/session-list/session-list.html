@@ -1,10 +1,10 @@
 <section>
 
 
-  {{ show | json }}
-  <div class="options mb-5" *ngIf=" show.options ">
+  <div class="options mb-5" *ngIf=" share.options ">
 
     <ion-grid *ngIf=" data['past'] ">
+
       <ion-row>
         <ion-col>
           <ion-item>
@@ -12,14 +12,15 @@
             <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
           </ion-item>
         </ion-col>
-        <ion-col>
 
+        <ion-col>
           <ion-item>
             <ion-label>End Date</ion-label>
             <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
           </ion-item>
         </ion-col>
       </ion-row>
+
     </ion-grid>
 
     <ion-list *ngIf=" my_teachers ">
@@ -45,7 +46,7 @@
     </ion-list>
 
     <div class="buttons d-flex justify-content-end mb-3">
-      <button class="primary" (click)=" show.options = false ">
+      <button class="primary" (click)=" share.options = false ">
         <i class="fal fa-times mr-1"></i>
         {{ 'CANCEL' | translate }}
       </button>
@@ -58,17 +59,18 @@
   <!--/options-->
 
 
-  {{ a.user.name }} You are {{ a.userType }}! , My Points:
-  <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
-  <ion-spinner *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+  <section class="list-information mb-3 p-3 bg-lightgrey" *ngIf=" re ">
+    <div>
+      {{ 'SEARCHED SESSIONS' | translate }} : {{ books.length }} ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )
+    </div>
+    <div>
+      {{ 'SEARCHED POINT' | translate }} : {{ re.total_points | number }}
+    </div>
 
-
-  <section class="list-information mb-3" *ngIf=" re ">
-    <div>Total no of {{data.past?'past':''}}{{data.future?'future':''}} Sessions: {{ re.total_sessions }} sessions.</div>
-    <div>Total no of sessions in this Searched: {{ books.length }} sessions.</div>
-    <div>Total Point in this Searched: {{re.total_points}} points.</div>
-    <div>Refunded sessions in this Searched: {{re.total_session_refunded}} sessions.</div>
-    <div>Refund on progress in this Searched: {{re.total_session_refund_in_progress}} sessions.</div>
+    <div *ngIf=" data.past ">
+      <span class="mr-3" *ngIf=" re.total_session_refunded ">{{ 'REFUNDED SESSIONS' | translate }} : {{re.total_session_refunded}}</span>
+      <span *ngIf=" re.total_session_refund_in_progress ">{{ 'SESSIONS IN REFUND PROGRESS' | translate }} : {{re.total_session_refund_in_progress}}</span>
+    </div>
   </section>
 
   <table class="books" *ngIf=" books.length ">

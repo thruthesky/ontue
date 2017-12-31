@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppService } from '../../providers/app.service';
+import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
 
 @Component({
   selector: 'page-session-future',
@@ -7,7 +7,7 @@ import { AppService } from '../../providers/app.service';
 })
 export class SessionFuturePage {
 
-  show = { options: false };
+  share: SHARE_SESSION_LIST = <SHARE_SESSION_LIST> { options: false };
   constructor(
     public a: AppService
   ) {

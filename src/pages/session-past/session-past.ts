@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AppService } from '../../providers/app.service';
+import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
 @Component({
   selector: 'page-session-past',
   templateUrl: 'session-past.html'
@@ -8,7 +8,7 @@ import { AppService } from '../../providers/app.service';
 export class SessionPastPage {
 
 
-  show = { options: false };
+  share: SHARE_SESSION_LIST = <SHARE_SESSION_LIST> { options: false };
   constructor(
     public a: AppService
   ) {

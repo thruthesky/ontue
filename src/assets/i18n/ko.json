@@ -121,5 +121,10 @@
   , "PAYMENT PAGE TITLE": "원하는 만큼 결제하고 원하는 만큼 수업하세요."
   , "SELECT AMOUNT": "금액 선택"
   , "LOADING PAYMENT INFORMATION": "결제 정보를 로드 중. 잠시만 기다려주세요."
+  , "SEARCHED SESSIONS": "검색된 수업"
+  , "TOTAL": "총"
+  , "SEARCHED POINT": "검색된 포인트"
+  , "REFUNDED SESSIONS": "복구된 수업"
+  , "SESSIONS IN REFUND PROGRESS": "복구 중인 수업"
   
 }

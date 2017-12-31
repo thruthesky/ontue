@@ -7,6 +7,9 @@ import { NavController, LoadingController, AlertController } from 'ionic-angular
 import { XapiService, UserService, ForumService, LMSService } from './../angular-xapi/angular-xapi.module';
 import { FileService } from "../angular-xapi/file.service";
 
+import { SHARE_SESSION_LIST } from './interface';
+export { SHARE_SESSION_LIST };
+
 
 
 

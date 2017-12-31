@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AppService } from '../../providers/app.service';
+import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
 import { ModalController } from 'ionic-angular';
 import { EvaluateView} from '../../components/evaluate-view/evaluate-view';
 
@@ -10,14 +10,13 @@ import { EvaluateView} from '../../components/evaluate-view/evaluate-view';
 })
 export class SessionList {
   @Input() data: {past:false;future:false};
-  @Input() show = { options: false };
+  @Input() share: SHARE_SESSION_LIST = <SHARE_SESSION_LIST> {};
   
   
   re = null;
   books = [];
   my_teachers = [];
   show_teacher: number = 0;
-  my_point;
   date_begin = null;
   date_end = null;
   today = new Date();
@@ -27,7 +26,6 @@ export class SessionList {
     public a: AppService,
     public modalCtrl: ModalController,
   ) {
-    this.a.loadMyPoint( p => this.my_point = p );
     this.updatePoint();
   }
 
@@ -80,10 +78,7 @@ export class SessionList {
   }
 
   updatePoint() {
-
-    this.a.loadMyPoint( p => this.my_point = p );
-
-
+    this.a.loadMyPoint( p => this.share.point = p );
   }
 
   onChangeSearchOption() {
@@ -94,6 +89,8 @@ export class SessionList {
     this.a.lms.session_search(options).subscribe(re => {
       console.log("Result of class_search(): ", re);
       this.re = re;
+      this.re['total_session_refunded'] = this.a.toInt( this.re['total_session_refunded'] );
+      this.re['total_session_refund_in_progress'] = this.a.toInt( this.re['total_session_refund_in_progress'] );
       this.books = re['books'];
       this.my_teachers = re['my_teachers'];
     }, e => this.a.alert(e));

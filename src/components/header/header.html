@@ -57,7 +57,7 @@
     </ion-row>
   </ion-grid>
 
-  <nav class="">
+  <nav class="submenu">
     <div class="m-0 p-0 d-flex justify-content-around" [class.front-page]=" page == 'home' " [class.sub-page]=" page != 'home' ">
       <ng-container [ngSwitch]=" page ">
 
@@ -68,14 +68,21 @@
               <div class="p-3">{{ "QNA" | translate }}</div>
           </ng-container>
         
+          <ng-container *ngSwitchCase=" 'session-future' ">
+              <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
+              <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
+              <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+              <div class="p-3">{{ "QNA SHORT" | translate }}</div>
+          </ng-container>
           
-        <ng-container *ngSwitchCase=" 'session-future' ">
-            <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
-            <div class="p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
-            <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
-            <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-            <div class="p-3">{{ "QNA SHORT" | translate }}</div>
-        </ng-container>
+          <ng-container *ngSwitchCase=" 'session-past' ">
+              <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
+              <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
+              <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+              <div class="p-3">{{ "QNA SHORT" | translate }}</div>
+          </ng-container>
         
 
         <ng-container *ngSwitchDefault>
