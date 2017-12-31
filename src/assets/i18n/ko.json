@@ -26,6 +26,7 @@
   "EMAIL": "이메일",
   "USERNAME": "로그인 아이디",
   "PASSWORD": "비밀번호",
+  "CHANGE PASSWORD": "비밀번호 변경",
   "LOGIN": "로그인",
   "LOGIN BUTTON": "로그인하기",
   "LOGOUT": "로그아웃",
@@ -55,13 +56,12 @@
 
 
   "discussion": "자유토론",
+  "QNA": "질문하기",
 
   "TEACHER LIST": "강사목록",
   "STUDENT LIST": "학생목록",
   "PAYMENT HISTORY": "결제목록",
-  "RESERVATION HISTORY": "예약기록",
   "PROFILE UPDATE BUTTON": "회원 정보 업데이트",
-  "PRIVATE QUERY": "일대일 상담하기",
 
   "CLASS COMMENTS": "수업후기",
   "FREE CLASS": "무료체험",
@@ -96,6 +96,7 @@
   , "SCHEDULE TABLE SEARCH OPTIONS SHORT": "옵션"
   , "TEACHER": "강사"
   , "TIME": "시간"
+  , "MINUTE": "분"
   , "ALL SCHEDULE": "전체 시간표"
   , "OPTIONS": "옵션"
   , "GENDER": "성별"
@@ -111,4 +112,9 @@
   , "SELECT_TEACHER_TITLE": "선생님을 선택하세요."
   , "PAST LIST PAGE": "지난수업"
   , "RESERVATION LIST PAGE": "예약된수업"
+  , "HELP": "이용안내"
+  , "MESSAGE": "쪽지"
+  , "AVAILABLE SESSIONS": "즉시수업"
+  , "AVAILABLE SESSIONS LONG": "즉시 수업하기"
+  
 }

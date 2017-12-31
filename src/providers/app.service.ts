@@ -444,4 +444,8 @@ export class AppService {
         return ! this.studentTheme;
     }
 
+
+    help() {
+        this.open('page', {name: 'student.guide'});
+    }
 }

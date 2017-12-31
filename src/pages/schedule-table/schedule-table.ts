@@ -12,6 +12,7 @@ import {YoutubeVideoPlayer} from "@ionic-native/youtube-video-player";
 
 type iShow = {
     more_total_schedule_warning: boolean;
+    more_icon_desc: boolean;
 };
 
 interface SESSION {
@@ -38,7 +39,7 @@ interface SCHEDULE {
 
 
 @Component({
-  selector: 'page-teacher-schedule',
+  selector: 'schedule-table-page',
   templateUrl: 'schedule-table.html'
 })
 export class ScheduleTablePage {
@@ -64,7 +65,8 @@ export class ScheduleTablePage {
   default_photo_url = window['url_backend'] + "/wp-content/plugins/xapi-2/lms/img/default-teacher-photo.jpg"
   @ViewChild('content') content;
   show: iShow = {
-    more_total_schedule_warning: false
+    more_total_schedule_warning: false,
+    more_icon_desc: false
   };
 
   
@@ -143,8 +145,8 @@ export class ScheduleTablePage {
   class_end_hour = 0;
 
 
-  in_displaying_schedule = false; ///
-  status = '';
+  // in_displaying_schedule = false; ///
+  status = null;
 
   
   constructor(
@@ -241,7 +243,8 @@ export class ScheduleTablePage {
         }
       }
       else if ( session[ this.OPEN ] == 'open' ) {
-        return '예약';
+        // return '예약';
+        return '';
       }
     }
   }
@@ -318,22 +321,26 @@ export class ScheduleTablePage {
     if ( ! re.table || ! re.table.length ) this.no_schedule = true;
     this.length_of_schedule_table_rows = re.table.length;
     this.schedule_table_rows = [];
-    this.in_displaying_schedule = true;
+    // this.in_displaying_schedule = true;
     this.teachers = re.teachers;
 
-    if ( this.singleTeacher ) {
+    if ( this.singleTeacher ) {                 // no delay push on single teacher.
       this.schedule_table_rows = re.table;
+      this.finishedOnScheduleTableDisplay();
     }
     else this.delayPush( re.table );
-
+  }
+  finishedOnScheduleTableDisplay() {
+    // this.in_displaying_schedule = false;
+    this.status = `총 ${this.length_of_schedule_table_rows} 개의 수업 시간표를 표시하였습니다.`;
+    setTimeout( () => this.status = null, 2500 );
+    // console.log('table rows: ', this.schedule_table_rows);
   }
 
   delayPush( table ) {
     setTimeout( () => {
       if ( ! table || ! table.length ) {
-        this.in_displaying_schedule = false;
-        this.status = `총 ${this.length_of_schedule_table_rows} 개의 수업 시간표를 표시하였습니다.`;
-        console.log('table rows: ', this.schedule_table_rows);
+        this.finishedOnScheduleTableDisplay();
       }
       else {
         const len = table.length;
@@ -373,7 +380,7 @@ export class ScheduleTablePage {
       if ( hour != 12 ) hour = hour % 12;
 
 
-      this.time = date.getDate() + '일 ' + ap + ' ' + hour + '시 ' + date.getMinutes() + '분 ' + date.getSeconds() + '초';
+      this.time = date.getDate() + '일 ' + ap + ' ' + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
     }
     this.timer = setTimeout(() => this.updateTime(), 1000);
   }
@@ -466,6 +473,7 @@ export class ScheduleTablePage {
 
   onClickNavigate(navigate) {
     this.navigate = navigate;
+    console.log(this.navigate);
     this.loadScheduleTable();
   }
 
@@ -597,5 +605,19 @@ export class ScheduleTablePage {
   //   });
   // }
 
+
+  point( session ) {
+    if (session[ this.STATUS ] == 'future') {
+      if (session[ this.OPEN ] == 'open') {
+        if (session[ this.DAYOFF ] != 'dayoff') return session[ this.POINT ];
+      }
+      else if (session[ this.OPEN ] == 'reserved') { // already reserved.
+        if ( session[ this.OWNER ] == 'me' ) {
+          return session[ this.POINT ];
+        }
+      }
+    }
+    return '';
+  }
 
 }

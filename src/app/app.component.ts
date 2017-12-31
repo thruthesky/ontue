@@ -142,7 +142,9 @@ export class MyApp {
 
     // this.a.open('schedule-table');
 
-    this.a.open('schedule-table', { ID: 809 });
+    // this.a.open('schedule-table', { ID: 809 }); // one schedule
+    // this.a.open('schedule-table', { ID: 969 }); // many schedule
+    // this.a.open('schedule-table', { ID: 806 }); /// tabetha
 
     // this.a.open('teacher-list');
 
@@ -151,7 +153,7 @@ export class MyApp {
     // this.a.open('register');
 
     // this.a.open('register');
-    // this.a.open('menu');
+    this.a.open('menu');
 
     // this.a.open('reservation', {past: true})
 
