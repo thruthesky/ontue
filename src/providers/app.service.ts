@@ -450,7 +450,4 @@ export class AppService {
     }
 
 
-    help() {
-        this.open('page', {name: 'student.guide'});
-    }
 }

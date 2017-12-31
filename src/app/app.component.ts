@@ -48,6 +48,7 @@ import { SessionFuturePage } from "../pages/session-future/session-future";
 import { PasswordChangePage } from "../pages/password-change/password-change";
 
 import { ScheduleAvailablePage } from '../pages/schedule-available/schedule-available';
+import { HelpPage } from '../pages/help/help';
 
 
 @Component({
@@ -128,6 +129,8 @@ export class MyApp {
 
     this.a.pages['schedule-available'] = ScheduleAvailablePage;
 
+    this.a.pages['help'] = HelpPage;
+
 
     setTimeout(() => this.test(), 100);
 
@@ -188,13 +191,15 @@ export class MyApp {
 
     // this.a.open('home');
 
-    this.a.open('session-past');
+    // this.a.open('session-past');
     // this.a.open('session-future');
     // this.a.open('password-change');
 
 
     // this.a.open('schedule-available');
 
+    this.a.open('help');
+    
   }
 
 

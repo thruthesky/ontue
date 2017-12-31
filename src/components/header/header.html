@@ -62,14 +62,14 @@
       <ng-container [ngSwitch]=" page ">
 
           <ng-container *ngSwitchCase=" 'payment' ">
-              <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
               <div class="p-3">무통장입금</div>
               <div class="p-3">{{ "QNA" | translate }}</div>
           </ng-container>
         
           <ng-container *ngSwitchCase=" 'session-future' ">
-              <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
               <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
               <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
@@ -77,7 +77,7 @@
           </ng-container>
           
           <ng-container *ngSwitchCase=" 'session-past' ">
-              <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
               <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
               <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
@@ -86,7 +86,7 @@
         
 
         <ng-container *ngSwitchDefault>
-          <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP" | translate }}</div>
+          <div class="p-3" (click)=" a.open('help') ">{{ "HELP" | translate }}</div>
           <div class="p-3" (click)=" a.open('teacher-list') ">{{ "FREE CLASS" | translate }}</div>
           <div class="p-3" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
           <div class="p-3">{{ "QNA" | translate }}</div>
