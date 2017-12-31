@@ -1,24 +1,22 @@
 <ion-header>
-  <header-content></header-content>
+  <header-content [page]=" 'session-future' " [title]=" '예약된 수업' "></header-content>
 </ion-header>
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
-    <section class="page-header d-flex justify-content-between">
-      <h2 class="title">{{ "RESERVATION LIST PAGE" | translate }}</h2>
-
-      <div class="d-flex">
-        <div class="mr-3 pointer" (click)=" a.open('session-past') ">{{ "PAST LIST PAGE" | translate }}</div>
-
-        <div class="pointer" (click)=" showOptions = !showOptions ">
+    <section class="page-header d-flex justify-content-end">
+      <div class="d-flex justify-content-end">
+        <div class="pointer" (click)=" show.options = true ">
           <ion-icon name="options"></ion-icon>
           {{ "OPTIONS" | translate }}
         </div>
       </div>
     </section>
+
+    {{ show | json }}
     <section class="page-body">
       <session-list
-        [showOptions]=" showOptions "
+        [show]=" show "
         [data]="{future:true}"
       ></session-list>
     </section>

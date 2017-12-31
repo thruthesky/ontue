@@ -7,7 +7,7 @@ import { AppService } from '../../providers/app.service';
 })
 export class SessionFuturePage {
 
-  showOptions = false;
+  show = { options: false };
   constructor(
     public a: AppService
   ) {

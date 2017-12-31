@@ -8,13 +8,14 @@
       </ion-col>
       <ion-col col-5 class="p-0">
 
-        <div class="fs-2rem text-center" style="padding-top: .63rem;" *ngIf=" title; else logo ">
+        <div class="fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
           {{ title }}
+          <img class="h-8" src="assets/img/talk.png">
         </div>
         <ng-template #logo>
-            <div class="pt-2" (click)="a.open('home')">
-                <img src="assets/img/logo/katalk-english.png">
-              </div>
+          <div class="pt-2" (click)="a.open('home')">
+            <img src="assets/img/logo/katalk-english.png">
+          </div>
         </ng-template>
 
 
@@ -23,32 +24,32 @@
         <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
 
           <ng-container *ngIf=" a.user.isLogout ">
-              <span (click)="a.open('login')">로그인</span>
-              <span class="pl-2" (click)="a.open('register')">회원가입</span>
+            <span (click)="a.open('login')">로그인</span>
+            <span class="pl-2" (click)="a.open('register')">회원가입</span>
           </ng-container>
           <ng-container *ngIf=" a.user.isLogin ">
-              <ng-container [ngSwitch]="page">
-                  <ng-container *ngSwitchCase=" 'schedule-table' ">
-                      <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
-                      <span (click)="a.open('home')">홈</span>
-                      <span class="pl-2" (click)="a.open('menu')">메뉴</span>
-                      <span class="pl-2" (click)="a.open('session-future')">예약확인</span>
-                  </ng-container>
-    
-                  <ng-container *ngSwitchCase=" 'payment' ">
-                      <span class="px-2" (click)="a.open('home')">홈</span>
-                      <span class="pl-3" (click)="a.open('teacher-list')">예약하기</span>
-                      <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
-                      <!-- <span class="pl-3" (click)="a.open('menu')">시간표</span> -->
-                      <!-- <span class="pl-3" (click)="a.open('session-future')">예약</span> -->
-                  </ng-container>
-    
-                <ng-container *ngSwitchDefault>
-                    <span (click)="a.open('payment')">수강료</span>
-                    <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
-                    <span class="pl-2" (click)="a.open('session-future')">예약확인</span>
-                </ng-container>
+            <ng-container [ngSwitch]="page">
+              <ng-container *ngSwitchCase=" 'schedule-table' ">
+                <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
+                <span (click)="a.open('home')">홈</span>
+                <span class="pl-2" (click)="a.open('menu')">메뉴</span>
+                <span class="pl-2" (click)="a.open('session-future')">예약확인</span>
               </ng-container>
+
+              <ng-container *ngSwitchCase=" 'payment' ">
+                <span class="px-2" (click)="a.open('home')">홈</span>
+                <span class="pl-3" (click)="a.open('teacher-list')">예약하기</span>
+                <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
+                <!-- <span class="pl-3" (click)="a.open('menu')">시간표</span> -->
+                <!-- <span class="pl-3" (click)="a.open('session-future')">예약</span> -->
+              </ng-container>
+
+              <ng-container *ngSwitchDefault>
+                <span (click)="a.open('payment')">수강료</span>
+                <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
+                <span class="pl-2" (click)="a.open('session-future')">예약확인</span>
+              </ng-container>
+            </ng-container>
           </ng-container>
 
         </div>
@@ -57,17 +58,34 @@
   </ion-grid>
 
   <nav class="">
-    <ul class="m-0 p-0 d-flex"
-    [class.front-page]=" page == 'home' "
-    [class.sub-page] = " page != 'home' "
-    style="list-style: none; justify-content:space-around;">
+    <div class="m-0 p-0 d-flex justify-content-around" [class.front-page]=" page == 'home' " [class.sub-page]=" page != 'home' ">
+      <ng-container [ngSwitch]=" page ">
 
-    <li class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP" | translate }}</li>
-      <li class="p-3" (click)=" a.open('teacher-list') ">{{ "FREE CLASS" | translate }}</li>
-      <li class="p-3" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</li>
-      <li class="p-3">질문하기</li>
-    </ul>
+          <ng-container *ngSwitchCase=" 'payment' ">
+              <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
+              <div class="p-3">무통장입금</div>
+              <div class="p-3">{{ "QNA" | translate }}</div>
+          </ng-container>
+        
+          
+        <ng-container *ngSwitchCase=" 'session-future' ">
+            <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP SHORT" | translate }}</div>
+            <div class="p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
+            <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
+            <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+            <div class="p-3">{{ "QNA SHORT" | translate }}</div>
+        </ng-container>
+        
 
+        <ng-container *ngSwitchDefault>
+          <div class="p-3" (click)=" a.open('page', {name: 'student.guide'}) ">{{ "HELP" | translate }}</div>
+          <div class="p-3" (click)=" a.open('teacher-list') ">{{ "FREE CLASS" | translate }}</div>
+          <div class="p-3" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
+          <div class="p-3">{{ "QNA" | translate }}</div>
+        </ng-container>
+      </ng-container>
+    </div>
   </nav>
 </section>
 
@@ -81,16 +99,16 @@
 
   <ng-container *ngIf=" a.user.isLogin; else userLogout ">
 
-      <div class="p-2" (click)=" a.open('reservation', {future: true}) ">Reserved</div>
-      <div class="p-2" (click)=" a.open('reservation', {past: true}) ">Past</div>
-      <div class="p-2" (click)=" a.open('schedule-edit') ">Schedule</div>
-      <div class="p-2" (click)=" a.user.logout() ">Logout</div>
+    <div class="p-2" (click)=" a.open('reservation', {future: true}) ">Reserved</div>
+    <div class="p-2" (click)=" a.open('reservation', {past: true}) ">Past</div>
+    <div class="p-2" (click)=" a.open('schedule-edit') ">Schedule</div>
+    <div class="p-2" (click)=" a.user.logout() ">Logout</div>
 
   </ng-container>
 
   <ng-template #userLogout>
 
-      <div class="p-2" (click)=" a.open('login') ">Login</div>
+    <div class="p-2" (click)=" a.open('login') ">Login</div>
 
   </ng-template>
 

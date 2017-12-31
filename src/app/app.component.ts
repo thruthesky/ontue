@@ -174,7 +174,7 @@ export class MyApp {
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 
-    this.a.open('payment');
+    // this.a.open('payment');
 
     // this.a.open('policy');
     // this.a.open('forum');
@@ -189,7 +189,7 @@ export class MyApp {
     // this.a.open('home');
 
     // this.a.open('session-past');
-    // this.a.open('session-future');
+    this.a.open('session-future');
     // this.a.open('password-change');
 
 

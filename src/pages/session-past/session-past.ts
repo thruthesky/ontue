@@ -8,7 +8,7 @@ import { AppService } from '../../providers/app.service';
 export class SessionPastPage {
 
 
-  showOptions = false;
+  show = { options: false };
   constructor(
     public a: AppService
   ) {

@@ -9,7 +9,7 @@
       <div class="d-flex">
         <div class="mr-3 pointer" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
 
-        <div class="pointer" (click)=" showOptions = !showOptions ">
+        <div class="pointer" (click)=" show.options = true ">
           <ion-icon name="options"></ion-icon>
           {{ "OPTIONS" | translate }}
         </div>
@@ -17,7 +17,7 @@
     </section>
     <section class="page-body">
       <session-list
-        [showOptions]=" showOptions "
+        [show]=" show "
         [data]="{past:true}"
       ></session-list>
     </section>

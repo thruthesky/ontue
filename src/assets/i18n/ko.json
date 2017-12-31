@@ -57,10 +57,11 @@
 
   "discussion": "자유토론",
   "QNA": "질문하기",
+  "QNA SHORT": "질문",
 
   "TEACHER LIST": "강사목록",
   "STUDENT LIST": "학생목록",
-  "PAYMENT HISTORY": "결제목록",
+  "PAYMENT HISTORY": "결제내역",
   "PROFILE UPDATE BUTTON": "회원 정보 업데이트",
 
   "CLASS COMMENTS": "수업후기",
@@ -113,6 +114,7 @@
   , "PAST LIST PAGE": "지난수업"
   , "RESERVATION LIST PAGE": "예약된수업"
   , "HELP": "이용안내"
+  , "HELP SHORT": "도움말"
   , "MESSAGE": "쪽지"
   , "AVAILABLE SESSIONS": "즉시수업"
   , "AVAILABLE SESSIONS LONG": "즉시 수업하기"

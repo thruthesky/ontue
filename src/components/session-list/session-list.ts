@@ -10,6 +10,7 @@ import { EvaluateView} from '../../components/evaluate-view/evaluate-view';
 })
 export class SessionList {
   @Input() data: {past:false;future:false};
+  @Input() show = { options: false };
   
   
   re = null;
@@ -22,7 +23,6 @@ export class SessionList {
   today = new Date();
   show_refund_in_progress = false;
   show_refunded = false;
-  @Input() showOptions = false;
   constructor(
     public a: AppService,
     public modalCtrl: ModalController,
