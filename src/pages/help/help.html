@@ -4,11 +4,158 @@
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
-    <section class="page-header">
-      <h2 class="title">제목</h2>
-    </section>
+
     <section class="page-body">
-      내용
+
+      <div>
+        카톡잉글리시에 처음 오신분들은 본 페이지의 내용을 꼭 한번 읽어주세요.
+      </div>
+
+      <h2 class="mb-5">
+        간편한 4 STEP
+      </h2>
+
+
+
+      <ion-grid class="p-0" text-center>
+        <ion-row>
+          <ion-col class="p-0" col-6 col-md-3>
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-user" data-fa-transform="shrink-8"></i>
+              </span>
+            </div>
+            <h4>1. 회원가입</h4>
+            <div>초간단 회원가입</div>
+            <div>5회 무료 체험</div>
+          </ion-col>
+          <ion-col class="p-0" col-6 col-md-3>
+
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-calendar-alt" data-fa-transform="shrink-8"></i>
+                <i class="fas fa-check-circle" style="color:rgba(115, 19, 2, 0.74);" data-fa-transform="shrink-12 down-3.4 right-3.2"></i>
+              </span>
+            </div>
+
+            <h4>2. 수업예약</h4>
+            <div>내가 직접 정하는</div>
+            <div>수업료와 시간표</div>
+
+          </ion-col>
+          <ion-col class="p-0" col-6 col-md-3>
+
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-comments yellow" data-fa-transform="shrink-8"></i>
+              </span>
+            </div>
+
+            <h4>3. 카톡으로 수업</h4>
+            <div>언제 어디서나 카톡으로</div>
+            <div>채팅 및 화상수업</div>
+
+          </ion-col>
+          <ion-col class="p-0" col-6 col-md-3>
+
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-window-restore" data-fa-transform="shrink-8"></i>
+              </span>
+            </div>
+
+            <h4>4. 강의 평가 확인</h4>
+            <div>매 수업마다 평가</div>
+            <div>틀린 부분 교정 및 과제</div>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+
+      <section class="text">
+        <div class="reservation">
+          <h2>자유예약</h2>
+          <div class="desc">
+            <div>
+                자유예약이란 간략하게 설명하면 학생이 직접 수업을 예약하고 취소하는 것을 말합니다.
+            </div>
+            
+            <div>
+              카톡잉글리시의 자유예약 시스템은 매우 직관적이며 편리합니다.
+              그냥 버튼 한번 클릭해 보시면 매우 쉽게 이해를 할 수 있습니다.
+              
+            </div>
+            <br> 참고로 각 강사마다 수업료가 틀린데 이것은 강사가 직접 수업료 수업 날짜/시간을 정하기 때문입니다.
+            <br> 학생은 해당 강사의 수업료, 날짜/시간을 보고 마음에 들면 예약을 하면됩니다.
+          </div>
+        </div>
+
+
+
+        <div class="reservation">
+          <h2>카카오톡으로 수업</h2>
+          <div class="desc">
+            <div>일반적으로 화상영어 전화영어 업체의 가장 큰 골치거리 중 하나가 바로 학생과 선생님이 소통하여 직접 수업료를 주고 받는 것입니다.</div>
+            <div>그래서 학생과 선생님의 소통을 차단하기 위해 별도의 화상영어 프로그램을 설치하고 수업 시간의 채팅을 모두 기록합니다.</div>
+            <div>이러한 화상영어 프로그램의 문제점은 스피커, 마이커, 웹캠 등의 문제가 자주 발생하며 컴퓨터가 느려지거나 먹통이되기도 합니다.</div>
+            <div>저희는 모든 한국인이 사용하는 최상의 화상수업 프로그램인 카카오톡을 선택했습니다.</div>
+            <div>강사와의 소통! 마음데로 하십시오! 밤낮으로 채팅하십시오.</div>
+            <div>저희는 최소한의 수수료만으로 운영하기 때문에 학생이 선생님에게 직접 수업료를 보낼 이유가 없습니다.</div>
+          </div>
+        </div>
+
+
+
+        <div class="leveltest">
+          <h2>무료 체험(레벨테스트)</h2>
+          <div class="desc">
+            회원 가입을 하고 무료 체험을 할 수 있는데, 이것은 레벨테스트와 동일합니다.
+            <br> 무료 체험은
+            <?=MAX_FREE_CLASS?> 회 할 수 있습니다. (한 강사당
+              <?=MAX_FREE_CLASS_WITH_SAME_TEACHER?> 회)
+                <br>
+
+
+          </div>
+        </div>
+
+        <div class="payment">
+          <h2>수업료 결제</h2>
+          <div class="desc">
+            수업료 결제 설명입니다
+            <br> 그럼 안녕히...
+          </div>
+        </div>
+
+
+        <div class="c2c">
+          <h2>직거래 방식 이해</h2>
+          <div class="desc">
+            직거래 방식 이해 설명입니다
+            <br> 그럼 안녕히...
+          </div>
+        </div>
+
+
+        <div class="c2c">
+          <h2>질문과 답변</h2>
+          <div class="desc">
+            질문과 답변 설명입니다
+            <br> 그럼 안녕히...
+          </div>
+        </div>
+
+
+      </section>
+      <!--/text-->
+
+
     </section>
     <hook-content-bottom></hook-content-bottom>
   </div>
