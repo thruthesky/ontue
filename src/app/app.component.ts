@@ -153,7 +153,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    this.a.open('login');
+    // this.a.open('login');
 
     // this.a.open('register');
     // this.a.open('menu');
@@ -196,7 +196,7 @@ export class MyApp {
     // this.a.open('password-change');
 
 
-    // this.a.open('schedule-available');
+    this.a.open('schedule-available');
 
     // this.a.open('help');
     

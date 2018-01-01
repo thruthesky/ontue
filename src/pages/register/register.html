@@ -1,136 +1,137 @@
 <ion-header>
-  <header-content></header-content>
+  <header-content [page]=" 'register' "></header-content>
 </ion-header>
-
-
 <ion-content>
   <div class="page">
-    <div class="box header bg-darkslateblue">
-      <span *ngIf="a.user.isLogout">{{ 'REGISTER' | translate }}</span>
-      <span *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE' | translate }}</span>
-    </div>
 
+    <hook-content-top></hook-content-top>
+    <section class="page-header">
+      <h2 class="title" *ngIf="a.user.isLogout">{{ 'REGISTER' | translate }}</h2>
+      <h2 class="title" *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE' | translate }}</h2>
+    </section>
 
-    <div class="d-flex justify-content-center mt-5" *ngIf=" a.teacherTheme ">
-      <div class="profile-user p-relative d-inline-block of-hidden" (click)="fileUpload.onClickCamera()">
-        <input *ngIf=" ! a.isCordova " class="p-absolute z-100 t-0 l-0 size-100x120 bg-grey" style="opacity: .003" type="file" (change)="fileUpload.onChangeFile($event)">
-        <div class="profile-user-photo size-100x120">
-          <img class="w-100" src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
+    <section class="page-body">
+      <div class="d-flex justify-content-center mt-5" *ngIf=" a.teacherTheme ">
+        <div class="profile-user p-relative d-inline-block of-hidden" (click)="fileUpload.onClickCamera()">
+          <input *ngIf=" ! a.isCordova " class="p-absolute z-100 t-0 l-0 size-100x120 bg-grey" style="opacity: .003" type="file" (change)="fileUpload.onChangeFile($event)">
+          <div class="profile-user-photo size-100x120">
+            <img class="w-100" src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
+          </div>
+          <div text-center>
+            <button class="btn submit fs-lg" [class.skip]="files && files.length">
+              <i class="fa fa-camera mr-2"></i>
+              {{ 'PHOTO UPLOAD' | translate }}
+            </button>
+          </div>
+          <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files" [showUploadedFiles]="false"
+            (success)="onSuccessUploadPicture($event)"></file-upload-widget>
         </div>
-        <div text-center>
-          <button class="btn submit fs-lg" [class.skip]="files && files.length">
-            <i class="fa fa-camera mr-2"></i>
-            {{ 'PHOTO UPLOAD' | translate }}
-          </button>
-        </div>
-        <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files" [showUploadedFiles]="false"
-          (success)="onSuccessUploadPicture($event)"></file-upload-widget>
       </div>
-    </div>
 
-    <form (submit)="onSubmit()">
+      <form (submit)="onSubmit()">
 
-      <ion-list>
-        <ion-item *ngIf=" a.teacherTheme ">
-          <ion-grid>
-            <ion-row>
-              <ion-col col-3>I am a</ion-col>
-              <ion-col col-9>
-                <label>
-                  <input type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()"> Student
-                </label>
-                <label>
-                  <input type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()"> Teacher
-                </label>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-          <small class="text-muted">Choose user user-type.</small>
-        </ion-item>
-
-
-        <ion-item *ngIf=" a.teacherTheme ">
-          <ion-label floating>{{ 'TIMEZONE' | translate }}</ion-label>
-          <ion-select [(ngModel)]="offset" name="timezone" [selectOptions]="{cssClass:'select-timezone'}">
-            <ion-option *ngFor="let t of keysTimezone()" value="{{ t }}">{{ format(t) }} {{ tz[t].name }}</ion-option>
-          </ion-select>
-        </ion-item>
-
-        <ion-item>
-          <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
-          <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
-        </ion-item>
-
-        <ion-item *ngIf="a.user.isLogout">
-          <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
-          <ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>
-        </ion-item>
+        <ion-list>
+          <ion-item *ngIf=" a.teacherTheme ">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-3>I am a</ion-col>
+                <ion-col col-9>
+                  <label>
+                    <input type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()"> Student
+                  </label>
+                  <label>
+                    <input type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()"> Teacher
+                  </label>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <small class="text-muted">Choose user user-type.</small>
+          </ion-item>
 
 
-        <ion-item>
-          <ion-label floating>{{ 'NAME' | translate }}</ion-label>
-          <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
-        </ion-item>
+          <ion-item *ngIf=" a.teacherTheme ">
+            <ion-label floating>{{ 'TIMEZONE' | translate }}</ion-label>
+            <ion-select [(ngModel)]="offset" name="timezone" [selectOptions]="{cssClass:'select-timezone'}">
+              <ion-option *ngFor="let t of keysTimezone()" value="{{ t }}">{{ format(t) }} {{ tz[t].name }}</ion-option>
+            </ion-select>
+          </ion-item>
 
-        <ion-item *ngIf=" a.teacherTheme ">
+          <ion-item>
+            <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+            <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
+          </ion-item>
 
-          {{ 'GENDER' | translate }}
-
-          <input [(ngModel)]="account.gender" type="radio" name="gender" value="M" [checked]=" account.gender == 'M' "> Male,
-          <input [(ngModel)]="account.gender" type="radio" name="gender" value="F" [checked]=" account.gender == 'F' "> Female
-        </ion-item>
-
-
-        <ion-item *ngIf=" a.teacherTheme ">
-          <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
-          <ion-datetime name="birthday" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY" [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
-        </ion-item>
+          <ion-item *ngIf="a.user.isLogout">
+            <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+            <ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>
+          </ion-item>
 
 
-        <ion-item>
-          <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
-          <ion-input type="text" [(ngModel)]="account.display_name" name="nickname"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'NAME' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+          </ion-item>
+
+          <ion-item *ngIf=" a.teacherTheme ">
+
+            {{ 'GENDER' | translate }}
+
+            <input [(ngModel)]="account.gender" type="radio" name="gender" value="M" [checked]=" account.gender == 'M' "> Male,
+            <input [(ngModel)]="account.gender" type="radio" name="gender" value="F" [checked]=" account.gender == 'F' "> Female
+          </ion-item>
 
 
-        <!-- <ion-item *ngIf="a.user.isLogin">
+          <ion-item *ngIf=" a.teacherTheme ">
+            <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
+            <ion-datetime name="birthday" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY" [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label floating>{{ 'NICKNAME' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="account.display_name" name="nickname"></ion-input>
+          </ion-item>
+
+
+          <!-- <ion-item *ngIf="a.user.isLogin">
           <button ion-button type="button" (click)="a.open('password-change')">Change Password</button>
         </ion-item> -->
 
-        <ion-item>
-          <ion-label floating>{{ 'PHONE NUMBER' | translate }}</ion-label>
-          <ion-input type="text" [(ngModel)]="account.phone_number" name="phone_number"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'PHONE NUMBER' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="account.phone_number" name="phone_number"></ion-input>
+          </ion-item>
 
 
-        <ion-item>
-          <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
-          <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
-        </ion-item>
-        <div class="ml-4 pt-2 fs-lg">{{ 'FIND KAKAOTALK ID' | translate }}</div>
+          <ion-item>
+            <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
+            <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
+          </ion-item>
+          <div class="ml-4 pt-2 fs-lg">{{ 'FIND KAKAOTALK ID' | translate }}</div>
 
-        <ion-item *ngIf="a.isTeacher">
-          Upload Kakaotalk QR Mark
-          <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks" [showUploadedFiles]="true"
-            (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
-          <div class="fs-lg mt-2" text-wrap>QR Mark is required for teacher, open your mobile KakaoTalk > Edit Profile > My QR Code > Click Download.
+          <ion-item *ngIf="a.isTeacher">
+            Upload Kakaotalk QR Mark
+            <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks" [showUploadedFiles]="true"
+              (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
+            <div class="fs-lg mt-2" text-wrap>QR Mark is required for teacher, open your mobile KakaoTalk > Edit Profile > My QR Code > Click Download.
+            </div>
+          </ion-item>
+
+          <ion-item *ngIf="a.lms.getUserType() == 'teacher' ">
+            bookable time
+          </ion-item>
+
+
+          <div padding>
+            <button ion-button color="primary" block>
+              <span *ngIf="a.user.isLogout">{{ 'REGISTER BUTTON' | translate }}</span>
+              <span *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE BUTTON' | translate }}</span>
+            </button>
           </div>
-        </ion-item>
-
-        <ion-item *ngIf="a.lms.getUserType() == 'teacher' ">
-          bookable time
-        </ion-item>
 
 
-        <div padding>
-          <button ion-button color="primary" block>
-            <span *ngIf="a.user.isLogout">{{ 'REGISTER BUTTON' | translate }}</span>
-            <span *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE BUTTON' | translate }}</span>
-          </button>
-        </div>
-
-
-      </ion-list>
-    </form>
+        </ion-list>
+      </form>
+    </section>
   </div>
 </ion-content>

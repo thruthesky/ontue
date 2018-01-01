@@ -5,13 +5,14 @@
   <div class="page">
     <hook-content-top></hook-content-top>
     <section class="page-header">
-      <h2 class="title">{{ "SCHEDULE AVAILABLE PAGE" | translate }}</h2>
+      <h2 class="title">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</h2>
 
     </section>
     <section class="page-body">
 
-      <div *ngIf=" pageInLoading; else pageLoaded ">
-        <ion-spinner></ion-spinner> {{ 'IN LOADING' | translate }}
+      <div class="d-flex m-2" *ngIf=" pageInLoading; else pageLoaded ">
+        <ion-spinner></ion-spinner>
+        <span class="p-2">{{ 'IN LOADING' | translate }}</span>
       </div>
       <ng-template #pageLoaded>
           <div>
@@ -34,10 +35,9 @@
                         <div>
                           ({{ schedule.teacher.total_reservation }} 명 참여)
                         </div>
-
-<div>
-  {{ schedule.user_time_class_begin }} for {{ schedule.duration }} minutes
-</div>
+                        <div>
+                          {{ class_begin(schedule) }} / {{ schedule.duration }} {{ 'MINUTE' | translate }}
+                        </div>
                         <div>
                             {{ schedule.point }} 포인트
                           </div>
@@ -45,8 +45,9 @@
                         <div class="alert alert-danger rounded-0 border-0 pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
                             {{ 'RESERVE NOW' | translate }}
                         </div>
-                        <div *ngIf=" loading[schedule.idx] ">
-                            <ion-spinner></ion-spinner> {{ 'IN RESERVING' | translate }}
+                        <div class="d-flex" *ngIf=" loading[schedule.idx] ">
+                            <ion-spinner></ion-spinner>
+                            <span class="p-2">{{ 'IN RESERVING' | translate }}</span>
                         </div>
 
                       </div>

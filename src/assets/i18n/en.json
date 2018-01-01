@@ -81,4 +81,7 @@
   , "PHONE NUMBER": "Phone Number"
   , "KAKAOTALK ID": "Kakaotalk ID"
   , "KAKAOTALK ID REQUIRED": "Please input Kakaotalk ID. You can  get it on your Kakaotalk profile."
+  , "SCHEDULE AVAILABLE PAGE TITLE": "Available teachers at this time"
+  , "IN LOADING": "Loading! Please wait a second."
+  , "IN RESERVING": "Reserving..."
 }

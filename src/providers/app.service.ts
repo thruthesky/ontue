@@ -28,7 +28,7 @@ export class AppService {
     loader;
     navCtrl: NavController = null;
     pages = {};
-    pageName = 'home';
+    page = 'home'; // current page name. it changes on this.open()
 
     anonymousPhotoURL = 'assets/img/anonymous.png';
 
@@ -115,7 +115,7 @@ export class AppService {
         if (typeof page === 'string') {
             if (!this.pages[page]) return this.alert('Wrong page name: ' + page);
 
-            this.pageName = page; /// set current page name.
+            this.page = page; /// set current page name.
             // alert('page: ' + page);
             page = this.pages[page];
             // console.log(page);
@@ -196,7 +196,6 @@ export class AppService {
         if ( str.callback !== void 0 ) alert("Callback is not supported by 2018-0101");
         if ( str.text !== void 0 ) alert("text is not supported by 2018-0101");
 
-
         // console.log(str);
 
         let options = {
@@ -207,7 +206,7 @@ export class AppService {
         };
 
         if ( typeof str === 'string' ) { // Mostly a message to user
-            str = { message: str };
+            options['message'] = str;
         }
         else if ( str instanceof Error ) { // Mostly an error from backend.
             // console.log("instanceof Error");
