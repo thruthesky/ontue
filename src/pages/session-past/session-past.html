@@ -19,18 +19,18 @@
           
         </div>
   
-        <div class="pointer" (click)=" share.options = true ">
+        <div class="pointer" (click)=" share.options = ! share.options ">
           <ion-icon name="options"></ion-icon>
           {{ "OPTIONS" | translate }}
         </div>
   
       </section>
-    <section class="page-body">
+      
       <session-list
         [share]=" share "
         [data]="{past:true}"
       ></session-list>
-    </section>
+      
     <hook-content-bottom></hook-content-bottom>
   </div><!--/page-->
 </ion-content>

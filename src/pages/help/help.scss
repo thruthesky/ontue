@@ -1,15 +1,122 @@
+$faq-background: #005cb2;
+$faq-secondary-background: #1e88e5;
+[page="help"] .submenu { /// top submenu design.
+  background-color: $faq-background;
+  color: white;
+}
+
 help-page {
   h2 {
     font-size: 3rem;
     font-weight: 100;
     text-align: center;
   }
+  .step {
+    color: dimgrey;
+  }
   h4 {
-      margin: 0;
-      padding: 0;
-      font-weight: 100;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 1.75rem;
+    color: black;
   }
   .darktomato {
     color: #ff5435;
   }
+  .faq {
+    margin-top: 3em;
+    margin-bottom: 5em;
+    .part {
+      margin: 4em 0 2em;
+      padding: 0 .5em;
+      h2 {}
+      .desc {
+        margin-top: 1em;
+        line-height: 180%;
+        &>div {
+          padding: 1em;
+        }
+      }
+
+      &.reservation .desc {
+        background: white;
+        color: $faq-background;
+        &>div:first-child {
+          background-color: $faq-secondary-background;
+          color: white;
+        }
+      }
+    }
+  }
+
+
+  .kakao .desc {
+    background: white;
+    color: #662c00;
+    &>div:first-child {
+      background-color: #ffd600;
+      color: black;
+    }
+  }
+  
+  .leveltest .desc {
+    background: white;
+    color: #29434e;
+    &>div:first-child {
+      background-color: #546e7a;
+      color: white;
+    }
+  }
+
+  .c2c .desc {
+    background: white;
+    color: #512da8;
+    &>div:first-child {
+      background-color: #512da8;
+      color: white;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0 0 0 1em;
+    }
+  }
+  
+
+  .payment .desc {
+    background: white;
+    color: black;
+    &>div:first-child {
+      background-color: #ffca28;
+      color: black;
+    }
+  }
+  
+  
+
+  .student-choice .desc {
+    background: white;
+    color: black;
+    &>div:first-child {
+      background-color: #2e7d32;
+      color: white;
+    }
+  }
+  
+  
+
+  .qna .desc {
+    background: white;
+    color: black;
+    &>div:first-child {
+      background-color: #ffc107;
+      color: black;
+    }
+  }
+  
+
+
+  
 }

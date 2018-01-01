@@ -1,7 +1,7 @@
 <ion-header>
   <header-content [page]=" 'session-future' " [title]=" '예약된 수업' "></header-content>
 </ion-header>
-<ion-content>
+<ion-content [attr.page]="'session-future'">
   <div class="page">
     <hook-content-top></hook-content-top>
     <section class="page-header d-flex justify-content-between">
@@ -19,15 +19,16 @@
         
       </div>
 
-      <div class="pointer" (click)=" share.options = true ">
+      <div class="pointer" (click)=" share.options = ! share.options ">
         <ion-icon name="options"></ion-icon>
         {{ "OPTIONS" | translate }}
       </div>
 
     </section>
-    <section class="page-body">
+    
       <session-list [share]=" share " [data]="{future:true}"></session-list>
-    </section>
+   
+      
     <hook-content-bottom></hook-content-bottom>
   </div>
   <!--/page-->

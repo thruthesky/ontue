@@ -1,6 +1,5 @@
 <section>
 
-
   <div class="options mb-5" *ngIf=" share.options ">
 
     <ion-grid *ngIf=" data['past'] ">
@@ -62,7 +61,7 @@
     Teacher must see this page in wide screen since the content in this page is wide.
   </div>
 
-  <section class="list-information mb-3 p-3 bg-lightgrey" *ngIf=" re ">
+  <section class="search-result mb-3 p-3" *ngIf=" re ">
     <div>
       {{ 'SEARCHED SESSIONS' | translate }} : {{ books.length }} ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )
     </div>
@@ -76,7 +75,8 @@
     </div>
   </section>
 
-  <table class="books" width="100%" *ngIf=" books.length ">
+  <div class="books">
+    <table width="100%" *ngIf=" books.length ">
     <tr text-center>
       <td *ngIf="a.isStudent">{{ 'TEACHER' | translate }}</td>
       <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
@@ -150,10 +150,13 @@
       </td>
     </tr>
   </table>
+</div>
 
-  <ul>
+
+  <ul *ngIf=" a.isTeacher ">
     <li>Rejected - Point Refund Request Rejected.</li>
     <li>Accept - Accept Refund Request</li>
     <li>Reject - Reject Refund Request</li>
   </ul>
+
 </section>

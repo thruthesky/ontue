@@ -1,4 +1,4 @@
-<section class="mobile-toolbar d-md-none" *ngIf=" a.lms.getUserType() != 'teacher' ">
+<section class="mobile-toolbar d-md-none" [attr.page]=" page " *ngIf=" a.lms.getUserType() != 'teacher' ">
   <ion-grid class="px-0" [class.pb-0]=" page != 'home' ">
     <ion-row>
       <ion-col col-3>
@@ -37,13 +37,23 @@
               </ng-container>
 
               <ng-container *ngSwitchCase=" 'payment' ">
-                <span class="px-2" (click)="a.open('home')">홈</span>
-                <span class="pl-3" (click)="a.open('teacher-list')">예약하기</span>
-                <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
-                <!-- <span class="pl-3" (click)="a.open('menu')">시간표</span> -->
-                <!-- <span class="pl-3" (click)="a.open('session-future')">예약</span> -->
-              </ng-container>
+                  <span class="px-2" (click)="a.open('home')">홈</span>
+                  <span class="pl-3" (click)="a.open('teacher-list')">예약하기</span>
+                  <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
+                  <!-- <span class="pl-3" (click)="a.open('menu')">시간표</span> -->
+                  <!-- <span class="pl-3" (click)="a.open('session-future')">예약</span> -->
+                </ng-container>
 
+                
+              <ng-container *ngSwitchCase=" 'session-future' ">
+                  <span class="px-2" (click)="a.open('home')">홈</span>
+                  <span class="pl-3" (click)="a.open('payment')">수강료</span>
+                  <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
+                  <!-- <span class="pl-3" (click)="a.open('menu')">시간표</span> -->
+                  <!-- <span class="pl-3" (click)="a.open('session-future')">예약</span> -->
+                </ng-container>
+
+                
               <ng-container *ngSwitchDefault>
                 <span (click)="a.open('payment')">수강료</span>
                 <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
@@ -58,16 +68,15 @@
   </ion-grid>
 
   <nav class="submenu">
-    <div class="m-0 p-0 d-flex justify-content-around" [class.front-page]=" page == 'home' " [class.sub-page]=" page != 'home' ">
+    <div class="m-0 p-0 d-flex justify-content-around">
       <ng-container [ngSwitch]=" page ">
-
           <ng-container *ngSwitchCase=" 'payment' ">
               <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
               <div class="p-3">무통장입금</div>
               <div class="p-3">{{ "QNA" | translate }}</div>
           </ng-container>
-        
+
           <ng-container *ngSwitchCase=" 'session-future' ">
               <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>

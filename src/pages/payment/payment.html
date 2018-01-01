@@ -44,9 +44,9 @@
       </div>
 
       <div class="alert alert-secondary" *ngIf=" amount_in_usd_with_tax() ">
-        <div>{{ amount }} 원 결제(세금 {{ payment_rate.paypal_student_fee }}% 별도)를 선택하였습니다.</div>
+        <div>{{ amount | number }} 원 결제(세금 {{ payment_rate.paypal_student_fee }}% 별도)를 선택하였습니다.</div>
         <div>
-          결제는 미국 달러로 진행되며 약 {{ amount_in_usd_with_tax() }} 달러(세금 포함)가 결제됩니다.
+          {{ amount | number }} 포인트가 충전되며 결제는 약 {{ amount_in_usd_with_tax() }} 달러(세금 포함)가 결제됩니다.
         </div>
       </div>
 
