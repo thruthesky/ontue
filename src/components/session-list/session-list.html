@@ -2,7 +2,7 @@
 
   <div class="options mb-5" *ngIf=" share.options ">
 
-    <ion-grid *ngIf=" data['past'] ">
+    <ion-grid *ngIf=" past ">
 
       <ion-row>
         <ion-col>
@@ -33,7 +33,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-list *ngIf=" data['past'] ">
+    <ion-list *ngIf=" past ">
       <ion-item>
         <ion-checkbox [(ngModel)]="show_refund_in_progress" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
         <ion-label>Display sessions in progress of Refund</ion-label>
@@ -69,7 +69,7 @@
       {{ 'SEARCHED POINT' | translate }} : {{ re.total_points | number }}
     </div>
 
-    <div *ngIf=" data.past ">
+    <div *ngIf=" past ">
       <span class="mr-3" *ngIf=" re.total_session_refunded ">{{ 'REFUNDED SESSIONS' | translate }} : {{re.total_session_refunded}}</span>
       <span *ngIf=" re.total_session_refund_in_progress ">{{ 'SESSIONS IN REFUND PROGRESS' | translate }} : {{re.total_session_refund_in_progress}}</span>
     </div>
