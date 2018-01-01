@@ -266,3 +266,15 @@ $position in (t: top, l: left, r: right, b: bottom) {
 .w-100 {
   width: 100%;
 }
+
+
+
+ion-toast {
+  &.error-42205 {
+    // login first
+    .toast-wrapper {
+      background-color: #01579b;
+      color: white;
+    }
+  }
+}

@@ -65,7 +65,7 @@
     <div>
       {{ 'SEARCHED SESSIONS' | translate }} : {{ books.length }} ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )
     </div>
-    <div>
+    <div *ngIf=" a.isTeacher ">
       {{ 'SEARCHED POINT' | translate }} : {{ re.total_points | number }}
     </div>
 
@@ -75,8 +75,9 @@
     </div>
   </section>
 
-  <div class="my-5 text-center" *ngIf=" re && books.length == 0 ">
-    앗, 예약된 수업이 없습니다.
+  <div class="my-5 p-5 text-center" *ngIf=" re && books.length == 0 ">
+      <ng-container *ngIf=" future ">{{ 'NO MORE RESERVATIONS' | translate }}</ng-container>
+      <ng-container *ngIf=" past ">{{ 'NO MORE PASTS' | translate }}</ng-container>
   </div>
 
   <div class="books" *ngIf=" books.length ">

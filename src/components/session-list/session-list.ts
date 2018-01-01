@@ -105,14 +105,18 @@ export class SessionList {
       this.re['total_session_refund_in_progress'] = this.a.toInt(this.re['total_session_refund_in_progress']);
       this.books = re['books'];
       this.my_teachers = re['my_teachers'];
-    }, e => this.a.alert(e));
+    }, e => {
+      this.a.alert(e);
+    });
 
   }
 
   onClickSearch() {
     this.a.lms.session_search(this.request()).subscribe(re => {
       console.log(re);
-    }, e => this.a.alert(e));
+    }, e => {
+      this.a.alert(e);
+    });
   }
 
   onClickRefundRequest(book) {

@@ -50,7 +50,7 @@ export class Base {
      * @endcode
      */
     getError( e: Error ): I.ERROR_RESPONSE {
-        console.log("getError: message: ", e.message);
+        console.log("getError(e): message: ", e.message);
         let re = <I.ERROR_RESPONSE> {};
         try {
             re = JSON.parse( e.message );
@@ -60,7 +60,7 @@ export class Base {
             re['code'] = -1;
             re['message'] = e.message; 
         }
-        console.log("parsed error: ", re);
+        console.log("Error message has been parsed. Message: ", re);
         return re;
     }
 

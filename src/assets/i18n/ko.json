@@ -1,12 +1,18 @@
 {
 
   "HTTP_ERROR": "접속 에러",
-  "HTTP_ERROR_DESC": "서버 연결에 실패하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
+  "HTTP_ERROR_DESC": "서버 접속에 실패하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
+  "PHP_ERROR_DESC": "서버 프로그램 에러가 발생하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
   "SITE NAME": "온튜",
 
   "HOME": "홈",
   "BACK": "뒤로",
+  
+  "DONE": "완료",
   "CLOSE": "닫기",
+  "OK": "예",
+  "CANCEL": "취소",
+  "DELETE": "삭제",
 
   "ALL MENU": "메뉴",
   "FORUM": "게시판",
@@ -42,10 +48,6 @@
   "PROFILE": "회원 정보",
   "EDIT_PROFILE": "회원 정보 수정",
 
-  "DONE": "완료",
-  "OK": "예",
-  "CANCEL": "취소",
-  "DELETE": "삭제",
   "LOGIN REQUIRED": "로그인을 하세요.",
   "LOGIN REQUIRED DESCRIPTION": "로그인을 하셔야 온튜 홈페이지의 모든 기능을 이용 할 수 있습니다.",
 
@@ -123,7 +125,7 @@
   , "LOADING PAYMENT INFORMATION": "결제 정보를 로드 중. 잠시만 기다려주세요."
   , "SEARCHED SESSIONS": "검색된 수업"
   , "TOTAL": "총"
-  , "SEARCHED POINT": "검색된 포인트"
+  , "SEARCHED POINT": "검색된 수업 포인트"
   , "REFUNDED SESSIONS": "복구된 수업"
   , "SESSIONS IN REFUND PROGRESS": "복구 중인 수업"
   , "CLASS NO": "번호"
@@ -133,4 +135,6 @@
   , "EVALUATION": "평가"
   , "REQUEST REFUND": "복구신청"
   , "CANCEL REFUND REQUEST": "복구취소"
+  , "NO MORE RESERVATIONS": "앗, 예약된 수업이 없습니다."
+  , "NO MORE PASTS": "앗, 지난 수업이 없습니다. 검색 옵션을 통해서 지난 수업 검색을 할 수 있습니다."
 }

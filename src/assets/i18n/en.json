@@ -2,6 +2,7 @@
 
   "HTTP ERROR": "Connection Error",
   "HTTP ERROR DESC": "Connection to the server has failed. Please notify this error to admin immediately.",
+  "PHP_ERROR_DESC": "Server program error. Please notify admin immediately.",
 
 
   "SITE NAME": "온튜",
@@ -67,4 +68,6 @@
   , "CLASS NO": "No."
   , "DATE": "Date"
   , "STUDENT": "Student"
+  , "NO MORE RESERVATIONS": "Ooh, thre is no reservations."
+  , "NO MORE PASTS": "OOh, there is no past sessions. You can search past sessions through options."
 }
