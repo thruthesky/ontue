@@ -61,7 +61,7 @@
     Teacher must see this page in wide screen since the content in this page is wide.
   </div>
 
-  <section class="search-result mb-3 p-3" *ngIf=" re ">
+  <section class="search-result mb-3 p-3" *ngIf=" re && books.length ">
     <div>
       {{ 'SEARCHED SESSIONS' | translate }} : {{ books.length }} ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )
     </div>
@@ -75,8 +75,12 @@
     </div>
   </section>
 
-  <div class="books">
-    <table width="100%" *ngIf=" books.length ">
+  <div class="my-5 text-center" *ngIf=" re && books.length == 0 ">
+    앗, 예약된 수업이 없습니다.
+  </div>
+
+  <div class="books" *ngIf=" books.length ">
+    <table width="100%">
     <tr text-center>
       <td *ngIf="a.isStudent">{{ 'TEACHER' | translate }}</td>
       <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
@@ -142,10 +146,15 @@
 
             </div>
           </div>
-          <ng-container *ngIf=" ! book.past ">
-            <button ion-button (click)="onClickCancel( book )" *ngIf=" ! book.process ">Cancel</button>
-            <ion-spinner *ngIf=" book.process "></ion-spinner>
-          </ng-container>
+
+          <div class="buttons mt-1" *ngIf=" future ">
+            <button class="light" *ngIf=" ! book.process " (click)="onClickCancel( book )">
+              <i class="fal fa-times"></i>
+              <span class="pl-2">{{ 'CANCEL' | translate }}</span>
+            </button>
+            <span class="pl-5" *ngIf=" book.process "><i class="fal fa-spinner fa-spin"></i></span>
+          </div>
+
         </section>
       </td>
     </tr>

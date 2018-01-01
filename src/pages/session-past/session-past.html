@@ -6,32 +6,30 @@
     <hook-content-top></hook-content-top>
     <section class="page-header d-flex justify-content-between">
 
-        <div>
-          {{ a.user.name }} 님, 포인트:
-  
-          <span *ngIf=" a.inLoadingMyPoint ">
-              <i class="fal fa-spinner fa-spin"></i>
-          </span>
-  
-          <span *ngIf=" ! a.inLoadingMyPoint ">
-            {{ share.point }}
-          </span>
-          
-        </div>
-  
-        <div class="pointer" (click)=" share.options = ! share.options ">
-          <ion-icon name="options"></ion-icon>
-          {{ "OPTIONS" | translate }}
-        </div>
-  
-      </section>
-      
-      <session-list
-        [share]=" share "
-        [page]=" page "
-      ></session-list>
-      
-    <hook-content-bottom></hook-content-bottom>
-  </div><!--/page-->
-</ion-content>
+      <div>
+        {{ a.user.name }} 님, 포인트:
 
+        <span *ngIf=" a.inLoadingMyPoint ">
+          <i class="fal fa-spinner fa-spin"></i>
+        </span>
+
+        <span *ngIf=" ! a.inLoadingMyPoint ">
+          {{ share.point }}
+        </span>
+
+      </div>
+
+      <div class="pointer" (click)=" share.options = ! share.options ">
+        <ion-icon name="options"></ion-icon>
+        {{ "OPTIONS" | translate }}
+      </div>
+
+    </section>
+
+    <session-list [share]=" share " [page]=" page "></session-list>
+
+
+    <hook-content-bottom></hook-content-bottom>
+  </div>
+  <!--/page-->
+</ion-content>

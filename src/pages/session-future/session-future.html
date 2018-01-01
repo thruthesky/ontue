@@ -10,13 +10,13 @@
         {{ a.user.name }} 님, 포인트:
 
         <span *ngIf=" a.inLoadingMyPoint ">
-            <i class="fal fa-spinner fa-spin"></i>
+          <i class="fal fa-spinner fa-spin"></i>
         </span>
 
         <span *ngIf=" ! a.inLoadingMyPoint ">
           {{ share.point }}
         </span>
-        
+
       </div>
 
       <div class="pointer" (click)=" share.options = ! share.options ">
@@ -25,10 +25,9 @@
       </div>
 
     </section>
-    
-      <session-list [share]=" share " [page]=" page "></session-list>
-   
-      
+
+    <session-list [share]=" share " [page]=" page "></session-list>
+
     <hook-content-bottom></hook-content-bottom>
   </div>
   <!--/page-->
