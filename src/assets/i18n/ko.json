@@ -28,7 +28,7 @@
   "RESERVE": "예약",
 
   "NAME": "이름",
-  "NICKNAME": "닉네임",
+  "NICKNAME": "영어 이름(영어로만 입력)",
   "EMAIL": "이메일",
   "USERNAME": "로그인 아이디",
   "PASSWORD": "비밀번호",
@@ -39,6 +39,9 @@
   
   "REGISTER": "회원가입",
   "REGISTER BUTTON": "회원 가입하기",
+
+  "UPDATE PROFILE": "회원 정보 수정",
+  "UPDATE PROFILE BUTTON": "회원 정보 수정하기",
 
   "SEARCH": "검색",
   "SETTINGS": "설정",
@@ -137,4 +140,14 @@
   , "CANCEL REFUND REQUEST": "복구취소"
   , "NO MORE RESERVATIONS": "앗, 예약된 수업이 없습니다."
   , "NO MORE PASTS": "앗, 지난 수업이 없습니다. 검색 옵션을 통해서 지난 수업 검색을 할 수 있습니다."
+  , "PHOTO UPLOAD": "사진 등록"
+  , "CHOOSE USER TYPE": "선생님인지 학생인지 선택하세요."
+  , "NAME REQUIRED": "이름을 입력하세요."
+  , "EMAIL REQUIRED": "이메일 주소를 입력하세요.."
+  , "PASSWORD REQUIRED": "비밀번호를 입력하세요."
+  , "PHONE NUMBER REQUIRED": "전화번호를 입력하세요."
+  , "PHONE NUMBER": "전화번호"
+  , "KAKAOTALK ID": "카카오톡 아이디"
+  , "FIND KAKAOTALK ID": "카카오톡 아이디는 프로필 관리에서 확인 할 수 있습니다."
+  , "KAKAOTALK ID REQUIRED": "카카오톡 아이디를 입력해야 합니다. 카카오톡 아이디는 프로필에서 확인 할 수 있습니다."
 }

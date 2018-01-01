@@ -25,6 +25,8 @@
   "LOGOUT": "Logout",
   "REGISTER": "Register",
   "REGISTER BUTTON": "SUBMIT",
+  "UPDATE PROFILE": "Profile Update",
+  "UPDATE PROFILE BUTTON": "SUBMIT",
   "SEARCH": "Search",
   "SETTINGS": "Settings",
   "SKIP": "Skip",
@@ -70,4 +72,13 @@
   , "STUDENT": "Student"
   , "NO MORE RESERVATIONS": "Ooh, thre is no reservations."
   , "NO MORE PASTS": "OOh, there is no past sessions. You can search past sessions through options."
+  , "PHOTO UPLOAD": "Upload Photo"
+  , "CHOOSE USER TYPE": "Please choose your member type."
+  , "NAME REQUIRED": "Please input your name."
+  , "EMAIL REQUIRED": "Please input your email."
+  , "PASSWORD REQUIRED": "Please input password."
+  , "PHONE NUMBER REQUIRED": "Please input your phone number."
+  , "PHONE NUMBER": "Phone Number"
+  , "KAKAOTALK ID": "Kakaotalk ID"
+  , "KAKAOTALK ID REQUIRED": "Please input Kakaotalk ID. You can  get it on your Kakaotalk profile."
 }

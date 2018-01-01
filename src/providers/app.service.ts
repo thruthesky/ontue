@@ -226,6 +226,9 @@ export class AppService {
             }
             options['message'] = this.i18n[title] + ' ' + this.i18n[message];
         }
+        else if ( str.title !== void 0 || str.message !== void 0 ) {
+            options['message'] = str.title + " " + str.message;
+        }
         else {
             options['message'] = 'No message';
         }
@@ -245,6 +248,7 @@ export class AppService {
     }
 
     showAlert(title: any, content = '') {
+        console.log( title, content);
         this.alert({ title: title, message: content });
     }
 
@@ -322,7 +326,21 @@ export class AppService {
 
         this.translate.use(this.getUserLanguage());
 
-        this.translate.get(['HTTP_ERROR', 'HTTP_ERROR_DESC', 'PHP_ERROR_DESC', "SELECT_TEACHER_TITLE", "CLOSE"]).subscribe(re => {
+        this.translate.get([
+            'HTTP_ERROR',
+            'HTTP_ERROR_DESC',
+            'PHP_ERROR_DESC',
+            "SELECT_TEACHER_TITLE",
+            "CLOSE",
+            'CHOOSE USER TYPE',
+            "NAME REQUIRED",
+            'EMAIL REQUIRED',
+            "PASSWORD REQUIRED",
+            "PHONE NUMBER REQUIRED",
+            "PHONE NUMBER",
+            "KAKAOTALK ID",
+            "KAKAOTALK ID REQUIRED"
+            ]).subscribe(re => {
             this.i18n = re;
         });
 
