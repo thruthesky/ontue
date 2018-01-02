@@ -146,7 +146,8 @@ export class ScheduleTablePage {
 
 
   // in_displaying_schedule = false; ///
-  // status = null;
+  status = null;
+  status_n = 0;
 
   
   constructor(
@@ -287,7 +288,7 @@ export class ScheduleTablePage {
     if (this.params.ID) opt['teachers'] = [this.params.ID];
     opt = this.request( opt );
     // console.log(opt);
-    this.scheduleLoader( this.a.i18n[ 'LOADING SCHEDULE'] );
+    this.status = 'LOADING SCHEDULE';
     this.a.lms.schedule_table(opt).subscribe(re => {
       this.displayScheduleTable(re);
       if ( callback ) callback();
@@ -298,7 +299,7 @@ export class ScheduleTablePage {
   }
 
   displayScheduleTable(re) {
-    this.scheduleLoader( this.a.i18n['GOT SCHEDULE'] );
+    this.status = 'GOT SCHEDULE';
     console.log('got data: ', re);
     /// 시간표 속도 : https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.xxaqipe33arp
     this.no_of_schedules = re.no_of_schedules;
@@ -332,8 +333,11 @@ export class ScheduleTablePage {
   }
   finishedOnScheduleTableDisplay() {
     // this.in_displaying_schedule = false;
-    this.scheduleLoader( this.a.i18n[ 'SCHEDULE DISPLAYED' ] );
-    // setTimeout( () => this.status = null, 2500 );
+    // this.status = null;
+    this.status_n = 0;
+
+    this.status = 'SCHEDULE DISPLAYED';
+    setTimeout( () => this.status = null, 2500 );
     // console.log('table rows: ', this.schedule_table_rows);
   }
 
@@ -344,8 +348,8 @@ export class ScheduleTablePage {
       }
       else {
         const len = table.length;
-        const n = this.length_of_schedule_table_rows - len;
-        // this.scheduleLoader( '[' + this.length_of_schedule_table_rows + '] ' + n + this.a.i18n[ 'DISPLAYING SCHEDULE' ] );
+        this.status_n = this.length_of_schedule_table_rows - len;
+        this.status = 'DISPLAYING SCHEDULE';
         for( let i = 0; i < 10 && i < len; i ++ ) {
           this.schedule_table_rows.push( table.shift() );
         }
@@ -621,7 +625,7 @@ export class ScheduleTablePage {
   }
 
 
-  scheduleLoader( str ) {
-    this.a.alert( { message: str, duration: 1500 } );
-  }
+  // scheduleLoader( str ) {
+  //   this.a.alert( { message: str, duration: 1500 } );
+  // }
 }

@@ -186,8 +186,16 @@
 
 
 
-      <div class="user-point d-flex justify-content-between p-3 white" *ngIf=" a.user.isLogin && my_point">
-        <div class="d-flex ">
+      <div class="user-point d-flex justify-content-between p-3 white" *ngIf=" (a.user.isLogin && my_point) || status">
+
+
+      <div *ngIf=" status ">
+          <i class="fas fa-spinner fa-spin"></i>
+          <span *ngIf=" status_n ">[{{ length_of_schedule_table_rows }}] {{ status_n }}</span>
+          {{ status | translate }}
+        </div>
+
+        <div class="d-flex " *ngIf=" ! status ">
           <div>
             포인트:
             <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
