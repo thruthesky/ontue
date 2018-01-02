@@ -1,16 +1,5 @@
-[page="session-future"]
-{
-  .submenu {
-    /// top submenu design.
-    background-color: #01579b;
-    color: white;
-  }
-  .page-header {
-    background-color: #78aeda;
-  }
-  .search-result {
-    background-color: #f1f9ff;
-  }
+session-future-page {
+  @include theme('blue');
   .books {
     padding: 1em;
   }

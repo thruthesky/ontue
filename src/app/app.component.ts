@@ -173,7 +173,7 @@ export class MyApp {
     // this.a.open('evaluate-view', {idx: 9707} );
 
 
-    // this.a.open('payment');
+    this.a.open('payment');
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 
@@ -196,7 +196,7 @@ export class MyApp {
     // this.a.open('password-change');
 
 
-    this.a.open('schedule-available');
+    // this.a.open('schedule-available');
 
     // this.a.open('help');
     

@@ -3,7 +3,7 @@ import { AppService } from './../../providers/app.service';
 
 
 @Component({
-  selector: 'page-menu',
+  selector: 'menu-page',
   templateUrl: 'menu.html'
 })
 export class MenuPage {

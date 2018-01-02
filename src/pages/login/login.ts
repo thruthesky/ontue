@@ -5,7 +5,7 @@ import { USER_LOGIN } from './../../angular-xapi/interfaces';
 
 
 @Component({
-    selector: 'page-login',
+    selector: 'login-page',
     templateUrl: 'login.html'
 })
 export class LoginPage {

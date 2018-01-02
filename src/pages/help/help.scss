@@ -1,9 +1,17 @@
+help-page {
+  @include theme('blue');
+}
+
+
+
 $faq-background: #005cb2;
 $faq-secondary-background: #1e88e5;
-[page="help"] .submenu { /// top submenu design.
-  background-color: $faq-background;
-  color: white;
-}
+// [page="help"] .submenu { /// top submenu design.
+//   background-color: $faq-background;
+//   color: white;
+// }
+
+
 
 help-page {
   h2 {
