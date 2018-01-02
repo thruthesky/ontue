@@ -1,27 +1,35 @@
 <ion-header>
-  <header-content></header-content>
+  <header-content [page]=" page " [title]=" '지난 수업' "></header-content>
 </ion-header>
-<ion-content>
+<ion-content [attr.page]=" page ">
   <div class="page">
     <hook-content-top></hook-content-top>
     <section class="page-header d-flex justify-content-between">
-      <h2 class="title">{{ "PAST LIST PAGE" | translate }}</h2>
-      <div class="d-flex">
-        <div class="mr-3 pointer" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
 
-        <div class="pointer" (click)=" showOptions = !showOptions ">
-          <ion-icon name="options"></ion-icon>
-          {{ "OPTIONS" | translate }}
+      
+      <div>
+          <ng-container *ngIf=" a.isStudent ">
+            {{ a.user.name }} 님, 포인트:
+            <span *ngIf=" a.inLoadingMyPoint ">
+              <i class="fal fa-spinner fa-spin"></i>
+            </span>
+            <span *ngIf=" ! a.inLoadingMyPoint ">
+              {{ share.point }}
+            </span>
+          </ng-container>
         </div>
-      </div>
-    </section>
-    <section class="page-body">
-      <session-list
-        [showOptions]=" showOptions "
-        [data]="{past:true}"
-      ></session-list>
-    </section>
-    <hook-content-bottom></hook-content-bottom>
-  </div><!--/page-->
-</ion-content>
 
+      <div class="pointer" (click)=" share.options = ! share.options ">
+        <ion-icon name="options"></ion-icon>
+        {{ "OPTIONS" | translate }}
+      </div>
+
+    </section>
+
+    <session-list [share]=" share " [page]=" page "></session-list>
+
+
+    <hook-content-bottom></hook-content-bottom>
+  </div>
+  <!--/page-->
+</ion-content>

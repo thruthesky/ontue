@@ -1,12 +1,18 @@
 {
 
   "HTTP_ERROR": "접속 에러",
-  "HTTP_ERROR_DESC": "서버 연결에 실패하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
+  "HTTP_ERROR_DESC": "서버 접속에 실패하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
+  "PHP_ERROR_DESC": "서버 프로그램 에러가 발생하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
   "SITE NAME": "온튜",
 
   "HOME": "홈",
   "BACK": "뒤로",
+  
+  "DONE": "완료",
   "CLOSE": "닫기",
+  "OK": "예",
+  "CANCEL": "취소",
+  "DELETE": "삭제",
 
   "ALL MENU": "메뉴",
   "FORUM": "게시판",
@@ -22,16 +28,20 @@
   "RESERVE": "예약",
 
   "NAME": "이름",
-  "NICKNAME": "닉네임",
+  "NICKNAME": "영어 이름(영어로만 입력)",
   "EMAIL": "이메일",
   "USERNAME": "로그인 아이디",
   "PASSWORD": "비밀번호",
+  "CHANGE PASSWORD": "비밀번호 변경",
   "LOGIN": "로그인",
   "LOGIN BUTTON": "로그인하기",
   "LOGOUT": "로그아웃",
   
   "REGISTER": "회원가입",
   "REGISTER BUTTON": "회원 가입하기",
+
+  "UPDATE PROFILE": "회원 정보 수정",
+  "UPDATE PROFILE BUTTON": "회원 정보 수정하기",
 
   "SEARCH": "검색",
   "SETTINGS": "설정",
@@ -41,10 +51,6 @@
   "PROFILE": "회원 정보",
   "EDIT_PROFILE": "회원 정보 수정",
 
-  "DONE": "완료",
-  "OK": "예",
-  "CANCEL": "취소",
-  "DELETE": "삭제",
   "LOGIN REQUIRED": "로그인을 하세요.",
   "LOGIN REQUIRED DESCRIPTION": "로그인을 하셔야 온튜 홈페이지의 모든 기능을 이용 할 수 있습니다.",
 
@@ -55,13 +61,13 @@
 
 
   "discussion": "자유토론",
+  "QNA": "질문하기",
+  "QNA SHORT": "질문",
 
   "TEACHER LIST": "강사목록",
   "STUDENT LIST": "학생목록",
-  "PAYMENT HISTORY": "결제목록",
-  "RESERVATION HISTORY": "예약기록",
+  "PAYMENT HISTORY": "결제내역",
   "PROFILE UPDATE BUTTON": "회원 정보 업데이트",
-  "PRIVATE QUERY": "일대일 상담하기",
 
   "CLASS COMMENTS": "수업후기",
   "FREE CLASS": "무료체험",
@@ -96,6 +102,7 @@
   , "SCHEDULE TABLE SEARCH OPTIONS SHORT": "옵션"
   , "TEACHER": "강사"
   , "TIME": "시간"
+  , "MINUTE": "분"
   , "ALL SCHEDULE": "전체 시간표"
   , "OPTIONS": "옵션"
   , "GENDER": "성별"
@@ -111,4 +118,40 @@
   , "SELECT_TEACHER_TITLE": "선생님을 선택하세요."
   , "PAST LIST PAGE": "지난수업"
   , "RESERVATION LIST PAGE": "예약된수업"
+  , "HELP": "이용안내"
+  , "HELP SHORT": "도움말"
+  , "MESSAGE": "쪽지"
+  , "AVAILABLE SESSIONS": "즉시수업"
+  , "AVAILABLE SESSIONS LONG": "즉시 수업하기"
+  , "PAYMENT PAGE TITLE": "원하는 만큼 결제하고 원하는 만큼 수업하세요."
+  , "SELECT AMOUNT": "금액 선택"
+  , "LOADING PAYMENT INFORMATION": "결제 정보를 로드 중. 잠시만 기다려주세요."
+  , "SEARCHED SESSIONS": "검색된 수업"
+  , "TOTAL": "총"
+  , "SEARCHED POINT": "검색된 수업 포인트"
+  , "REFUNDED SESSIONS": "복구된 수업"
+  , "SESSIONS IN REFUND PROGRESS": "복구 중인 수업"
+  , "CLASS NO": "번호"
+  , "DATE": "날짜"
+  , "POINT": "포인트"
+  , "STUDENT": "학생"
+  , "EVALUATION": "평가"
+  , "REQUEST REFUND": "복구신청"
+  , "CANCEL REFUND REQUEST": "복구취소"
+  , "NO MORE RESERVATIONS": "앗, 예약된 수업이 없습니다."
+  , "NO MORE PASTS": "앗, 지난 수업이 없습니다. 검색 옵션을 통해서 지난 수업 검색을 할 수 있습니다."
+  , "PHOTO UPLOAD": "사진 등록"
+  , "CHOOSE USER TYPE": "선생님인지 학생인지 선택하세요."
+  , "NAME REQUIRED": "이름을 입력하세요."
+  , "EMAIL REQUIRED": "이메일 주소를 입력하세요.."
+  , "PASSWORD REQUIRED": "비밀번호를 입력하세요."
+  , "PHONE NUMBER REQUIRED": "전화번호를 입력하세요."
+  , "PHONE NUMBER": "전화번호"
+  , "KAKAOTALK ID": "카카오톡 아이디"
+  , "FIND KAKAOTALK ID": "카카오톡 아이디는 프로필 관리에서 확인 할 수 있습니다."
+  , "KAKAOTALK ID REQUIRED": "카카오톡 아이디를 입력해야 합니다. 카카오톡 아이디는 프로필에서 확인 할 수 있습니다."
+  , "SCHEDULE AVAILABLE PAGE TITLE": "지금 바로 수업 가능한 선생님 목록"
+  , "IN LOADING": "로딩 중입니다. 잠시만 기다려주세요."
+  , "IN RESERVING": "예약 중..."
+  , "RESERVE NOW": "예약하기"
 }

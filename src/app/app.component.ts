@@ -48,6 +48,7 @@ import { SessionFuturePage } from "../pages/session-future/session-future";
 import { PasswordChangePage } from "../pages/password-change/password-change";
 
 import { ScheduleAvailablePage } from '../pages/schedule-available/schedule-available';
+import { HelpPage } from '../pages/help/help';
 
 
 @Component({
@@ -128,6 +129,8 @@ export class MyApp {
 
     this.a.pages['schedule-available'] = ScheduleAvailablePage;
 
+    this.a.pages['help'] = HelpPage;
+
 
     setTimeout(() => this.test(), 100);
 
@@ -142,13 +145,15 @@ export class MyApp {
 
     // this.a.open('schedule-table');
 
-    this.a.open('schedule-table', { ID: 809 });
+    // this.a.open('schedule-table', { ID: 809 }); // one schedule
+    // this.a.open('schedule-table', { ID: 969 }); // many schedule
+    // this.a.open('schedule-table', { ID: 806 }); /// tabetha
 
     // this.a.open('teacher-list');
 
     // this.a.open('schedule-edit');
 
-    // this.a.open('register');
+    // this.a.open('login');
 
     // this.a.open('register');
     // this.a.open('menu');
@@ -191,8 +196,10 @@ export class MyApp {
     // this.a.open('password-change');
 
 
-    // this.a.open('schedule-available');
+    this.a.open('schedule-available');
 
+    // this.a.open('help');
+    
   }
 
 

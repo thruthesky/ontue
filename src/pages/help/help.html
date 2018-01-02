@@ -1,0 +1,195 @@
+<ion-header>
+  <header-content [page]=" 'help' "></header-content>
+</ion-header>
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+
+    <div class="p-3 white" style="background: #1e88e5;">
+        카톡잉글리시에 처음 오신분들은 본 페이지의 내용을 꼭 한번 읽어주세요.
+      </div>
+    <section class="page-body">
+      <h2 class="mb-3">
+        간편한 4 STEP
+      </h2>
+      <ion-grid class="step p-0" text-center>
+        <ion-row>
+          <ion-col class="p-0" col-6 col-md-3>
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-user" data-fa-transform="shrink-8"></i>
+              </span>
+            </div>
+            <h4>1. 회원가입</h4>
+            <div>초간단 회원가입</div>
+            <div>5회 무료 체험</div>
+          </ion-col>
+          <ion-col class="p-0" col-6 col-md-3>
+
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-calendar-alt" data-fa-transform="shrink-8"></i>
+                <i class="fas fa-check-circle" style="color:rgba(115, 19, 2, 0.74);" data-fa-transform="shrink-12 down-3.4 right-3.2"></i>
+              </span>
+            </div>
+
+            <h4>2. 수업예약</h4>
+            <div>내가 직접 정하는</div>
+            <div>수업료와 시간표</div>
+
+          </ion-col>
+          <ion-col class="p-0" col-6 col-md-3>
+
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-comments yellow" data-fa-transform="shrink-8"></i>
+              </span>
+            </div>
+
+            <h4>3. 카톡으로 수업</h4>
+            <div>언제 어디서나 카톡으로</div>
+            <div>채팅 및 화상수업</div>
+
+          </ion-col>
+          <ion-col class="p-0" col-6 col-md-3>
+
+            <div class="fa-8x">
+              <span class="fa-layers fa-fw">
+                <i class="fas fa-circle darktomato"></i>
+                <i class="fa-inverse fas fa-window-restore" data-fa-transform="shrink-8"></i>
+              </span>
+            </div>
+
+            <h4>4. 강의 평가 확인</h4>
+            <div>매 수업마다 평가</div>
+            <div>틀린 부분 교정 및 과제</div>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+
+      <section class="faq">
+        <div class="part reservation">
+          <h2>자유예약</h2>
+          <div class="desc">
+            <div>
+              학생이 직접 수업을 예약하고 취소
+            </div>
+
+            <div>
+              선생님 변경, 날짜/시간 변경 그리고 수업이 잘못되었을 때 수업 포인트 돌려받기 신청 등 모든 것이 자동화되어져 있습니다.
+            </div>
+
+            <div>
+              카톡잉글리시의 자유예약 시스템은 매우 직관적이며 편리합니다. 무료 체험 버튼 한번 클릭해 보시면 매우 쉽게 이해를 할 수 있습니다.
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div class="part kakao">
+          <h2>카카오톡으로 수업</h2>
+          <div class="desc">
+            <div>화상영어 전화영어 업체의 가장 큰 골치거리 중 하나가 바로 학생과 선생님이 직접 수업료를 주고 받는 것</div>
+            <div>그래서 학생과 선생님의 소통을 차단하기 위해 별도의 화상영어 프로그램을 설치하는데</div>
+            <div>이러한 화상영어 프로그램의 문제점은 스피커, 마이커, 웹캠 등의 문제가 자주 발생하며 컴퓨터가 느려지거나 먹통이되기도 해서 수업에 큰 지장을 초래합니다.</div>
+            <div>저희는 모든 한국인이 사용하는 화상 프로그램인 카카오톡을 선택했습니다.</div>
+            <div>선생님과의 소통! 마음데로 하십시오! 밤낮으로 채팅하십시오!</div>
+            <div>저희는 최소한의 수수료로 운영하기 때문에 학생이 선생님과 소통하여 직접 수업료를 보내는 것에 대해서 염려하지 않습니다.</div>
+          </div>
+        </div>
+
+
+
+        <div class="part leveltest">
+          <h2>무료 체험(레벨테스트)</h2>
+          <div class="desc">
+            <div>회원 가입을 하고 {{ re?.MAX_FREE_CLASS }} 회 무료 체험</div>
+            <div>모든 수업 마다 평가하므로 처음 하는 무료 체험 수업이 곧 레벨테스트가 되는 것입니다.</div>
+            <div>
+
+              무료 체험은 최대 {{ re?.MAX_FREE_CLASS }} 회 할 수 있으며 한 강사당 {{ re?.MAX_FREE_CLASS_WITH_SAME_TEACHER }} 회 까지 할 수 있습니다. 그리고 무료 체험 수업은
+              {{ re?.MAX_FREE_CLASS_MINUTES }}분 미만의 수업만 예약 할 수 있으며, 예약된 총 수업(무료 체험 포함)이 {{ re?.MAX_FREE_CLASS_LIMIT }} 회가
+              넘으면 더 이상 무료 체험 예약을 할 수 없습니다.
+
+            </div>
+
+            <div>
+              위 조건이 맞지 않으면 알림창이 뜨며,
+              만약 수업 포인트가 있다면, 무료 체험이 아닌 유료 수업으로 예약됩니다.
+            </div>
+
+          </div>
+        </div>
+
+        <div class="part c2c">
+          <h2>선생님과 학생의 직거래</h2>
+          <div class="desc">
+            <div>
+              선생님은 원하는 시간과 금액으로 수업 스케쥴을 오픈하며 학생은 선생님, 시간, 금액이 마음에 들면 예약하면 됩니다.
+            </div>
+            <div>
+              여기서 중요한 점 몇 가지는 아래와 같습니다.
+            </div>
+            <ul>
+              <li>1. 예약과 취소 및 선생님 변경을 마음데로 할 수 있습니다.</li>
+              <li>2. 선생님도 학생의 수업을 취소 할 수 있습니다.</li>
+              <li>3. 잘못된 수업의 수업 포인트를 돌려 받을 수 있습니다.</li>
+            </ul>
+            <div>참고로 직거래 시스템을 악용하는 경우 페널티를 받을 수 있으므로 공정하게 이용해 주시기 부탁드립니다.</div>
+          </div>
+        </div>
+
+        <div class="part payment">
+          <h2>수업료의 선택과 결제</h2>
+          <div class="desc">
+            <div>자유 예약에 따라 학생마다 수업료가 달라서 정해진 수업료가 없습니다.</div>
+            <div>
+              원하는 만큼 수업료를 지불하고 예약을 하면 됩니다.
+            </div>
+            <div>카톡잉글리시는 전 세계로 서비스되고 있으며 결제는 페이팔을 통해 <b>미국달러</b>로 이루어집니다.</div>
+            <div>만약 결제에 어려움이 있다면 질문 메뉴를 통해서 상담을 해 주십시오.</div>
+          </div>
+        </div>
+
+        <div class="part student-choice">
+          <h2>학생이 수업료 선택</h2>
+          <div class="desc">
+
+            <div>수업료를 지불하면 포인트가 충전됩니다.</div>
+            <div>이 포인트로 수업 예약 할 수 있는데, 선생님의 수업 시간표에 보시면 포인트 금액이 표시되어 있습니다.</div>
+            <div>이 포인트 금액을 보시고 원하는 금액에 맞는 수업을 적절히 예약 하시면 됩니다.</div>
+            <div>수업은 하루에 1번, 10번 또는 한달에 1번 등 마음데로 예약 가능합니다.</div>
+
+          </div>
+        </div>
+
+
+        <div class="part qna">
+          <h2>질문과 답변</h2>
+          <div class="desc">
+            <div>
+                저희는 카카오톡을 통해서 많은 서비스를 하고 있으며
+                질문과 답변 엮시 카카오톡으로 진행됩니다.
+            </div>
+            <div>카톡잉글리시를 꼭 친구추가 해 주세요.</div>
+          </div>
+        </div>
+
+
+      </section>
+      <!--/text-->
+
+
+    </section>
+    <hook-content-bottom></hook-content-bottom>
+  </div>
+  <!--/page-->
+</ion-content>

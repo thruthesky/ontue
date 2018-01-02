@@ -36,4 +36,11 @@ export class ScheduleAvailablePage implements OnInit {
             this.a.alert(e);
         });
     }
+
+    class_begin( schedule ) {
+        let begin = schedule.user_time_class_begin;
+        let h = begin.substr(0, 2);
+        let m = begin.substr(2, 2);
+        return h + ':' + m;
+    }
 }

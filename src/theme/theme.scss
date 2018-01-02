@@ -1,9 +1,5 @@
 // Themes
 // ---------------------------------
-
-
-
-
 @mixin list-style-none {
   list-style: none;
   margin: 0;
@@ -53,10 +49,14 @@ ul.buttons {
 .justify-content-end {
   justify-content: flex-end;
 }
+
 .justify-content-center {
   justify-content: center;
 }
 
+.justify-content-around {
+  justify-content: space-around;
+}
 
 // box
 .box {
@@ -87,8 +87,6 @@ button.link {
   font-size: 1rem;
 }
 
-
-
 // spinner
 // @TODO this is not working properly.
 .spinner-sm * {
@@ -118,6 +116,7 @@ salmon,
 lightsalmon,
 orange,
 darkorange,
+tomato,
 yellow,
 wheat,
 olive,
@@ -140,12 +139,7 @@ skyblue {
 }
 
 $sizer: 1rem !default;
-$sizers: ( 0: 0, 1: ($spacer * .25), 2: ($spacer * .5), 3: $spacer,
-4: ($spacer * 1.5), 5: ($spacer * 3), 6: ($spacer * 5), 7: ($spacer * 7),
-8: ($spacer * 8), 9: ($spacer * 9), 10: ($spacer * 10),
-11: ($spacer * 11), 12: ($spacer * 12), 13: ($spacer * 13),
-14: ($spacer * 14), 15: ($spacer * 15)
-) !default;
+$sizers: ( 0: 0, 1: ($spacer * .25), 2: ($spacer * .5), 3:  ($spacer * .75), 4: $spacer, 5: ($spacer * 1.25), 6: ($spacer * 1.5), 7: ($spacer * 1.75), 8: ($spacer * 2), 9: ($spacer * 2.25), 10: ($spacer * 2.5), 11: ($spacer * 2.75), 12: ($spacer * 3), 13: ($spacer * 3.25), 14: ($spacer * 3.5), 15: ($spacer * 3.75), 16: ($spacer * 4), 17: ($spacer * 4.25), 18: ($spacer * 4.5), 19: ($spacer * 4.75), 20: ($spacer * 5)) !default;
 // width, height, size, z-index
 // colors
 @each $size,
@@ -162,9 +156,42 @@ $length in $sizers {
   }
 }
 
+.size-40 {
+  width: 40px!important;
+  height: 40px!important;
+}
+.size-50 {
+  width: 50px!important;
+  height: 50px!important;
+}
+.size-60 {
+  width: 60px!important;
+  height: 60px!important;
+}
+
+.size-80 {
+  width: 80px!important;
+  height: 80px!important;
+}
+.size-90 {
+  width: 90px!important;
+  height: 90px!important;
+}
+.size-100 {
+  width: 100px!important;
+  height: 100px!important;
+}
+.size-100x120 {
+  width: 100px!important;
+  height: 120px!important;
+}
+
+
 // top, left, right, bottom
-@each $abbr, $position in (t: top, l: left, r: right, b: bottom ) {
-  @each $size, $length in $sizers {
+@each $abbr,
+$position in (t: top, l: left, r: right, b: bottom) {
+  @each $size,
+  $length in $sizers {
     .#{$position}-#{$size} {
       #{$position}: #{$length};
     }
@@ -187,20 +214,23 @@ $length in $sizers {
   border-radius: 50%!important;
 }
 
-
 // font size
 .fs-1rem {
   font-size: 1rem!important;
 }
+
 .fs-2rem {
   font-size: 2rem!important;
 }
+
 .fs-3rem {
   font-size: 3rem!important;
 }
+
 .fs-4rem {
   font-size: 4rem!important;
 }
+
 .fs-xs {
   font-size: .8rem!important;
 }
@@ -229,6 +259,7 @@ $length in $sizers {
 .fs-90 {
   font-size: 90%!important;
 }
+
 .fs-110 {
   font-size: 110%!important;
 }
@@ -237,11 +268,18 @@ $length in $sizers {
   font-weight: bold!important;
 }
 
-
 .w-100 {
-  width:100%;
+  width: 100%;
 }
 
 
 
-
+ion-toast {
+  &.error-42205 {
+    // login first
+    .toast-wrapper {
+      background-color: #01579b;
+      color: white;
+    }
+  }
+}

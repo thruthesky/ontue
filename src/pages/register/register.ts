@@ -76,12 +76,17 @@ export class RegisterPage {
 
   onSubmit() {
     console.log('Submit', this.account);
-    if (!this.user_type || !this.user_type.length) return this.a.showAlert(-80024, '*Please Choose User Type...');
-    if (!this.account.name || !this.account.name.length) return this.a.showAlert(-80021, '*Name is required...');
-    if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(-80022, '*Email is required...');
-    if (this.a.user.isLogout && (!this.account.user_pass || !this.account.user_pass.length)) return this.a.showAlert(-80023, '*Password is required...');
-    if (this.a.user.isLogin && this.user_type == "T" && !this.qrmarks.length ) return this.a.showAlert(-80025, '*Teacher must upload QR Mark...');
-    if (this.user_type == "S" && !this.account.phone_number ) return this.a.showAlert(-80026, '*Phone Number is Required...');
+
+    if ( this.a.teacherTheme ) {
+      if ( !this.user_type || !this.user_type.length ) return this.a.showAlert( this.a.i18n['CHOOSE USER TYPE'] );
+    }
+
+    if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert( this.a.i18n['EMAIL REQUIRED']);
+    if (this.a.user.isLogout && (!this.account.user_pass || !this.account.user_pass.length)) return this.a.showAlert(this.a.i18n['PASSWORD REQUIRED']);
+    if (!this.account.name || !this.account.name.length) return this.a.showAlert(this.a.i18n["NAME REQUIRED"]);
+    if (this.a.user.isLogin && this.user_type == "T" && !this.qrmarks.length ) return this.a.showAlert('*Teacher must upload QR Mark...');
+    if ( !this.account.phone_number ) return this.a.showAlert(this.a.i18n['PHONE NUMBER REQUIRED']);
+    if ( !this.account.kakaotalk_id ) return this.a.showAlert(this.a.i18n['KAKAOTALK ID REQUIRED']);
     //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
 
     this.account.photoURL = this.files.length ? this.files[0].url : '';

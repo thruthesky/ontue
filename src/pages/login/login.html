@@ -1,53 +1,37 @@
 <ion-header>
-  <header-content></header-content>
+  <header-content [page]=" 'login' "></header-content>
 </ion-header>
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+    <section class="page-header">
+      <h2 class="title">
+        {{ 'LOGIN' | translate }}
+      </h2>
+    </section>
+    <section class="page-body">
 
-<ion-content padding>
-    <div class="page">
+      <form (submit)="onSubmit()">
+        <ion-list>
 
-{{ 'LOGIN' | translate }}
-  <form (submit)="onSubmit()">
-    <ion-list>
+          <ion-item>
+            <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+            <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+            <ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>
+          </ion-item>
 
-      <!--
-                      Want to use a Username instead of an Email? Here you go:
-                
-                      <ion-item>
-                        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
-                        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-                      </ion-item>
-                      -->
+          <div padding>
+            <button type="submit" ion-button color="primary" block>{{ 'LOGIN BUTTON' | translate }}</button>
+          </div>
 
-      <ion-item>
-        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>
-      </ion-item>
-
-      
-
-      <div padding>
-        <button type="submit" ion-button color="primary" block>{{ 'LOGIN BUTTON' | translate }}</button>
-      </div>
-
-    </ion-list>
-  </form>
+        </ion-list>
+      </form>
+    </section>
+    <hook-content-bottom></hook-content-bottom>
   </div>
-  
+  <!--/page-->
 </ion-content>
-
-
-<ion-footer>
-    
-      <ion-navbar>
-        <ion-title>{{ 'LOGIN' | translate }}</ion-title>
-      </ion-navbar>
-    
-    </ion-footer>
-
-    
-    

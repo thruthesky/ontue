@@ -13,8 +13,9 @@
               <i class="fas fa-play-circle position-absolute bottom-0 right-0 mr-3 mb-3 red fs-3rem pointer"></i>
             </div>
             <div class="grade mt-1 text-center" [attr.grade]=" teacher_grade() ">
-                <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher_grade())"></i><i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher_grade())"></i>
-              </div>
+              <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher_grade())"></i>
+              <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher_grade())"></i>
+            </div>
           </td>
           <td valign="top">
             <div class="teacher-info ml-4">
@@ -67,7 +68,7 @@
     </div>
     <!--/multiple-teachers-->
 
-    <section class="schedule-table page-body">
+    <section class="schedule-table-content page-body">
 
 
       <div class="search-options mt-3 bg-lightgrey" *ngIf=" display_options ">
@@ -75,17 +76,17 @@
         <button ion-button (click)=" a.open('schedule-table') ">모든 강사 표시</button>
         <ion-list>
 
-            <ion-item>
-                <ion-label class="blue">{{ 'SELECT HOURS' | translate }}</ion-label>
-                <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()">
-                  <ion-option *ngFor=" let h of begin_hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
-                </ion-select>
-                <ion-select [(ngModel)]="class_end_hour" (ionChange)="onChangeSearchOption()">
-                    <ion-option *ngFor=" let h of end_hours " value="{{ h }}">{{ h }} 시 까지</ion-option>
-                </ion-select>
-              </ion-item>
+          <ion-item>
+            <ion-label class="blue">{{ 'SELECT HOURS' | translate }}</ion-label>
+            <ion-select [(ngModel)]="class_begin_hour" (ionChange)="onChangeSearchOption()">
+              <ion-option *ngFor=" let h of begin_hours " value="{{ h }}">{{ h }} 시 부터</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="class_end_hour" (ionChange)="onChangeSearchOption()">
+              <ion-option *ngFor=" let h of end_hours " value="{{ h }}">{{ h }} 시 까지</ion-option>
+            </ion-select>
+          </ion-item>
 
-              
+
           <ion-item>
             <ion-label class="blue">{{'HOW MANY DAYS'|translate}}</ion-label>
             <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?', cssClass:'select-no-of-day'}">
@@ -100,7 +101,7 @@
             </ion-select>
           </ion-item>
 
-          
+
 
           <ion-item>
             <ion-label class="blue">{{ 'HOW MANY MINUTES' | translate }}</ion-label>
@@ -185,184 +186,198 @@
 
 
 
-      <div class="alert alert-info border-0 rounded-0" *ngIf=" a.user.isLogin ">
-        <div>{{ a.user.name }}님, 도움이 필요하시면
-          카톡으로
-          <b>질문</b>을 해 주세요.</div>
-        포인트:
-        <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
-        <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+      <div class="alert alert-info border-0 rounded-0 d-flex justify-content-between" *ngIf=" a.user.isLogin && my_point">
+        <div class="d-flex ">
+          <div>
+            포인트:
+            <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
+            <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+          </div>
+          <div class="ml-2">
+            현재시간: {{ time }}
+          </div>
+        </div>
 
-        현재 시간: {{ time }}
+        <div class="mt-1 fw-bold pointer" (click)=" a.page('help') ">
+          도움말
+        </div>
       </div>
 
-      <!--
-    {{ header | json }} -->
 
 
-      <div class="buttons d-flex justify-content-between mb-1">
+      <div class="buttons d-flex justify-content-between mt-4 mb-4">
         <div>
-          <span class="grey" (click)="onClickNavigate('previous-week')">
+          <span class="black" (click)="onClickNavigate('previous-week')">
             <ion-icon name="arrow-back"></ion-icon> {{ 'PREVIOUS WEEK' | translate }}</span>
-          <span class="ml-2 dodgerblue" (click)="onClickNavigate('today')">
+          <span class="ml-3 dodgerblue" (click)="onClickNavigate('today')">
             <ion-icon name="refresh"></ion-icon> {{"TODAY" | translate}}</span>
-          <span class="ml-2 dimgrey" (click)="onClickNavigate('next-week')">
+          <span class="ml-3 black" (click)="onClickNavigate('next-week')">
             <ion-icon name="arrow-forward"></ion-icon> {{"NEXT WEEK" | translate}}</span>
-          <span class="ml-2 dimgrey" (click)="onClickNavigate('next-month')">
+          <span class="ml-3 black" (click)="onClickNavigate('next-month')">
             <ion-icon name="fastforward"></ion-icon> {{"NEXT MONTH" | translate}}</span>
         </div>
-        <div (click)=" display_options = !display_options; " *ngIf=" singleTeacher && ! display_options ">
+        <div (click)=" display_options = !display_options; " *ngIf=" ! display_options ">
           <ion-icon name="options"></ion-icon>
           {{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}
         </div>
       </div>
 
-      
-      <div>
-          <i class="fas fa-spinner fa-spin"></i> {{ status }}
-      </div>
+
       <div class="alert alert-warning" *ngIf=" ! singleTeacher ">
-       
 
-       <div *ngIf=" ! show.more_total_schedule_warning ">
+
+        <div *ngIf=" ! show.more_total_schedule_warning ">
           주의! 전체 선생님 수업 시간표는 시간이 걸립니다.
-       </div>
-       <div class="d-none" [class.d-block]=" show.more_total_schedule_warning ">
-          전체 선생님 수업 시간표를 표시 할 경우,
-          수업 시간표가 너무 많아서 서버로 부터 시간표 데이터를 가져오는데 시간이 걸리며,
-          속도가 느려질 수 있습니다.
-          반드시 검색 옵션을 통해서 표시 할 시간표를 조정해 주세요.
-         </div>
+        </div>
+        <div class="d-none" [class.d-block]=" show.more_total_schedule_warning ">
+          전체 선생님 수업 시간표를 표시 할 경우, 수업 시간표가 너무 많아서 서버로 부터 시간표 데이터를 가져오는데 시간이 걸리며, 속도가 느려질 수 있습니다. 반드시 검색 옵션을 통해서 표시 할 시간표를 조정해 주세요.
+        </div>
 
-         <div class="d-flex justify-content-between">
-           <div class="d-flex">
-            <div (click)=" show.more_total_schedule_warning = true "><i class="fal fa-arrow-alt-down"></i> 자세히<i class="fal fa-ellipsis-h"></i></div>
-            <div class="ml-3" (click)=" show.more_total_schedule_warning = true "><i class="fal fa-cog"></i> 검색 옵션</div>
-          </div>
-            <div class="x" (click)="a.alert('하루 동안 숨길 것.')">
-               <i class="fal fa-times"></i>
-               닫기
+        <div class="d-flex justify-content-between">
+          <div class="d-flex">
+            <div (click)=" show.more_total_schedule_warning = true ">
+              <i class="fal fa-arrow-alt-down"></i> 자세히
+              <i class="fal fa-ellipsis-h"></i>
             </div>
-         </div>
+            <div class="ml-3" (click)=" show.more_total_schedule_warning = true ">
+              <i class="fal fa-cog"></i> 검색 옵션</div>
+          </div>
+          <div class="x" (click)="a.alert('하루 동안 숨길 것.')">
+            <i class="fal fa-times"></i>
+            닫기
+          </div>
+        </div>
 
       </div>
 
-      <ion-spinner *ngIf=" schedule_table_rows.length == 0 "></ion-spinner>
-      <div class="table schedule-body-table" *ngIf=" schedule_table_rows.length " width="100%">
+
+      <div *ngIf=" status ">
+        <i class="fas fa-spinner fa-spin"></i> {{ status }}
+      </div>
+
+
+      <div class="table schedule-table" *ngIf=" schedule_table_rows.length " width="100%">
 
         <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
 
-
-            <div class="tr header schedule-table-dates d-flex" *ngIf=" i % 10 == 0 ">
-                <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
-                  <div class="text-center">{{ 'TEACHER' | translate }}</div>
-                </div>
-                <div class="td session-datetime">
-                  <div class="text-center">{{ 'TIME' | translate }}</div>
-                </div>
-                <!-- <td>Reserve Visible</td> -->
-                <div class="td session-wrapper" *ngFor="let header of header">
-                  <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
-                    <!--{{ header | json }}-->
-                    {{ header.display_date }}
-                    <br> {{ header.user_time_day | translate }}
-                  </div>
-                </div>
+          <div class="tr schedule-header d-flex" *ngIf=" i % 10 == 0 ">
+            <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
+              <div class="text-center">{{ 'TEACHER' | translate }}</div>
+            </div>
+            <div class="td session-datetime text-center">
+              <div class="">{{ 'TIME' | translate }}</div>
+              <div class="">{{ 'MINUTE' | translate }}</div>
+            </div>
+            <!-- <td>Reserve Visible</td> -->
+            <div class="td datetime session-wrapper" *ngFor="let header of header">
+              <div class="w-100 text-center" (click)="onClickNavigate( header.date )">
+                <!--{{ header | json }}-->
+                {{ header.display_date }}
+                <br> {{ header.user_time_day | translate }}
               </div>
+            </div>
+          </div>
 
 
-              <div class="tr d-flex" valign="top">
+          <div class="tr schedule-row d-flex" valign="top">
 
-                <div class='td teacher-profile pointer' *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
+            <div class='td teacher-profile pointer' *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
 
-                  <!-- {{ sessions[0].idx_schedule }}
+              <!-- {{ sessions[0].idx_schedule }}
               <br> {{ schedule( sessions[0].idx_schedule ).idx_teacher }} -->
-    
+
               <!-- {{ sessions[0] | json }} -->
-                  <div class="size-6 of-hidden">
-                    <img class="w-100" src="{{ teacher_photoURL( sessions[0] ) }}">
-                  </div>
-                  <div>{{ teacher_name( sessions[0] ) }}</div>
-    
+              <div class="size-6 of-hidden">
+                <img class="w-100" src="{{ teacher_photoURL( sessions[0] ) }}">
+              </div>
+              <div>{{ teacher_name( sessions[0] ) }}</div>
+
             </div>
 
-                <div class="td session-datetime">
-                  {{ i }},
-                  {{ session_time( sessions[0] ) }}
-                  <div>
-                    {{ schedule( sessions[0] )[ DURATION ] }} 분
-                  </div>
-
-                </div>
-
-                <div class="td session-wrapper" *ngFor=" let session of sessions ">
-                  <!--{{session|json}}-->
-                  <div class="session pointer" [attr.status]=" session[ STATUS ] " [attr.open]=" session[ OPEN ] " [attr.owner]=" session[ OWNER ] "
-                    text-center (click)="onClickSession( session )">
-                    <!-- show icon -->
-                    <div class="status-icon" *ngIf=" !session.in_progress ">
-                      <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
-                    </div>
-
-                    <!-- show loader -->
-                    <div class="loader-icon">
-                      <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
-                    </div>
-
-                    <!-- show class informatio -->
-                    <div>{{ session[ POINT ] }}</div>
-                    <div *ngIf=" session.status == 'reserved' ">{{ session[ STUDENT_NAME ] }}</div>
-                    <div>{{ session[ PRERE ] }}</div>
-                    <div class="fs-lg">{{ session_text(session) }}</div>
-                    <!-- <div>{{ session.idx_reservation }}</div> -->
-                    <!-- <div>{{ session.day }}</div> -->
-                  </div>
-                  <div class="session empty" *ngIf=" session.status == 'empty' "></div>
-
-                </div>
-
+            <div class="td session-datetime text-center">
+              <div>
+                {{ session_time( sessions[0] ) }}
               </div>
+              <div>
+                {{ schedule( sessions[0] )[ DURATION ] }} 분
+              </div>
+
+            </div>
+
+            <div class="td session-wrapper" *ngFor=" let session of sessions ">
+              <!--{{session|json}}-->
+              <div class="session pointer" [attr.status]=" session[ STATUS ] " [attr.open]=" session[ OPEN ] " [attr.owner]=" session[ OWNER ] "
+                text-center (click)="onClickSession( session )">
+                <!-- show icon -->
+                <div class="status-icon" *ngIf=" !session.in_progress ">
+                  <ion-icon class="fs-3rem" name="{{ icon(session) }}" [attr.icon-name]=" icon(session) "></ion-icon>
+                </div>
+
+                <!-- show loader -->
+                <div class="loader-icon">
+                  <ion-spinner name="bubbles" *ngIf=" session.in_progress "></ion-spinner>
+                </div>
+
+                <!-- show class informatio -->
+                <div>{{ point( session ) }}</div>
+                <div *ngIf=" session.status == 'reserved' ">{{ session[ STUDENT_NAME ] }}</div>
+                <div>{{ session[ PRERE ] }}</div>
+                <div class="fs-lg">{{ session_text(session) }}</div>
+                <!-- <div>{{ session.idx_reservation }}</div> -->
+                <!-- <div>{{ session.day }}</div> -->
+              </div>
+              <div class="session empty" *ngIf=" session.status == 'empty' "></div>
+
+            </div>
+
+          </div>
 
         </ng-container>
       </div>
       <!--/schedule-body-table-->
 
 
-      <div class="alert alert-info" *ngIf=" in_displaying_schedule ">
-        <ion-spinner></ion-spinner> 시간표를 표시하는 중 입니다.
+      <div class="icon-desc">
+        <ul>
+          <li>
+            <ion-icon name="radio-button-off" icon-name="radio-button-off"></ion-icon> - 예약 가능(아무도 예약하지 않았음)
+          </li>
+          <li>
+            <ion-icon name="radio-button-on" owner="me"></ion-icon> - 내가 예약한 수업. 취소 가능.
+          </li>
+
+          <ng-container *ngIf=" show.more_icon_desc ">
+            <li>
+              <ion-icon name="checkmark" icon-name="checkmark"></ion-icon> - 다른 학생에 의해 예약된 수업.
+            </li>
+            <li>
+              <ion-icon name="lock" icon-name="lock"></ion-icon> - 지난 수업 (예약됨).
+            </li>
+
+            <li>
+              <ion-icon name="square" icon-name="square"></ion-icon> - 지난 수업 (예약안됨).
+            </li>
+            <li>
+              <ion-icon name="qr-scanner" icon-name="qr-scanner"></ion-icon> - 수업이 없는 날.
+            </li>
+
+            <li>
+              <ion-icon name="cloud-circle"></ion-icon> - 강사 쉬는 날.
+            </li>
+            <li>
+              <ion-icon name="cloud-done"></ion-icon> - 강사 쉬는 날(예약이 있음).
+            </li>
+
+            <li>
+              강사의 사진을 클릭하면 해당 강사의 수업 시간표만 볼 수 있습니다.
+            </li>
+          </ng-container>
+        </ul>
+        <div class="more-button" (click)=" show.more_icon_desc = true " *ngIf=" ! show.more_icon_desc ">
+            자세히
+            <i class="fal fa-ellipsis-h"></i>
+        </div>
       </div>
-      <ul>
-        <li>
-          <ion-icon name="radio-button-off" icon-name="radio-button-off"></ion-icon> - 예약 가능(아무도 예약하지 않았음)
-        </li>
-        <li>
-          <ion-icon name="radio-button-on" owner="me"></ion-icon> - 내가 예약한 수업. 취소 가능.
-        </li>
-        <li>
-          <ion-icon name="checkmark" icon-name="checkmark"></ion-icon> - 다른 학생에 의해 예약된 수업.
-        </li>
-        <li>
-          <ion-icon name="lock" icon-name="lock"></ion-icon> - 지난 수업 (예약됨).
-        </li>
-
-        <li>
-          <ion-icon name="square" icon-name="square"></ion-icon> - 지난 수업 (예약안됨).
-        </li>
-        <li>
-          <ion-icon name="qr-scanner" icon-name="qr-scanner"></ion-icon> - 수업이 없는 날.
-        </li>
-
-        <li>
-          <ion-icon name="cloud-circle"></ion-icon> - 강사 쉬는 날.
-        </li>
-        <li>
-          <ion-icon name="cloud-done"></ion-icon> - 강사 쉬는 날(예약이 있음).
-        </li>
-
-        <li>
-          강사의 사진을 클릭하면 해당 강사의 수업 시간표만 볼 수 있습니다.
-        </li>
-      </ul>
 
     </section>
     <!--/schedule-table-->
@@ -373,29 +388,29 @@
 
 
   <ion-fab right bottom #fab>
-      <button ion-fab color="light">
-        <ion-icon name="arrow-dropleft-circle" color="dark"></ion-icon>
+    <button ion-fab color="light">
+      <ion-icon name="arrow-dropleft-circle" color="dark"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button color="dark" ion-fab (click)="onClickNavigate('next-month')">
+        <ion-icon name="fastforward"></ion-icon>
       </button>
-      <ion-fab-list side="left">
-        <button color="dark" ion-fab (click)="onClickNavigate('next-month')">
-          <ion-icon name="fastforward"></ion-icon>
-        </button>
-        <button color="dark" ion-fab (click)="onClickNavigate('next-week')">
-          <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-        <button color="dark" ion-fab (click)="onClickNavigate('today')">
-          <ion-icon name="refresh"></ion-icon>
-        </button>
-        <button color="dark" ion-fab (click)="onClickNavigate('previous-week')">
-          <ion-icon name="arrow-back"></ion-icon>
-        </button>
-        <button color="secondary" ion-fab (click)="onClickFabOptions(); fab.close();">
-          <ion-icon name="options"></ion-icon>
-        </button>
-      </ion-fab-list>
-    </ion-fab>
+      <button color="dark" ion-fab (click)="onClickNavigate('next-week')">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+      <button color="dark" ion-fab (click)="onClickNavigate('today')">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button color="dark" ion-fab (click)="onClickNavigate('previous-week')">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <button color="secondary" ion-fab (click)="onClickFabOptions(); fab.close();">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 
-    <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll> -->
 

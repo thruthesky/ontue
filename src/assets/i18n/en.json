@@ -2,6 +2,7 @@
 
   "HTTP ERROR": "Connection Error",
   "HTTP ERROR DESC": "Connection to the server has failed. Please notify this error to admin immediately.",
+  "PHP_ERROR_DESC": "Server program error. Please notify admin immediately.",
 
 
   "SITE NAME": "온튜",
@@ -24,6 +25,8 @@
   "LOGOUT": "Logout",
   "REGISTER": "Register",
   "REGISTER BUTTON": "SUBMIT",
+  "UPDATE PROFILE": "Profile Update",
+  "UPDATE PROFILE BUTTON": "SUBMIT",
   "SEARCH": "Search",
   "SETTINGS": "Settings",
   "SKIP": "Skip",
@@ -46,7 +49,39 @@
   , "SCHEDULE TABLE SEARCH OPTIONS": "Search Options"
   , "SCHEDULE TABLE SEARCH OPTIONS SHORT": "Options"
   , "SELECT_TEACHER_TITLE": "Select a teacher"
-  , "PAST LIST PAGE": "PAST SESSIONS"
+  , "PAST LIST PAGE": "Past Sessions"
   , "RESERVATION LIST PAGE": "RESERVATIONS"
+  , "TEACHER PAYMENT INFO": "PAYMENT INFORMATION"
+  , "PAYMENT PAGE TITLE": "Pay as less as you like."
 
+  , "SEARCHED SESSIONS": "Result"
+  , "TOTAL": "Total"
+  , "SEARCHED POINT": "Point"
+  , "REFUNDED SESSIONS": "Refuned"
+  , "SESSIONS IN REFUND PROGRESS": "Refund in progress"
+  , "HELP SHORT": "Help"
+  , "HELP": "Help"
+  , "AVAILABLE SESSIONS": "Schedules now"
+  , "TEACHER LIST": "Teachers"
+  , "ALL SCHEDULE TABLE": "Reserve"
+  , "QNA SHORT": "QnA"
+  , "QNA": "QnA"
+
+  , "CLASS NO": "No."
+  , "DATE": "Date"
+  , "STUDENT": "Student"
+  , "NO MORE RESERVATIONS": "Ooh, thre is no reservations."
+  , "NO MORE PASTS": "OOh, there is no past sessions. You can search past sessions through options."
+  , "PHOTO UPLOAD": "Upload Photo"
+  , "CHOOSE USER TYPE": "Please choose your member type."
+  , "NAME REQUIRED": "Please input your name."
+  , "EMAIL REQUIRED": "Please input your email."
+  , "PASSWORD REQUIRED": "Please input password."
+  , "PHONE NUMBER REQUIRED": "Please input your phone number."
+  , "PHONE NUMBER": "Phone Number"
+  , "KAKAOTALK ID": "Kakaotalk ID"
+  , "KAKAOTALK ID REQUIRED": "Please input Kakaotalk ID. You can  get it on your Kakaotalk profile."
+  , "SCHEDULE AVAILABLE PAGE TITLE": "Available teachers at this time"
+  , "IN LOADING": "Loading! Please wait a second."
+  , "IN RESERVING": "Reserving..."
 }

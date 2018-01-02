@@ -393,4 +393,8 @@ export class LMSService extends Base {
         return this.x.post({ route: 'lms.payment_rate'} );
     }
 
+    info() {
+        return this.x.post({route: 'lms.info', session_id: this.user.sessionId});
+    }
+
 }

@@ -6,6 +6,38 @@
     <div class="page">
 
   <ion-list class="pointers">
+
+
+
+      <ion-item class="menu-help" (click)="a.open('help')">
+          <ion-icon name="help-circle" item-start></ion-icon>
+          {{ 'HELP' | translate }}
+        </ion-item>
+
+
+    <ion-item class="menu-login" *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
+        <ion-icon name="log-in" item-start></ion-icon>
+        {{ 'LOGIN' | translate }}
+      </ion-item>
+      <ion-item class="menu-registration" *ngIf=" a.user.isLogout " (click)=" a.open('register') ">
+        <ion-icon name="person-add" item-start></ion-icon>
+        회원가입
+      </ion-item>
+  
+      <ion-item class="menu-profile" *ngIf=" a.user.isLogin " (click)=" a.open('register')">
+          <ion-icon name="person-add" item-start></ion-icon>
+          {{ 'PROFILE' | translate }}
+        </ion-item>
+      
+
+    <ion-item (click)="a.open('message')" *ngIf=" a.user.isLogin ">
+        <ion-icon name="chatboxes" item-start></ion-icon>
+        {{ 'MESSAGE' | translate }}
+      </ion-item>
+
+
+
+        
     <ion-item class="menu-settings" (click)="a.open('settings')">
       <ion-icon name="settings" item-start></ion-icon>
       {{ 'SETTINGS' | translate }}
@@ -13,136 +45,94 @@
 
 
 
-    <ion-item class="menu-settings-payment-info" (click)="a.open('settings-payment-info')">
-        <ion-icon name="archive" item-start></ion-icon>
-        {{ 'PAYMENT INFO' | translate }}
-      </ion-item>
-
-
-
-      <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
-          <ion-icon name="archive" item-start></ion-icon>
-          수업후기
-        </ion-item>
 
 
         <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
-            <ion-icon name="archive" item-start></ion-icon>
-            질문하기
+            <ion-icon name="help-circle" color="primary" item-start></ion-icon>
+            {{ 'QNA' | translate }}
           </ion-item>
 
 
     <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
-      <ion-icon name="archive" item-start></ion-icon>
+      <ion-icon name="people" item-start></ion-icon>
       {{ 'TEACHER LIST' | translate }}
     </ion-item>
 
     <ion-item class="menu-teacher-list" (click)="a.open('schedule-table')">
-      <ion-icon name="archive" item-start></ion-icon>
+      <ion-icon name="calendar" item-start></ion-icon>
       {{ 'ALL SCHEDULE TABLE' | translate }}
     </ion-item>
 
 
-    <ion-item (click)="a.open('settings')">
-      <ion-icon name="archive" item-start></ion-icon>
-      {{ 'STUDENT LIST' | translate }}
-    </ion-item>
 
-
-
-
-    <ion-item class="menu-reservation" (click)="a.open('reservation')">
-      <ion-icon name="archive" item-start></ion-icon>
-      {{ 'RESERVATION HISTORY' | translate }}
-    </ion-item>
+    <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
+        <ion-icon name="chatbubbles" item-start></ion-icon>
+        {{ 'CLASS COMMENTS' | translate }}
+      </ion-item>
 
 
     <ion-item class="menu-payment" (click)="a.open('payment')">
-      <ion-icon name="archive" item-start></ion-icon>
+      <ion-icon name="card" item-start></ion-icon>
       {{ 'PAYMENT LONG TEXT' | translate }}
     </ion-item>
 
-    <ion-item class="menu-payment-history" (click)="a.open('payment-history')">
-      <ion-icon name="archive" item-start></ion-icon>
-      {{ 'PAYMENT HISTORY' | translate }}
-    </ion-item>
 
+
+    <ion-item class="menu-settings-payment-info" (click)="a.open('settings-payment-info')" *ngIf=" a.lms.getUserType() == 'teacher' ">
+        <ion-icon name="list-box" item-start></ion-icon>
+        {{ 'TEACHER PAYMENT INFO' | translate }}
+      </ion-item>
+
+
+
+
+    <ion-item class="menu-payment-history" (click)="a.open('payment-history')">
+        <ion-icon name="list-box" item-start></ion-icon>
+        {{ 'PAYMENT HISTORY' | translate }}
+      </ion-item>
+      
     <ion-item class="menu-reservation-long" (click)="a.open('session-future')">
-      <ion-icon name="archive" item-start></ion-icon>
+      <ion-icon name="list-box" color="primary" item-start></ion-icon>
       {{ 'RESERVATIONS LONG TEXT' | translate }}
     </ion-item>
 
     <ion-item class="menu-past-long" (click)="a.open('session-past')">
-      <ion-icon name="archive" item-start></ion-icon>
+      <ion-icon name="list-box" color="light" item-start></ion-icon>
       {{ 'PASTS LONG TEXT' | translate }}
     </ion-item>
 
 
     <ion-item class="menu-reservation-today" (click)="a.open('reservation', date_today)">
-      <ion-icon name="archive" item-start></ion-icon>
-      {{ 'Available Session at This time' | translate }}
+      <ion-icon name="apps" item-start></ion-icon>
+      {{ 'AVAILABLE SESSIONS LONG' | translate }}
     </ion-item>
 
 
-    <ion-item (click)="a.open('settings')">
-      <ion-icon name="archive" item-start></ion-icon>
-      {{ 'PRIVATE QUERY' | translate }}
-    </ion-item>
-
-<!--
-    <ion-item class="menu-forum" (click)="a.open('forum')">
-      <ion-icon name="archive" item-start></ion-icon>
-      {{ 'FORUM' | translate }}
-    </ion-item> -->
-
+    
 
     <ion-item class="menu-policy" (click)="a.open('policy')">
-      <ion-icon name="archive" item-start></ion-icon>
+      <ion-icon name="checkbox-outline" item-start></ion-icon>
       {{ 'POLICY' | translate }}
     </ion-item>
 
 
-    <ion-item *ngIf="a.isStudent" class="menu-payment-history" (click)="a.open('payment-history')">
-      <ion-icon name="card" item-start></ion-icon>
-      {{ 'PAYMENT HISTORY' | translate }}
-    </ion-item>
-
-
+    
     <ion-item *ngIf="a.isTeacher" class="menu-curriculum-vitae" (click)="a.open('teacher-curriculum-vitae')">
       <ion-icon name="clipboard" item-start></ion-icon>
       {{ 'CURRICULUM VITAE' | translate }}
     </ion-item>
 
 
-
-    <ion-item (click)="a.open('message')">
-        <ion-icon name="chatboxes" item-start></ion-icon>
-        {{ 'MESSAGE' | translate }}
-      </ion-item>
-
-
-
-    <ion-item class="menu-login" *ngIf=" a.user.isLogout " (click)=" a.open('login') ">
-      <ion-icon name="log-in" item-start></ion-icon>
-      {{ 'LOGIN' | translate }}
-    </ion-item>
-    <ion-item class="menu-registration" *ngIf=" a.user.isLogout " (click)=" a.open('register') ">
-      <ion-icon name="person-add" item-start></ion-icon>
-      회원가입
-    </ion-item>
+  
 
     <ion-item class="menu-password" *ngIf=" a.user.isLogin " (click)=" a.open('password-change')">
       <ion-icon name="key" item-start></ion-icon>
-      {{ 'Change Password' | translate }}
+      {{ 'CHANGE PASSWORD' | translate }}
     </ion-item>
 
-    <ion-item class="menu-profile" *ngIf=" a.user.isLogin " (click)=" a.open('register')">
-      <ion-icon name="log-out" item-start></ion-icon>
-      {{ 'PROFILE' | translate }}
-    </ion-item>
     <ion-item class="menu-logout" *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">
       <ion-icon name="log-out" item-start></ion-icon>
-      로그아웃
+      {{ 'LOGOUT' | translate }}
     </ion-item>
 
   </ion-list>
