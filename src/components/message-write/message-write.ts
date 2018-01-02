@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { AppService } from './../../providers/app.service';
+import { AppService } from '../../providers/app.service';
 import { NavParams, ViewController } from 'ionic-angular';
 
 @Component({
@@ -26,7 +25,7 @@ export class MessageWrite {
 
   onClickSubmit() {
     if(!this.message){
-      this.a.alert("Message cannot be empty...")
+      this.a.alert("Message cannot be empty...");
       return;
     }
 

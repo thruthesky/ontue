@@ -149,7 +149,7 @@ export class MyApp {
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
     // this.a.open('schedule-table', { ID: 806 }); /// tabetha
 
-    // this.a.open('teacher-list');
+    this.a.open('teacher-list');
 
     // this.a.open('schedule-edit');
 
@@ -173,7 +173,7 @@ export class MyApp {
     // this.a.open('evaluate-view', {idx: 9707} );
 
 
-    this.a.open('payment');
+    // this.a.open('payment');
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 
