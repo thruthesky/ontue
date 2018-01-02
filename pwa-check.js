@@ -22,10 +22,12 @@ if ( contents.indexOf('<!-- <script src="cordova.js"></script> -->') == -1 ) {
 
 var fs = require('fs');
 var app_component = fs.readFileSync('src/app/app.component.ts').toString();
-if ( app_component.indexOf('// platform.ready().then(() => {') == -1 ) {
-    console.log("WARNING:\nPlease Comment Out platform..ready() in app.component.ts\n");
-    process.exit(2);
-}
+
+
+// if ( app_component.indexOf('// platform.ready().then(() => {') == -1 ) {
+//     console.log("WARNING:\nPlease Comment Out platform..ready() in app.component.ts\n");
+//     process.exit(2);
+// }
 
 if ( app_component.indexOf("// import { SplashScreen } from '@ionic-native/splash-screen';") == -1 ) {
     console.log("WARNING:\nPlease comment out SplashSreen in app.component.ts\n");
