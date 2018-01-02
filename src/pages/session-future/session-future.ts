@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
 
 @Component({
-  selector: 'session-future',
+  selector: 'session-future-page',
   templateUrl: 'session-future.html'
 })
 export class SessionFuturePage {

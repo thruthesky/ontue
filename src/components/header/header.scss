@@ -1,9 +1,24 @@
 .mobile-toolbar {
   .submenu {
     // default
-    background-color: #e7e7e7;
+    background-color: #ececec;
   }
 }
+
+.page-header {
+  padding: 1em;
+  background-color: #ececec;
+  color: #3a476b;
+  .title {
+      margin: 0!important;
+      padding: 0!important;
+  }
+}
+
+.page-desc {
+  padding: 1em;
+}
+
 
 #header-icons {
   // Design on font-awesome icons on header menu.

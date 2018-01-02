@@ -5,10 +5,12 @@
   <div class="page">
     <hook-content-top></hook-content-top>
 
+    <section class="page-header">
+        {{ 'PAYMENT PAGE TITLE' | translate }}
+    </section>
+
     <section class="page-body">
 
-
-      {{ 'PAYMENT PAGE TITLE' | translate }}
       <div class="alert alert-warning rounded-0 my-2 p-3" *ngIf="inLoadingPaymentRate">
         <i class="fal fa-spinner fa-spin"></i> {{ 'LOADING PAYMENT INFORMATION' | translate }}
       </div>
@@ -17,12 +19,11 @@
         앗, 환율 책정 문제 발생하여 결제를 할 수 없습니다. 관리자에게 알려주세요.
       </section>
 
-      <div class="alert alert-warning" *ngIf="a.user.isLogout">{{ 'LOGIN_BEFORE_PAYMENT' | translate }}</div>
 
-      <div class="mt-3" *ngIf=" ! errorOnExchangeRate ">
 
+      
         <ion-list>
-          <ion-item>
+          <ion-item *ngIf=" a.user.isLogin; else loginFirst ">
             <ion-label class="blue">{{'SELECT AMOUNT'|translate}}</ion-label>
             <ion-select [(ngModel)]="amount" *ngIf="paypal_ready" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?', cssClass:'select-no-of-day'}">
               <ion-option value="10000">10,000 원</ion-option>
@@ -35,9 +36,13 @@
             </ion-select>
           </ion-item>
         </ion-list>
+        <ng-template #loginFirst>
+          <div class="my-5 py-5 text-center border-red red pointer" (click)=" a.open('login') ">
+            앗, 회원 로그인을 먼저 해 주세요.
+          </div>
+        </ng-template>
 
 
-      </div>
 
       <div class="mb-5">
         <button class="w-100 bg-white" id="paypal-button"></button>

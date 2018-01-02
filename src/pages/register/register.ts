@@ -12,7 +12,7 @@ import { FileUploadWidget } from '../../components/file-upload/file-upload';
 
 
 @Component({
-  selector: 'page-register',
+  selector: 'register-page',
   templateUrl: 'register.html'
 })
 export class RegisterPage {

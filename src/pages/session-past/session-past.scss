@@ -1,17 +1,5 @@
-[page="session-past"]
-{
-  .submenu {
-    /// top submenu design.
-    background-color: #808e95;
-    color: white;
-  }
-  .page-header {
-    background-color: #c1cfd6;
-  }
-
-  .search-result {
-    background-color: #e1e6e7;
-  }
+session-past-page {
+  @include theme('brown');
   .books {
     padding: 1em;
   }

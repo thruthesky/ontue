@@ -6,7 +6,7 @@ import { TEACHERS_LIST } from "../../angular-xapi/lms.service";
 
 
 @Component({
-  selector: 'page-teacher-list',
+  selector: 'teacher-list-page',
   templateUrl: 'teacher-list.html'
 })
 export class TeacherListPage {
