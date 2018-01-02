@@ -199,10 +199,10 @@ export class AppService {
         // console.log(str);
 
         let options = {
-            duration: 10000,
+            duration: 15000,  // default 10000 due to unit testing temporary change to 15000
             showCloseButton: true,
             closeButtonText: this.i18n['CLOSE'],
-            cssClass: ''
+            cssClass: 'alert-toast'
         };
 
         if ( typeof str === 'string' ) { // Mostly a message to user
@@ -231,11 +231,11 @@ export class AppService {
         else {
             options['message'] = 'No message';
         }
-        
+
         console.log('options: ', options);
-        
+
         this.toastCtrl.create(options).present();
-        
+
     }
 
     /**
@@ -364,8 +364,8 @@ export class AppService {
     /**
      * Returns number from a string.
      * @param n number
-     * 
-     * 
+     *
+     *
      */
     toInt(n: any) {
         try {
@@ -445,7 +445,7 @@ export class AppService {
 
     /**
      * Return true if the app should display student theme.
-     * 
+     *
      * 1. if any one(even if the user is student) access ontue.com site, app will show teacher theme.
      * 2. domain is not ontue.com ( may be user is in other domain or using app )
      *      => depending on login user type, it returns true/false

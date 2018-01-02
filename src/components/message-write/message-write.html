@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons start>
+      <button ion-button class="cancel" (click)="onClickCancel()">
+        <span ion-text color="primary">Cancel</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding="">
+  <ion-list>
+    <ion-item>
+      <ion-textarea class="w-100" rows="10" [(ngModel)]="message" placeholder="{{title}}"></ion-textarea>
+    </ion-item>
+    <ion-item>
+        <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
+        <button color="secondary" ion-button type="button" (click)="onClickCancel()">Cancel</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
