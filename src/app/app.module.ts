@@ -68,6 +68,7 @@ import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
 import { HookContentBottomComponent } from '../components/hook-content-bottom/hook-content-bottom';
 import { HookContentTopComponent } from '../components/hook-content-top/hook-content-top';
 import { SessionList } from '../components/session-list/session-list';
+import { MessageWrite } from '../components/message-write/message-write';
 
 
 // The translate loader needs to know where to load i18n files
@@ -119,7 +120,8 @@ export function createTranslateLoader(http: HttpClient) {
     SessionFuturePage,
     PasswordChangePage,
     ScheduleAvailablePage,
-    HelpPage
+    HelpPage,
+    MessageWrite
   ],
   imports: [
     BrowserModule,
@@ -170,7 +172,8 @@ export function createTranslateLoader(http: HttpClient) {
     SessionFuturePage,
     PasswordChangePage,
     ScheduleAvailablePage,
-    HelpPage
+    HelpPage,
+    MessageWrite
   ],
   providers: [
     StatusBar,

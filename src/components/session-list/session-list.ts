@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
 import { ModalController } from 'ionic-angular';
 import { EvaluateView } from '../../components/evaluate-view/evaluate-view';
+import {MessageWrite} from "../message-write/message-write";
 
 
 @Component({
@@ -124,10 +125,21 @@ export class SessionList {
   }
 
   onClickRefundRequest(book) {
-    console.log(book);
-    this.a.lms.session_refund_request({ idx_reservation: book['idx'], 'refund_request_message': 'test' }).subscribe(re => {
-      book['refund_request_at'] = 1;
-    }, e => this.a.alert(e));
+    // console.log(book);
+    const modal = this.modalCtrl.create(MessageWrite, {title: "Why Request Refund?"});
+    modal.onDidDismiss(re => {
+      // console.log("onDidDismiss", re);
+      if (re) {
+        this.a.lms.session_refund_request({
+          idx_reservation: book['idx'],
+          refund_request_message: 're'
+        }).subscribe(re => {
+          book['refund_request_at'] = 1;
+        }, e => this.a.alert(e));
+      }
+    });
+    modal.present();
+
   }
 
   onClickCancelRefundRequest(book) {
@@ -165,10 +177,17 @@ export class SessionList {
   }
 
   onClickRejectRefundRequest(book) {
-    this.a.lms.session_refund_reject({ idx_reservation: book['idx'], refund_reject_message: 'test reject' }).subscribe(re => {
-      console.log(re);
-      book['refund_reject_at'] = 1;
-    }, e => this.a.alert(e));
+    const modal = this.modalCtrl.create(MessageWrite, {title: "Why Reject Refund?"});
+    modal.onDidDismiss(re => {
+      // console.log("onDidDismiss", re);
+      if (re) {
+        this.a.lms.session_refund_reject({idx_reservation: book['idx'], refund_reject_message: re}).subscribe(re => {
+          console.log(re);
+          book['refund_reject_at'] = 1;
+        }, e => this.a.alert(e));
+      }
+    });
+    modal.present();
   }
 
   onClickEvaluateView(idx) {
