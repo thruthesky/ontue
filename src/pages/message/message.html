@@ -1,32 +1,50 @@
 <ion-header>
   <header-content></header-content>
 </ion-header>
-<ion-content padding>
-    <div class="page">
+<ion-content>
+  <div class="page">
     <hook-content-top></hook-content-top>
 
-  <h1>Mesage</h1>
+    <section class="page-header">
+      {{ 'MESSAGE' | translate }}
+    </section>
 
-  <button ion-button (click)="onClickBox( 'inbox' )">InBox</button>
-  <button ion-button (click)="onClickBox( 'sent' )">Sent</button>
+    <section class="page-desc p-0">
+
+      <div class="buttons d-flex justify-content-between">
+        <button class="pointer" [class.primary]=" box == 'inbox' " (click)="onClickBox( 'inbox' )">{{ 'INBOX' | translate }}</button>
+        <button class="pointer" [class.primary]=" box == 'sent' "  (click)="onClickBox( 'sent' )">{{ 'SENT' | translate }}</button>
+      </div>
+
+    </section>
+
+    <section class="page-body">
+
+      <div class="d-flex justify-content-center my-5" text-center *ngIf=" loading ">
+          <ion-spinner></ion-spinner>
+          <div class="p-2">{{ 'IN LOADING' | translate }}</div>
+      </div>
+    
+        <ion-list *ngIf=" data ">
+          <ion-item *ngFor=" let message of data.messages " (click)="onClickMessage(message)">
+            <ion-avatar item-start>
+              <img src="{{ message?.sender_photoURL? message.sender_photoURL: a.anonymousPhotoURL}}">
+            </ion-avatar>
+            <h2>Sender: {{message.sender_name}}</h2>
+            <h3 class="{{message.open == 0 ? 'fw-bold': ''}}" text-wrap>Title: {{message.title}}</h3>
+            <p text-wrap *ngIf="message.view">{{message.content}}</p>
+          </ion-item>
+          <ion-item>
+            <button ion-button *ngIf="page_no > 1" (click)="onClickPrevious()">Previous</button>
+            <button ion-button *ngIf="message_count == limit" (click)="onClickNext()">Next</button>
+          </ion-item>
+        </ion-list>
+
+        <div class="mt-0 mb-5" text-center *ngIf="message_count < limit">{{ 'NO MORE MESSAGES' | translate }}</div>
+
+    </section>
 
 
-  <ion-list *ngIf=" data ">
-      <ion-item *ngFor=" let message of data.messages " (click)="onClickMessage(message)">
-        <ion-avatar item-start>
-          <img src="{{ message?.sender_photoURL? message.sender_photoURL: a.anonymousPhotoURL}}">
-        </ion-avatar>
-        <h2>Sender: {{message.sender_name}}</h2>
-        <h3 class="{{message.open == 0 ? 'fw-bold': ''}}" text-wrap>Title: {{message.title}}</h3>
-        <p text-wrap *ngIf="message.view">{{message.content}}</p>
-      </ion-item>
-      <ion-item *ngIf="message_count < limit">No More Message</ion-item>
-      <ion-item>
-        <button ion-button *ngIf="page_no > 1" (click)="onClickPrevious()">Previous</button>
-        <button ion-button *ngIf="message_count == limit" (click)="onClickNext()">Next</button>
-      </ion-item>
-  </ion-list>
-
-  <hook-content-bottom></hook-content-bottom>
+    <hook-content-bottom></hook-content-bottom>
   </div>
 </ion-content>

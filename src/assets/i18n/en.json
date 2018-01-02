@@ -72,6 +72,7 @@
   , "STUDENT": "Student"
   , "NO MORE RESERVATIONS": "Ooh, thre is no reservations."
   , "NO MORE PASTS": "OOh, there is no past sessions. You can search past sessions through options."
+  , "NO MORE MESSGES": "No more messages."
   , "PHOTO UPLOAD": "Upload Photo"
   , "CHOOSE USER TYPE": "Please choose your member type."
   , "NAME REQUIRED": "Please input your name."
@@ -84,4 +85,6 @@
   , "SCHEDULE AVAILABLE PAGE TITLE": "Available teachers at this time"
   , "IN LOADING": "Loading! Please wait a second."
   , "IN RESERVING": "Reserving..."
+  , "INBOX": "In Box"
+  , "SENT": "Sent Box"
 }

@@ -163,7 +163,7 @@ export class MyApp {
     // this.a.open('past');
 
     // this.a.open('dayoff');
-    // this.a.open('message');
+    this.a.open('message');
 
     // this.a.open('message');
 
@@ -173,7 +173,7 @@ export class MyApp {
     // this.a.open('evaluate-view', {idx: 9707} );
 
 
-    this.a.open('payment');
+    // this.a.open('payment');
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 

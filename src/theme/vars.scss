@@ -11,7 +11,10 @@ $indigos: ( color: black, 50: #E8EAF6, 100: #C5CAE9, 200: #9FA8DA, 300: #7986CB,
 $yellows: ( color: black, 50: #FFFDE7, 100: #FFF9C4, 200: #FFF59D, 300: #FFF176, 400: #FFEE58, 500: #FFEB3B, 600: #FDD835, 700: #FBC02D, 800: #F9A825, 900: #F57F17);
 $browns: ( color: white, 50: #EFEBE9, 100: #D7CCC8, 200: #BCAAA4, 300: #A1887F, 400: #8D6E63, 500: #795548, 600: #6D4C41, 700: #5D4037, 800: #4E342E, 900: #3E2723);
 $bluegreys: ( color: black, 50:#ECEFF1, 100:#CFD8DC, 200:#B0BEC5, 300:#90A4AE, 400:#78909C, 500:#607D8B, 600:#546E7A, 700:#455A64, 800:#37474F, 900:#263238);
-$color-maps: ( 'blue': $blues, 'purple': $purples, 'indigo': $indigos, 'yellow': $yellows, 'brown': $browns, 'bluegrey': $bluegreys);
+$oranges: ( color: black, 50: #FFF3E0, 100: #FFE0B2, 200: #FFCC80, 300: #FFB74D, 400: #FFA726, 500: #FF9800, 600: #FB8C00, 700: #F57C00, 800: #EF6C00, 900: #E65100);
+$ambers: ( color: black, 50:#FFF8E1, 100:#FFECB3, 200:#FFE082, 300:#FFD54F, 400:#FFCA28, 500:#FFC107, 600:#FFB300, 700:#FFA000, 800:#FF8F00, 900:#FF6F00);
+$greys: ( color: black, 50:#FAFAFA, 100:#F5F5F5, 200:#EEEEEE, 300:#E0E0E0, 400:#BDBDBD, 500:#9E9E9E, 600:#757575, 700:#616161, 800:#424242, 900:#212121);
+$color-maps: ( 'blue': $blues, 'purple': $purples, 'indigo': $indigos, 'yellow': $yellows, 'brown': $browns, 'bluegrey': $bluegreys, 'orange': $oranges, 'amber': $ambers, 'grey': $greys);
 @mixin theme( $color) {
   ion-header header-content .mobile-toolbar nav.submenu {
     // @warn map-get($color-maps, $color);

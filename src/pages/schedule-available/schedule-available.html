@@ -5,11 +5,12 @@
   <div class="page">
     <hook-content-top></hook-content-top>
     <section class="page-header">
-      <h2 class="title">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</h2>
-
+      <div class="">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
+    </section>
+    <section class="page-desc">
+      주의! 아래의 수업을 예약하면 곧 수업이 시작됩니다.
     </section>
     <section class="page-body">
-
       <div class="d-flex m-2" *ngIf=" pageInLoading; else pageLoaded ">
         <ion-spinner></ion-spinner>
         <span class="p-2">{{ 'IN LOADING' | translate }}</span>
@@ -42,12 +43,12 @@
                             {{ schedule.point }} 포인트
                           </div>
 
-                        <div class="alert alert-danger rounded-0 border-0 pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
+                        <div class="reserve-button pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
                             {{ 'RESERVE NOW' | translate }}
                         </div>
                         <div class="d-flex" *ngIf=" loading[schedule.idx] ">
                             <ion-spinner></ion-spinner>
-                            <span class="p-2">{{ 'IN RESERVING' | translate }}</span>
+                            <span class="p-4">{{ 'IN RESERVING' | translate }}</span>
                         </div>
 
                       </div>

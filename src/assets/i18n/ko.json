@@ -140,6 +140,7 @@
   , "CANCEL REFUND REQUEST": "복구취소"
   , "NO MORE RESERVATIONS": "앗, 예약된 수업이 없습니다."
   , "NO MORE PASTS": "앗, 지난 수업이 없습니다. 검색 옵션을 통해서 지난 수업 검색을 할 수 있습니다."
+  , "NO MORE MESSAGES": "더 이상 쪽지가 없습니다."
   , "PHOTO UPLOAD": "사진 등록"
   , "CHOOSE USER TYPE": "선생님인지 학생인지 선택하세요."
   , "NAME REQUIRED": "이름을 입력하세요."
@@ -154,4 +155,6 @@
   , "IN LOADING": "로딩 중입니다. 잠시만 기다려주세요."
   , "IN RESERVING": "예약 중..."
   , "RESERVE NOW": "예약하기"
+  , "INBOX": "받은 쪽지 함"
+  , "SENT": "보낸 쪽지 함"
 }
