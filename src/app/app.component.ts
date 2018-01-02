@@ -145,11 +145,11 @@ export class MyApp {
 
     // this.a.open('schedule-table');
 
-    // this.a.open('schedule-table', { ID: 809 }); // one schedule
+    this.a.open('schedule-table', { ID: 809 }); // one schedule, Imno4
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
     // this.a.open('schedule-table', { ID: 806 }); /// tabetha
 
-    this.a.open('teacher-list');
+    // this.a.open('teacher-list');
 
     // this.a.open('schedule-edit');
 
@@ -163,7 +163,7 @@ export class MyApp {
     // this.a.open('past');
 
     // this.a.open('dayoff');
-    this.a.open('message');
+    // this.a.open('message');
 
     // this.a.open('message');
 
