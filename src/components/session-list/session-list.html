@@ -42,6 +42,20 @@
         <ion-checkbox [(ngModel)]="show_refunded" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
         <ion-label>Display refunded sessions</ion-label>
       </ion-item>
+      <ng-container *ngIf="a.isStudent">
+      <ion-item>
+        <ion-checkbox [(ngModel)]="displayTeacherName" color="vibrant"></ion-checkbox>
+        <ion-label>Display Teacher Name</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox [(ngModel)]="displayDate" color="vibrant"></ion-checkbox>
+        <ion-label>Display Date</ion-label>
+      </ion-item>
+        <ion-item>
+          <ion-checkbox [(ngModel)]="displayPoint" color="vibrant"></ion-checkbox>
+          <ion-label>Display Point</ion-label>
+        </ion-item>
+      </ng-container>
     </ion-list>
 
     <div class="buttons d-flex justify-content-end mb-3">
@@ -86,27 +100,28 @@
       <td *ngIf="a.isStudent">{{ 'TEACHER' | translate }}</td>
       <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
       <td *ngIf="a.isTeacher">{{ 'CLASS NO' | translate }}</td>
-      <td>{{ 'DATE' | translate }}</td>
+      <td *ngIf="displayDate">{{ 'DATE' | translate }}</td>
       <td>{{ 'TIME' | translate }}</td>
       <td>{{ 'MINUTE' | translate }}</td>
-      <td>{{ 'POINT' | translate }}</td>
+      <td *ngIf="displayPoint">{{ 'POINT' | translate }}</td>
       <td></td>
     </tr>
 
     <tr class="h-20" text-center *ngFor="let book of books; let i = index;">
       <td *ngIf="a.isStudent">
-        <div class="size-40 rounded-50 of-hidden pointer" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
-          <img class="d-block w-100" src="{{ book.teacher_photoURL ? book.teacher_photoURL : a.anonymousPhotoURL  }}"> {{ a.preTeacherName(book.teacher_name) }}
+        <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
+          <img class="d-block w-100" src="{{ book.teacher_photoURL ? book.teacher_photoURL : a.anonymousPhotoURL  }}">
         </div>
+        <div *ngIf="displayTeacherName">{{ a.preTeacherName(book.teacher_name) }}</div>
       </td>
       <td class="fw-bold" *ngIf="a.isTeacher">
         {{ a.preTeacherName(book.student_name) }}
       </td>
       <td *ngIf=" a.isTeacher ">{{book.idx}}</td>
-      <td class="px-1">{{ date(book.date_display) }}</td>
+      <td class="px-1" *ngIf="displayDate">{{ date(book.date_display) }}</td>
       <td class="px-1">{{book.class_begin_display}}</td>
       <td class="px-1 grey fw-bold">{{book.duration}}</td>
-      <td class="pr-2 blue" text-right>{{ point(book) }}</td>
+      <td class="pr-2 blue" *ngIf="displayPoint" text-right>{{ point(book) }}</td>
       <td text-left>
         <section class="menu mb-1">
           <div class="past" *ngIf=" book.past ">
