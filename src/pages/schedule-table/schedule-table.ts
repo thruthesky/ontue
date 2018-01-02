@@ -146,7 +146,7 @@ export class ScheduleTablePage {
 
 
   // in_displaying_schedule = false; ///
-  status = null;
+  // status = null;
 
   
   constructor(
@@ -287,7 +287,7 @@ export class ScheduleTablePage {
     if (this.params.ID) opt['teachers'] = [this.params.ID];
     opt = this.request( opt );
     // console.log(opt);
-    this.status = "서버에 수업 스케쥴을 요청합니다.";
+    this.scheduleLoader( this.a.i18n[ 'LOADING SCHEDULE'] );
     this.a.lms.schedule_table(opt).subscribe(re => {
       this.displayScheduleTable(re);
       if ( callback ) callback();
@@ -298,7 +298,7 @@ export class ScheduleTablePage {
   }
 
   displayScheduleTable(re) {
-    this.status = "서버로 부터 수업 스케쥴을 받았습니다. 이제 표시를 합니다.";
+    this.scheduleLoader( this.a.i18n['GOT SCHEDULE'] );
     console.log('got data: ', re);
     /// 시간표 속도 : https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.xxaqipe33arp
     this.no_of_schedules = re.no_of_schedules;
@@ -332,8 +332,8 @@ export class ScheduleTablePage {
   }
   finishedOnScheduleTableDisplay() {
     // this.in_displaying_schedule = false;
-    this.status = `총 ${this.length_of_schedule_table_rows} 개의 수업 시간표를 표시하였습니다.`;
-    setTimeout( () => this.status = null, 2500 );
+    this.scheduleLoader( this.a.i18n[ 'SCHEDULE DISPLAYED' ] );
+    // setTimeout( () => this.status = null, 2500 );
     // console.log('table rows: ', this.schedule_table_rows);
   }
 
@@ -345,7 +345,7 @@ export class ScheduleTablePage {
       else {
         const len = table.length;
         const n = this.length_of_schedule_table_rows - len;
-        this.status = `총 ${this.length_of_schedule_table_rows} 개의 수업 시간표 중 ${n} 개를 표시했습니다.`;
+        // this.scheduleLoader( '[' + this.length_of_schedule_table_rows + '] ' + n + this.a.i18n[ 'DISPLAYING SCHEDULE' ] );
         for( let i = 0; i < 10 && i < len; i ++ ) {
           this.schedule_table_rows.push( table.shift() );
         }
@@ -620,4 +620,8 @@ export class ScheduleTablePage {
     return '';
   }
 
+
+  scheduleLoader( str ) {
+    this.a.alert( { message: str, duration: 1500 } );
+  }
 }

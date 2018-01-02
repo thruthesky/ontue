@@ -186,7 +186,7 @@
 
 
 
-      <div class="alert alert-info border-0 rounded-0 d-flex justify-content-between" *ngIf=" a.user.isLogin && my_point">
+      <div class="user-point d-flex justify-content-between p-3 white" *ngIf=" a.user.isLogin && my_point">
         <div class="d-flex ">
           <div>
             포인트:
@@ -249,10 +249,6 @@
 
       </div>
 
-
-      <div *ngIf=" status ">
-        <i class="fas fa-spinner fa-spin"></i> {{ status }}
-      </div>
 
 
       <div class="table schedule-table" *ngIf=" schedule_table_rows.length " width="100%">
@@ -387,8 +383,8 @@
 
 
   <ion-fab right bottom #fab>
-    <button ion-fab color="light">
-      <ion-icon name="arrow-dropleft-circle" color="dark"></ion-icon>
+    <button ion-fab mini>
+      <ion-icon name="ios-arrow-dropleft" color="light"></ion-icon>
     </button>
     <ion-fab-list side="left">
       <button color="dark" ion-fab (click)="onClickNavigate('next-month')">

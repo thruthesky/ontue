@@ -1,5 +1,10 @@
-$border-color: #e8e8e8;
+$border-color: map-get( map-get( $color-maps, 'grey' ), 300 );
 schedule-table-page {
+  @include theme('grey');
+  .user-point {
+    background-color: map-get( map-get( $color-maps, 'grey' ), 600 );
+  }
+
   .schedule-table {
     &,
     th,

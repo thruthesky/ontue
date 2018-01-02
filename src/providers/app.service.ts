@@ -80,12 +80,12 @@ export class AppService {
     }
 
     get isTeacher(): boolean {
-        if ( this.user.isLogout ) return false;
+        if (this.user.isLogout) return false;
         return this.lms.getUserType() === 'teacher';
     }
 
     get isStudent(): boolean {
-        if ( this.user.isLogout ) return false;
+        if (this.user.isLogout) return false;
         return this.lms.getUserType() === 'student';
     }
 
@@ -154,7 +154,7 @@ export class AppService {
         this.inLoadingMyPoint = true;
         this.lms.my_point().subscribe(re => {
             let point = re['point'];
-            point = this.number_format( point );
+            point = this.number_format(point);
             this.inLoadingMyPoint = false;
             callback(point);
         }, e => {
@@ -163,7 +163,7 @@ export class AppService {
         });
     }
 
-    number_format( n ) {
+    number_format(n) {
         return n.toString().split('').reverse().reduce((t, v, i, a) => {
             return t += v + (i < a.length - 1 && (i + 1) % 3 == 0 ? ',' : '');
         }, '').split('').reverse().join('');
@@ -189,12 +189,12 @@ export class AppService {
      * @endcode
      */
     alert(str): void {
-        if (! str ) {
+        if (!str) {
             str = { message: 'No alert information was given.' };
         }
 
-        if ( str.callback !== void 0 ) alert("Callback is not supported by 2018-0101");
-        if ( str.text !== void 0 ) alert("text is not supported by 2018-0101");
+        if (str.callback !== void 0) alert("Callback is not supported by 2018-0101");
+        if (str.text !== void 0) alert("text is not supported by 2018-0101");
 
         // console.log(str);
 
@@ -205,27 +205,30 @@ export class AppService {
             cssClass: 'alert-toast'
         };
 
-        if ( typeof str === 'string' ) { // Mostly a message to user
+        if ( str['duration'] !== void 0 ) options['duration'] = str['duration'];
+
+        if (typeof str === 'string') { // Mostly a message to user
             options['message'] = str;
         }
-        else if ( str instanceof Error ) { // Mostly an error from backend.
+        else if (str instanceof Error) { // Mostly an error from backend.
             // console.log("instanceof Error");
             const message = this.xapi.getError(str).message;
             const code = this.xapi.getError(str).code;
             options['message'] = message;
             options['cssClass'] = 'error' + code;
         }
-        else if ( str instanceof HttpErrorResponse ) { // backend wordpress response error. status may be 200.
+        else if (str instanceof HttpErrorResponse) { // backend wordpress response error. status may be 200.
             console.log("instanceof HttpErrorResponse");
             const HER = str;
             let title = 'HTTP_ERROR';
             let message = 'HTTP_ERROR_DESC';
-            if ( HER.status == 200 ) {
+            if (HER.status == 200) {
                 message = 'PHP_ERROR_DESC';
             }
             options['message'] = this.i18n[title] + ' ' + this.i18n[message];
         }
-        else if ( str.title !== void 0 || str.message !== void 0 ) {
+        else if (str.title !== void 0 || str.message !== void 0) {
+            if ( str.title === void 0 ) str.title = ''; 
             options['message'] = str.title + " " + str.message;
         }
         else {
@@ -247,7 +250,7 @@ export class AppService {
     }
 
     showAlert(title: any, content = '') {
-        console.log( title, content);
+        console.log(title, content);
         this.alert({ title: title, message: content });
     }
 
@@ -338,8 +341,12 @@ export class AppService {
             "PHONE NUMBER REQUIRED",
             "PHONE NUMBER",
             "KAKAOTALK ID",
-            "KAKAOTALK ID REQUIRED"
-            ]).subscribe(re => {
+            "KAKAOTALK ID REQUIRED",
+            "LOADING SCHEDULE",
+            "GOT SCHEDULE",
+            "DISPLAYING SCHEDULE",
+            "SCHEDULE DISPLAYED"
+        ]).subscribe(re => {
             this.i18n = re;
         });
 
@@ -369,9 +376,9 @@ export class AppService {
      */
     toInt(n: any) {
         try {
-            return parseInt( n );
+            return parseInt(n);
         }
-        catch ( e ) {
+        catch (e) {
             return 0;
         }
         // if (typeof n == 'string') {
@@ -385,11 +392,11 @@ export class AppService {
         // }
     }
 
-    toFloat( n ) {
+    toFloat(n) {
         try {
-            return parseFloat( n );
+            return parseFloat(n);
         }
-        catch( e ) {
+        catch (e) {
             return 0;
         }
     }
@@ -419,14 +426,14 @@ export class AppService {
 
     countStar(grade) {
         grade = parseInt(grade);
-        if ( grade >= 5 ) grade = 5;
+        if (grade >= 5) grade = 5;
         let re = Array(grade).fill(true);
         return re;
     }
 
     countEmptyStar(grade) {
         grade = parseInt(grade);
-        if ( grade >= 5 ) grade = 5;
+        if (grade >= 5) grade = 5;
         let re = Array(5 - grade).fill(true);
         return re;
     }
@@ -454,13 +461,13 @@ export class AppService {
      *      => return true.
      */
     get studentTheme() {
-        if ( this.hostname == "ontue.com" || this.hostname == 'www.ontue.com') return false;
-        else if ( this.lms.getUserType() == "student" ) return true;
-        else if ( this.lms.getUserType() == "teacher" ) return false;
+        if (this.hostname == "ontue.com" || this.hostname == 'www.ontue.com') return false;
+        else if (this.lms.getUserType() == "student") return true;
+        else if (this.lms.getUserType() == "teacher") return false;
         else return true;
     }
     get teacherTheme() {
-        return ! this.studentTheme;
+        return !this.studentTheme;
     }
 
 

@@ -127,6 +127,7 @@
           <div class="past" *ngIf=" book.past ">
             <div class="teacher buttons d-flex" *ngIf=" a.lms.getUserType() == 'teacher' ">
 
+              
               <span *ngIf=" paid(book) ">Paid</span>
               <button class="bg-white blue" [class.warning]=" ! evaluated(book) " (click)=" a.open('evaluate', {idx: book.idx}) " *ngIf=" !paid(book) && !refunded( book ) ">
                 Eval
