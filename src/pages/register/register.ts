@@ -58,6 +58,7 @@ export class RegisterPage {
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
       this.account['display_name'] = userData['display_name'];
+      this.account.phone_number = userData.phone_number;
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
       if ( userData.birthday.length > 0 ) {

@@ -23,6 +23,10 @@ export class SessionList {
   today = new Date();
   show_refund_in_progress = false;
   show_refunded = false;
+
+  displayTeacherName = true;
+  displayDate = true;
+  displayPoint = true;
   constructor(
     public a: AppService,
     public modalCtrl: ModalController,
@@ -58,7 +62,7 @@ export class SessionList {
     };
 
     console.log(defaults);
-    
+
     defaults['show_refund_in_progress'] = this.show_refund_in_progress;
     defaults['show_refunded'] = this.show_refunded;
     if (this.show_teacher > 0) defaults['idx_teacher'] = this.show_teacher;
@@ -190,4 +194,5 @@ export class SessionList {
     if (this.refunded(book)) return '';
     else return this.a.number_format(book['point']);
   }
+
 }

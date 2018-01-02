@@ -196,10 +196,10 @@ export class MyApp {
     // this.a.open('password-change');
 
 
-    this.a.open('schedule-available');
+    // this.a.open('schedule-available');
 
     // this.a.open('help');
-    
+
   }
 
 
