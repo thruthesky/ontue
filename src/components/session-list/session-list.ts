@@ -11,7 +11,7 @@ import {MessageWrite} from "../message-write/message-write";
 })
 export class SessionList {
   // @Input() data: {past:false;future:false};
-  @Input() page = '';
+  // @Input() page = '';
   @Input() share: SHARE_SESSION_LIST = <SHARE_SESSION_LIST>{};
 
 
@@ -36,10 +36,10 @@ export class SessionList {
   }
 
   get future(): boolean {
-    return this.page == 'session-future';
+    return this.a.page == 'session-future';
   }
   get past(): boolean {
-    return this.page == 'session-past';
+    return this.a.page == 'session-past';
   }
 
   ngOnInit() {
