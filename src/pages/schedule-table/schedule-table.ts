@@ -325,11 +325,20 @@ export class ScheduleTablePage {
     // this.in_displaying_schedule = true;
     this.teachers = re.teachers;
 
-    if ( this.singleTeacher ) {                 // no delay push on single teacher.
+
+
+    /**
+     * 
+     * @note simply display all schedules at once, IF
+     *      - a single teacher's schedule is being displayed or
+     *      - schedules less than 100 is displayed,
+     */
+    if ( this.singleTeacher || this.length_of_schedule_table_rows < 100 ) {
       this.schedule_table_rows = re.table;
       this.finishedOnScheduleTableDisplay();
     }
     else this.delayPush( re.table );
+
   }
   finishedOnScheduleTableDisplay() {
     // this.in_displaying_schedule = false;
