@@ -91,6 +91,15 @@
   , "GOT SCHEDULE": "Schedule received. Going to display."
   , "DISPLAYING SCHEDULE": " has been displayed."
   , "SCHEDULE DISPLAYED": "All schedules are displayed."
-
   , "TIME NOW": "Now"
+  , "NATIONALITY": "Nationality"
+  , "TAKEN": "Sessions"
+  , "CURRICULUM VITAE": "Curriculum Vitae"
+  , "ADD KAKAO": "Add Kakao Friend"
+
+  , "PREVIOUS WEEK": "Previous"
+  , "TODAY": "Today"
+  , "NEXT WEEK": "Next"
+  , "NEXT MONTH": "Next month"
+  , "HAD SESSIONS": ""
 }

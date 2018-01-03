@@ -52,10 +52,25 @@ schedule-table-page {
     width: 100%;
     height: 100%;
   }
+
   .teacher-profile {
-    width: 56px;
+    width: 58px;
     overflow: hidden;
+    .photo {
+      margin: 0 auto;
+      width: 48px;
+      height: 52px;
+      overflow: hidden;
+      border-radius: 4px;
+      img {
+        width: 100%;
+      }
+    }
+    .teacher-name {
+      font-size: 1.2rem!important;
+    }
   }
+
   .session-datetime {
     width: 42px;
     overflow: hidden;

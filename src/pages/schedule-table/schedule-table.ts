@@ -91,8 +91,8 @@ export class ScheduleTablePage {
   length_of_schedule_table_rows = 0; // total length of schedule table rows.
   no_schedule = false; // If the teacher has no schedule table, it sets to true.
   student = {};
-  ___teacher = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0 };
-  teachers = [];
+  teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0 };
+  teachers = {};
 
 
 
@@ -170,7 +170,7 @@ export class ScheduleTablePage {
     else {
       this.days = 6;
       this.class_begin_hour = 18;
-      this.class_end_hour = 23;
+      this.class_end_hour = 22;
     }
 
     // console.log('data params', this.params);
@@ -300,7 +300,7 @@ export class ScheduleTablePage {
 
   displayScheduleTable(re) {
     this.status = 'GOT SCHEDULE';
-    // console.log('got data: ', re);
+    console.log('got data: ', re);
     /// 시간표 속도 : https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.xxaqipe33arp
     this.no_of_schedules = re.no_of_schedules;
     // this.no_of_schedule_limit = re.no_of_schedule_limit;
@@ -310,22 +310,14 @@ export class ScheduleTablePage {
     this.header = re.header;
     this.schedules = re.schedule; // whole schedules
     this.student = re.student;
-    this.___teacher = re.teacher;
+    this.teacher_profile = re.teacher; // single teacher
 
-
-    // setTimeout(() => {
-    //   // this.schedule_table_rows = re.table;
-    //   console.log(this.schedule_table_rows);
-    //   // this.re = re;
-    // }, 100);
 
     if ( ! re.table || ! re.table.length ) this.no_schedule = true;
     this.length_of_schedule_table_rows = re.table.length;
     this.schedule_table_rows = [];
     // this.in_displaying_schedule = true;
     this.teachers = re.teachers;
-
-
 
     /**
      * 
@@ -365,8 +357,6 @@ export class ScheduleTablePage {
         this.delayPush( table );
       }
     }, 200 );
-
-    // console.log("schedule_table_rows:: ", this.schedule_table_rows);
   }
 
   schedule(idx_schedule): SCHEDULE {
@@ -405,13 +395,25 @@ export class ScheduleTablePage {
    */
   teacher( session = null ) {
     if ( session == null ) return null;
+    if ( session[ this.IDX_SCHEDULE ] === void 0 ) return null;
+    if ( this.schedules[ session[ this.IDX_SCHEDULE ] ] === void 0 ) {
+      console.log('schedule is empty on ' + session[ this.IDX_SCHEDULE ] );
+      return null;
+    }
+    const schedule = this.schedules[ session[ this.IDX_SCHEDULE ] ];
+    if ( schedule[ this.IDX_TEACHER ] === void 0 ) return null;
+
     // console.log("tl: ", this.teachers.length );
     // if ( this.teachers.length == 0 ) return null;
-    const idx_teacher = this.schedules[ session[ this.IDX_SCHEDULE ] ][ this.IDX_TEACHER ];
+    const idx_teacher = schedule[ this.IDX_TEACHER ];
     // console.log('idx_schedule: ', session.idx_schedule);
     // console.log('idx_teacher: ', idx_teacher);
-    if ( this.teachers[ idx_teacher ] ) return this.teachers[idx_teacher];
-    else return null;
+
+    if ( this.teachers[ idx_teacher ] === void 0 ) {
+      // console.log('no teacher? of ' + idx_teacher);
+      return null;
+    }
+    return this.teachers[idx_teacher];
   }
 
 
@@ -425,7 +427,7 @@ export class ScheduleTablePage {
     const teacher = this.teacher( session );
     // console.log('teacher: ', teacher);
     if ( teacher ) name = teacher.name;
-    else name = this.___teacher['name'];
+    else name = this.teacher_profile['name'];
     return name;
 
     // return this.a.preTeacherName( name );
@@ -436,43 +438,52 @@ export class ScheduleTablePage {
    * @param session
    */
   teacher_photoURL(session = null) {
-    // console.log("session: ", session.idx_teacher);
+    // console.log("session: ", session);
     const teacher = this.teacher( session );
     // console.log(teacher);
     if ( teacher ) {
       if ( teacher.photoURL !== void 0 ) return teacher.photoURL;
       else return this.default_photo_url;
     }
-    else return this.___teacher.photoURL;
+    else return this.teacher_profile.photoURL;
   }
-  teacher_ID(session = null) {
-    // const teacher = this.teacher( session );
-    const idx_teacher = this.schedules[ session[ this.IDX_SCHEDULE ] ][ this.IDX_TEACHER ];
-    return idx_teacher;
-    // if ( teacher ) return teacher.idx;
-    // else return this.___teacher.idx;
-  }
+  // teacher_ID(session) {
+  //   const idx_teacher = this.schedules[ session[ this.IDX_SCHEDULE ] ][ this.IDX_TEACHER ];
+  //   return idx_teacher;
+  //   // if ( teacher ) return teacher.idx;
+  //   // else return this.teacher_profile.idx;
+  // }
 
   teacher_age() {
-    return this.___teacher.age;
+    return this.teacher_profile.age;
   }
   teacher_grade() {
-    return this.___teacher.grade;
+    return this.teacher_profile.grade;
   }
   teacher_gender() {
-    let g = this.___teacher.gender;
-    if (g == 'M') return '남';
-    else return '여';
+    return this.teacher_profile.gender;
+    // if (g == 'M') return '남';
+    // else return '여';
   }
 
   session_time(session) {
-    // console.log("session: ", session);
+    if ( ! session ) return 0;
+    if ( session[ this.IDX_SCHEDULE ] === void 0 ) return 0;
     const schedule = this.schedule(session[ this.IDX_SCHEDULE ]);
     if ( ! schedule ) return 0;
     const begin = schedule[ this.USER_TIME_CLASS_BEGIN ];
     const hour = begin.substr(0, 2);
     const minute = begin.substr(2, 2);
     return hour + ':' + minute;
+  }
+  session_duration( session ) {
+    
+    if ( ! session ) return 0;
+    if ( session[ this.IDX_SCHEDULE ] === void 0 ) return 0;
+    const schedule = this.schedule(session[ this.IDX_SCHEDULE ]);
+    if ( ! schedule ) return 0;
+    return schedule[ this.DURATION ];
+
   }
 
   onChangeSearchOption() {
@@ -599,7 +610,7 @@ export class ScheduleTablePage {
   //   let youtubeID = this.a.getYoutubeID( this.re.teacher['youtube_video_url'] );
   // }
   playTeacherYoutube() {
-    const ID =  this.a.getYoutubeID( this.___teacher['youtube_video_url'] );
+    const ID =  this.a.getYoutubeID( this.teacher_profile['youtube_video_url'] );
     if ( ! ID ) return this.a.alert('본 강사는 유튜브 동영상을 등록하지 않았습니다.');
     if ( this.a.isCordova ) {
       this.youtube.openVideo( ID );

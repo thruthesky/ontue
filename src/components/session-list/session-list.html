@@ -61,7 +61,7 @@
     <div class="buttons d-flex justify-content-end mb-3">
       <button class="primary" (click)=" share.options = false ">
         <i class="fal fa-times mr-1"></i>
-        {{ 'CANCEL' | translate }}
+        {{ 'CLOSE' | translate }}
       </button>
       <!-- <button (click)="onClickSearch()">
             {{ 'SEARCH' | translate }}
@@ -137,14 +137,18 @@
                 <span class="alert alert-warning">Rejected</span>
               </ng-container>
 
+              <span class="darkred" *ngIf=" refunded(book) ">Refunded</span>
+              
               <ng-container *ngIf=" ! rejected( book ) ">
-                <span class="darkred" *ngIf=" refunded(book) ">Refunded</span>
+                
                 <ng-container *ngIf=" ! refunded( book ) ">
                   <button (click)=" onClickRefund( book ) " *ngIf=" refundable(book) && !refund_request(book) ">Refund</button>
                   <button class="primary" (click)=" onClickRefund( book ) " *ngIf="refund_request(book)">Accept</button>
                   <button class="dark" (click)=" onClickRejectRefundRequest( book ) " *ngIf="refund_request(book)">Reject</button>
                 </ng-container>
               </ng-container>
+
+
             </div>
 
             <div class="student buttons" *ngIf=" a.lms.getUserType() == 'student' ">

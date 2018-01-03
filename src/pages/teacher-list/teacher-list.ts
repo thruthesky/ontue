@@ -20,7 +20,7 @@ export class TeacherListPage {
   gender = '';
   recommend = 'Y';
   page_no: number;
-  limit = 12; // default should be 60. it looks good in 60.
+  limit = 30; // default should be 60. it looks good in 60.
 
   noMoreTeachers: boolean;
   loading: boolean;
