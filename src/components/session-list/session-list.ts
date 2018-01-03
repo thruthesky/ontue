@@ -149,19 +149,31 @@ export class SessionList {
     }, e => this.a.alert(e));
   }
 
+  refund_in_progress( book ) {
+    if ( book['paid'] > 0 ) return false;
+    if ( book['refund_done_at'] > 0 ) return false;
+    if ( book['refund_request_at'] > 0 ) return true;
+    if ( book['refund_reject_at'] > 0 ) return true;
+    return false;
+  }
   refund_request(book) {
-    if (book['refund_request_at'] > 0) {
+    if ( book['refund_reject_at'] == 0 && book['refund_request_at'] > 0 ) {
       return true;
     }
     else {
       return false;
     }
   }
+
   paid(book) {
-    return this.a.toInt(book['paid']);
+    return book['paid'] > 0;
   }
+
   refundable(book) {
-    return !this.paid(book);
+    if ( this.paid( book ) ) return false;
+    if ( this.refunded( book ) ) return false;
+    if ( this.refund_in_progress( book ) ) return false;
+    return true;
   }
   refunded(book) {
     return book['refund_done_at'] > 0;

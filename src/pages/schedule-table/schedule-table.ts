@@ -318,22 +318,23 @@ export class ScheduleTablePage {
 
     if (!re.table || !re.table.length) this.no_schedule = true;
 
-    this.schedule_table_holder = re.table;
     this.length_of_schedule_table_rows = re.table.length;
-    this.schedule_table_rows = [];
-
+    
     this.no_more_schedule = false;
 
 
 
+    if ( this.singleTeacher ) {
+      this.schedule_table_rows = re.table;
+    }
+    else {
+      this.schedule_table_holder = re.table;
+      this.schedule_table_rows = [];
+      this.displayPage();
+    }
 
-    this.displayPage();
     setTimeout(() => this.status = 'SCHEDULE DISPLAYED', 1000);
     setTimeout(() => this.status = '', 2000);
-
-
-
-
 
     /**
      * 

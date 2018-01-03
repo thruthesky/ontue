@@ -143,7 +143,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    this.a.open('schedule-table');
+    // this.a.open('schedule-table');
 
     // this.a.open('schedule-table', { ID: 809 }); // one schedule, Imno4
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
@@ -191,7 +191,7 @@ export class MyApp {
 
     // this.a.open('home');
 
-    // this.a.open('session-past');
+    this.a.open('session-past');
     // this.a.open('session-future');
     // this.a.open('password-change');
 

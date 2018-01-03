@@ -398,7 +398,7 @@
     <!--/schedule-table-->
 
 
-    <div class="my-5 text-center" *ngIf=" no_more_schedule ">
+    <div class="my-5 text-center" *ngIf=" no_more_schedule && ! singleTeacher">
       No more schedule
     </div>
 
@@ -408,7 +408,7 @@
 
 
 
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf=" ! singleTeacher ">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 
