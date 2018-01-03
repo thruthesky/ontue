@@ -1,5 +1,5 @@
-<section class="mobile-toolbar d-md-none" [attr.page]=" page " *ngIf=" a.lms.getUserType() != 'teacher' ">
-  <ion-grid class="px-0" [class.pb-0]=" page != 'home' ">
+<section class="mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.lms.getUserType() != 'teacher' ">
+  <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
     <ion-row>
       <ion-col col-3>
         <div class="pl-3 pt-sm-3 fs-2rem" (click)="a.open('menu')">
@@ -28,7 +28,7 @@
             <span class="pl-2" (click)="a.open('register')">회원가입</span>
           </ng-container>
           <ng-container *ngIf=" a.user.isLogin ">
-            <ng-container [ngSwitch]="page">
+            <ng-container [ngSwitch]="a.page">
               <ng-container *ngSwitchCase=" 'schedule-table' ">
                 <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
                 <span (click)="a.open('home')">홈</span>
@@ -69,7 +69,7 @@
 
   <nav class="submenu">
     <div class="m-0 p-0 d-flex justify-content-around">
-      <ng-container [ngSwitch]=" page ">
+      <ng-container [ngSwitch]=" a.page ">
           <ng-container *ngSwitchCase=" 'payment' ">
               <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>

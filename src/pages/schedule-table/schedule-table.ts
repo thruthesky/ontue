@@ -173,7 +173,7 @@ export class ScheduleTablePage {
       this.class_end_hour = 23;
     }
 
-    console.log('data params', this.params);
+    // console.log('data params', this.params);
 
 
 
@@ -270,7 +270,7 @@ export class ScheduleTablePage {
     };
 
     const req = Object.assign(defaults, options);
-    console.log("Request: ", req);
+    // console.log("Request: ", req);
     return req;
   }
   // getTeacherSchedule( ID ) {
@@ -300,7 +300,7 @@ export class ScheduleTablePage {
 
   displayScheduleTable(re) {
     this.status = 'GOT SCHEDULE';
-    console.log('got data: ', re);
+    // console.log('got data: ', re);
     /// 시간표 속도 : https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.xxaqipe33arp
     this.no_of_schedules = re.no_of_schedules;
     // this.no_of_schedule_limit = re.no_of_schedule_limit;
@@ -337,7 +337,7 @@ export class ScheduleTablePage {
     this.status_n = 0;
 
     this.status = 'SCHEDULE DISPLAYED';
-    setTimeout( () => this.status = null, 2500 );
+    setTimeout( () => this.status = null, 1500 );
     // console.log('table rows: ', this.schedule_table_rows);
   }
 
@@ -357,7 +357,7 @@ export class ScheduleTablePage {
       }
     }, 200 );
 
-    console.log("schedule_table_rows:: ", this.schedule_table_rows);
+    // console.log("schedule_table_rows:: ", this.schedule_table_rows);
   }
 
   schedule(idx_schedule): SCHEDULE {
@@ -477,13 +477,13 @@ export class ScheduleTablePage {
 
   onClickNavigate(navigate) {
     this.navigate = navigate;
-    console.log(this.navigate);
+    // console.log(this.navigate);
     this.loadScheduleTable();
   }
 
   onClickSession(session: SESSION) {
 
-    console.log('onClickSession', session);
+    // console.log('onClickSession', session);
     if (session[ this.STATUS ] == 'past') return;
 
     if (session[ this.OPEN ] == 'open') this.reserveSession(session);
@@ -493,13 +493,13 @@ export class ScheduleTablePage {
 
   reserveSession(session: SESSION) {
 
-    console.log("reserve: session: ", session);
+    // console.log("reserve: session: ", session);
     // const schedule = this.schedule(session[ this.IDX_SCHEDULE ]);
     // console.log("reserve: schedule: ", schedule);
 
     session['in_progress'] = true;
     this.a.lms.session_reserve({ idx_schedule: session[ this.IDX_SCHEDULE ], date: session[ this.DATE ] }).subscribe(re => {
-      console.log("class_reserve: ", re);
+      // console.log("class_reserve: ", re);
       session['in_progress'] = false;
       session[ this.OPEN ] = 'reserved';
       session[ this.DAYOFF ] = '';
@@ -518,9 +518,9 @@ export class ScheduleTablePage {
 
   cancelSession( session: SESSION ) {
     session['in_progress'] = true;
-    console.log("Going to cancel with : ", session[ this.IDX_RESERVATION ]);
+    // console.log("Going to cancel with : ", session[ this.IDX_RESERVATION ]);
     this.a.lms.session_cancel(session[ this.IDX_RESERVATION ]).subscribe(re => {
-      console.log("cancel success", re);
+      // console.log("cancel success", re);
       session['in_progress'] = false;
       session[ this.STATUS ] = 'future';
       session[ this.OPEN ] = 'open';
@@ -552,7 +552,7 @@ export class ScheduleTablePage {
 
   onClickReserveVisible(sessions) {
 
-    console.log('onClickReserveVisible', sessions);
+    // console.log('onClickReserveVisible', sessions);
 
 
     sessions.forEach(session => {
@@ -577,7 +577,7 @@ export class ScheduleTablePage {
   }
 
   onToggleDisplayWeekends($event) {
-    console.log($event['checked']);
+    // console.log($event['checked']);
 
   }
 

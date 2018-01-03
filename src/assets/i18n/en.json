@@ -63,7 +63,7 @@
   , "HELP": "Help"
   , "AVAILABLE SESSIONS": "Schedules now"
   , "TEACHER LIST": "Teachers"
-  , "ALL SCHEDULE TABLE": "Reserve"
+  , "ALL SCHEDULE TABLE": "All Teacher Schedule"
   , "QNA SHORT": "QnA"
   , "QNA": "QnA"
 
@@ -87,4 +87,10 @@
   , "IN RESERVING": "Reserving..."
   , "INBOX": "In Box"
   , "SENT": "Sent Box"
+  , "LOADING SCHEDULE": "Requesting schedules..."
+  , "GOT SCHEDULE": "Schedule received. Going to display."
+  , "DISPLAYING SCHEDULE": " has been displayed."
+  , "SCHEDULE DISPLAYED": "All schedules are displayed."
+
+  , "TIME NOW": "Now"
 }

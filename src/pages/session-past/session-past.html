@@ -1,5 +1,5 @@
 <ion-header>
-  <header-content [page]=" page " [title]=" '지난 수업' "></header-content>
+  <header-content [title]=" '지난 수업' "></header-content>
 </ion-header>
 <ion-content [attr.page]=" page ">
   <div class="page">
@@ -26,7 +26,7 @@
 
     </section>
 
-    <session-list [share]=" share " [page]=" page "></session-list>
+    <session-list [share]=" share " [page]=" a.page "></session-list>
 
 
     <hook-content-bottom></hook-content-bottom>

@@ -10,7 +10,7 @@ import { AppService } from './../../providers/app.service';
 })
 export class HeaderComponent {
 
-    @Input() page = '';
+    // @Input() page = '';
     @Input() title = null;
     constructor(
         public a: AppService
