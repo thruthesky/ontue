@@ -4,15 +4,15 @@ import { AppService } from './../../providers/app.service';
 import { NavParams } from "ionic-angular";
 import { Subject } from "rxjs/Subject";
 
-import {YoutubeVideoPlayer} from "@ionic-native/youtube-video-player";
+import { YoutubeVideoPlayer } from "@ionic-native/youtube-video-player";
 
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
 
 
 type iShow = {
-    more_total_schedule_warning: boolean;
-    more_icon_desc: boolean;
+  more_total_schedule_warning: boolean;
+  more_icon_desc: boolean;
 };
 
 interface SESSION {
@@ -69,7 +69,7 @@ export class ScheduleTablePage {
     more_icon_desc: false
   };
 
-  
+
   display_options = false;
   params;
 
@@ -87,7 +87,8 @@ export class ScheduleTablePage {
   starting_day = '';
   header = [];
   schedules = {}; // whole schedules
-  schedule_table_rows: Array< SESSION > = []; // whole table rows;
+  schedule_table_holder: Array<SESSION> = []; // temporary memory place holder for schedule_table_rows.
+  schedule_table_rows: Array<SESSION> = []; // whole table rows;
   length_of_schedule_table_rows = 0; // total length of schedule table rows.
   no_schedule = false; // If the teacher has no schedule table, it sets to true.
   student = {};
@@ -95,6 +96,7 @@ export class ScheduleTablePage {
   teachers = {};
 
 
+  no_more_schedule = false;
 
 
 
@@ -136,20 +138,20 @@ export class ScheduleTablePage {
   no_of_schedules = 0;
   // no_of_schedule_limit = 0;
 
-  // page_no = 1;
+
   navigate = 'today';
 
-  begin_hours = Array(24).fill(0).map( (e, i) => i );
-  end_hours = Array(24).fill(0).map( (e, i) => i+1 );
+  begin_hours = Array(24).fill(0).map((e, i) => i);
+  end_hours = Array(24).fill(0).map((e, i) => i + 1);
   class_begin_hour = 0;
   class_end_hour = 0;
 
 
   // in_displaying_schedule = false; ///
   status = null;
-  status_n = 0;
+  // status_n = 0;
 
-  
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -207,43 +209,43 @@ export class ScheduleTablePage {
 
 
   icon(session: SESSION) {
-    if (session[ this.STATUS ] == 'future') {
-      if (session[ this.OPEN ] == 'open') { // open to reserve
-        if (session[ this.DAYOFF ] == 'dayoff') return 'cloud-circle'; // but day off
+    if (session[this.STATUS] == 'future') {
+      if (session[this.OPEN] == 'open') { // open to reserve
+        if (session[this.DAYOFF] == 'dayoff') return 'cloud-circle'; // but day off
         else return 'radio-button-off'; // reservable
       }
-      
-      else if (session[ this.OPEN ] == 'reserved') { // already reserved.
-        if (session[ this.OWNER ] == 'me' && ! session[ this.DAYOFF ] ) {
+
+      else if (session[this.OPEN] == 'reserved') { // already reserved.
+        if (session[this.OWNER] == 'me' && !session[this.DAYOFF]) {
           return 'radio-button-on';
         }
-        else if (session[ this.DAYOFF ] == 'dayoff') return 'cloud-done'; // already reserved and day-off
+        else if (session[this.DAYOFF] == 'dayoff') return 'cloud-done'; // already reserved and day-off
         else return 'checkmark'; // reserved
       }
-      else if (session[ this.OPEN ] == 'no-schedule') { // teacher didn't open a session on this day of his schedule table.
+      else if (session[this.OPEN] == 'no-schedule') { // teacher didn't open a session on this day of his schedule table.
         return 'qr-scanner'; // no schedule on this day.
       }
     } // eo future
     else { /// past classes.
-      if (session[ this.OPEN ] == 'open') { // past class. but open.
+      if (session[this.OPEN] == 'open') { // past class. but open.
         return 'square';
       }
       else { // past & reserved.
-        if (session[ this.DAYOFF ] == 'dayoff') return ''; // past class and dayoff.
+        if (session[this.DAYOFF] == 'dayoff') return ''; // past class and dayoff.
         else return 'lock'; // past class and reserved.
 
       }
     }
   }
 
-  session_text(session: SESSION ) {
-    if (session[ this.STATUS ] == 'future') {
-      if (session[ this.OPEN ] == 'reserved') {
-        if (session[ this.OWNER ] == 'me') {
+  session_text(session: SESSION) {
+    if (session[this.STATUS] == 'future') {
+      if (session[this.OPEN] == 'reserved') {
+        if (session[this.OWNER] == 'me') {
           return '취소';
         }
       }
-      else if ( session[ this.OPEN ] == 'open' ) {
+      else if (session[this.OPEN] == 'open') {
         // return '예약';
         return '';
       }
@@ -283,15 +285,15 @@ export class ScheduleTablePage {
   // }
 
 
-  loadScheduleTable( callback? ) {
+  loadScheduleTable(callback?) {
     let opt = {};
     if (this.params.ID) opt['teachers'] = [this.params.ID];
-    opt = this.request( opt );
+    opt = this.request(opt);
     // console.log(opt);
     this.status = 'LOADING SCHEDULE';
     this.a.lms.schedule_table(opt).subscribe(re => {
       this.displayScheduleTable(re);
-      if ( callback ) callback();
+      if (callback) callback();
       if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
       }
@@ -311,13 +313,27 @@ export class ScheduleTablePage {
     this.schedules = re.schedule; // whole schedules
     this.student = re.student;
     this.teacher_profile = re.teacher; // single teacher
+    this.teachers = re.teachers; // all teacher list
 
 
-    if ( ! re.table || ! re.table.length ) this.no_schedule = true;
+    if (!re.table || !re.table.length) this.no_schedule = true;
+
+    this.schedule_table_holder = re.table;
     this.length_of_schedule_table_rows = re.table.length;
     this.schedule_table_rows = [];
-    // this.in_displaying_schedule = true;
-    this.teachers = re.teachers;
+
+    this.no_more_schedule = false;
+
+
+
+
+    this.displayPage();
+    setTimeout(() => this.status = 'SCHEDULE DISPLAYED', 1000);
+    setTimeout(() => this.status = '', 2000);
+
+
+
+
 
     /**
      * 
@@ -325,45 +341,45 @@ export class ScheduleTablePage {
      *      - a single teacher's schedule is being displayed or
      *      - schedules less than 100 is displayed,
      */
-    if ( this.singleTeacher || this.length_of_schedule_table_rows < 100 ) {
-      this.schedule_table_rows = re.table;
-      this.finishedOnScheduleTableDisplay();
-    }
-    else this.delayPush( re.table );
+    // if ( this.singleTeacher || this.length_of_schedule_table_rows < 100 ) {
+    //   this.schedule_table_rows = re.table;
+    //   this.finishedOnScheduleTableDisplay();
+    // }
+    // else this.delayPush( re.table );
 
   }
-  finishedOnScheduleTableDisplay() {
-    // this.in_displaying_schedule = false;
-    // this.status = null;
-    this.status_n = 0;
+  // finishedOnScheduleTableDisplay() {
+  //   // this.in_displaying_schedule = false;
+  //   // this.status = null;
+  //   this.status_n = 0;
 
-    this.status = 'SCHEDULE DISPLAYED';
-    setTimeout( () => this.status = null, 1500 );
-    // console.log('table rows: ', this.schedule_table_rows);
-  }
+  //   this.status = 'SCHEDULE DISPLAYED';
+  //   setTimeout( () => this.status = null, 1500 );
+  //   // console.log('table rows: ', this.schedule_table_rows);
+  // }
 
-  delayPush( table ) {
-    setTimeout( () => {
-      if ( ! table || ! table.length ) {
-        this.finishedOnScheduleTableDisplay();
-      }
-      else {
-        const len = table.length;
-        this.status_n = this.length_of_schedule_table_rows - len;
-        this.status = 'DISPLAYING SCHEDULE';
-        for( let i = 0; i < 10 && i < len; i ++ ) {
-          this.schedule_table_rows.push( table.shift() );
-        }
-        this.delayPush( table );
-      }
-    }, 200 );
-  }
+  // delayPush( table ) {
+  //   setTimeout( () => {
+  //     if ( ! table || ! table.length ) {
+  //       this.finishedOnScheduleTableDisplay();
+  //     }
+  //     else {
+  //       const len = table.length;
+  //       this.status_n = this.length_of_schedule_table_rows - len;
+  //       this.status = 'DISPLAYING SCHEDULE';
+  //       for( let i = 0; i < 10 && i < len; i ++ ) {
+  //         this.schedule_table_rows.push( table.shift() );
+  //       }
+  //       this.delayPush( table );
+  //     }
+  //   }, 200 );
+  // }
 
   schedule(idx_schedule): SCHEDULE {
-    if ( typeof idx_schedule !== 'number' && typeof idx_schedule !== 'string' ) { // get idx schedule from session[0]
-      idx_schedule = idx_schedule[ this.IDX_SCHEDULE ]; // idx_schedule is session;
+    if (typeof idx_schedule !== 'number' && typeof idx_schedule !== 'string') { // get idx schedule from session[0]
+      idx_schedule = idx_schedule[this.IDX_SCHEDULE]; // idx_schedule is session;
     }
-    if ( this.schedules && this.schedules[idx_schedule] ) return this.schedules[idx_schedule];
+    if (this.schedules && this.schedules[idx_schedule]) return this.schedules[idx_schedule];
     else return null;
   }
 
@@ -378,9 +394,9 @@ export class ScheduleTablePage {
       let date = this.a.lms.userDate(this.student['timezone']);
       let hour = date.getHours();
       let ap = '';
-      if ( hour < 12 ) ap = '오전';
+      if (hour < 12) ap = '오전';
       else ap = '오후';
-      if ( hour != 12 ) hour = hour % 12;
+      if (hour != 12) hour = hour % 12;
 
 
       this.time = date.getDate() + '일 ' + ap + ' ' + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
@@ -393,23 +409,23 @@ export class ScheduleTablePage {
    * Returns teacher information
    * @param session session of the reservation table
    */
-  teacher( session = null ) {
-    if ( session == null ) return null;
-    if ( session[ this.IDX_SCHEDULE ] === void 0 ) return null;
-    if ( this.schedules[ session[ this.IDX_SCHEDULE ] ] === void 0 ) {
-      console.log('schedule is empty on ' + session[ this.IDX_SCHEDULE ] );
+  teacher(session = null) {
+    if (session == null) return null;
+    if (session[this.IDX_SCHEDULE] === void 0) return null;
+    if (this.schedules[session[this.IDX_SCHEDULE]] === void 0) {
+      console.log('schedule is empty on ' + session[this.IDX_SCHEDULE]);
       return null;
     }
-    const schedule = this.schedules[ session[ this.IDX_SCHEDULE ] ];
-    if ( schedule[ this.IDX_TEACHER ] === void 0 ) return null;
+    const schedule = this.schedules[session[this.IDX_SCHEDULE]];
+    if (schedule[this.IDX_TEACHER] === void 0) return null;
 
     // console.log("tl: ", this.teachers.length );
     // if ( this.teachers.length == 0 ) return null;
-    const idx_teacher = schedule[ this.IDX_TEACHER ];
+    const idx_teacher = schedule[this.IDX_TEACHER];
     // console.log('idx_schedule: ', session.idx_schedule);
     // console.log('idx_teacher: ', idx_teacher);
 
-    if ( this.teachers[ idx_teacher ] === void 0 ) {
+    if (this.teachers[idx_teacher] === void 0) {
       // console.log('no teacher? of ' + idx_teacher);
       return null;
     }
@@ -424,9 +440,9 @@ export class ScheduleTablePage {
   teacher_name(session = null) {
     let name = 'NoName';
     // console.log(session);
-    const teacher = this.teacher( session );
+    const teacher = this.teacher(session);
     // console.log('teacher: ', teacher);
-    if ( teacher ) name = teacher.name;
+    if (teacher) name = teacher.name;
     else name = this.teacher_profile['name'];
     return name;
 
@@ -439,10 +455,10 @@ export class ScheduleTablePage {
    */
   teacher_photoURL(session = null) {
     // console.log("session: ", session);
-    const teacher = this.teacher( session );
+    const teacher = this.teacher(session);
     // console.log(teacher);
-    if ( teacher ) {
-      if ( teacher.photoURL !== void 0 ) return teacher.photoURL;
+    if (teacher) {
+      if (teacher.photoURL !== void 0) return teacher.photoURL;
       else return this.default_photo_url;
     }
     else return this.teacher_profile.photoURL;
@@ -467,22 +483,22 @@ export class ScheduleTablePage {
   }
 
   session_time(session) {
-    if ( ! session ) return 0;
-    if ( session[ this.IDX_SCHEDULE ] === void 0 ) return 0;
-    const schedule = this.schedule(session[ this.IDX_SCHEDULE ]);
-    if ( ! schedule ) return 0;
-    const begin = schedule[ this.USER_TIME_CLASS_BEGIN ];
+    if (!session) return 0;
+    if (session[this.IDX_SCHEDULE] === void 0) return 0;
+    const schedule = this.schedule(session[this.IDX_SCHEDULE]);
+    if (!schedule) return 0;
+    const begin = schedule[this.USER_TIME_CLASS_BEGIN];
     const hour = begin.substr(0, 2);
     const minute = begin.substr(2, 2);
     return hour + ':' + minute;
   }
-  session_duration( session ) {
-    
-    if ( ! session ) return 0;
-    if ( session[ this.IDX_SCHEDULE ] === void 0 ) return 0;
-    const schedule = this.schedule(session[ this.IDX_SCHEDULE ]);
-    if ( ! schedule ) return 0;
-    return schedule[ this.DURATION ];
+  session_duration(session) {
+
+    if (!session) return 0;
+    if (session[this.IDX_SCHEDULE] === void 0) return 0;
+    const schedule = this.schedule(session[this.IDX_SCHEDULE]);
+    if (!schedule) return 0;
+    return schedule[this.DURATION];
 
   }
 
@@ -504,10 +520,10 @@ export class ScheduleTablePage {
   onClickSession(session: SESSION) {
 
     // console.log('onClickSession', session);
-    if (session[ this.STATUS ] == 'past') return;
+    if (session[this.STATUS] == 'past') return;
 
-    if (session[ this.OPEN ] == 'open') this.reserveSession(session);
-    else if (session[ this.OPEN ] == 'reserved' && session[ this.OWNER ] == 'me') this.cancelSession(session);
+    if (session[this.OPEN] == 'open') this.reserveSession(session);
+    else if (session[this.OPEN] == 'reserved' && session[this.OWNER] == 'me') this.cancelSession(session);
 
   }
 
@@ -518,16 +534,16 @@ export class ScheduleTablePage {
     // console.log("reserve: schedule: ", schedule);
 
     session['in_progress'] = true;
-    this.a.lms.session_reserve({ idx_schedule: session[ this.IDX_SCHEDULE ], date: session[ this.DATE ] }).subscribe(re => {
+    this.a.lms.session_reserve({ idx_schedule: session[this.IDX_SCHEDULE], date: session[this.DATE] }).subscribe(re => {
       // console.log("class_reserve: ", re);
       session['in_progress'] = false;
-      session[ this.OPEN ] = 'reserved';
-      session[ this.DAYOFF ] = '';
-      session[ this.STATUS ] = 'future';
-      session[ this.OWNER ] = 'me';
-      session[ this.STUDENT_NAME ] = re.student_name;
-      session[ this.POINT ] = re.point;
-      session[ this.IDX_RESERVATION ] = re.idx_reservation;
+      session[this.OPEN] = 'reserved';
+      session[this.DAYOFF] = '';
+      session[this.STATUS] = 'future';
+      session[this.OWNER] = 'me';
+      session[this.STUDENT_NAME] = re.student_name;
+      session[this.POINT] = re.point;
+      session[this.IDX_RESERVATION] = re.idx_reservation;
       this.updatePoint();
     }, e => {
       session['in_progress'] = false;
@@ -536,17 +552,17 @@ export class ScheduleTablePage {
 
   }
 
-  cancelSession( session: SESSION ) {
+  cancelSession(session: SESSION) {
     session['in_progress'] = true;
     // console.log("Going to cancel with : ", session[ this.IDX_RESERVATION ]);
-    this.a.lms.session_cancel(session[ this.IDX_RESERVATION ]).subscribe(re => {
+    this.a.lms.session_cancel(session[this.IDX_RESERVATION]).subscribe(re => {
       // console.log("cancel success", re);
       session['in_progress'] = false;
-      session[ this.STATUS ] = 'future';
-      session[ this.OPEN ] = 'open';
-      session[ this.OWNER ] = '';
-      session[ this.STUDENT_NAME ] = '';
-      session[ this.POINT ] = this.schedule(session[ this.IDX_SCHEDULE ])[ this.POINT ] ;
+      session[this.STATUS] = 'future';
+      session[this.OPEN] = 'open';
+      session[this.OWNER] = '';
+      session[this.STUDENT_NAME] = '';
+      session[this.POINT] = this.schedule(session[this.IDX_SCHEDULE])[this.POINT];
       this.updatePoint();
     }, e => {
       session['in_progress'] = false;
@@ -603,41 +619,33 @@ export class ScheduleTablePage {
 
   onClickFabOptions() {
     this.display_options = true;
-    this.content.scrollTo(0,0);
+    this.content.scrollTo(0, 0);
   }
 
   // playYoutube() {
   //   let youtubeID = this.a.getYoutubeID( this.re.teacher['youtube_video_url'] );
   // }
   playTeacherYoutube() {
-    const ID =  this.a.getYoutubeID( this.teacher_profile['youtube_video_url'] );
-    if ( ! ID ) return this.a.alert('본 강사는 유튜브 동영상을 등록하지 않았습니다.');
-    if ( this.a.isCordova ) {
-      this.youtube.openVideo( ID );
+    const ID = this.a.getYoutubeID(this.teacher_profile['youtube_video_url']);
+    if (!ID) return this.a.alert('본 강사는 유튜브 동영상을 등록하지 않았습니다.');
+    if (this.a.isCordova) {
+      this.youtube.openVideo(ID);
     }
     else {
-      this.urlYoutube = this.domSanitizer.bypassSecurityTrustResourceUrl( this.a.getYoutubeUrl( ID ));
+      this.urlYoutube = this.domSanitizer.bypassSecurityTrustResourceUrl(this.a.getYoutubeUrl(ID));
     }
 
   }
 
-  // doInfinite(infiniteScroll) {
-  //   this.page_no ++;
-  //   console.log('Begin async operation');
-  //   this.loadScheduleTable( () => {
-  //     infiniteScroll.complete();
-  //   });
-  // }
 
-
-  point( session ) {
-    if (session[ this.STATUS ] == 'future') {
-      if (session[ this.OPEN ] == 'open') {
-        if (session[ this.DAYOFF ] != 'dayoff') return session[ this.POINT ];
+  point(session) {
+    if (session[this.STATUS] == 'future') {
+      if (session[this.OPEN] == 'open') {
+        if (session[this.DAYOFF] != 'dayoff') return session[this.POINT];
       }
-      else if (session[ this.OPEN ] == 'reserved') { // already reserved.
-        if ( session[ this.OWNER ] == 'me' ) {
-          return session[ this.POINT ];
+      else if (session[this.OPEN] == 'reserved') { // already reserved.
+        if (session[this.OWNER] == 'me') {
+          return session[this.POINT];
         }
       }
     }
@@ -648,4 +656,23 @@ export class ScheduleTablePage {
   // scheduleLoader( str ) {
   //   this.a.alert( { message: str, duration: 1500 } );
   // }
+
+
+  displayPage() {
+    const part = this.schedule_table_holder.splice(0, this.a.NO_SCHEDULE_PER_PAGE);
+    this.schedule_table_rows.splice(this.schedule_table_rows.length, 0, ...part);
+    if ( this.schedule_table_holder.length == 0 ) {
+      this.no_more_schedule = true;
+    }
+  }
+  doInfinite(infiniteScroll) {
+    console.log('doInfinite');
+    
+    setTimeout(() => {
+      this.displayPage();
+      infiniteScroll.complete();
+    }, 100);
+    
+  }
+
 }

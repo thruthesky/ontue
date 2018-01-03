@@ -76,7 +76,7 @@
 
         <div class="black" *ngIf=" status ">
           <i class="fas fa-spinner fa-spin"></i>
-          <span *ngIf=" status_n ">[{{ length_of_schedule_table_rows }}] {{ status_n }}</span>
+          <!-- <span *ngIf=" status_n ">[{{ length_of_schedule_table_rows }}] {{ status_n }}</span> -->
           {{ status | translate }}
         </div>
 
@@ -398,9 +398,19 @@
     <!--/schedule-table-->
 
 
+    <div class="my-5 text-center" *ngIf=" no_more_schedule ">
+      No more schedule
+    </div>
+
+
 
   </div>
 
+
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
   <ion-fab right bottom #fab>
     <button ion-fab mini color="light">
@@ -424,9 +434,5 @@
       </button>
     </ion-fab-list>
   </ion-fab>
-
-  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll> -->
 
 </ion-content>

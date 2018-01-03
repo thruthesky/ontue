@@ -17,6 +17,7 @@ export { SHARE_SESSION_LIST };
 export class AppService {
 
 
+    NO_SCHEDULE_PER_PAGE = 50;
     DEFAULT_DAYS_TO_SHOW_ON_PAST_PAGE = 90; // 90 days.
 
 
