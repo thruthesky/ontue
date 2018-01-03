@@ -68,6 +68,33 @@
     </div>
     <!--/multiple-teachers-->
 
+
+
+    <div class="user-point d-flex justify-content-between p-3" *ngIf=" (a.user.isLogin && my_point) || status">
+
+        <div class="black" *ngIf=" status ">
+          <i class="fas fa-spinner fa-spin"></i>
+          <span *ngIf=" status_n ">[{{ length_of_schedule_table_rows }}] {{ status_n }}</span>
+          {{ status | translate }}
+        </div>
+
+        <div class="d-flex " *ngIf=" ! status ">
+          <div>
+            {{ 'POINT' | translate }}:
+            <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
+            <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+          </div>
+          <div class="ml-2">
+            {{ 'TIME NOW' | translate }}: {{ time }}
+          </div>
+        </div>
+
+        <!-- <div class="mt-1 fw-bold pointer" (click)=" a.open('help') ">
+          {{ 'HELP' | translate }}
+        </div>
+         -->
+      </div>
+
     <section class="schedule-table-content page-body">
 
 
@@ -194,31 +221,6 @@
 
 
 
-      <div class="user-point d-flex justify-content-between p-3 white" *ngIf=" (a.user.isLogin && my_point) || status">
-
-
-        <div class="yellow" *ngIf=" status ">
-          <i class="fas fa-spinner fa-spin"></i>
-          <span *ngIf=" status_n ">[{{ length_of_schedule_table_rows }}] {{ status_n }}</span>
-          {{ status | translate }}
-        </div>
-
-        <div class="d-flex " *ngIf=" ! status ">
-          <div>
-            {{ 'POINT' | translate }}:
-            <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
-            <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
-          </div>
-          <div class="ml-2">
-            {{ 'TIME NOW' | translate }}: {{ time }}
-          </div>
-        </div>
-
-        <div class="mt-1 fw-bold pointer" (click)=" a.open('help') ">
-          {{ 'HELP' | translate }}
-        </div>
-      </div>
-
 
       <div class="buttons d-flex justify-content-between mt-4 mb-4">
         <div>
@@ -249,7 +251,7 @@
         </div>
 
         <div *ngIf=" ! singleTeacher ">
-          시간 표시 옵션 : <b>{{ class_begin_hour }} 부터 {{ class_end_hour }}</b> 까지 표시
+          시간 표시 옵션 : <b>{{ class_begin_hour }}시 부터 {{ class_end_hour }}시 까지</b> 표시
         </div>
         <div class="d-flex justify-content-between mt-1">
 
