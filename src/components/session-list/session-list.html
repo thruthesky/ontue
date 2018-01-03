@@ -110,9 +110,9 @@
     <tr class="h-20" text-center *ngFor="let book of books; let i = index;">
       <td *ngIf="a.isStudent">
         <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
-          <img class="d-block w-100" src="{{ book.teacher_photoURL ? book.teacher_photoURL : a.anonymousPhotoURL  }}">
+          <img class="d-block w-100" src="{{ my_teachers[book.idx_teacher].photoURL ? my_teachers[book.idx_teacher].photoURL : a.anonymousPhotoURL  }}">
         </div>
-        <div *ngIf="displayTeacherName">{{ a.preTeacherName(book.teacher_name) }}</div>
+        <div *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
       </td>
       <td class="fw-bold" *ngIf="a.isTeacher">
         {{ a.preTeacherName(book.student_name) }}
@@ -127,7 +127,7 @@
           <div class="past" *ngIf=" book.past ">
             <div class="teacher buttons d-flex" *ngIf=" a.lms.getUserType() == 'teacher' ">
 
-              
+
               <span *ngIf=" paid(book) ">Paid</span>
               <button class="bg-white blue" [class.warning]=" ! evaluated(book) " (click)=" a.open('evaluate', {idx: book.idx}) " *ngIf=" !paid(book) && !refunded( book ) ">
                 Eval
