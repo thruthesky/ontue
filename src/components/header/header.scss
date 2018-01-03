@@ -5,20 +5,28 @@
   }
 }
 
+ion-header {
+  &::after {
+    background-image: none!important;
+  }
+  -webkit-box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
 .page-header {
   padding: 1em;
   background-color: #ececec;
   color: #3a476b;
   .title {
-      margin: 0!important;
-      padding: 0!important;
+    margin: 0!important;
+    padding: 0!important;
   }
 }
 
 .page-desc {
   padding: 1em;
 }
-
 
 #header-icons {
   // Design on font-awesome icons on header menu.

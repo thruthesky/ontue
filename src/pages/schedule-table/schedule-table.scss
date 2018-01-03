@@ -2,7 +2,7 @@ $border-color: map-get( map-get( $color-maps, 'grey' ), 300 );
 schedule-table-page {
   @include theme('grey');
   .user-point {
-    background-color: map-get( map-get( $color-maps, 'grey' ), 600 );
+    background-color: map-get( map-get( $color-maps, 'grey' ), 400 );
   }
 
   .schedule-table {

@@ -342,10 +342,10 @@ export class AppService {
             "PHONE NUMBER",
             "KAKAOTALK ID",
             "KAKAOTALK ID REQUIRED",
-            "LOADING SCHEDULE",
-            "GOT SCHEDULE",
-            "DISPLAYING SCHEDULE",
-            "SCHEDULE DISPLAYED"
+            // "LOADING SCHEDULE",
+            // "GOT SCHEDULE",
+            // "DISPLAYING SCHEDULE",
+            // "SCHEDULE DISPLAYED"
         ]).subscribe(re => {
             this.i18n = re;
         });
