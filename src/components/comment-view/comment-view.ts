@@ -29,7 +29,8 @@ export class CommentViewWidget {
 
   constructor(public a: AppService,
               public alertCtrl: AlertController,
-              public modalCtrl: ModalController,) {
+              public modalCtrl: ModalController
+  ) {
 
   }
 

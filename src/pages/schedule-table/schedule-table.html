@@ -30,7 +30,7 @@
                   {{ 'TAKEN' | translate }}: {{ teacher_profile.total_reservation }} {{ 'HAD SESSIONS' | translate }}
                 </div>
 
-                <div class="py-2">
+                <div class="py-2 pointer" (click)="onClickShowCurriculum()">
                   {{ 'CURRICULUM VITAE' | translate }}
                 </div>
               </div>
