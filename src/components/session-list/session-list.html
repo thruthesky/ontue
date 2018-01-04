@@ -143,8 +143,7 @@
                 <ng-container class="alert alert-warning" *ngIf=" refund_in_progress(book) ">
                   <span class="alert alert-warning" *ngIf=" rejected(book); else Requested ">Rejected</span>
                   <ng-template #Requested>
-                    <button class="primary" (click)=" onClickRefund( book ) ">Accept</button>
-                    <button class="dark" (click)=" onClickRejectRefundRequest( book ) ">Reject</button>
+                    <button class="bg-darkred white" (click)=" onClickShowRequest( book ) "><ion-icon name="mail"></ion-icon> Refund Requested</button>
                   </ng-template>
                 </ng-container>
 
@@ -156,10 +155,10 @@
               </ng-container>
 
               <span class="darkred" *ngIf=" refunded(book) ">Refunded</span>
-              
-              
+
+
               <ng-container *ngIf=" ! rejected( book ) ">
-                
+
                 <ng-container *ngIf=" ! refunded( book ) ">
                   <button (click)=" onClickRefund( book ) " *ngIf=" refundable(book) && !refund_request(book) ">Refund</button>
                   <button class="primary" (click)=" onClickRefund( book ) " *ngIf="refund_request(book)">Accept</button>
@@ -177,7 +176,7 @@
                 <span class="darkred" *ngIf=" rejected( book ) ">Rejected</span>
 
                 <span class="darkred" *ngIf=" refunded(book) ">Refunded</span>
-                <ng-container *ngIf=" ! rejected( book ) ">
+                <ng-container *ngIf=" !book.refund_timeover && ! rejected( book ) ">
                   <ng-container *ngIf=" ! refunded( book ) ">
                     <button class="" (click)=" onClickCancelRefundRequest( book )" *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}</button>
                     <button class="warning" (click)=" onClickRefundRequest( book )" *ngIf=" book.refund_request_at == 0 ">{{ "REQUEST REFUND" | translate }}</button>

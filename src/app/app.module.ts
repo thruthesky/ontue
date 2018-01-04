@@ -70,6 +70,7 @@ import { HookContentTopComponent } from '../components/hook-content-top/hook-con
 import { SessionList } from '../components/session-list/session-list';
 import { MessageWrite } from '../components/message-write/message-write';
 import { CurriculumVitaeView } from '../components/curriculum-vitae-view/curriculum-vitae-view';
+import { RefundRequestView } from '../components/refund-request-view/refund-request-view';
 
 
 // The translate loader needs to know where to load i18n files
@@ -123,7 +124,8 @@ export function createTranslateLoader(http: HttpClient) {
     ScheduleAvailablePage,
     HelpPage,
     MessageWrite,
-    CurriculumVitaeView
+    CurriculumVitaeView,
+    RefundRequestView
   ],
   imports: [
     BrowserModule,
@@ -176,7 +178,8 @@ export function createTranslateLoader(http: HttpClient) {
     ScheduleAvailablePage,
     HelpPage,
     MessageWrite,
-    CurriculumVitaeView
+    CurriculumVitaeView,
+    RefundRequestView
   ],
   providers: [
     StatusBar,

@@ -2,30 +2,43 @@
   <ion-toolbar>
     <ion-title>Curriculum Vitae</ion-title>
     <ion-buttons start>
-      <button ion-button class="cancel" (click)="dismiss()">
-        <span ion-text color="primary">Cancel</span>
+      <button ion-button class="close" (click)="dismiss()">
+        <span ion-text color="primary">{{ 'CLOSE' | translate }}</span>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div>
-    Teacher name {{teacher.name}}
-    fullname {{teacher.fullname}}
-    display name {{teacher.display_name}}
-    user email {{teacher.user_email}}
-    phone number{{teacher.phone_number}}
-    gender {{teacher.gender}}
-    birthday /age {{teacher.birthday}}
-    profile picture {{teacher.photoURL}}
-    nationality {{teacher.nationality}}
-    major {{teacher.major}}
-    experience {{teacher.experience}}
-    greetings {{teacher.introduction}}
-    youtube video {{teacher.youtube_video_url}}
-    kakaoid {{teacher.kakaotalk_id}}
-    qrmark {{teacher.kakao_qrmark_photo}}
-  </div>
-
-
+  <ion-list text-wrap class="fs-xl">
+    <ion-item text-center>
+        <img src="{{ teacher.photoURL ? teacher.photoURL : a.anonymousPhotoURL }}">
+    </ion-item>
+    <ion-item>
+      Full name: {{teacher.fullname}}
+    </ion-item>
+    <ion-item>
+      Greetings: {{teacher.introduction}}
+    </ion-item>
+    <ion-item>
+      Email: {{teacher.user_email}}
+    </ion-item>
+    <ion-item>
+      Phone No: {{teacher.phone_number}}
+    </ion-item>
+    <ion-item>
+      Gender: {{teacher.gender}}
+    </ion-item>
+    <ion-item>
+      Birthday: {{teacher.birthday}} / {{teacher.age}}
+    </ion-item>
+    <ion-item>
+      Nationality: {{teacher.nationality}}
+    </ion-item>
+    <ion-item>
+      Course: {{teacher.major}}
+    </ion-item>
+    <ion-item>
+      Teaching English since: {{teacher.experience}}
+    </ion-item>
+  </ion-list>
 </ion-content>
