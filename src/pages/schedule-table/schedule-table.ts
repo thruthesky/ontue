@@ -274,7 +274,7 @@ export class ScheduleTablePage {
     };
 
     const req = Object.assign(defaults, options);
-    // console.log("Request: ", req);
+    console.log("Request: ", req);
     return req;
   }
   // getTeacherSchedule( ID ) {
@@ -287,15 +287,19 @@ export class ScheduleTablePage {
   // }
 
 
-  loadScheduleTable(callback?) {
+  loadScheduleTable() {
+    console.log("loadScheduleTable: ");
     let opt = {};
     if (this.params.ID) opt['teachers'] = [this.params.ID];
     opt = this.request(opt);
-    // console.log(opt);
+    // console.log("opt: ", opt);
+    if ( opt['class_begin_hour'] == opt['class_end_hour'] ) {
+      this.a.alert( this.a.i18n['CHOOSE DIFFERENT HOURS']);
+      return;
+    }
     this.status = 'LOADING SCHEDULE';
     this.a.lms.schedule_table(opt).subscribe(re => {
       this.displayScheduleTable(re);
-      if (callback) callback();
       if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
       }

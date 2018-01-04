@@ -77,6 +77,9 @@
 
   <section class="page-desc search-result mb-3 p-3" *ngIf=" re && books.length ">
     <div>
+      Search Period: {{ date_begin }} ~{{ date_end }}
+    </div>
+    <div>
       {{ 'SEARCHED SESSIONS' | translate }} : {{ books.length }} ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )
     </div>
     <div *ngIf=" a.isTeacher ">

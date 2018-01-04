@@ -370,6 +370,7 @@ export class AppService {
             "PHONE NUMBER",
             "KAKAOTALK ID",
             "KAKAOTALK ID REQUIRED",
+            "CHOOSE DIFFERENT HOURS"
             // "LOADING SCHEDULE",
             // "GOT SCHEDULE",
             // "DISPLAYING SCHEDULE",

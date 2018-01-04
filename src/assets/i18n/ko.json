@@ -172,4 +172,5 @@
   , "F": "여"
   , "M": "남"
   , "SELECT TEACHER TO RESERVE": "선생님을 선택하고 수업을 예약하세요."
+  , "CHOOSE DIFFERENT HOURS": "검색에서 수업 시작과 끝 시간을 다르게 지정해야합니다."
 }
