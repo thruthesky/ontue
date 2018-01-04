@@ -11,6 +11,8 @@ import { SHARE_SESSION_LIST } from './interface';
 export { SHARE_SESSION_LIST };
 
 
+const KEY_LMS_INFO = 'lms-info';
+
 
 
 @Injectable()
@@ -44,6 +46,7 @@ export class AppService {
 
     platform = null;
     hostname = window.location.hostname;
+    info = {}; // LMS info.
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -70,7 +73,31 @@ export class AppService {
         console.log("login: ", user.isLogin);
         console.log("profile data: ", this.user.getProfile());
 
+        
+        this.updateLMSInfo();
 
+    }
+
+    /**
+     * Updates LMS info() from backend.
+     * @use this.userXxxxxx to get LMS info.
+     */
+    updateLMSInfo() {
+        this.info = this.get( KEY_LMS_INFO );
+        console.log("info from cache: ", this.info);
+        this.lms.info().subscribe( re => {
+            this.set( KEY_LMS_INFO, re );
+            this.info = this.get( KEY_LMS_INFO );
+            console.log("updated info from remote: ", this.info);
+         });
+    }
+    /**
+     * Returns total number of sessions of the login user.
+     */
+    get userTotalSessions(): number {
+        if ( this.info['user'] === void 0 ) return 0;
+        if ( this.info['user']['no_of_total_sessions'] === void 0 ) return 0;
+        return this.info['user']['no_of_total_sessions'];
     }
 
     /**
