@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
-import { ModalController } from 'ionic-angular';
+import {AlertController, ModalController} from 'ionic-angular';
 import { EvaluateView } from '../../components/evaluate-view/evaluate-view';
 import {MessageWrite} from "../message-write/message-write";
+import {RefundRequestView} from "../refund-request-view/refund-request-view";
 
 
 @Component({
@@ -31,6 +32,7 @@ export class SessionList {
   constructor(
     public a: AppService,
     public modalCtrl: ModalController,
+    public alertCtrl: AlertController
   ) {
     this.updatePoint();
   }
@@ -171,6 +173,7 @@ export class SessionList {
   }
 
   refundable(book) {
+    if ( book.refund_timeover ) return false;
     if ( this.paid( book ) ) return false;
     if ( this.refunded( book ) ) return false;
     if ( this.refund_in_progress( book ) ) return false;
@@ -183,10 +186,31 @@ export class SessionList {
     return book['refund_reject_at'] > 0;
   }
   onClickRefund(book) {
-    this.a.lms.session_refund(book['idx']).subscribe(re => {
-      console.log(re);
-      book['refund_done_at'] = 1;
-    }, e => this.a.alert(e));
+
+    let confirm = this.alertCtrl.create({
+      title: 'Refund Class',
+      message: 'Are you sure you want to refund?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('yes continue');
+            this.a.lms.session_refund(book['idx']).subscribe(re => {
+              console.log(re);
+              book['refund_done_at'] = 1;
+            }, e => this.a.alert(e));
+          }
+        },
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel');
+          }
+        }
+      ]
+    });
+    confirm.present();
+
   }
 
   onClickRejectRefundRequest(book) {
@@ -225,6 +249,23 @@ export class SessionList {
   point(book) {
     if (this.refunded(book)) return '';
     else return this.a.number_format(book['point']);
+  }
+
+  onClickShowRequest( book ){
+    console.log("onClickShowRequest:: ", book);
+    const modal = this.modalCtrl.create(RefundRequestView, {book: book});
+    modal.onDidDismiss(re => {
+      console.log("onClickShowRequest::onDidDismiss:: ",re);
+      if(!re) return;
+      console.log("onDidDismiss::", re);
+      if(re == 'accept') {
+        book['refund_done_at'] = 1;
+      } else if(re == 'reject') {
+        book['refund_reject_at'] = 1;
+      }
+    });
+    modal.present();
+
   }
 
 }

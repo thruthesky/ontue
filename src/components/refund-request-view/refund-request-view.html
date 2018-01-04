@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Refund Request</ion-title>
+    <ion-buttons start>
+      <button ion-button class="cancel" (click)="onClickClose()">
+        <span ion-text color="primary">{{"CLOSE"|translate}}</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding="">
+  <ion-list>
+    <ion-item>
+      Student Message: {{book.refund_request_message}}
+    </ion-item>
+    <ion-item>
+      <button ion-button color="primary" (click)=" onClickRefund( book ) ">Accept</button>
+      <button ion-button color="danger" (click)=" onClickRejectRefundRequest( book ) ">Reject</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
