@@ -1,5 +1,5 @@
 <ion-header>
-  <header-content></header-content>
+  <header-content [title]=" '수업예약' "></header-content>
 </ion-header>
 
 <ion-content>
@@ -8,7 +8,7 @@
 
 
   <section class="page-header d-flex justify-content-between">
-    <h2 class="title">{{ "TEACHER LIST" | translate }}</h2>
+    <h2 class="title">{{ "SELECT TEACHER TO RESERVE" | translate }}</h2>
     <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
       <ion-icon name="options"></ion-icon>
       {{ 'OPTIONS' | translate }}

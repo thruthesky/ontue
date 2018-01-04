@@ -98,7 +98,8 @@
 
 
           <ng-container *ngIf=" a.userTotalSessions > 5; else FirstVisit">
-              수업예약 전체시간표
+              <div class="p-3" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
+              <div class="p-3" (click)=" a.open('schedule-table') ">{{ "ALL SCHEDULE TABLE" | translate }}</div>
           </ng-container>
           <ng-template #FirstVisit>
               <div class="p-3" (click)=" a.open('help') ">{{ "HELP" | translate }}</div>

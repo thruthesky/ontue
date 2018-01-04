@@ -156,6 +156,7 @@ export class SessionList {
     if ( book['refund_reject_at'] > 0 ) return true;
     return false;
   }
+  
   refund_request(book) {
     if ( book['refund_reject_at'] == 0 && book['refund_request_at'] > 0 ) {
       return true;

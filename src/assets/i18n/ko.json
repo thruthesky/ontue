@@ -155,6 +155,7 @@
   , "IN LOADING": "로딩 중입니다. 잠시만 기다려주세요."
   , "IN RESERVING": "예약 중..."
   , "RESERVE NOW": "예약하기"
+  , "RESERVE SESSION": "수업예약"
   , "INBOX": "받은 쪽지 함"
   , "SENT": "보낸 쪽지 함"
   , "LOADING SCHEDULE": "서버에 수업 스케쥴을 요청합니다."
@@ -170,4 +171,5 @@
   , "HAD SESSIONS": "명 참여"
   , "F": "여"
   , "M": "남"
+  , "SELECT TEACHER TO RESERVE": "선생님을 선택하고 수업을 예약하세요."
 }
