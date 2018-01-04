@@ -23,31 +23,31 @@
         {{ data.low_price_class_message }}
       </div>
 
-      <table class="schedule" *ngIf=" data ">
-        <tr>
-          <td>No.</td>
-          <td>Time</td>
-          <td>Sun</td>
-          <td>Mon</td>
-          <td>Tue</td>
-          <td>Wed</td>
-          <td>Thu</td>
-          <td>Fri</td>
-          <td>Sat</td>
-          <td>Action</td>
+      <table width="100%" class="schedule-edit text-center" *ngIf=" data ">
+        <tr class="fw-bold">
+          <td class="px-1 py-2">No.</td>
+          <td class="px-1 py-2">Time</td>
+          <td class="px-1 py-2">Sun</td>
+          <td class="px-1 py-2">Mon</td>
+          <td class="px-1 py-2">Tue</td>
+          <td class="px-1 py-2">Wed</td>
+          <td class="px-1 py-2">Thu</td>
+          <td class="px-1 py-2">Fri</td>
+          <td class="px-1 py-2">Sat</td>
+          <td class="px-1 py-2" colspan="2">Action</td>
         </tr>
         <tr *ngFor="let s of data.schedules">
-          <td>{{ s.idx }}</td>
-          <td>{{s.user_time_class_begin}}</td>
-          <td><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
-          <td><div *ngIf="s.user_time_days.monday">{{s.prere}} {{s.point}}</div></td>
-          <td><div *ngIf="s.user_time_days.tuesday">{{s.prere}} {{s.point}}</div></td>
-          <td><div *ngIf="s.user_time_days.wednesday">{{s.prere}} {{s.point}}</div></td>
-          <td><div *ngIf="s.user_time_days.thursday">{{s.prere}} {{s.point}}</div></td>
-          <td><div *ngIf="s.user_time_days.friday">{{s.prere}} {{s.point}}</div></td>
-          <td><div *ngIf="s.user_time_days.saturday">{{s.prere}} {{s.point}}</div></td>
-          <td class="edit" (click)="onClickEditSchedule(s)">Edit</td>
-          <td class="delete" (click)="onClickDelete(s.idx)">Delete</td>
+          <td class="px-1">{{ s.idx }}</td>
+          <td class="px-1">{{s.user_time_class_begin}}</td>
+          <td class="px-1"><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
+          <td class="px-1"><div *ngIf="s.user_time_days.monday">{{s.prere}} {{s.point}}</div></td>
+          <td class="px-1"><div *ngIf="s.user_time_days.tuesday">{{s.prere}} {{s.point}}</div></td>
+          <td class="px-1"><div *ngIf="s.user_time_days.wednesday">{{s.prere}} {{s.point}}</div></td>
+          <td class="px-1"><div *ngIf="s.user_time_days.thursday">{{s.prere}} {{s.point}}</div></td>
+          <td class="px-1"><div *ngIf="s.user_time_days.friday">{{s.prere}} {{s.point}}</div></td>
+          <td class="px-1"><div *ngIf="s.user_time_days.saturday">{{s.prere}} {{s.point}}</div></td>
+          <td class="edit buttons" (click)="onClickEditSchedule(s)" width="1%"><button class="primary mb-3">Edit</button></td>
+          <td class="delete buttons" (click)="onClickDelete(s.idx)" width="1%"><button class="warning mb-3">Delete</button></td>
         </tr>
 
       </table>

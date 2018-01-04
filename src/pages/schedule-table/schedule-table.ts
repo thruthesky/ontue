@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from './../../providers/app.service';
-import { NavParams } from "ionic-angular";
+import {ModalController, NavParams} from "ionic-angular";
 import { Subject } from "rxjs/Subject";
 
 import { YoutubeVideoPlayer } from "@ionic-native/youtube-video-player";
+import {CurriculumVitaeView} from "../../components/curriculum-vitae-view/curriculum-vitae-view";
 
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
@@ -157,6 +158,7 @@ export class ScheduleTablePage {
     public navParams: NavParams,
     public domSanitizer: DomSanitizer,
     public youtube: YoutubeVideoPlayer,
+    public modalCtrl: ModalController
     // public cdr: ChangeDetectorRef
   ) {
 
@@ -319,13 +321,14 @@ export class ScheduleTablePage {
     if (!re.table || !re.table.length) this.no_schedule = true;
 
     this.length_of_schedule_table_rows = re.table.length;
-    
+
     this.no_more_schedule = false;
 
 
 
     if ( this.singleTeacher ) {
       this.schedule_table_rows = re.table;
+      // this.onClickShowCurriculum(); //test
     }
     else {
       this.schedule_table_holder = re.table;
@@ -337,7 +340,7 @@ export class ScheduleTablePage {
     setTimeout(() => this.status = '', 2000);
 
     /**
-     * 
+     *
      * @note simply display all schedules at once, IF
      *      - a single teacher's schedule is being displayed or
      *      - schedules less than 100 is displayed,
@@ -668,12 +671,21 @@ export class ScheduleTablePage {
   }
   doInfinite(infiniteScroll) {
     console.log('doInfinite');
-    
+
     setTimeout(() => {
       this.displayPage();
       infiniteScroll.complete();
     }, 100);
-    
+
+  }
+
+  onClickShowCurriculum() {
+    const createCommentModal = this.modalCtrl.create( CurriculumVitaeView, {teacher:this.teacher_profile},{cssClass: 'vitae-view'}
+  );
+    createCommentModal.onDidDismiss(() => {});
+    createCommentModal.present();
+
+
   }
 
 }
