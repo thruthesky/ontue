@@ -19,6 +19,7 @@ export class SessionList {
   re = null;
   books = [];
   my_teachers = [];
+  teacher_summary = {};
   show_teacher: number = 0;
   date_begin = null;
   date_end = null;
@@ -112,6 +113,7 @@ export class SessionList {
       this.re['total_session_refund_in_progress'] = this.a.toInt(this.re['total_session_refund_in_progress']);
       this.books = re['books'];
       this.my_teachers = re['my_teachers'];
+      this.teacher_summary = re['teacher_summary'];
     }, e => {
       this.a.alert(e);
     });
@@ -158,7 +160,7 @@ export class SessionList {
     if ( book['refund_reject_at'] > 0 ) return true;
     return false;
   }
-  
+
   refund_request(book) {
     if ( book['refund_reject_at'] == 0 && book['refund_request_at'] > 0 ) {
       return true;

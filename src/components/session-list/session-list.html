@@ -207,6 +207,14 @@
 
 
   <ul *ngIf=" a.isTeacher ">
+    <li>Total Points from payable sessions - {{teacher_summary['total_points_from_payable_session']}}</li>
+    <li>Your Total Share Points  - {{teacher_summary['total_teacher_share_points']}}</li>
+    <li>No. of payable sessions - {{teacher_summary['counts_of_payable_session']}}</li>
+    <li>No. of not Payable sessions - {{teacher_summary['counts_of_not_payable_session']}}</li>
+    <li>No. of paid sessions - {{teacher_summary['counts_of_paid_session']}}</li>
+    <li>No. of refunded sessions - {{teacher_summary['counts_of_refunded_session']}}</li>
+    <li>No. of refund in progress - {{teacher_summary['counts_of_rejected_refund'] + teacher_summary['counts_of_requested_refund']}}</li>
+    <li>No. of Incomplete Evaluation - {{teacher_summary['counts_of_incomplete_eval']}}</li>
     <li>Rejected - Point Refund Request Rejected.</li>
     <li>Accept - Accept Refund Request</li>
     <li>Reject - Reject Refund Request</li>
