@@ -7,7 +7,14 @@
   <ion-list>
     <ion-item> Session No.: {{ idx }}</ion-item>
     <ion-item>Point: {{point}}</ion-item>
-    <ion-item>Student was absent: <input type="checkbox" [(ngModel)]="student_absent"></ion-item>
+    <ion-item text-wrap>
+      Student was absent: <input type="checkbox" [(ngModel)]="student_absent">
+      <div class="alert alert-danger fs-2rem" *ngIf=" student_absent ">
+        Warning: when you check on 'student was absent' box,
+        You must input some comment on comment box or else the session may not be paid.
+      </div>
+    </ion-item>
+    
     <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="unsuccessful"> Any problem in the class?</ion-item>
     <ion-item>Level of the session:  {{level}}</ion-item>
 
