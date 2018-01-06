@@ -70,7 +70,26 @@ export class EvaluatePage {
     if (this.book_used) data['book_used'] = this.book_used;
     if (this.book_next) data['book_next'] = this.book_next;
 
-
+    if ( this.student_absent ) {
+      if ( this.comment.length <= 2 ) {
+        this.a.alert("You must comment even if the student was absent.");
+      }
+      if ( this.comment.length < 10 ) {
+        this.a.alert("You must comment more than 10 characters.");
+      }
+    }
+    else {
+      if ( this.comment.length < 50 ) {
+        this.a.alert("You must comment more than 50 characters.");
+        return;
+      }
+      if ( ! this.expression ) {
+        this.a.alert("Please select the expression score on the session with the student");
+        return;
+      }
+  
+    }
+    
     console.log(data);
 
     this.a.lms.session_evaluate(data).subscribe(res => {
