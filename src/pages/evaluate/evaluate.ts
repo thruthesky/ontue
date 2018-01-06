@@ -61,14 +61,7 @@ export class EvaluatePage {
 
     if (this.student_absent || this.unsuccessful) data['successful'] = "n";
     else data['successful'] = 'y';
-    if (this.expression) data['expression'] = this.expression;
-    if (this.vocabulary) data['vocabulary'] = this.vocabulary;
-    if (this.grammar) data['grammar'] = this.grammar;
-    if (this.pronunciation) data['pronunciation'] = this.pronunciation;
-    if (this.speed) data['speed'] = this.speed;
-    if (this.comment) data['comment'] = this.comment;
-    if (this.book_used) data['book_used'] = this.book_used;
-    if (this.book_next) data['book_next'] = this.book_next;
+
 
     if ( this.student_absent ) {
       if ( this.comment.length <= 2 ) {
@@ -79,21 +72,59 @@ export class EvaluatePage {
       }
     }
     else {
-      if ( this.comment.length < 50 ) {
-        this.a.alert("You must comment more than 50 characters.");
-        return;
-      }
-      if ( ! this.expression ) {
+
+      if (this.expression) data['expression'] = this.expression;
+      else {
         this.a.alert("Please select the expression score on the session with the student");
         return;
       }
-  
+      if (this.vocabulary) data['vocabulary'] = this.vocabulary;
+      else {
+        this.a.alert("Please select the vocabulary score on the session with the student");
+        return;
+      }
+      if (this.grammar) data['grammar'] = this.grammar;
+      else {
+        this.a.alert("Please select the grammar score on the session with the student");
+        return;
+      }
+      if (this.pronunciation) data['pronunciation'] = this.pronunciation;
+      else {
+        this.a.alert("Please select the pronunciation score on the session with the student");
+        return;
+      }
+      if (this.speed) data['speed'] = this.speed;
+      else {
+        this.a.alert("Please select the speed score on the session with the student");
+        return;
+      }
+      if (this.comment.length >= 50) data['comment'] = this.comment;
+      else {
+        this.a.alert("You must comment more than 50 characters.");
+        return;
+      }
+      if (this.book_used) data['book_used'] = this.book_used;
+      else {
+        this.a.alert("Please specify book you uses for today session.");
+        return;
+      }
+      if (this.book_next) data['book_next'] = this.book_next;
+      else {
+        this.a.alert("Please specify book you uses for today session.");
+        return;
+      }
+
+
     }
-    
+
+
+
+
+
     console.log(data);
 
     this.a.lms.session_evaluate(data).subscribe(res => {
-      console.log(res)
+      console.log(res);
       this.a.alert("Evaluation Submitted!!!")
     }, e => {
       this.a.alert(e);
