@@ -19,7 +19,17 @@ export class SessionList {
   re = null;
   books = [];
   my_teachers = [];
-  teacher_summary = {};
+  teacher_summary = {
+    total_points_from_payable_session: 0,
+    total_teacher_share_points: 0,
+    counts_of_payable_session: 0,
+    counts_of_not_payable_session: 0,
+    counts_of_paid_session: 0,
+    counts_of_refunded_session: 0,
+    counts_of_rejected_refund:0,
+    counts_of_requested_refund: 0,
+    counts_of_incomplete_eval: 0
+  };
   show_teacher: number = 0;
   date_begin = null;
   date_end = null;
