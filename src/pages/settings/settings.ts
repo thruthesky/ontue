@@ -4,14 +4,14 @@ import { AppService } from './../../providers/app.service';
 
 
 @Component({
-  selector: 'page-settings',
+  selector: 'settings-page',
   templateUrl: 'settings.html'
 })
 export class SettingsPage {
 
   tz = {};
 
-  usetTZ = 0;
+  userTZ = 0;
   constructor(public a: AppService) {
 
     a.lms.timezones().subscribe( re => {
@@ -22,7 +22,7 @@ export class SettingsPage {
     if( a.user.isLogin ){
       a.lms.timezone().subscribe( re => {
         console.log('timezone', re);
-        this.usetTZ = re['offset'];
+        this.userTZ = re['offset'];
       });
     }
   }

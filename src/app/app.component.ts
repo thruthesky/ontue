@@ -186,7 +186,7 @@ export class MyApp {
     // this.a.open('forum');
 
 
-    // this.a.open('settings');
+    this.a.open('settings');
 
 
 

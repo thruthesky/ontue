@@ -2,54 +2,59 @@
   <header-content></header-content>
 </ion-header>
 
-<ion-content padding>
-    <div class="page">
-  Settings page
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+    <section class="page-header">
+      {{ 'SETTINGS PAGE' | translate }}
+    </section>
+    <section class="page-desc">{{ 'SETTINGS PAGE DESC' | translate }}</section>
+    <section class="page-body">
 
-  <ion-list radio-group>
+      <ion-list radio-group>
 
-    <ion-list-header>
-      Select your language
-    </ion-list-header>
+        <ion-list-header>
+          {{ 'SELECT YOUR LANGUAGE' | translate }}
+        </ion-list-header>
 
-    <ion-item>
-      <ion-label>English</ion-label>
-      <ion-radio value="en" [checked]=" a.getLanguage() == 'en' " (ionSelect)="a.setLanguage('en')"></ion-radio>
-    </ion-item>
+        <ion-item>
+          <ion-label>English</ion-label>
+          <ion-radio value="en" [checked]=" a.getLanguage() == 'en' " (ionSelect)="a.setLanguage('en')"></ion-radio>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Korean</ion-label>
-      <ion-radio value="ko" [checked]=" a.getLanguage() == 'ko' " (ionSelect)="a.setLanguage('ko')"></ion-radio>
-    </ion-item>
+        <ion-item>
+          <ion-label>한국어</ion-label>
+          <ion-radio value="ko" [checked]=" a.getLanguage() == 'ko' " (ionSelect)="a.setLanguage('ko')"></ion-radio>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Japanese</ion-label>
-      <ion-radio value="jp" [checked]=" a.getLanguage() == 'jp' " (ionSelect)="a.setLanguage('jp')"></ion-radio>
-    </ion-item>
+        <!-- <ion-item>
+          <ion-label>Japanese</ion-label>
+          <ion-radio value="jp" [checked]=" a.getLanguage() == 'jp' " (ionSelect)="a.setLanguage('jp')"></ion-radio>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Chineese</ion-label>
-      <ion-radio value="cn" [checked]=" a.getLanguage() == 'cn' " (ionSelect)="a.setLanguage('cn')"></ion-radio>
-    </ion-item>
+        <ion-item>
+          <ion-label>Chineese</ion-label>
+          <ion-radio value="cn" [checked]=" a.getLanguage() == 'cn' " (ionSelect)="a.setLanguage('cn')"></ion-radio>
+        </ion-item> -->
 
-  </ion-list>
+      </ion-list>
 
-  <hr>
-
-
-  <ion-list radio-group>
-
-    <ion-list-header>
-      Select your timezone
-    </ion-list-header>
-
-    <ion-item *ngFor="let t of keysTimezone()">
-      <ion-label>{{ tz[t].name }} ( UTC {{ format(t) }} )</ion-label>
-      <ion-radio value="{{ t }}" (ionSelect)=' onClickTimezone( t ) ' [checked]="t == usetTZ"></ion-radio>
-    </ion-item>
+      
 
 
-  </ion-list>
-</div>
+      <ion-list radio-group>
+
+        <ion-list-header>
+          {{ 'SELECT YOUR TIMEZONE' | translate }}
+        </ion-list-header>
+
+        <ion-item *ngFor="let t of keysTimezone()">
+          <ion-label>{{ tz[t].name }} ( UTC {{ format(t) }} )</ion-label>
+          <ion-radio value="{{ t }}" (ionSelect)=' onClickTimezone( t ) ' [checked]="t == userTZ"></ion-radio>
+        </ion-item>
+
+
+      </ion-list>
+    </section>
+  </div>
 </ion-content>
-

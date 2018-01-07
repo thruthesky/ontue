@@ -103,4 +103,8 @@
   , "NEXT MONTH": "Next month"
   , "HAD SESSIONS": ""
   , "CHOOSE DIFFERENT HOURS": "Please choose different hours from class begin to class end."
+  , "SETTINGS PAGE": "Settings page"
+  , "SETTINGS PAGE DESC": "You can set your language and timezone."
+  , "SELECT YOUR LANGUAGE": "Select your language"
+  , "SELECT YOUR TIMEZONE": "Select your timezone"
 }
