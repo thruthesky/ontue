@@ -74,7 +74,7 @@
               <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
               <div class="p-3">무통장입금</div>
-              <div class="p-3">{{ "QNA" | translate }}</div>
+              <div class="p-3" (click)=" a.openQnA() ">{{ "QNA" | translate }}</div>
           </ng-container>
 
           <ng-container *ngSwitchCase=" 'session-future' ">
@@ -82,7 +82,7 @@
               <div class="p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
               <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
               <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-              <div class="p-3">{{ "QNA SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
           </ng-container>
           
           <ng-container *ngSwitchCase=" 'session-past' ">
@@ -90,7 +90,7 @@
               <div class="p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
               <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
               <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-              <div class="p-3">{{ "QNA SHORT" | translate }}</div>
+              <div class="p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
           </ng-container>
         
 
@@ -107,7 +107,7 @@
           </ng-template>
 
           <div class="p-3" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
-          <div class="p-3">{{ "QNA" | translate }}</div>
+          <div class="p-3" (click)=" a.openQnA() ">{{ "QNA" | translate }}</div>
 
         </ng-container>
       </ng-container>
