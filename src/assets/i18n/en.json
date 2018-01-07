@@ -107,4 +107,15 @@
   , "SETTINGS PAGE DESC": "You can set your language and timezone."
   , "SELECT YOUR LANGUAGE": "Select your language"
   , "SELECT YOUR TIMEZONE": "Select your timezone"
+  , "PAYMENT HISTORY PAGE TITLE": "Payment History"
+  , "PAYMENT HISTORY PAGE DESC": "You can view your payment history."
+  , "No.": "번호"
+  
+  , "PAYMENT METHOD SHORT": "Pay with"
+  , "PAYMENT RECEIPT PAGE TITLE": "Payment Receipt"
+  , "PAYMENT INFO": "Payment Information"
+  , "PAYMENT NO": "Receipt No."
+  , "RECEIVED FROM": "Received From"
+  , "PAYMENT FOR": "결제 내용"
+  
 }

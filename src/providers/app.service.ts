@@ -302,7 +302,7 @@ export class AppService {
             dt = dt.replace(/\:\d\d /, ' ');
         }
         else {
-            dt = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate();
+            dt = d.getFullYear().toString().substr(2,2) + '-' + d.getMonth() + '-' + d.getDate();
         }
         return dt;
     }

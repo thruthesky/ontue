@@ -1,34 +1,48 @@
 <ion-header>
   <header-content></header-content>
 </ion-header>
-<ion-content padding>
-    <div class="page">
+<ion-content>
+  <div class="page">
     <hook-content-top></hook-content-top>
 
-  <div>
-    <h1>Payment History</h1>
-    <table width="100%">
-      <tr>
-        <td class="p-2">ID</td>
-        <td class="p-2">transaction ID</td>
-        <td class="p-2">date</td>
-        <td class="p-2">method</td>
-        <td class="p-2">points</td>
-        <td class="p-2">Amount</td>
-        <td class="p-2">Print</td>
-      </tr>
-      <tr *ngFor="let payment of payments; even as o" class=" {{o ? 'bg-ghostwhite': ''}}">
-        <td class="p-2">{{ payment.idx }}</td>
-        <td class="p-2">{{ payment.paymentID }}</td>
-        <td class="p-2">{{ a.shortDate( payment.stamp_end ) }}</td>
-        <td class="p-2">{{ payment.payment_method }}</td>
-        <td class="p-2">{{ payment.point }}</td>
-        <td class="p-2">{{ payment.amount }} {{ payment.currency }}</td>
-        <td class="p-2" (click)="onClickPrintPreview(payment)"><button ion-button small><ion-icon name="print"></ion-icon></button></td>
-      </tr>
-    </table>
-  </div>
+    <section class="page-header">
+      <h1 class="title">{{ 'PAYMENT HISTORY PAGE TITLE' | translate }}</h1>
+    </section>
 
-  <hook-content-bottom></hook-content-bottom>
-</div>
+    <section class="page-desc">{{ 'PAYMENT HISTORY PAGE DESC' | translate }}</section>
+
+    <section class="page-body">
+
+      <div>
+
+        <table width="100%">
+          <tr>
+            <td>{{ 'NO' | translate }}</td>
+            <!-- <td class="p-2">transaction ID</td> -->
+            <td>{{ 'DATE' | translate }}</td>
+            <td>{{ 'PAYMENT METHOD SHORT' | translate }}</td>
+            <td>{{ 'AMOUNT' | translate }}</td>
+            <td>{{ 'POINT' | translate }}</td>
+            <td>{{ 'PRINT' | translate }}</td>
+          </tr>
+          <tr *ngFor="let payment of payments; even as o" class=" {{o ? 'bg-ghostwhite': ''}}">
+            <td class="p-1">{{ payment.idx }}</td>
+            <!-- <td class="p-2">{{ payment.paymentID }}</td> -->
+            <td class="p-1">{{ a.shortDate( payment.stamp_end ) }}</td>
+            <td class="p-1">{{ payment.payment_method }}</td>
+            <td class="p-1">{{ payment.amount }} {{ payment.currency | lowercase }}</td>
+            <td class="p-1">{{ payment.point }}</td>
+            <td class="p-1" (click)="onClickPrintPreview(payment)">
+              <button ion-button small>
+                <ion-icon name="print"></ion-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+
+    <hook-content-bottom></hook-content-bottom>
+  </div>
 </ion-content>

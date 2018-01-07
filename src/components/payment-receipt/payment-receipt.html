@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Payment Receipt</ion-title>
+    <ion-title>{{ 'PAYMENT RECEIPT PAGE TITLE' | translate }}</ion-title>
     <ion-buttons start>
       <button ion-button class="cancel" (click)="dismiss()">
-        <span ion-text color="primary">Cancel</span>
+        <span ion-text color="primary">{{ 'CLOSE' | translate }}</span>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -11,17 +11,43 @@
 <ion-content padding>
 
   <div id="section-to-print">
-    <h1>Payment Receipt</h1>
-    <button ion-button (click)="onClickPrint()" id="not-to-print">Print</button>
+    <div class="d-flex justify-content-between">
+        <h1 class="mt-2">{{ 'PAYMENT INFO' | translate }}</h1>
+        <button ion-button (click)="onClickPrint()" id="not-to-print">{{ 'PRINT' | translate }}</button>
+    </div>
 
-    <pre>
-    Receipt #: {{ payment?.paymentID }}
-    Date: {{ a.shortDate( payment?.stamp_end ) }}
-    Receive From {{ a.user.name }}
-    Amount Paid {{ payment.amount }} {{ payment.currency }}
-    For Payment of {{ payment.point }} english tutorial points
-    Paid by {{ payment.payment_method }}
-    </pre>
+    <table class="payinfo">
+      <tr>
+          <td class="p-3">{{ 'PAYMENT NO' | translate }}</td>
+          <td>: {{ payment?.idx }}</td>
+        </tr>
+        <tr>
+          <td class="p-3">{{ 'DATE' | translate }}</td>
+          <td>: {{ a.shortDate( payment?.stamp_end ) }}</td>
+        </tr>
+        <tr>
+          <td class="p-3">{{ 'RECEIVED FROM' | translate }}</td>
+          <td>: {{ a.user.name }}</td>
+        </tr>
+        <tr>
+          <td class="p-3">{{ 'AMOUNT' | translate }}</td>
+          <td>: {{ payment.amount }} {{ payment.currency }}</td>
+        </tr>
+        <tr>
+          <td class="p-3">{{ 'POINT' | translate }}</td>
+          <td>: {{ payment.point }}</td>
+        </tr>
+        <tr>
+          <td class="p-3">{{ 'PAYMENT FOR' | translate }}</td>
+          <td>: Online English Tution Points</td>
+        </tr>
+        <tr>
+          <td class="p-3">{{ 'PAYMENT METHOD SHORT' | translate }}</td>
+          <td>: {{ payment.payment_method }}</td>
+        </tr>
+        <tr>
+      </tr>
+    </table>
 
   </div>
 

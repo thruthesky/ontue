@@ -5,7 +5,7 @@ import {PaymentReceipt} from "../../components/payment-receipt/payment-receipt";
 
 
 @Component({
-  selector: 'page-payment-history',
+  selector: 'payment-history-page',
   templateUrl: 'payment-history.html'
 })
 export class PaymentHistoryPage {
