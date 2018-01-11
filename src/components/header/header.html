@@ -1,4 +1,4 @@
-<section class="mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.lms.getUserType() != 'teacher' ">
+<section class="mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.studentTheme ">
   <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
     <ion-row>
       <ion-col col-3>
@@ -117,7 +117,7 @@
 
 
 
-<section class="mobile-toolbar d-md-none d-flex p-2" *ngIf=" a.lms.getUserType() == 'teacher' ">
+<section class="mobile-toolbar d-md-none d-flex p-2" *ngIf=" a.teacherTheme ">
 
 
   <ion-icon class="px-2 fs-xl" name="menu" style="margin-top: .28em" (click)=" a.open('menu') "></ion-icon>
@@ -152,43 +152,48 @@
       </ion-col>
 
 
-      <ion-col *ngIf="a.isTeacher">
-        <button class="header-schedule-edit" (click)="a.open( 'schedule-edit' )">
-          <i class="fal fa-calendar-plus"></i>
-          <div>{{ 'SCHEDULE' | translate }}</div>
-        </button>
-      </ion-col>
+
+      <ion-col>
+          <button class="header-reservation" (click)=" a.open('session-future') ">
+            <i class="fal fa-th blue"></i>
+            <div>{{ 'RESERVATIONS' | translate }}</div>
+          </button>
+        </ion-col>
 
 
-      <ion-col *ngIf=" a.isTeacher ">
+      <ion-col class="d-none d-sm-block">
+          <button class="header-message" (click)="a.open('message')">
+            <i class="fal fa-comment"></i>
+            <div>{{ 'MESSAGE' | translate }}</div>
+          </button>
+        </ion-col>
+
+        
+
+      <ion-col>
+          <button class="header-schedule-edit" (click)="a.open( 'schedule-edit' )">
+            <i class="fal fa-calendar-plus"></i>
+            <div>{{ 'SCHEDULE' | translate }}</div>
+          </button>
+        </ion-col>
+  
+
+        
+
+      <ion-col>
         <button class="header-dayoff" (click)="a.open( 'dayoff' )">
           <i class="fal fa-calendar-plus"></i>
           <div>Day-Offs</div>
         </button>
       </ion-col>
 
-      <ion-col *ngIf=" a.isStudent ">
-        <button class="header-reserve" (click)="a.open( 'teacher-list' )">
-          <i class="fal fa-calendar-plus"></i>
-          <div>{{ 'RESERVE' | translate }}</div>
-        </button>
-      </ion-col>
-
-
+      
       <ion-col>
         <button class="header-teacher-list" (click)="a.open( 'teacher-list' )">
           <i class="fal fa-users"></i>
           <div>{{ 'TEACHER LIST' | translate }}</div>
         </button>
       </ion-col>
-
-      <ion-col>
-        <button class="header-reservation" (click)=" a.open('session-future') ">
-          <i class="fal fa-th blue"></i>
-          <div>{{ 'RESERVATIONS' | translate }}</div>
-        </button>
-      </ion-col>
-
 
       <ion-col>
         <button class="header-past-reservation" (click)=" a.open('session-past') ">
@@ -198,12 +203,6 @@
       </ion-col>
 
 
-      <ion-col class="d-none d-sm-block">
-        <button class="header-message" (click)="a.open('message')">
-          <i class="fal fa-comment"></i>
-          <div>{{ 'MESSAGE' | translate }}</div>
-        </button>
-      </ion-col>
 
 
       <ion-col class="d-none d-sm-block">

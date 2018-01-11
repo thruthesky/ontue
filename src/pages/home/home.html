@@ -43,150 +43,183 @@
               </ion-row>
             </ion-grid>
 
-          </div><!--/stats-wrapper-->
+          </div>
+          <!--/stats-wrapper-->
 
 
           <div class="alert alert-info rounded-0 border-0 p-4 mt-2 mb-5">
-              카카오톡으로 수업! 회원 가입 후 5 회 무료 수업!
+            카카오톡으로 수업! 회원 가입 후 5 회 무료 수업!
+          </div>
+
+
+          <div class="my-own-plan">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  <img class="px-4 px-lg-5" src="assets/img/my-own-calendar.png">
+                </ion-col>
+                <ion-col col-6>
+                  <h2>내가 정하는
+                    <br>나만의 학습 스케쥴</h2>
+                  <div class="text mt-2">
+                    365일 밤/낮 언제 어디서나
+                    <br> 카톡 1:1 화상영어 수업
+                    <br> 선생님과 수업료를 내가 정하는
+                    <br> 완벽한 자유 예약 시스템
+                  </div>
+
+                  <div class="mt-2 pointer" (click)=" showMoreMyOwnPlan() " *ngIf=" ! showMoreMyOwnPlan_1 ">
+                    더보기
+                    <i class="fal fa-ellipsis-h"></i>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <div class="position-relative">
+              <div class="moreMyOwnPlan no1" *ngIf=" showMoreMyOwnPlan_1 ">카톡잉글리시에서는 학생이 직접 수업료와 선생님을 정합니다.</div>
+              <div class="moreMyOwnPlan no2" *ngIf=" showMoreMyOwnPlan_2 ">카톡잉글리시의 자유 예약 시스템은 매우 직관적이고 편리합니다. 무료 체험 수업을 해 보면 쉽게 이해가 됩니다.</div>
+              <div class="moreMyOwnPlan no3" *ngIf=" showMoreMyOwnPlan_3 ">카카오톡을 이용해서 화상영어 수업을 하며 언제 어디서나 선생님과 채팅을 할 수 있습니다.</div>
             </div>
-  
-  
-            <div class="my-own-plan">
-              <ion-grid>
-                <ion-row>
-                  <ion-col col-6>
-                    <img class="px-4 px-lg-5" src="assets/img/my-own-calendar.png">
-                  </ion-col>
-                  <ion-col col-6>
-                    <h2>내가 정하는
-                      <br>나만의 학습 스케쥴</h2>
-                    <div class="text mt-2">
-                      365일 밤/낮 언제 어디서나
-                      <br> 카톡 1:1 화상영어 수업
-                      <br> 선생님과 수업료를 내가 정하는
-                      <br> 완벽한 자유 예약 시스템
+          </div>
+          <!--/my-own-plan-->
+
+
+
+
+
+          <div class="about-katalkenglish">
+            <ion-grid class="p-0">
+              <ion-row>
+                <ion-col col-3 class="pl-0">
+                  <img class="w-100" src="assets/img/kakao-chat.png">
+                </ion-col>
+                <ion-col col-9>
+
+                  <div>
+                    <h2>카톡잉글리시는</h2>
+                    <div class="mt-2">
+                      최고라고 자화자찬하지 않으며 타 업체와 비교하지 않습니다.
                     </div>
-  
-                    <div class="mt-2 pointer" (click)=" showMoreMyOwnPlan() " *ngIf=" ! showMoreMyOwnPlan_1 ">
-                      더보기
-                      <i class="fal fa-ellipsis-h"></i>
-                    </div>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-  
-              <div class="position-relative">
-                <div class="moreMyOwnPlan no1" *ngIf=" showMoreMyOwnPlan_1 ">카톡잉글리시에서는 학생이 직접 수업료와 선생님을 정합니다.</div>
-                <div class="moreMyOwnPlan no2" *ngIf=" showMoreMyOwnPlan_2 ">카톡잉글리시의 자유 예약 시스템은 매우 직관적이고 편리합니다. 무료 체험 수업을 해 보면 쉽게 이해가 됩니다.</div>
-                <div class="moreMyOwnPlan no3" *ngIf=" showMoreMyOwnPlan_3 ">카카오톡을 이용해서 화상영어 수업을 하며 언제 어디서나 선생님과 채팅을 할 수 있습니다.</div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <div class="pointer" (click)=" showMoreAboutKatalkEnglish() ">
+              그 이유는 바로 카톡잉글리시와 경쟁 할 수 있는 화상영어 교육 사이트가 존재하지 않기 때문입니다.
+
+              <span *ngIf=" ! moreAbout1 ">
+                더보기
+                <i class="fal fa-ellipsis-h"></i>
+              </span>
+            </div>
+
+
+          </div>
+          <!--/about-katalkenglish-->
+          <div class="more-about-katalkenglish" *ngIf=" moreAboutKatalkEnglish ">
+            <div class="inner">
+              <div class="text no1" *ngIf=" moreAbout1 ">
+                최고의 강사들만 선정 하였으며
+                <br>또 다시 최고의 강사들 끼리 경쟁을 하는 시스템
+              </div>
+              <div class="text no2" *ngIf=" moreAbout2 ">
+                강사와 학생이 직거래를 하여
+                <br>학생은 최저의 수업료내면 선생님은 최고의 임금!
+              </div>
+              <div class="text no3" *ngIf=" moreAbout3 ">
+                카카오톡으로 수업을 하여
+                <br>강사와 학생이 하루 종일 채팅하는 시스템
+              </div>
+
+              <div class="text no4" *ngIf=" moreAbout4 ">
+                무제한 예약, 취소 가능. 완벽한 학습 관리 시스템
               </div>
             </div>
-            <!--/my-own-plan-->
-  
-  
-  
-  
-  
-            <div class="about-katalkenglish">
-              <ion-grid class="p-0">
-                <ion-row>
-                  <ion-col col-3 class="pl-0">
-                    <img class="w-100" src="assets/img/kakao-chat.png">
-                  </ion-col>
-                  <ion-col col-9>
-  
-                    <div>
-                      <h2>카톡잉글리시는</h2>
-                      <div class="mt-2">
-                        최고라고 자화자찬하지 않으며 타 업체와 비교하지 않습니다.
-                      </div>
-                    </div>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-  
-              <div class="pointer" (click)=" showMoreAboutKatalkEnglish() ">
-                그 이유는 바로 카톡잉글리시와 경쟁 할 수 있는 화상영어 교육 사이트가 존재하지 않기 때문입니다.
-  
-                <span *ngIf=" ! moreAbout1 ">
-                  더보기
-                  <i class="fal fa-ellipsis-h"></i>
-                </span>
-              </div>
-  
-  
-            </div>
-            <!--/about-katalkenglish-->
-            <div class="more-about-katalkenglish" *ngIf=" moreAboutKatalkEnglish ">
-              <div class="inner">
-                <div class="text no1" *ngIf=" moreAbout1 ">
-                  최고의 강사들만 선정 하였으며
-                  <br>또 다시 최고의 강사들 끼리 경쟁을 하는 시스템
-                </div>
-                <div class="text no2" *ngIf=" moreAbout2 ">
-                  강사와 학생이 직거래를 하여
-                  <br>학생은 최저의 수업료내면 선생님은 최고의 임금!
-                </div>
-                <div class="text no3" *ngIf=" moreAbout3 ">
-                  카카오톡으로 수업을 하여
-                  <br>강사와 학생이 하루 종일 채팅하는 시스템
-                </div>
-  
-                <div class="text no4" *ngIf=" moreAbout4 ">
-                  무제한 예약, 취소 가능. 완벽한 학습 관리 시스템
-                </div>
-              </div>
-              <div class="mt-2 text-center pointer" (click)=" a.open('help') ">카톡잉글리시 이용안내</div>
-  
-            </div>
-            <!--/more-about-katalkenglish-->
-  
-  
-  
+            <div class="mt-2 text-center pointer" (click)=" a.open('help') ">카톡잉글리시 이용안내</div>
+
+          </div>
+          <!--/more-about-katalkenglish-->
+
+
+
         </ion-col>
         <!--/left-->
         <ion-col class="right pl-sm-2 p-0" col-12 col-sm-6>
 
 
+          <section id="student-comments" *ngIf=" a.i18n['STUDENT COMMENTS'] ">
 
-          <page name="student.comment"></page>
+            <h2>카톡잉글리시의 생생한 수업후기</h2>
 
-
-          <section class="teacher-list my-5" *ngIf=" total_teachers ">
-              <h2 class="m-0 p-3">카톡잉글리시 선생님</h2>
-              <div class="alert alert-info rounded-0 border-0">
-                총 {{ total_teachers }} 명의 선생님이 있습니다.
+            <ng-container *ngFor=" let comment of a.i18n['STUDENT COMMENTS']; let i = index ">
+              <div class="comment" class="" *ngIf=" i < 2 || show['more-comment']">
+                  <ion-grid>
+                      <ion-row>
+                        <ion-col col-4 col-sm-5 col-lg-3>
+                          <div class="photo">
+                            <img src="https://www.ontue.com/wp-content/plugins/xapi-2/lms/img/student-comment/{{ i + 1 }}.jpg">
+                          </div>
+                        </ion-col>
+                        <ion-col col-8 col-sm-7 col-lg-9>
+                          <div class="name">{{ comment.name }}</div>
+                          <div class="title">{{ comment.title }}</div>
+                          <div class="date">{{ comment.date }}</div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <div class="description" [innerHTML]="comment.description"></div>
               </div>
-              <ion-grid *ngIf=" teachers.length ">
-                <ion-row>
-                  <ion-col class="pointer" *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="a.open('schedule-table', teacher)">
-                    <div class="d-flex justify-content-center">
-                      <div class="teacher-profile-photo">
-                        <img src="{{ teacher.photoURL }}">
-                      </div>
+            </ng-container>
+
+            <div class="more" (click)=" show['more-comment'] = true " *ngIf=" ! show['more-comment'] ">수강후기 더 보기</div>
+          </section>
+
+
+          <section class="teacher-list my-5">
+            <h2 class="m-0 p-3">카톡잉글리시 선생님</h2>
+            
+            <div class="d-flex" *ngIf=" ! total_teachers ">
+
+              <ion-spinner></ion-spinner>
+              <span class="pl-3 pt-2">선생님 정보를 로딩중입니다. 시간이 너무 오래걸리면 리프레시를 하시거나 인터넷 속도를 확인해주세요.</span>
+
+            </div>
+            <div class="alert alert-info rounded-0 border-0" *ngIf=" total_teachers ">
+              총 {{ total_teachers }} 명의 선생님이 있습니다.
+            </div>
+            <ion-grid  *ngIf=" total_teachers ">
+              <ion-row>
+                <ion-col class="pointer" *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="a.open('schedule-table', teacher)">
+                  <div class="d-flex justify-content-center">
+                    <div class="teacher-profile-photo">
+                      <img src="{{ teacher.photoURL }}">
                     </div>
-                    <div class="text-center mt-1 mb-3">
-                      <div>{{ a.preTeacherName( teacher.name )}}</div>
-                      <div class="grade" [attr.grade]=" teacher.grade ">
-                        추천:
-                        <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>
-                        <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
-  
-                      </div>
-                      <div>
-                        ({{ teacher.total_reservation }} 명 참여)
-                      </div>
+                  </div>
+                  <div class="text-center mt-1 mb-3">
+                    <div>{{ a.preTeacherName( teacher.name )}}</div>
+                    <div class="grade" [attr.grade]=" teacher.grade ">
+                      추천:
+                      <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>
+                      <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
                     </div>
-  
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-  
-              <div class="alert alert-secondary mx-3 my-5 p-3 rounded-0 text-center pointer" (click)="a.open('teacher-list')">
-                더보기
-                <i class="fal fa-ellipsis-h"></i>
-              </div>
-            </section><!--/teacher-list-->
+                    <div>
+                      ({{ teacher.total_reservation }} 명 참여)
+                    </div>
+                  </div>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+            <div class="alert alert-secondary mx-3 my-5 p-3 rounded-0 text-center pointer" (click)="a.open('teacher-list')"  *ngIf=" total_teachers ">
+              더보기
+              <i class="fal fa-ellipsis-h"></i>
+            </div>
+          </section>
+          <!--/teacher-list-->
 
 
         </ion-col>

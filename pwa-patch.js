@@ -1,7 +1,7 @@
 
 var fs = require('fs');
 var d = new Date();
-var hash = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDay() + '-' + d.getHours() +'-'+ d.getMinutes() +'-'+ d.getSeconds();
+var hash = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate() + '-' + d.getHours() +'-'+ d.getMinutes() +'-'+ d.getSeconds();
 console.log('hash: ', hash);
 
 

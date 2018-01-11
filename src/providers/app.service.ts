@@ -86,6 +86,7 @@ export class AppService {
      */
     updateLMSInfo() {
         this.info = this.get( KEY_LMS_INFO );
+        if ( ! this.info ) this.info = {};
         console.log("info from cache: ", this.info);
         this.lms.info().subscribe( re => {
             this.set( KEY_LMS_INFO, re );
@@ -372,12 +373,14 @@ export class AppService {
             "PHONE NUMBER",
             "KAKAOTALK ID",
             "KAKAOTALK ID REQUIRED",
-            "CHOOSE DIFFERENT HOURS"
+            "CHOOSE DIFFERENT HOURS",
             // "LOADING SCHEDULE",
             // "GOT SCHEDULE",
             // "DISPLAYING SCHEDULE",
             // "SCHEDULE DISPLAYED"
+            "STUDENT COMMENTS"
         ]).subscribe(re => {
+            console.log("i81n: ", re);
             this.i18n = re;
         });
 

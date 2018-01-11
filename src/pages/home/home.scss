@@ -26,7 +26,6 @@ page-home {
       }
     }
   }
-
   .my-own-plan {
     padding: 3.5em 0.25em;
     background-color: rgb(230, 230, 230);
@@ -52,28 +51,26 @@ page-home {
     box-sizing: border-box;
     color: white;
     &.no1 {
-      background-color: rgb(57, 91, 105);  
+      background-color: rgb(57, 91, 105);
     }
     &.no2 {
-      background-color: #d8aa02;  
+      background-color: #d8aa02;
     }
     &.no3 {
-      background-color: rgb(136, 63, 41);  
+      background-color: rgb(136, 63, 41);
     }
   }
 }
 
-
-
 .about-katalkenglish {
   padding: 4em 1em;
   background-color: #ffffff;
-
   h2 {
     margin: .25em 0 0;
     padding: 0;
   }
 }
+
 .more-about-katalkenglish {
   margin-bottom: 2em;
   .inner {
@@ -83,7 +80,6 @@ page-home {
   .text {
     margin: .5em 0;
     animation: animoreabout 1s 1;
-
     &.no1 {
       color: #0068ca;
     }
@@ -99,7 +95,6 @@ page-home {
   }
 }
 
-
 @keyframes animoreabout {
   from {
     opacity: .1;
@@ -109,3 +104,59 @@ page-home {
   }
 }
 
+#student-comments {
+  padding: 3em 1em 2em;
+  background-color: #eee;
+  h2 {
+    margin: 0;
+    text-align: center;
+    font-weight: 100;
+  }
+
+  .comment {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: white;
+  }
+  .photo {
+    width: 86px;
+    height: 86px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      width: 100%;
+    }
+  }
+  .name {
+    margin-top: .5em;
+    font-size: 1.1em;
+  }
+  .title {
+    margin-top: .4em;
+    font-size: 1.2em;
+    font-weight: 100;
+    color: #0a0a63;
+  }
+
+  .description {
+    margin-top: .5em;
+    padding: 1em;
+    line-height: 180%;
+    background-color: #eee;
+  }
+
+  .date {
+    color: #6a9dcc;
+  }
+  
+  .more {
+    margin-top: 1em;
+    padding: .5em;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 100;
+    color: #484848;
+    background-color: #b1b7c3;
+    cursor: pointer;
+  }
+}

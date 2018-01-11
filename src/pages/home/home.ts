@@ -23,6 +23,8 @@ export class HomePage {
   
   teachers = [];
   total_teachers = 0;
+
+  show = {};
   constructor(
     public navCtrl: NavController,
     public a: AppService

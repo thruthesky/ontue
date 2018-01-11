@@ -139,7 +139,7 @@ export class MyApp {
   test() {
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
-    this.a.open('payment-history');
+    // this.a.open('payment-history');
 
     // this.a.open('schedule-edit');
 
