@@ -30,7 +30,6 @@
           <ng-container *ngIf=" a.user.isLogin ">
             <ng-container [ngSwitch]="a.page">
               <ng-container *ngSwitchCase=" 'schedule-table' ">
-                <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
                 <span (click)="a.open('home')">홈</span>
                 <span class="pl-2" (click)="a.open('menu')">메뉴</span>
                 <span class="pl-2" (click)="a.open('session-future')">예약확인</span>
@@ -39,21 +38,15 @@
               <ng-container *ngSwitchCase=" 'payment' ">
                   <span class="px-2" (click)="a.open('home')">홈</span>
                   <span class="pl-3" (click)="a.open('teacher-list')">예약하기</span>
-                  <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
-                  <!-- <span class="pl-3" (click)="a.open('menu')">시간표</span> -->
-                  <!-- <span class="pl-3" (click)="a.open('session-future')">예약</span> -->
                 </ng-container>
 
-                
+
               <ng-container *ngSwitchCase=" 'session-future' ">
                   <span class="px-2" (click)="a.open('home')">홈</span>
                   <span class="pl-3" (click)="a.open('payment')">수강료</span>
-                  <!-- <span (click)="a.open('reservation')">예약된 수업 목록</span> -->
-                  <!-- <span class="pl-3" (click)="a.open('menu')">시간표</span> -->
-                  <!-- <span class="pl-3" (click)="a.open('session-future')">예약</span> -->
                 </ng-container>
 
-                
+
               <ng-container *ngSwitchDefault>
                 <span (click)="a.open('payment')">수강료</span>
                 <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
@@ -84,7 +77,7 @@
               <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
               <div class="p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
           </ng-container>
-          
+
           <ng-container *ngSwitchCase=" 'session-past' ">
               <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
               <div class="p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
@@ -92,7 +85,7 @@
               <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
               <div class="p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
           </ng-container>
-        
+
 
         <ng-container *ngSwitchDefault>
 
@@ -168,7 +161,7 @@
           </button>
         </ion-col>
 
-        
+
 
       <ion-col>
           <button class="header-schedule-edit" (click)="a.open( 'schedule-edit' )">
@@ -176,9 +169,9 @@
             <div>{{ 'SCHEDULE' | translate }}</div>
           </button>
         </ion-col>
-  
 
-        
+
+
 
       <ion-col>
         <button class="header-dayoff" (click)="a.open( 'dayoff' )">
@@ -187,7 +180,7 @@
         </button>
       </ion-col>
 
-      
+
       <ion-col>
         <button class="header-teacher-list" (click)="a.open( 'teacher-list' )">
           <i class="fal fa-users"></i>
@@ -223,7 +216,7 @@
 
       <ion-col class="d-none d-sm-block">
 
-        <button class="header-forum" (click)="a.open('forum')">
+        <button class="header-forum" (click)="a.open('menu')">
 
           <i class="fal fa-comments"></i>
           <div>{{ 'FORUM' | translate }}</div>

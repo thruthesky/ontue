@@ -73,6 +73,10 @@ import { CurriculumVitaeView } from '../components/curriculum-vitae-view/curricu
 import { RefundRequestView } from '../components/refund-request-view/refund-request-view';
 
 
+import { StudentCommentList } from '../components/student-comment-list/student-comment-list';
+import { StudentCommentCreate } from '../components/student-comment-create/student-comment-create';
+
+
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
 export function createTranslateLoader(http: HttpClient) {
@@ -125,7 +129,9 @@ export function createTranslateLoader(http: HttpClient) {
     HelpPage,
     MessageWrite,
     CurriculumVitaeView,
-    RefundRequestView
+    RefundRequestView,
+    StudentCommentList,
+    StudentCommentCreate
   ],
   imports: [
     BrowserModule,
@@ -179,7 +185,9 @@ export function createTranslateLoader(http: HttpClient) {
     HelpPage,
     MessageWrite,
     CurriculumVitaeView,
-    RefundRequestView
+    RefundRequestView,
+    StudentCommentList,
+    StudentCommentCreate
   ],
   providers: [
     StatusBar,

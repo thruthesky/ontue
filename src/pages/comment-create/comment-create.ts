@@ -3,17 +3,17 @@ import {
 } from '@angular/core';
 import 'rxjs/add/operator/debounceTime';
 
-import { AppService } from './../../providers/app.service';
+import { AppService } from '../../providers/app.service';
 
 
 import {
   POST, FILES,
   COMMENT, COMMENT_CREATE, COMMENT_CREATE_RESPONSE,
-} from './../../angular-xapi/interfaces';
+} from '../../angular-xapi/interfaces';
 
 import { FileUploadWidget } from '../../components/file-upload/file-upload';
 
-import { SitePreview } from './../../angular-xapi/site-preview';
+import { SitePreview } from '../../angular-xapi/site-preview';
 
 
 @Component({

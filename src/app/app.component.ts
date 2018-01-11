@@ -150,7 +150,7 @@ export class MyApp {
     // this.a.open('schedule-table', { ID: 806 }); /// tabetha
 
 
-    // this.a.open('schedule-table', { ID: 137 }); /// teacher21
+    this.a.open('schedule-table', { ID: 137 }); /// teacher21
 
     // this.a.open('teacher-list');
 
@@ -194,7 +194,7 @@ export class MyApp {
 
     // this.a.open('home');
 
-    this.a.open('session-past');
+    // this.a.open('session-past');
     // this.a.open('session-future');
     // this.a.open('password-change');
 

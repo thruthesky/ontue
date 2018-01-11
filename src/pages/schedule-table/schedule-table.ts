@@ -6,6 +6,8 @@ import { Subject } from "rxjs/Subject";
 
 import { YoutubeVideoPlayer } from "@ionic-native/youtube-video-player";
 import {CurriculumVitaeView} from "../../components/curriculum-vitae-view/curriculum-vitae-view";
+import {StudentCommentCreate} from "../../components/student-comment-create/student-comment-create";
+import {StudentCommentList} from "../../components/student-comment-list/student-comment-list";
 
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
@@ -691,5 +693,25 @@ export class ScheduleTablePage {
 
 
   }
+
+
+
+  onClickCommentCreate() {
+    const createCommentModal = this.modalCtrl.create( StudentCommentCreate, {teacher:this.teacher_profile},{cssClass: 'student-comment-create'}
+    );
+    createCommentModal.onDidDismiss(() => {});
+    createCommentModal.present();
+  }
+
+
+  onClickCommentList() {
+    const createCommentModal = this.modalCtrl.create( StudentCommentList, {teacher:this.teacher_profile},{cssClass: 'student-comment-list'}
+    );
+    createCommentModal.onDidDismiss(() => {});
+    createCommentModal.present();
+  }
+
+
+
 
 }
