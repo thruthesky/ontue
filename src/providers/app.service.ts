@@ -75,7 +75,7 @@ export class AppService {
         console.log("login: ", user.isLogin);
         console.log("profile data: ", this.user.getProfile());
 
-        
+
         this.updateLMSInfo();
 
     }
@@ -259,7 +259,7 @@ export class AppService {
             options['message'] = this.i18n[title] + ' ' + this.i18n[message];
         }
         else if (str.title !== void 0 || str.message !== void 0) {
-            if ( str.title === void 0 ) str.title = ''; 
+            if ( str.title === void 0 ) str.title = '';
             options['message'] = str.title + " " + str.message;
         }
         else {
@@ -508,5 +508,7 @@ export class AppService {
     openQnA() {
         window.open( this.kakaotalk_plus_url );
     }
+
+
 
 }

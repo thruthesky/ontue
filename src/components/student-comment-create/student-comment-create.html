@@ -11,13 +11,31 @@
 <ion-content padding="">
 
   <ion-list>
-  <ion-item>
-    <ion-textarea class="w-100" rows="10" [(ngModel)]="message" placeholder="{{title}}"></ion-textarea>
-  </ion-item>
-  <ion-item>
-    <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
-    <button color="secondary" ion-button type="button" (click)="onClickCancel()">Cancel</button>
-  </ion-item>
+    <ion-item>
+      <ion-textarea class="w-100" rows="10" [(ngModel)]="comment" placeholder="Comment to teacher...."></ion-textarea>
+    </ion-item>
+    <ion-item>
+      Rating: {{rate}}
+      <span *ngIf="rate < 1" (click)="rate=1"><i class="fal fa-star"></i></span>
+      <span *ngIf="rate >= 1" (click)="rate=1"><i class="fas fa-star"></i></span>
+
+      <span *ngIf="rate < 2" (click)="rate=2"><i class="fal fa-star"></i></span>
+      <span *ngIf="rate >= 2" (click)="rate=2"><i class="fas fa-star"></i></span>
+
+      <span *ngIf="rate < 3" (click)="rate=3"><i class="fal fa-star"></i></span>
+      <span *ngIf="rate >= 3" (click)="rate=3"><i class="fas fa-star"></i></span>
+
+      <span *ngIf="rate < 4" (click)="rate=4"><i class="fal fa-star"></i></span>
+      <span *ngIf="rate >= 4" (click)="rate=4"><i class="fas fa-star"></i></span>
+
+      <span *ngIf="rate < 5" (click)="rate=5"><i class="fal fa-star"></i></span>
+      <span *ngIf="rate >= 5" (click)="rate=5"><i class="fas fa-star"></i></span>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
+      <button color="secondary" ion-button type="button" (click)="onClickCancel()">Cancel</button>
+    </ion-item>
   </ion-list>
 
 </ion-content>

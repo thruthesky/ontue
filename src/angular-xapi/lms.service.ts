@@ -397,4 +397,17 @@ export class LMSService extends Base {
         return this.x.post({route: 'lms.info', session_id: this.user.sessionId});
     }
 
+
+    get_student_comments_to_teacher_ID(req) {
+      console.log("get_student_comments_to_teacher_ID",req);
+      req['route'] = 'lms.get_student_comments_to_teacher_ID';
+      return this.x.post(req)
+    }
+
+    student_comment_to_teacher_create(req) {
+      req['route'] = 'lms.student_comment_to_teacher_create';
+      req['session_id'] = this.user.sessionId;
+      return this.x.post(req)
+    }
+
 }
