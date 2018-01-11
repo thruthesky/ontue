@@ -27,7 +27,7 @@
         <ion-label class="blue">{{'SELECT TEACHER'|translate}}</ion-label>
         <ion-select [(ngModel)]="show_teacher" (ionChange)="onChangeSearchOption()" okText="{{ 'OK' | translate }}" cancelText="{{ 'CANCEL' | translate }}"
           [selectOptions]="{ title: a.i18n.SELECT_TEACHER_TITLE, cssClass:'select-teacher' }">
-          <ion-option *ngFor="let teacher of my_teachers" [value]=" teacher.idx ">{{ teacher.name }}</ion-option>
+          <ion-option *ngFor="let teacher of teachers_keys" [value]="teacher">{{ my_teachers[teacher].name }}</ion-option>
           <ion-option [value]="0">{{ "ALL TEACHER" | translate }}</ion-option>
         </ion-select>
       </ion-item>

@@ -194,7 +194,7 @@ export class MyApp {
 
     // this.a.open('home');
 
-    // this.a.open('session-past');
+    this.a.open('session-past');
     // this.a.open('session-future');
     // this.a.open('password-change');
 

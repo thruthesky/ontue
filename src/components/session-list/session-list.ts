@@ -115,6 +115,10 @@ export class SessionList {
     this.sessionSearch();
   }
 
+  get teachers_keys() {
+    return Object.keys(this.my_teachers);
+  }
+
   sessionSearch() {
     this.a.lms.session_search( this.request() ).subscribe(re => {
       console.log("Result of class_search(): ", re);
