@@ -48,7 +48,8 @@ export class AppService {
     hostname = window.location.hostname;
     info = {}; // LMS info.
 
-    kakaotalk_plus_url = "http://pf.kakao.com/_eIxgAC";
+    kakaotalk_plus_student_url = "http://pf.kakao.com/_eIxgAC";
+    kakaotalk_plus_teacher_url = "http://pf.kakao.com/_RcxbRC";
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -506,7 +507,8 @@ export class AppService {
 
 
     openQnA() {
-        window.open( this.kakaotalk_plus_url );
+        if ( this.teacherTheme ) window.open( this.kakaotalk_plus_teacher_url );
+        else window.open( this.kakaotalk_plus_student_url );
     }
 
 }
