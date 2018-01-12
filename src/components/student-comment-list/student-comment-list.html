@@ -11,9 +11,10 @@
 <ion-content padding="">
 
   <ion-list>
-    <ion-item>
-      IMAGE <br>
-      Comment
+    <ion-item *ngFor="let comment of comments">
+      <img *ngIf="comment.photoURL" src="{{comment.photoURL}}">
+      <span>{{comment.student_name}}</span>
+      <div>{{comment.comment}}</div>
     </ion-item>
   </ion-list>
 
