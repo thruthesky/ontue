@@ -53,4 +53,17 @@ ion-header {
       }
     }
   }
+
+  .item {
+    padding-top: .3em;
+    cursor: pointer;
+    .icon {
+      padding-bottom: 0;
+      font-size: 1.6em;
+    }
+    .text {
+      font-size: .88em;
+    }
+  }
 }
+
