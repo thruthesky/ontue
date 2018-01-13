@@ -31,15 +31,16 @@
                 </div>
 
                 <div class="py-2 pointer" (click)="onClickShowCurriculum()">
-                  {{ 'CURRICULUM VITAE' | translate }}
+                  <i class="fas fa-clipboard"></i> {{ 'CURRICULUM VITAE' | translate }}
+                </div>
+                <div class="comment mt-1">
+                  <span class="py-2">Review: </span>
+                  <span class="pointer p-2 mr-2"  *ngIf="a.user.isLogin" (click)="onClickCommentCreate()"><i class="fa fa-pencil"></i> Write</span>
+                  <span class="pointer p-2" (click)="onClickCommentList()"><i class="fa fa-comment-alt"></i> View</span>
                 </div>
               </div>
 
-              <div class="comment">
-                <span class="py-3">Review</span>
-                <button ion-button (click)="onClickCommentCreate()">Write</button>
-                <button ion-button (click)="onClickCommentList()">View</button>
-              </div>
+
               <div class="kakao d-flex pt-2">
                 <div>
                   <img class="size-30" src="assets/img/kakao-friend-add.jpg">

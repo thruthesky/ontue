@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ "STUDENT CREATE COMMENT" | translate}}</ion-title>
+    <ion-title>{{ data.idx ? "STUDENT COMMENT UPDATE" : "STUDENT COMMENT CREATE"  | translate}}</ion-title>
     <ion-buttons start>
       <button ion-button class="cancel" (click)="onClickCancel()">
         <span ion-text color="primary">{{ "CLOSE" | translate}}</span>
@@ -8,7 +8,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding="">
+<ion-content>
 
   <ion-list>
     <ion-item>
@@ -31,12 +31,13 @@
       <span *ngIf="rate < 5" (click)="rate=5"><i class="fal fa-star"></i></span>
       <span *ngIf="rate >= 5" (click)="rate=5"><i class="fas fa-star"></i></span>
     </ion-item>
-
-    <ion-item>
-      <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
-      <button color="secondary" ion-button type="button" (click)="onClickCancel()">Cancel</button>
+    <ion-item text-wrap>
+      <div>You can only comment, if you have successful class with this teacher...</div>
     </ion-item>
   </ion-list>
-
+<div class="px-3">
+  <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
+  <button ion-button type="button" color="secondary"  (click)="onClickCancel()">Cancel</button>
+</div>
 </ion-content>
 
