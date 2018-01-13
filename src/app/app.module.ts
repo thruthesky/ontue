@@ -46,6 +46,7 @@ import { SessionFuturePage } from '../pages/session-future/session-future';
 import { PasswordChangePage } from '../pages/password-change/password-change';
 import { ScheduleAvailablePage } from '../pages/schedule-available/schedule-available';
 import { HelpPage } from '../pages/help/help';
+import { ClassCommentPage } from '../pages/class-comment/class-comment';
 
 
 
@@ -130,7 +131,8 @@ export function createTranslateLoader(http: HttpClient) {
     CurriculumVitaeView,
     RefundRequestView,
     StudentCommentList,
-    StudentCommentEdit
+    StudentCommentEdit,
+    ClassCommentPage
   ],
   imports: [
     BrowserModule,
@@ -186,7 +188,8 @@ export function createTranslateLoader(http: HttpClient) {
     CurriculumVitaeView,
     RefundRequestView,
     StudentCommentList,
-    StudentCommentEdit
+    StudentCommentEdit,
+    ClassCommentPage
   ],
   providers: [
     StatusBar,
