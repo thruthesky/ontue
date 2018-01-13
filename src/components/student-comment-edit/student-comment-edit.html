@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ "STUDENT CREATE COMMENT" | translate}}</ion-title>
+    <ion-title>{{ data.idx ? "STUDENT COMMENT UPDATE" : "STUDENT COMMENT CREATE"  | translate}}</ion-title>
     <ion-buttons start>
       <button ion-button class="cancel" (click)="onClickCancel()">
         <span ion-text color="primary">{{ "CLOSE" | translate}}</span>

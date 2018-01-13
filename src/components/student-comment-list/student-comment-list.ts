@@ -2,19 +2,9 @@ import { Component } from '@angular/core';
 import { AppService } from '../../providers/app.service';
 import {AlertController, ModalController, NavParams, ViewController} from 'ionic-angular';
 import {StudentCommentEdit} from "../student-comment-edit/student-comment-edit";
+import {STUDENT_COMMENTS_TO_TEACHER} from "../../angular-xapi/interfaces";
 
 
-interface STUDENT_COMMENT_TO_TEACHER {
-  comment: string;
-  idx: number;
-  idx_student: number;
-  idx_teacher: number;
-  photoURL: string;
-  rate: number;
-  stamp: number;
-  student_name: string;
-}
-type STUDENT_COMMENTS_TO_TEACHER = Array<STUDENT_COMMENT_TO_TEACHER>
 
 
 @Component({
@@ -29,6 +19,9 @@ export class StudentCommentList{
   idx_teacher;
   comments: STUDENT_COMMENTS_TO_TEACHER = <STUDENT_COMMENTS_TO_TEACHER>[] ;
   limit = 10;
+
+
+  error = null;
 
   constructor(
     public a: AppService,
@@ -51,8 +44,10 @@ export class StudentCommentList{
     };
     this.a.lms.get_student_comments_to_teacher(data).subscribe( (res:STUDENT_COMMENTS_TO_TEACHER) => {
       console.log("get_comment_from_student_to_teaceher:: ", res);
-      if(res) {
+      if( res && res.length ) {
         this.comments = res;
+      } else {
+        this.error = "No available review yet for this teacher."
       }
     }, e => {
       this.a.alert(e);

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from '../../providers/app.service';
 import { NavParams, ViewController } from 'ionic-angular';
+import {STUDENT_COMMENT_TO_TEACHER} from "../../angular-xapi/interfaces";
 
 @Component({
   selector: 'student-comment-edit',
@@ -10,8 +11,7 @@ export class StudentCommentEdit {
 
 
   params;
-  idx_teacher;
-  data = {};
+  data: STUDENT_COMMENT_TO_TEACHER = <STUDENT_COMMENT_TO_TEACHER>{};
 
   comment= '';
   rate = 1;

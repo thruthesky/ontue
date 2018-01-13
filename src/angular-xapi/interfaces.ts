@@ -318,3 +318,18 @@ export type PAGE = POST_LIST_RESPONSE;
 export type PAGES = PAGE[];
 
 
+
+export interface STUDENT_COMMENT_TO_TEACHER {
+  comment?: string;
+  idx?: number;
+  idx_student?: number;
+  idx_teacher?: number;
+  photoURL?: string;
+  rate?: number;
+  stamp?: number;
+  student_name?: string;
+}
+
+export type STUDENT_COMMENTS_TO_TEACHER = Array<STUDENT_COMMENT_TO_TEACHER>
+
+
