@@ -1,13 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from './../../providers/app.service';
-import {ModalController, NavParams} from "ionic-angular";
+import { Platform, ModalController, NavParams } from "ionic-angular";
 import { Subject } from "rxjs/Subject";
 
 import { YoutubeVideoPlayer } from "@ionic-native/youtube-video-player";
-import {CurriculumVitaeView} from "../../components/curriculum-vitae-view/curriculum-vitae-view";
-import {StudentCommentEdit} from "../../components/student-comment-edit/student-comment-edit";
-import {StudentCommentList} from "../../components/student-comment-list/student-comment-list";
+import { CurriculumVitaeView } from "../../components/curriculum-vitae-view/curriculum-vitae-view";
+import { StudentCommentEdit } from "../../components/student-comment-edit/student-comment-edit";
+import { StudentCommentList } from "../../components/student-comment-list/student-comment-list";
 
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
@@ -156,6 +156,7 @@ export class ScheduleTablePage {
 
 
   constructor(
+    public platform: Platform,
     public a: AppService,
     public navParams: NavParams,
     public domSanitizer: DomSanitizer,
@@ -168,22 +169,11 @@ export class ScheduleTablePage {
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
 
-    if (this.singleTeacher) {
-      this.days = 7;
-      this.class_begin_hour = 0;
-      this.class_end_hour = 24;
-    }
-    else {
-      this.days = 6;
-      this.class_begin_hour = 18;
-      this.class_end_hour = 22;
-    }
+    this.initScheduleTableWidth();
+
 
     // console.log('data params', this.params);
 
-
-
-    this.loadScheduleTable();
     // this.a.lms.my_point().subscribe( re => this.my_point = re['point'], e => this.a.alert( e ) );
 
     // this.a.loadMyPoint( p => this.my_point = p );
@@ -211,6 +201,33 @@ export class ScheduleTablePage {
     if (this.timer) clearTimeout(this.timer);
   }
 
+  /**
+   * This sets the number of columns on schedule table based on the device.
+   */
+  initScheduleTableWidth() {
+
+    this.platform.ready().then(() => {
+      if (this.singleTeacher) {
+        this.days = 7;
+        this.class_begin_hour = 0;
+        this.class_end_hour = 24;
+      }
+      else {
+        this.days = 6;
+        this.class_begin_hour = 18;
+        this.class_end_hour = 22;
+      }
+      // console.log("platforms: ", this.platform.platforms());
+      if ( this.platform.is('core') ) {
+        // console.log("platform is core...");
+        this.days = 20;
+      }
+      else if ( this.platform.is('tablet') ) {
+        this.days = 15;
+      }
+      this.loadScheduleTable();
+    });
+  }
 
   icon(session: SESSION) {
     if (session[this.STATUS] == 'future') {
@@ -295,8 +312,8 @@ export class ScheduleTablePage {
     if (this.params.ID) opt['teachers'] = [this.params.ID];
     opt = this.request(opt);
     // console.log("opt: ", opt);
-    if ( opt['class_begin_hour'] == opt['class_end_hour'] ) {
-      this.a.alert( this.a.i18n['CHOOSE DIFFERENT HOURS']);
+    if (opt['class_begin_hour'] == opt['class_end_hour']) {
+      this.a.alert(this.a.i18n['CHOOSE DIFFERENT HOURS']);
       return;
     }
     this.status = 'LOADING SCHEDULE';
@@ -332,7 +349,7 @@ export class ScheduleTablePage {
 
 
 
-    if ( this.singleTeacher ) {
+    if (this.singleTeacher) {
       this.schedule_table_rows = re.table;
       // this.onClickShowCurriculum(); //test
     }
@@ -554,8 +571,8 @@ export class ScheduleTablePage {
       session[this.STUDENT_NAME] = re.student_name;
       session[this.POINT] = re.point;
       session[this.IDX_RESERVATION] = re.idx_reservation;
-      this.a.updateLmsInfoUserNoOfTotalSessions( re['no_of_total_sessions'] );
-      this.a.updateLmsInfoUserNoOfReservation( re['no_of_reservation'] );
+      this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
+      this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
     }, e => {
       session['in_progress'] = false;
@@ -575,8 +592,8 @@ export class ScheduleTablePage {
       session[this.OWNER] = '';
       session[this.STUDENT_NAME] = '';
       session[this.POINT] = this.schedule(session[this.IDX_SCHEDULE])[this.POINT];
-      this.a.updateLmsInfoUserNoOfTotalSessions( re['no_of_total_sessions'] );
-      this.a.updateLmsInfoUserNoOfReservation( re['no_of_reservation'] );
+      this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
+      this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
     }, e => {
       session['in_progress'] = false;
@@ -675,7 +692,7 @@ export class ScheduleTablePage {
   displayPage() {
     const part = this.schedule_table_holder.splice(0, this.a.NO_SCHEDULE_PER_PAGE);
     this.schedule_table_rows.splice(this.schedule_table_rows.length, 0, ...part);
-    if ( this.schedule_table_holder.length == 0 ) {
+    if (this.schedule_table_holder.length == 0) {
       this.no_more_schedule = true;
     }
   }
@@ -690,25 +707,25 @@ export class ScheduleTablePage {
   }
 
   onClickShowCurriculum() {
-    const createCommentModal = this.modalCtrl.create( CurriculumVitaeView, {teacher:this.teacher_profile},{cssClass: 'vitae-view'}
-  );
-    createCommentModal.onDidDismiss(() => {});
+    const createCommentModal = this.modalCtrl.create(CurriculumVitaeView, { teacher: this.teacher_profile }, { cssClass: 'vitae-view' }
+    );
+    createCommentModal.onDidDismiss(() => { });
     createCommentModal.present();
   }
 
 
   onClickCommentCreate() {
-    const createCommentModal = this.modalCtrl.create( StudentCommentEdit, {idx_teacher:this.teacher_profile['ID']},{cssClass: 'student-comment-create'}
+    const createCommentModal = this.modalCtrl.create(StudentCommentEdit, { idx_teacher: this.teacher_profile['ID'] }, { cssClass: 'student-comment-create' }
     );
-    createCommentModal.onDidDismiss(() => {});
+    createCommentModal.onDidDismiss(() => { });
     createCommentModal.present();
   }
 
 
   onClickCommentList() {
-    const createCommentModal = this.modalCtrl.create( StudentCommentList, {idx_teacher:this.teacher_profile['ID']},{cssClass: 'student-comment-list'}
+    const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: this.teacher_profile['ID'] }, { cssClass: 'student-comment-list' }
     );
-    createCommentModal.onDidDismiss(() => {});
+    createCommentModal.onDidDismiss(() => { });
     createCommentModal.present();
   }
 

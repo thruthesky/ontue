@@ -133,11 +133,17 @@ export class AppService {
         if ( ! count ) return 0;
         return parseInt(count);
     }
+    /**
+     * Returns number of past sessions.
+     */
     get lmsInfoUserNoOfPast(): number {
         let count = this.get('no_of_past');
         if ( ! count ) return 0;
         return parseInt(count);
     }
+    /**
+     * Returns number of reservarions.
+     */
     get lmsInfoUserNoOfReservation(): number {
         let count = this.get('no_of_reservation');
         if ( ! count ) return 0;
@@ -149,10 +155,10 @@ export class AppService {
 
 
     /**
-     * If the student has less than or equal to 1 sessions, then we consider the student is new.
+     * If the student has less than or equal to 2 sessions, then we consider the student is new.
      */
     get newUser(): boolean {
-        return this.lmsInfoUserNoOfTotalSessions <= 1;
+        return this.lmsInfoUserNoOfTotalSessions <= 2;
     }
     /**
      * Returns 'student' or 'teacher'.
