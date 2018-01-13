@@ -1,4 +1,4 @@
-<section class="mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.studentTheme ">
+<section class="student-mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.studentTheme ">
   <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
     <ion-row>
       <ion-col col-3>
@@ -106,7 +106,8 @@
       </ng-container>
     </div>
   </nav>
-</section><!--mobile-toolbar-->
+</section><!--student-mobile-toolbar-->
+
 
 <ion-toolbar class="student-wide-menu d-none d-md-block" *ngIf=" a.studentTheme ">
   <ion-grid no-padding>
@@ -188,6 +189,14 @@
 
 
       <ion-col class="d-none d-sm-block">
+        <div class="item header-class-payment" (click)="a.open('payment')">
+          <div class="icon"><i class="fal fa-credit-card"></i></div>
+          <div class="text">{{ 'PAYMENT' | translate }}</div>
+        </div>
+      </ion-col>
+
+
+      <ion-col class="d-none d-sm-block">
         <div class="item header-class-help" (click)="a.open('help')">
           <div class="icon"><i class="fal fa-credit-card"></i></div>
           <div class="text">{{ 'HELP SHORT' | translate }}</div>
@@ -209,8 +218,7 @@
 
 </ion-toolbar><!--student-wide-menu-->
 
-<section class="mobile-toolbar d-md-none d-flex p-2" *ngIf=" a.teacherTheme ">
-
+<section class="teacher-menu d-flex p-2" *ngIf=" a.teacherTheme ">
 
   <ion-icon class="px-2 fs-xl" name="menu" style="margin-top: .28em" (click)=" a.open('menu') "></ion-icon>
   <div class="p-2" (click)=" a.open('home') ">Home</div>
