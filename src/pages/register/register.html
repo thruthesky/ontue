@@ -11,7 +11,7 @@
     </section>
 
     <section class="page-body">
-      <div class="d-flex justify-content-center mt-5" *ngIf=" a.teacherTheme ">
+      <div class="d-flex justify-content-center mt-5" *ngIf=" a.teacherTheme || a.user.isLogin ">
         <div class="profile-user p-relative d-inline-block of-hidden" (click)="fileUpload.onClickCamera()">
           <input *ngIf=" ! a.isCordova " class="p-absolute z-100 t-0 l-0 size-100x120 bg-grey" style="opacity: .003" type="file" (change)="fileUpload.onChangeFile($event)">
           <div class="profile-user-photo size-100x120">
