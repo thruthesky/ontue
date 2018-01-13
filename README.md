@@ -31,6 +31,8 @@ $ npm run serve --lab -l -c
 
 * How to serve (with livereload) in iOS.
 ````
+$ ionic cordova run android -l
+$ ionic cordova run android --prod
 $ ionic cordova run ios -l
 $ cordova run ios --list
 $ ionic cordova run -l ios --target "iPhone-7"

@@ -3,7 +3,7 @@
     <name>OnTue</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.0.109:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -93,4 +93,5 @@
     <plugin name="cordova-plugin-file-transfer" spec="~1.7.0" />
     <plugin name="cordova-plugin-youtube-video-player" spec="~1.0.6" />
     <allow-navigation href="http://192.168.0.2:8101" />
+    <allow-navigation href="http://192.168.0.2:8100" />
 </widget>
