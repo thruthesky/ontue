@@ -1,3 +1,26 @@
+.grade {
+  font-size: 1.25rem;
+  &[grade="5"],&[grade="6"],&[grade="7"],&[grade="8"] {
+    color: rgb(240, 96, 0);
+  }
+  &[grade="4"] {
+    color: rgb(255, 153, 0);
+  }
+  &[grade="3"] {
+    color: rgb(74, 141, 35);
+  }
+  &[grade="2"] {
+    color: rgb(39, 39, 117);
+  }
+  &[grade="1"] {
+    color: rgb(39, 39, 39);
+  }
+  .empty-star {
+    color: rgb(220, 220, 220);
+  }
+}
+
+
 .teacher-profile-photo {
     padding: .25em;
     overflow: hidden;
@@ -10,24 +33,61 @@
 }
 
 
-.grade {
-    font-size: 1.25rem;
-    &[grade="5"],&[grade="6"],&[grade="7"],&[grade="8"] {
-        color: rgb(240, 96, 0);
+
+
+#student-comments {
+  padding: 3em 1em 2em;
+  background-color: #eee;
+  h2 {
+    margin: 0;
+    text-align: center;
+    font-weight: 100;
+  }
+
+  .comment {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: white;
+  }
+  .photo {
+    width: 86px;
+    height: 86px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      width: 100%;
     }
-    &[grade="4"] {
-        color: rgb(255, 153, 0);
-    }
-    &[grade="3"] {
-        color: rgb(74, 141, 35);
-    }
-    &[grade="2"] {
-        color: rgb(39, 39, 117);
-    }
-    &[grade="1"] {
-        color: rgb(39, 39, 39);
-    }
-    .empty-star {
-        color: rgb(220, 220, 220);
-    }
+  }
+  .name {
+    margin-top: .5em;
+    font-size: 1.1em;
+  }
+  .title {
+    margin-top: .4em;
+    font-size: 1.2em;
+    font-weight: 100;
+    color: #0a0a63;
+  }
+
+  .description {
+    margin-top: .5em;
+    padding: 1em;
+    line-height: 180%;
+    background-color: #eee;
+  }
+
+  .date {
+    color: #6a9dcc;
+  }
+
+  .more {
+    margin-top: 1em;
+    padding: .5em;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 100;
+    color: #484848;
+    background-color: #b1b7c3;
+    cursor: pointer;
+  }
 }
