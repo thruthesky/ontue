@@ -55,7 +55,7 @@ export class CommentViewWidget {
 
       let confirm = this.alertCtrl.create({
         title: 'Delete Comment',
-        message: 'Are you sure you cant to delete?',
+        message: 'Are you sure you want to delete?',
         buttons: [
           {
             text: 'Yes',

@@ -31,6 +31,9 @@
       <span *ngIf="rate < 5" (click)="rate=5"><i class="fal fa-star"></i></span>
       <span *ngIf="rate >= 5" (click)="rate=5"><i class="fas fa-star"></i></span>
     </ion-item>
+    <ion-item text-wrap>
+      <div>You can only comment, if you have successful class with this teacher...</div>
+    </ion-item>
 
     <ion-item>
       <button ion-button type="button" (click)="onClickSubmit()">Submit</button>

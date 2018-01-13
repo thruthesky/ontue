@@ -10,13 +10,47 @@
 </ion-header>
 <ion-content padding="">
 
-  <ion-list>
-    <ion-item *ngFor="let comment of comments">
-      <img *ngIf="comment.photoURL" src="{{comment.photoURL}}">
-      <span>{{comment.student_name}}</span>
-      <div>{{comment.comment}}</div>
-    </ion-item>
-  </ion-list>
+  <section id="student-comments" class="pt-1">
+    <ng-container *ngFor="let comment of comments">
+    <div class="comment" *ngIf="comment.idx">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4 col-sm-3 col-lg-3>
+            <div class="photo">
+              <img src="{{comment.photoURL}}">
+            </div>
+          </ion-col>
+          <ion-col col-8 col-sm-9 col-lg-9>
+            <div class="name mt-0 mb-2">{{ comment.student_name }}</div>
+            <div class="date mb-2">Date: {{ a.shortDate(comment.stamp) }}</div>
+            <div class="rating mb-2">
+              Rating: {{rate}}
+              <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
+              <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
+
+              <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
+              <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
+
+              <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
+              <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
+
+              <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
+              <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
+
+              <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
+              <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
+            </div>
+            <div>
+              <span class="py-2 pointer mr-3" *ngIf="comment.idx_student == a.user.id" (click)="onClickDelete(comment)"><i class="fa fa-trash"></i> Delete</span>
+              <span class="py-2 pointer" *ngIf="comment.idx_student == a.user.id" (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> Edit</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="description" [innerHTML]="comment.comment"></div>
+    </div>
+    </ng-container>
+  </section>
 
 
 </ion-content>

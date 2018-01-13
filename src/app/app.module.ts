@@ -72,9 +72,8 @@ import { MessageWrite } from '../components/message-write/message-write';
 import { CurriculumVitaeView } from '../components/curriculum-vitae-view/curriculum-vitae-view';
 import { RefundRequestView } from '../components/refund-request-view/refund-request-view';
 
-
 import { StudentCommentList } from '../components/student-comment-list/student-comment-list';
-import { StudentCommentCreate } from '../components/student-comment-create/student-comment-create';
+import { StudentCommentEdit } from '../components/student-comment-edit/student-comment-edit';
 
 
 // The translate loader needs to know where to load i18n files
@@ -131,7 +130,7 @@ export function createTranslateLoader(http: HttpClient) {
     CurriculumVitaeView,
     RefundRequestView,
     StudentCommentList,
-    StudentCommentCreate
+    StudentCommentEdit
   ],
   imports: [
     BrowserModule,
@@ -187,7 +186,7 @@ export function createTranslateLoader(http: HttpClient) {
     CurriculumVitaeView,
     RefundRequestView,
     StudentCommentList,
-    StudentCommentCreate
+    StudentCommentEdit
   ],
   providers: [
     StatusBar,
