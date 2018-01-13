@@ -82,7 +82,7 @@ export class HomePage {
         page_no: 1,
         limit: 6
       }).subscribe(re => {
-        console.log("teachers: ", re);
+        // console.log("teachers: ", re);
         this.teachers = re['teachers'];
         this.total_teachers = re['total'];
       });

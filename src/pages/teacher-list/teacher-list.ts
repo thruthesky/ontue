@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavParams } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
 import { TEACHERS_LIST } from "../../angular-xapi/lms.service";
 
@@ -14,6 +15,7 @@ export class TeacherListPage {
   display_options = false;
   teachersList: TEACHERS_LIST = [];
 
+  mode = null;
   re: any;
   teachers = [];
 
@@ -25,8 +27,10 @@ export class TeacherListPage {
   noMoreTeachers: boolean;
   loading: boolean;
   constructor(
+    public nav: NavParams,
     public a: AppService
   ) {
+    this.mode = nav.get('mode');
     this.init();
     this.loadTeachers();
   }

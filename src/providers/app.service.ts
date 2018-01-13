@@ -82,28 +82,78 @@ export class AppService {
     }
 
     /**
-     * Updates LMS info() from backend.
-     * @use this.userXxxxxx to get LMS info.
+     * Gets LMS information from backend and saves into localStorage.
+     * @note to get LMS information after loading from backend, use
+     *      - this.lmsInfoUserNoOfTotalSessions
+     *      - this.lmsInfoUserNoOfReservation
+     *      - this.lmsInfoUserNoOfTotalPast
+     *      - this.lmsInfo('SELLER_RATE')
      */
     updateLMSInfo() {
-        this.info = this.get( KEY_LMS_INFO );
-        if ( ! this.info ) this.info = {};
+        this.info = this.get(KEY_LMS_INFO);
+        if (!this.info) this.info = {};
         console.log("info from cache: ", this.info);
-        this.lms.info().subscribe( re => {
-            this.set( KEY_LMS_INFO, re );
-            this.info = this.get( KEY_LMS_INFO );
+        this.lms.info().subscribe(re => {
+            this.set(KEY_LMS_INFO, re);
+            this.info = this.get(KEY_LMS_INFO);
+
+            // If student is accessing the site.
+            if (this.info['user'] !== void 0) {
+                if (this.info['user']['no_of_total_sessions'] !== void 0) this.updateLmsInfoUserNoOfTotalSessions(this.info['user']['no_of_total_sessions']);
+                if (this.info['user']['no_of_reservation'] !== void 0) this.updateLmsInfoUserNoOfReservation(this.info['user']['no_of_reservation']);
+                if (this.info['user']['no_of_past'] !== void 0) this.updateLmsInfoUserNoOfPast(this.info['user']['no_of_past']);
+            }
+
             console.log("updated info from remote: ", this.info);
-         });
+        });
     }
+
+    /**
+     * Saves number of total sessions into localStorage
+     * User this.lmsInfoUserNoOfTotalSessions to get the number.
+     * @param count number of total sessions
+     */
+    updateLmsInfoUserNoOfTotalSessions(count) {
+        this.set('no_of_total_sessions', count);
+    }
+    updateLmsInfoUserNoOfReservation(count) {
+        this.set('no_of_reservation', count);
+    }
+    updateLmsInfoUserNoOfPast(count) {
+        this.set('no_of_past', count);
+    }
+
+
+
     /**
      * Returns total number of sessions of the login user.
      */
-    get userTotalSessions(): number {
-        if ( this.info['user'] === void 0 ) return 0;
-        if ( this.info['user']['no_of_total_sessions'] === void 0 ) return 0;
-        return this.info['user']['no_of_total_sessions'];
+    get lmsInfoUserNoOfTotalSessions(): number {
+        let count = this.get('no_of_total_sessions');
+        if ( ! count ) return 0;
+        return parseInt(count);
+    }
+    get lmsInfoUserNoOfPast(): number {
+        let count = this.get('no_of_past');
+        if ( ! count ) return 0;
+        return parseInt(count);
+    }
+    get lmsInfoUserNoOfReservation(): number {
+        let count = this.get('no_of_reservation');
+        if ( ! count ) return 0;
+        return parseInt(count);
     }
 
+
+
+
+
+    /**
+     * If the student has less than or equal to 1 sessions, then we consider the student is new.
+     */
+    get newUser(): boolean {
+        return this.lmsInfoUserNoOfTotalSessions <= 1;
+    }
     /**
      * Returns 'student' or 'teacher'.
      */
@@ -237,7 +287,7 @@ export class AppService {
             cssClass: 'alert-toast'
         };
 
-        if ( str['duration'] !== void 0 ) options['duration'] = str['duration'];
+        if (str['duration'] !== void 0) options['duration'] = str['duration'];
 
         if (typeof str === 'string') { // Mostly a message to user
             options['message'] = str;
@@ -260,7 +310,7 @@ export class AppService {
             options['message'] = this.i18n[title] + ' ' + this.i18n[message];
         }
         else if (str.title !== void 0 || str.message !== void 0) {
-            if ( str.title === void 0 ) str.title = '';
+            if (str.title === void 0) str.title = '';
             options['message'] = str.title + " " + str.message;
         }
         else {
@@ -304,7 +354,7 @@ export class AppService {
             dt = dt.replace(/\:\d\d /, ' ');
         }
         else {
-            dt = d.getFullYear().toString().substr(2,2) + '-' + d.getMonth() + '-' + d.getDate();
+            dt = d.getFullYear().toString().substr(2, 2) + '-' + d.getMonth() + '-' + d.getDate();
         }
         return dt;
     }
@@ -333,9 +383,19 @@ export class AppService {
     }
 
 
-    get(key: string) {
+    /**
+     * Get the value of the key from localStorage
+     * @param key key of localStorage
+     * @return it can be an object or a scalar.
+     */
+    get(key: string): any {
         return this.xapi.get(key);
     }
+    /**
+     * Saves value into localStorage
+     * @param key key of localStorage
+     * @param value value to save. it can be an object or a scalar.
+     */
     set(key: string, value: any) {
         return this.xapi.set(key, value);
     }
@@ -381,7 +441,7 @@ export class AppService {
             // "SCHEDULE DISPLAYED"
             "STUDENT COMMENTS"
         ]).subscribe(re => {
-            console.log("i81n: ", re);
+            // console.log("i81n: ", re);
             this.i18n = re;
         });
 
@@ -507,8 +567,8 @@ export class AppService {
 
 
     openQnA() {
-        if ( this.teacherTheme ) window.open( this.kakaotalk_plus_teacher_url );
-        else window.open( this.kakaotalk_plus_student_url );
+        if (this.teacherTheme) window.open(this.kakaotalk_plus_teacher_url);
+        else window.open(this.kakaotalk_plus_student_url);
     }
 
 

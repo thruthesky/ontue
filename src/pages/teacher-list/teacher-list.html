@@ -8,7 +8,10 @@
 
 
   <section class="page-header d-flex justify-content-between">
-    <h2 class="title">{{ "SELECT TEACHER TO RESERVE" | translate }}</h2>
+    <h2 class="title white" *ngIf=" mode == 'leveltest' ">{{ "LEVELTEST PAGE TITLE" | translate }}</h2>
+    <h2 class="title white" *ngIf=" mode != 'leveltest' ">
+      {{ "SELECT TEACHER TO RESERVE" | translate }}
+    </h2>
     <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
       <ion-icon name="options"></ion-icon>
       {{ 'OPTIONS' | translate }}
@@ -44,19 +47,18 @@
       {{ "CLOSE" | translate }}
     </button>
 
-
-
   </section>
 
   <section class="page-desc">
 
       <div *ngIf=" re ">
+        <div>어서오세요 <b>{{ a.user.name }}님,</b></div>
           <div>
-    
-          총 강사 수: {{ re.total }}
-          총 예약된 수업 :
-          레벨테스트
-    
+            현재 표시되는 선생님은 {{ re.total }} 명이며,
+            예약된 수업은 {{ a.lmsInfoUserNoOfTotalSessions }}회이며
+            지난 수업은
+            <span *ngIf=" a.lmsInfoUserNoOfPast ">{{ a.lmsInfoUserNoOfPast }}회입니다.</span>
+            <span *ngIf=" a.lmsInfoUserNoOfPast == 0">없습니다.</span>
         </div>
       </div>
     

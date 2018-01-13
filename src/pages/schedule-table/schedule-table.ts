@@ -545,7 +545,7 @@ export class ScheduleTablePage {
 
     session['in_progress'] = true;
     this.a.lms.session_reserve({ idx_schedule: session[this.IDX_SCHEDULE], date: session[this.DATE] }).subscribe(re => {
-      // console.log("class_reserve: ", re);
+      console.log("class_reserve: ", re);
       session['in_progress'] = false;
       session[this.OPEN] = 'reserved';
       session[this.DAYOFF] = '';
@@ -554,6 +554,8 @@ export class ScheduleTablePage {
       session[this.STUDENT_NAME] = re.student_name;
       session[this.POINT] = re.point;
       session[this.IDX_RESERVATION] = re.idx_reservation;
+      this.a.updateLmsInfoUserNoOfTotalSessions( re['no_of_total_sessions'] );
+      this.a.updateLmsInfoUserNoOfReservation( re['no_of_reservation'] );
       this.updatePoint();
     }, e => {
       session['in_progress'] = false;
@@ -566,13 +568,15 @@ export class ScheduleTablePage {
     session['in_progress'] = true;
     // console.log("Going to cancel with : ", session[ this.IDX_RESERVATION ]);
     this.a.lms.session_cancel(session[this.IDX_RESERVATION]).subscribe(re => {
-      // console.log("cancel success", re);
+      console.log("cancel success", re);
       session['in_progress'] = false;
       session[this.STATUS] = 'future';
       session[this.OPEN] = 'open';
       session[this.OWNER] = '';
       session[this.STUDENT_NAME] = '';
       session[this.POINT] = this.schedule(session[this.IDX_SCHEDULE])[this.POINT];
+      this.a.updateLmsInfoUserNoOfTotalSessions( re['no_of_total_sessions'] );
+      this.a.updateLmsInfoUserNoOfReservation( re['no_of_reservation'] );
       this.updatePoint();
     }, e => {
       session['in_progress'] = false;

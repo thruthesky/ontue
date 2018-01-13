@@ -154,6 +154,8 @@ export class MyApp {
 
     // this.a.open('teacher-list');
 
+    this.a.open('teacher-list', {mode: 'leveltest'});
+
     // this.a.open('schedule-edit');
 
     // this.a.open('login');
