@@ -99,7 +99,11 @@ export class SessionList {
     this.a.lms.session_cancel(book.idx).subscribe(re => {
       console.log(re);
       this.books = this.books.filter(book => book.idx != re['idx_reservation']);
+
+      this.a.updateLmsInfoUserNoOfTotalSessions( re['no_of_total_sessions'] );
+      this.a.updateLmsInfoUserNoOfReservation( re['no_of_reservation'] );
       this.updatePoint();
+
     }, e => {
       book['process'] = false;
       this.a.alert(e);
