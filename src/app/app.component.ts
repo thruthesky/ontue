@@ -51,6 +51,9 @@ import { ScheduleAvailablePage } from '../pages/schedule-available/schedule-avai
 import { HelpPage } from '../pages/help/help';
 
 
+import { ClassCommentPage } from '../pages/class-comment/class-comment';
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -131,6 +134,8 @@ export class MyApp {
 
     this.a.pages['help'] = HelpPage;
 
+    this.a.pages['class-comment'] = ClassCommentPage;
+
 
     setTimeout(() => this.test(), 100);
 
@@ -142,6 +147,8 @@ export class MyApp {
     // this.a.open('payment-history');
 
     // this.a.open('schedule-edit');
+
+    // this.a.open('class-comment');
 
     // this.a.open('schedule-table');
 

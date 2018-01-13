@@ -717,7 +717,9 @@ export class ScheduleTablePage {
   onClickCommentCreate() {
     const createCommentModal = this.modalCtrl.create(StudentCommentEdit, { idx_teacher: this.teacher_profile['ID'] }, { cssClass: 'student-comment-create' }
     );
-    createCommentModal.onDidDismiss(() => { });
+    createCommentModal.onDidDismiss( res => {
+      if(res == 'success') this.onClickCommentList();
+    });
     createCommentModal.present();
   }
 
