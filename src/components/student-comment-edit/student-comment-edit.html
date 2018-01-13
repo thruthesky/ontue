@@ -8,7 +8,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding="">
+<ion-content>
 
   <ion-list>
     <ion-item>
@@ -34,12 +34,10 @@
     <ion-item text-wrap>
       <div>You can only comment, if you have successful class with this teacher...</div>
     </ion-item>
-
-    <ion-item>
-      <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
-      <button color="secondary" ion-button type="button" (click)="onClickCancel()">Cancel</button>
-    </ion-item>
   </ion-list>
-
+<div class="px-3">
+  <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
+  <button ion-button type="button" color="secondary"  (click)="onClickCancel()">Cancel</button>
+</div>
 </ion-content>
 
