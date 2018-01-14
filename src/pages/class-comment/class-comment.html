@@ -8,55 +8,62 @@
     <section class="page-header green">
       <h2 class="title">{{ 'CLASS COMMENT' | translate }}</h2>
     </section>
+    <section class="page-desc">
+      <div class="d-inline-block mb-2 mr-3"><i class="fa fa-users"></i> - Teacher</div>
+      <div class="d-inline-block mb-2 mr-3"><i class="fa fa-graduation-cap"></i> - Student</div>
+      <div class="d-inline-block mb-2 mr-3"><i class="fas fa-star"></i> - Rate given by the student</div>
+      <div class="d-inline-block mb-2 mr-3"><i class="fa fa-angle-double-down"></i> - Show more student comment</div>
+    </section>
     <section class="page-body">
 
 
       <ion-grid no-padding>
         <ion-row>
-          <ion-col class="mb-2" *ngFor="let comment of comments" col-12 col-md-6>
-            <div class="d-flex justify-content-left">
+          <ion-col class="mb-4" *ngFor="let comment of comments" col-12 col-md-6>
+            <div class="d-flex justify-content-left mr-md-3">
               <div>
                 <div class="teacher-profile-photo">
                   <img src="{{comment?.teacher_photoURL ? comment.teacher_photoURL : a.anonymousPhotoURL }}">
                 </div>
-                <div text-center>{{ a.preTeacherName(comment.teacher_name)}}</div>
+                <div class="py-2" text-center><i class="fa fa-users"></i> {{ a.preTeacherName(comment.teacher_name)}}</div>
               </div>
               <div>
                 <div class="teacher-profile-photo">
                   <img src="{{comment?.student_photoURL ? comment.student_photoURL : a.anonymousPhotoURL }}">
                 </div>
-                <div text-center>{{ comment.student_name }}</div>
+                <div class="py-2" text-center><i class="fa fa-graduation-cap"></i> {{ comment.student_name }}</div>
               </div>
               <div class="text-center mt-1 mb-3">
               </div>
+              <div class="comment-wrapper w-100">
+                <div class="student-comment p-2">
+                  <div class="rating mb-2">
+                    Rate: {{rate}}
+                    <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
+                    <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
 
-              <div class="student-comment px-2">
-                <div class="rating mb-2">
-                  Rate: {{rate}}
-                  <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
+                    <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
+                    <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
 
-                  <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
+                    <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
+                    <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
 
-                  <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
+                    <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
+                    <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
 
-                  <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
-
-                  <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
-                </div>
-                <div class="date mb-2">Date: {{ a.shortDate(comment.stamp) }}</div>
-                <div>
+                    <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
+                    <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
+                  </div>
+                  <div class="date mb-2">Date: {{ a.shortDate(comment.stamp) }}</div>
+                  <div>
                   <span class="py-2 pointer mr-3" *ngIf="comment.idx_student == a.user.id"
                         (click)="onClickDelete(comment)"><i class="fa fa-trash"></i> Delete</span>
-                  <span class="py-2 pointer" *ngIf="comment.idx_student == a.user.id"
-                        (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> Edit</span>
+                    <span class="py-2 pointer" *ngIf="comment.idx_student == a.user.id"
+                          (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> Edit</span>
+                  </div>
+                  <div class="description" [innerHTML]="comment.comment"></div>
                 </div>
-                <div>Student Comment</div>
-                <div class="description" [innerHTML]="comment.comment"></div>
+                <div class="more pointer text-center py-2" (click)="onClickShowMore(comment)"><i class="fa fa-angle-double-down"></i> More</div>
               </div>
             </div>
           </ion-col>
