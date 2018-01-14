@@ -293,7 +293,7 @@ export class ScheduleTablePage {
     };
 
     const req = Object.assign(defaults, options);
-    console.log("Request: ", req);
+    // console.log("Request: ", req);
     return req;
   }
   // getTeacherSchedule( ID ) {
@@ -307,7 +307,7 @@ export class ScheduleTablePage {
 
 
   loadScheduleTable() {
-    console.log("loadScheduleTable: ");
+    // console.log("loadScheduleTable: ");
     let opt = {};
     if (this.params.ID) opt['teachers'] = [this.params.ID];
     opt = this.request(opt);
@@ -327,7 +327,7 @@ export class ScheduleTablePage {
 
   displayScheduleTable(re) {
     this.status = 'GOT SCHEDULE';
-    console.log('got data: ', re);
+    // console.log('got data: ', re);
     /// 시간표 속도 : https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.xxaqipe33arp
     this.no_of_schedules = re.no_of_schedules;
     // this.no_of_schedule_limit = re.no_of_schedule_limit;
@@ -490,12 +490,18 @@ export class ScheduleTablePage {
     }
     else return this.teacher_profile.photoURL;
   }
-  // teacher_ID(session) {
-  //   const idx_teacher = this.schedules[ session[ this.IDX_SCHEDULE ] ][ this.IDX_TEACHER ];
-  //   return idx_teacher;
-  //   // if ( teacher ) return teacher.idx;
-  //   // else return this.teacher_profile.idx;
-  // }
+
+  teacher_ID(session) {
+    const teacher = this.teacher(session);
+    // console.log('teacher: ', teacher);
+    if ( teacher ) return teacher.idx;
+    else return 0;
+
+    // const idx_teacher = this.schedules[ session[ this.IDX_SCHEDULE ] ][ this.IDX_TEACHER ];
+    // return idx_teacher;
+    // if ( teacher ) return teacher.idx;
+    // else return this.teacher_profile.idx;
+  }
 
   teacher_age() {
     return this.teacher_profile.age;

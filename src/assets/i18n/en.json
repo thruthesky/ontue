@@ -97,7 +97,7 @@
   , "CURRICULUM VITAE": "Curriculum Vitae"
   , "ADD KAKAO": "Add Kakao Friend"
 
-  , "PREVIOUS WEEK": "Previous"
+  , "PREVIOUS WEEK": "Prev"
   , "TODAY": "Today"
   , "NEXT WEEK": "Next"
   , "NEXT MONTH": "Next month"
@@ -111,6 +111,7 @@
   , "PAYMENT HISTORY PAGE DESC": "You can view your payment history."
   , "No.": "번호"
   
+  , "CLASS COMMENTS": "Comments"
 , "RESERVATION LIST": "Book"
 , "RESERVE NOW": "Reserve"
 , "RESERVE SESSION": "Reserve"
