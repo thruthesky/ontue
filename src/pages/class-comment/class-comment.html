@@ -20,7 +20,7 @@
       <ion-grid no-padding>
         <ion-row>
           <ion-col class="mb-4" *ngFor="let comment of comments" col-12 col-md-6>
-            <div class="d-flex justify-content-left mr-md-3">
+            <div class="comment-wrapper d-flex justify-content-left mr-md-3">
               <div>
                 <div class="teacher-profile-photo">
                   <img src="{{comment?.teacher_photoURL ? comment.teacher_photoURL : a.anonymousPhotoURL }}">
@@ -35,7 +35,7 @@
               </div>
               <div class="text-center mt-1 mb-3">
               </div>
-              <div class="comment-wrapper w-100">
+              <div class="comment-info w-100">
                 <div class="student-comment p-2">
                   <div class="rating mb-2">
                     Rate: {{rate}}
