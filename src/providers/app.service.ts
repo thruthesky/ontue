@@ -576,6 +576,13 @@ export class AppService {
      *      => return true.
      */
     get studentTheme() {
+
+
+        // COMMENTOUT FOR REAL CASE o
+        // return false;  // show teacher theme.
+
+
+      /////  UNCOMMENT BELOW FOR REAL CASE
         if (this.hostname == "ontue.com" || this.hostname == 'www.ontue.com') return false;
         else if (this.lms.getUserType() == "student") return true;
         else if (this.lms.getUserType() == "teacher") return false;

@@ -78,6 +78,8 @@ import { RefundRequestView } from '../components/refund-request-view/refund-requ
 import { StudentCommentList } from '../components/student-comment-list/student-comment-list';
 import { StudentCommentEdit } from '../components/student-comment-edit/student-comment-edit';
 
+import { TeacherIntroComponent } from '../components/teacher-intro/teacher-intro';
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -134,7 +136,8 @@ export function createTranslateLoader(http: HttpClient) {
     RefundRequestView,
     StudentCommentList,
     StudentCommentEdit,
-    ClassCommentPage
+    ClassCommentPage,
+    TeacherIntroComponent
   ],
   imports: [
     BrowserModule,
@@ -191,7 +194,8 @@ export function createTranslateLoader(http: HttpClient) {
     RefundRequestView,
     StudentCommentList,
     StudentCommentEdit,
-    ClassCommentPage
+    ClassCommentPage,
+    TeacherIntroComponent
   ],
   providers: [
     StatusBar,

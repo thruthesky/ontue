@@ -268,12 +268,8 @@
   <ion-grid no-padding>
     <ion-row no-padding text-center>
       <ion-col>
-        <ion-icon class="px-2 fs-xl" name="menu" style="margin-top: .28em" (click)=" a.open('menu') "></ion-icon>
-      </ion-col>
-      <ion-col>
         <div class="p-2" (click)=" a.open('home') ">Home</div>
       </ion-col>
-
       <ng-container *ngIf=" a.user.isLogin; else userLogout ">
         <ion-col>
           <div class="p-2" (click)=" a.open('session-future') ">Reserved</div>
@@ -289,12 +285,28 @@
         </ion-col>
 
       </ng-container>
-
       <ng-template #userLogout>
         <ion-col>
           <div class="p-2" (click)=" a.open('login') ">Login</div>
         </ion-col>
+        <ion-col>
+          <div class="p-2" (click)=" a.open('register') ">Register</div>
+        </ion-col>
       </ng-template>
+
+
+      <ion-col>
+        <div class="p-2" (click)=" a.openQnA() ">Contact Us</div>
+      </ion-col>
+
+
+      <ion-col>
+        <div class="p-2" (click)=" a.open('how-to-use') ">How to Use</div>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon class="px-2 fs-xl" name="menu" style="margin-top: .28em" (click)=" a.open('menu') "></ion-icon>
+      </ion-col>
     </ion-row>
   </ion-grid>
 
