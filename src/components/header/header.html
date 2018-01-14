@@ -123,7 +123,6 @@
       </ion-col>
 
 
-
       <ion-col>
         <div class="item header-reservation blue" (click)=" a.open('session-future') ">
           <div class="icon">
@@ -135,7 +134,7 @@
 
 
       <ion-col *ngIf=" ! a.newUser ">
-        <div class="item header-schedule-edit" (click)="a.open( 'teacher-list' )">
+        <div class="item header-teacher-list" (click)="a.open( 'teacher-list' )">
           <div class="icon">
             <i class="fal fa-calendar-alt"></i>
           </div>
@@ -145,7 +144,7 @@
 
 
       <ion-col *ngIf=" a.newUser ">
-        <div class="item header-schedule-edit brown" (click)="a.open( 'teacher-list', {mode: 'leveltest'} )">
+        <div class="item header-leveltest brown" (click)="a.open( 'teacher-list', {mode: 'leveltest'} )">
           <div class="icon">
             <i class="fal fa-calendar-alt"></i>
           </div>
@@ -155,7 +154,7 @@
 
 
       <ion-col>
-        <div class="item header-schedule-edit indigo" (click)="a.open( 'schedule-available' )">
+        <div class="item header-schedule-available indigo" (click)="a.open( 'schedule-available' )">
           <div class="icon">
             <i class="fal fa-calendar-exclamation"></i>
           </div>
