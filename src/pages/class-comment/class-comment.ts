@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
 import {StudentCommentEdit} from "../../components/student-comment-edit/student-comment-edit";
 import {AlertController, ModalController} from "ionic-angular";
+import {StudentCommentList} from "../../components/student-comment-list/student-comment-list";
 
 @Component({
   selector: 'class-comment-page',
@@ -17,17 +18,14 @@ export class ClassCommentPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController
   ) {
-
-
     this.loadClassComment();
-
   }
 
 
   loadClassComment() {
 
     this.a.lms.get_latest_student_comment_to_teachers().subscribe( res => {
-      console.log("loadClassComment:: ", res);
+      // console.log("loadClassComment:: ", res);
       this.comments = res;
     }, e => {
       this.a.alert(e);
@@ -88,7 +86,12 @@ export class ClassCommentPage {
   }
 
 
-
+  onClickShowMore(comment) {
+    const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: comment.idx_teacher }, { cssClass: 'student-comment-list' }
+    );
+    createCommentModal.onDidDismiss(() => { });
+    createCommentModal.present();
+  }
 
 
 }
