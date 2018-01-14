@@ -60,36 +60,40 @@
     </ion-row>
   </ion-grid>
 
-  <nav class="submenu">
-    <div class="m-0 p-0 d-flex justify-content-around">
-      <ng-container [ngSwitch]=" a.page ">
-        <ng-container *ngSwitchCase=" 'payment' ">
-          <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
-          <div class="p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
-          <div class="p-3">무통장입금</div>
-          <div class="p-3" (click)=" a.openQnA() ">{{ "QNA" | translate }}</div>
-        </ng-container>
+  <nav class="submenu m-0 p-0">
+    <ng-container [ngSwitch]=" a.page ">
+      <ng-container *ngSwitchCase=" 'payment' ">
+        <div class="group payment">
+          <div class="help p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <div class="p-pay-history p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
+          <div class="qna p-3" (click)=" a.openQnA() ">{{ "QNA" | translate }}</div>
+        </div>
+      </ng-container>
 
-        <ng-container *ngSwitchCase=" 'session-future' ">
-          <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
-          <div class="p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
-          <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
-          <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-          <div class="p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
-        </ng-container>
+      <ng-container *ngSwitchCase=" 'session-future' ">
+        <div class="group session-future">
+          <div class="help p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <div class="past p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
+          <div class="reserve p-3" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
+          <div class="all p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+          <div class="qna p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
+        </div>
+      </ng-container>
 
-        <ng-container *ngSwitchCase=" 'session-past' ">
-          <div class="p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
-          <div class="p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
-          <div class="p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
-          <div class="p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-          <div class="p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
-        </ng-container>
+      <ng-container *ngSwitchCase=" 'session-past' ">
+        <div class="group session-past">
+          <div class="help p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <div class="reserved p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
+          <div class="teacher p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
+          <div class="schedule p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+          <div class="qna p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
+        </div>
+      </ng-container>
 
 
-        <ng-container *ngSwitchDefault>
+      <ng-container *ngSwitchDefault>
 
-
+        <div class="group default">
           <ng-container *ngIf=" ! a.newUser ; else NewUser">
             <div class="p-3" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
             <div class="p-3" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
@@ -101,10 +105,10 @@
 
           <div class="p-3" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
           <div class="p-3" (click)=" a.openQnA() ">{{ "QNA" | translate }}</div>
+        </div>
 
-        </ng-container>
       </ng-container>
-    </div>
+    </ng-container>
   </nav>
 </section>
 <!--student-mobile-toolbar-->
