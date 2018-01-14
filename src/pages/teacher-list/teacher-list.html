@@ -3,36 +3,36 @@
 </ion-header>
 
 <ion-content>
-    <div class="page">
-  <hook-content-top></hook-content-top>
+  <div class="page">
+    <hook-content-top></hook-content-top>
 
 
-  <section class="page-header d-flex justify-content-between">
-    <h2 class="title white" *ngIf=" mode == 'leveltest' ">{{ "LEVELTEST PAGE TITLE" | translate }}</h2>
-    <h2 class="title white" *ngIf=" mode != 'leveltest' ">
-      {{ "SELECT TEACHER TO RESERVE" | translate }}
-    </h2>
-    <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
-      <ion-icon name="options"></ion-icon>
-      {{ 'OPTIONS' | translate }}
-    </div>
-  </section>
+    <section class="page-header d-flex justify-content-between">
+      <h2 class="title white" *ngIf=" mode == 'leveltest' ">{{ "LEVELTEST PAGE TITLE" | translate }}</h2>
+      <h2 class="title white" *ngIf=" mode != 'leveltest' ">
+        {{ "SELECT TEACHER TO RESERVE" | translate }}
+      </h2>
+      <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
+        <ion-icon name="options"></ion-icon>
+        {{ 'OPTIONS' | translate }}
+      </div>
+    </section>
 
-  <section class="options" *ngIf=" display_options ">
+    <section class="options" *ngIf=" display_options ">
 
 
-    <ion-list>
-      <ion-list-header>{{ "TEACHER LIST OPTIONS" | translate }}</ion-list-header>
-      <ion-item>
-        <ion-label>{{ "GENDER" | translate }}</ion-label>
-        <ion-select (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
-          <ion-option value="F">{{"FEMALE" | translate}}</ion-option>
-          <ion-option value="M">{{"MALE" | translate}}</ion-option>
-          <ion-option value="">{{"ALL" | translate}}</ion-option>
-        </ion-select>
-      </ion-item>
+      <ion-list>
+        <ion-list-header>{{ "TEACHER LIST OPTIONS" | translate }}</ion-list-header>
+        <ion-item>
+          <ion-label>{{ "GENDER" | translate }}</ion-label>
+          <ion-select (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
+            <ion-option value="F">{{"FEMALE" | translate}}</ion-option>
+            <ion-option value="M">{{"MALE" | translate}}</ion-option>
+            <ion-option value="">{{"ALL" | translate}}</ion-option>
+          </ion-select>
+        </ion-item>
 
-      <ion-item>
+        <ion-item>
           <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
           <ion-select (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-grade'}">
             <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
@@ -40,77 +40,93 @@
           </ion-select>
         </ion-item>
 
-    </ion-list>
+      </ion-list>
 
-    <button class="p-4 w-100 fs-lg bg-lightgrey" (click)=" display_options = false ">
-      <i class="fal fa-times"></i>
-      {{ "CLOSE" | translate }}
-    </button>
+      <button class="p-4 w-100 fs-lg bg-lightgrey" (click)=" display_options = false ">
+        <i class="fal fa-times"></i>
+        {{ "CLOSE" | translate }}
+      </button>
 
-  </section>
+    </section>
 
-  <section class="page-desc">
+    <section class="page-desc">
 
       <div *ngIf=" re ">
-        <div>어서오세요 <b>{{ a.user.name }}님,</b></div>
+        <div *ngIf="a.user.isLogin ">
+          <div>어서오세요
+            <b>{{ a.user.name }}님,</b>
+          </div>
           <div>
-            현재 표시되는 선생님은 {{ re.total }} 명이며,
-            예약된 수업은 {{ a.lmsInfoUserNoOfTotalSessions }}회이며
-            지난 수업은
+            현재 표시되는 선생님은 {{ re.total }} 명이며, 예약된 수업은 {{ a.lmsInfoUserNoOfTotalSessions }}회이며 지난 수업은
             <span *ngIf=" a.lmsInfoUserNoOfPast ">{{ a.lmsInfoUserNoOfPast }}회입니다.</span>
             <span *ngIf=" a.lmsInfoUserNoOfPast == 0">없습니다.</span>
+          </div>
         </div>
+
+        <div *ngIf="a.user.isLogout ">
+            <div>어서오세요
+              <b>{{ a.user.name }}님,</b>
+            </div>
+            <div>
+              현재 표시되는 선생님은 {{ re.total }} 명입니다.
+              로그인을 하시면 회원님의 수업 정보가 표시됩니다.
+            </div>
+          </div>
+
       </div>
-    
+
       <div>
         참고: 레벨테스트와 수업예약하는 방법은 동일합니다.
       </div>
-  </section>
+    </section>
 
 
-  <div *ngIf=" a.teacherTheme ">
+    <div *ngIf=" a.teacherTheme ">
       In this page, you will see teachers who are visible to students.
     </div>
 
-  <section class="page-body">
+    <section class="page-body">
 
 
-    <ion-grid *ngIf=" re ">
-      <ion-row>
-        <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
-          <div class="d-flex justify-content-center">
+      <ion-grid *ngIf=" re ">
+        <ion-row>
+          <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
+            <div class="d-flex justify-content-center">
               <div class="teacher-profile-photo">
-                  <img src="{{ teacher.photoURL }}">
-                </div>
-          </div>
-          <div class="text-center mt-1 mb-3">
+                <img src="{{ teacher.photoURL }}">
+              </div>
+            </div>
+            <div class="text-center mt-1 mb-3">
               <div>{{ a.preTeacherName( teacher.display_name )}}</div>
               <div class="grade" [attr.grade]=" teacher.grade ">
                 추천:
-                <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i><i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
+                <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>
+                <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
 
               </div>
               <div>
                 ({{ teacher.total_reservation }} 명 참여)
               </div>
-          </div>
+            </div>
 
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <div class="alert alert-warning d-flex" *ngIf=" loading ">
-      <div><ion-spinner></ion-spinner></div>
-      <div class="p-2">로딩 중 ...</div>
-    </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="alert alert-warning d-flex" *ngIf=" loading ">
+        <div>
+          <ion-spinner></ion-spinner>
+        </div>
+        <div class="p-2">로딩 중 ...</div>
+      </div>
 
 
-    <button ion-button full (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers ">강사 더보기...</button>
+      <button ion-button full (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers ">강사 더보기...</button>
 
-    <!-- <div class="alert alert-info rounded-0 border-0" *ngIf=" noMoreTeachers ">
+      <!-- <div class="alert alert-info rounded-0 border-0" *ngIf=" noMoreTeachers ">
       더 이상 강사가 없습니다.
     </div> -->
-  </section>
+    </section>
 
-  <hook-content-bottom></hook-content-bottom>
+    <hook-content-bottom></hook-content-bottom>
   </div>
 </ion-content>
