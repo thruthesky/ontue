@@ -92,7 +92,7 @@
 
           <ng-container *ngIf=" ! a.newUser ; else NewUser">
             <div class="p-3" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
-            <div class="p-3" (click)=" a.open('schedule-table') ">{{ "ALL SCHEDULE TABLE" | translate }}</div>
+            <div class="p-3" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
           </ng-container>
           <ng-template #NewUser>
             <div class="p-3" (click)=" a.open('help') ">{{ "HELP" | translate }}</div>

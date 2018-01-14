@@ -168,7 +168,7 @@
 , "NATIONALITY": "국적"
 , "TAKEN": "참여"
 , "CURRICULUM VITAE": "선생님 이력서"
-, "ADD KAKAO": "카톡 친구추가"
+, "ADD KAKAO": "선생님 카카오톡 친구 추가"
 , "HAD SESSIONS": "명 참여"
 , "F": "여"
 , "M": "남"
@@ -202,4 +202,7 @@
  ]
  , "LEVELTEST": "레벨테스트"
  , "LEVELTEST PAGE TITLE": "레벨테스트"
+ , "REVIEW": "평가"
+ , "WRITE REVIEW": "평가하기"
+ , "OPEN REVIEW": "평가보기"
 }

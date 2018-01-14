@@ -491,6 +491,24 @@ export class ScheduleTablePage {
     else return this.teacher_profile.photoURL;
   }
 
+
+  /**
+   *
+   * @param session
+   */
+  teacher_kakaoURL(session = null) {
+    // console.log("session: ", session);
+    const teacher = this.teacher(session);
+    // console.log(teacher);
+    if (teacher) {
+      if (teacher.kakao_qrmark_string !== void 0) return teacher.kakao_qrmark_string;
+      else return null;
+    }
+    else return null;
+  }
+  
+
+
   teacher_ID(session) {
     const teacher = this.teacher(session);
     // console.log('teacher: ', teacher);
@@ -739,5 +757,10 @@ export class ScheduleTablePage {
 
 
 
+  onClickAddKakao() {
+    const url = this.teacher_kakaoURL();
+    if ( url ) window.open( url, '_blank' );
+    else this.a.alert('앗, 이 선생님의 카카오톡을 입력하지 않았습니다.');
+  }
 
 }

@@ -5,13 +5,16 @@
   "PHP_ERROR_DESC": "Server program error. Please notify admin immediately.",
 
 
-  "SITE NAME": "온튜",
+  "SITE NAME": "OnTue",
 
   "CLOSE": "Close",
   "ALL MENU": "MENU",
+  "MENU": "Menu",
 
   "RESERVATIONS": "Reservation",
 
+  "Time": "Time",
+  "MINUTE": "min",
 
   "HOME": "Home",
   "BACK": "Back",
@@ -42,8 +45,17 @@
 
 
   "LOGIN_BEFORE_PAYMENT": "Please login before you are going to pay for tuition fee.",
-  "NOTE_TAX_EXCLUSIVE": "Tax is excluded."
+  "NOTE_TAX_EXCLUSIVE": "Tax is excluded.",
 
+
+
+"sunday": "Sun",
+"monday": "Mon",
+"tuesday": "Tue",
+"wednesday": "Wed",
+"thursday": "Thu",
+"friday": "Fri",
+"saturday": "Sat"
   
 
   , "SCHEDULE TABLE SEARCH OPTIONS": "Search Options"
@@ -132,4 +144,7 @@
     { "name": "윤정한", "date": "2017년 11월 22일",  "title": "❝ 영어를 자유롭게 구사 할 수 있게 되었습니다. ❞", "description": "안녕하세요!!! 주로 리카쌤과 샙이랑 공부하는 중2 김다현입니당ㅎㅎ<br> 초등학교 5학년때부터 리카쌤이랑 쭉 공부해왔구요, 지금은 샙쌤이랑도 거의 매일 수업합니다.<br> 영어도 넘나재밋어성 공부도 열심히해서 그런지 영어시험 점수도 잘나오구 그래서 이번에 엄마가 카톡으로 화상 채팅 할 때 더 좋은 최신 핸드폰도 바꿔줬어요 ㅎㅎㅎㅎ<br> 고마워요 카톡잉글리시ㅎㅎㅎ 사랑해요!!!!ㅎㅎㅎㅎㅎㅎㅎ :-)" },
     { "name": "김선아", "date": "2017년 11월 9일",  "title": "❝ 미국 유학 준비중에 만난 카톡잉글리시 ❞", "description": "시작한지는 두달정도 되었고 처음에는 월~금 하루 25분씩 했는데 지금은 매일 25분씩 하루 두번씩 하고 있네요.<br> 첨에는 어색하기도 하고 과연 도움이 될까하고 시작했는데 저렴한 수업료 한번 놀라고 매우 편리함에 다시 놀라고 선생님들의 정성에 완전 반하게 되었네요.<br> 미국에 가서도 계속 할 생각인데 이번에는 꼭 영어를 마스터 할 수 있다는 자신감이 듭니다.<br> 모두들 화이팅하세요." }
    ]
+ , "REVIEW": "Review"
+ , "WRITE REVIEW": "Write"
+ , "OPEN REVIEW": "View"
 }

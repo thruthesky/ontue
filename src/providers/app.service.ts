@@ -464,7 +464,7 @@ export class AppService {
     /**
      * Returns user language in 'en' or 'ko'
      *
-     * @use when you need to get user's language.
+     * @attention This is the only method you can use to get user's language.
      * @warning `getLanguage()` returns only from localStroage while `getUserLanguage()` returns browser language IF localStorage has no value.
      */
     getUserLanguage() {
@@ -473,6 +473,12 @@ export class AppService {
         if (!lang) lang = this.translate.getBrowserLang();
         if (!lang) lang = 'en';
         return lang;
+    }
+    get language(): string {
+        return this.getUserLanguage();
+    }
+    get isKorean(): boolean {
+        return this.language == 'ko';
     }
 
 
