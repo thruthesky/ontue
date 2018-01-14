@@ -46,7 +46,13 @@ export class AppService {
 
     platform = null;
     hostname = window.location.hostname;
-    info = {}; // LMS info.
+
+    /**
+     * LMS information from backend.
+     * @note this is being called once very boot.
+     * @attention this must be the only variable to be used to display LMS information.
+     */
+    info = null;
 
     kakaotalk_plus_student_url = "http://pf.kakao.com/_eIxgAC";
     kakaotalk_plus_teacher_url = "http://pf.kakao.com/_RcxbRC";
