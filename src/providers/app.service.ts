@@ -105,6 +105,8 @@ export class AppService {
             }
 
             console.log("updated info from remote: ", this.info);
+        }, e => {
+            //
         });
     }
 
