@@ -49,8 +49,8 @@
   , "SCHEDULE TABLE SEARCH OPTIONS": "Search Options"
   , "SCHEDULE TABLE SEARCH OPTIONS SHORT": "Options"
   , "SELECT_TEACHER_TITLE": "Select a teacher"
-  , "PAST LIST PAGE": "Past Sessions"
-  , "RESERVATION LIST PAGE": "RESERVATIONS"
+  , "PAST LIST PAGE": "Past"
+  , "RESERVATION LIST PAGE": "Reserve"
   , "TEACHER PAYMENT INFO": "PAYMENT INFORMATION"
   , "PAYMENT PAGE TITLE": "Pay as less as you like."
 
@@ -61,9 +61,9 @@
   , "SESSIONS IN REFUND PROGRESS": "Refund in progress"
   , "HELP SHORT": "Help"
   , "HELP": "Help"
-  , "AVAILABLE SESSIONS": "Schedules now"
+  , "AVAILABLE SESSIONS": "Instant Book"
   , "TEACHER LIST": "Teachers"
-  , "ALL SCHEDULE TABLE": "All Teacher Schedule"
+  , "ALL SCHEDULE TABLE": "All Teacher"
   , "QNA SHORT": "QnA"
   , "QNA": "QnA"
 
@@ -111,6 +111,10 @@
   , "PAYMENT HISTORY PAGE DESC": "You can view your payment history."
   , "No.": "번호"
   
+, "RESERVATION LIST": "Book"
+, "RESERVE NOW": "Reserve"
+, "RESERVE SESSION": "Reserve"
+  , "PAYMENT SHORT": "Pay"
   , "PAYMENT METHOD SHORT": "Pay with"
   , "PAYMENT RECEIPT PAGE TITLE": "Payment Receipt"
   , "PAYMENT INFO": "Payment Information"

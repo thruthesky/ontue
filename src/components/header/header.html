@@ -24,33 +24,33 @@
         <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
 
           <ng-container *ngIf=" a.user.isLogout ">
-            <span (click)="a.open('login')">로그인</span>
+            <span (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
             <span class="pl-2" (click)="a.open('register')">회원가입</span>
           </ng-container>
           <ng-container *ngIf=" a.user.isLogin ">
             <ng-container [ngSwitch]="a.page">
               <ng-container *ngSwitchCase=" 'schedule-table' ">
-                <span (click)="a.open('home')">홈</span>
+                <span (click)="a.open('home')">{{ 'HOME' | translate }}</span>
                 <span class="pl-2" (click)="a.open('menu')">메뉴</span>
-                <span class="pl-2" (click)="a.open('session-future')">예약확인</span>
+                <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
               </ng-container>
 
               <ng-container *ngSwitchCase=" 'payment' ">
-                <span class="px-2" (click)="a.open('home')">홈</span>
-                <span class="pl-3" (click)="a.open('teacher-list')">예약하기</span>
+                <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span>
+                <span class="pl-3" (click)="a.open('teacher-list')">{{ 'RESERVE NOW' | translate }}</span>
               </ng-container>
 
 
               <ng-container *ngSwitchCase=" 'session-future' ">
-                <span class="px-2" (click)="a.open('home')">홈</span>
-                <span class="pl-3" (click)="a.open('payment')">수강료</span>
+                <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span>
+                <span class="pl-3" (click)="a.open('payment')">{{ 'PAYMENT' | translate }}</span>
               </ng-container>
 
 
               <ng-container *ngSwitchDefault>
-                <span (click)="a.open('payment')">수강료</span>
+                <span (click)="a.open('payment')">{{ 'PAYMENT SHORT' | translate }}</span>
                 <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
-                <span class="pl-2" (click)="a.open('session-future')">예약확인</span>
+                <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
               </ng-container>
             </ng-container>
           </ng-container>
