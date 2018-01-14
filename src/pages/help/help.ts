@@ -5,14 +5,14 @@ import { AppService } from '../../providers/app.service';
     templateUrl: 'help.html'
 })
 export class HelpPage implements OnInit {
-    re = null;
+    // re = null;
     constructor(
         public a: AppService
     ) {
-        a.lms.info().subscribe( re => {
-            this.re = re;
-            console.log(this.re);
-         } );
+        // a.lms.info().subscribe( re => {
+        //     this.re = re;
+        //     console.log(this.re);
+        //  } );
     }
     ngOnInit() { }
 }

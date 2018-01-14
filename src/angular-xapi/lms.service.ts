@@ -372,9 +372,12 @@ export class LMSService extends Base {
     return this.x.post(data);
   }
 
-  stats() {
-    return this.x.post({route: 'lms.stats'});
-  }
+  /**
+   * @deprecated
+   */
+  // stats() {
+  //   return this.x.post({route: 'lms.stats'});
+  // }
 
   schedule_available() {
     return this.x.post({
@@ -387,6 +390,10 @@ export class LMSService extends Base {
     return this.x.post({route: 'lms.payment_rate'});
   }
 
+  /**
+   * Gets lms information.
+   * @note this should be called once on every boot.
+   */
   info() {
     return this.x.post({route: 'lms.info', session_id: this.user.sessionId});
   }

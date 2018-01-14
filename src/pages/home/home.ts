@@ -10,7 +10,7 @@ import { AppService } from './../../providers/app.service';
 export class HomePage {
 
   reminders = '';
-  stats;
+  // stats;
   showMoreMyOwnPlan_1 = false;
   showMoreMyOwnPlan_2 = false;
   showMoreMyOwnPlan_3 = false;
@@ -40,7 +40,7 @@ export class HomePage {
 
     // setTimeout(() => this.a.open('menu') , 200);
 
-    a.lms.stats().subscribe( re => this.stats = re, e => a.alert(e) );
+    // a.lms.stats().subscribe( re => this.stats = re, e => a.alert(e) );
 
     // this.showMoreMyOwnPlan();
 

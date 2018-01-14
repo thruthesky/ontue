@@ -46,7 +46,13 @@ export class AppService {
 
     platform = null;
     hostname = window.location.hostname;
-    info = {}; // LMS info.
+
+    /**
+     * LMS information from backend.
+     * @note this is being called once very boot.
+     * @attention this must be the only variable to be used to display LMS information.
+     */
+    info = null;
 
     kakaotalk_plus_student_url = "http://pf.kakao.com/_eIxgAC";
     kakaotalk_plus_teacher_url = "http://pf.kakao.com/_RcxbRC";
@@ -458,7 +464,7 @@ export class AppService {
     /**
      * Returns user language in 'en' or 'ko'
      *
-     * @use when you need to get user's language.
+     * @attention This is the only method you can use to get user's language.
      * @warning `getLanguage()` returns only from localStroage while `getUserLanguage()` returns browser language IF localStorage has no value.
      */
     getUserLanguage() {
@@ -467,6 +473,12 @@ export class AppService {
         if (!lang) lang = this.translate.getBrowserLang();
         if (!lang) lang = 'en';
         return lang;
+    }
+    get language(): string {
+        return this.getUserLanguage();
+    }
+    get isKorean(): boolean {
+        return this.language == 'ko';
     }
 
 

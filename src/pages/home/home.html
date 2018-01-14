@@ -18,25 +18,25 @@
           <hr>
 
           <div class="stats-wrapper my-5">
-            <ion-grid class="stats" *ngIf=" stats ">
+            <ion-grid class="stats" *ngIf=" a.info ">
               <ion-row>
                 <ion-col>
                   <div class="item teacher">
                     <div class="text">강사수</div>
-                    <div class="number">{{ stats.teacher }}</div>
+                    <div class="number">{{ a.info.teacher }}</div>
                   </div>
                 </ion-col>
                 <ion-col>
                   <div class="item reservation">
                     <div class="text">예약된수업</div>
-                    <div class="number">{{ stats.reservation }}</div>
+                    <div class="number">{{ a.info.reservation }}</div>
                   </div>
                 </ion-col>
 
                 <ion-col>
                   <div class="item leveltest">
                     <div class="text">레벨테스트</div>
-                    <div class="number">{{ stats.leveltest }}</div>
+                    <div class="number">{{ a.info.leveltest }}</div>
                   </div>
                 </ion-col>
 
@@ -155,7 +155,7 @@
                       <ion-row>
                         <ion-col col-4 col-sm-5 col-lg-3>
                           <div class="photo">
-                            <img src="https://www.ontue.com/wp-content/plugins/xapi-2/lms/img/student-comment/{{ i + 1 }}.jpg">
+                            <img src="assets/img/student/{{ i + 1 }}.jpg">
                           </div>
                         </ion-col>
                         <ion-col col-8 col-sm-7 col-lg-9>
