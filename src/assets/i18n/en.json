@@ -56,7 +56,7 @@
 "thursday": "Thu",
 "friday": "Fri",
 "saturday": "Sat"
-  
+
 
   , "SCHEDULE TABLE SEARCH OPTIONS": "Search Options"
   , "SCHEDULE TABLE SEARCH OPTIONS SHORT": "Options"
@@ -69,7 +69,7 @@
   , "SEARCHED SESSIONS": "Result"
   , "TOTAL": "Total"
   , "SEARCHED POINT": "Point"
-  , "REFUNDED SESSIONS": "Refuned"
+  , "REFUNDED SESSIONS": "Refunded"
   , "SESSIONS IN REFUND PROGRESS": "Refund in progress"
   , "HELP SHORT": "Help"
   , "HELP": "Help"
@@ -82,7 +82,7 @@
   , "CLASS NO": "No."
   , "DATE": "Date"
   , "STUDENT": "Student"
-  , "NO MORE RESERVATIONS": "Ooh, thre is no reservations."
+  , "NO MORE RESERVATIONS": "Ooh, there is no reservations."
   , "NO MORE PASTS": "OOh, there is no past sessions. You can search past sessions through options."
   , "NO MORE MESSGES": "No more messages."
   , "PHOTO UPLOAD": "Upload Photo"
@@ -122,7 +122,7 @@
   , "PAYMENT HISTORY PAGE TITLE": "Payment History"
   , "PAYMENT HISTORY PAGE DESC": "You can view your payment history."
   , "No.": "번호"
-  
+
   , "CLASS COMMENTS": "Comments"
 , "RESERVATION LIST": "Book"
 , "RESERVE NOW": "Reserve"

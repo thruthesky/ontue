@@ -11,8 +11,6 @@
 
     <section class="page-body">
 
-
-
       Your No.: {{ a.user.id }}
       Your timezone: {{ timezone_name }}
       and your time is now: {{ time }}<br>
@@ -23,7 +21,7 @@
         {{ data.low_price_class_message }}
       </div>
 
-      <table width="100%" class="schedule-edit text-center" *ngIf=" data ">
+      <table width="100%" class="schedule-edit text-center my-3" *ngIf=" data ">
         <tr class="fw-bold">
           <td class="px-1 py-2">No.</td>
           <td class="px-1 py-2">Time</td>
@@ -36,7 +34,7 @@
           <td class="px-1 py-2">Sat</td>
           <td class="px-1 py-2" colspan="2">Action</td>
         </tr>
-        <tr *ngFor="let s of data.schedules">
+        <tr *ngFor="let s of data.schedules; let odd = odd;" class="{{odd? 'bg-lightgrey':''}}" >
           <td class="px-1">{{ s.idx }}</td>
           <td class="px-1">{{s.user_time_class_begin}}</td>
           <td class="px-1"><div *ngIf="s.user_time_days.sunday">{{s.prere}} {{s.point}}</div></td>
@@ -46,12 +44,10 @@
           <td class="px-1"><div *ngIf="s.user_time_days.thursday">{{s.prere}} {{s.point}}</div></td>
           <td class="px-1"><div *ngIf="s.user_time_days.friday">{{s.prere}} {{s.point}}</div></td>
           <td class="px-1"><div *ngIf="s.user_time_days.saturday">{{s.prere}} {{s.point}}</div></td>
-          <td class="edit buttons" (click)="onClickEditSchedule(s)" width="1%"><button class="primary mb-3">Edit</button></td>
-          <td class="delete buttons" (click)="onClickDelete(s.idx)" width="1%"><button class="warning mb-3">Delete</button></td>
+          <td class="edit buttons" (click)="onClickEditSchedule(s)" width="1%"><button class="primary m-2">Edit</button></td>
+          <td class="delete buttons" (click)="onClickDelete(s.idx)" width="1%"><button class="warning my-2 mr-0">Delete</button></td>
         </tr>
-
       </table>
-
 
       <div *ngIf=" ! data ">
         <i class="fa fa-spinner fa-spin"></i> Loading...
