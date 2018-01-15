@@ -1,34 +1,36 @@
 <ion-header>
-  <header-content></header-content>
+  <header-content [title]=" 'DAY OFF' "></header-content>
 </ion-header>
-
 <ion-content>
-    <div class="page">
-  <h1>Dayoff</h1>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+    <section class="page-header">
+      <div>{{ "DAY OFF" | translate }}</div>
+    </section>
+    <section class="page-body">
+      <button ion-button (click)='onClickCreateDayoff()'>Create a Day-off</button>
+      <section *ngIf="showForm">
+        <form>
+          <ion-item-group>
+            <ion-item>
+              <ion-label>Select Date</ion-label>
+              <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY"
+                            pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
+            </ion-item>
+          </ion-item-group>
 
-  <button ion-button (click)='onClickCreateDayoff()'>Create a Day-off</button>
-
-  <section *ngIf="showForm">
-    <form>
-      <ion-item-group>
-        <ion-item>
-          <ion-label>Select Date</ion-label>
-          <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
-        </ion-item>
-      </ion-item-group>
-
-      <button ion-button type="submit" (click)="onClickSubmit()">Create</button>
-    </form>
-  </section>
-  <hr>
-
-  <ion-item-group *ngIf=" dayoffs ">
-
+          <button ion-button type="submit" (click)="onClickSubmit()">Create</button>
+        </form>
+      </section>
+      <hr>
+      <ion-item-group *ngIf=" dayoffs ">
         <button ion-item *ngFor="let dayoff of dayoffs" (click)=" onClickDeleteDate( dayoff ) ">
           {{ dayoff.date }}
           <ion-icon name="trash"></ion-icon>
         </button>
 
-  </ion-item-group>
+      </ion-item-group>
+    </section>
+    <hook-content-bottom></hook-content-bottom>
   </div>
 </ion-content>

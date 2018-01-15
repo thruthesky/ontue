@@ -1,78 +1,88 @@
 <ion-header>
-  <header-content></header-content>
+  <header-content [title]=" 'EVALUATE' "></header-content>
 </ion-header>
-<ion-content padding>
-  <h1>Evaluate</h1>
+<ion-content>
+  <div class="page">
 
-  <ion-list>
-    <ion-item> Session No.: {{ idx }}</ion-item>
-    <ion-item>Point: {{point}}</ion-item>
-    <ion-item text-wrap>
-      Student was absent: <input type="checkbox" [(ngModel)]="student_absent">
-      <div class="alert alert-danger fs-2rem" *ngIf=" student_absent ">
-        Warning: when you check on 'student was absent' box,
-        You must input some comment on comment box or else the session may not be paid.
-        If you have nothing to commment, then just type "Student was absent at hour:time on Month/Day".
-      </div>
-    </ion-item>
-    
-    <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="unsuccessful"> Any problem in the class?</ion-item>
-    <ion-item>Level of the session:  {{level}}</ion-item>
+    <hook-content-top></hook-content-top>
+    <section class="page-header green">
+      <h2 class="title">{{ 'EVALUATE' | translate }}</h2>
+    </section>
+    <section class="page-body">
+      <ion-list>
+        <ion-item> Session No.: {{ idx }}</ion-item>
+        <ion-item>Point: {{point}}</ion-item>
+        <ion-item text-wrap>
+          Student was absent: <input type="checkbox" [(ngModel)]="student_absent">
+          <div class="alert alert-danger fs-2rem" *ngIf=" student_absent ">
+            Warning: when you check on 'student was absent' box,
+            You must input some comment on comment box or else the session may not be paid.
+            If you have nothing to commment, then just type "Student was absent at hour:time on Month/Day".
+          </div>
+        </ion-item>
 
-    <ion-item>
-      Expression:
-      <select [(ngModel)]="expression" (ngModelChange)="onChangeChecklevel()">
-        <option [value]="0">Select...</option>
-        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
-        </option>
-      </select> (Rate how well the student can express)
-    </ion-item>
-    <ion-item>
-      Vocabulary:
-      <select [(ngModel)]="vocabulary" (ngModelChange)="onChangeChecklevel()">
-        <option [value]="0">Select...</option>
-        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
-        </option>
-      </select>
-      (Rate if the student use proper words, cluases)
-    </ion-item>
-    <ion-item>
-      Grammar:
-      <select [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
-        <option [value]="0">Select...</option>
-        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
-        </option>
-      </select> (Rate on student grammar)
-    </ion-item>
-    <ion-item>
-      Pronunciation:
-      <select [(ngModel)]="pronunciation" (ngModelChange)="onChangeChecklevel()">
-        <option [value]="0">Select...</option>
-        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
-        </option>
-      </select> (Rate on student accent and intonation)
-    </ion-item>
-    <ion-item>
-      Speed of Speach:
-      <select [(ngModel)]="speed" (ngModelChange)="onChangeChecklevel()">
-        <option [value]="0">Select...</option>
-        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
-        </option>
-      </select> (Rate on how fast and fluently the student speaks.)
-    </ion-item>
-    <ion-item>
-      <textarea rows="10" cols="100" [(ngModel)]="comment"></textarea>
-      <div>Comment: Leave comment of the session. Or Leave any message if the class was unsuccessful.</div>
-    </ion-item>
+        <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="unsuccessful"> Any problem in the class?
+        </ion-item>
+        <ion-item>Level of the session: {{level}}</ion-item>
 
-    <ion-item>
-      Book(Page) used in the session: <input type="text" [(ngModel)]="book_used">
-    </ion-item>
-    <ion-item>
-      Book(Page) will be used in next session: <input type="text" [(ngModel)]="book_next">
-    </ion-item>
-    <ion-item>
-      <input type="submit" (click)="onClickSubmitEvaluation()" value="SUBMIT">
-    </ion-item>
-  </ion-list>
+        <ion-item>
+          Expression:
+          <select [(ngModel)]="expression" (ngModelChange)="onChangeChecklevel()">
+            <option [value]="0">Select...</option>
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+            </option>
+          </select> (Rate how well the student can express)
+        </ion-item>
+        <ion-item>
+          Vocabulary:
+          <select [(ngModel)]="vocabulary" (ngModelChange)="onChangeChecklevel()">
+            <option [value]="0">Select...</option>
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+            </option>
+          </select>
+          (Rate if the student use proper words, cluases)
+        </ion-item>
+        <ion-item>
+          Grammar:
+          <select [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
+            <option [value]="0">Select...</option>
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+            </option>
+          </select> (Rate on student grammar)
+        </ion-item>
+        <ion-item>
+          Pronunciation:
+          <select [(ngModel)]="pronunciation" (ngModelChange)="onChangeChecklevel()">
+            <option [value]="0">Select...</option>
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+            </option>
+          </select> (Rate on student accent and intonation)
+        </ion-item>
+        <ion-item>
+          Speed of Speach:
+          <select [(ngModel)]="speed" (ngModelChange)="onChangeChecklevel()">
+            <option [value]="0">Select...</option>
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" [value]="i">{{i}}
+            </option>
+          </select> (Rate on how fast and fluently the student speaks.)
+        </ion-item>
+        <ion-item>
+          <textarea rows="10" cols="100" [(ngModel)]="comment"></textarea>
+          <div>Comment: Leave comment of the session. Or Leave any message if the class was unsuccessful.</div>
+        </ion-item>
+
+        <ion-item>
+          Book(Page) used in the session: <input type="text" [(ngModel)]="book_used">
+        </ion-item>
+        <ion-item>
+          Book(Page) will be used in next session: <input type="text" [(ngModel)]="book_next">
+        </ion-item>
+        <ion-item>
+          <input type="submit" (click)="onClickSubmitEvaluation()" value="SUBMIT">
+        </ion-item>
+      </ion-list>
+
+    </section>
+    <hook-content-bottom></hook-content-bottom>
+  </div>
 </ion-content>
