@@ -9,34 +9,118 @@
     </section>
     <section class="page-body">
 
-      <div>first name <input type="text" name="first_name" [(ngModel)]="payment_information['first_name']"></div>
-      <div>middle name <input type="text" name="middle_name" [(ngModel)]="payment_information['middle_name']"></div>
-      <div>last name <input type="text" name="last_name" [(ngModel)]="payment_information['last_name']"></div>
-      <div>phone numbr <input type="text" name="phone_number" [(ngModel)]="payment_information['phone_number']"></div>
-      <div>email <input type="text" name="email" [(ngModel)]="payment_information['email']"></div>
-      <div>country <input type="text" name="country" [(ngModel)]="payment_information['country']"></div>
-      <div>province <input type="text" name="province" [(ngModel)]="payment_information['province']"></div>
-      <div>city <input type="text" name="city" [(ngModel)]="payment_information['city']"></div>
-      <div>address <input type="text" name="address" [(ngModel)]="payment_information['address']"></div>
-      <div>zipcode <input type="text" name="zipcode" [(ngModel)]="payment_information['zipcode']"></div>
-
-      <div>Payment Method:
-        <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash">
-        GCAsh
-        <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']"
-               value="western-union"> Western Union
-        <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal">
-        Paypal
-      </div>
-
-      <button ion-button (click)="onClickSubmit()">SUBMIT</button>
+      <ion-list>
+        <ion-item>
+          <ion-label>First Name</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['first_name']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Middle Name</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['middle_name']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Last Name</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['last_name']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Phone Number</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['phone_number']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['email']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Country</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['country']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Province</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['province']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>City</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['city']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Address</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['address']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Zipcode</ion-label>
+          <ion-input type="text" [(ngModel)]="payment_information['zipcode']"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-item text-wrap>
+        <div>Payment Method</div>
+        <div>
+          <label class="mr-3">
+            <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']"
+                   value="gcash"> GCAsh
+          </label>
+          <label class="mr-3">
+            <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']"
+                   value="western-union"> Western Union
+          </label>
+          <label class="mr-3">
+            <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']"
+                   value="paypal"> Paypal
+          </label>
+        </div>
+      </ion-item>
+      <button ion-button (click)="onClickSubmit()">UPDATE</button>
 
 
       <hr>
-      <button ion-button>History</button>
+
+      <div class="py-5 fs-2rem">{{ "PAYMENT INFORMATION HISTORY" | translate }}</div>
+      <button ion-button (click)="onClickShowHistory()">Show History</button>
       <hr>
-      @TODO
-      1. when a teacher clicks on history, it will show last 100 changes.
+
+
+      <ion-list class="mb-5">
+        <ng-container *ngFor="let info of payment_information_history; let odd = odd">
+          <ion-item [ngClass]=" odd ? 'bg-lightgrey': 'bg-grey'" (click)="info['more'] =  !info['more']" >
+          Date: {{a.shortDate(info.stamp)}}
+          </ion-item>
+
+          <ng-container *ngIf="info['more']">
+            <ion-item class="border-top-1-solid">
+              <ion-label>First Name: {{info['first_name']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Middle Name: {{info['middle_name']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Last Name: {{info['last_name']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Phone Number: {{info['phone_number']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Email: {{info['email']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Country: {{info['country']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Province: {{info['province']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>City: {{info['city']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Address: {{info['address']}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Zipcode: {{info['zipcode']}}</ion-label>
+            </ion-item>
+            <ion-item  class="border-bottom-1-solid">
+              <ion-label>Payment Method: {{info['payment_method']}}</ion-label>
+            </ion-item>
+          </ng-container>
+        </ng-container>
+      </ion-list>
     </section>
     <hook-content-bottom></hook-content-bottom>
   </div>

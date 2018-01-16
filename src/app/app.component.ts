@@ -189,7 +189,7 @@ export class MyApp {
 
     // this.a.open('payment');
     // this.a.open('settings-payment-info');
-    // this.a.open('settings-payment-info');
+    this.a.open('settings-payment-info');
 
     // this.a.open('payment');
 

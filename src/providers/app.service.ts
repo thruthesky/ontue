@@ -264,6 +264,7 @@ export class AppService {
             return t += v + (i < a.length - 1 && (i + 1) % 3 == 0 ? ',' : '');
         }, '').split('').reverse().join('');
     }
+
     /**
      * Displays an error message to user.
      *
