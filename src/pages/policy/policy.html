@@ -1,8 +1,14 @@
 <ion-header>
-    <header-content></header-content>
+  <header-content></header-content>
 </ion-header>
 <ion-content padding>
-        <div class="page">
-    <page name="ontue.policy"></page>
-    </div>
+  <div class="page">
+
+    <ng-container *ngIf=" a.teacherTheme ">
+      <page name="ontue.reminders"></page>
+      <page name="ontue.policy"></page>
+      <page name="ontue.guideline"></page>
+    </ng-container>
+
+  </div>
 </ion-content>

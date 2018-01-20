@@ -583,7 +583,7 @@ export class AppService {
 
 
         // COMMENTOUT FOR REAL CASE o
-        // return false;  // show teacher theme.
+      // if (this.NO_SCHEDULE_PER_PAGE) return false;  // show teacher theme.
 
 
       /////  UNCOMMENT BELOW FOR REAL CASE

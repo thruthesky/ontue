@@ -9,7 +9,7 @@
     </section>
     <section class="page-body">
 
-      <ion-list>
+      <ion-list class="payment-information">
         <ion-item>
           <ion-label>First Name</ion-label>
           <ion-input type="text" [(ngModel)]="payment_information['first_name']"></ion-input>
@@ -68,20 +68,22 @@
           </label>
         </div>
       </ion-item>
-      <button ion-button (click)="onClickSubmit()">UPDATE</button>
+      <ion-item>
+        <button ion-button (click)="onClickSubmit()">UPDATE</button>
+      </ion-item>
 
 
       <hr>
 
-      <div class="py-5 fs-2rem">{{ "PAYMENT INFORMATION HISTORY" | translate }}</div>
+      <div class="pl-3 py-5 fs-2rem bg-lightgrey">{{ "PAYMENT INFORMATION HISTORY" | translate }}</div>
       <button ion-button (click)="onClickShowHistory()">Show History</button>
       <hr>
 
 
-      <ion-list class="mb-5">
+      <ion-list class="payment-information-history mb-5">
         <ng-container *ngFor="let info of payment_information_history; let odd = odd">
-          <ion-item [ngClass]=" odd ? 'bg-lightgrey': 'bg-grey'" (click)="info['more'] =  !info['more']" >
-          Date: {{a.shortDate(info.stamp)}}
+          <ion-item class="head" no-padding [class.odd]=" odd " [class.even]=" !odd " (click)="info['more'] =  !info['more']" >
+          Date/Time Changed: {{a.shortDate(info.stamp)}}
           </ion-item>
 
           <ng-container *ngIf="info['more']">

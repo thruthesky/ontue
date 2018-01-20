@@ -125,7 +125,8 @@ export class EvaluatePage {
 
     this.a.lms.session_evaluate(data).subscribe(res => {
       console.log(res);
-      this.a.alert("Evaluation Submitted!!!")
+      this.a.alert("Evaluation Submitted!!!");
+      this.a.open('session-past');
     }, e => {
       this.a.alert(e);
     })
