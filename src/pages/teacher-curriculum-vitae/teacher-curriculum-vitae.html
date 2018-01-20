@@ -65,13 +65,12 @@
             <ion-input type="text" [(ngModel)]="account.address" name="address"></ion-input>
           </ion-item>
 
-
           <ion-item>
             <label>Profile Picture</label>
             <div class="text-center mt-5">
-              <div class="profile-user p-relative d-inline-block w-100 of-hidden text-center"
+              <div class="profile-user p-relative d-inline-block of-hidden text-center"
                    (click)="fileUpload.onClickCamera()">
-                <input *ngIf=" ! a.isCordova " class="p-absolute z-100 t-0 l-0 size-15 bg-grey" style="opacity: 0.001"
+                <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: 0.001; font-size: 10em;"
                        type="file"
                        (change)="fileUpload.onChangeFile($event)">
                 <div class="profile-user-photo">

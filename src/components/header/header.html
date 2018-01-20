@@ -8,7 +8,8 @@
       </ion-col>
       <ion-col col-5 class="p-0">
 
-        <div class="fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
+        <div class="fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo "
+             (click)=" a.open('home') ">
           {{ title }}
           <img class="h-8" src="assets/img/talk.png">
         </div>
@@ -177,11 +178,6 @@
       </ion-col>
 
 
-
-
-
-
-
       <!-- <ion-col>
         <button class="header-teacher-list" (click)="a.open( 'teacher-list' )">
           <i class="fal fa-users"></i>
@@ -246,7 +242,6 @@
       </ion-col>
 
 
-
       <ion-col>
         <div class="item header-menu header-class-menu" (click)="a.open('menu')">
           <div class="icon">
@@ -263,49 +258,64 @@
 </ion-toolbar>
 <!--student-wide-menu-->
 
-<section class="teacher-menu d-flex p-2" *ngIf=" a.teacherTheme ">
+
+<section class="teacher-mobile-toolbar d-md-none" *ngIf=" a.teacherTheme ">
+  <ion-grid no-padding>
+    <ion-row no-padding>
+      <ion-col>
+        <img class="pointer" src="assets/img/ontue.png" (click)=" a.open('home')">
+      </ion-col>
+      <ion-col text-right="">
+        <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" a.open('menu') "></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
+
+
+<!--<ion-toolbar class="student-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme ">-->
+<section class="teacher-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme ">
 
   <ion-grid no-padding>
     <ion-row no-padding text-center>
       <ion-col>
-        <div class="p-2" (click)=" a.open('home') ">Home</div>
+        <img class="pointer" src="assets/img/ontue.png" (click)=" a.open('home')">
+        <!--<div class="p-2" (click)=" a.open('home') ">Home</div>-->
       </ion-col>
       <ng-container *ngIf=" a.user.isLogin; else userLogout ">
         <ion-col>
-          <div class="p-2" (click)=" a.open('session-future') ">Reserved</div>
+          <div class="p-3 pointer" (click)=" a.open('session-future') ">Reserved</div>
         </ion-col>
         <ion-col>
-          <div class="p-2" (click)=" a.open('session-past') ">Past</div>
+          <div class="p-3 pointer" (click)=" a.open('session-past') ">Past</div>
         </ion-col>
         <ion-col>
-          <div class="p-2" (click)=" a.open('schedule-edit') ">Schedule</div>
+          <div class="p-3 pointer" (click)=" a.open('schedule-edit') ">Schedule</div>
         </ion-col>
-        <ion-col>
-          <div class="p-2" (click)=" a.user.logout() ">Logout</div>
-        </ion-col>
+
 
       </ng-container>
       <ng-template #userLogout>
         <ion-col>
-          <div class="p-2" (click)=" a.open('login') ">Login</div>
+          <div class="p-3 pointer" (click)=" a.open('login') ">Login</div>
         </ion-col>
         <ion-col>
-          <div class="p-2" (click)=" a.open('register') ">Register</div>
+          <div class="p-3 pointer" (click)=" a.open('register') ">Register</div>
         </ion-col>
       </ng-template>
 
 
       <ion-col>
-        <div class="p-2" (click)=" a.openQnA() ">Contact Us</div>
+        <div class="p-3 pointer" (click)=" a.openQnA() ">Contact Us</div>
       </ion-col>
 
 
       <ion-col>
-        <div class="p-2" (click)=" a.open('how-to-use') ">How to Use</div>
+        <div class="p-3 pointer" (click)=" a.open('how-to-use') ">How to Use</div>
       </ion-col>
 
       <ion-col>
-        <ion-icon class="px-2 fs-xl" name="menu" style="margin-top: .28em" (click)=" a.open('menu') "></ion-icon>
+        <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" a.open('menu') "></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>

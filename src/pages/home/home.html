@@ -4,7 +4,7 @@
 
 <ion-content>
   <div class="page-full">
-    <teacher-intro-component *ngIf=" a.teacherTheme && a.user.isLogout "></teacher-intro-component>
+    <teacher-intro-component *ngIf=" a.teacherTheme "></teacher-intro-component>
   </div>
   <div class="page">
     <hook-content-top></hook-content-top>
@@ -231,11 +231,11 @@
     </ion-grid>
 
 
-    <ng-container *ngIf=" a.teacherTheme ">
-      <page name="ontue.reminders"></page>
-      <page name="ontue.policy"></page>
-      <page name="ontue.guideline"></page>
-    </ng-container>
+    <!--<ng-container *ngIf=" a.teacherTheme ">-->
+      <!--<page name="ontue.reminders"></page>-->
+      <!--<page name="ontue.policy"></page>-->
+      <!--<page name="ontue.guideline"></page>-->
+    <!--</ng-container>-->
 
     <hook-content-bottom></hook-content-bottom>
   </div>

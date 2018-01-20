@@ -13,7 +13,7 @@
       <ion-list class="pointers">
 
 
-        <ion-item class="menu-help" (click)="a.open('help')">
+        <ion-item class="menu-help" (click)="a.open('help')" *ngIf="a.studentTheme">
           <ion-icon name="help-circle" item-start></ion-icon>
           {{ 'HELP' | translate }}
         </ion-item>
@@ -25,7 +25,7 @@
         </ion-item>
         <ion-item class="menu-registration" *ngIf=" a.user.isLogout " (click)=" a.open('register') ">
           <ion-icon name="person-add" item-start></ion-icon>
-          회원가입
+          {{ "REGISTER" | translate}}
         </ion-item>
 
         <ion-item class="menu-profile" *ngIf=" a.user.isLogin " (click)=" a.open('register')">
@@ -38,15 +38,6 @@
           <ion-icon name="chatboxes" item-start></ion-icon>
           {{ 'MESSAGE' | translate }}
         </ion-item>
-
-
-
-
-        <ion-item class="menu-settings" (click)="a.open('settings')">
-          <ion-icon name="settings" item-start></ion-icon>
-          {{ 'SETTINGS' | translate }}
-        </ion-item>
-
 
 
 
@@ -65,7 +56,7 @@
 
 
         <ion-item class="menu-schedule-table" (click)="a.open('schedule-table')">
-          <ion-icon name="calendar" item-start></ion-icon>
+          <ion-icon name="apps" item-start></ion-icon>
           {{ 'ALL SCHEDULE TABLE' | translate }}
         </ion-item>
 
@@ -77,14 +68,14 @@
         </ion-item>
 
 
-        <ion-item class="menu-payment" (click)="a.open('payment')">
+        <ion-item class="menu-payment" (click)="a.open('payment')" *ngIf="a.studentTheme">
           <ion-icon name="card" item-start></ion-icon>
           {{ 'PAYMENT LONG TEXT' | translate }}
         </ion-item>
 
 
 
-        <ion-item class="menu-teacher-payment-info" (click)="a.open('settings-payment-info')" *ngIf=" a.lms.getUserType() == 'teacher' ">
+        <ion-item class="menu-teacher-payment-info" (click)="a.open('settings-payment-info')" *ngIf="a.teacherTheme">
           <ion-icon name="list-box" item-start></ion-icon>
           {{ 'TEACHER PAYMENT INFO' | translate }}
         </ion-item>
@@ -92,7 +83,7 @@
 
 
 
-        <ion-item class="menu-payment-history" (click)="a.open('payment-history')">
+        <ion-item class="menu-payment-history" (click)="a.open('payment-history')" *ngIf="a.studentTheme">
           <ion-icon name="list-box" item-start></ion-icon>
           {{ 'PAYMENT HISTORY' | translate }}
         </ion-item>
@@ -108,7 +99,19 @@
         </ion-item>
 
 
-        <ion-item class="menu-today-sessions" (click)="a.open('schedule-available')">
+        <ion-item class="menu-schedule-edit" (click)="a.open('schedule-edit')"  *ngIf="a.teacherTheme">
+          <ion-icon name="calendar" item-start></ion-icon>
+          {{ 'EDIT SCHEDULE' | translate }}
+        </ion-item>
+
+
+        <ion-item class="menu-curriculum-vitae" (click)="a.open('teacher-curriculum-vitae')" *ngIf="a.teacherTheme">
+          <ion-icon name="clipboard" item-start></ion-icon>
+          {{ 'CURRICULUM VITAE' | translate }}
+        </ion-item>
+
+
+        <ion-item class="menu-today-sessions" (click)="a.open('schedule-available')" *ngIf="a.studentTheme">
           <ion-icon name="apps" item-start></ion-icon>
           {{ 'AVAILABLE SESSIONS LONG' | translate }}
         </ion-item>
@@ -118,14 +121,15 @@
           {{ 'POLICY' | translate }}
         </ion-item>
 
-        <ion-item *ngIf="a.isTeacher" class="menu-curriculum-vitae" (click)="a.open('teacher-curriculum-vitae')">
-          <ion-icon name="clipboard" item-start></ion-icon>
-          {{ 'CURRICULUM VITAE' | translate }}
-        </ion-item>
 
         <ion-item class="menu-password-change" *ngIf=" a.user.isLogin " (click)=" a.open('password-change')">
           <ion-icon name="key" item-start></ion-icon>
           {{ 'CHANGE PASSWORD' | translate }}
+        </ion-item>
+
+        <ion-item class="menu-settings" (click)="a.open('settings')">
+          <ion-icon name="settings" item-start></ion-icon>
+          {{ 'SETTINGS' | translate }}
         </ion-item>
 
         <ion-item class="menu-logout" *ngIf=" a.user.isLogin " (click)="a.user.logout(); a.open('home')">

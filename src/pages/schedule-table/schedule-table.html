@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="">
-                   {{ 'TAKEN' | translate }}: {{ teacher_profile.total_reservation }} {{ 'HAD SESSIONS' | translate }} 
+                   {{ 'TAKEN' | translate }}: {{ teacher_profile.total_reservation }} {{ 'HAD SESSIONS' | translate }}
                 </div>
 
 
@@ -131,7 +131,7 @@
 
 
           <ion-item>
-            <ion-label class="blue">{{'HOW MANY DAYS'|translate}}</ion-label>
+            <ion-label class="blue">{{'HOW MANY DAYS'| translate}}</ion-label>
             <ion-select [(ngModel)]="days" (ionChange)="onChangeSearchOption()" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?', cssClass:'select-no-of-day'}">
               <ion-option value="5">5 일 표시</ion-option>
               <ion-option value="6">6 일 표시</ion-option>

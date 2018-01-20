@@ -1,10 +1,34 @@
+$nav-height: 40px;
+#teacher-intro1 {
+  height:100%;
+  .intro-wrapper {
+    display: block;
+    margin: 0 -50%;
+    height:100%;
+    background-image: url("/assets/img/banner1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    .intro-container {
+      margin: 0 25%;
+      padding: 2em 0 8em;
+    }
+  }
+}
+
+
+
 #teacher-intro {
   position: relative;
   height: 500px;
   .intro-wrapper {
     display: block;
     height: 100%;
-    margin: 0 -100% 2em;
+    margin: 0 -100%;
     background-image: url("/assets/img/teacher/intro.jpg");
   }
   .intro-banner {

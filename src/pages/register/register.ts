@@ -9,6 +9,7 @@ import {
   USER_UPDATE_RESPONSE
 } from './../../angular-xapi/interfaces';
 import { FileUploadWidget } from '../../components/file-upload/file-upload';
+import {NavParams} from "ionic-angular";
 
 
 @Component({
@@ -33,7 +34,8 @@ export class RegisterPage {
   showQRMark: boolean = false;
 
   constructor(
-    public a: AppService
+    public a: AppService,
+    public navParams: NavParams
   ) {
     this.offset = this.a.lms.getUserLocalTimezoneOffset();
     a.lms.timezones().subscribe(re => {
@@ -43,6 +45,9 @@ export class RegisterPage {
 
     if (a.user.isLogin) {
       this.loadData();
+    } else {
+      let register = navParams.data['register'];
+      if  ( register && register['user_email'] ) this.account = register;
     }
 
     console.log("constructor::isLogin::", this.a.user.isLogin);
@@ -117,6 +122,7 @@ export class RegisterPage {
       // this.a.open('home');
       this.a.hideLoader();
       this.a.alert('registered');
+      this.a.open('home');
     }, reg => {
       this.a.hideLoader();
       // alert(reg.message);

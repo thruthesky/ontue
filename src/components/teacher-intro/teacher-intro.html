@@ -1,49 +1,182 @@
-<section id="teacher-intro">
-  <div class="intro-wrapper"></div>
-  <div class="intro-banner p-2">
-    <div class="title fs-3rem">
-      <div class="mb-2">Hiring !!!</div>
-      <div class="mb-2">Home Base Online teacher</div>
-      <div class="mb-2">Teach anywhere, anytime</div>
-      <div class="mb-2">Interact with students</div>
+<section id="teacher-intro1" class="px-2" *ngIf="a.user.isLogout">
+  <div class="intro-wrapper">
+  <div class="intro-container page">
+    <div class="my-5 text-center">
+      <h1 class="title fs-4rem">Welcome to Ontue</h1>
+      <div class="description fs-xl">Helping teachers to get student and have classes online.</div>
     </div>
-    <div class="register-button pointer" (click)="a.open('register')">
-      APPLY NOW <i class="fa fa-edit"></i>
-    </div>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-12 col-sm-6>
+          <ion-card class="login py-4 pr-4">
+            <div class="p-4 fs-2rem text-center">
+              <div>Already Member?</div>
+              <div>Sign In</div>
+            </div>
+            <form (submit)="onSubmit()">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+                  <ion-input type="email" [(ngModel)]="_login.user_email" name="email"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+                  <ion-input type="password" [(ngModel)]="_login.user_pass" name="password"></ion-input>
+                </ion-item>
+
+                <div padding>
+                  <button type="submit" ion-button color="primary" block>{{ 'LOGIN' | translate }}</button>
+                </div>
+
+              </ion-list>
+            </form>
+          </ion-card>
+        </ion-col>
+        <ion-col col-12 col-sm-6>
+          <ion-card class="register py-4 pr-4">
+            <div class="p-4 fs-2rem text-center">
+              <div>Don't have an account?</div>
+              <div>Sign Up</div>
+            </div>
+            <form (submit)="onRegister()">
+              <ion-list>
+                <ion-item>
+                  <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+                  <ion-input type="email" [(ngModel)]="_register.user_email" name="email" placeholder="Email Address"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>{{ 'NAME' | translate }}</ion-label>
+                  <ion-input type="text" [(ngModel)]="_register.name" name="name" placeholder="Name"></ion-input>
+                </ion-item>
+
+                <div padding>
+                  <button type="submit" ion-button color="primary" block>{{ 'REGISTER' | translate }}</button>
+                </div>
+
+              </ion-list>
+            </form>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
   </div>
 </section>
-<section>
-<ion-grid id="visitor-navigation" no-padding>
-  <ion-row >
-    <ion-col col-12 col-sm-6 class="text-center">
-      <div class="p-5 bg-skyblue">
-        <div>
-          <i class="fa fa-sign-in"></i>
-          <div>Login</div>
-        </div>
-       <div> Already have account?</div>
-      </div>
-    </ion-col>
-    <ion-col col-12 col-sm-6 class="text-center">
-      <div class="p-5 bg-orange">
-        <div> No Account yet?</div>
-        <button ion-button><i class="fa fa-edit"></i> Register</button>
-      </div>
-    </ion-col>
-  </ion-row>
-  <ion-row >
-    <ion-col col-12 col-sm-6 class="text-center">
-      <div class="p-5 bg-green">
-        <div class="white">Contact Us</div>
-        <button ion-button><i class="fa fa-comment-alt"></i> Inquire Now</button>
-      </div>
-    </ion-col>
-    <ion-col col-12 col-sm-6 class="text-center">
-      <div class="p-5 bg-indigo">
-        <div class="white">How it works</div>
-        <button ion-button><i class="fa fa-book"></i> Guideline and tips</button>
-      </div>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+
+
+
+<section id="teacher-navigation" *ngIf="a.user.isLogin">
+  <div class="my-5 text-center">
+    <h1 class="title fs-4rem">Dash board</h1>
+  </div>
+  <ion-grid id="visitor-navigation" no-padding>
+    <ion-row>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('session-future')">
+            <i class="fa fa-calendar-alt fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Reserved Class</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('session-past')">
+            <i class="fa fa-calendar-times fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Past Class</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('schedule-edit')">
+            <i class="fa fa-calendar-plus fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Add/Edit Schedule</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('teacher-curriculum-vitae')">
+            <i class="fa fa-edit fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Curriculum Vitae</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('register')">
+            <i class="fa fa-address-card fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Update Profile</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('settings-payment-info')">
+            <i class="fa fa-credit-card fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Payment Information</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('message')">
+            <i class="fa fa-comment-alt fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Messages</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)=" a.openQnA()">
+            <i class="fa fa-phone-square fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Contact Us</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('faq')">
+            <i class="fal fa-book fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Guideline and tips</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('policy')">
+            <i class="fa fa-tasks fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Terms and Conditions</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-12 col-sm-6 col-md-4 class="text-center">
+        <ion-card>
+          <div class="p-5" (click)="a.open('settings')">
+            <i class="fa fa-cogs fa-4x mb-3 skyblue"></i>
+            <div><button ion-button>Settings</button></div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </section>
+
+
+<!--<section id="teacher-intro" *ngIf="a.user.isLogin">-->
+<!--<div class="intro-wrapper"></div>-->
+<!--<div class="intro-banner p-2">-->
+<!--<div class="title fs-3rem">-->
+<!--<div class="mb-2">Apply Now.</div>-->
+<!--<div class="mb-2">Teach Student.</div>-->
+<!--<div class="mb-2">Earn Money.</div>-->
+<!--<div class="mb-2">What are you waiting for.</div>-->
+<!--</div>-->
+<!--<div class="register-button pointer" (click)="a.open('register')">-->
+<!--APPLY NOW <i class="fa fa-edit"></i>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
