@@ -1,7 +1,19 @@
-.border-top-1-solid {
-  border-top: 1px solid black;
-}
-
-.border-bottom-1-solid {
-  border-bottom: 1px solid black;
+.payment-information-history {
+  ion-item {
+    .item-inner {
+      padding-left: 1em;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+    &.odd {
+      .item-inner {
+        background-color: #b2b2b2;
+      }
+    }
+    &.even {
+      .item-inner {
+        background-color: #ececec;
+      }
+    }
+  }
 }
