@@ -79,6 +79,8 @@ import { StudentCommentList } from '../components/student-comment-list/student-c
 import { StudentCommentEdit } from '../components/student-comment-edit/student-comment-edit';
 
 import { TeacherIntroComponent } from '../components/teacher-intro/teacher-intro';
+import { HomeStudentBannerComponent } from '../components/home-student-banner/home-student-banner';
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -137,7 +139,8 @@ export function createTranslateLoader(http: HttpClient) {
     StudentCommentList,
     StudentCommentEdit,
     ClassCommentPage,
-    TeacherIntroComponent
+    TeacherIntroComponent,
+    HomeStudentBannerComponent
   ],
   imports: [
     BrowserModule,
@@ -195,7 +198,8 @@ export function createTranslateLoader(http: HttpClient) {
     StudentCommentList,
     StudentCommentEdit,
     ClassCommentPage,
-    TeacherIntroComponent
+    TeacherIntroComponent,
+    HomeStudentBannerComponent
   ],
   providers: [
     StatusBar,

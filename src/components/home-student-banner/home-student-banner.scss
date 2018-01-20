@@ -1,0 +1,191 @@
+$height: 440px;
+$padding-top: 40px;
+$bg-orange: rgb(253, 186, 1);
+$bg-yellow: rgb(255, 208, 0);
+@mixin default {
+  height: $height;
+  overflow: hidden;
+}
+#student-banner {
+  animation: slideDown .2s 1;
+  animation-timing-function: ease-in;
+  height: $height;
+  overflow: hidden;
+  .ani-1 {
+    @include default;
+    color: black;
+    background-color: $bg-orange;
+    text-align: center;
+    font-size: 4em;
+    .text {
+      margin-top: 170px;
+      animation: delay2 1s 1;
+    }
+  }
+  .ani-2 {
+    @include default;
+    animation: fadeIn .3s 1;
+    .content {
+      padding-top: $padding-top;
+      background-color: white;
+      color: black;
+      animation: bannerAni 1.5s 1;
+      display: flex;
+      justify-content: center;
+      font-size: 4em;
+      img {
+        height: 400px;
+      }
+    }
+  }
+  .ani-3 {
+    @include default;
+    // animation: fadeIn 0.3s 1;
+    padding-top: 70px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    .text-1 {
+      animation: delay1 1s 1;
+      font-size: 4em;
+    }
+    .text-2 {
+      animation: delay2 2s 1;
+      margin-top: 30px;
+      font-size: 2.5em;
+    }
+    .text-3 {
+      animation: delay3 2.6s 1;
+      margin-top: 30px;
+      font-size: 2em;
+    }
+  }
+
+  .ani-4 {
+    @include default;
+    animation: fadeIn .3s 1;
+    .content {
+      padding-top: $padding-top;
+      background-color: white;
+      color: black;
+      display: flex;
+      justify-content: center;
+      font-size: 2.8em;
+      img {
+        height: 400px;
+      }
+      .text {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+
+        .text-at-bottom {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .text-1 {
+      animation: delay1 1s 1;
+    }
+    .text-2 {
+      animation: delay2 2s 1;
+    }
+    .text-3 {
+      animation: delay3 2.6s 1;
+    }
+
+    .text-4 {
+      animation: delay3 3.6s 1;
+    }
+
+  }
+
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: .1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: $height;
+  }
+}
+
+@keyframes delay1 {
+  0% {
+    opacity: .01;
+  }
+  50% {
+    opacity: .01;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes delay2 {
+  0% {
+    opacity: .01;
+  }
+  75% {
+    opacity: .01;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes delay3 {
+  0% {
+    opacity: .01;
+  }
+  88% {
+    opacity: .01;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bannerAni {
+  0% {
+    background-color: white;
+    color: black;
+  }
+  50% {
+    background-color: white;
+    color: black;
+  }
+  60% {
+    background-color: black;
+    color: white;
+  }
+  70% {
+    background-color: white;
+    color: black;
+  }
+  80% {
+    background-color: black;
+    color: white;
+  }
+  90% {
+    background-color: white;
+    color: black;
+  }
+  100% {
+    background-color: white;
+    color: black;
+  }
+}
