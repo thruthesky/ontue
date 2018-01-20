@@ -18,7 +18,10 @@ const KEY_LMS_INFO = 'lms-info';
 @Injectable()
 export class AppService {
 
+    urlBackend = "https://sonub.com:8443";
+    // urlBackend = "https://www.ontue.com";
 
+    
     NO_SCHEDULE_PER_PAGE = 50;
     DEFAULT_DAYS_TO_SHOW_ON_PAST_PAGE = 90; // 90 days.
 
@@ -74,7 +77,7 @@ export class AppService {
             alert: this.alert.bind(this)
         };
 
-        xapi.setServerUrl(window['url_backend']);
+        xapi.setServerUrl( this.urlBackend );
         // xapi.setServerUrl('https://www.sonub.com');
         // xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');

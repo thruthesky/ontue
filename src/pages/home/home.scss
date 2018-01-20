@@ -1,6 +1,9 @@
 page-home {
   .stats {
     .item {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
       width: 100px;
       height: 100px;
       border-radius: 50%;
@@ -14,7 +17,6 @@ page-home {
         background-color: indianred;
       }
       .text {
-        margin-top: 2rem;
         text-align: center;
         color: white;
         font-size: 1.6rem;
