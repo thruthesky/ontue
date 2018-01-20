@@ -54,8 +54,8 @@ export class PaymentPage implements AfterViewInit {
         if (!paypal) this.a.alert("Paypal initialization has failed.");
 
 
-        let CREATE_PAYMENT_URL = window['url_backend'] + '/wp-content/plugins/xapi-2/lms/paypal-create-payment.php';
-        let EXECUTE_PAYMENT_URL = window['url_backend'] + '/wp-content/plugins/xapi-2/lms/paypal-execute-payment.php';
+        let CREATE_PAYMENT_URL = this.a.urlBackend + '/wp-content/plugins/xapi-2/lms/paypal-create-payment.php';
+        let EXECUTE_PAYMENT_URL = this.a.urlBackend + '/wp-content/plugins/xapi-2/lms/paypal-execute-payment.php';
         console.log("create payment url: ", CREATE_PAYMENT_URL);
         console.log("execute payment url: ", EXECUTE_PAYMENT_URL);
         paypal.Button.render({

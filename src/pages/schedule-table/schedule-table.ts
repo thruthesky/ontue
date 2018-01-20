@@ -65,7 +65,7 @@ export class ScheduleTablePage {
   DURATION = 'a';
 
 
-  default_photo_url = window['url_backend'] + "/wp-content/plugins/xapi-2/lms/img/default-teacher-photo.jpg"
+  default_photo_url;
   @ViewChild('content') content;
   show: iShow = {
     more_total_schedule_warning: false,
@@ -165,6 +165,7 @@ export class ScheduleTablePage {
     // public cdr: ChangeDetectorRef
   ) {
 
+    this.default_photo_url = a.urlBackend + "/wp-content/plugins/xapi-2/lms/img/default-teacher-photo.jpg";
 
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;

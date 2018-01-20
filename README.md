@@ -26,6 +26,7 @@ $ git remove -v
 
 * How to serve with LAB
 ````
+$ s
 $ npm run serve --lab -l -c
 ````
 
