@@ -77,7 +77,7 @@ export class AppService {
             alert: this.alert.bind(this)
         };
 
-        xapi.setServerUrl( this.urlBackend );
+        xapi.setServerUrl(this.urlBackend);
         // xapi.setServerUrl('https://www.sonub.com');
         // xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');
@@ -141,7 +141,7 @@ export class AppService {
      */
     get lmsInfoUserNoOfTotalSessions(): number {
         let count = this.get('no_of_total_sessions');
-        if ( ! count ) return 0;
+        if (!count) return 0;
         return parseInt(count);
     }
     /**
@@ -149,7 +149,7 @@ export class AppService {
      */
     get lmsInfoUserNoOfPast(): number {
         let count = this.get('no_of_past');
-        if ( ! count ) return 0;
+        if (!count) return 0;
         return parseInt(count);
     }
     /**
@@ -157,7 +157,7 @@ export class AppService {
      */
     get lmsInfoUserNoOfReservation(): number {
         let count = this.get('no_of_reservation');
-        if ( ! count ) return 0;
+        if (!count) return 0;
         return parseInt(count);
     }
 
@@ -583,10 +583,10 @@ export class AppService {
 
 
         // COMMENTOUT FOR REAL CASE o
-      // if (this.NO_SCHEDULE_PER_PAGE) return false;  // show teacher theme.
+        // if (this.NO_SCHEDULE_PER_PAGE) return false;  // show teacher theme.
 
 
-      /////  UNCOMMENT BELOW FOR REAL CASE
+        /////  UNCOMMENT BELOW FOR REAL CASE
         if (this.hostname == "ontue.com" || this.hostname == 'www.ontue.com') return false;
         else if (this.lms.getUserType() == "student") return true;
         else if (this.lms.getUserType() == "teacher") return false;
@@ -603,5 +603,18 @@ export class AppService {
     }
 
 
+
+
+
+    /**
+     * IE 버전을 리턴한다.
+     * 숫자로 8,9,10,11 을 리턴한다.
+     * IE 가 아니면 거짓을 리턴한다.
+     * 예를 들어 Edge 나 Chrome 은 false 를 리턴한다.
+     */
+    detectIE() {
+        console.log("ie version: ", window['detect_ie_version']() );
+        return window['detect_ie_version']();
+    }
 
 }

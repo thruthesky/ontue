@@ -15,7 +15,8 @@
     "serve": "node app-check.js && ionic-app-scripts serve",
     "scp": "cd www && scp -r *.js *.html build ontue@ontue.com:./www",
     "scp:all": "cd www && scp -r * ontue@ontue.com:./www",
-    "s": "npm run serve"
+    "s": "npm run ionic:serve",
+    "pwa": "node pwa-check.js && ionic-app-scripts serve"
   },
   "dependencies": {
     "@angular/common": "4.4.3",

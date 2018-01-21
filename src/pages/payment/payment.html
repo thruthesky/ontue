@@ -6,7 +6,7 @@
     <hook-content-top></hook-content-top>
 
     <section class="page-header">
-        {{ 'PAYMENT PAGE TITLE' | translate }}
+      {{ 'PAYMENT PAGE TITLE' | translate }}
     </section>
 
     <section class="page-body">
@@ -19,30 +19,44 @@
         앗, 환율 책정 문제 발생하여 결제를 할 수 없습니다. 관리자에게 알려주세요.
       </section>
 
-
-
-
-        <ion-list>
-          <ion-item *ngIf=" a.user.isLogin; else loginFirst ">
-            <ion-label class="blue">{{'SELECT AMOUNT'| translate}}</ion-label>
-            <ion-select [(ngModel)]="amount" *ngIf="paypal_ready" okText="확인" cancelText="취소" [selectOptions]="{ title: '수업 시간표에 몇 일을 표시 할까요?', cssClass:'select-no-of-day'}">
-              <ion-option value="10000">10,000 원</ion-option>
-              <ion-option value="30000">30,000 원</ion-option>
-              <ion-option value="50000">50,000 원</ion-option>
-              <ion-option value="100000">100,000 원</ion-option>
-              <ion-option value="200000">200,000 원</ion-option>
-              <ion-option value="300000">300,000 원</ion-option>
-              <ion-option value="500000">500,000 원</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-        <ng-template #loginFirst>
-          <div class="my-5 py-5 text-center border-red red pointer" (click)=" a.open('login') ">
-            앗, 회원 로그인을 먼저 해 주세요.
+      <div *ngIf=" a.user.isLogin; else loginFirst ">
+        <div class="mt-5 blue">{{'SELECT AMOUNT'| translate}}</div>
+        <div class="d-flex justify-content-around my-5 py-5 bg-amount">
+          <div>
+            <input type="radio" name="amount" [(ngModel)]="amount" [value]="10000">
+            <span>10,000 원</span>
           </div>
-        </ng-template>
+          <div>
+            <input type="radio" name="amount" [(ngModel)]="amount" [value]="30000">
+            <span>30,000 원</span>
+          </div>
+          <div>
+            <input type="radio" name="amount" [(ngModel)]="amount" [value]="50000"> 
+            <span>50,000 원</span>
+          </div>
+          <div>
+            <input type="radio" name="amount" [(ngModel)]="amount" [value]="100000">
+            <span>100,000 원</span>
+          </div>
+          <div>
+            <input type="radio" name="amount" [(ngModel)]="amount" [value]="200000">
+            <span>200,000 원</span>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #loginFirst>
+        <div class="my-5 py-5 text-center border-red red pointer" (click)=" a.open('login') ">
+          앗, 회원 로그인을 먼저 해 주세요.
+        </div>
+      </ng-template>
 
 
+
+      <div class="py-5 text-center" *ngIf=" ! paypal_ready ">
+        <div><i class="fa fa-spinner fa-spin"></i> 페이팔 신용카드 결제를 초기화 중입니다.</div>
+        <div>잠시만 기다려주세요.</div>
+      </div>
 
       <div class="mb-5">
         <button class="w-100 bg-white" id="paypal-button"></button>
