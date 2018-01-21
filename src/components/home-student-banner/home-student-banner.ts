@@ -12,7 +12,7 @@ export class HomeStudentBannerComponent implements OnInit, AfterViewInit {
     
     beginAni = false;
     no = 0;
-    intervals = [4000, 5000, 6000, 10000];
+    intervals = [4000, 5000, 6000, 12000];
     constructor() { }
 
     ngOnInit() { }
