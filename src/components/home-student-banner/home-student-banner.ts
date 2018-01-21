@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, animate } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
     selector: 'home-student-banner-component',
@@ -8,7 +8,7 @@ import { Component, OnInit, AfterViewInit, animate } from '@angular/core';
 export class HomeStudentBannerComponent implements OnInit, AfterViewInit {
 
     // if it is set to -1, it's not debugging.
-    debugging = -1;  // When you debug a page, set it to animation number from 0.
+    debugging = 3;  // When you debug a page, set it to animation number from 0.
     
     beginAni = false;
     no = 0;
