@@ -1,3 +1,7 @@
 payment-page {
     @include theme('amber');
+
+    .bg-amount {
+        background-color: #fffaee;
+    }
 }

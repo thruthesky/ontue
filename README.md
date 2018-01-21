@@ -24,9 +24,18 @@ $ git remove -v
 
 * Refer [OnTue Buildguide](https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.p0dmivnwef0t) for details.
 
-* How to serve with LAB
+* How to serve
 ````
 $ s
+$ ionic serve
+````
+
+* If you want to build PWA, then use it.
+````
+$ pwa
+````
+* How to serve with LAB
+````
 $ npm run serve --lab -l -c
 ````
 

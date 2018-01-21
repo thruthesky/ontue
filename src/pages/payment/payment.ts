@@ -46,7 +46,12 @@ export class PaymentPage implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        setTimeout(() => this.initPaypal(), 200);
+        let timeout = 200;
+        if ( this.a.detectIE() <= 11 ) {
+            timeout = 2500;
+        }
+
+        setTimeout(() => this.initPaypal(), timeout);
     }
 
     initPaypal() {
