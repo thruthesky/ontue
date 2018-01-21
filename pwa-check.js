@@ -3,10 +3,12 @@
 var fs = require('fs');
 var contents = fs.readFileSync('src/index.html').toString();
 
+
 if ( contents.indexOf("// url_backend = 'https://www.ontue.com';") != -1 ) {
     console.log("WARNING\nPlease Enable Real Backend URL in index.html\n");
     process.exit(11);
 }
+
 
 if ( contents.indexOf("// if ('serviceWorker' in navigator) {") != -1 ) {
     console.log("WARNING:\nPlease Enable PWA code in index.html\n");
@@ -20,7 +22,15 @@ if ( contents.indexOf('<!-- <script src="cordova.js"></script> -->') == -1 ) {
 }
 
 
-var fs = require('fs');
+
+var contents = fs.readFileSync('src/providers/app.service.ts').toString();
+
+if ( contents.indexOf("// urlBackend = \"https://www.ontue.com\";") != -1 ) {
+    console.log("WARNING\nPlease Enable Real Backend URL in index.html\n");
+    process.exit(11);
+}
+
+
 var app_component = fs.readFileSync('src/app/app.component.ts').toString();
 
 

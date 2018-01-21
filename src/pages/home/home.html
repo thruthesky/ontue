@@ -3,11 +3,8 @@
 </ion-header>
 
 <ion-content>
-  <div class="page-full">
-    <teacher-intro-component *ngIf=" a.teacherTheme "></teacher-intro-component>
-  </div>
-
-  <home-student-banner-component></home-student-banner-component>
+  <teacher-intro-component *ngIf=" a.teacherTheme "></teacher-intro-component>
+  <home-student-banner-component *ngIf=" a.studentTheme "></home-student-banner-component>
   <div class="page">
     <hook-content-top></hook-content-top>
 
@@ -231,9 +228,9 @@
 
 
     <!--<ng-container *ngIf=" a.teacherTheme ">-->
-      <!--<page name="ontue.reminders"></page>-->
-      <!--<page name="ontue.policy"></page>-->
-      <!--<page name="ontue.guideline"></page>-->
+    <!--<page name="ontue.reminders"></page>-->
+    <!--<page name="ontue.policy"></page>-->
+    <!--<page name="ontue.guideline"></page>-->
     <!--</ng-container>-->
 
     <hook-content-bottom></hook-content-bottom>
