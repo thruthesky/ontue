@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-// import { StatusBar } from '@ionic-native/status-bar';
-// import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
@@ -53,6 +53,8 @@ import { HelpPage } from '../pages/help/help';
 
 import { ClassCommentPage } from '../pages/class-comment/class-comment';
 
+import { TeacherDashboardPage } from '../pages/teacher-dashboard/teacher-dashboard';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -63,8 +65,8 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    // statusBar: StatusBar,
-    // splashScreen: SplashScreen,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService
   ) {
@@ -72,8 +74,8 @@ export class MyApp {
 
     platform.ready().then(() => {
       this.a.platform = platform;
-      // statusBar.styleDefault();
-      // splashScreen.hide();
+      statusBar.styleDefault();
+      splashScreen.hide();
     });
 
   }
@@ -135,6 +137,7 @@ export class MyApp {
     this.a.pages['help'] = HelpPage;
 
     this.a.pages['class-comment'] = ClassCommentPage;
+    this.a.pages['teacher-dashboard'] = TeacherDashboardPage;
 
 
     setTimeout(() => this.test(), 100);

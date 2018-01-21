@@ -1,0 +1,131 @@
+<ion-header>
+  <header-content [title]=" 'TEACHER DASHBOARD' "></header-content>
+</ion-header>
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+    <section class="page-header">
+      <div>{{ "TEACHER DASHBOARD" | translate }}</div>
+    </section>
+    <section class="page-body">
+
+      <div id="teacher-navigation" class="px-2" *ngIf="a.user.isLogin">
+        <ion-grid id="visitor-navigation" no-padding>
+          <ion-row>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="py-5" (click)="a.open('session-future')">
+                  <i class="fa fa-calendar-alt fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Reserved Class</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('session-past')">
+                  <i class="fa fa-calendar-times fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Past Class</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('schedule-edit')">
+                  <i class="fa fa-calendar-plus fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Add/Edit Schedule</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('teacher-curriculum-vitae')">
+                  <i class="fa fa-edit fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Curriculum Vitae</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('register')">
+                  <i class="fa fa-address-card fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Update Profile</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('settings-payment-info')">
+                  <i class="fa fa-credit-card fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Payment Information</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('message')">
+                  <i class="fa fa-comment-alt fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Messages</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)=" a.openQnA()">
+                  <i class="fa fa-phone-square fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Contact Us</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('faq')">
+                  <i class="fal fa-book fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Guideline and tips</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('policy')">
+                  <i class="fa fa-tasks fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Terms and Conditions</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="p-5" (click)="a.open('settings')">
+                  <i class="fa fa-cogs fa-4x mb-3 skyblue"></i>
+                  <div>
+                    <button ion-button>Settings</button>
+                  </div>
+                </div>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </section>
+    <hook-content-bottom></hook-content-bottom>
+  </div>
+</ion-content>

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { AppService } from './../../providers/app.service';
+import { AppService } from '../../providers/app.service';
 
 
 
@@ -15,7 +15,14 @@ export class HeaderComponent {
     constructor(
         public a: AppService
     ) {
-        
+
+    }
+
+    showMenu() {
+
+      this.a.open('menu');
+      // if ( this.a.teacherTheme ) this.a.open('teacher-dashboard');
+      // else this.a.open('menu');
     }
 
 }
