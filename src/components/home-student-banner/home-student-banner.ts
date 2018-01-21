@@ -8,11 +8,11 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class HomeStudentBannerComponent implements OnInit, AfterViewInit {
 
     // if it is set to -1, it's not debugging.
-    debugging = 3;  // When you debug a page, set it to animation number from 0.
+    debugging = -1;  // When you debug a page, set it to animation number from 0.
     
     beginAni = false;
     no = 0;
-    intervals = [4000, 4500, 4500, 10000];
+    intervals = [4000, 5000, 6000, 10000];
     constructor() { }
 
     ngOnInit() { }
