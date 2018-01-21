@@ -4,7 +4,7 @@
 
 <ion-content>
   <teacher-intro-component *ngIf=" a.teacherTheme "></teacher-intro-component>
-  <home-student-banner-component *ngIf=" a.studentTheme "></home-student-banner-component>
+  <home-student-banner-component *ngIf=" a.studentTheme && a.user.isLogout "></home-student-banner-component>
   <div class="page">
     <hook-content-top></hook-content-top>
 
