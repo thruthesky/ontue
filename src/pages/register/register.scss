@@ -1,4 +1,24 @@
 register-page {
     @include theme('purple');
   }
-  
+
+
+
+.profile-form {
+
+  li {
+    display: flex;
+    margin-bottom: 1em;
+    input {
+      padding: .5em;
+    }
+    .label {
+      width: 140px;
+      padding: .5em;
+    }
+    .input {
+      width: 100%;
+    }
+  }
+
+}

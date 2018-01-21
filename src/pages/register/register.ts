@@ -20,6 +20,9 @@ export class RegisterPage {
 
   account: USER_REGISTER = <USER_REGISTER>{};
   birthday;
+  year: string;
+  month: string;
+  day: string;
 
   tz = {};
   offset;
@@ -32,6 +35,9 @@ export class RegisterPage {
 
 
   showQRMark: boolean = false;
+
+
+  year_now= new Date().getFullYear();
 
   constructor(
     public a: AppService,
@@ -67,8 +73,11 @@ export class RegisterPage {
       this.account.kakaotalk_id = userData.kakaotalk_id;
       this.user_type = userData.user_type;
       if ( userData.birthday.length > 0 ) {
-        this.birthday = userData.birthday.substr(0,4) + '-' + userData.birthday.substr(4,2) + '-' + userData.birthday.substr(6,2);
-        this.account.birthday = this.birthday;
+        this.year = userData.birthday.substr(0,4);
+        this.month = userData.birthday.substr(4,2);
+        this.day = userData.birthday.substr(6,2);
+        this.birthday = '' + this.year+ '-' + this.month + '-' + this.day; // old
+        this.account.birthday = '' + this.year + this.month + this.day;
       }
       this.account.gender = userData.gender;
       if ( userData.primary_photo.id ) this.files = [ userData.primary_photo ];
@@ -113,6 +122,7 @@ export class RegisterPage {
 
   profile_register() {
     this.account.user_login = this.account.user_email;
+    if( this.a.teacherTheme && this.patchBirthday()) return;
     this.a.user.register(this.account).subscribe(re => {
       console.log("user.register => success: re: ", re);
       this.account.user_pass = null;
@@ -132,6 +142,7 @@ export class RegisterPage {
 
   profile_update() {
     this.a.showLoader();
+    if( this.a.teacherTheme && this.patchBirthday()) return;
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
       console.log('updateUserInfo:', res);
       this.a.hideLoader();
@@ -246,9 +257,9 @@ export class RegisterPage {
   }
 
 
-  onChangeBirthDate() {
+  patchBirthday() { // 19881105 (YYYYMMDD)
     // console.log("Birthday:: ",this.birthday);
-    this.account.birthday = this.birthday.replace(/\-/g, '');
+    this.account.birthday = this.year + this.month + this.day
     // console.log("Birthday:: ",this.account.birthday);
   }
 
