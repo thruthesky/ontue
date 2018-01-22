@@ -37,7 +37,6 @@ export class ScheduleEditPage {
     this.getMySchedule();
 
 
-
   }
 
   updateTime() {
@@ -83,7 +82,7 @@ export class ScheduleEditPage {
       console.log('getMySchedule', re);
       this.data = re;
 
-      // this.onClickAddSchedule(); // TEST
+      // this.onClickAddSchedule(); // TEST ONLY
     } , e => this.a.alert(e) );
   }
 
