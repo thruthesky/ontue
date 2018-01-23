@@ -7,7 +7,7 @@
   </nav>
 
 
-  <ion-slides (ionSlideDidChange)="slideChanged()">
+  <ion-slides [autoplay]="4000" [loop]="true" (ionSlideDidChange)="slideChanged()">
 
     <ion-slide class="" style="background-color: rgb(245, 218, 0);">
       <section class="">
