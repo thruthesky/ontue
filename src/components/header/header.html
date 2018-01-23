@@ -127,7 +127,25 @@
       </ion-col>
 
 
-      <ion-col>
+      <ion-col *ngIf=" a.user.isLogout ">
+          <div class="item header-login" (click)=" a.open('login') ">
+              <div class="icon">
+                <i class="fal fa-sign-in"></i>
+              </div>
+              <div class="text">{{ 'LOGIN' | translate }}</div>
+            </div>
+      </ion-col>
+
+      <ion-col *ngIf=" a.user.isLogout ">
+          <div class="item header-register" (click)=" a.open('register') ">
+              <div class="icon">
+                <i class="fal fa-user-plus"></i>
+              </div>
+              <div class="text">{{ 'REGISTER' | translate }}</div>
+            </div>
+      </ion-col>
+
+      <ion-col *ngIf=" a.user.isLogin ">
         <div class="item header-reservation blue" (click)=" a.open('session-future') ">
           <div class="icon">
             <i class="fal fa-indent"></i>
@@ -167,7 +185,7 @@
       </ion-col>
 
 
-      <ion-col class="d-none d-sm-block">
+      <ion-col class="d-none d-sm-block" *ngIf=" a.user.isLogin ">
         <div class="item header-message" (click)="a.open('message')">
           <div class="icon">
             <i class="fal fa-comment"></i>
@@ -184,7 +202,7 @@
         </button>
       </ion-col> -->
 
-      <ion-col>
+      <ion-col *ngIf=" a.user.isLogin ">
         <div class="item header-past-reservation" (click)=" a.open('session-past') ">
           <div class="icon">
             <i class="fal fa-archive grey"></i>
