@@ -11,24 +11,26 @@
     </section>
     <section class="page-body">
 
-      <form (submit)="onSubmit()">
-        <ion-list>
+      <form class="my-5" (submit)="onSubmit()">
+        <ul class="login-form list-style-none">
 
-          <ion-item>
-            <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
-            <ion-input type="email" [(ngModel)]="account.user_email" name="email"></ion-input>
-          </ion-item>
+          <li>
+            <label class="label">{{ 'EMAIL' | translate }}</label>
+            <input class="input" type="email" [(ngModel)]="account.user_email" name="email">
+          </li>
 
-          <ion-item>
-            <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
-            <ion-input type="password" [(ngModel)]="account.user_pass" name="password"></ion-input>
-          </ion-item>
+          <li>
+            <label class="label">{{ 'PASSWORD' | translate }}</label>
+            <input class="input" type="password" [(ngModel)]="account.user_pass" name="password">
+          </li>
 
-          <div padding>
-            <button type="submit" ion-button color="primary" block>{{ 'LOGIN BUTTON' | translate }}</button>
-          </div>
+          <li padding>
+            <button type="submit" ion-button color="primary" block>
+              {{ 'LOGIN BUTTON' | translate }}
+            </button>
+          </li>
 
-        </ion-list>
+        </ul>
       </form>
     </section>
   </div>

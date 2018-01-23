@@ -133,6 +133,8 @@ export class SessionList {
       this.my_teachers = re['my_teachers'];
       this.teacher_summary = re['teacher_summary'];
     }, e => {
+
+      console.log('sessionSearch::', e);
       this.a.alert(e);
     });
 
