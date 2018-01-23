@@ -18,8 +18,8 @@ const KEY_LMS_INFO = 'lms-info';
 @Injectable()
 export class AppService {
 
-    urlBackend = "https://sonub.com:8443";
-    // urlBackend = "https://www.ontue.com";
+    // urlBackend = "https://sonub.com:8443";
+    urlBackend = "https://www.ontue.com";
 
 
     NO_SCHEDULE_PER_PAGE = 50;
@@ -58,7 +58,7 @@ export class AppService {
     info = null;
 
     kakaotalk_plus_student_url = "http://pf.kakao.com/_eIxgAC";
-    kakaotalk_plus_teacher_url = "http://pf.kakao.com/_RcxbRC";
+    kakaotalk_plus_teacher_url = "kakaoplus://plusfriend/home/@ontue"; // "http://pf.kakao.com/_RcxbRC"; // 
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -597,11 +597,36 @@ export class AppService {
     }
 
 
-    openQnA() {
-        if (this.teacherTheme) window.open(this.kakaotalk_plus_teacher_url);
+    onClickContactAdmin() {
+        if (this.teacherTheme) {
+            if (this.isMobile()) window.open(this.kakaotalk_plus_teacher_url);
+            else this.alert("Please use smart phone to add contact with admin. Once you have added use Kakao to chat with admin.");
+        }
         else window.open(this.kakaotalk_plus_student_url);
     }
 
+
+    /**
+     * If user is running the site or app on mobile device. It can be a website or a cordova app.
+     * It returns true as long as the user is using mobile device.
+     */
+    isMobile() {
+        if (
+            this.platform.is('android') ||
+            this.platform.is('cordova') ||
+            this.platform.is('ios') ||
+            this.platform.is('ipad') ||
+            this.platform.is('iphone') ||
+            this.platform.is('mobile') ||
+            this.platform.is('mobileweb') ||
+            this.platform.is('phablet') ||
+            this.platform.is('tablet')
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 
@@ -613,7 +638,7 @@ export class AppService {
      * 예를 들어 Edge 나 Chrome 은 false 를 리턴한다.
      */
     detectIE() {
-        console.log("ie version: ", window['detect_ie_version']() );
+        console.log("ie version: ", window['detect_ie_version']());
         return window['detect_ie_version']();
     }
 
