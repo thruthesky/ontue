@@ -56,7 +56,12 @@ export class RegisterPage {
       if  ( register && register['user_email'] ) this.account = register;
     }
 
-    console.log("constructor::isLogin::", this.a.user.isLogin);
+    // console.log("constructor::isLogin::", this.a.user.isLogin);
+
+    // console.log("a.getLanguage()::", a.getLanguage());
+    if( a.teacherTheme && !a.getLanguage() ) {
+      a.setLanguage('en');
+    }
   }
 
   ngAfterViewInit() { // TEST
