@@ -18,11 +18,11 @@ export class HeaderComponent {
 
     }
 
-    showMenu() {
+    // showMenu() {
 
-      this.a.open('menu');
-      // if ( this.a.teacherTheme ) this.a.open('teacher-dashboard');
-      // else this.a.open('menu');
-    }
+    //   this.a.open('menu');
+    //   // if ( this.a.teacherTheme ) this.a.open('teacher-dashboard');
+    //   // else this.a.open('menu');
+    // }
 
 }

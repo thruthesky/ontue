@@ -106,6 +106,7 @@
                 </div>
               </ion-card>
             </ion-col>
+
             <ion-col col-4 class="text-center">
               <ion-card>
                 <div class="py-5" (click)="a.open('settings')">
@@ -114,10 +115,21 @@
                 </div>
               </ion-card>
             </ion-col>
+            
+            <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="py-5" (click)="a.user.logout()">
+                  <i class="fa fa-sign-out fa-3x mb-3 skyblue"></i>
+                  <div>Logout</div>
+                </div>
+              </ion-card>
+            </ion-col>
+            
+
           </ion-row>
         </ion-grid>
       </div>
     </section>
-    <hook-content-bottom></hook-content-bottom>
   </div>
+  <hook-content-bottom></hook-content-bottom>
 </ion-content>

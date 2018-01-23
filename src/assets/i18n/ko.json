@@ -28,7 +28,8 @@
 "RESERVE": "예약",
 
 "NAME": "이름",
-"NICKNAME": "영어 이름(영어로만 입력)",
+"NICKNAME": "영어 이름",
+"NICKNAME DESC": "영어 이름은 닉네임으로 사용됩니다. 영어로만 입력하세요.",
 "EMAIL": "이메일",
 "USERNAME": "로그인 아이디",
 "PASSWORD": "비밀번호",

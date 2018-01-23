@@ -8,8 +8,7 @@
       </ion-col>
       <ion-col col-5 class="p-0">
 
-        <div class="fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo "
-             (click)=" a.open('home') ">
+        <div class="fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
           {{ title }}
           <img class="h-8" src="assets/img/talk.png">
         </div>
@@ -128,7 +127,25 @@
       </ion-col>
 
 
-      <ion-col>
+      <ion-col *ngIf=" a.user.isLogout ">
+          <div class="item header-login" (click)=" a.open('login') ">
+              <div class="icon">
+                <i class="fal fa-sign-in"></i>
+              </div>
+              <div class="text">{{ 'LOGIN' | translate }}</div>
+            </div>
+      </ion-col>
+
+      <ion-col *ngIf=" a.user.isLogout ">
+          <div class="item header-register" (click)=" a.open('register') ">
+              <div class="icon">
+                <i class="fal fa-user-plus"></i>
+              </div>
+              <div class="text">{{ 'REGISTER' | translate }}</div>
+            </div>
+      </ion-col>
+
+      <ion-col *ngIf=" a.user.isLogin ">
         <div class="item header-reservation blue" (click)=" a.open('session-future') ">
           <div class="icon">
             <i class="fal fa-indent"></i>
@@ -168,7 +185,7 @@
       </ion-col>
 
 
-      <ion-col class="d-none d-sm-block">
+      <ion-col class="d-none d-sm-block" *ngIf=" a.user.isLogin ">
         <div class="item header-message" (click)="a.open('message')">
           <div class="icon">
             <i class="fal fa-comment"></i>
@@ -185,7 +202,7 @@
         </button>
       </ion-col> -->
 
-      <ion-col>
+      <ion-col *ngIf=" a.user.isLogin ">
         <div class="item header-past-reservation" (click)=" a.open('session-past') ">
           <div class="icon">
             <i class="fal fa-archive grey"></i>
@@ -266,7 +283,7 @@
         <img class="pointer" src="assets/img/ontue.png" (click)=" a.open('home')">
       </ion-col>
       <ion-col text-right="">
-        <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" a.open('menu') "></ion-icon>
+        <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" a.open('teacher-dashboard') "></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -274,55 +291,21 @@
 
 
 <!--<ion-toolbar class="student-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme ">-->
-<section class="teacher-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme ">
-
-  <ion-grid no-padding>
-    <ion-row no-padding text-center>
-      <ion-col>
-        <img class="pointer" src="assets/img/ontue.png" (click)=" a.open('home')">
-        <!--<div class="p-2" (click)=" a.open('home') ">Home</div>-->
-      </ion-col>
-      <ng-container *ngIf=" a.user.isLogin; else userLogout ">
-        <ion-col>
-          <div class="p-3 pointer" (click)=" a.open('session-future') ">Reserved</div>
-        </ion-col>
-        <ion-col>
-          <div class="p-3 pointer" (click)=" a.open('session-past') ">Past</div>
-        </ion-col>
-        <ion-col>
-          <div class="p-3 pointer" (click)=" a.open('schedule-edit') ">Schedule</div>
-        </ion-col>
-
-
-      </ng-container>
-      <ng-template #userLogout>
-        <ion-col>
-          <div class="p-3 pointer" (click)=" a.open('login') ">Login</div>
-        </ion-col>
-        <ion-col>
-          <div class="p-3 pointer" (click)=" a.open('register') ">Register</div>
-        </ion-col>
-      </ng-template>
-
-
-      <ion-col>
-        <div class="p-3 pointer" (click)=" a.onClickContactAdmin() ">Contact Us</div>
-      </ion-col>
-
-
-      <ion-col>
-        <div class="p-3 pointer" (click)=" a.open('how-to-use') ">How to Use</div>
-      </ion-col>
-
-
-      <ion-col>
-        <div class="p-3 pointer" (click)=" a.open('teacher-dashboard') ">Dashboard</div>
-      </ion-col>
-
-      <ion-col>
-        <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" showMenu() "></ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-</section>
+<ion-toolbar class="teacher-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme ">
+  <div class="menus d-flex justify-content-between">
+  <img class="pointer" src="assets/img/ontue.png" (click)=" a.open('home')">
+  <ng-container *ngIf=" a.user.isLogin; else userLogout ">
+    <div class="p-3 pointer" (click)=" a.open('session-future') ">Reserved</div>
+    <div class="p-3 pointer" (click)=" a.open('session-past') ">Past</div>
+    <div class="p-3 pointer" (click)=" a.open('schedule-edit') ">Schedule</div>
+  </ng-container>
+  <ng-template #userLogout>
+    <div class="p-3 pointer" (click)=" a.open('login') ">Login</div>
+    <div class="p-3 pointer" (click)=" a.open('register') ">Register</div>
+  </ng-template>
+  <div class="p-3 pointer" (click)=" a.onClickContactAdmin() ">Contact Us</div>
+  <div class="p-3 pointer" (click)=" a.open('how-to-use') ">How to Use</div>
+  <div class="p-3 pointer" (click)=" a.open('teacher-dashboard') ">Dashboard</div>
+  <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" a.open('teacher-dashboard') "></ion-icon>
+</div>
+</ion-toolbar>

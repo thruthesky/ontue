@@ -59,6 +59,8 @@ export class AppService {
 
     kakaotalk_plus_student_url = "http://pf.kakao.com/_eIxgAC";
     kakaotalk_plus_teacher_url = "kakaoplus://plusfriend/home/@ontue"; // "http://pf.kakao.com/_RcxbRC"; //
+
+    thisYear = (new Date).getFullYear();
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -113,7 +115,7 @@ export class AppService {
                 if (this.info['user']['no_of_past'] !== void 0) this.updateLmsInfoUserNoOfPast(this.info['user']['no_of_past']);
             }
 
-            console.log("updated info from remote: ", this.info);
+            // console.log("updated info from remote: ", this.info);
         }, e => {
             //
         });
