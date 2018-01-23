@@ -243,6 +243,9 @@ $grid-breakpoints: ( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !defaul
   .d-md-block {
     display: block !important;
   }
+  .d-md-flex {
+    display: flex!important;
+  }
   .d-md-inline-block {
     display: inline-block !important;
   }
