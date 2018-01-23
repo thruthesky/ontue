@@ -41,7 +41,7 @@ import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings
 import { PaymentPage } from '../pages/payment/payment';
 import { PaymentResultPage } from '../pages/payment-result/payment-result';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
-import { PolicyPage } from '../pages/policy/policy';
+// import { PolicyPage } from '../pages/policy/policy';
 import { IntroComponent } from '../components/intro/intro';
 import { PagePage } from '../pages/page/page';
 import { SessionPastPage } from '../pages/session-past/session-past';
@@ -125,7 +125,7 @@ export function createTranslateLoader(http: HttpClient) {
     SettingsPaymentInfoPage,
     PaymentPage,
     PageComponent,
-    PolicyPage,
+    // PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
     PaymentHistoryPage,
@@ -188,7 +188,7 @@ export function createTranslateLoader(http: HttpClient) {
     SettingsPaymentInfoPage,
     PaymentPage,
     PageComponent,
-    PolicyPage,
+    // PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
     PaymentHistoryPage,

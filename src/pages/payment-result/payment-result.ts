@@ -23,7 +23,9 @@ export class PaymentResultPage implements OnInit {
         //     console.log('info. re: ', re);
         // }, e => a.alert(e) );
 
-        this.a.loadMyPoint(p => this.point = p);
+        this.a.loadMyPoint(p => {
+            this.point = p;
+        });
     }
 
     ngOnInit() { }

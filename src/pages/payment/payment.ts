@@ -142,6 +142,7 @@ export class PaymentPage implements AfterViewInit {
         }, '#paypal-button')
             .then(() => {
                 this.paypal_ready = true;
+                this.a.render();
                 // console.log("Paypal icon rendered.")
             })
             .catch(e => {

@@ -43,7 +43,7 @@ export class XapiService extends Base {
      */
     post(data): Observable<any> {
       
-        let q = this.http_build_query( data );
+        // let q = this.http_build_query( data );
         // console.log('xapi.service::post() url: ', this.serverUrl + '?' + q);
 
         return this.http.post(this.serverUrl, data)
