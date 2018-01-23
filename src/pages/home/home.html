@@ -1,24 +1,13 @@
 <ion-header>
   <header-content></header-content>
 </ion-header>
-
 <ion-content>
   <teacher-intro-component *ngIf=" a.teacherTheme "></teacher-intro-component>
   <home-student-banner-component *ngIf=" a.studentTheme && a.user.isLogout "></home-student-banner-component>
   <div class="page">
     <hook-content-top></hook-content-top>
-
     <home-student-content-component *ngIf=" a.studentTheme "></home-student-content-component>
     <home-teacher-content-component *ngIf=" a.teacherTheme "></home-teacher-content-component>
-    
-    <!-- <ng-container *ngIf=" a.teacherTheme ">
-    <page name="ontue.reminders"></page>
-    <page name="ontue.policy"></page>
-    <page name="ontue.guideline"></page>
-    </ng-container> -->
-
     <hook-content-bottom></hook-content-bottom>
   </div>
-  <!--/page-->
-
 </ion-content>
