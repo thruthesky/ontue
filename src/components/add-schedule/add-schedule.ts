@@ -73,7 +73,7 @@ export class AddSchedule {
         this.a.lms.timezone().subscribe( re => {
             this.timezone_name = re['name'];
             this.timezone_offset = parseInt(re['offset']);
-         } );
+         }, () => {});
     }
 
     ngOnDestroy() {

@@ -14,7 +14,7 @@ export class PageComponent {
     ) {
     }
     ngAfterViewInit() {
-        this.a.lms.page( { name: this.name } ).subscribe(re => this.content = re);
+        this.a.lms.page( { name: this.name } ).subscribe(re => this.content = re, () => {} );
     }
 }
 

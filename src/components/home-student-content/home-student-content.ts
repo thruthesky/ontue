@@ -61,7 +61,7 @@ export class HomeStudentContentComponent implements OnInit {
             // console.log("teachers: ", re);
             this.teachers = re['teachers'];
             this.total_teachers = re['total'];
-        });
+        }, () => {});
     }
 
 }

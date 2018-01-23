@@ -31,7 +31,7 @@ export class ScheduleEditPage {
     this.a.lms.timezone().subscribe( re => {
       this.timezone_name = re['name'];
       this.timezone_offset = parseInt(re['offset']);
-    } );
+    }, () => {} );
     this.updateTime();
 
     this.getMySchedule();
@@ -82,7 +82,7 @@ export class ScheduleEditPage {
       console.log('getMySchedule', re);
       this.data = re;
 
-      this.onClickAddSchedule(); // TEST ONLY
+      // this.onClickAddSchedule(); // TEST ONLY
     } , e => this.a.alert(e) );
   }
 
