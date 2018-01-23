@@ -149,7 +149,7 @@ export class MyApp {
     // this.a.open('teacher-curriculum-vitae');
     // this.a.open('payment-history');
 
-    this.a.open('schedule-edit');
+    // this.a.open('schedule-edit');
 
     // this.a.open('class-comment');
 
@@ -170,7 +170,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    // this.a.open('login');
+    this.a.open('login');
 
     // this.a.open('register');
     // this.a.open('menu');
