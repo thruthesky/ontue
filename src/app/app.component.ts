@@ -9,7 +9,7 @@ import { XapiService } from './../angular-xapi/angular-xapi.module';
 import { AppService } from './../providers/app.service';
 import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings-payment-info';
 
-import { PolicyPage } from '../pages/policy/policy';
+// import { PolicyPage } from '../pages/policy/policy';
 
 
 
@@ -116,7 +116,7 @@ export class MyApp {
 
     this.a.pages['payment'] = PaymentPage;
     this.a.pages['payment-history'] = PaymentHistoryPage;
-    this.a.pages['policy'] = PolicyPage;
+    // this.a.pages['policy'] = PolicyPage;
 
     // this.a.pages['intro'] = IntroPage;
 
