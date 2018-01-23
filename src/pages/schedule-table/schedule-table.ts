@@ -470,7 +470,7 @@ export class ScheduleTablePage {
     // console.log(session);
     const teacher = this.teacher(session);
     // console.log('teacher: ', teacher);
-    if (teacher) name = teacher.name;
+    if (teacher) name = teacher.display_name;
     else name = this.teacher_profile['name'];
     return name;
 
@@ -507,7 +507,7 @@ export class ScheduleTablePage {
     }
     else return null;
   }
-  
+
 
 
   teacher_ID(session) {
