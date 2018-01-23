@@ -4,10 +4,10 @@ var fs = require('fs');
 var contents = fs.readFileSync('src/index.html').toString();
 
 
-if ( contents.indexOf("// url_backend = 'https://www.ontue.com';") != -1 ) {
-    console.log("WARNING\nPlease Enable Real Backend URL in index.html\n");
-    process.exit(11);
-}
+// if ( contents.indexOf("// url_backend = 'https://www.ontue.com';") != -1 ) {
+//     console.log("WARNING\nPlease Enable Real Backend URL in index.html\n");
+//     process.exit(11);
+// }
 
 
 if ( contents.indexOf("// if ('serviceWorker' in navigator) {") != -1 ) {
@@ -26,7 +26,7 @@ if ( contents.indexOf('<!-- <script src="cordova.js"></script> -->') == -1 ) {
 var contents = fs.readFileSync('src/providers/app.service.ts').toString();
 
 if ( contents.indexOf("// urlBackend = \"https://www.ontue.com\";") != -1 ) {
-    console.log("WARNING\nPlease Enable Real Backend URL in index.html\n");
+    console.log("WARNING\nPlease Enable Real Backend URL in app.service.ts\n");
     process.exit(11);
 }
 

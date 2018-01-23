@@ -67,7 +67,7 @@
         <div class="group payment">
           <div class="help p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
           <div class="p-pay-history p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
-          <div class="qna p-3" (click)=" a.openQnA() ">{{ "QNA" | translate }}</div>
+          <div class="qna p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
         </div>
       </ng-container>
 
@@ -77,7 +77,7 @@
           <div class="past p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
           <div class="reserve p-3" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
           <div class="all p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-          <div class="qna p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
+          <div class="qna p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
         </div>
       </ng-container>
 
@@ -87,7 +87,7 @@
           <div class="reserved p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
           <div class="teacher p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
           <div class="schedule p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-          <div class="qna p-3" (click)=" a.openQnA() ">{{ "QNA SHORT" | translate }}</div>
+          <div class="qna p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
         </div>
       </ng-container>
 
@@ -105,7 +105,7 @@
           </ng-template>
 
           <div class="p-3" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
-          <div class="p-3" (click)=" a.openQnA() ">{{ "QNA" | translate }}</div>
+          <div class="p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
         </div>
 
       </ng-container>
@@ -213,7 +213,7 @@
 
 
       <ion-col class="d-none d-sm-block">
-        <div class="item header-class-qna orange" (click)=" a.openQnA() ">
+        <div class="item header-class-qna orange" (click)=" a.onClickContactAdmin() ">
           <div class="icon">
             <i class="fas fa-comment"></i>
           </div>
@@ -306,7 +306,7 @@
 
 
       <ion-col>
-        <div class="p-3 pointer" (click)=" a.openQnA() ">Contact Us</div>
+        <div class="p-3 pointer" (click)=" a.onClickContactAdmin() ">Contact Us</div>
       </ion-col>
 
 

@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+// import { SplashScreen } from '@ionic-native/splash-screen';
+// import { StatusBar } from '@ionic-native/status-bar';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -82,6 +82,11 @@ import { StudentCommentEdit } from '../components/student-comment-edit/student-c
 import { TeacherIntroComponent } from '../components/teacher-intro/teacher-intro';
 import { HomeStudentBannerComponent } from '../components/home-student-banner/home-student-banner';
 
+import { HomeStudentContentComponent } from '../components/home-student-content/home-student-content';
+
+import { HomeTeacherContentComponent } from '../components/home-teacher-content/home-teacher-content';
+
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -142,7 +147,9 @@ export function createTranslateLoader(http: HttpClient) {
     ClassCommentPage,
     TeacherIntroComponent,
     HomeStudentBannerComponent,
-    TeacherDashboardPage
+    TeacherDashboardPage,
+    HomeStudentContentComponent,
+    HomeTeacherContentComponent
   ],
   imports: [
     BrowserModule,
@@ -205,8 +212,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherDashboardPage
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
+    // StatusBar,
+    // SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     YoutubeVideoPlayer,
     AppService
