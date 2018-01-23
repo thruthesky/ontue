@@ -19,6 +19,7 @@
   "HOME": "Home",
   "BACK": "Back",
   "NAME": "Name",
+  "NICKNAME DESC": "Please input English name. English Only.",
   "NICKNAME": "Nickname",
   "EMAIL": "Email",
   "USERNAME": "Username",

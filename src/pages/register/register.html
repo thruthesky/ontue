@@ -64,18 +64,18 @@
 
           <li class="d-flex">
             <label class="label">{{ 'EMAIL' | translate }}</label>
-            <input class="input" type="email" [(ngModel)]="account.user_email" name="email">
+            <div class="input"><input class="" type="email" [(ngModel)]="account.user_email" name="email"></div>
           </li>
 
           <li *ngIf="a.user.isLogout">
             <label class="label">{{ 'PASSWORD' | translate }}</label>
-            <input class="input" type="password" [(ngModel)]="account.user_pass" name="password">
+            <div class="input"><input class="" type="password" [(ngModel)]="account.user_pass" name="password"></div>
           </li>
 
 
           <li>
             <label class="label">{{ 'NAME' | translate }}</label>
-            <input class="input" type="text" [(ngModel)]="account.name" name="name">
+          <div class="input"><input class="" type="text" [(ngModel)]="account.name" name="name"></div>
           </li>
 
           <li *ngIf=" a.teacherTheme ">
@@ -126,12 +126,18 @@
 
           <li>
             <label class="label">{{ 'NICKNAME' | translate }}</label>
-            <input class="input" type="text" [(ngModel)]="account.display_name" name="nickname">
+            <div class="input">
+                <input class="w-100" type="text" [(ngModel)]="account.display_name" name="nickname">
+                <div class="fs-lg mt-2" text-wrap>
+                  {{ 'NICKNAME DESC' | translate }}
+                </div>
+            </div>
+            
           </li>
 
           <li>
             <label class="label">{{ 'PHONE NUMBER' | translate }}</label>
-            <input class="input" type="text" [(ngModel)]="account.phone_number" name="phone_number">
+            <div class="input"><input class="" type="text" [(ngModel)]="account.phone_number" name="phone_number"></div>
           </li>
 
 

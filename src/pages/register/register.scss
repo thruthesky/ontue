@@ -8,6 +8,7 @@ register-page {
 
   li {
     display: flex;
+    justify-content: space-around;
     margin-bottom: 1em;
     input {
       padding: .5em;
@@ -18,6 +19,12 @@ register-page {
     }
     .input {
       width: 100%;
+      input {
+        width: 92%;
+        @media ( min-width: $md ) {
+          width: 95%;
+        }
+      }
     }
   }
 
