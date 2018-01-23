@@ -25,7 +25,7 @@ export class PaymentPage implements AfterViewInit {
             // console.log(re);
             this.inLoadingPaymentRate = false;
             this.payment_rate = re;
-         } );
+         }, () => {} );
     }
 
 
@@ -36,7 +36,7 @@ export class PaymentPage implements AfterViewInit {
     get errorOnExchangeRate () {
 
         const r = this.a.toInt( this.payment_rate.usd_exchange_rate );
-        
+
         // console.log(r);
         if ( r && r < 1000 ) {
             return true;
@@ -135,7 +135,7 @@ export class PaymentPage implements AfterViewInit {
 
 
 
-        
+
 
         // return a + a * u / 100;
 
@@ -143,6 +143,6 @@ export class PaymentPage implements AfterViewInit {
         // 총 결제 금액: {{ a.toInt(amount) + amount * tax / 100 | number }} 원 결제 금액({{ amount
         //     | number }}) + 세금( {{ amount * tax / 100 | number }} )
     }
-    
+
 
 }

@@ -58,7 +58,7 @@ export class AppService {
     info = null;
 
     kakaotalk_plus_student_url = "http://pf.kakao.com/_eIxgAC";
-    kakaotalk_plus_teacher_url = "kakaoplus://plusfriend/home/@ontue"; // "http://pf.kakao.com/_RcxbRC"; // 
+    kakaotalk_plus_teacher_url = "kakaoplus://plusfriend/home/@ontue"; // "http://pf.kakao.com/_RcxbRC"; //
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -461,7 +461,7 @@ export class AppService {
         ]).subscribe(re => {
             // console.log("i81n: ", re);
             this.i18n = re;
-        });
+        }, () => {});
 
     }
 

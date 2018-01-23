@@ -12,7 +12,7 @@ export class HelpPage implements OnInit {
         // a.lms.info().subscribe( re => {
         //     this.re = re;
         //     console.log(this.re);
-        //  } );
+        //  }, () => {} );
     }
     ngOnInit() { }
 }

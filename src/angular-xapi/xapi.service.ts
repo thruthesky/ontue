@@ -12,7 +12,7 @@ import { Base } from './base';
 @Injectable()
 export class XapiService extends Base {
 
-  
+
     private serverUrl = '';
 
 
@@ -36,17 +36,16 @@ export class XapiService extends Base {
     /**
      * Request to server through POST method.
      * @param data request data
-     * 
+     *
      *      data['session_id'] - user session id
      *      data['route'] - route
-     * 
+     *
      */
     post(data): Observable<any> {
-
-        
+      
         let q = this.http_build_query( data );
         console.log('xapi.service::post() url: ', this.serverUrl + '?' + q);
-        
+
         return this.http.post(this.serverUrl, data)
             .map(e => this.checkResult(e, data))
     }
@@ -60,19 +59,19 @@ export class XapiService extends Base {
     /**
      * Gets a page
      * @param req request data
-     * 
+     *
      * @code
      * a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e.message));
      * @endcode
      */
     page(req) : any {
         req['route'] = 'wordpress.page';
-        
+
         return this.post(req)
             .map( e => {
                 const re = this.safe(e);
-                this.render(500);  
-                return re;      
+                this.render(500);
+                return re;
              } );
     }
 
@@ -146,7 +145,7 @@ export class XapiService extends Base {
   }
 
 
-  
+
     render(timer = 10) {
         setTimeout(() => this.zone.run(() => {
             // console.log("zone ran.");
@@ -159,13 +158,13 @@ export class XapiService extends Base {
     }
 
 
-    
+
 
     /**
      * 이 함수는 Http Query 를 만들 때 사용한다. 주로 테스트 할 때에만 필요하다. 테스트가 끝나면, 이 함수를 삭제해야 한다.
-     * @param formdata 
-     * @param numericPrefix 
-     * @param argSeparator 
+     * @param formdata
+     * @param numericPrefix
+     * @param argSeparator
      */
     http_build_query(formdata, numericPrefix = '', argSeparator = '') {
         var urlencode = this.urlencode;
@@ -229,7 +228,7 @@ export class XapiService extends Base {
 
 
 
-    
+
 }
 
 

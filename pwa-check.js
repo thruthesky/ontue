@@ -27,7 +27,7 @@ var contents = fs.readFileSync('src/providers/app.service.ts').toString();
 
 if ( contents.indexOf("// urlBackend = \"https://www.ontue.com\";") != -1 ) {
     console.log("WARNING\nPlease Enable Real Backend URL in app.service.ts\n");
-    process.exit(11);
+    //process.exit(11);
 }
 
 
