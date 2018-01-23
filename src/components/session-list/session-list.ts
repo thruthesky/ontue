@@ -87,7 +87,7 @@ export class SessionList {
       defaults['date_end'] = this.date_end.replace(/\-/g, '');
     }
     const req = Object.assign(defaults, options);
-    console.log("Request: ", req);
+    // console.log("Request: ", req);
     return req;
   }
 
@@ -97,7 +97,7 @@ export class SessionList {
   onClickCancel(book) {
     book['process'] = true;
     this.a.lms.session_cancel(book.idx).subscribe(re => {
-      console.log(re);
+      // console.log(re);
       this.books = this.books.filter(book => book.idx != re['idx_reservation']);
 
       this.a.updateLmsInfoUserNoOfTotalSessions( re['no_of_total_sessions'] );

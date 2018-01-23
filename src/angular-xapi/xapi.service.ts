@@ -26,7 +26,7 @@ export class XapiService extends Base {
 
     setServerUrl(url: string): void {
         this.serverUrl = url + '/wp-json/xapi/v2/do';
-        console.log("serverUrl: ", this.serverUrl);
+        // console.log("serverUrl: ", this.serverUrl);
     }
 
     getServerUrl(): string {
@@ -44,7 +44,7 @@ export class XapiService extends Base {
     post(data): Observable<any> {
       
         let q = this.http_build_query( data );
-        console.log('xapi.service::post() url: ', this.serverUrl + '?' + q);
+        // console.log('xapi.service::post() url: ', this.serverUrl + '?' + q);
 
         return this.http.post(this.serverUrl, data)
             .map(e => this.checkResult(e, data))

@@ -84,8 +84,8 @@ export class AppService {
         // xapi.setServerUrl('https://sonub.com:8443');
         // // xapi.setServerUrl('http://sonub.com');
         // // xapi.version().subscribe(re => console.log("Xapi version: ", re));
-        console.log("login: ", user.isLogin);
-        console.log("profile data: ", this.user.getProfile());
+        // console.log("login: ", user.isLogin);
+        // console.log("profile data: ", this.user.getProfile());
 
 
         this.updateLMSInfo();
@@ -99,11 +99,17 @@ export class AppService {
      *      - this.lmsInfoUserNoOfReservation
      *      - this.lmsInfoUserNoOfTotalPast
      *      - this.lmsInfo('SELLER_RATE')
+     * 
+     * @param callback - You can use callback to get the result data from backend.
+     * 
+     * @attention use this method to get user information. Once this method is being used, the app gets NOT only the user information BUT also it saves into localStorage.
+     * 
+     * @note if you only want to get user point, consider using "loadMyPoint()". It's more convinent to only get point.
      */
-    updateLMSInfo() {
+    updateLMSInfo( callback=null ) {
         this.info = this.get(KEY_LMS_INFO);
         if (!this.info) this.info = {};
-        console.log("info from cache: ", this.info);
+        // console.log("info from cache: ", this.info);
         this.lms.info().subscribe(re => {
             this.set(KEY_LMS_INFO, re);
             this.info = this.get(KEY_LMS_INFO);
@@ -114,6 +120,8 @@ export class AppService {
                 if (this.info['user']['no_of_reservation'] !== void 0) this.updateLmsInfoUserNoOfReservation(this.info['user']['no_of_reservation']);
                 if (this.info['user']['no_of_past'] !== void 0) this.updateLmsInfoUserNoOfPast(this.info['user']['no_of_past']);
             }
+
+            if ( callback ) callback( re );
 
             // console.log("updated info from remote: ", this.info);
         }, e => {
@@ -192,7 +200,7 @@ export class AppService {
 
 
     showLoader() {
-        console.log("Show loader");
+        // console.log("Show loader");
         this.loader = this.loadingCtrl.create({
             content: "Please wait...",
             duration: 30000,
@@ -320,7 +328,7 @@ export class AppService {
             options['cssClass'] = 'error' + code;
         }
         else if (str instanceof HttpErrorResponse) { // backend wordpress response error. status may be 200.
-            console.log("instanceof HttpErrorResponse");
+            // console.log("instanceof HttpErrorResponse");
             const HER = str;
             let title = 'HTTP_ERROR';
             let message = 'HTTP_ERROR_DESC';
@@ -337,7 +345,7 @@ export class AppService {
             options['message'] = 'No message';
         }
 
-        console.log('options: ', options);
+        // console.log('options: ', options);
 
         this.toastCtrl.create(options).present();
 
@@ -352,7 +360,7 @@ export class AppService {
     }
 
     showAlert(title: any, content = '') {
-        console.log(title, content);
+        // console.log(title, content);
         this.alert({ title: title, message: content });
     }
 
@@ -640,7 +648,7 @@ export class AppService {
      * 예를 들어 Edge 나 Chrome 은 false 를 리턴한다.
      */
     detectIE() {
-        console.log("ie version: ", window['detect_ie_version']());
+        // console.log("ie version: ", window['detect_ie_version']());
         return window['detect_ie_version']();
     }
 

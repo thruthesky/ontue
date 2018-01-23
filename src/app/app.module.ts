@@ -39,6 +39,7 @@ import { MessagePage } from '../pages/message/message';
 import { EvaluatePage } from '../pages/evaluate/evaluate';
 import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings-payment-info';
 import { PaymentPage } from '../pages/payment/payment';
+import { PaymentResultPage } from '../pages/payment-result/payment-result';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 // import { PolicyPage } from '../pages/policy/policy';
 import { IntroComponent } from '../components/intro/intro';
@@ -149,7 +150,8 @@ export function createTranslateLoader(http: HttpClient) {
     HomeStudentBannerComponent,
     TeacherDashboardPage,
     HomeStudentContentComponent,
-    HomeTeacherContentComponent
+    HomeTeacherContentComponent,
+    PaymentResultPage
   ],
   imports: [
     BrowserModule,
@@ -209,7 +211,8 @@ export function createTranslateLoader(http: HttpClient) {
     ClassCommentPage,
     TeacherIntroComponent,
     HomeStudentBannerComponent,
-    TeacherDashboardPage
+    TeacherDashboardPage,
+    PaymentResultPage
   ],
   providers: [
     // StatusBar,

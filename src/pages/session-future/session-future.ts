@@ -12,7 +12,7 @@ export class SessionFuturePage {
   constructor(
     public a: AppService
   ) {
-    console.log("Future Sessions");
+    // console.log("Future Sessions");
   }
 
 }

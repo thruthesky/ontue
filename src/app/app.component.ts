@@ -36,6 +36,7 @@ import { EvaluatePage } from '../pages/evaluate/evaluate';
 import { EvaluateView } from '../components/evaluate-view/evaluate-view';
 
 import { PaymentPage } from '../pages/payment/payment';
+import { PaymentResultPage } from '../pages/payment-result/payment-result';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
 import { PaymentReceipt } from '../components/payment-receipt/payment-receipt';
 
@@ -115,6 +116,7 @@ export class MyApp {
 
 
     this.a.pages['payment'] = PaymentPage;
+    this.a.pages['payment-result'] = PaymentResultPage;
     this.a.pages['payment-history'] = PaymentHistoryPage;
     // this.a.pages['policy'] = PolicyPage;
 
@@ -195,6 +197,7 @@ export class MyApp {
     // this.a.open('settings-payment-info');
 
     // this.a.open('payment');
+    // this.a.open('payment-result', { re: false, message: '알수없는 에러'});
 
     // this.a.open('policy');
     // this.a.open('forum');

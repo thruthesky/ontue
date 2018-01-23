@@ -1,0 +1,36 @@
+<ion-header>
+  <header-content [title]=" '수업료 결제' "></header-content>
+</ion-header>
+<ion-content>
+  <div class="page">
+    <hook-content-top></hook-content-top>
+
+    <section class="page-header">
+      {{ 'PAYMENT RESULT PAGE TITLE' | translate }}
+    </section>
+
+    <section class="page-body">
+
+        
+      <div class="p-5">
+
+        <div *ngIf=" re ">
+          <h2 class="blue">축하합니다. 결제 성공하였습니다.</h2>
+        </div>
+        <div *ngIf=" ! re ">
+          <h2 class="red">앗, 결제에 실패하였습니다.</h2>
+          <div>{{ message }}</div>
+        </div>
+      </div>
+      <div class="pl-5" *ngIf=" ! a.inLoadingMyPoint ">
+        회원님께서는 총
+        <span><b>{{ point }}</b> 포인트를 보유하고 있습니다.</span>
+      </div>
+      <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
+
+
+    </section>
+  </div>
+  <!--/page-->
+  <hook-content-bottom></hook-content-bottom>
+</ion-content>

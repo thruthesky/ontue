@@ -30,7 +30,7 @@ export class IntroComponent
     slideChanged() {
         this.show_detail = false;
         let currentIndex = this.slides.getActiveIndex();
-        console.log('Current index is', currentIndex);
+        // console.log('Current index is', currentIndex);
         // if ( currentIndex > 2 ) currentIndex = 2; // bug
         this.on = currentIndex - 2;
     }
