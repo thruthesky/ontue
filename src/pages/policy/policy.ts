@@ -4,7 +4,7 @@ import { AppService } from '../../providers/app.service';
     selector: 'policy-page',
     templateUrl: 'policy.html'
 })
-export class Policy_Page {
+export class PolicyPage {
     constructor(
         public a: AppService
     ) {
