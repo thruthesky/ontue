@@ -13,7 +13,7 @@
     "publish": "node pwa-check.js && npm run ionic:build -- --aot --prod && node pwa-patch.js && npm run scp",
     "publish:all": "node pwa-check.js && npm run ionic:build -- --prod && node pwa-patch.js && npm run scp:all",
     "serve": "node app-check.js && ionic-app-scripts serve",
-    "scp": "cd www && scp -r *.js *.html build ontue@ontue.com:./www",
+    "scp": "cd www && scp -r *.js *.html *.json build ontue@ontue.com:./www",
     "scp:all": "cd www && scp -r * ontue@ontue.com:./www",
     "s": "npm run ionic:serve",
     "pwa": "node pwa-check.js && ionic-app-scripts serve"

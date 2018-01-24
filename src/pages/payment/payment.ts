@@ -133,6 +133,9 @@ export class PaymentPage implements AfterViewInit {
                     // #paypal_button 을 못찾아서 초기화 에러를 내는데
                     // 그 에러를 표시하지 않는다.
                 }
+                else if ( err['message'] && err['message'].indexOf('Cannot set property') != -1) {
+                    // When a user click pay button and close the popup immediately.
+                }
                 else {
                     if (this.a.user.isLogout) alert("앗, 로그인을 해 주세요. Please login");
                     else if (this.php_error) alert(this.php_error);
