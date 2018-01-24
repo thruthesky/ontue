@@ -11,7 +11,7 @@
 
     <section class="page-body">
 
-        
+
       <div class="p-5">
 
         <div *ngIf=" re ">
@@ -24,9 +24,15 @@
       </div>
       <div class="pl-5" *ngIf=" ! a.inLoadingMyPoint ">
         회원님께서는 총
-        <span><b>{{ point }}</b> 포인트를 보유하고 있습니다.</span>
+        <span>
+          <b>{{ point }}</b> 포인트를 보유하고 있습니다.</span>
+
+        <div *ngIf=" a.inLoadingMyPoint ">
+          <ion-spinner class="size-3"></ion-spinner>
+          {{ 'IN LOADING' | translate}}
+        </div>
+
       </div>
-      <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
 
 
     </section>

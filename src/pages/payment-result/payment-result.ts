@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { AppService } from '../../providers/app.service';
 
@@ -9,7 +9,7 @@ import { AppService } from '../../providers/app.service';
     templateUrl: 'payment-result.html'
 })
 
-export class PaymentResultPage implements OnInit {
+export class PaymentResultPage implements OnInit, AfterViewInit {
     re;
     message;
     point = 0;
@@ -29,4 +29,8 @@ export class PaymentResultPage implements OnInit {
     }
 
     ngOnInit() { }
+
+    ngAfterViewInit() {
+        
+    }
 }

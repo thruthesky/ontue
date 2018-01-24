@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-// import { StatusBar } from '@ionic-native/status-bar';
-// import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
@@ -67,8 +67,8 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    // statusBar: StatusBar,
-    // splashScreen: SplashScreen,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService
   ) {
@@ -76,8 +76,8 @@ export class MyApp {
 
     platform.ready().then(() => {
       this.a.platform = platform;
-      // statusBar.styleDefault();
-      // splashScreen.hide();
+      statusBar.styleDefault();
+      splashScreen.hide();
     });
 
   }
@@ -155,7 +155,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    this.a.open('how-to-use');
+    // this.a.open('how-to-use');
 
 
     // this.a.open('class-comment');
@@ -180,6 +180,7 @@ export class MyApp {
     // this.a.open('login');
 
     // this.a.open('register');
+    
     // this.a.open('menu');
 
     // this.a.open('reservation', {past: true})
