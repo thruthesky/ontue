@@ -155,6 +155,9 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
+    this.a.open('how-to-use');
+
+
     // this.a.open('class-comment');
 
     // this.a.open('schedule-table');
