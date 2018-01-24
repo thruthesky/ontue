@@ -50,7 +50,7 @@ export class TeacherCurriculumVitaePage {
 
   loadData() {
     this.a.user.data().subscribe((userData: USER_DATA_RESPONSE) => {
-      console.log('userData::', userData);
+      // console.log('userData::', userData);
       this.account.name = userData.name;
       this.account.fullname = userData.fullname;
       this.account.nickname = userData.nickname;
@@ -79,9 +79,9 @@ export class TeacherCurriculumVitaePage {
         this.youtube_thumbnail_url = imageUrl.match(/youtube.com/g, "img.youtube.com") ? imageUrl.replace(/youtube.com/g, "img.youtube.com") + "/mqdefault.jpg":'assets/images/teacher/no-video.jpg';
         // this.youtube_thumbnail_url = this.sanitizer.bypassSecurityTrustUrl(this.youtube_thumbnail_url);
 
-        console.log("youtube_thumbnail_url", this.youtube_thumbnail_url);
-
-        console.log("userData.youtube_video_url", userData.youtube_video_url);
+        // console.log("youtube_thumbnail_url", this.youtube_thumbnail_url);
+        //
+        // console.log("userData.youtube_video_url", userData.youtube_video_url);
 
         if( userData.youtube_video_url ) {
           let videoUrl = userData.youtube_video_url + "?autoplay=1&loop=1";
@@ -93,8 +93,8 @@ export class TeacherCurriculumVitaePage {
         this.account.youtube_video_url = "";
       }
 
-      console.log("youtube_video_url", this.youtube_video_url);
-      console.log("youtube_thumbnail_url", this.youtube_thumbnail_url);
+      // console.log("youtube_video_url", this.youtube_video_url);
+      // console.log("youtube_thumbnail_url", this.youtube_thumbnail_url);
 
       if (userData.primary_photo.id) this.files = [ userData.primary_photo ];
       if (userData.kakao_qrmark_photo.id){
@@ -105,7 +105,7 @@ export class TeacherCurriculumVitaePage {
   }
 
   onSubmitUpdate() {
-    console.log("onSubmitUpdate", this.account);
+    // console.log("onSubmitUpdate", this.account);
     if (!this.account.name || !this.account.name.length) return this.a.showAlert(-80021, '*Name is required...');
     if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(-80022, '*Email is required...');
     if (!this.qrmarks.length ) return this.a.showAlert(-80025, '*Teacher must upload QR Mark...');
@@ -113,7 +113,7 @@ export class TeacherCurriculumVitaePage {
 
     this.a.showLoader();
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
-      console.log('curriculum vitae:', res);
+      // console.log('curriculum vitae:', res);
       this.a.hideLoader();
       this.a.alert('Curriculum vitae Updated');
       this.loadData();
@@ -125,8 +125,10 @@ export class TeacherCurriculumVitaePage {
 
 
   onSuccessUploadPicture(file: FILE) {
-    console.log("onSuccessUpdateProfilePicture::", this.files);
 
+    // console.log("onSuccessUpdateProfilePicture::file:: ", file);
+    // console.log("onSuccessUpdateProfilePicture::files:: ", this.files);
+    //
 
     /**
      * Delete previous photo.
@@ -151,7 +153,7 @@ export class TeacherCurriculumVitaePage {
     if (this.a.user.isLogin) {
       this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
 
-        console.log("updatePrimaryPhoto", file);
+        // console.log("updatePrimaryPhoto", file);
         this.files[0] = file;
         this.a.render();
       }, err => {
@@ -176,7 +178,7 @@ export class TeacherCurriculumVitaePage {
     };
     this.a.user.update(data).subscribe(() => {
       this.a.lms.update_kakao_qrmark_string().subscribe(re => {
-        console.log("update_kakao_qrmark_string",re);
+        // console.log("update_kakao_qrmark_string",re);
         if( !re.kakao_qrmark_string ) {
           this.a.alert("Invalid QR MARK, Please try again");
           this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {

@@ -82,7 +82,7 @@
                 </button>
                 <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files"
                                     [showUploadedFiles]="false"
-                                    (success)="onSuccessUploadPicture()"></file-upload-widget>
+                                    (success)="onSuccessUploadPicture($event)"></file-upload-widget>
               </div>
             </div>
           </ion-item>
@@ -123,7 +123,7 @@
 
 
           <ion-item>
-            <ion-label floating>{{ 'YOUTUBE VIDEO' | translate }}</ion-label>
+            <ion-label>{{ 'YOUTUBE VIDEO' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.youtube_video_url" name="youtube_video_url"></ion-input>
           </ion-item>
           <!--<ion-item *ngIf="youtube_thumbnail_url">-->
@@ -138,7 +138,7 @@
 
 
           <ion-item>
-            <ion-label floating>{{ 'KAKAOTALK ID' | translate }}</ion-label>
+            <ion-label>{{ 'KAKAOTALK ID' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
           </ion-item>
 

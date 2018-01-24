@@ -39,11 +39,11 @@
               <div class="p-2">
                 <span class="mr-3">I am a</span>
                 <label class="mr-3">
-                  <input type="radio" name="user_type" [(ngModel)]="user_type" value="S"
+                  <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="S"
                          (ngModelChange)="onClickType()"> Student
                 </label>
                 <label class="mr-3">
-                  <input type="radio" name="user_type" [(ngModel)]="user_type" value="T"
+                  <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="T"
                          (ngModelChange)="onClickType()"> Teacher
                 </label>
               </div>
@@ -84,11 +84,11 @@
 
             <div class="input p-2">
               <label class="mr-3">
-                <input [(ngModel)]="account.gender" type="radio" name="gender" value="M"
+                <input class="w-10" [(ngModel)]="account.gender" type="radio" name="gender" value="M"
                        [checked]=" account.gender == 'M' "> Male
               </label>
               <label>
-                <input [(ngModel)]="account.gender" type="radio" name="gender" value="F"
+                <input class="w-10" [(ngModel)]="account.gender" type="radio" name="gender" value="F"
                        [checked]=" account.gender == 'F' "> Female
               </label>
             </div>
@@ -132,7 +132,7 @@
                   {{ 'NICKNAME DESC' | translate }}
                 </div>
             </div>
-            
+
           </li>
 
           <li>
@@ -151,7 +151,7 @@
 
           <li *ngIf=" a.teacherTheme ">
             <label class="label">Upload Kakaotalk QR Mark</label>
-            <div class="input">
+            <div class="input qr-mark">
               <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks"
                                   [showUploadedFiles]="true"
                                   (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>

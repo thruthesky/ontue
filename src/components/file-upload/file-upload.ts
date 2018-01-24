@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.ehcawgq9o2ps
  */
 import {Component, EventEmitter, Input, Output} from '@angular/core';
@@ -37,7 +37,7 @@ export class FileUploadWidget {
   }
 
   onDeviceReady() {
-    console.log("Cordova is ready.");
+    // console.log("Cordova is ready.");
   }
 
   ionViewDidLoad() {
@@ -54,21 +54,21 @@ export class FileUploadWidget {
         {
           text: 'camera',
           handler: () => {
-            console.log('camera');
+            // console.log('camera');
             this.takePhoto('camera');
           }
         },
         {
           text: 'gallery',
           handler: () => {
-            console.log('gallery');
+            // console.log('gallery');
             this.takePhoto('gallery');
           }
         },
         {
           text: 'cancel',
           handler: () => {
-            console.log('cancel');
+            // console.log('cancel');
             this.takePhoto('cancel');
           }
         }
@@ -90,19 +90,19 @@ export class FileUploadWidget {
     }
     else return;
 
-    console.log("in cordova, type: ", type);
+    // console.log("in cordova, type: ", type);
 
     let options = {
       quality: 90,
       sourceType: type
     };
     navigator.camera.getPicture(path => {
-      console.log('photo: ', path);
+      // console.log('photo: ', path);
       // alert(path);
       // transfer the photo to the server.
       this.cordovaTransferFile(path);
     }, e => {
-      console.error('camera error: ', e);
+      // console.error('camera error: ', e);
       alert("camera error");
     }, options);
   }
@@ -137,14 +137,14 @@ export class FileUploadWidget {
 
     let uri = encodeURI(this.url);
 
-    console.log(filePath);
-    console.log(uri);
-    console.log(options);
+    // console.log(filePath);
+    // console.log(uri);
+    // console.log(options);
 
     ft.upload(filePath, uri, r => {
-      console.log("Code = " + r.responseCode);
-      console.log("Response = " + r.response);
-      console.log("Sent = " + r.bytesSent);
+      // console.log("Code = " + r.responseCode);
+      // console.log("Response = " + r.response);
+      // console.log("Sent = " + r.bytesSent);
       let re;
       try {
         re = JSON.parse(r.response);
@@ -185,16 +185,16 @@ export class FileUploadWidget {
         this.insertFile(event);
       }
       else if (event === null) {
-        console.log("what is it?");
+        // console.log("what is it?");
       }
       else if (event['code']) {
         this.a.showError(event);
       }
     }, (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
-        console.log("Client-side error occured.");
+        console.log("Client-side error occurred.");
       } else {
-        console.log(err);
+        // console.log(err);
         if (err.message == 'file_is_not_selected' || err.message == 'file_is_not_selected_or_file_does_not_exist') {
           this.a.showAlert('File uploaded cancelled. No file was selected.');
         }
@@ -209,16 +209,16 @@ export class FileUploadWidget {
   }
 
   /**
-   * 
+   *
    * Deletes a file.
-   * 
+   *
    * @param file - file information.
    *            It is passed by reference
    *            BUT IT IS SAFE to do something with the file information on parent
    *            BECAUSE it is copying the id, post_password and use it on its own memory.
-   * 
-   * @param successCallback 
-   * @param failureCallback 
+   *
+   * @param successCallback
+   * @param failureCallback
    */
   deleteFile(file: FILE, successCallback=null, failureCallback=null) {
     if ( ! file || !file.id ) {
@@ -231,11 +231,11 @@ export class FileUploadWidget {
     data.post_password = this.post_password;
 
     this.a.file.delete(data).subscribe(id => {
-      console.log("file deleted: ", id);
+      // console.log("file deleted: ", id);
       // this.files = this.files.filter( file => file.id != id ); //
       let index = this.files.findIndex(file => file.id == id);
       this.files.splice(index, 1);
-      console.log('onClickDeleteButton::', this.files);
+      // console.log('onClickDeleteButton::', this.files);
       if ( successCallback ) successCallback();
       this.a.xapi.render();
     }, err => {
@@ -252,7 +252,7 @@ export class FileUploadWidget {
 
   insertFile(file) {
     this.files.push(file);
-    console.log("this.files: ", this.files);
+    // console.log("this.files: ", this.files);
     this.progressPercentage = 0;
     this.success.emit(file);
     this.a.xapi.render();
