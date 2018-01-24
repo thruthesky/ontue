@@ -9,10 +9,10 @@
     </section>
     <section class="page-body">
 
-      <div id="teacher-navigation" class="px-2" *ngIf="a.user.isLogin">
+      <div id="teacher-navigation" class="px-2">
         <ion-grid id="visitor-navigation" no-padding>
           <ion-row>
-            <ion-col col-4 class="text-center">
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
                 <div class="py-5" (click)="a.open('session-future')">
                   <i class="fa fa-calendar-alt fa-3x mb-3 skyblue"></i>
@@ -20,7 +20,7 @@
                 </div>
               </ion-card>
             </ion-col>
-            <ion-col col-4 class="text-center">
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
                 <div class="py-5" (click)="a.open('session-past')">
                   <i class="fa fa-calendar-times fa-3x mb-3 skyblue"></i>
@@ -28,7 +28,7 @@
                 </div>
               </ion-card>
             </ion-col>
-            <ion-col col-4 class="text-center">
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
                 <div class="py-5" (click)="a.open('schedule-edit')">
                   <i class="fa fa-calendar-plus fa-3x mb-3 skyblue"></i>
@@ -37,10 +37,7 @@
               </ion-card>
             </ion-col>
 
-          </ion-row>
-          <ion-row>
-
-            <ion-col col-4 class="text-center">
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
                 <div class="py-5" (click)="a.open('teacher-curriculum-vitae')">
                   <i class="fa fa-edit fa-3x mb-3 skyblue"></i>
@@ -48,15 +45,24 @@
                 </div>
               </ion-card>
             </ion-col>
-            <ion-col col-4 class="text-center">
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogout">
               <ion-card>
-                <div class="py-5" (click)="a.open('register')">
-                  <i class="fa fa-address-card fa-3x mb-3 skyblue"></i>
-                  <div>Update Profile</div>
+                <div class="py-5" (click)="a.open('login')">
+                  <i class="fa fa-sign-in fa-3x mb-3 skyblue"></i>
+                  <div>Login</div>
                 </div>
               </ion-card>
             </ion-col>
             <ion-col col-4 class="text-center">
+              <ion-card>
+                <div class="py-5" (click)="a.open('register')">
+                  <i class="fa fa-address-card fa-3x mb-3 skyblue"></i>
+                  <div *ngIf="a.user.isLogin">Update Profile</div>
+                  <div *ngIf="a.user.isLogout">Register</div>
+                </div>
+              </ion-card>
+            </ion-col>
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
                 <div class="py-5" (click)="a.open('settings-payment-info')">
                   <i class="fa fa-credit-card fa-3x mb-3 skyblue"></i>
@@ -65,12 +71,7 @@
               </ion-card>
             </ion-col>
 
-
-          </ion-row>
-          <ion-row>
-
-
-            <ion-col col-4 class="text-center">
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
                 <div class="py-5" (click)="a.open('message')">
                   <i class="fa fa-comment-alt fa-3x mb-3 skyblue"></i>
@@ -95,18 +96,6 @@
               </ion-card>
             </ion-col>
 
-
-          </ion-row>
-          <ion-row>
-            <!--<ion-col col-4 class="text-center">-->
-              <!--<ion-card>-->
-                <!--<div class="py-5" (click)="a.open('policy')">-->
-                  <!--<i class="fa fa-tasks fa-3x mb-3 skyblue"></i>-->
-                  <!--<div>Terms and Conditions</div>-->
-                <!--</div>-->
-              <!--</ion-card>-->
-            <!--</ion-col>-->
-
             <ion-col col-4 class="text-center">
               <ion-card>
                 <div class="py-5" (click)="a.open('settings')">
@@ -116,7 +105,7 @@
               </ion-card>
             </ion-col>
 
-            <ion-col col-4 class="text-center">
+            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
                 <div class="py-5" (click)="a.user.logout()">
                   <i class="fa fa-sign-out fa-3x mb-3 skyblue"></i>
@@ -124,9 +113,8 @@
                 </div>
               </ion-card>
             </ion-col>
-
-
           </ion-row>
+
         </ion-grid>
       </div>
     </section>

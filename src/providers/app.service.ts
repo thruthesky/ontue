@@ -99,11 +99,11 @@ export class AppService {
      *      - this.lmsInfoUserNoOfReservation
      *      - this.lmsInfoUserNoOfTotalPast
      *      - this.lmsInfo('SELLER_RATE')
-     * 
+     *
      * @param callback - You can use callback to get the result data from backend.
-     * 
+     *
      * @attention use this method to get user information. Once this method is being used, the app gets NOT only the user information BUT also it saves into localStorage.
-     * 
+     *
      * @note if you only want to get user point, consider using "loadMyPoint()". It's more convinent to only get point.
      */
     updateLMSInfo( callback=null ) {
