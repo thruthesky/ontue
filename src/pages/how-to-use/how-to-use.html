@@ -5,10 +5,34 @@
   <div class="page">
     <hook-content-top></hook-content-top>
     <section class="page-header bg-skyblue white">
-      <div>Tips and Guides</div>
+      <div class="fs-2rem">Tips and Guides</div>
     </section>
-    <section class="page-body">
-      <div>this is the section of how touse</div>
+    <section id="how-to-use" class="page-body">
+
+      <div class="title">Things you need to know.</div>
+      <ul class="content list-style-none">
+        <li>
+          <div class="sub-title pointer" (click)="showKakaoInstall = !showKakaoInstall">
+            <span class="px-2" *ngIf="showKakaoInstall"><i class="fal fa-chevron-circle-down"></i></span>
+            <span class="px-2" *ngIf="!showKakaoInstall"><i class="fal fa-chevron-circle-right"></i></span>
+            <span>How to <b>Install</b> Or <b>Create</b> Kakaotalk App Account.</span>
+          </div>
+          <div *ngIf=" showKakaoInstall " class="component">
+            <how-to-install-kakao-component></how-to-install-kakao-component>
+          </div>
+        </li>
+        <li>
+          <div class="sub-title pointer" (click)="showQRMark = !showQRMark">
+            <span class="px-2" *ngIf="showQRMark"><i class="fal fa-chevron-circle-down"></i></span>
+            <span class="px-2" *ngIf="!showQRMark"><i class="fal fa-chevron-circle-right"></i></span>
+            <span>How to Get <b>QR MARK</b>.</span>
+          </div>
+          <div *ngIf=" showQRMark " class="component">
+            <how-to-get-qrcode-component></how-to-get-qrcode-component>
+          </div>
+        </li>
+      </ul>
+
     </section>
   </div>
   <!--/page-->

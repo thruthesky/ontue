@@ -88,6 +88,9 @@ import { HomeStudentContentComponent } from '../components/home-student-content/
 
 import { HomeTeacherContentComponent } from '../components/home-teacher-content/home-teacher-content';
 
+import { HowToInstallKakaoComponent } from '../components/how-to-install-kakao/how-to-install-kakao';
+import { HowToGetQRCodeComponent } from '../components/how-to-get-qrcode/how-to-get-qrcode';
+
 
 
 
@@ -153,7 +156,9 @@ export function createTranslateLoader(http: HttpClient) {
     HomeStudentContentComponent,
     HomeTeacherContentComponent,
     PaymentResultPage,
-    HowToUsePage
+    HowToUsePage,
+    HowToInstallKakaoComponent,
+    HowToGetQRCodeComponent
   ],
   imports: [
     BrowserModule,
@@ -215,7 +220,9 @@ export function createTranslateLoader(http: HttpClient) {
     HomeStudentBannerComponent,
     TeacherDashboardPage,
     PaymentResultPage,
-    HowToUsePage
+    HowToUsePage,
+    HowToInstallKakaoComponent,
+    HowToGetQRCodeComponent
   ],
   providers: [
     // StatusBar,
