@@ -189,7 +189,9 @@ export class RegisterPage {
 
         console.log("updatePrimaryPhoto", file);
         this.files[0] = file;
-        this.a.render();
+        this.a.render( 100 );
+        this.a.render( 5000 ); // on mobile, the image is updated very late.
+        this.a.render( 15000 );
       }, err => {
         this.a.alert(err);
       });

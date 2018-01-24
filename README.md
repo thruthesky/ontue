@@ -68,6 +68,12 @@ $ ionic cordova emulate -l ios --target "iPhone-SE"
 
 # Publish
 
+
+## Cordova App
+
+* @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.b6m5q8dofizh
+
+
 ## PWA
 
 ````
