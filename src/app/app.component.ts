@@ -55,6 +55,7 @@ import { HelpPage } from '../pages/help/help';
 import { ClassCommentPage } from '../pages/class-comment/class-comment';
 
 import { TeacherDashboardPage } from '../pages/teacher-dashboard/teacher-dashboard';
+import { HowToUsePage } from '../pages/how-to-use/how-to-use';
 
 
 @Component({
@@ -140,6 +141,7 @@ export class MyApp {
 
     this.a.pages['class-comment'] = ClassCommentPage;
     this.a.pages['teacher-dashboard'] = TeacherDashboardPage;
+    this.a.pages['how-to-use'] = HowToUsePage;
 
 
     setTimeout(() => this.test(), 100);

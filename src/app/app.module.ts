@@ -51,6 +51,7 @@ import { ScheduleAvailablePage } from '../pages/schedule-available/schedule-avai
 import { HelpPage } from '../pages/help/help';
 import { ClassCommentPage } from '../pages/class-comment/class-comment';
 import { TeacherDashboardPage } from '../pages/teacher-dashboard/teacher-dashboard';
+import { HowToUsePage } from '../pages/how-to-use/how-to-use';
 
 
 
@@ -151,7 +152,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherDashboardPage,
     HomeStudentContentComponent,
     HomeTeacherContentComponent,
-    PaymentResultPage
+    PaymentResultPage,
+    HowToUsePage
   ],
   imports: [
     BrowserModule,
@@ -212,7 +214,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherIntroComponent,
     HomeStudentBannerComponent,
     TeacherDashboardPage,
-    PaymentResultPage
+    PaymentResultPage,
+    HowToUsePage
   ],
   providers: [
     // StatusBar,

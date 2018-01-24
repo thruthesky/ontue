@@ -27,7 +27,7 @@ export class FileService {
 
     uploadForm(event): Observable<any> {
 
-        console.log("uplodaForm");
+        // console.log("uplodaForm");
         if (event === void 0 || event.target === void 0 || event.target.files === void 0) {
             return Observable.throw(new Error('file_is_not_selected'));
         }
@@ -43,8 +43,8 @@ export class FileService {
         formData.append('route', 'file.upload');
         formData.append('session_id', this.user.sessionId);
 
-        console.log("url: ", this.x.getServerUrl());
-        console.log("data: ", formData);
+        // console.log("url: ", this.x.getServerUrl());
+        // console.log("data: ", formData);
         let req = new HttpRequest('POST', this.x.getServerUrl(), formData, {
             reportProgress: true,
             responseType: 'json'
