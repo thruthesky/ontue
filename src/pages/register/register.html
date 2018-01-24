@@ -151,7 +151,7 @@
 
           <li *ngIf=" a.teacherTheme ">
             <label class="label">Upload Kakaotalk QR Mark</label>
-            <div class="input">
+            <div class="input qr-mark">
               <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks"
                                   [showUploadedFiles]="true"
                                   (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
