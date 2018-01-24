@@ -88,7 +88,12 @@ export class AppService {
         // console.log("profile data: ", this.user.getProfile());
 
 
-        this.updateLMSInfo();
+
+        // Just in case the app may try to connect to the server first before it display the first page.
+        setTimeout(() => {
+            this.updateLMSInfo();
+        }, 500 );
+        
 
     }
 
@@ -407,10 +412,10 @@ export class AppService {
 
 
 
-    render() {
+    render( timeout = 10 ) {
         setTimeout(() => {
             this.ngZone.run(() => { });
-        }, 100);
+        }, timeout );
     }
 
 
