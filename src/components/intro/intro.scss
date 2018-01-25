@@ -4,4 +4,24 @@ intro-component {
     nav .selected {
         color: red;
     }
+
+    .slides {
+        position: relative;
+        .nav-arrow {
+            position: absolute;
+            z-index: 98765;
+            top: 3.2em;
+        }
+        .nav-arrow.left {
+            left: .5em;
+        }
+        .nav-arrow.right {
+            right: .5em;
+        }
+
+        .back {
+            margin-left: .75em;
+            margin-right: 1.75em;
+        }
+    }
 }

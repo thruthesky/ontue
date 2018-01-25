@@ -1,87 +1,91 @@
 <section class="position-relative of-hidden" style="height: 120px;">
 
   <nav class="position-absolute left-0 right-0 bottom-0 white d-flex fs-3rem pointers" style="margin-right: 4.4rem; z-index: 987654321; justify-content:flex-end;">
-    <div [class.selected]="on == 0" (click)="slides.slideTo(0)">•</div>
-    <div [class.selected]="on == 1" (click)="slides.slideTo(1)">•</div>
-    <div [class.selected]="on == 2" (click)="slides.slideTo(2)">•</div>
+    <div [class.selected]="on == 0">•</div>
+    <div [class.selected]="on == 1">•</div>
+    <div [class.selected]="on == 2">•</div>
   </nav>
+
+
+  <div class="slides">
+
+      <div class="nav-arrow left" (click)="slides.slidePrev()">
+          <i class="fal fa-angle-left fs-3rem white"></i>
+        </div>
+
+
+        <div class="nav-arrow right" (click)="slides.slideNext()">
+            <i class="fal fa-angle-right fs-3rem white"></i>
+          </div>
 
 
   <ion-slides [autoplay]="4000" [loop]="true" (ionSlideDidChange)="slideChanged()">
 
-    <ion-slide class="" style="background-color: rgb(245, 218, 0);">
-      <section class="">
-        <div class="p-4">
-          <div class="size-90 of-hidden bg-white rounded-50">
-            <img src="assets/img/front/slide1.jpg">
-          </div>
-        </div>
-      </section>
-      <div class="text position-absolute mt-4 mr-4 top-0 right-0 d-flex white">
-        <div text-right>
-          <div class="fs-90" style="color: #363667;">어줍짢은 인강, 거품뿐인 화상영어</div>
-          <div class="fs-110 red">가라</div>
-          <div class="fs-90 black">매일 25분 월 만원!</div>
-        </div>
-        <div class="mt-5 ml-4" (click)="slides.slideTo(1)">
-          <i class="fal fa-angle-right fs-3rem"></i>
-        </div>
-      </div>
-    </ion-slide>
-
-
-
-    <ion-slide class="bg-lightslategrey">
-      <section class="d-flex">
-        <div class="ml-3" (click)="slides.slideTo(0)" style="margin-top: 4.3rem;">
-          <i class="fal fa-angle-left fs-3rem white"></i>
-        </div>
-        <div class="ml-1 ">
+      <ion-slide class="" style="background-color: rgb(245, 218, 0);">
+        <section class="back">
           <div class="p-4">
             <div class="size-90 of-hidden bg-white rounded-50">
-              <img src="assets/img/front/slide2.jpg">
+              <img src="assets/img/front/slide1.jpg">
             </div>
           </div>
-        </div>
-      </section>
-      <div class="text position-absolute mt-4 mr-4 top-0 right-0 d-flex white">
-        <div text-right>
-          <div class="fs-90">영어 능력 향상을 극대화</div>
-          <div class="fs-110 orange">무한경쟁</div>
-          <div class="fs-90 yellow">카카오톡으로 수업</div>
-        </div>
-        <div class="mt-5 ml-4" (click)="slides.slideTo(2)">
-          <i class="fal fa-angle-right fs-3rem"></i>
-        </div>
-      </div>
-    </ion-slide>
-
-
-    <ion-slide class="bg-indigo">
-      <section class="d-flex">
-        <div class="ml-3" (click)="slides.slideTo(1)" style="margin-top: 4.5rem;">
-          <i class="fal fa-angle-left fs-3rem white"></i>
-        </div>
-        <div class="ml-1 ">
-          <div class="p-4">
-            <div class="size-90 of-hidden bg-white rounded-50">
-              <img src="assets/img/front/slide3.jpg">
-            </div>
+        </section>
+        <div class="text position-absolute mt-4 mr-5 top-0 right-0 white">
+          <div text-right>
+            <div class="fs-90" style="color: #363667;">어줍짢은 인강, 거품뿐인 화상영어</div>
+            <div class="fs-110 red">가라</div>
+            <div class="fs-90 black">매일 25분 월 만원!</div>
           </div>
         </div>
-      </section>
-      <div class="text position-absolute mt-4 mr-5 top-0 right-0 white">
-        <div text-right>
-          <div class="fs-90">나만의 1:1 영어 강사</div>
-          <div class="fs-110 orange">카톡으로</div>
-          <div class="fs-90 yellow">거침없는 소통</div>
+      </ion-slide>
+  
+  
+  
+      <ion-slide class="bg-lightslategrey">
+        <section class="back">
+          
+          <div class="ml-1 ">
+            <div class="p-4">
+              <div class="size-90 of-hidden bg-white rounded-50">
+                <img src="assets/img/front/slide2.jpg">
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="text position-absolute mt-4 mr-5 top-0 right-0 d-flex white">
+          <div text-right>
+            <div class="fs-90">영어 능력 향상을 극대화</div>
+            <div class="fs-110 orange">무한경쟁</div>
+            <div class="fs-90 yellow">카카오톡으로 수업</div>
+          </div>
         </div>
-      </div>
+      </ion-slide>
+  
+  
+      <ion-slide class="bg-indigo">
+        <section class="back">
+          <div class="ml-1 ">
+            <div class="p-4">
+              <div class="size-90 of-hidden bg-white rounded-50">
+                <img src="assets/img/front/slide3.jpg">
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="text position-absolute mt-4 mr-5 top-0 right-0 white">
+          <div text-right>
+            <div class="fs-90">나만의 1:1 영어 강사</div>
+            <div class="fs-110 orange">카톡으로</div>
+            <div class="fs-90 yellow">거침없는 소통</div>
+          </div>
+        </div>
+  
+  
+      </ion-slide>
+  
+    </ion-slides>
 
-
-    </ion-slide>
-
-  </ion-slides>
+  </div>
+  
 
 
 </section>
