@@ -93,7 +93,7 @@ export class AppService {
         setTimeout(() => {
             this.updateLMSInfo();
         }, 500 );
-        
+
 
     }
 

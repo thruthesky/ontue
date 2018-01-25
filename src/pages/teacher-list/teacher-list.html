@@ -12,7 +12,7 @@
       <h2 class="title white" *ngIf=" mode != 'leveltest' ">
         {{ "SELECT TEACHER TO RESERVE" | translate }}
       </h2>
-      <div (click)=" display_options = !display_options " *ngIf=" ! display_options ">
+      <div class="pointer" (click)=" display_options = !display_options " *ngIf=" ! display_options ">
         <ion-icon name="options"></ion-icon>
         {{ 'OPTIONS' | translate }}
       </div>
@@ -91,12 +91,12 @@
       <ion-grid *ngIf=" re ">
         <ion-row>
           <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center pointer">
               <div class="teacher-profile-photo">
                 <img src="{{ teacher.photoURL }}">
               </div>
             </div>
-            <div class="text-center mt-1 mb-3">
+            <div class="text-center mt-1 mb-3 pointer">
               <div>{{ a.preTeacherName( teacher.display_name )}}</div>
               <div class="grade" [attr.grade]=" teacher.grade ">
                 추천:
