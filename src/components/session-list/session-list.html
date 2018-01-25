@@ -106,6 +106,7 @@
         <td *ngIf="displayDate">{{ 'DATE' | translate }}</td>
         <td>{{ 'TIME' | translate }}</td>
         <td>{{ 'MINUTE' | translate }}</td>
+        <td>{{ 'Kakao ID' | translate }}</td>
         <td *ngIf="displayPoint">{{ 'POINT' | translate }}</td>
         <td></td>
       </tr>
@@ -124,6 +125,7 @@
         <td class="px-1" *ngIf="displayDate">{{ date(book.date_display) }}</td>
         <td class="px-1">{{book.class_begin_display}}</td>
         <td class="px-1 grey fw-bold">{{book.duration}}</td>
+        <td class="px-1 grey fw-bold">{{book.student_kakaotalk_id}}</td>
         <td class="pr-2 blue" *ngIf="displayPoint" text-right>{{ point(book) }}</td>
         <td text-left>
           <section class="menu mb-1">

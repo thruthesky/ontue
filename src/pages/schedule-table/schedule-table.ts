@@ -95,7 +95,7 @@ export class ScheduleTablePage {
   length_of_schedule_table_rows = 0; // total length of schedule table rows.
   no_schedule = false; // If the teacher has no schedule table, it sets to true.
   student = {};
-  teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0 };
+  teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0, kakao_qrmark_string: '' };
   teachers = {};
 
 
@@ -339,6 +339,8 @@ export class ScheduleTablePage {
     this.schedules = re.schedule; // whole schedules
     this.student = re.student;
     this.teacher_profile = re.teacher; // single teacher
+
+
     this.teachers = re.teachers; // all teacher list
 
 
@@ -441,7 +443,7 @@ export class ScheduleTablePage {
     if (session == null) return null;
     if (session[this.IDX_SCHEDULE] === void 0) return null;
     if (this.schedules[session[this.IDX_SCHEDULE]] === void 0) {
-      console.log('schedule is empty on ' + session[this.IDX_SCHEDULE]);
+      // console.log('schedule is empty on ' + session[this.IDX_SCHEDULE]);
       return null;
     }
     const schedule = this.schedules[session[this.IDX_SCHEDULE]];
@@ -505,7 +507,7 @@ export class ScheduleTablePage {
       if (teacher.kakao_qrmark_string !== void 0) return teacher.kakao_qrmark_string;
       else return null;
     }
-    else return null;
+    else return this.teacher_profile.kakao_qrmark_string;
   }
 
 
@@ -587,7 +589,7 @@ export class ScheduleTablePage {
 
     session['in_progress'] = true;
     this.a.lms.session_reserve({ idx_schedule: session[this.IDX_SCHEDULE], date: session[this.DATE] }).subscribe(re => {
-      console.log("class_reserve: ", re);
+      // console.log("class_reserve: ", re);
       session['in_progress'] = false;
       session[this.OPEN] = 'reserved';
       session[this.DAYOFF] = '';
@@ -610,7 +612,7 @@ export class ScheduleTablePage {
     session['in_progress'] = true;
     // console.log("Going to cancel with : ", session[ this.IDX_RESERVATION ]);
     this.a.lms.session_cancel(session[this.IDX_RESERVATION]).subscribe(re => {
-      console.log("cancel success", re);
+      // console.log("cancel success", re);
       session['in_progress'] = false;
       session[this.STATUS] = 'future';
       session[this.OPEN] = 'open';
@@ -722,7 +724,7 @@ export class ScheduleTablePage {
     }
   }
   doInfinite(infiniteScroll) {
-    console.log('doInfinite');
+    // console.log('doInfinite');
 
     setTimeout(() => {
       this.displayPage();
@@ -760,6 +762,7 @@ export class ScheduleTablePage {
 
   onClickAddKakao() {
     const url = this.teacher_kakaoURL();
+    // console.log("kakao::url:: ", url);
     if ( url ) window.open( url, '_blank' );
     else this.a.alert('앗, 이 선생님의 카카오톡을 입력하지 않았습니다.');
   }
