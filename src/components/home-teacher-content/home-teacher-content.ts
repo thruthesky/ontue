@@ -12,6 +12,7 @@ export class HomeTeacherContentComponent implements OnInit {
     ) {
       this.a.lms.get_teacher_site_info().subscribe( res => {
           console.log("site info", res);
+
       }, () => {})
 
     }
