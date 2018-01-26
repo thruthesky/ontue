@@ -430,4 +430,10 @@ export class LMSService extends Base {
     });
   }
 
+  get_teacher_site_info(){
+    return this.x.post({
+      route: 'lms.get_teacher_site_info',
+    });
+  }
+
 }
