@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ontue.www" version="1.0.18" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ontue.www" version="1.0.20" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>카톡영어</name>
     <description>카톡으로 일대일 화상영어. 월 만원.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -77,6 +77,12 @@
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
+        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+            <string>Need camera access to take pictures</string>
+        </edit-config>
+        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+            <string>Need to photo library access to get pictures from there</string>
+        </edit-config>
     </platform>
     <allow-navigation href="http://192.168.0.25:8100" />
     <allow-navigation href="http://192.168.0.67:8100" />
