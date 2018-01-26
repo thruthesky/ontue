@@ -18,8 +18,8 @@ const KEY_LMS_INFO = 'lms-info';
 @Injectable()
 export class AppService {
 
-    // urlBackend = "https://sonub.com:8443";
-    urlBackend = "https://www.ontue.com";
+    urlBackend = "https://sonub.com:8443";
+    // urlBackend = "https://www.ontue.com";
 
 
     NO_SCHEDULE_PER_PAGE = 50;
@@ -601,7 +601,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE o
-        // if (this.NO_SCHEDULE_PER_PAGE) return false;  // show teacher theme.
+        if (this.NO_SCHEDULE_PER_PAGE) return false;  // show teacher theme.
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE

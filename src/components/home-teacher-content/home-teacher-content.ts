@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AppService} from "../../providers/app.service";
 
 @Component({
     selector: 'home-teacher-content-component',
@@ -6,7 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomeTeacherContentComponent implements OnInit {
-    constructor() { }
+    constructor(
+      public a: AppService
+    ) {
+      this.a.lms.get_teacher_site_info().subscribe( res => {
+          console.log("site info", res);
+      }, () => {})
+
+    }
 
     ngOnInit() { }
+
+
+
+
 }
