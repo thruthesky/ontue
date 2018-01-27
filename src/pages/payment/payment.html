@@ -20,14 +20,17 @@
       </section>
 
       <div *ngIf=" a.user.isLogin; else loginFirst ">
-        <div class="mt-5 blue">{{'SELECT AMOUNT'| translate}}</div>
-        <div class="d-flex justify-content-around my-5 py-5 bg-amount">
-          <div>
+        <div class="mt-4 p-2 ">
+          <div class="blue">{{'SELECT AMOUNT'| translate}}</div>
+          <div>금액을 선택하시고 구매 버튼을 클릭하시면 됩니다.</div>
+
+        </div>
+        <div class="d-flex justify-content-around my-4 px-2 py-5 bg-amount">
+          <!-- <div>
             <input id="a2000" type="radio" name="amount" [(ngModel)]="amount" [value]="2000">
             <label for="a2000">2천 원</label>
-          </div>
+          </div> -->
           <div>
-
             <input id="a10000" type="radio" name="amount" [(ngModel)]="amount" [value]="10000">
             <label for="a10000">1만 원</label>
           </div>
