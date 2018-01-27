@@ -601,7 +601,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE o
-        if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme.
+        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme.
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE
