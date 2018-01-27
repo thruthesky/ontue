@@ -58,7 +58,7 @@ export class AppService {
      */
     info = null;
 
-    student_kakaoklus_url = "http://pf.kakao.com/_eIxgAC";
+    student_kakaoplus_url = "http://pf.kakao.com/_eIxgAC";
     student_kakaoplus_deeplink = "kakaoplus://plusfriend/home/@katalkenglish";
     
     kakaotalk_plus_teacher_url = "kakaoplus://plusfriend/home/@ontue"; // "http://pf.kakao.com/_RcxbRC"; //
@@ -629,10 +629,10 @@ export class AppService {
         }
         else {
             if ( this.isMobile() ) {
-                window.open(this.student_kakaoplus_deeplink, "_blank");
+                window.open(this.kakaotalk_plus_teacher_url, "_blank");
             }
             else {
-                window.open(this.student_kakaoklus_url);
+                window.open(this.student_kakaoplus_url);
             }
         }
     }
