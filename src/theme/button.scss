@@ -19,3 +19,15 @@
         }
     }
 }
+
+
+
+.app-button {
+    display: inline-block;
+    margin-top: .5em;
+    padding: .2em .5em;
+    border-radius: 2px;
+    background-color: rgb(21, 21, 170);
+    color: white;
+    cursor: pointer;
+}

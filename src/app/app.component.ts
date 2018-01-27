@@ -57,6 +57,9 @@ import { ClassCommentPage } from '../pages/class-comment/class-comment';
 import { TeacherDashboardPage } from '../pages/teacher-dashboard/teacher-dashboard';
 import { HowToUsePage } from '../pages/how-to-use/how-to-use';
 
+import { MyPointPage } from '../pages/my-point/my-point';
+
+
 
 @Component({
   templateUrl: 'app.html'
@@ -143,9 +146,9 @@ export class MyApp {
     this.a.pages['teacher-dashboard'] = TeacherDashboardPage;
     this.a.pages['how-to-use'] = HowToUsePage;
 
+    this.a.pages['my-point'] = MyPointPage;
 
     setTimeout(() => this.test(), 100);
-
   }
 
   test() {
@@ -182,6 +185,7 @@ export class MyApp {
     // this.a.open('register');
     
     // this.a.open('menu');
+    // this.a.open('my-point');
 
     // this.a.open('reservation', {past: true})
 
@@ -203,7 +207,8 @@ export class MyApp {
     // this.a.open('settings-payment-info');
 
     // this.a.open('payment');
-    // this.a.open('payment-result', { re: false, message: '알수없는 에러'});
+    // this.a.open('payment-result', { result: false, message: '알수없는 에러'});
+    // this.a.open('payment-result', { result: true, message: ''});
 
     // this.a.open('policy');
     // this.a.open('forum');
@@ -221,11 +226,8 @@ export class MyApp {
     // this.a.open('session-future');
     // this.a.open('password-change');
 
-
     // this.a.open('schedule-available');
-
     // this.a.open('help');
-
   }
 
 

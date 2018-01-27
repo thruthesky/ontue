@@ -305,3 +305,23 @@ ion-toast {
 input[type="text"], input[type="email"], input[type="password"] {
   border: 1px solid rgb(190, 190, 190);
 }
+
+
+.loader {
+  padding: 1em;
+  animation: aniLoader 2.5s infinite;
+  background-color: rgb(224, 224, 243);
+  color: #448;
+}
+
+@keyframes aniLoader {
+  20% {
+    color: #448;
+  }
+  30% {
+    color: transparent;
+  }
+  40% {
+    color: #448;
+  }
+}

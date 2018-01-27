@@ -6,7 +6,7 @@
   <div class="page">
 
     <div class="page-header white text-center">
-      궁금한 점이 있으시면 언제든지 카톡으로 질문해주세요!
+      궁금한 점이 있으시면 언제든지 <span class="app-button mt-0" (click)=" a.onClickContactAdmin() ">카톡으로 질문</span> 해 주세요!
     </div>
     <section class="page-body">
 
@@ -34,14 +34,23 @@
         </ion-item>
 
 
-        <ion-item class="menu-message" (click)="a.open('message')" *ngIf=" a.user.isLogin ">
-          <ion-icon name="chatboxes" item-start></ion-icon>
-          {{ 'MESSAGE' | translate }}
-        </ion-item>
+        <ion-item class="menu-message" (click)="a.open('my-point')" *ngIf=" a.user.isLogin ">
+            <ion-icon name="logo-usd" item-start></ion-icon>
+            나의 포인트
+          </ion-item>
+  
+  
+  
 
 
-
-
+          <ion-item class="menu-message" (click)="a.open('message')" *ngIf=" a.user.isLogin ">
+              <ion-icon name="chatboxes" item-start></ion-icon>
+              {{ 'MESSAGE' | translate }}
+            </ion-item>
+    
+    
+    
+      
         <ion-item class="menu-qna" (click)=" a.onClickContactAdmin() ">
           <ion-icon name="help-circle" color="primary" item-start></ion-icon>
           {{ 'QNA' | translate }}
@@ -116,7 +125,7 @@
           {{ 'AVAILABLE SESSIONS LONG' | translate }}
         </ion-item>
 
-        <ion-item class="menu-policy" (click)="a.open('policy')">
+        <ion-item class="menu-policy" (click)="a.open('policy')" *ngIf=" a.teacherTheme ">
           <ion-icon name="checkbox-outline" item-start></ion-icon>
           {{ 'POLICY' | translate }}
         </ion-item>

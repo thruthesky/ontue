@@ -1,5 +1,6 @@
 
 
+
 var fs = require('fs');
 var contents = fs.readFileSync('src/index.html').toString();
 

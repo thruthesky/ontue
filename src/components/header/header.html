@@ -1,8 +1,8 @@
 <section class="student-mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.studentTheme ">
   <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
     <ion-row>
-      <ion-col col-3>
-        <div class="pl-3 pt-sm-3 fs-2rem" (click)="a.open('menu')">
+      <ion-col col-2>
+        <div class="pl-3 pt-sm-3 fs-2rem pointer" (click)="a.open('menu')">
           <img src="assets/img/menu-icon.png">
         </div>
       </ion-col>
@@ -14,18 +14,18 @@
           <img class="h-8" src="assets/img/talk.png">
         </div>
         <ng-template #logo>
-          <div class="pt-2" (click)="a.open('home')">
+          <div class="pt-2 pointer" (click)="a.open('home')">
             <img src="assets/img/logo/katalk-english.png">
           </div>
         </ng-template>
 
 
       </ion-col>
-      <ion-col col-4 class="">
-        <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
+      <ion-col col-5 class="">
+        <div class="top-right-menu d-flex p-2 pt-sm-4" style="justify-content: flex-end">
 
           <ng-container *ngIf=" a.user.isLogout ">
-            <span (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
+            <span class="" (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
             <span class="pl-2" (click)="a.open('register')">회원가입</span>
           </ng-container>
           <ng-container *ngIf=" a.user.isLogin ">
@@ -65,29 +65,29 @@
     <ng-container [ngSwitch]=" a.page ">
       <ng-container *ngSwitchCase=" 'payment' ">
         <div class="group payment">
-          <div class="help p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
-          <div class="p-pay-history p-3" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
-          <div class="qna p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
+          <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <div class="p-pay-history" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
+          <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
         </div>
       </ng-container>
 
       <ng-container *ngSwitchCase=" 'session-future' ">
         <div class="group session-future">
-          <div class="help p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
-          <div class="past p-3" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
-          <div class="reserve p-3" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
-          <div class="all p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-          <div class="qna p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
+          <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <div class="past" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
+          <div class="reserve" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
+          <div class="all" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+          <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
         </div>
       </ng-container>
 
       <ng-container *ngSwitchCase=" 'session-past' ">
         <div class="group session-past">
-          <div class="help p-3" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
-          <div class="reserved p-3" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
-          <div class="teacher p-3" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
-          <div class="schedule p-3" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-          <div class="qna p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
+          <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <div class="reserved" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
+          <div class="teacher" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
+          <div class="schedule" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+          <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
         </div>
       </ng-container>
 
@@ -96,16 +96,16 @@
 
         <div class="group default">
           <ng-container *ngIf=" ! a.newUser ; else NewUser">
-            <div class="p-3" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
-            <div class="p-3" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
+            <div class="" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
+            <div class="" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
           </ng-container>
           <ng-template #NewUser>
-            <div class="p-3" (click)=" a.open('help') ">{{ "HELP" | translate }}</div>
-            <div class="p-3" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
+            <div class="" (click)=" a.open('help') ">{{ "MUST READ" | translate }}</div>
+            <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
           </ng-template>
 
-          <div class="p-3" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
-          <div class="p-3" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
+          <div class="" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
+          <div class="" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
         </div>
 
       </ng-container>
@@ -121,9 +121,9 @@
       <ion-col>
         <div class="item header-home" (click)="a.open( 'home' )">
           <div class="icon">
-            <i class='fal fa-home'></i>
+            <img src="assets/img/logo/withcenter-icon.png">
           </div>
-          <div class="text">{{ 'HOME' | translate }}</div>
+          <div class="text">{{ 'KATALKENGLISH LOGO TEXT' | translate }}</div>
         </div>
       </ion-col>
 

@@ -1,11 +1,19 @@
 register-page {
-    @include theme('purple');
-  }
+  @include theme('purple');
 
+  .page {
+    .page-body {
+      .page-body-wrapper {
+        .page-body-content-wrapper {
+          background-color: #eee;
+        }
+      }
+    }
+  }
+}
 
 
 .profile-form {
-
   li {
     display: flex;
     justify-content: space-around;
@@ -21,11 +29,10 @@ register-page {
       width: 100%;
       input {
         width: 92%;
-        @media ( min-width: $md ) {
+        @media ( min-width: $md) {
           width: 95%;
         }
       }
     }
   }
-
 }

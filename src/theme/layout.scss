@@ -1,3 +1,8 @@
+.page-body {
+  padding: .5em;
+  min-height: 300px;
+}
+
 @media (min-width: $lg) {
   header-content ion-grid {
     max-width: $lg+48!important;
@@ -26,9 +31,7 @@ ion-header {
   }
 }
 
-
 // mixins
-
 @mixin list-style-none() {
   // for ul, ol
   margin: 0;
@@ -50,7 +53,6 @@ ion-header {
     clear: both;
   }
 }
-
 
 @mixin list-line() {
   @include list-style-none();
@@ -75,12 +77,15 @@ ion-header {
  * LIST
  *
  */
+
 .list-style-none {
   @include list-style-none();
 }
+
 .list-line {
   @include list-line();
 }
+
 .list-dots {
   @include list-dots();
 }

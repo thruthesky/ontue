@@ -1,14 +1,25 @@
 .student-mobile-toolbar {
-  .submenu {
-    // default
-    background-color: #ececec;
+  
+  .top-right-menu {
+    & > span {
+      padding: 0 .3em;
+      cursor: pointer;
+    }
   }
+
+  
 }
 
 .submenu {
   .group {
     display: flex;
     justify-content: space-around;
+    background: #f3f5fa;
+
+    & > div {
+      padding: 1em;
+      cursor: pointer;
+    }
   }
 }
 
@@ -67,6 +78,23 @@ ion-header {
     .icon {
       padding-bottom: 0;
       font-size: 1.6em;
+    }
+    .text {
+      padding-top: .1em;
+      font-size: .88em;
+    }
+  }
+  .header-home {
+    .icon {
+      display: block;
+      padding: 0;
+      margin-top: .3em;
+      height: 24px;
+      overflow: hidden;
+      font-size: 1em;
+    }
+    img {
+      height: 24px;
     }
     .text {
       font-size: .88em;

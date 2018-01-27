@@ -4,34 +4,38 @@
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
-    <section class="page-header white">
+    <section class="page-header darkblue">
       <div>로그인을 합니다.</div>
-      <div>만약 가입을 하지 않았으면 간단하게
-        <b>회원가입</b>을 해 주세요!</div>
+      <div>가입을 하지 않았으면 간단하게
+        <span class="app-button">회원가입</span>을 해 주세요!</div>
     </section>
     <section class="page-body">
+      <div class="page-body-wrapper">
+        <form class="" (submit)="onSubmit()">
+          <ul class="login-form list-style-none">
 
-      <form class="my-5" (submit)="onSubmit()">
-        <ul class="login-form list-style-none">
+            <li>
+              <label class="label">{{ 'EMAIL' | translate }}</label>
+              <input class="input" type="email" [(ngModel)]="account.user_email" name="email">
+            </li>
 
-          <li>
-            <label class="label">{{ 'EMAIL' | translate }}</label>
-            <input class="input" type="email" [(ngModel)]="account.user_email" name="email">
-          </li>
+            <li>
+              <label class="label">{{ 'PASSWORD' | translate }}</label>
+              <input class="input" type="password" [(ngModel)]="account.user_pass" name="password">
+            </li>
 
-          <li>
-            <label class="label">{{ 'PASSWORD' | translate }}</label>
-            <input class="input" type="password" [(ngModel)]="account.user_pass" name="password">
-          </li>
+            <li>
+              <label class="label"></label>
+              <div class="input">
+                <button class="app-button px-7 py-3 fs-lg" type="submit">
+                  {{ 'LOGIN BUTTON' | translate }}
+                </button>
+              </div>
+            </li>
 
-          <li padding>
-            <button type="submit" ion-button color="primary" block>
-              {{ 'LOGIN BUTTON' | translate }}
-            </button>
-          </li>
-
-        </ul>
-      </form>
+          </ul>
+        </form>
+      </div>
     </section>
   </div>
   <!--/page-->
