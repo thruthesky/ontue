@@ -18,7 +18,16 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <!-- cordova.js required for cordova apps -->
-  <script src="cordova.js"></script>
+  <!-- <script src="cordova.js"></script> -->
+
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
+  </script>
 
   <script>
     function detect_ie_version() {
@@ -39,15 +48,6 @@
     if (version && version < 11) {
       location.href = "/wp-content/plugins/xapi-2/lms/www/index.php";
     }
-
-  </script>
-
-  <script>
-    // if ('serviceWorker' in navigator) {
-    //   navigator.serviceWorker.register('service-worker.js')
-    //     .then(() => console.log('service worker installed'))
-    //     .catch(err => console.error('Error', err));
-    // }
 
   </script>
 
