@@ -1,7 +1,7 @@
 <section class="student-mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.studentTheme ">
   <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
     <ion-row>
-      <ion-col col-3>
+      <ion-col col-2>
         <div class="pl-3 pt-sm-3 fs-2rem" (click)="a.open('menu')">
           <img src="assets/img/menu-icon.png">
         </div>
@@ -21,12 +21,12 @@
 
 
       </ion-col>
-      <ion-col col-4 class="">
+      <ion-col col-5 class="">
         <div class="d-flex p-2 pt-sm-4" style="justify-content: flex-end">
 
           <ng-container *ngIf=" a.user.isLogout ">
             <span (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
-            <span class="pl-2" (click)="a.open('register')">회원가입9</span>
+            <span class="pl-2" (click)="a.open('register')">회원가입</span>
           </ng-container>
           <ng-container *ngIf=" a.user.isLogin ">
             <ng-container [ngSwitch]="a.page">
