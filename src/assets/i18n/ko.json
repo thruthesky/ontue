@@ -152,6 +152,7 @@
 , "PHONE NUMBER REQUIRED": "전화번호를 입력하세요."
 , "PHONE NUMBER": "전화번호"
 , "KAKAOTALK ID": "카카오톡 아이디"
+, "KAKAOTALK ID SHORT": "카톡아이디"
 , "FIND KAKAOTALK ID": "카카오톡 아이디는 프로필 관리에서 확인 할 수 있습니다."
 , "KAKAOTALK ID REQUIRED": "카카오톡 아이디를 입력해야 합니다. 카카오톡 아이디는 프로필에서 확인 할 수 있습니다."
 , "SCHEDULE AVAILABLE PAGE TITLE": "지금 바로 수업 가능한 선생님 목록"
@@ -209,4 +210,7 @@
  , "OPEN REVIEW": "평가보기"
  , "PAYMENT RESULT PAGE TITLE": "수업료 결제 결과"
  , "KATALKENGLISH LOGO TEXT": "카톡잉글리시"
+ , "PLEASE WAIT": "잠시만 기다려주세요."
+ , "UPDATED": "저장되었습니다."
+ , "REGISTERED": "회원 가입을 축하드립니다."
 }

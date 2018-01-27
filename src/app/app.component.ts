@@ -180,12 +180,12 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    // this.a.open('login');
+    this.a.open('login');
 
     // this.a.open('register');
     
     // this.a.open('menu');
-    this.a.open('my-point');
+    // this.a.open('my-point');
 
     // this.a.open('reservation', {past: true})
 

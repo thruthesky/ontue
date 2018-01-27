@@ -125,7 +125,7 @@
           {{ 'AVAILABLE SESSIONS LONG' | translate }}
         </ion-item>
 
-        <ion-item class="menu-policy" (click)="a.open('policy')">
+        <ion-item class="menu-policy" (click)="a.open('policy')" *ngIf=" a.teacherTheme ">
           <ion-icon name="checkbox-outline" item-start></ion-icon>
           {{ 'POLICY' | translate }}
         </ion-item>

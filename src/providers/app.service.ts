@@ -207,7 +207,7 @@ export class AppService {
     showLoader() {
         // console.log("Show loader");
         this.loader = this.loadingCtrl.create({
-            content: "Please wait...",
+            content: this.i18n['PLEASE WAIT'],
             duration: 30000,
             dismissOnPageChange: true,
         });
@@ -475,7 +475,10 @@ export class AppService {
             // "GOT SCHEDULE",
             // "DISPLAYING SCHEDULE",
             // "SCHEDULE DISPLAYED"
-            "STUDENT COMMENTS"
+            "STUDENT COMMENTS",
+            'PLEASE WAIT',
+            'UPDATED',
+            'REGISTERED'
         ]).subscribe(re => {
             // console.log("i81n: ", re);
             this.i18n = re;

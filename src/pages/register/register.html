@@ -2,6 +2,7 @@
   <header-content [title]=" '회원가입' "></header-content>
 </ion-header>
 <ion-content>
+
   <div class="page">
 
     <hook-content-top></hook-content-top>
@@ -10,173 +11,186 @@
       <h2 class="title" *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE' | translate }}</h2>
     </section>
 
-    <section class="page-body">
-      <div class="d-flex justify-content-center mt-5" *ngIf=" a.teacherTheme || a.user.isLogin ">
-        <div class="profile-user p-relative d-inline-block of-hidden" (click)="fileUpload.onClickCamera()">
-          <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey"
-                 style="opacity: .003; font-size: 10em;" type="file" (change)="fileUpload.onChangeFile($event)">
-          <div class="profile-user-photo size-100x120 mx-auto">
-            <img class="w-100" src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
-          </div>
-          <div text-center>
-            <button class="btn submit fs-lg" [class.skip]="files && files.length">
-              <i class="fa fa-camera mr-2"></i>
-              {{ 'PHOTO UPLOAD' | translate }}
-            </button>
-          </div>
-          <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files"
-                              [showUploadedFiles]="false"
-                              (success)="onSuccessUploadPicture($event)"></file-upload-widget>
-        </div>
+    <div class="loader" *ngIf=" inLoading ">
+        <i class="fal fa-spinner fa-spin"></i>
+        {{ 'IN LOADING' | translate }}
       </div>
 
-      <form (submit)="onSubmit()">
+    <section class="page-body">
+      <section class="page-body-wrapper">
 
-        <ul class="profile-form list-style-none">
-          <li *ngIf=" a.teacherTheme ">
-            <label class="label">User Type</label>
-            <div class="input">
-              <div class="p-2">
-                <span class="mr-3">I am a</span>
-                <label class="mr-3">
-                  <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="S"
-                         (ngModelChange)="onClickType()"> Student
-                </label>
-                <label class="mr-3">
-                  <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="T"
-                         (ngModelChange)="onClickType()"> Teacher
-                </label>
-              </div>
-              <div class="ml-2">
-                <small class="text-muted">Choose user user-type.</small>
-              </div>
+
+        <div class="d-flex justify-content-center mt-5 mb-3" *ngIf=" a.teacherTheme || a.user.isLogin ">
+          <div class="profile-user p-relative d-inline-block of-hidden" (click)="fileUpload.onClickCamera()">
+            <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: .003; font-size: 10em;" type="file"
+              (change)="fileUpload.onChangeFile($event)">
+            <div class="profile-user-photo size-100x120 mx-auto">
+              <img class="w-100" src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
             </div>
-          </li>
-
-          <li *ngIf=" a.teacherTheme ">
-            <label class="label">{{ 'TIMEZONE' | translate }}</label>
-            <div class="input">
-              <select [(ngModel)]="offset" name="timezone" class="select-timezone py-2">
-                <option *ngFor="let t of keysTimezone()" value="{{ t }}">{{ format(t) }} {{ tz[t].name }}</option>
-              </select>
+            <div text-center>
+              <button class="btn submit fs-lg" [class.skip]="files && files.length">
+                <i class="fa fa-camera mr-2"></i>
+                {{ 'PHOTO UPLOAD' | translate }}
+              </button>
             </div>
-          </li>
+            <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files" [showUploadedFiles]="false"
+              (success)="onSuccessUploadPicture($event)"></file-upload-widget>
+          </div>
+        </div>
 
-          <li>
-            <label class="label">{{ 'EMAIL' | translate }}</label>
-            <div class="input"><input class="" type="email" [(ngModel)]="account.user_email" name="email"></div>
-          </li>
+        <section class="page-body-content-wrapper mt-2 px-3 py-5">
 
-          <li *ngIf="a.user.isLogout">
-            <label class="label">{{ 'PASSWORD' | translate }}</label>
-            <div class="input"><input class="" type="password" [(ngModel)]="account.user_pass" name="password"></div>
-          </li>
+          <form (submit)="onSubmit()">
 
-
-          <li>
-            <label class="label">{{ 'NAME' | translate }}</label>
-          <div class="input"><input class="" type="text" [(ngModel)]="account.name" name="name"></div>
-          </li>
-
-          <li *ngIf=" a.teacherTheme ">
-
-            <div class="label">{{ 'GENDER' | translate }}</div>
-
-            <div class="input p-2">
-              <label class="mr-3">
-                <input class="w-10" [(ngModel)]="account.gender" type="radio" name="gender" value="M"
-                       [checked]=" account.gender == 'M' "> Male
-              </label>
-              <label>
-                <input class="w-10" [(ngModel)]="account.gender" type="radio" name="gender" value="F"
-                       [checked]=" account.gender == 'F' "> Female
-              </label>
-            </div>
-          </li>
-
-
-          <li *ngIf=" a.teacherTheme ">
-            <label class="label">{{ 'BIRTHDAY' | translate }}</label>
-            <div class="input">
-              <label class="mr-3">Month
-              <select [(ngModel)]="month" name="month" class="py-2">
-                <option *ngFor="let m of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{ a.add0(m) }}">{{ a.add0(m) }}</option>
-              </select>
-              </label>
-              <label class="mr-3">Day
-              <select [(ngModel)]="day" name="day" class="py-2">
-                <option *ngFor="let d of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]"
-                        value="{{ a.add0(d) }}">{{ a.add0(d) }}</option>
-              </select>
-              </label>
-              <label class="mr-3">Year
-              <select [(ngModel)]="year" name="year" class="py-2">
-                <option *ngFor="let y of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
-                                          21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
-                                          41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
-                                          61,62,63,64,65,66,67,68,69,70]"
-                        value="{{ year_now - y -17 }}">{{ year_now - y -17 }}</option>
-              </select>
-              </label>
-            </div>
-          </li>
-
-
-
-
-          <li>
-            <label class="label">{{ 'NICKNAME' | translate }}</label>
-            <div class="input">
-                <input class="w-100" type="text" [(ngModel)]="account.display_name" name="nickname">
-                <div class="fs-lg mt-2" text-wrap>
-                  {{ 'NICKNAME DESC' | translate }}
+            <ul class="profile-form list-style-none">
+              <li *ngIf=" a.teacherTheme ">
+                <label class="label">User Type</label>
+                <div class="input">
+                  <div class="p-2">
+                    <span class="mr-3">I am a</span>
+                    <label class="mr-3">
+                      <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()"> Student
+                    </label>
+                    <label class="mr-3">
+                      <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()"> Teacher
+                    </label>
+                  </div>
+                  <div class="ml-2">
+                    <small class="text-muted">Choose user user-type.</small>
+                  </div>
                 </div>
-            </div>
+              </li>
 
-          </li>
+              <li *ngIf=" a.teacherTheme ">
+                <label class="label">{{ 'TIMEZONE' | translate }}</label>
+                <div class="input">
+                  <select [(ngModel)]="offset" name="timezone" class="select-timezone py-2">
+                    <option *ngFor="let t of keysTimezone()" value="{{ t }}">{{ format(t) }} {{ tz[t].name }}</option>
+                  </select>
+                </div>
+              </li>
 
-          <li>
-            <label class="label">{{ 'PHONE NUMBER' | translate }}</label>
-            <div class="input"><input class="" type="text" [(ngModel)]="account.phone_number" name="phone_number"></div>
-          </li>
+              <li>
+                <label class="label">{{ 'EMAIL' | translate }}</label>
+                <div class="input">
+                  <input class="" type="email" [(ngModel)]="account.user_email" name="email">
+                </div>
+              </li>
 
-
-          <li>
-            <label class="label">{{ 'KAKAOTALK ID' | translate }}</label>
-            <div class="input">
-              <input class="w-100" type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id">
-              <div class="pt-2 fs-lg">{{ 'FIND KAKAOTALK ID' | translate }}</div>
-            </div>
-          </li>
-
-          <li *ngIf=" a.teacherTheme ">
-            <label class="label">Upload Kakaotalk QR Mark</label>
-            <div class="input qr-mark">
-              <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks"
-                                  [showUploadedFiles]="true"
-                                  (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
-              <div class="fs-lg mt-2" text-wrap>
-                QR Mark is required for teacher,
-                open your mobile KakaoTalk > Edit Profile > My QR Code > Click Download.
-              </div>
-            </div>
-
-          </li>
-
-          <!--<li *ngIf="a.isTeacher">-->
-          <!--bookable time-->
-          <!--</li>-->
-
-          <li>
-            <button ion-button color="primary" block>
-              <span *ngIf="a.user.isLogout">{{ 'REGISTER BUTTON' | translate }}</span>
-              <span *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE BUTTON' | translate }}</span>
-            </button>
-          </li>
+              <li *ngIf="a.user.isLogout">
+                <label class="label">{{ 'PASSWORD' | translate }}</label>
+                <div class="input">
+                  <input class="" type="password" [(ngModel)]="account.user_pass" name="password">
+                </div>
+              </li>
 
 
-        </ul>
-      </form>
+              <li>
+                <label class="label">{{ 'NAME' | translate }}</label>
+                <div class="input">
+                  <input class="" type="text" [(ngModel)]="account.name" name="name">
+                </div>
+              </li>
+
+              <li *ngIf=" a.teacherTheme ">
+
+                <div class="label">{{ 'GENDER' | translate }}</div>
+
+                <div class="input p-2">
+                  <label class="mr-3">
+                    <input class="w-10" [(ngModel)]="account.gender" type="radio" name="gender" value="M" [checked]=" account.gender == 'M' "> Male
+                  </label>
+                  <label>
+                    <input class="w-10" [(ngModel)]="account.gender" type="radio" name="gender" value="F" [checked]=" account.gender == 'F' "> Female
+                  </label>
+                </div>
+              </li>
+
+
+              <li *ngIf=" a.teacherTheme ">
+                <label class="label">{{ 'BIRTHDAY' | translate }}</label>
+                <div class="input">
+                  <label class="mr-3">Month
+                    <select [(ngModel)]="month" name="month" class="py-2">
+                      <option *ngFor="let m of [1,2,3,4,5,6,7,8,9,10,11,12]" value="{{ a.add0(m) }}">{{ a.add0(m) }}</option>
+                    </select>
+                  </label>
+                  <label class="mr-3">Day
+                    <select [(ngModel)]="day" name="day" class="py-2">
+                      <option *ngFor="let d of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]" value="{{ a.add0(d) }}">{{ a.add0(d) }}</option>
+                    </select>
+                  </label>
+                  <label class="mr-3">Year
+                    <select [(ngModel)]="year" name="year" class="py-2">
+                      <option *ngFor="let y of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+                                                21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+                                                41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
+                                                61,62,63,64,65,66,67,68,69,70]" value="{{ year_now - y -17 }}">{{ year_now - y -17 }}</option>
+                    </select>
+                  </label>
+                </div>
+              </li>
+
+
+
+
+              <li>
+                <label class="label">{{ 'NICKNAME' | translate }}</label>
+                <div class="input">
+                  <input class="w-100" type="text" [(ngModel)]="account.display_name" name="nickname">
+                  <div class="fs-lg mt-2" text-wrap>
+                    {{ 'NICKNAME DESC' | translate }}
+                  </div>
+                </div>
+
+              </li>
+
+              <li>
+                <label class="label">{{ 'PHONE NUMBER' | translate }}</label>
+                <div class="input">
+                  <input class="" type="text" [(ngModel)]="account.phone_number" name="phone_number">
+                </div>
+              </li>
+
+
+              <li>
+                <label class="label">{{ 'KAKAOTALK ID SHORT' | translate }}</label>
+                <div class="input">
+                  <input class="w-100" type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id">
+                  <div class="pt-2 fs-lg">{{ 'FIND KAKAOTALK ID' | translate }}</div>
+                </div>
+              </li>
+
+              <li *ngIf=" a.teacherTheme ">
+                <label class="label">Upload Kakaotalk QR Mark</label>
+                <div class="input qr-mark">
+                  <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks" [showUploadedFiles]="true"
+                    (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
+                  <div class="fs-lg mt-2" text-wrap>
+                    QR Mark is required for teacher, open your mobile KakaoTalk > Edit Profile > My QR Code > Click Download.
+                  </div>
+                </div>
+
+              </li>
+
+              <!--<li *ngIf="a.isTeacher">-->
+              <!--bookable time-->
+              <!--</li>-->
+
+              <li>
+                  <label class="label"></label>
+                  <div class="input">
+                      <button class="app-button px-5 py-3 fs-lg" *ngIf="a.user.isLogout">{{ 'REGISTER BUTTON' | translate }}</button>
+                      <button class="app-button px-5 py-3 fs-lg" *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE BUTTON' | translate }}</button>
+                  </div>
+              </li>
+
+
+            </ul>
+          </form>
+        </section>
+      </section>
+
     </section>
   </div>
   <hook-content-bottom></hook-content-bottom>
