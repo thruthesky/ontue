@@ -629,7 +629,8 @@ export class AppService {
         }
         else {
             if ( this.isMobile() ) {
-                window.open(this.kakaotalk_plus_teacher_url, "_blank");
+                this.alert('isMobile open kakao plus ulr');
+                window.open(this.student_kakaoplus_url, "_blank");
             }
             else {
                 window.open(this.student_kakaoplus_url);
