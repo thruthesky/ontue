@@ -37,7 +37,7 @@
       <div>Comment from student</div>
       <div *ngIf="site_info.comment_from_student.length">
         <div *ngFor="let student_comment of site_info.comment_from_student">
-          {{ student_comment | json }}
+          <!--{{ student_comment | json }}-->
         </div>
       </div>
     </ion-card>
@@ -46,7 +46,7 @@
       <div>comment from teacher without name.</div>
       <div *ngIf="site_info.comment_from_student.length">
         <div *ngFor="let teacher_comment of site_info.comment_from_student">
-          {{ teacher_comment | json }}
+          <!--{{ teacher_comment | json }}-->
         </div>
       </div>
     </ion-card>
