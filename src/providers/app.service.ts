@@ -601,7 +601,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE o
-        // if (this.NO_SCHEDULE_PER_PAGE) return false;  // show teacher theme.
+        if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme.
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE
@@ -659,5 +659,11 @@ export class AppService {
         // console.log("ie version: ", window['detect_ie_version']());
         return window['detect_ie_version']();
     }
+
+    checkPhotoURL(url) {
+        if ( url ) return url;
+        else return this.anonymousPhotoURL;
+    }
+
 
 }
