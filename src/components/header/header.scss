@@ -1,14 +1,23 @@
 .student-mobile-toolbar {
-  .submenu {
-    // default
-    background-color: #ececec;
+  
+  .top-right-menu {
+    & > span {
+      padding: 0 .3em;
+    }
   }
+
+  
 }
 
 .submenu {
   .group {
     display: flex;
     justify-content: space-around;
+    background: #f3f5fa;
+
+    & > div {
+      padding: 1em;
+    }
   }
 }
 
