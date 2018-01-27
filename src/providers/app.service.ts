@@ -629,7 +629,7 @@ export class AppService {
         }
         else {
             if ( this.isMobile() ) {
-                window.open(this.student_kakaoplus_deeplink);
+                window.open(this.student_kakaoplus_deeplink, "_blank");
             }
             else {
                 window.open(this.student_kakaoklus_url);
