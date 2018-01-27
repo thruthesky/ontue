@@ -22,48 +22,71 @@
     </ion-card>
 
     <ion-card>
-      <h2>Recently graded teachers => click => view schedule table.</h2>
-      <div *ngIf="site_info.recent_graded_teachers.length">
-        <div *ngFor="let teacher of site_info.recent_graded_teachers" class="d-inline-block text-center pointer">
-          <div (click)="a.open('schedule-table', { ID: teacher.ID })">
-            <img class="size-80" [src]="a.checkPhotoURL(teacher.photoURL)">
-            <div>{{teacher.display_name}}</div>
-          </div>
-        </div>
-      </div>
+      <h2>Recently graded teachers</h2>
+          <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_graded_teachers.length">
+            <ion-slide *ngFor="let teacher of site_info.recent_graded_teachers" class="text-center pointer">
+              <div (click)="a.open('schedule-table', { ID: teacher.ID })">
+                <img class="mx-auto size-80" [src]="a.checkPhotoURL(teacher.photoURL)">
+                <div>{{a.preTeacherName(teacher.display_name)}}</div>
+              </div>
+            </ion-slide>
+          </ion-slides>
     </ion-card>
+
+
+
+
 
     <ion-card>
       <div>Comment from student</div>
-      <div *ngIf="site_info.comment_from_student.length">
-        <div *ngFor="let student_comment of site_info.comment_from_student">
-          <!--{{ student_comment | json }}-->
-        </div>
-      </div>
+      <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_student.length">
+        <ion-slide *ngFor="let student_comment of site_info.comment_from_student" class="text-center pointer">
+          <img class="mx-auto size-80" [src]="a.checkPhotoURL(student_comment.student_photoURL)">
+          <div>{{a.preTeacherName(student_comment.teacher_name)}}</div>
+          <div class="rating mb-2">
+            <span *ngIf="student_comment.rate < 1"><i class="fal fa-star"></i></span>
+            <span *ngIf="student_comment.rate >= 1"><i class="fas fa-star"></i></span>
+
+            <span *ngIf="student_comment.rate < 2"><i class="fal fa-star"></i></span>
+            <span *ngIf="student_comment.rate >= 2"><i class="fas fa-star"></i></span>
+
+            <span *ngIf="student_comment.rate < 3"><i class="fal fa-star"></i></span>
+            <span *ngIf="student_comment.rate >= 3"><i class="fas fa-star"></i></span>
+
+            <span *ngIf="student_comment.rate < 4"><i class="fal fa-star"></i></span>
+            <span *ngIf="student_comment.rate >= 4"><i class="fas fa-star"></i></span>
+
+            <span *ngIf="student_comment.rate < 5"><i class="fal fa-star"></i></span>
+            <span *ngIf="student_comment.rate >= 5"><i class="fas fa-star"></i></span>
+          </div>
+          <div>{{student_comment.comment}}</div>
+        </ion-slide>
+      </ion-slides>
     </ion-card>
 
     <ion-card>
       <div>comment from teacher without name.</div>
-      <div *ngIf="site_info.comment_from_student.length">
-        <div *ngFor="let teacher_comment of site_info.comment_from_student">
-          <!--{{ teacher_comment | json }}-->
-        </div>
-      </div>
+      <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_teacher.length">
+        <ion-slide *ngFor="let teacher_comment of site_info.comment_from_teacher" class="text-center pointer">
+          <!--<img class="size-80" [src]="a.checkPhotoURL(reservation.student_photoURL)">-->
+          <div>{{ teacher_comment.comment }}</div>
+          <div>-{{ a.preTeacherName(teacher_comment.teacher_name) }}</div>
+        </ion-slide>
+      </ion-slides>
     </ion-card>
 
     <ion-card>
-      <h2>Recent reservations. without student name.</h2>
-      <div *ngIf="site_info.recent_reservations.length">
-        <div *ngFor="let reservation of site_info.recent_reservations" class="d-inline-block text-center pointer">
+      <div>Recent reservations. without student name.</div>
+      <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_reservations.length">
+        <ion-slide *ngFor="let reservation of site_info.recent_reservations" class="text-center pointer">
           <div (click)="a.open('schedule-table', { ID: reservation.idx_teacher })">
-            <img class="size-80" [src]="a.checkPhotoURL(reservation.teacher_photoURL)">
-            <div>{{ reservation.teacher_name }}</div>
+            <img class="size-80 mx-auto" [src]="a.checkPhotoURL(reservation.teacher_photoURL)">
+            <div>{{ a.preTeacherName(reservation.teacher_name) }}</div>
             <div>{{ reservation.display_date }}</div>
             <div>{{ reservation.class_begin }}</div>
-
           </div>
-        </div>
-      </div>
+        </ion-slide>
+      </ion-slides>
     </ion-card>
 
   </div>

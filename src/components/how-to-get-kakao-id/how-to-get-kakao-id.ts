@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { AppService } from '../../providers/app.service';
 import {ViewController} from "ionic-angular";
 @Component({
-  selector: 'how-to-get-qrcode-component',
-  templateUrl: 'how-to-get-qrcode.html'
+  selector: 'how-to-get-kakao-id-component',
+  templateUrl: 'how-to-get-kakao-id.html'
 })
 
-export class HowToGetQRCodeComponent {
+export class HowToGetKakaoIDComponent {
 
   constructor(
     public a: AppService,
@@ -18,6 +18,7 @@ export class HowToGetQRCodeComponent {
   dismiss() {
     this.viewCtrl.dismiss();
   }
+
 
   ngOnInit() {
 

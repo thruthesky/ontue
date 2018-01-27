@@ -576,13 +576,14 @@ export class AppService {
     }
 
 
-    /**
-     * Return teacher name after sanitizing it.
-     * @param name Teacher name
-     */
-    preTeacherName(name) {
+  /**
+   * Return teacher name after sanitizing it.
+   * @param name Teacher name
+   * @param length Number of maximum name length
+   */
+    preTeacherName(name, length = 8) {
         if (!name) return 'No Name';
-        if (name.length > 8) name = name.substr(0, 8);
+        if (name.length > length) name = name.substr(0, length);
         return name;
     }
 
@@ -601,7 +602,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE o
-        if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme.
+        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme.
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE

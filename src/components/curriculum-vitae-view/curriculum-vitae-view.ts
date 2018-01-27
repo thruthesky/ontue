@@ -17,7 +17,8 @@ export class CurriculumVitaeView {
   constructor(
     public a: AppService,
     public navParams: NavParams,
-    public viewCtrl: ViewController) {
+    public viewCtrl: ViewController
+  ) {
 
     this.teacher = navParams.data['teacher'];
     console.log("teacher:: ", this.teacher);

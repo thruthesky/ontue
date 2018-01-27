@@ -1,6 +1,15 @@
-<section id="how-to-install-kakao">
-    <div class="label">Installing Or Creating a Kakaotalk App Account</div>
-
+<ion-header>
+  <ion-toolbar>
+    <ion-title><b>Installing</b> or <b>Creating</b> a Kakaotalk App Account</ion-title>
+    <ion-buttons start>
+      <button ion-button class="close" (click)="dismiss()">
+        <span ion-text color="primary">{{ 'CLOSE' | translate }}</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section class="how-to" id="how-to-install-kakao">
     <ul class="list-style-none">
       <li>
         <div class="desc">
@@ -14,7 +23,9 @@
         <div class="desc">2. After installation. Open Kakaotalk app.</div>
       </li>
       <li>
-        <div class="desc">3. Select your <b>country code</b> and enter your <b>phone number</b>, and press <b>Next</b> button.</div>
+        <div class="desc">3. Select your <b>country code</b> and enter your <b>phone number</b>, and press <b>Next</b>
+          button.
+        </div>
       </li>
       <li>
         <img src="assets/img/kakao/2.jpg">
@@ -41,7 +52,7 @@
         <img src="assets/img/kakao/4.jpg">
       </li>
       <li>
-        <div class="desc">6. Enter your name, upload your photo and press get started. </div>
+        <div class="desc">6. Enter your name, upload your photo and press get started.</div>
       </li>
       <li>
         <img src="assets/img/kakao/5.jpg">
@@ -50,4 +61,5 @@
         <div class="desc">5. Viola! You Successfully Installed and Created your kakaotalk Account.</div>
       </li>
     </ul>
-</section>
+  </section>
+</ion-content>
