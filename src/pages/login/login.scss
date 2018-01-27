@@ -1,22 +1,24 @@
 login-page {
-  @include theme('purple');
+  @include theme('lightgrey');
+  .page-body {
+    background-color: #f7f7f7;
+    .page-body-wrapper {
+      padding: 2em;
+    }
+  }
 }
 
 .login-form {
-
   li {
-    display: flex;
     margin-bottom: 1em;
-    input {
-      padding: .5em;
-    }
     .label {
-      width: 140px;
-      padding: .5em;
+      display: block;
+      margin: .5em 0;
     }
-    .input {
+    input {
+      display: block;
+      padding: .5em;
       width: 100%;
     }
   }
-
 }

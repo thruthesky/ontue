@@ -180,7 +180,7 @@ export class MyApp {
 
     // this.a.open('schedule-edit');
 
-    this.a.open('login');
+    // this.a.open('login');
 
     // this.a.open('register');
     
