@@ -89,3 +89,22 @@ ion-header {
 .list-dots {
   @include list-dots();
 }
+
+
+
+.how-to {
+    padding: 2em 1em;
+    .label {
+      font-size: 1.5em;
+      font-weight: 500;
+    }
+    .desc {
+      margin-bottom: 0.5em;
+      font-size: 1.2em;
+    }
+
+    img {
+      max-width: 100%;
+      padding:1em;
+    }
+}

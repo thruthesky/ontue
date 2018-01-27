@@ -9,7 +9,9 @@ import {
   USER_UPDATE_RESPONSE
 } from './../../angular-xapi/interfaces';
 import { FileUploadWidget } from '../../components/file-upload/file-upload';
-import { NavParams } from "ionic-angular";
+import { ModalController, NavParams } from "ionic-angular";
+import { HowToGetQRCodeComponent } from "../../components/how-to-get-qrcode/how-to-get-qrcode";
+import { HowToGetKakaoIDComponent } from "../../components/how-to-get-kakao-id/how-to-get-kakao-id";
 
 
 @Component({
@@ -41,9 +43,15 @@ export class RegisterPage {
 
   year_now = new Date().getFullYear();
 
+  _modal = {
+    kakaoID: HowToGetKakaoIDComponent,
+    qrmark: HowToGetQRCodeComponent
+  };
+
   constructor(
     public a: AppService,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public modalCtrl: ModalController
   ) {
     this.offset = this.a.lms.getUserLocalTimezoneOffset();
     a.lms.timezones().subscribe(re => {
@@ -276,6 +284,14 @@ export class RegisterPage {
     this.account.birthday = this.year + this.month + this.day
     // console.log("Birthday:: ",this.account.birthday);
   }
+
+  showModalFAQ(modal_name){
+    const modal = this.modalCtrl.create( this._modal[modal_name] );
+    modal.onDidDismiss(()=> {});
+    modal.present();
+
+  }
+
 
 
 

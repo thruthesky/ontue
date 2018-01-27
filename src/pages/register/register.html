@@ -153,11 +153,15 @@
               </li>
 
 
+
               <li>
                 <label class="label">{{ 'KAKAOTALK ID SHORT' | translate }}</label>
                 <div class="input">
                   <input class="w-100" type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id">
-                  <div class="pt-2 fs-lg">{{ 'FIND KAKAOTALK ID' | translate }}</div>
+                  <div class="pt-2 fs-lg pointer" (click)="showModalFAQ('kakaoID')">
+                    {{ 'FIND KAKAOTALK ID' | translate }}
+                    <i class="fa fa-question-circle"></i>
+                  </div>
                 </div>
               </li>
 
@@ -166,11 +170,10 @@
                 <div class="input qr-mark">
                   <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks" [showUploadedFiles]="true"
                     (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
-                  <div class="fs-lg mt-2" text-wrap>
-                    QR Mark is required for teacher, open your mobile KakaoTalk > Edit Profile > My QR Code > Click Download.
+                  <div class="fs-lg mt-2 pointer" text-wrap (click)="showModalFAQ('qrmark')">
+                    QR Mark is required for teacher. How to get QR MARK <i class="fa fa-question-circle"></i>
                   </div>
                 </div>
-
               </li>
 
               <!--<li *ngIf="a.isTeacher">-->

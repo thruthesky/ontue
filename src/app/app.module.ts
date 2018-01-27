@@ -92,6 +92,7 @@ import { HomeTeacherContentComponent } from '../components/home-teacher-content/
 
 import { HowToInstallKakaoComponent } from '../components/how-to-install-kakao/how-to-install-kakao';
 import { HowToGetQRCodeComponent } from '../components/how-to-get-qrcode/how-to-get-qrcode';
+import { HowToGetKakaoIDComponent } from '../components/how-to-get-kakao-id/how-to-get-kakao-id';
 
 
 
@@ -161,6 +162,7 @@ export function createTranslateLoader(http: HttpClient) {
     HowToUsePage,
     HowToInstallKakaoComponent,
     HowToGetQRCodeComponent,
+    HowToGetKakaoIDComponent,
     MyPointPage
   ],
   imports: [
@@ -226,6 +228,7 @@ export function createTranslateLoader(http: HttpClient) {
     HowToUsePage,
     HowToInstallKakaoComponent,
     HowToGetQRCodeComponent,
+    HowToGetKakaoIDComponent,
     MyPointPage
   ],
   providers: [
