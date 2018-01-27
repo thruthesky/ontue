@@ -26,7 +26,7 @@
 
           <ng-container *ngIf=" a.user.isLogout ">
             <span class="" (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
-            <span class="pl-2" (click)="a.open('register')">회원가입</span>
+            <span class="pl-2" (click)="a.open('register')">{{ 'REGISTER' | translate }}</span>
           </ng-container>
           <ng-container *ngIf=" a.user.isLogin ">
             <ng-container [ngSwitch]="a.page">
@@ -73,7 +73,7 @@
 
       <ng-container *ngSwitchCase=" 'session-future' ">
         <div class="group session-future">
-          <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <!-- <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div> -->
           <div class="past" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
           <div class="reserve" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
           <div class="all" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
@@ -83,7 +83,7 @@
 
       <ng-container *ngSwitchCase=" 'session-past' ">
         <div class="group session-past">
-          <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <!-- <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div> -->
           <div class="reserved" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
           <div class="teacher" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
           <div class="schedule" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>

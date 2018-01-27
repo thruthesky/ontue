@@ -1,7 +1,7 @@
 {
 
 "HTTP_ERROR": "접속 에러",
-"HTTP_ERROR_DESC": "서버 접속에 실패하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
+"HTTP_ERROR_DESC": "서버 접속에 실패하였습니다. 인터넷을 확인해 주세요.",
 "PHP_ERROR_DESC": "서버 프로그램 에러가 발생하였습니다. 관리자에게 긴급히 연락해 주시기 바랍니다.",
 "SITE NAME": "온튜",
 
@@ -175,7 +175,7 @@
 , "HAD SESSIONS": "명 참여"
 , "F": "여"
 , "M": "남"
-, "SELECT TEACHER TO RESERVE": "선생님을 선택하고 수업을 예약하세요."
+, "SELECT TEACHER TO RESERVE": "수업예약"
 , "CHOOSE DIFFERENT HOURS": "검색에서 수업 시작과 끝 시간을 다르게 지정해야합니다."
 , "SETTINGS PAGE": "설정"
 , "SETTINGS PAGE DESC": "표시 할 언어 또는 시간대 등을 설정 할 수 있습니다."

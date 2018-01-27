@@ -73,6 +73,7 @@
   , "REFUNDED SESSIONS": "Refunded"
   , "SESSIONS IN REFUND PROGRESS": "Refund in progress"
   , "HELP SHORT": "Help"
+  , "MUST READ": "Help"
   , "HELP": "Help"
   , "AVAILABLE SESSIONS": "Instant Book"
   , "TEACHER LIST": "Teachers"
@@ -155,4 +156,5 @@
  , "PLEASE WAIT": "Please, wait..."
  , "UPDATED": "Updated successfully."
  , "REGISTERED": "Registered successfully."
+ , "LEVELTEST": "Level Test"
 }

@@ -590,7 +590,9 @@ export class ScheduleTablePage {
     session['in_progress'] = true;
     this.a.lms.session_reserve({ idx_schedule: session[this.IDX_SCHEDULE], date: session[this.DATE] }).subscribe(re => {
       // console.log("class_reserve: ", re);
-      session['in_progress'] = false;
+      
+      setTimeout(() => session['in_progress'] = false, 500);
+
       session[this.OPEN] = 'reserved';
       session[this.DAYOFF] = '';
       session[this.STATUS] = 'future';
