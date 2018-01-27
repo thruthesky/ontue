@@ -2,7 +2,7 @@
   <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
     <ion-row>
       <ion-col col-2>
-        <div class="pl-3 pt-sm-3 fs-2rem" (click)="a.open('menu')">
+        <div class="pl-3 pt-sm-3 fs-2rem pointer" (click)="a.open('menu')">
           <img src="assets/img/menu-icon.png">
         </div>
       </ion-col>
@@ -14,7 +14,7 @@
           <img class="h-8" src="assets/img/talk.png">
         </div>
         <ng-template #logo>
-          <div class="pt-2" (click)="a.open('home')">
+          <div class="pt-2 pointer" (click)="a.open('home')">
             <img src="assets/img/logo/katalk-english.png">
           </div>
         </ng-template>

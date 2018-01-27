@@ -52,6 +52,8 @@ import { HelpPage } from '../pages/help/help';
 import { ClassCommentPage } from '../pages/class-comment/class-comment';
 import { TeacherDashboardPage } from '../pages/teacher-dashboard/teacher-dashboard';
 import { HowToUsePage } from '../pages/how-to-use/how-to-use';
+import { MyPointPage } from '../pages/my-point/my-point';
+
 
 
 
@@ -158,7 +160,8 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentResultPage,
     HowToUsePage,
     HowToInstallKakaoComponent,
-    HowToGetQRCodeComponent
+    HowToGetQRCodeComponent,
+    MyPointPage
   ],
   imports: [
     BrowserModule,
@@ -222,7 +225,8 @@ export function createTranslateLoader(http: HttpClient) {
     PaymentResultPage,
     HowToUsePage,
     HowToInstallKakaoComponent,
-    HowToGetQRCodeComponent
+    HowToGetQRCodeComponent,
+    MyPointPage
   ],
   providers: [
     StatusBar,
