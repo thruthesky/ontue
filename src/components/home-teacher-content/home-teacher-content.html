@@ -21,7 +21,7 @@
       <div>past: {{site_info.no_of_past}}</div>
     </ion-card>
 
-    <ion-card>
+    <ion-card text-wrap>
       <h2>Recently graded teachers</h2>
           <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_graded_teachers.length">
             <ion-slide *ngFor="let teacher of site_info.recent_graded_teachers" class="text-center pointer">
@@ -37,10 +37,11 @@
 
 
 
-    <ion-card>
+    <ion-card text-wrap>
       <div>Comment from student</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_student.length">
-        <ion-slide *ngFor="let student_comment of site_info.comment_from_student" class="text-center pointer">
+        <ion-slide *ngFor="let student_comment of site_info.comment_from_student" class="text-center pointer" (click)="onClickCommentList(student_comment.idx_teacher)">
+          {{student_comment|json}}
           <img class="mx-auto size-80" [src]="a.checkPhotoURL(student_comment.student_photoURL)">
           <div>{{a.preTeacherName(student_comment.teacher_name)}}</div>
           <div class="rating mb-2">
@@ -64,10 +65,10 @@
       </ion-slides>
     </ion-card>
 
-    <ion-card>
+    <ion-card text-wrap>
       <div>comment from teacher without name.</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_teacher.length">
-        <ion-slide *ngFor="let teacher_comment of site_info.comment_from_teacher" class="text-center pointer">
+        <ion-slide *ngFor="let teacher_comment of site_info.comment_from_teacher" class="text-center">
           <!--<img class="size-80" [src]="a.checkPhotoURL(reservation.student_photoURL)">-->
           <div>{{ teacher_comment.comment }}</div>
           <div>-{{ a.preTeacherName(teacher_comment.teacher_name) }}</div>
@@ -75,7 +76,7 @@
       </ion-slides>
     </ion-card>
 
-    <ion-card>
+    <ion-card text-wrap>
       <div>Recent reservations. without student name.</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_reservations.length">
         <ion-slide *ngFor="let reservation of site_info.recent_reservations" class="text-center pointer">

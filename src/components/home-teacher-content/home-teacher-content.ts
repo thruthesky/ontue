@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from "../../providers/app.service";
+import {StudentCommentList} from "../student-comment-list/student-comment-list";
+import {ModalController} from "ionic-angular";
 
 @Component({
     selector: 'home-teacher-content-component',
@@ -21,7 +23,8 @@ export class HomeTeacherContentComponent implements OnInit {
     };
 
     constructor(
-      public a: AppService
+      public a: AppService,
+      public modalCtrl: ModalController
     ) {
       this.a.lms.get_teacher_site_info().subscribe( res => {
           console.log("site info", res);
@@ -29,6 +32,15 @@ export class HomeTeacherContentComponent implements OnInit {
       }, () => {})
 
     }
+
+
+
+  onClickCommentList(idx_teacher) {
+    const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: idx_teacher }, { cssClass: 'student-comment-list' }
+    );
+    createCommentModal.onDidDismiss(() => { });
+    createCommentModal.present();
+  }
 
     ngOnInit() { }
 
