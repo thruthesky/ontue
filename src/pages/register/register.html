@@ -158,7 +158,7 @@
                 <label class="label">{{ 'KAKAOTALK ID SHORT' | translate }}</label>
                 <div class="input">
                   <input class="w-100" type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id">
-                  <div class="pt-2 fs-lg pointer" (click)="showModalFAQ('kakaoID')">
+                  <div class="pt-2 fs-lg pointer" (click)=" onClickKakaoIDHelp() ">
                     {{ 'FIND KAKAOTALK ID' | translate }}
                     <i class="fa fa-question-circle"></i>
                   </div>

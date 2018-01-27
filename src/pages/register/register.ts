@@ -293,6 +293,14 @@ export class RegisterPage {
   }
 
 
+  onClickKakaoIDHelp() {
+    if ( this.a.isTeacher ) {
+      this.showModalFAQ('kakaoID');
+    }
+    else {
+      this.a.alert("프로필 관리 메뉴에서 카카오톡 아이디를 찾을 수 있습니다.");
+    }
+  }
 
 
 }
