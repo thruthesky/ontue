@@ -100,19 +100,18 @@ export class PaymentPage implements AfterViewInit {
                     paymentID: data.paymentID,
                     payerID: data.payerID
                 };
+                console.log("excute_data: ", execute_data );
                 return paypal.request.post(EXECUTE_PAYMENT_URL, execute_data)
                     .then(res => {
-                        // console.log("result from paypal execute: ", res);
-                        let re;
-                        let message;
+                        console.log("result from paypal execute: ", res);
+                        let re = false;
+                        let message = '';
                         // console.log(res['code']);
                         if (res['code']) {
                             re = false;
                             message = res['message'];
                         }
                         else {
-                            re = true;
-                            message = '';
                         }
                         let params = { result: re, message: message };
                         // console.log(params);
@@ -121,7 +120,7 @@ export class PaymentPage implements AfterViewInit {
             },
             onCancel: (data, actions) => {
                 // alert('결제를 취소하였습니다. You have cancelled the payment.');
-                this.a.open('payment-result', { result: false, message: '결제를 취소하였습니다. You have cancelled the payment.'});
+                this.a.open('payment-result', { result: false, message: '결제를 취소하였습니다.'});
             },
             onError: (err) => {
                 // console.log('onError: err: ', err['message']);
