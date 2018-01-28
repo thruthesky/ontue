@@ -60,7 +60,7 @@ export class AppService {
 
     student_kakaoplus_url = "http://pf.kakao.com/_eIxgAC";
     student_kakaoplus_deeplink = "kakaoplus://plusfriend/home/@katalkenglish";
-    
+
     kakaotalk_plus_teacher_url = "kakaoplus://plusfriend/home/@ontue"; // "http://pf.kakao.com/_RcxbRC"; //
 
     thisYear = (new Date).getFullYear();
@@ -95,7 +95,7 @@ export class AppService {
         // Just in case the app may try to connect to the server first before it display the first page.
         setTimeout(() => {
             this.updateLMSInfo();
-        }, 500 );
+        }, 500);
 
 
     }
@@ -114,7 +114,7 @@ export class AppService {
      *
      * @note if you only want to get user point, consider using "loadMyPoint()". It's more convinent to only get point.
      */
-    updateLMSInfo( callback=null ) {
+    updateLMSInfo(callback = null) {
         this.info = this.get(KEY_LMS_INFO);
         if (!this.info) this.info = {};
         // console.log("info from cache: ", this.info);
@@ -129,7 +129,7 @@ export class AppService {
                 if (this.info['user']['no_of_past'] !== void 0) this.updateLmsInfoUserNoOfPast(this.info['user']['no_of_past']);
             }
 
-            if ( callback ) callback( re );
+            if (callback) callback(re);
 
             // console.log("updated info from remote: ", this.info);
         }, e => {
@@ -415,10 +415,10 @@ export class AppService {
 
 
 
-    render( timeout = 10 ) {
+    render(timeout = 10) {
         setTimeout(() => {
             this.ngZone.run(() => { });
-        }, timeout );
+        }, timeout);
     }
 
 
@@ -485,7 +485,7 @@ export class AppService {
         ]).subscribe(re => {
             // console.log("i81n: ", re);
             this.i18n = re;
-        }, () => {});
+        }, () => { });
 
     }
 
@@ -582,11 +582,11 @@ export class AppService {
     }
 
 
-  /**
-   * Return teacher name after sanitizing it.
-   * @param name Teacher name
-   * @param length Number of maximum name length
-   */
+    /**
+     * Return teacher name after sanitizing it.
+     * @param name Teacher name
+     * @param length Number of maximum name length
+     */
     preTeacherName(name, length = 8) {
         if (!name) return 'No Name';
         if (name.length > length) name = name.substr(0, length);
@@ -628,7 +628,7 @@ export class AppService {
             else this.alert("Please use smart phone to add contact with admin. Once you have added use Kakao to chat with admin.");
         }
         else {
-            if ( this.isMobile() ) {
+            if (this.isMobile()) {
                 this.alert('isMobile open kakao plus ulr');
                 window.open(this.student_kakaoplus_url, "_blank");
             }
@@ -661,6 +661,22 @@ export class AppService {
         }
     }
 
+    /**
+     * Return true if the user is using the site with web browser in mobile phone.
+     * 
+     * @return boolean -
+     *      true if user is using web browser in smart phone.
+     *      false if user is using app or desktop.
+     */
+    isMobileWeb() {
+
+        if ( this.platform.is('mobileweb') ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
 
@@ -676,7 +692,7 @@ export class AppService {
     }
 
     checkPhotoURL(url) {
-        if ( url ) return url;
+        if (url) return url;
         else return this.anonymousPhotoURL;
     }
 
