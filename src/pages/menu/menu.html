@@ -38,19 +38,19 @@
             <ion-icon name="logo-usd" item-start></ion-icon>
             나의 포인트
           </ion-item>
-  
-  
-  
+
+
+
 
 
           <ion-item class="menu-message" (click)="a.open('message')" *ngIf=" a.user.isLogin ">
               <ion-icon name="chatboxes" item-start></ion-icon>
               {{ 'MESSAGE' | translate }}
             </ion-item>
-    
-    
-    
-      
+
+
+
+
         <ion-item class="menu-qna" (click)=" a.onClickContactAdmin() ">
           <ion-icon name="help-circle" color="primary" item-start></ion-icon>
           {{ 'QNA' | translate }}
@@ -84,13 +84,6 @@
 
 
 
-        <ion-item class="menu-teacher-payment-info" (click)="a.open('settings-payment-info')" *ngIf="a.teacherTheme">
-          <ion-icon name="list-box" item-start></ion-icon>
-          {{ 'TEACHER PAYMENT INFO' | translate }}
-        </ion-item>
-
-
-
 
         <ion-item class="menu-payment-history" (click)="a.open('payment-history')" *ngIf="a.studentTheme">
           <ion-icon name="list-box" item-start></ion-icon>
@@ -108,16 +101,6 @@
         </ion-item>
 
 
-        <ion-item class="menu-schedule-edit" (click)="a.open('schedule-edit')"  *ngIf="a.teacherTheme">
-          <ion-icon name="calendar" item-start></ion-icon>
-          {{ 'EDIT SCHEDULE' | translate }}
-        </ion-item>
-
-
-        <ion-item class="menu-curriculum-vitae" (click)="a.open('teacher-curriculum-vitae')" *ngIf="a.teacherTheme">
-          <ion-icon name="clipboard" item-start></ion-icon>
-          {{ 'CURRICULUM VITAE' | translate }}
-        </ion-item>
 
 
         <ion-item class="menu-today-sessions" (click)="a.open('schedule-available')" *ngIf="a.studentTheme">
@@ -125,10 +108,6 @@
           {{ 'AVAILABLE SESSIONS LONG' | translate }}
         </ion-item>
 
-        <ion-item class="menu-policy" (click)="a.open('policy')" *ngIf=" a.teacherTheme ">
-          <ion-icon name="checkbox-outline" item-start></ion-icon>
-          {{ 'POLICY' | translate }}
-        </ion-item>
 
 
         <ion-item class="menu-password-change" *ngIf=" a.user.isLogin " (click)=" a.open('password-change')">
