@@ -41,7 +41,6 @@
       <div>Comment from student</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_student.length">
         <ion-slide *ngFor="let student_comment of site_info.comment_from_student" class="text-center pointer" (click)="onClickCommentList(student_comment.idx_teacher)">
-          {{student_comment|json}}
           <img class="mx-auto size-80" [src]="a.checkPhotoURL(student_comment.student_photoURL)">
           <div>{{a.preTeacherName(student_comment.teacher_name)}}</div>
           <div class="rating mb-2">

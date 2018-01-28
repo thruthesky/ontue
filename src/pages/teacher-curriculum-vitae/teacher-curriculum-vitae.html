@@ -92,11 +92,7 @@
             <label class="pr-3">{{ 'NATIONALITY' | translate }}</label>
             <select [(ngModel)]="account.nationality" name="nationality">
               <option value="">Select...</option>
-              <option value="Canada">Canada</option>
-              <option value="Korea">Korea</option>
-              <option value="Philippines">Philippines</option>
-              <option value="Usa">USA</option>
-              <option value="Serbia">Serbia</option>
+              <option *ngFor="let c of a.countries" value="{{c}}">{{c}}</option>
             </select>
           </ion-item>
 
