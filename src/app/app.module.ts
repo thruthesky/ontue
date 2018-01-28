@@ -93,6 +93,7 @@ import { HomeTeacherContentComponent } from '../components/home-teacher-content/
 import { HowToInstallKakaoComponent } from '../components/how-to-install-kakao/how-to-install-kakao';
 import { HowToGetQRCodeComponent } from '../components/how-to-get-qrcode/how-to-get-qrcode';
 import { HowToGetKakaoIDComponent } from '../components/how-to-get-kakao-id/how-to-get-kakao-id';
+import { TeacherPolicyComponent } from '../components/teacher-policy/teacher-policy';
 
 
 
@@ -163,7 +164,8 @@ export function createTranslateLoader(http: HttpClient) {
     HowToInstallKakaoComponent,
     HowToGetQRCodeComponent,
     HowToGetKakaoIDComponent,
-    MyPointPage
+    MyPointPage,
+    TeacherPolicyComponent
   ],
   imports: [
     BrowserModule,
@@ -229,7 +231,8 @@ export function createTranslateLoader(http: HttpClient) {
     HowToInstallKakaoComponent,
     HowToGetQRCodeComponent,
     HowToGetKakaoIDComponent,
-    MyPointPage
+    MyPointPage,
+    TeacherPolicyComponent
   ],
   providers: [
     // StatusBar,

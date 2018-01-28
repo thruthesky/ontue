@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { AppService } from './../../providers/app.service';
-import {HowToGetQRCodeComponent} from "../../components/how-to-get-qrcode/how-to-get-qrcode";
-import {HowToGetKakaoIDComponent} from "../../components/how-to-get-kakao-id/how-to-get-kakao-id";
-import {ModalController} from "ionic-angular";
-import {HowToInstallKakaoComponent} from "../../components/how-to-install-kakao/how-to-install-kakao";
+import { AppService } from '../../providers/app.service';
+import { HowToGetQRCodeComponent } from "../../components/how-to-get-qrcode/how-to-get-qrcode";
+import { HowToGetKakaoIDComponent } from "../../components/how-to-get-kakao-id/how-to-get-kakao-id";
+import { ModalController } from "ionic-angular";
+import { HowToInstallKakaoComponent } from "../../components/how-to-install-kakao/how-to-install-kakao";
+import { TeacherPolicyComponent } from "../../components/teacher-policy/teacher-policy";
 
 @Component({
   selector: 'how-to-use-page',
@@ -16,6 +17,7 @@ export class HowToUsePage {
   showKakaotalkID = false;
 
   _modal = {
+    teacherPolicy: TeacherPolicyComponent,
     kakaoInstall: HowToInstallKakaoComponent,
     kakaoID: HowToGetKakaoIDComponent,
     qrmark: HowToGetQRCodeComponent
