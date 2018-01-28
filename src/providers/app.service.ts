@@ -61,7 +61,8 @@ export class AppService {
     student_kakaoplus_url = "http://pf.kakao.com/_eIxgAC";
     student_kakaoplus_deeplink = "kakaoplus://plusfriend/home/@katalkenglish";
 
-    kakaotalk_plus_teacher_url = "kakaoplus://plusfriend/home/@ontue"; // "http://pf.kakao.com/_RcxbRC"; //
+    teacher_kakaoplus_url = "http://pf.kakao.com/_RcxbRC";
+    teacher_kakaoplus_deeplink = "kakaoplus://plusfriend/home/@ontue"; // ; //
 
     thisYear = (new Date).getFullYear();
     constructor(
@@ -624,13 +625,14 @@ export class AppService {
 
     onClickContactAdmin() {
         if (this.teacherTheme) {
-            if (this.isMobile()) window.open(this.kakaotalk_plus_teacher_url);
+            if (this.isMobileWeb()) window.open(this.teacher_kakaoplus_deeplink);
+            else if (this.isMobile()) window.open(this.teacher_kakaoplus_url);
             else this.alert("Please use smart phone to add contact with admin. Once you have added use Kakao to chat with admin.");
         }
         else {
-            if (this.isMobile()) {
-                this.alert('isMobile open kakao plus ulr');
-                window.open(this.student_kakaoplus_url, "_blank");
+            if (this.isMobileWeb()) {
+                this.alert('isMobileWeb() open kakao plus ulr');
+                window.open(this.student_kakaoplus_deeplink);
             }
             else {
                 window.open(this.student_kakaoplus_url);
@@ -670,7 +672,7 @@ export class AppService {
      */
     isMobileWeb() {
 
-        if ( this.platform.is('mobileweb') ) {
+        if (this.platform.is('mobileweb')) {
             return true;
         } else {
             return false;
