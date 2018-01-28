@@ -263,7 +263,7 @@ export class RegisterPage {
   onSuccessUploadQRMark(file: FILE) {
     this.showQRMark = false;
     if (this.qrmarks.length > 1) {
-      this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => { }, e => this.a.alert(e));
+      this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {}, e => this.a.alert(e));
     }
 
     let data: USER_UPDATE = {
@@ -285,7 +285,7 @@ export class RegisterPage {
           this.showQRMark = true;
           this.a.render();
         }
-      }, e => {
+      }, () => {
         this.a.alert("Failed to convert QR mark. There may be an error on server while converting QR mark.");
           this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {
             this.qrmarks = [];

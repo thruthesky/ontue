@@ -2,16 +2,51 @@
 
   <div>
 
-    <ion-card>
-      * Important Tips !!
-      - Teacher must add student using smart phone.
-      There is no way to add friend in kakao with desktop software.
+    <ion-card class="p-3">
+      <h2 class="fs-4rem">Steps you need to do to become a teacher.</h2>
+      <div class="fs-xl">
+        <ol>
+          <li>Install Kakaotalk app( <b>THIS IS A MANDATORY REQUIREMENT</b> )</li>
+          <li>
+            Register
+          </li>
+          <li>
+            Complete profile update with all your data.
+            <ul>
+              <li>You will need to upload nice photo</li>
+              <li>You will need to upload a short introduction video on youtube</li>
+            </ul>
+          </li>
+          <li>
+            Add your schedule.
+          </li>
+          <li>
+            Contact to admin to get higher grade.
+            ( Important Note: Teacher must use smart phone to add contact to admin. Once teacher added contact to admin,
+            teacher can use PC to chat with admin. )
+            Admin will check your environment.
+            <ul>
+              <li>Good audio/video device</li>
+              <li>Fast speed of internet</li>
+              <li>Calm space to conduct the lesson</li>
+            </ul>
+          </li>
+          <li>
+            Update your payment information so that you can get your pay.
+          </li>
+        </ol>
 
-      - Teacher without grade will not be shown if Recommended teacher is selected.
-      But they will be shown if the option "show all teachers" is selected.
+
+        <div>* Important Tips !!</div>
+        <div>  - Teacher must add student using smart phone.</div>
+        <div>  - There is no way to add friend in kakao with desktop software.</div>
+
+        <div>  - Teacher without grade will not be shown if Recommended teacher is selected.</div>
+        <div>    But they will be shown if the option "show all teachers" is selected.</div>
+      </div>
     </ion-card>
 
-    <ion-card>
+    <ion-card class="p-3">
       <div>
         * Statistics:
       </div>
@@ -21,26 +56,24 @@
       <div>past: {{site_info.no_of_past}}</div>
     </ion-card>
 
-    <ion-card text-wrap>
+    <ion-card class="p-3" text-wrap>
       <h2>Recently graded teachers</h2>
-          <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_graded_teachers.length">
-            <ion-slide *ngFor="let teacher of site_info.recent_graded_teachers" class="text-center pointer">
-              <div (click)="a.open('schedule-table', { ID: teacher.ID })">
-                <img class="mx-auto size-80" [src]="a.checkPhotoURL(teacher.photoURL)">
-                <div>{{a.preTeacherName(teacher.display_name)}}</div>
-              </div>
-            </ion-slide>
-          </ion-slides>
+      <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_graded_teachers.length">
+        <ion-slide *ngFor="let teacher of site_info.recent_graded_teachers" class="text-center pointer">
+          <div (click)="a.open('schedule-table', { ID: teacher.ID })">
+            <img class="mx-auto size-80" [src]="a.checkPhotoURL(teacher.photoURL)">
+            <div>{{a.preTeacherName(teacher.display_name)}}</div>
+          </div>
+        </ion-slide>
+      </ion-slides>
     </ion-card>
 
 
-
-
-
-    <ion-card text-wrap>
+    <ion-card class="p-3" text-wrap>
       <div>Comment from student</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_student.length">
-        <ion-slide *ngFor="let student_comment of site_info.comment_from_student" class="text-center pointer" (click)="onClickCommentList(student_comment.idx_teacher)">
+        <ion-slide *ngFor="let student_comment of site_info.comment_from_student" class="text-center pointer"
+                   (click)="onClickCommentList(student_comment.idx_teacher)">
           <img class="mx-auto size-80" [src]="a.checkPhotoURL(student_comment.student_photoURL)">
           <div>{{a.preTeacherName(student_comment.teacher_name)}}</div>
           <div class="rating mb-2">
@@ -64,7 +97,7 @@
       </ion-slides>
     </ion-card>
 
-    <ion-card text-wrap>
+    <ion-card class="p-3" text-wrap>
       <div>comment from teacher without name.</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_teacher.length">
         <ion-slide *ngFor="let teacher_comment of site_info.comment_from_teacher" class="text-center">
@@ -75,7 +108,7 @@
       </ion-slides>
     </ion-card>
 
-    <ion-card text-wrap>
+    <ion-card class="p-3" text-wrap>
       <div>Recent reservations. without student name.</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_reservations.length">
         <ion-slide *ngFor="let reservation of site_info.recent_reservations" class="text-center pointer">
@@ -90,44 +123,6 @@
     </ion-card>
 
   </div>
-
-
-  <h2>
-    Steps you need to do to become a teacher.
-
-    <ol>
-
-      <li>Install Kakaotalk app</li>
-      <li>
-        Register
-      </li>
-      <li>
-        Complete profile update with all your data.
-        <ul>
-          <li>You will need to upload nice photo</li>
-          <li>You will need to upload a short introduction video on youtube</li>
-        </ul>
-      </li>
-      <li>
-        Open schedule table
-      </li>
-      <li>
-        Contact to admin to get higher grade.
-        ( Important Note: Teacher must use smart phone to add contact to admin. Once teacher added contact to admin,
-        teacher can use PC to chat with admin. )
-        Admin will check your environment.
-        <ul>
-          <li>Good audio/video device</li>
-          <li>Fast speed of internet</li>
-          <li>Calm space to conduct the lesson</li>
-        </ul>
-      </li>
-      <li>
-        Update your payment information so that you can get your pay.
-      </li>
-    </ol>
-
-  </h2>
 
 
   <h1>Terms & Conditions</h1>

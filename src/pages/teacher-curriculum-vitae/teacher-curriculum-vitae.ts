@@ -70,6 +70,9 @@ export class TeacherCurriculumVitaePage {
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
 
+      this.account.kakao_qrmark_string = userData.kakao_qrmark_string;
+      this.account.kakao_qrmark_URL = userData.kakao_qrmark_URL;
+
       if( userData.youtube_video_url ){
         this.account.youtube_video_url = userData.youtube_video_url;
         if (userData.youtube_video_url.match(/^http:\/\//i)) userData.youtube_video_url = userData.youtube_video_url.replace(/^http:\/\//i, 'https://');//replace http to https
@@ -93,13 +96,20 @@ export class TeacherCurriculumVitaePage {
         this.account.youtube_video_url = "";
       }
 
-      // console.log("youtube_video_url", this.youtube_video_url);
-      // console.log("youtube_thumbnail_url", this.youtube_thumbnail_url);
 
       if (userData.primary_photo.id) this.files = [ userData.primary_photo ];
       if (userData.kakao_qrmark_photo.id){
         this.qrmarks = [ userData.kakao_qrmark_photo ];
         this.showQRMark = true;
+      }
+
+      if ( this.account.kakao_qrmark_URL && ! this.account.kakao_qrmark_string ) {
+        this.a.lms.update_kakao_qrmark_string().subscribe( re => {
+          console.log( re );
+          if ( re['kakao_qrmark_string'] ) {
+            this.account.kakao_qrmark_string = re['kakao_qrmark_string'];
+          }
+        }, e => this.a.alert( e ) );
       }
     }, error => this.a.alert(error));
   }
@@ -191,7 +201,13 @@ export class TeacherCurriculumVitaePage {
           this.showQRMark = true;
           this.a.render();
         }
-      }, e => this.a.alert(e));
+      }, () => {
+        this.a.alert("Failed to convert QR mark. There may be an error on server while converting QR mark.");
+        this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {
+          this.qrmarks = [];
+          this.a.render();
+        }, e => this.a.alert(e));
+      });
     }, e => this.a.alert(e));
   }
 
