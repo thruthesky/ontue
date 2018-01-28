@@ -14,7 +14,7 @@
           <ion-row>
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
-                <div class="py-5" (click)="a.open('session-future')">
+                <div class="py-5 pointer" (click)="a.open('session-future')">
                   <i class="fa fa-calendar-alt fa-3x mb-3 skyblue"></i>
                   <div>Reserved Class</div>
                 </div>
@@ -22,7 +22,7 @@
             </ion-col>
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
-                <div class="py-5" (click)="a.open('session-past')">
+                <div class="py-5 pointer" (click)="a.open('session-past')">
                   <i class="fa fa-calendar-times fa-3x mb-3 skyblue"></i>
                   <div>Past Class</div>
                 </div>
@@ -30,7 +30,7 @@
             </ion-col>
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
-                <div class="py-5" (click)="a.open('schedule-edit')">
+                <div class="py-5 pointer" (click)="a.open('schedule-edit')">
                   <i class="fa fa-calendar-plus fa-3x mb-3 skyblue"></i>
                   <div>Add/Edit Schedule</div>
                 </div>
@@ -39,7 +39,7 @@
 
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
-                <div class="py-5" (click)="a.open('teacher-curriculum-vitae')">
+                <div class="py-5 pointer" (click)="a.open('teacher-curriculum-vitae')">
                   <i class="fa fa-edit fa-3x mb-3 skyblue"></i>
                   <div>Curriculum Vitae</div>
                 </div>
@@ -47,7 +47,7 @@
             </ion-col>
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogout">
               <ion-card>
-                <div class="py-5" (click)="a.open('login')">
+                <div class="py-5 pointer" (click)="a.open('login')">
                   <i class="fa fa-sign-in fa-3x mb-3 skyblue"></i>
                   <div>Login</div>
                 </div>
@@ -55,7 +55,7 @@
             </ion-col>
             <ion-col col-4 class="text-center">
               <ion-card>
-                <div class="py-5" (click)="a.open('register')">
+                <div class="py-5 pointer" (click)="a.open('register')">
                   <i class="fa fa-address-card fa-3x mb-3 skyblue"></i>
                   <div *ngIf="a.user.isLogin">Update Profile</div>
                   <div *ngIf="a.user.isLogout">Register</div>
@@ -64,7 +64,7 @@
             </ion-col>
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
-                <div class="py-5" (click)="a.open('settings-payment-info')">
+                <div class="py-5 pointer" (click)="a.open('settings-payment-info')">
                   <i class="fa fa-credit-card fa-3x mb-3 skyblue"></i>
                   <div>Payment Information</div>
                 </div>
@@ -73,7 +73,7 @@
 
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
-                <div class="py-5" (click)="a.open('message')">
+                <div class="py-5 pointer" (click)="a.open('message')">
                   <i class="fa fa-comment-alt fa-3x mb-3 skyblue"></i>
                   <div>Messages</div>
                 </div>
@@ -81,7 +81,7 @@
             </ion-col>
             <ion-col col-4 class="text-center">
               <ion-card>
-                <div class="py-5" (click)=" a.onClickContactAdmin() ">
+                <div class="py-5 pointer" (click)=" a.onClickContactAdmin() ">
                   <i class="fa fa-phone-square fa-3x mb-3 skyblue"></i>
                   <div>Contact Us</div>
                 </div>
@@ -89,7 +89,7 @@
             </ion-col>
             <ion-col col-4 class="text-center">
               <ion-card>
-                <div class="py-5" (click)="a.open('how-to-use')">
+                <div class="py-5 pointer" (click)="a.open('how-to-use')">
                   <i class="fal fa-book fa-3x mb-3 skyblue"></i>
                   <div>Guideline and tips</div>
                 </div>
@@ -98,7 +98,7 @@
 
             <ion-col col-4 class="text-center">
               <ion-card>
-                <div class="py-5" (click)="a.open('settings')">
+                <div class="py-5 pointer" (click)="a.open('settings')">
                   <i class="fa fa-cogs fa-3x mb-3 skyblue"></i>
                   <div>Settings</div>
                 </div>
@@ -107,7 +107,7 @@
 
             <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
               <ion-card>
-                <div class="py-5" (click)="a.user.logout()">
+                <div class="py-5 pointer" (click)="a.user.logout()">
                   <i class="fa fa-sign-out fa-3x mb-3 skyblue"></i>
                   <div>Logout</div>
                 </div>
