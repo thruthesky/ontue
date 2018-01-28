@@ -182,8 +182,8 @@ export class MyApp {
 
     // this.a.open('login');
 
-    this.a.open('register');
-    
+    // this.a.open('register');
+
     // this.a.open('menu');
     // this.a.open('my-point');
 
