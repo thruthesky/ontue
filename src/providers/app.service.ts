@@ -625,7 +625,7 @@ export class AppService {
 
     onClickContactAdmin() {
         if (this.teacherTheme) {
-            if ( this.isMobileWeb() ) window.open( this.teacher_kakaoplus_deeplink );
+            if (this.isMobileWeb()) window.open(this.teacher_kakaoplus_deeplink);
             else if (this.isMobile()) window.open(this.teacher_kakaoplus_url);
             else this.alert("Please use smart phone to add contact with admin. Once you have added use Kakao to chat with admin.");
         }
@@ -672,7 +672,7 @@ export class AppService {
      */
     isMobileWeb() {
 
-        if ( this.platform.is('mobileweb') ) {
+        if (this.platform.is('mobileweb')) {
             return true;
         } else {
             return false;
