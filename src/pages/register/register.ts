@@ -81,14 +81,12 @@ export class RegisterPage {
   loadData() {
     this.inLoading = true;
     this.a.user.data().subscribe((userData: USER_DATA_RESPONSE) => {
-      setTimeout( () => this.inLoading = false, 1000 );
+      setTimeout(() => this.inLoading = false, 1000);
       console.log('userData::', userData);
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
       this.account['display_name'] = userData['display_name'];
       this.account.phone_number = userData.phone_number;
-      this.account.kakaotalk_id = userData.kakaotalk_id;
-      this.account['kakao_qrmark_string'] = userData.kakao_qrmark_string;
       this.account.kakao_qrmark_URL = userData.kakao_qrmark_URL;
       this.user_type = userData.user_type;
       if (userData.birthday.length > 0) {
@@ -105,14 +103,22 @@ export class RegisterPage {
         this.showQRMark = true;
       }
 
-      if ( this.account.kakao_qrmark_URL && ! this.account.kakao_qrmark_string ) {
-        this.a.lms.update_kakao_qrmark_string().subscribe( re => {
-          console.log( re );
-          if ( re['kakao_qrmark_string'] ) {
+
+      /// Check if QR Mark converting has been failed.
+      ///
+      this.account.kakaotalk_id = userData.kakaotalk_id;
+      this.account['kakao_qrmark_string'] = userData.kakao_qrmark_string;
+      if (this.account.kakao_qrmark_URL && !this.account.kakao_qrmark_string) {
+        this.a.lms.update_kakao_qrmark_string().subscribe(re => {
+          console.log(re);
+          if (re['kakao_qrmark_string']) {
             this.account.kakao_qrmark_string = re['kakao_qrmark_string'];
           }
-        }, e => this.a.alert( e ) );
+        }, e => this.a.alert(e));
       }
+      /// eo
+
+
     }, error => {
       this.inLoading = false;
       this.a.alert(error);
@@ -153,6 +159,9 @@ export class RegisterPage {
 
   profile_register() {
     this.account.user_login = this.account.user_email;
+    delete this.account.kakao_qrmark_URL;
+    delete this.account.kakao_qrmark_string;
+
     if (this.a.teacherTheme && this.patchBirthday()) return;
     this.a.user.register(this.account).subscribe(re => {
       console.log("user.register => success: re: ", re);
@@ -162,7 +171,7 @@ export class RegisterPage {
       });
       // this.a.open('home');
       this.a.hideLoader();
-      this.a.alert( this.a.i18n['REGISTERED']);
+      this.a.alert(this.a.i18n['REGISTERED']);
       this.a.open('home');
     }, reg => {
       this.a.hideLoader();
@@ -174,10 +183,13 @@ export class RegisterPage {
   profile_update() {
     this.a.showLoader();
     if (this.a.teacherTheme && this.patchBirthday()) return;
+
+    delete this.account.kakao_qrmark_URL;
+    delete this.account.kakao_qrmark_string;
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
       console.log('updateUserInfo:', res);
       this.a.hideLoader();
-      this.a.alert( this.a.i18n['UPDATED']);
+      this.a.alert(this.a.i18n['UPDATED']);
       this.loadData();
     }, err => {
       this.a.alert(err);
@@ -263,7 +275,7 @@ export class RegisterPage {
   onSuccessUploadQRMark(file: FILE) {
     this.showQRMark = false;
     if (this.qrmarks.length > 1) {
-      this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {}, e => this.a.alert(e));
+      this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => { }, e => this.a.alert(e));
     }
 
     let data: USER_UPDATE = {
@@ -287,10 +299,10 @@ export class RegisterPage {
         }
       }, () => {
         this.a.alert("Failed to convert QR mark. There may be an error on server while converting QR mark.");
-          this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {
-            this.qrmarks = [];
-            this.a.render();
-          }, e => this.a.alert(e));
+        this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {
+          this.qrmarks = [];
+          this.a.render();
+        }, e => this.a.alert(e));
       });
     }, e => this.a.alert(e));
   }
@@ -302,16 +314,16 @@ export class RegisterPage {
     // console.log("Birthday:: ",this.account.birthday);
   }
 
-  showModalFAQ(modal_name){
-    const modal = this.modalCtrl.create( this._modal[modal_name] );
-    modal.onDidDismiss(()=> {});
+  showModalFAQ(modal_name) {
+    const modal = this.modalCtrl.create(this._modal[modal_name]);
+    modal.onDidDismiss(() => { });
     modal.present();
 
   }
 
 
   onClickKakaoIDHelp() {
-    if ( this.a.isTeacher ) {
+    if (this.a.isTeacher) {
       this.showModalFAQ('kakaoID');
     }
     else {
@@ -319,6 +331,13 @@ export class RegisterPage {
     }
   }
 
+  userProfilePhoto(files) {
+    if ( files.length ) {
+      if ( files[0]['url_portrait'] ) return files[0]['url_portrait'];
+      else return files[0]['url'];
+    }
+    else return this.a.anonymousPhotoURL;
+  }
 
 }
 

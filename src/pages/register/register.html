@@ -25,7 +25,7 @@
             <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: .003; font-size: 10em;" type="file"
               (change)="fileUpload.onChangeFile($event)">
             <div class="profile-user-photo size-100x120 mx-auto">
-              <img class="w-100" src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
+              <img class="w-100" src="{{ userProfilePhoto( files )}}">
             </div>
             <div text-center>
               <button class="btn submit fs-lg" [class.skip]="files && files.length">
