@@ -10,6 +10,10 @@ register-page {
       }
     }
   }
+
+  .qr-mark .uploaded-files .file img {
+    max-width: 150px;
+  }
 }
 
 
@@ -36,3 +40,4 @@ register-page {
     }
   }
 }
+

@@ -82,12 +82,14 @@ export class RegisterPage {
     this.inLoading = true;
     this.a.user.data().subscribe((userData: USER_DATA_RESPONSE) => {
       setTimeout( () => this.inLoading = false, 1000 );
-      // console.log('userData::', userData);
+      console.log('userData::', userData);
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
       this.account['display_name'] = userData['display_name'];
       this.account.phone_number = userData.phone_number;
       this.account.kakaotalk_id = userData.kakaotalk_id;
+      this.account['kakao_qrmark_string'] = userData.kakao_qrmark_string;
+      this.account.kakao_qrmark_URL = userData.kakao_qrmark_URL;
       this.user_type = userData.user_type;
       if (userData.birthday.length > 0) {
         this.year = userData.birthday.substr(0, 4);
@@ -101,6 +103,15 @@ export class RegisterPage {
       if (userData.kakao_qrmark_photo.id) {
         this.qrmarks = [userData.kakao_qrmark_photo];
         this.showQRMark = true;
+      }
+
+      if ( this.account.kakao_qrmark_URL && ! this.account.kakao_qrmark_string ) {
+        this.a.lms.update_kakao_qrmark_string().subscribe( re => {
+          console.log( re );
+          if ( re['kakao_qrmark_string'] ) {
+            this.account.kakao_qrmark_string = re['kakao_qrmark_string'];
+          }
+        }, e => this.a.alert( e ) );
       }
     }, error => {
       this.inLoading = false;
@@ -274,7 +285,13 @@ export class RegisterPage {
           this.showQRMark = true;
           this.a.render();
         }
-      }, e => this.a.alert(e));
+      }, e => {
+        this.a.alert("Failed to convert QR mark. There may be an error on server while converting QR mark.");
+          this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {
+            this.qrmarks = [];
+            this.a.render();
+          }, e => this.a.alert(e));
+      });
     }, e => this.a.alert(e));
   }
 

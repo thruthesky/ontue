@@ -173,7 +173,16 @@
                   <div class="fs-lg mt-2 pointer" text-wrap (click)="showModalFAQ('qrmark')">
                     QR Mark is required for teacher. How to get QR MARK <i class="fa fa-question-circle"></i>
                   </div>
+
+                  <div class="alert alert-warning" *ngIf=" account.kakao_qrmark_URL != '' && account.kakao_qrmark_string == '' ">
+
+                    <i class="fas fa-spinner fa-spin"></i>
+                    There is something wrong in converting Kakao QR Mark into string.
+                    If this message does not appear within 10 seconds, please contact to admin.
+                  </div>
+
                 </div>
+
               </li>
 
               <!--<li *ngIf="a.isTeacher">-->

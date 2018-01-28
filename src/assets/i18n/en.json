@@ -80,7 +80,6 @@
   , "ALL SCHEDULE TABLE": "All Teacher"
   , "QNA SHORT": "QnA"
   , "QNA": "QnA"
-
   , "CLASS NO": "No."
   , "DATE": "Date"
   , "STUDENT": "Student"
@@ -96,6 +95,7 @@
   , "PHONE NUMBER": "Phone Number"
   , "KAKAOTALK ID": "Kakaotalk ID"
   , "KAKAOTALK ID SHORT": "Kakaotalk ID"
+  , "KAKAOTALK FRIEND ADD": "KakaoID"
   , "KAKAOTALK ID REQUIRED": "Please input Kakaotalk ID. You can  get it on your Kakaotalk profile."
   , "SCHEDULE AVAILABLE PAGE TITLE": "Available teachers at this time"
   , "IN LOADING": "Loading! Please wait a second."

@@ -17,6 +17,16 @@
             background-color: #888;
             color: white;
         }
+        &.lightgrey {
+            background-color: rgb(209, 209, 209)!important;
+            color: rgb(75, 75, 75)!important;
+        }
+    }
+
+    &.buttons-sm {
+        button {
+            padding: .4em .5em;
+        }
     }
 }
 

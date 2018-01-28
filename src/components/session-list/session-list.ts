@@ -290,4 +290,12 @@ export class SessionList {
 
   }
 
+
+  /**
+   * Returns teacher photo url.
+   * @param book book
+   */
+  photoURL( book ) {
+    return this.my_teachers[book.idx_teacher].photoURL ? this.my_teachers[book.idx_teacher].photoURL : this.a.anonymousPhotoURL;
+  }
 }

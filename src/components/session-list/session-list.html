@@ -98,7 +98,7 @@
   </div>
 
   <div class="books" *ngIf=" books.length ">
-    <table width="100%">
+    <table width="100%" border="1" cellpadding="0" cellspacing="0">
       <tr text-center>
         <td *ngIf="a.isStudent">{{ 'TEACHER' | translate }}</td>
         <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
@@ -106,7 +106,7 @@
         <td *ngIf="displayDate">{{ 'DATE' | translate }}</td>
         <td>{{ 'TIME' | translate }}</td>
         <td>{{ 'MINUTE' | translate }}</td>
-        <td>{{ 'Kakao ID' | translate }}</td>
+        <td>{{ 'KAKAOTALK FRIEND ADD' | translate }}</td>
         <td *ngIf="displayPoint">{{ 'POINT' | translate }}</td>
         <td></td>
       </tr>
@@ -114,7 +114,7 @@
       <tr class="h-20" text-center *ngFor="let book of books; let i = index;">
         <td *ngIf="a.isStudent">
           <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
-            <img class="d-block w-100" src="{{ my_teachers[book.idx_teacher].photoURL ? my_teachers[book.idx_teacher].photoURL : a.anonymousPhotoURL  }}">
+            <img class="d-block w-100" src="{{ photoURL( book )  }}">
           </div>
           <div *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
         </td>
@@ -125,7 +125,18 @@
         <td class="px-1" *ngIf="displayDate">{{ date(book.date_display) }}</td>
         <td class="px-1">{{book.class_begin_display}}</td>
         <td class="px-1 grey fw-bold">{{book.duration}}</td>
-        <td class="px-1 grey fw-bold">{{book.student_kakaotalk_id}}</td>
+
+        <td class="px-1 grey fw-bold">
+          <ng-container *ngIf="a.isTeacher">
+            {{book.student_kakaotalk_id}}
+          </ng-container>
+          <ng-container *ngIf="a.isStudent">
+            <div class="fs-3rem orange">
+              <i class="fas fa-plus-circle"></i>
+            </div>
+          </ng-container>
+        </td>
+
         <td class="pr-2 blue" *ngIf="displayPoint" text-right>{{ point(book) }}</td>
         <td text-left>
           <section class="menu mb-1">
@@ -148,7 +159,8 @@
                 <ng-container class="alert alert-warning" *ngIf=" refund_in_progress(book) ">
                   <span class="alert alert-warning" *ngIf=" rejected(book); else Requested ">Rejected</span>
                   <ng-template #Requested>
-                    <button class="bg-darkred white" (click)=" onClickShowRequest( book ) "><ion-icon name="mail"></ion-icon> Refund Requested</button>
+                    <button class="bg-darkred white" (click)=" onClickShowRequest( book ) ">
+                      <ion-icon name="mail"></ion-icon> Refund Requested</button>
                   </ng-template>
                 </ng-container>
 
@@ -191,8 +203,8 @@
               </div>
             </div>
 
-            <div class="buttons mt-1" *ngIf=" future ">
-              <button class="light" *ngIf=" ! book.process " (click)="onClickCancel( book )">
+            <div class="buttons buttons-sm mt-1" *ngIf=" future ">
+              <button class="lightgrey" *ngIf=" ! book.process " (click)="onClickCancel( book )">
                 <i class="fal fa-times"></i>
                 <span class="pl-2">{{ 'CANCEL' | translate }}</span>
               </button>
@@ -210,7 +222,7 @@
 
   <ul *ngIf=" a.isTeacher ">
     <li>Total Points from payable sessions - {{teacher_summary['total_points_from_payable_session']}}</li>
-    <li>Your Total Share Points  - {{teacher_summary['total_teacher_share_points']}}</li>
+    <li>Your Total Share Points - {{teacher_summary['total_teacher_share_points']}}</li>
     <li>No. of payable sessions - {{teacher_summary['counts_of_payable_session']}}</li>
     <li>No. of not Payable sessions - {{teacher_summary['counts_of_not_payable_session']}}</li>
     <li>No. of paid sessions - {{teacher_summary['counts_of_paid_session']}}</li>
