@@ -12,10 +12,10 @@
 
   <ion-list>
     <ion-item>
-      <ion-textarea class="w-100" rows="10" [(ngModel)]="comment" placeholder="Comment to teacher...."></ion-textarea>
+      <ion-textarea class="w-100" rows="10" [(ngModel)]="comment" placeholder="{{ 'RATE COMMENT' | translate }}"></ion-textarea>
     </ion-item>
     <ion-item>
-      Rating: {{rate}}
+      {{ 'RATING' | translate }} : {{rate}}
       <span *ngIf="rate < 1" (click)="rate=1"><i class="fal fa-star"></i></span>
       <span *ngIf="rate >= 1" (click)="rate=1"><i class="fas fa-star"></i></span>
 
@@ -32,12 +32,12 @@
       <span *ngIf="rate >= 5" (click)="rate=5"><i class="fas fa-star"></i></span>
     </ion-item>
     <ion-item text-wrap>
-      <div>You can only comment, if you have successful class with this teacher...</div>
+      <div>{{ 'STUDENT RATE COMMENT' | translate }}</div>
     </ion-item>
   </ion-list>
 <div class="px-3">
-  <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
-  <button ion-button type="button" color="secondary"  (click)="onClickCancel()">Cancel</button>
+  <button ion-button type="button" (click)="onClickSubmit()">{{ 'SUBMIT' | translate }}</button>
+  <button ion-button type="button" color="secondary"  (click)="onClickCancel()">{{ 'CANCEL' | translate }}</button>
 </div>
 </ion-content>
 

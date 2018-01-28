@@ -1,26 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Evaluation</ion-title>
+    <ion-title>강의 평가</ion-title>
     <ion-buttons start>
       <button ion-button class="cancel" (click)="dismiss()">
-        <span ion-text color="primary">Cancel</span>
+        <span ion-text color="primary">{{ 'CANCEL' | translate }}</span>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content id="section-to-print">
   <ion-list>
-    <ion-item>Session No. {{ session?.idx }}</ion-item>
-    <ion-item>Points: {{ session?.point }}</ion-item>
-    <ion-item>Level of the Session: {{level}}</ion-item>
-    <ion-item>Expression: {{ session?.expression }}</ion-item>
-    <ion-item>Vocabulary: {{ session?.vocabulary }}</ion-item>
-    <ion-item>Grammar: {{ session?.grammar }}</ion-item>
-    <ion-item>Pronunciation: {{ session?.pronunciation }}</ion-item>
-    <ion-item>Speed of Speech: {{ session?.speed }}</ion-item>
-    <ion-item><span text-wrap>Comment: {{ session?.comment }}</span></ion-item>
-    <ion-item><span text-wrap>Book(Page) used in the session: {{ session?.book_used }}</span></ion-item>
-    <ion-item><span text-wrap>Book(Page) will be used in next session: {{ session?.book_next }}</span></ion-item>
+    <ion-item>수업번호: {{ session?.idx }}</ion-item>
+    <ion-item>포인트: {{ session?.point }}</ion-item>
+    <ion-item>결과(레벨): {{level}}</ion-item>
+    <ion-item>표현력: {{ session?.expression }}</ion-item>
+    <ion-item>어휘력: {{ session?.vocabulary }}</ion-item>
+    <ion-item>문법: {{ session?.grammar }}</ion-item>
+    <ion-item>발음: {{ session?.pronunciation }}</ion-item>
+    <ion-item>유창함: {{ session?.speed }}</ion-item>
+    <ion-item><span text-wrap>코멘트: {{ session?.comment }}</span></ion-item>
+    <ion-item><span text-wrap>교재: {{ session?.book_used }}</span></ion-item>
+    <ion-item><span text-wrap>다음 수업 시간에 사용할 교재: {{ session?.book_next }}</span></ion-item>
   </ion-list>
   <!--<button ion-button (click)="onClickPrint()" id="not-to-print">Print</button>-->
 

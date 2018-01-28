@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
-import {AlertController, ModalController} from 'ionic-angular';
+import { AlertController, ModalController } from 'ionic-angular';
 import { EvaluateView } from '../../components/evaluate-view/evaluate-view';
-import {MessageWrite} from "../message-write/message-write";
-import {RefundRequestView} from "../refund-request-view/refund-request-view";
+import { MessageWrite } from "../message-write/message-write";
+import { RefundRequestView } from "../refund-request-view/refund-request-view";
+import { StudentCommentEdit } from "../../components/student-comment-edit/student-comment-edit";
 
 
 @Component({
@@ -26,7 +27,7 @@ export class SessionList {
     counts_of_not_payable_session: 0,
     counts_of_paid_session: 0,
     counts_of_refunded_session: 0,
-    counts_of_rejected_refund:0,
+    counts_of_rejected_refund: 0,
     counts_of_requested_refund: 0,
     counts_of_incomplete_eval: 0
   };
@@ -57,10 +58,10 @@ export class SessionList {
 
   ngOnInit() {
     let now = this.today.getFullYear() + '-' + this.a.add0(this.today.getMonth() + 1) + '-' + this.a.add0(this.today.getDate());
-    if ( this.future ) {
+    if (this.future) {
       this.date_begin = now;
     }
-    else if ( this.past ) {
+    else if (this.past) {
       let _begin = new Date(this.today.getTime() - 24 * 60 * 60 * 1000 * this.a.DEFAULT_DAYS_TO_SHOW_ON_PAST_PAGE);
       this.date_begin = _begin.getFullYear() + '-' + this.a.add0(_begin.getMonth() + 1) + '-' + this.a.add0(_begin.getDate());
       this.date_end = now;
@@ -100,8 +101,8 @@ export class SessionList {
       // console.log(re);
       this.books = this.books.filter(book => book.idx != re['idx_reservation']);
 
-      this.a.updateLmsInfoUserNoOfTotalSessions( re['no_of_total_sessions'] );
-      this.a.updateLmsInfoUserNoOfReservation( re['no_of_reservation'] );
+      this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
+      this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
 
     }, e => {
@@ -124,7 +125,7 @@ export class SessionList {
   }
 
   sessionSearch() {
-    this.a.lms.session_search( this.request() ).subscribe(re => {
+    this.a.lms.session_search(this.request()).subscribe(re => {
       console.log("Result of class_search(): ", re);
       this.re = re;
       this.re['total_session_refunded'] = this.a.toInt(this.re['total_session_refunded']);
@@ -150,7 +151,7 @@ export class SessionList {
 
   onClickRefundRequest(book) {
     // console.log(book);
-    const modal = this.modalCtrl.create(MessageWrite, {title: "Why Request Refund?"});
+    const modal = this.modalCtrl.create(MessageWrite, { title: "Why Request Refund?" });
     modal.onDidDismiss(re => {
       // console.log("onDidDismiss", re);
       if (re) {
@@ -173,16 +174,16 @@ export class SessionList {
     }, e => this.a.alert(e));
   }
 
-  refund_in_progress( book ) {
-    if ( book['paid'] > 0 ) return false;
-    if ( book['refund_done_at'] > 0 ) return false;
-    if ( book['refund_request_at'] > 0 ) return true;
-    if ( book['refund_reject_at'] > 0 ) return true;
+  refund_in_progress(book) {
+    if (book['paid'] > 0) return false;
+    if (book['refund_done_at'] > 0) return false;
+    if (book['refund_request_at'] > 0) return true;
+    if (book['refund_reject_at'] > 0) return true;
     return false;
   }
 
   refund_request(book) {
-    if ( book['refund_reject_at'] == 0 && book['refund_request_at'] > 0 ) {
+    if (book['refund_reject_at'] == 0 && book['refund_request_at'] > 0) {
       return true;
     }
     else {
@@ -195,10 +196,10 @@ export class SessionList {
   }
 
   refundable(book) {
-    if ( book.refund_timeover ) return false;
-    if ( this.paid( book ) ) return false;
-    if ( this.refunded( book ) ) return false;
-    if ( this.refund_in_progress( book ) ) return false;
+    if (book.refund_timeover) return false;
+    if (this.paid(book)) return false;
+    if (this.refunded(book)) return false;
+    if (this.refund_in_progress(book)) return false;
     return true;
   }
   refunded(book) {
@@ -236,11 +237,11 @@ export class SessionList {
   }
 
   onClickRejectRefundRequest(book) {
-    const modal = this.modalCtrl.create(MessageWrite, {title: "Why Reject Refund?"});
+    const modal = this.modalCtrl.create(MessageWrite, { title: "Why Reject Refund?" });
     modal.onDidDismiss(re => {
       // console.log("onDidDismiss", re);
       if (re) {
-        this.a.lms.session_refund_reject({idx_reservation: book['idx'], refund_reject_message: re}).subscribe(re => {
+        this.a.lms.session_refund_reject({ idx_reservation: book['idx'], refund_reject_message: re }).subscribe(re => {
           console.log(re);
           book['refund_reject_at'] = 1;
         }, e => this.a.alert(e));
@@ -273,16 +274,16 @@ export class SessionList {
     else return this.a.number_format(book['point']);
   }
 
-  onClickShowRequest( book ){
+  onClickShowRequest(book) {
     console.log("onClickShowRequest:: ", book);
-    const modal = this.modalCtrl.create(RefundRequestView, {book: book});
+    const modal = this.modalCtrl.create(RefundRequestView, { book: book });
     modal.onDidDismiss(re => {
-      console.log("onClickShowRequest::onDidDismiss:: ",re);
-      if(!re) return;
+      console.log("onClickShowRequest::onDidDismiss:: ", re);
+      if (!re) return;
       console.log("onDidDismiss::", re);
-      if(re == 'accept') {
+      if (re == 'accept') {
         book['refund_done_at'] = 1;
-      } else if(re == 'reject') {
+      } else if (re == 'reject') {
         book['refund_reject_at'] = 1;
       }
     });
@@ -295,11 +296,21 @@ export class SessionList {
    * Returns teacher photo url.
    * @param book book
    */
-  photoURL( book ) {
+  photoURL(book) {
     return this.my_teachers[book.idx_teacher].photoURL ? this.my_teachers[book.idx_teacher].photoURL : this.a.anonymousPhotoURL;
   }
 
-  onClickKakaoQRMarkString( url ) {
-    window.open( url, '_blank' );
+  onClickKakaoQRMarkString(url) {
+    window.open(url, '_blank');
   }
+
+  onClickCommentCreate(idx_teacher) {
+    const createCommentModal = this.modalCtrl.create(StudentCommentEdit, { idx_teacher: idx_teacher }, { cssClass: 'student-comment-create' }
+    );
+    createCommentModal.onDidDismiss(res => {
+      // if (res == 'success') this.onClickCommentList();
+    });
+    createCommentModal.present();
+  }
+
 }

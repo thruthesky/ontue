@@ -13,6 +13,7 @@
 "OK": "예",
 "CANCEL": "취소",
 "DELETE": "삭제",
+"EDIT": "수정",
 
 "ALL MENU": "메뉴",
 "FORUM": "게시판",
@@ -217,4 +218,11 @@
  , "UPDATED": "저장되었습니다."
  , "REGISTERED": "회원 가입을 축하드립니다."
  , "SEARCH PERIOD": "검색 기간"
+ , "STUDENT COMMENT CREATE": "수업 후기 작성"
+ , "STUDENT COMMENT UPDATE": "수정"
+ , "RATING": "점수"
+ , "RATE COMMENT": "수업 후기를 작성해 주세요."
+ , "STUDENT RATE COMMENT": "올바로 진행된 수업에 대해서만 후기를 작성 할 수 있습니다."
+ , "SUBMIT": "저장하기"
+ , "STUDENT COMMENT LIST": "수업 후기 목록"
 }

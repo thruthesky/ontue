@@ -106,20 +106,29 @@
         <td *ngIf="displayDate">{{ 'DATE' | translate }}</td>
         <td>{{ 'TIME' | translate }}</td>
         <td>{{ 'MINUTE' | translate }}</td>
-        <td>
-          {{ 'KAKAOTALK' | translate }}<br>
-          {{ 'ADD FRIEND' | translate }}
+        <td *ngIf=" future ">
+          {{ 'KAKAOTALK' | translate }}
+          <br> {{ 'ADD FRIEND' | translate }}
         </td>
         <td *ngIf="displayPoint">{{ 'POINT' | translate }}</td>
-        <td></td>
+        <td>
+          <ng-container *ngIf=" a.isStudent && past ">
+            결과
+          </ng-container>
+        </td>
+
       </tr>
 
-      <tr class="h-20" text-center *ngFor="let book of books; let i = index;">
+      <tr class="" text-center *ngFor="let book of books; let i = index;" [ngClass]=" { 'bg-ghostwhite': i % 2 } ">
         <td *ngIf="a.isStudent">
-          <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
-            <img class="d-block w-100" src="{{ photoURL( book )  }}">
-          </div>
-          <div *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
+          <section class="teacher-photo my-2 py-2">
+
+            <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
+              <img class="d-block w-100" src="{{ photoURL( book )  }}">
+            </div>
+            <div *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
+
+          </section>
         </td>
         <td class="fw-bold" *ngIf="a.isTeacher">
           {{ a.preTeacherName(book.student_name) }}
@@ -129,7 +138,7 @@
         <td class="px-1">{{book.class_begin_display}}</td>
         <td class="px-1 grey fw-bold">{{book.duration}}</td>
 
-        <td class="px-1 grey fw-bold">
+        <td class="kakaotalk-id px-1 grey fw-bold" *ngIf=" future ">
           <ng-container *ngIf="a.isTeacher">
             {{book.student_kakaotalk_id}}
           </ng-container>
@@ -147,9 +156,9 @@
 
         <td class="pr-2 blue text-center" *ngIf="displayPoint">{{ point(book) }}</td>
         <td text-left>
-          <section class="menu mb-1">
+          <section class="menu my-1 py-3">
             <div class="past" *ngIf=" book.past ">
-              <div class="teacher buttons d-flex" *ngIf=" a.lms.getUserType() == 'teacher' ">
+              <div class="teacher buttons d-flex" *ngIf=" a.isTeacher ">
 
 
                 <button class="bg-white blue" [class.warning]=" ! evaluated(book) " (click)=" a.open('evaluate', {idx: book.idx}) " *ngIf=" !paid(book) && !refunded( book ) ">
@@ -194,12 +203,12 @@
 
               </div>
 
-              <div class="student buttons" *ngIf=" a.lms.getUserType() == 'student' ">
-                <span class="pl-2 pr-5 fs-2rem indigo" (click)=" onClickEvaluateView(book.idx)" *ngIf=" !refunded(book) ">
-                  <i class="fas fa-comments"></i>
-                </span>
-                <span class="darkred" *ngIf=" rejected( book ) ">Rejected</span>
+              <div class="student buttons text-center" text-center *ngIf=" a.isStudent ">
 
+                <button class="dark" (click)=" onClickEvaluateView(book.idx)" *ngIf=" !refunded(book) ">강의평가</button>
+                <button class="lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">후기작성</button>
+
+                <span class="darkred" *ngIf=" rejected( book ) ">Rejected</span>
                 <span class="darkred" *ngIf=" refunded(book) ">Refunded</span>
                 <ng-container *ngIf=" !book.refund_timeover && ! rejected( book ) ">
                   <ng-container *ngIf=" ! refunded( book ) ">
@@ -225,7 +234,8 @@
         </td>
       </tr>
     </table>
-  </div><!--/books-->
+  </div>
+  <!--/books-->
 
 
   <ul *ngIf=" a.isTeacher ">

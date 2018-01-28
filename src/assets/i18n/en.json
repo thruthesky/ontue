@@ -158,4 +158,14 @@
  , "REGISTERED": "Registered successfully."
  , "LEVELTEST": "Level Test"
  , "SEARCH PERIOD": "Search Period"
+
+
+ , "STUDENT COMMENT CREATE": "Comment for session"
+ , "RATING": "Rating"
+ , "RATE COMMENT": "Comment your thoughts about the session."
+ 
+ , "STUDENT RATE COMMENT": "You can only comment, if you have successful class with this teacher."
+
+ , "SUBMIT": "Submit"
+
 }
