@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+// import { SplashScreen } from '@ionic-native/splash-screen';
+// import { StatusBar } from '@ionic-native/status-bar';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -93,6 +93,7 @@ import { HomeTeacherContentComponent } from '../components/home-teacher-content/
 import { HowToInstallKakaoComponent } from '../components/how-to-install-kakao/how-to-install-kakao';
 import { HowToGetQRCodeComponent } from '../components/how-to-get-qrcode/how-to-get-qrcode';
 import { HowToGetKakaoIDComponent } from '../components/how-to-get-kakao-id/how-to-get-kakao-id';
+import { TeacherPolicyComponent } from '../components/teacher-policy/teacher-policy';
 
 
 
@@ -163,7 +164,8 @@ export function createTranslateLoader(http: HttpClient) {
     HowToInstallKakaoComponent,
     HowToGetQRCodeComponent,
     HowToGetKakaoIDComponent,
-    MyPointPage
+    MyPointPage,
+    TeacherPolicyComponent
   ],
   imports: [
     BrowserModule,
@@ -229,11 +231,12 @@ export function createTranslateLoader(http: HttpClient) {
     HowToInstallKakaoComponent,
     HowToGetQRCodeComponent,
     HowToGetKakaoIDComponent,
-    MyPointPage
+    MyPointPage,
+    TeacherPolicyComponent
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
+    // StatusBar,
+    // SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     YoutubeVideoPlayer,
     AppService
