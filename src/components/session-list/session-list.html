@@ -77,7 +77,7 @@
 
   <section class="page-desc search-result mb-3 p-3" *ngIf=" re && books.length ">
     <div>
-      Search Period: {{ date_begin }} ~{{ date_end }}
+      {{ 'SEARCH PERIOD' | translate }}: {{ date_begin }} ~{{ date_end }}
     </div>
     <div>
       {{ 'SEARCHED SESSIONS' | translate }} : {{ books.length }} ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )
@@ -97,8 +97,8 @@
     <ng-container *ngIf=" past ">{{ 'NO MORE PASTS' | translate }}</ng-container>
   </div>
 
-  <div class="books" *ngIf=" books.length ">
-    <table width="100%" border="1" cellpadding="0" cellspacing="0">
+  <div class="books mb-3" *ngIf=" books.length ">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr text-center>
         <td *ngIf="a.isStudent">{{ 'TEACHER' | translate }}</td>
         <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
@@ -106,7 +106,10 @@
         <td *ngIf="displayDate">{{ 'DATE' | translate }}</td>
         <td>{{ 'TIME' | translate }}</td>
         <td>{{ 'MINUTE' | translate }}</td>
-        <td>{{ 'KAKAOTALK FRIEND ADD' | translate }}</td>
+        <td>
+          {{ 'KAKAOTALK' | translate }}<br>
+          {{ 'ADD FRIEND' | translate }}
+        </td>
         <td *ngIf="displayPoint">{{ 'POINT' | translate }}</td>
         <td></td>
       </tr>
@@ -131,13 +134,18 @@
             {{book.student_kakaotalk_id}}
           </ng-container>
           <ng-container *ngIf="a.isStudent">
-            <div class="fs-3rem orange">
+
+            <div class="fs-3rem orange" (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " *ngIf=" a.isMobile() ">
               <i class="fas fa-plus-circle"></i>
             </div>
+            <div class="" *ngIf=" ! a.isMobile() ">
+              {{ my_teachers[book.idx_teacher].kakaotalk_id }}
+            </div>
+
           </ng-container>
         </td>
 
-        <td class="pr-2 blue" *ngIf="displayPoint" text-right>{{ point(book) }}</td>
+        <td class="pr-2 blue text-center" *ngIf="displayPoint">{{ point(book) }}</td>
         <td text-left>
           <section class="menu mb-1">
             <div class="past" *ngIf=" book.past ">
@@ -217,7 +225,7 @@
         </td>
       </tr>
     </table>
-  </div>
+  </div><!--/books-->
 
 
   <ul *ngIf=" a.isTeacher ">
