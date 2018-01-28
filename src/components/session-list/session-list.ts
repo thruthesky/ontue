@@ -298,4 +298,8 @@ export class SessionList {
   photoURL( book ) {
     return this.my_teachers[book.idx_teacher].photoURL ? this.my_teachers[book.idx_teacher].photoURL : this.a.anonymousPhotoURL;
   }
+
+  onClickKakaoQRMarkString( url ) {
+    window.open( url, '_blank' );
+  }
 }
