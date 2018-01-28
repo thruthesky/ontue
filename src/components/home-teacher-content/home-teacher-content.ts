@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {AppService} from "../../providers/app.service";
 import {StudentCommentList} from "../student-comment-list/student-comment-list";
 import {ModalController} from "ionic-angular";
+import {HowToGetQRCodeComponent} from "../how-to-get-qrcode/how-to-get-qrcode";
+import {HowToGetKakaoIDComponent} from "../how-to-get-kakao-id/how-to-get-kakao-id";
+import {TeacherPolicyComponent} from "../teacher-policy/teacher-policy";
+import {HowToInstallKakaoComponent} from "../how-to-install-kakao/how-to-install-kakao";
 
 @Component({
     selector: 'home-teacher-content-component',
@@ -21,6 +25,14 @@ export class HomeTeacherContentComponent implements OnInit {
       recent_graded_teachers: [],
       recent_reservations: []
     };
+
+
+  _modal = {
+    teacherPolicy: TeacherPolicyComponent,
+    kakaoInstall: HowToInstallKakaoComponent,
+    kakaoID: HowToGetKakaoIDComponent,
+    qrmark: HowToGetQRCodeComponent
+  };
 
     constructor(
       public a: AppService,
@@ -43,6 +55,13 @@ export class HomeTeacherContentComponent implements OnInit {
   }
 
     ngOnInit() { }
+
+
+  showModalFAQ(modal_name){
+    const modal = this.modalCtrl.create( this._modal[modal_name] );
+    modal.onDidDismiss(()=> {});
+    modal.present();
+  }
 
 
 }
