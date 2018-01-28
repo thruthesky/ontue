@@ -377,6 +377,8 @@ export class ScheduleTablePage {
     // }
     // else this.delayPush( re.table );
 
+    // setTimeout(() => this.onClickCommentList(), 1000);
+
   }
   // finishedOnScheduleTableDisplay() {
   //   // this.in_displaying_schedule = false;

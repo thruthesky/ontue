@@ -323,6 +323,7 @@ export class AppService {
             showCloseButton: true,
             closeButtonText: this.i18n['CLOSE'],
             cssClass: 'alert-toast'
+            // dismissOnPageChange: true
         };
 
         if (str['duration'] !== void 0) options['duration'] = str['duration'];

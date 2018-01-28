@@ -36,8 +36,7 @@
 
 
 #student-comments {
-  padding: 3em 1em 2em;
-  background-color: #eee;
+  
   h2 {
     margin: 0;
     text-align: center;
@@ -46,7 +45,7 @@
 
   .comment {
     margin-top: 1em;
-    padding: 1em;
+    margin-bottom: 4em;
     background-color: white;
   }
   .photo {
@@ -70,10 +69,10 @@
   }
 
   .description {
-    margin-top: .5em;
+    margin-top: 1.5em;
     padding: 1em;
     line-height: 180%;
-    background-color: #eee;
+    background-color: #f3f3f3;
   }
 
   .date {

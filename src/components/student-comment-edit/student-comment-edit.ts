@@ -42,7 +42,7 @@ export class StudentCommentEdit {
   onClickSubmit() {
 
     if( this.comment.length < 10 ) {
-      this.a.alert("Comment cant be empty or too short...");
+      this.a.alert("코멘트가 너무 짧습니다.");
       return;
     }
 
@@ -52,7 +52,7 @@ export class StudentCommentEdit {
     // console.log("data::", this.data);
     this.a.lms.student_comment_to_teacher_edit( this.data ).subscribe(res => {
       console.log("student_comment_to_teacher_edit", res);
-        this.a.alert("Comment Write Success...");
+        this.a.alert("코멘트를 작성하였습니다.");
         // this.viewCtrl.dismiss({comment:res['comment']});
         this.viewCtrl.dismiss('success');
     }, e => {
