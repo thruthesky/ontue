@@ -81,6 +81,8 @@ export class MyApp {
       this.a.platform = platform;
       statusBar.styleDefault();
       splashScreen.hide();
+
+      this.a.initPushMessage();
     });
 
   }

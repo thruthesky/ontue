@@ -28,6 +28,7 @@ export class LoginPage {
         this.a.user.login( this.account.user_email, this.account.user_pass ).subscribe(re => {
             // this.loading = false;
             console.log("user.login => success: re...: ", re);
+            this.a.initPushMessage();
             this.a.open('home');
         }, e => {
             // this.loading = false;

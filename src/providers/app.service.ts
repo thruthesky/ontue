@@ -13,6 +13,17 @@ export { SHARE_SESSION_LIST };
 
 const KEY_LMS_INFO = 'lms-info';
 
+import * as firebase from "firebase";
+const firebaseConfig = {
+    apiKey: "AIzaSyCF9jsyLjQEDi4963DpOYi2wV0j19XSM2Q",
+    authDomain: "ontue-30fb9.firebaseapp.com",
+    databaseURL: "https://ontue-30fb9.firebaseio.com",
+    projectId: "ontue-30fb9",
+    storageBucket: "",
+    messagingSenderId: "1068647439857"
+};
+firebase.initializeApp(firebaseConfig);
+
 
 
 @Injectable()
@@ -66,6 +77,14 @@ export class AppService {
     teacher_kakaoplus_deeplink = "kakaoplus://plusfriend/home/@ontue"; // ; //
 
     thisYear = (new Date).getFullYear();
+
+    /// Firebase
+    firebase: {
+        db: firebase.database.Reference;
+        messaging: firebase.messaging.Messaging;
+    } = { db: null, messaging: null };
+
+    /// EO Firebase
     constructor(
         public ngZone: NgZone,
         public loadingCtrl: LoadingController,
@@ -77,6 +96,10 @@ export class AppService {
         public lms: LMSService,
         private translate: TranslateService
     ) {
+
+        this.firebase.db = firebase.database().ref('/');
+        this.firebase.messaging = firebase.messaging();
+
 
         /// for page service
         window['a'] = {
@@ -320,7 +343,7 @@ export class AppService {
         // console.log(str);
 
         let options = {
-            duration: 15000,  // default 10000 due to unit testing temporary change to 15000
+            duration: 10000,  // default 10000 due to unit testing temporary change to 15000
             showCloseButton: true,
             closeButtonText: this.i18n['CLOSE'],
             cssClass: 'alert-toast'
@@ -673,12 +696,25 @@ export class AppService {
      *      false if user is using app or desktop.
      */
     isMobileWeb() {
-
         if (this.platform.is('mobileweb')) {
             return true;
         } else {
             return false;
         }
+    }
+
+    isApp() {
+        if (
+            this.platform.is('cordova')
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    isDesktop() {
+        if (this.platform.is('core')) return true;
+        else return false;
     }
 
 
@@ -701,4 +737,63 @@ export class AppService {
     }
 
 
+
+    /**
+     * 
+     * - It request permission to the user.
+     * - If user accepts ( or already accepted )
+     *      a) check if token updated/changed, if yes, then update it.
+     *      b) or don't do anyting.
+     */
+    initPushMessage() {
+        let platform = 'desktop';
+        if (this.isApp()) platform = 'app';
+        else if (this.isMobileWeb()) platform = 'mobileweb';
+        this.firebase.messaging.requestPermission()
+            .then(() => { /// User accepted 'push notification alert'
+                this.firebase.messaging.getToken()
+                    .then(currentToken => { /// Got token
+                        console.log("Got token: ", currentToken, platform);
+                        this.updatePushToken(currentToken, platform);
+                    })
+                    .catch(err => {
+                        // Failed to get token.
+                        console.error('An error occurred while retrieving token. ', err);;
+                    });
+            })
+            .catch(err => { /// If failed to get permission.
+                console.error('User rejected/blocked push notification. ', err);
+            });
+        // Callback fired if Instance ID token is updated.
+        this.firebase.messaging.onTokenRefresh(() => {
+            this.firebase.messaging.getToken()
+                .then(refreshedToken => { // Token refreshed
+                    console.log("Token Refreshed: ", refreshedToken, platform);
+                    this.updatePushToken(refreshedToken, platform);
+                })
+                .catch(err => {
+                    console.log('Unable to retrieve refreshed token ', err);
+                });
+        });
+
+        // When the user is on the site(opened the site), the user will not get push notification.
+        // Instead, you can do whatever in this handler.
+        this.firebase.messaging.onMessage(payload => {
+            console.log("Message received. ", payload);
+            // ...
+            const notification = payload['notification'];
+            const title = notification['title'];
+            const body = notification['body'];
+            this.alert(`${title} ${body}`);
+        });
+    }
+    /**
+     * Gets push token string and update it to server only IF it's new.
+     * @param token push token string
+     */
+    updatePushToken(token, platform) {
+        this.lms.update_push_token(token, platform).subscribe(re => {
+            console.log("Token updated:");
+        }, e => console.error(e));
+    }
 }
