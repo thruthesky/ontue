@@ -274,7 +274,10 @@ export class RegisterPage {
 
   onSuccessUploadQRMark(file: FILE) {
     this.showQRMark = false;
+
+    console.log("onSuccessUploadQRMark", this.qrmarks);
     if (this.qrmarks.length > 1) {
+      console.log("qrmarks>1");
       this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => { }, e => this.a.alert(e));
     }
 
@@ -282,7 +285,9 @@ export class RegisterPage {
       kakao_qrmark_URL: file.url,
       user_email: this.account.user_email
     };
-    this.a.user.update(data).subscribe(() => {
+    console.log("data", data);
+    this.a.user.update(data).subscribe(re => {
+      console.log("update", re);
       this.a.lms.update_kakao_qrmark_string().subscribe(re => {
         console.log("update_kakao_qrmark_string", re);
         if (!re.kakao_qrmark_string) {

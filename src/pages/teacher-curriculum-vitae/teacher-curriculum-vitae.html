@@ -138,7 +138,7 @@
             <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
           </ion-item>
 
-          <ion-item *ngIf="a.user.isLogin">
+          <ion-item class="qr-mark" *ngIf="a.user.isLogin">
             Upload QR Mark
             <file-upload-widget #fileUploadWidgetQRMARK
                                 [title]="true"
