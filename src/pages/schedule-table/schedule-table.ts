@@ -12,6 +12,9 @@ import { StudentCommentList } from "../../components/student-comment-list/studen
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
 
+const KEY_WEEKEND = 'key-weekend';
+const KEY_DAYS = 'key-days';
+
 
 type iShow = {
   more_total_schedule_warning: boolean;
@@ -170,7 +173,10 @@ export class ScheduleTablePage {
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
 
-    this.initScheduleTableWidth();
+    this.initScheduleTableWidth( () => {
+      this.loadOptions();
+      this.loadScheduleTable();
+    });
 
 
     // console.log('data params', this.params);
@@ -205,7 +211,7 @@ export class ScheduleTablePage {
   /**
    * This sets the number of columns on schedule table based on the device.
    */
-  initScheduleTableWidth() {
+  initScheduleTableWidth( callback ) {
 
     this.platform.ready().then(() => {
       if (this.singleTeacher) {
@@ -226,7 +232,7 @@ export class ScheduleTablePage {
       else if ( this.platform.is('tablet') ) {
         this.days = 15;
       }
-      this.loadScheduleTable();
+      callback();
     });
   }
 
@@ -559,7 +565,28 @@ export class ScheduleTablePage {
   }
 
   onChangeSearchOption() {
+    this.saveOptions();
     this.loadScheduleTable();
+  }
+
+  /**
+   * 
+   * Saves options to re-use on next access.
+   * 
+   * @attention It only saves `display weekends`, `select no of days` options.
+   * 
+   */
+  saveOptions() {
+
+    this.a.set( KEY_WEEKEND, this.displayWeekends );
+    this.a.set( KEY_DAYS, this.days );
+
+  }
+  loadOptions() {
+    let w = this.a.get( KEY_WEEKEND );
+    if ( w !== null ) this.displayWeekends = w;
+    let d = this.a.get( KEY_DAYS );
+    if ( d !== null ) this.days = d;
   }
 
   onChangeValue() {

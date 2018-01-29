@@ -1,10 +1,14 @@
-<footer class="text-center">
-  <section class="copyright py-6">
-      <ng-container *ngIf="a.isKorean; else EnglishCopyright">
-          <div>(C) All Right Reserved By 카톡잉글리시 2016-{{ a.thisYear }}.</div>
-      </ng-container>
-      <ng-template #EnglishCopyright>
-            (C) ONTUE.COM PHILIPPINES 2006-{{ a.thisYear }}
-      </ng-template>
+<footer class="">
+  <section class="copyright pt-3 pb-3">
+
+    <div class="pb-4 d-flex justify-content-between">
+      <div class="d-flex pl-4 pl-md-5 py-3" (click)=" onClickTop() ">
+          <div class="" style="font-size: 1.5rem"><i class="fas fa-arrow-circle-up"></i></div>
+          <div class="pl-2">{{ 'TOP' | translate }}</div>
+        </div>
+      <div class="pr-4 pr-md-5 py-3" (click)=" a.onClickContactAdmin() ">{{ 'QNA' | translate }}</div>
+    </div>
+
+    <div class="mb-5 text-center">{{ 'COPYRIGHT' | translate }}{{ a.thisYear }}.</div>
   </section>
 </footer>

@@ -11,4 +11,8 @@ export class HookContentBottomComponent implements OnInit {
     ) { }
 
     ngOnInit() { }
+
+    onClickTop() {
+        document.querySelector('.scroll-content').scrollTo(0,0);
+    }
 }
