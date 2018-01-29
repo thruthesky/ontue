@@ -1,5 +1,6 @@
 .page-body {
   padding: .5em;
+  @media ( min-width: $md ) { padding: 0;}
   min-height: 300px;
 }
 

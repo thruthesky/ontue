@@ -1,8 +1,8 @@
-$border-color: map-get( map-get( $color-maps, 'grey' ), 300 );
+$border-color: map-get( map-get( $color-maps, 'grey' ), 200 );
 schedule-table-page {
   @include theme('grey');
   .user-point {
-    background-color: map-get( map-get( $color-maps, 'grey' ), 400 );
+    background-color: map-get( map-get( $color-maps, 'grey' ), 200 );
   }
 
   .schedule-table {
@@ -105,6 +105,12 @@ schedule-table-page {
     }
     .more-button {
         padding: 1em 0;
+    }
+  }
+
+  .kakao {
+    .kakao-button {
+      background-color: #ffe818;
     }
   }
 }
