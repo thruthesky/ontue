@@ -6,9 +6,9 @@
   <div class="page">
     <div class="single-teacher p-3" *ngIf=" singleTeacher ">
       <table *ngIf="teacher_name(); else singleTeacherLoader">
-        <tr>
+        <tr valign="top">
           <td>
-            <div class="teacher-profile-photo position-relative" (click)=" playTeacherYoutube(); ">
+            <div class="teacher-profile-photo position-relative mt-1" (click)=" playTeacherYoutube(); ">
               <img src="{{ teacher_photoURL() }}">
               <i class="fas fa-play-circle position-absolute bottom-0 right-0 mr-3 mb-3 red fs-3rem pointer"></i>
             </div>
@@ -16,8 +16,15 @@
               <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher_grade())"></i>
               <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher_grade())"></i>
             </div>
+
+            <div class="comment d-flex justify-content-center">
+              <div class="pointer p-2"  *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">{{ 'WRITE REVIEW' | translate }}</div>
+              <div class="pointer p-2" (click)="onClickCommentList()">{{ 'OPEN REVIEW' | translate }}</div>
+            </div>
+
           </td>
-          <td valign="top">
+
+          <td>
             <div class="teacher-info ml-4">
               <div class="fs-2rem">{{ teacher_name() }}</div>
               <div class="meta mt-2 pl-1">
@@ -36,11 +43,7 @@
                 <div class="py-2 pointer" (click)="onClickShowCurriculum()">
                   <i class="fas fa-clipboard"></i> {{ 'CURRICULUM VITAE' | translate }}
                 </div>
-                <div class="comment mt-1">
-                  <span class="pb-1">{{ 'REVIEW' | translate }}: </span>
-                  <span class="pointer p-2"  *ngIf="a.user.isLogin" (click)="onClickCommentCreate()"><i class="fa fa-pencil"></i> {{ 'WRITE REVIEW' | translate }}</span>
-                  <span class="pointer p-2" (click)="onClickCommentList()"><i class="fa fa-comment-alt"></i> {{ 'OPEN REVIEW' | translate }}</span>
-                </div>
+
               </div>
 
               <div class="kakao d-flex pt-2 pointer" (click)=" onClickAddKakao() ">
