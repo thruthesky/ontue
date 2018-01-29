@@ -70,8 +70,7 @@ export class TeacherCurriculumVitaePage {
       this.account['display_name'] = userData['display_name'];
       this.account.kakaotalk_id = userData.kakaotalk_id;
 
-      this.account.kakao_qrmark_string = userData.kakao_qrmark_string;
-      this.account.kakao_qrmark_URL = userData.kakao_qrmark_URL;
+
 
       if( userData.youtube_video_url ){
         this.account.youtube_video_url = userData.youtube_video_url;
@@ -103,6 +102,9 @@ export class TeacherCurriculumVitaePage {
         this.showQRMark = true;
       }
 
+
+      this.account.kakao_qrmark_string = userData.kakao_qrmark_string;
+      this.account.kakao_qrmark_URL = userData.kakao_qrmark_URL;
       if ( this.account.kakao_qrmark_URL && ! this.account.kakao_qrmark_string ) {
         this.a.lms.update_kakao_qrmark_string().subscribe( re => {
           console.log( re );
@@ -120,6 +122,9 @@ export class TeacherCurriculumVitaePage {
     if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(-80022, '*Email is required...');
     if (!this.qrmarks.length ) return this.a.showAlert(-80025, '*Teacher must upload QR Mark...');
     // this.account.photoURL = this.files.length ? this.files[0].url : '';
+
+    delete this.account.kakao_qrmark_string;
+    delete this.account.kakao_qrmark_URL;
 
     this.a.showLoader();
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
