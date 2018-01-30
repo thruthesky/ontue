@@ -31,19 +31,19 @@
           <ng-container *ngIf=" a.user.isLogin ">
             <ng-container [ngSwitch]="a.page">
               <ng-container *ngSwitchCase=" 'schedule-table' ">
-                <span (click)="a.open('home')">{{ 'HOME' | translate }}</span>
+                <!-- <span (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
                 <span class="pl-2" (click)="a.open('menu')">메뉴</span>
                 <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
               </ng-container>
 
               <ng-container *ngSwitchCase=" 'payment' ">
-                <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span>
+                <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
                 <span class="pl-3" (click)="a.open('teacher-list')">{{ 'RESERVE NOW' | translate }}</span>
               </ng-container>
 
 
               <ng-container *ngSwitchCase=" 'session-future' ">
-                <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span>
+                <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
                 <span class="pl-3" (click)="a.open('payment')">{{ 'PAYMENT' | translate }}</span>
               </ng-container>
 
