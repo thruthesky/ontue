@@ -743,99 +743,99 @@ export class AppService {
 
 
 
-    /**
-     * @note don't call this method twice.
-     * 
-     * - It request permission to the user.
-     * - If user accepts ( or already accepted )
-     *      a) check if token updated/changed, if yes, then update it.
-     *      b) or don't do anyting.
-     */
-    onetimeInitPushMessage() {
-        if (this.isApp()) {
-            this.initAppPushMessage();
+/**
+ * @note don't call this method twice.
+ * 
+ * - It request permission to the user.
+ * - If user accepts ( or already accepted )
+ *      a) check if token updated/changed, if yes, then update it.
+ *      b) or don't do anything.
+ */
+onetimeInitPushMessage() {
+    if (this.isApp()) {
+        this.initAppPushMessage();
+    }
+    else {
+        this.initWebPushMessage();
+    }
+}
+
+/**
+ * Gets push token string and update it to server only IF it's new.
+ * @param token push token string
+ */
+updatePushToken() {
+    let platform = 'web';
+    if (this.isApp()) platform = 'app';
+    this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
+        console.log("Token updated:");
+    }, e => console.error(e));
+
+
+}
+
+
+initAppPushMessage() {
+    FCMPlugin.getToken(token => {
+        this.pushToken = token;
+        this.updatePushToken();
+        console.log('initAppPushMessage getToken: ', token);
+    });
+
+    //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
+    //Here you define your application behaviour based on the notification data.
+    FCMPlugin.onNotification( data => {
+        if (data.wasTapped) {
+            //Notification was received on device tray and tapped by the user.
+            // alert(JSON.stringify(data));
+        } else {
+            //Notification was received in foreground. Maybe the user needs to be notified.
+            // console.log(JSON.stringify(data));
+            if ( data['body'] ) this.alert( data['body'] );
         }
-        else {
-            this.initWebPushMessage();
-        }
-    }
+    });
+}
 
-    /**
-     * Gets push token string and update it to server only IF it's new.
-     * @param token push token string
-     */
-    updatePushToken() {
-        let platform = 'web';
-        if (this.isApp()) platform = 'app';
-        this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
-            console.log("Token updated:");
-        }, e => console.error(e));
-
-
-    }
-    
-
-    initAppPushMessage() {
-        FCMPlugin.getToken(token => {
-            this.pushToken = token;
-            this.updatePushToken();
-            console.log('initAppPushMessage getToken: ', token);
-        });
-
-        //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
-        //Here you define your application behaviour based on the notification data.
-        FCMPlugin.onNotification( data => {
-            if (data.wasTapped) {
-                //Notification was received on device tray and tapped by the user.
-                // alert(JSON.stringify(data));
-            } else {
-                //Notification was received in foreground. Maybe the user needs to be notified.
-                // console.log(JSON.stringify(data));
-                if ( data['body'] ) this.alert( data['body'] );
-            }
-        });
-    }
-
-    initWebPushMessage() {
-        this.firebase.messaging.requestPermission()
-            .then(() => { /// User accepted 'push notification alert'
-                this.firebase.messaging.getToken()
-                    .then(currentToken => { /// Got token
-                        this.pushToken = currentToken;
-                        console.log("Got token: ", this.pushToken);
-                        this.updatePushToken();
-                    })
-                    .catch(err => {
-                        // Failed to get token.
-                        console.error('An error occurred while retrieving token. ', err);;
-                    });
-            })
-            .catch(err => { /// If failed to get permission.
-                console.error('User rejected/blocked push notification. ', err);
-            });
-
-        // Callback fired if Instance ID token is updated.
-        this.firebase.messaging.onTokenRefresh(() => {
+initWebPushMessage() {
+    this.firebase.messaging.requestPermission()
+        .then(() => { /// User accepted 'push notification alert'
             this.firebase.messaging.getToken()
-                .then(refreshedToken => { // Token refreshed
-                    this.pushToken = refreshedToken
-                    console.log("Token Refreshed: ", this.pushToken);
+                .then(currentToken => { /// Got token
+                    this.pushToken = currentToken;
+                    console.log("Got token: ", this.pushToken);
                     this.updatePushToken();
                 })
                 .catch(err => {
-                    console.log('Unable to retrieve refreshed token ', err);
+                    // Failed to get token.
+                    console.error('An error occurred while retrieving token. ', err);;
                 });
+        })
+        .catch(err => { /// If failed to get permission.
+            console.error('User rejected/blocked push notification. ', err);
         });
 
-        // When the user is on the site(opened the site), the user will not get push notification.
-        // Instead, you can do whatever in this handler.
-        this.firebase.messaging.onMessage(payload => {
-            console.log("Message received. ", payload);
-            // ...
-            const notification = payload['notification'];
-            // const title = notification['title'];
-            const body = notification['body'];
-            this.alert(body);
-        });
-    }
+    // Callback fired if Instance ID token is updated.
+    this.firebase.messaging.onTokenRefresh(() => {
+        this.firebase.messaging.getToken()
+            .then(refreshedToken => { // Token refreshed
+                this.pushToken = refreshedToken
+                console.log("Token Refreshed: ", this.pushToken);
+                this.updatePushToken();
+            })
+            .catch(err => {
+                console.log('Unable to retrieve refreshed token ', err);
+            });
+    });
+
+    // When the user is on the site(opened the site), the user will not get push notification.
+    // Instead, you can do whatever in this handler.
+    this.firebase.messaging.onMessage(payload => {
+        console.log("Message received. ", payload);
+        // ...
+        const notification = payload['notification'];
+        // const title = notification['title'];
+        const body = notification['body'];
+        this.alert(body);
+    });
+}
 }

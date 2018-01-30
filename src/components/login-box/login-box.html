@@ -2,7 +2,7 @@
 
     <div class="alert alert-warning border-0 rounded-0 mb-0">
 
-      <ng-container *ngIf=" a.getLanguage() == 'ko'; else en ">
+      <ng-container *ngIf=" a.studentTheme; else en ">
           앗!
           <span class="fw-bold" (click)="a.open('login')">로그인</span>
           또는
