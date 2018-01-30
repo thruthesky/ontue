@@ -761,7 +761,10 @@ export class ScheduleTablePage {
   }
   doInfinite(infiniteScroll) {
     // console.log('doInfinite');
-
+    if ( this.no_more_schedule ) {
+      infiniteScroll.complete();
+      return;
+    }
     setTimeout(() => {
       this.displayPage();
       infiniteScroll.complete();

@@ -176,7 +176,7 @@ export class MyApp {
     // this.a.open('schedule-table', { ID: 137 }); /// teacher21
     // this.a.open('schedule-table', { ID: 138 }); /// teacher22
 
-    // this.a.open('teacher-list');
+    this.a.open('teacher-list');
 
     // this.a.open('teacher-list', {mode: 'leveltest'});
 
@@ -225,7 +225,7 @@ export class MyApp {
     // this.a.open('home');
 
     // this.a.open('session-past');
-    this.a.open('session-future');
+    // this.a.open('session-future');
     // this.a.open('password-change');
 
     // this.a.open('schedule-available');
