@@ -603,8 +603,12 @@ export class ScheduleTablePage {
   onClickSession(session: SESSION) {
 
     // console.log('onClickSession', session);
+    if ( session['in_progress'] === true ) {
+      console.log("It is reserving/cancelling... return");
+      return;
+    }
+    
     if (session[this.STATUS] == 'past') return;
-
     if (session[this.OPEN] == 'open') this.reserveSession(session);
     else if (session[this.OPEN] == 'reserved' && session[this.OWNER] == 'me') this.cancelSession(session);
 
@@ -620,7 +624,8 @@ export class ScheduleTablePage {
     this.a.lms.session_reserve({ idx_schedule: session[this.IDX_SCHEDULE], date: session[this.DATE] }).subscribe(re => {
       // console.log("class_reserve: ", re);
       
-      setTimeout(() => session['in_progress'] = false, 500);
+      // setTimeout(() => session['in_progress'] = false, 500);
+      session['in_progress'] = false;
 
       session[this.OPEN] = 'reserved';
       session[this.DAYOFF] = '';
