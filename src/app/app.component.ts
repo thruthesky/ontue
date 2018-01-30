@@ -208,7 +208,7 @@ export class MyApp {
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 
-    // this.a.open('payment');
+    this.a.open('payment');
     // this.a.open('payment-result', { result: false, message: '알수없는 에러'});
     // this.a.open('payment-result', { result: true, message: ''});
 
