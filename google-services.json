@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1068647439857",
+    "firebase_url": "https://ontue-30fb9.firebaseio.com",
+    "project_id": "ontue-30fb9",
+    "storage_bucket": "ontue-30fb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068647439857:android:46795be0a899259f",
+        "android_client_info": {
+          "package_name": "com.ontue.www"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068647439857-2e2qi4asb60qrnso77hsi2mlc30taneh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4d0TpOhW-gDdRpbu5k3SeQ2UakZ7IqRo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

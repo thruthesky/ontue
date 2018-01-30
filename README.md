@@ -18,6 +18,13 @@ $ ionic info
 $ git remove -v
 ````
 
+# Modules
+
+````
+$ ionic cordova plugin add cordova-plugin-fcm
+````
+
+
 
 
 # RUN
@@ -48,6 +55,7 @@ $ ionic cordova run ios -l
 $ cordova run ios --list
 $ ionic cordova run -l ios --target "iPhone-7"
 $ ionic cordova emulate -l ios --target "iPhone-SE"
+$  ionic cordova run android --livereload --address=192.168.0.2 // [MACBOOK_INTERAL_ADDRESS]
 ````
 
 

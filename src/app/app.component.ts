@@ -61,11 +61,17 @@ import { MyPointPage } from '../pages/my-point/my-point';
 
 
 
+
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+
+
+
+
 
 
   constructor(
@@ -75,6 +81,19 @@ export class MyApp {
     xapi: XapiService,
     public a: AppService
   ) {
+
+
+    
+
+    
+
+    // do the lexing... ... 
+
+    // language study.
+
+    // console.log('f: ', f);
+
+
     this.a.initTranslate();
 
     platform.ready().then(() => {
@@ -82,7 +101,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
 
-      this.a.initPushMessage();
+      this.a.onetimeInitPushMessage();
     });
 
   }
@@ -163,7 +182,7 @@ export class MyApp {
     // this.a.open('how-to-use');
 
 
-    this.a.open('class-comment');
+    // this.a.open('class-comment');
 
     // this.a.open('schedule-table');
 
@@ -235,14 +254,14 @@ export class MyApp {
 
 
   onClickHome() {
-    this.a.open( HomePage );
+    this.a.open(HomePage);
   }
 
   onClickLogin() {
-    this.a.open( LoginPage );
+    this.a.open(LoginPage);
   }
   onClickRegister() {
-    this.a.open( RegisterPage );
+    this.a.open(RegisterPage);
   }
 }
 
