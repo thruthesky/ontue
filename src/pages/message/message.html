@@ -24,9 +24,9 @@
           <ion-spinner></ion-spinner>
           <div class="p-2">{{ 'IN LOADING' | translate }}</div>
       </div>
-    
+
         <ion-list *ngIf=" data ">
-          <ion-item *ngFor=" let message of data.messages " (click)="onClickMessage(message)">
+          <ion-item class="pointer" *ngFor=" let message of data.messages " (click)="onClickMessage(message)">
             <ion-avatar item-start>
               <img src="{{ message?.sender_photoURL? message.sender_photoURL: a.anonymousPhotoURL}}">
             </ion-avatar>

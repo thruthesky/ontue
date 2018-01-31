@@ -281,6 +281,7 @@ export class RegisterPage {
       this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => { }, e => this.a.alert(e));
     }
 
+    if (this.a.user.isLogout) return;
     let data: USER_UPDATE = {
       kakao_qrmark_URL: file.url,
       user_email: this.account.user_email
