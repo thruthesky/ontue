@@ -84,8 +84,11 @@ $  ionic cordova run android --livereload --address=192.168.0.2 // [MACBOOK_INTE
 
 ## PWA
 
+* @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.7vrrgftj1org
+
 ````
-$ npm run publish
+$ p
+$ npm run publish:all
 ````
 
 
