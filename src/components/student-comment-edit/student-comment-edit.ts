@@ -51,6 +51,7 @@ export class StudentCommentEdit {
 
     // console.log("data::", this.data);
     this.a.lms.student_comment_to_teacher_edit( this.data ).subscribe(res => {
+      this.a.onStudentCommentToTeacher();
       console.log("student_comment_to_teacher_edit", res);
         this.a.alert("코멘트를 작성하였습니다.");
         // this.viewCtrl.dismiss({comment:res['comment']});

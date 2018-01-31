@@ -165,7 +165,7 @@ export class RegisterPage {
     if (this.a.teacherTheme && this.patchBirthday()) return;
     this.a.user.register(this.account).subscribe(re => {
       console.log("user.register => success: re: ", re);
-      this.a.updatePushToken();
+      this.a.onUserRegister();
       this.account.user_pass = null;
       this.a.lms.timezone_set(this.offset).subscribe(() => {
       }, () => {
@@ -191,6 +191,7 @@ export class RegisterPage {
       console.log('updateUserInfo:', res);
       this.a.hideLoader();
       this.a.alert(this.a.i18n['UPDATED']);
+      this.a.onUserProfileUpdate();
       this.loadData();
     }, err => {
       this.a.alert(err);

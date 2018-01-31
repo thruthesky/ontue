@@ -16,6 +16,9 @@ declare let FCMPlugin;
 const KEY_LMS_INFO = 'lms-info';
 
 import * as firebase from "firebase";
+import "firebase/firestore"; // required for side-effect??? @see https://firebase.google.com/docs/firestore/quickstart?authuser=0
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyCF9jsyLjQEDi4963DpOYi2wV0j19XSM2Q",
     authDomain: "ontue-30fb9.firebaseapp.com",
@@ -82,7 +85,7 @@ export class AppService {
 
     /// Firebase
     firebase: {
-        db: firebase.database.Reference;
+        db: firebase.firestore.Firestore;
         messaging: firebase.messaging.Messaging;
     } = { db: null, messaging: null };
 
@@ -102,8 +105,19 @@ export class AppService {
         private translate: TranslateService
     ) {
 
-        this.firebase.db = firebase.database().ref('/');
+        this.firebase.db = firebase.firestore();
         this.firebase.messaging = firebase.messaging();
+
+
+        const db = this.firebase.db;
+        db.collection("user-activity-log")
+            .orderBy("stamp", "desc")
+            .limit(1)
+            .onSnapshot(shot => {
+                shot.forEach(doc => {
+                    console.log(doc.data());
+                });
+            });
 
 
         /// for page service
@@ -122,11 +136,14 @@ export class AppService {
 
 
 
-        // Just in case the app may try to connect to the server first before it display the first page.
+        // Just in case the app may need sometime to init.
+        // Try to connect to the server first before it display the first page.
         setTimeout(() => {
             this.updateLMSInfo();
+            if (this.user.isLogin) {
+                this.log({ idx_user: this.user.id, name: this.user.name, activity: 'visit' });
+            }
         }, 500);
-
 
     }
 
@@ -743,99 +760,149 @@ export class AppService {
 
 
 
-/**
- * @note don't call this method twice.
- * 
- * - It request permission to the user.
- * - If user accepts ( or already accepted )
- *      a) check if token updated/changed, if yes, then update it.
- *      b) or don't do anything.
- */
-onetimeInitPushMessage() {
-    if (this.isApp()) {
-        this.initAppPushMessage();
-    }
-    else {
-        this.initWebPushMessage();
-    }
-}
-
-/**
- * Gets push token string and update it to server only IF it's new.
- * @param token push token string
- */
-updatePushToken() {
-    let platform = 'web';
-    if (this.isApp()) platform = 'app';
-    this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
-        console.log("Token updated:");
-    }, e => console.error(e));
-
-
-}
-
-
-initAppPushMessage() {
-    FCMPlugin.getToken(token => {
-        this.pushToken = token;
-        this.updatePushToken();
-        console.log('initAppPushMessage getToken: ', token);
-    });
-
-    //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
-    //Here you define your application behaviour based on the notification data.
-    FCMPlugin.onNotification( data => {
-        if (data.wasTapped) {
-            //Notification was received on device tray and tapped by the user.
-            // alert(JSON.stringify(data));
-        } else {
-            //Notification was received in foreground. Maybe the user needs to be notified.
-            // console.log(JSON.stringify(data));
-            if ( data['body'] ) this.alert( data['body'] );
+    /**
+     * @note don't call this method twice.
+     * 
+     * - It request permission to the user.
+     * - If user accepts ( or already accepted )
+     *      a) check if token updated/changed, if yes, then update it.
+     *      b) or don't do anything.
+     */
+    onetimeInitPushMessage() {
+        if (this.isApp()) {
+            this.initAppPushMessage();
         }
-    });
-}
+        else {
+            this.initWebPushMessage();
+        }
+    }
 
-initWebPushMessage() {
-    this.firebase.messaging.requestPermission()
-        .then(() => { /// User accepted 'push notification alert'
+    /**
+     * Gets push token string and update it to server only IF it's new.
+     * @param token push token string
+     */
+    updatePushToken() {
+        let platform = 'web';
+        if (this.isApp()) platform = 'app';
+        this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
+            console.log("Token updated:");
+        }, e => console.error(e));
+
+
+    }
+
+
+    initAppPushMessage() {
+        FCMPlugin.getToken(token => {
+            this.pushToken = token;
+            this.updatePushToken();
+            console.log('initAppPushMessage getToken: ', token);
+        });
+
+        //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
+        //Here you define your application behaviour based on the notification data.
+        FCMPlugin.onNotification(data => {
+            if (data.wasTapped) {
+                //Notification was received on device tray and tapped by the user.
+                // alert(JSON.stringify(data));
+            } else {
+                //Notification was received in foreground. Maybe the user needs to be notified.
+                // console.log(JSON.stringify(data));
+                if (data['body']) this.alert(data['body']);
+            }
+        });
+    }
+
+    initWebPushMessage() {
+        this.firebase.messaging.requestPermission()
+            .then(() => { /// User accepted 'push notification alert'
+                this.firebase.messaging.getToken()
+                    .then(currentToken => { /// Got token
+                        this.pushToken = currentToken;
+                        console.log("Got token: ", this.pushToken);
+                        this.updatePushToken();
+                    })
+                    .catch(err => {
+                        // Failed to get token.
+                        console.error('An error occurred while retrieving token. ', err);;
+                    });
+            })
+            .catch(err => { /// If failed to get permission.
+                console.error('User rejected/blocked push notification. ', err);
+            });
+
+        // Callback fired if Instance ID token is updated.
+        this.firebase.messaging.onTokenRefresh(() => {
             this.firebase.messaging.getToken()
-                .then(currentToken => { /// Got token
-                    this.pushToken = currentToken;
-                    console.log("Got token: ", this.pushToken);
+                .then(refreshedToken => { // Token refreshed
+                    this.pushToken = refreshedToken
+                    console.log("Token Refreshed: ", this.pushToken);
                     this.updatePushToken();
                 })
                 .catch(err => {
-                    // Failed to get token.
-                    console.error('An error occurred while retrieving token. ', err);;
+                    console.log('Unable to retrieve refreshed token ', err);
                 });
-        })
-        .catch(err => { /// If failed to get permission.
-            console.error('User rejected/blocked push notification. ', err);
         });
 
-    // Callback fired if Instance ID token is updated.
-    this.firebase.messaging.onTokenRefresh(() => {
-        this.firebase.messaging.getToken()
-            .then(refreshedToken => { // Token refreshed
-                this.pushToken = refreshedToken
-                console.log("Token Refreshed: ", this.pushToken);
-                this.updatePushToken();
-            })
-            .catch(err => {
-                console.log('Unable to retrieve refreshed token ', err);
-            });
-    });
+        // When the user is on the site(opened the site), the user will not get push notification.
+        // Instead, you can do whatever in this handler.
+        this.firebase.messaging.onMessage(payload => {
+            console.log("Message received. ", payload);
+            // ...
+            const notification = payload['notification'];
+            // const title = notification['title'];
+            const body = notification['body'];
+            this.alert(body);
+        });
+    }
 
-    // When the user is on the site(opened the site), the user will not get push notification.
-    // Instead, you can do whatever in this handler.
-    this.firebase.messaging.onMessage(payload => {
-        console.log("Message received. ", payload);
-        // ...
-        const notification = payload['notification'];
-        // const title = notification['title'];
-        const body = notification['body'];
-        this.alert(body);
-    });
-}
+
+    onUserLogin() {
+        this.updatePushToken();
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'login' });
+    }
+    onUserRegister() {
+        this.updatePushToken();
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'register' });
+    }
+    onUserProfileUpdate() {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'update-profile' });
+    }
+
+    onLmsReserve( teacher_name ) {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'reserve', target: teacher_name });
+    }
+    /**
+     * Student and teacher can cancel a class. If a student cancells a class on schedule table, teacher name will have teacher name.
+     * If a sesison is cancelled on session reservation list, then there will be no name on teacher name variable.
+     * @param teacher_name teacher name of the session
+     */
+    onLmsCancel( teacher_name = '' ) {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'cancel', target: teacher_name });
+    }
+    onUserViewProfile( teacher_name ) {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'view-profile', target: teacher_name });
+    }
+    onBeginPayment() {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'payment' });
+    }
+    onTeacherEvaluateSession() {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'evaluate' });
+    }
+    onStudentCommentToTeacher() {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'comment' });
+    }
+
+
+    log(data) {
+        data['stamp'] = (new Date).getTime();
+        console.log(data);
+        this.firebase.db.collection("user-activity-log").add(data)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    }
 }

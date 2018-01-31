@@ -24,6 +24,7 @@ export class UserService extends Base {
         private x: XapiService
     ) {
         super();
+        this.getProfile();
     }
 
 

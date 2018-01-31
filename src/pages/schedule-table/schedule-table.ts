@@ -359,8 +359,12 @@ export class ScheduleTablePage {
 
 
     if (this.singleTeacher) {
+
+      this.a.onUserViewProfile( this.teacher_profile.name );
+    
       this.schedule_table_rows = re.table;
       // this.onClickShowCurriculum(); //test
+
     }
     else {
       this.schedule_table_holder = re.table;
@@ -637,6 +641,7 @@ export class ScheduleTablePage {
       this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
       this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
+      this.a.onLmsReserve( this.teacher_name( session ) );
     }, e => {
       session['in_progress'] = false;
       this.a.alert(e);
@@ -658,6 +663,7 @@ export class ScheduleTablePage {
       this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
       this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
+      this.a.onLmsCancel( this.teacher_name( session ) );
     }, e => {
       session['in_progress'] = false;
       this.a.alert(e);

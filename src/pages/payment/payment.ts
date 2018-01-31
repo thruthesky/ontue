@@ -81,6 +81,7 @@ export class PaymentPage implements AfterViewInit {
             },
 
             payment: () => {
+                this.a.onBeginPayment();
                 // console.log("amont: ", this.amount);
                 // console.log("debug url: ", CREATE_PAYMENT_URL + '?amount=' + this.amount + '&session_id=' + this.a.user.sessionId );
                 return paypal.request.post(CREATE_PAYMENT_URL, { amount: this.amount, session_id: this.a.user.sessionId })
