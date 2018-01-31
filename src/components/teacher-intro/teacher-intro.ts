@@ -30,7 +30,7 @@ export class TeacherIntroComponent {
     this.a.user.login( this._login.user_email, this._login.user_pass ).subscribe(re => {
       // this.loading = false;
       console.log("user.login => success: re...: ", re);
-      this.a.updatePushToken();
+      this.a.onUserLogin();
       this.a.open('home');
     }, e => {
       // this.loading = false;

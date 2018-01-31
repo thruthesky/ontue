@@ -105,6 +105,8 @@ export class SessionList {
       this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
 
+
+      this.a.onLmsCancel();
     }, e => {
       book['process'] = false;
       this.a.alert(e);

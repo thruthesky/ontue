@@ -127,6 +127,7 @@ export class EvaluatePage {
       console.log(res);
       this.a.alert("Evaluation Submitted!!!");
       this.a.open('session-past');
+      this.a.onTeacherEvaluateSession();
     }, e => {
       this.a.alert(e);
     })
