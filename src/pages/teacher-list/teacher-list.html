@@ -88,30 +88,33 @@
     <section class="page-body">
 
 
-      <ion-grid *ngIf=" re ">
-        <ion-row>
-          <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
-            <div class="d-flex justify-content-center pointer">
-              <div class="teacher-profile-photo">
-                <img src="{{ teacher.photoURL }}">
+      <div class="teachers mb-5 mb-md-6">
+        <ion-grid *ngIf=" re ">
+          <ion-row>
+            <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
+              <div class="d-flex justify-content-center pointer">
+                <div class="teacher-profile-photo">
+                  <img src="{{ teacher.photoURL }}">
+                </div>
               </div>
-            </div>
-            <div class="text-center mt-1 mb-3 pointer">
-              <div>{{ a.preTeacherName( teacher.display_name )}}</div>
-              <div class="grade" [attr.grade]=" teacher.grade ">
-                추천:
-                <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>
-                <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
+              <div class="text-center mt-1 mb-3 pointer">
+                <div>{{ a.preTeacherName( teacher.display_name )}}</div>
+                <div class="grade" [attr.grade]=" teacher.grade ">
+                  추천:
+                  <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>
+                  <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher.grade)"></i>
+  
+                </div>
+                <div>
+                  ({{ teacher.total_reservation }} 명 참여)
+                </div>
+              </div>
+  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
 
-              </div>
-              <div>
-                ({{ teacher.total_reservation }} 명 참여)
-              </div>
-            </div>
-
-          </ion-col>
-        </ion-row>
-      </ion-grid>
       <div class="alert alert-warning d-flex" *ngIf=" loading ">
         <div>
           <ion-spinner></ion-spinner>
@@ -120,7 +123,7 @@
       </div>
 
 
-      <button ion-button full (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers ">강사 더보기...</button>
+      <button class="show-more-teachers" (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers ">강사 더보기...</button>
 
       <!-- <div class="alert alert-info rounded-0 border-0" *ngIf=" noMoreTeachers ">
       더 이상 강사가 없습니다.

@@ -1,34 +1,31 @@
 <ion-header>
-  <header-content [title]=" 'CLASS COMMENT' "></header-content>
+  <header-content [title]=" 'CLASS COMMENTS' | translate "></header-content>
 </ion-header>
 <ion-content>
   <div class="page">
 
     <hook-content-top></hook-content-top>
     <section class="page-header green">
-      <h2 class="title">{{ 'CLASS COMMENT' | translate }}</h2>
+      <h2 class="title">{{ 'CLASS COMMENTS' | translate }}</h2>
     </section>
     <section class="page-desc">
-      <div class="d-inline-block mb-2 mr-3"><i class="fa fa-users"></i> - Teacher</div>
-      <div class="d-inline-block mb-2 mr-3"><i class="fa fa-graduation-cap"></i> - Student</div>
-      <div class="d-inline-block mb-2 mr-3"><i class="fas fa-star"></i> - Rate given by the student</div>
-      <div class="d-inline-block mb-2 mr-3"><i class="fa fa-angle-double-down"></i> - Show more student comment</div>
+      학생이 작성한 수업 후기를 볼 수 있습니다. 여러분들도 수업을 하시면 꼭 후기를 남겨주세요.
     </section>
     <section class="page-body">
 
 
-      <ion-grid no-padding>
+      <ion-grid>
         <ion-row>
-          <ion-col class="mb-4" *ngFor="let comment of comments" col-12 col-md-6>
-            <div class="comment-wrapper d-flex justify-content-left mr-md-3">
+          <ion-col class="" *ngFor="let comment of comments" col-12 col-md-6>
+            <div class="comment-wrapper d-flex justify-content-left p-3">
               <div>
-                <div class="teacher-profile-photo">
+                <div class="teacher-profile-photo size-100x120">
                   <img src="{{comment?.teacher_photoURL ? comment.teacher_photoURL : a.anonymousPhotoURL }}">
                 </div>
                 <div class="py-2" text-center><i class="fa fa-users"></i> {{ a.preTeacherName(comment.teacher_name)}}</div>
               </div>
               <div>
-                <div class="teacher-profile-photo">
+                <div class="teacher-profile-photo size-100x120">
                   <img src="{{comment?.student_photoURL ? comment.student_photoURL : a.anonymousPhotoURL }}">
                 </div>
                 <div class="py-2" text-center><i class="fa fa-graduation-cap"></i> {{ comment.student_name }}</div>
@@ -36,9 +33,9 @@
               <div class="text-center mt-1 mb-3">
               </div>
               <div class="comment-info w-100">
-                <div class="student-comment p-2">
+                <div class="student-comment px-3">
                   <div class="rating mb-2">
-                    Rate: {{rate}}
+                    {{ 'RATING' | translate }}: {{rate}}
                     <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
                     <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
 
@@ -54,16 +51,18 @@
                     <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
                     <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
                   </div>
-                  <div class="date mb-2">Date: {{ a.shortDate(comment.stamp) }}</div>
+                  <div class="date mb-2">{{ 'DATE' | translate }}: {{ a.shortDate(comment.stamp) }}</div>
                   <div>
                   <span class="py-2 pointer mr-3" *ngIf="comment.idx_student == a.user.id"
-                        (click)="onClickDelete(comment)"><i class="fa fa-trash"></i> Delete</span>
+                        (click)="onClickDelete(comment)"><i class="fa fa-trash"></i> {{ 'DELETE' | translate }}</span>
                     <span class="py-2 pointer" *ngIf="comment.idx_student == a.user.id"
-                          (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> Edit</span>
+                          (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}</span>
                   </div>
                   <div class="description" [innerHTML]="comment.comment"></div>
+                  
                 </div>
-                <div class="more pointer text-center py-2" (click)="onClickShowMore(comment)"><i class="fa fa-angle-double-down"></i> More</div>
+
+                <div class="more pointer text-center mx-3 py-2" (click)="onClickShowMore(comment)"><i class="fa fa-angle-double-down"></i> {{ 'MORE' | translate }}</div>
               </div>
             </div>
           </ion-col>

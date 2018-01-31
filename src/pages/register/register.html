@@ -20,11 +20,11 @@
       <section class="page-body-wrapper">
 
 
-        <div class="d-flex justify-content-center mt-5 mb-3" *ngIf=" a.teacherTheme || a.user.isLogin ">
+        <div class="d-flex justify-content-center mt-5 mb-5" *ngIf=" a.teacherTheme || a.user.isLogin ">
           <div class="profile-user p-relative d-inline-block of-hidden" (click)="fileUpload.onClickCamera()">
             <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: .003; font-size: 10em;" type="file"
               (change)="fileUpload.onChangeFile($event)">
-            <div class="profile-user-photo size-100x120 mx-auto">
+            <div class="profile-user-photo size-100x120 mx-auto mb-3">
               <img class="w-100" src="{{ userProfilePhoto( files )}}">
             </div>
             <div text-center>

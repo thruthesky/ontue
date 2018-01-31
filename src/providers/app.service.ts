@@ -11,6 +11,8 @@ import { SHARE_SESSION_LIST } from './interface';
 export { SHARE_SESSION_LIST };
 
 
+declare let FCMPlugin;
+
 const KEY_LMS_INFO = 'lms-info';
 
 import * as firebase from "firebase";
@@ -83,6 +85,9 @@ export class AppService {
         db: firebase.database.Reference;
         messaging: firebase.messaging.Messaging;
     } = { db: null, messaging: null };
+
+    /// push token
+    pushToken: string = null;
 
     /// EO Firebase
     constructor(
@@ -736,25 +741,67 @@ export class AppService {
         else return this.anonymousPhotoURL;
     }
 
-
-
     /**
+     * @note don't call this method twice.
      *
      * - It request permission to the user.
      * - If user accepts ( or already accepted )
      *      a) check if token updated/changed, if yes, then update it.
-     *      b) or don't do anyting.
+     *      b) or don't do anything.
      */
-    initPushMessage() {
-        let platform = 'desktop';
+    onetimeInitPushMessage() {
+        if (this.isApp()) {
+            this.initAppPushMessage();
+        }
+        else {
+            this.initWebPushMessage();
+        }
+    }
+
+    /**
+     * Gets push token string and update it to server only IF it's new.
+     * @param token push token string
+     */
+    updatePushToken() {
+        let platform = 'web';
         if (this.isApp()) platform = 'app';
-        else if (this.isMobileWeb()) platform = 'mobileweb';
+        this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
+            console.log("Token updated:");
+        }, e => console.error(e));
+
+
+    }
+
+
+    initAppPushMessage() {
+        FCMPlugin.getToken(token => {
+            this.pushToken = token;
+            this.updatePushToken();
+            console.log('initAppPushMessage getToken: ', token);
+        });
+
+        //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
+        //Here you define your application behaviour based on the notification data.
+        FCMPlugin.onNotification( data => {
+            if (data.wasTapped) {
+                //Notification was received on device tray and tapped by the user.
+                // alert(JSON.stringify(data));
+            } else {
+                //Notification was received in foreground. Maybe the user needs to be notified.
+                // console.log(JSON.stringify(data));
+                if ( data['body'] ) this.alert( data['body'] );
+            }
+        });
+    }
+
+    initWebPushMessage() {
         this.firebase.messaging.requestPermission()
             .then(() => { /// User accepted 'push notification alert'
                 this.firebase.messaging.getToken()
                     .then(currentToken => { /// Got token
-                        console.log("Got token: ", currentToken, platform);
-                        this.updatePushToken(currentToken, platform);
+                        this.pushToken = currentToken;
+                        console.log("Got token: ", this.pushToken);
+                        this.updatePushToken();
                     })
                     .catch(err => {
                         // Failed to get token.
@@ -764,12 +811,14 @@ export class AppService {
             .catch(err => { /// If failed to get permission.
                 console.error('User rejected/blocked push notification. ', err);
             });
+
         // Callback fired if Instance ID token is updated.
         this.firebase.messaging.onTokenRefresh(() => {
             this.firebase.messaging.getToken()
                 .then(refreshedToken => { // Token refreshed
-                    console.log("Token Refreshed: ", refreshedToken, platform);
-                    this.updatePushToken(refreshedToken, platform);
+                    this.pushToken = refreshedToken
+                    console.log("Token Refreshed: ", this.pushToken);
+                    this.updatePushToken();
                 })
                 .catch(err => {
                     console.log('Unable to retrieve refreshed token ', err);
@@ -782,18 +831,9 @@ export class AppService {
             console.log("Message received. ", payload);
             // ...
             const notification = payload['notification'];
-            const title = notification['title'];
+            // const title = notification['title'];
             const body = notification['body'];
-            this.alert(`${title} ${body}`);
+            this.alert(body);
         });
-    }
-    /**
-     * Gets push token string and update it to server only IF it's new.
-     * @param token push token string
-     */
-    updatePushToken(token, platform) {
-        this.lms.update_push_token(token, platform).subscribe(re => {
-            console.log("Token updated:");
-        }, e => console.error(e));
     }
 }

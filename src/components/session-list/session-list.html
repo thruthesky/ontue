@@ -97,9 +97,9 @@
     <ng-container *ngIf=" past ">{{ 'NO MORE PASTS' | translate }}</ng-container>
   </div>
 
-  <div class="books mb-3" *ngIf=" books.length ">
+  <div class="books my-5" *ngIf=" books.length ">
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr text-center>
+      <tr class="" text-center style="height: 4em;">
         <td *ngIf="a.isStudent">{{ 'TEACHER' | translate }}</td>
         <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
         <td *ngIf="a.isTeacher">{{ 'CLASS NO' | translate }}</td>
@@ -119,7 +119,7 @@
 
       </tr>
 
-      <tr class="" text-center *ngFor="let book of books; let i = index;" [ngClass]=" { 'bg-ghostwhite': i % 2 } ">
+      <tr class="" text-center *ngFor="let book of books; let i = index; let o = odd; let e = even" [ngClass]=" { 'odd': o, 'even': e } ">
         <td *ngIf="a.isStudent">
           <section class="teacher-photo my-2 py-2">
 
