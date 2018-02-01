@@ -20,7 +20,7 @@
     "scp": "cd www && scp -r *.js *.html *.json build ontue@ontue.com:./www",
     "scp:all": "cd www && scp -r * ontue@ontue.com:./www",
     "s": "npm run ionic:serve",
-    "ionic-pro-build": "node app-check.js && git push ionic master"
+    "ionic-pro-build": "node app-check.js && git push ionic release"
   },
   "dependencies": {
     "@angular/common": "4.4.3",
