@@ -6,21 +6,21 @@
                     <img src="assets/img/menu-icon.png">
                 </div>
             </ion-col>
-            <ion-col col-4 class="p-0">
+            <ion-col col-5 class="p-0 text-center" text-center>
 
                 <div class="fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
                     {{ title }}
                     <img class="h-8" src="assets/img/talk.png">
                 </div>
                 <ng-template #logo>
-                    <div class="pt-2 pointer" (click)="a.open('home')">
+                    <div class="pt-2 pointer text-center" text-center (click)="a.open('home')">
                         <img src="assets/img/logo/katalk-english.png">
                     </div>
                 </ng-template>
 
 
             </ion-col>
-            <ion-col col-5 class="">
+            <ion-col col-4 class="">
                 <div class="top-right-menu d-flex p-2 pt-sm-4" style="justify-content: flex-end">
 
                     <ng-container *ngIf=" a.language == 'en' ">
@@ -52,11 +52,15 @@
                                     <span class="pl-3" (click)="a.open('payment')">{{ 'PAYMENT' | translate }}</span>
                                 </ng-container>
 
+                                <ng-container *ngSwitchCase=" 'help' ">
+                                        <span class="px-3" (click)="a.open('home')">{{ 'HOME' | translate }}</span>
+                                </ng-container>
 
                                 <ng-container *ngSwitchDefault>
-                                    <span (click)="a.open('payment')">{{ 'PAYMENT SHORT' | translate }}</span>
+                                    <span class="px-3" (click)="a.open('help')">도움말</span>
+                                    <!-- <span (click)="a.open('payment')">{{ 'PAYMENT SHORT' | translate }}</span> -->
                                     <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
-                                    <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
+                                    <!-- <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span> -->
                                 </ng-container>
                             </ng-container>
                         </ng-container>

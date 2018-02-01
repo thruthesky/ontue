@@ -228,4 +228,8 @@
  , "COPYRIGHT": "(C) All Right Reserved By 카톡잉글리시 2016-"
  , "TOP": "맨위로"
  , "MORE": "더보기"
+ , "DISPLAY SESSION IN PROGRESS": "포인트 복구 중인 수업 표시"
+ , "DISPLAY REFUNDED SESSION": "포인트 복구된 수업 표시"
+ , "DATE BEGIN": "수업 시작 날짜 선택"
+ , "DATE END": "수업 끝 날짜 선택"
 }

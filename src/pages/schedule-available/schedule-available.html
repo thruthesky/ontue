@@ -1,67 +1,76 @@
 <ion-header>
-  <header-content [title]=" '즉시수업' "></header-content>
+    <header-content [title]=" '즉시수업' "></header-content>
 </ion-header>
 <ion-content>
-  <div class="page">
-    <hook-content-top></hook-content-top>
-    <section class="page-header">
-      <div class="">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
-    </section>
-    <section class="page-desc">
-      주의! 아래의 수업을 예약하면 곧 수업이 시작됩니다.
-    </section>
-    <section class="page-body">
-      <div class="d-flex m-2" *ngIf=" pageInLoading; else pageLoaded ">
-        <ion-spinner></ion-spinner>
-        <span class="p-2">{{ 'IN LOADING' | translate }}</span>
-      </div>
-      <ng-template #pageLoaded>
-          <div>
-              <ion-grid *ngIf=" re ">
-                  <ion-row>
-                    <ion-col *ngFor="let schedule of re.available_schedules" col-4 col-md-4 col-lg-3>
-                      <div class="d-flex justify-content-center">
-                        <div class="teacher-profile-photo">
-                          <img src="{{ schedule.teacher.photoURL }}">
-                        </div>
+    <div class="page">
+        <hook-content-top></hook-content-top>
+        <section class="page-header">
+            <div class="">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
+        </section>
+        <section class="page-desc">
+            주의! 아래의 수업을 예약하면 곧 수업이 시작됩니다.
+        </section>
+        <section class="page-body">
+            <div class="d-flex my-5 mx-4 p-4 alert alert-warning rounded-0" *ngIf=" pageInLoading; else pageLoaded ">
+                <ion-spinner></ion-spinner>
+                <span class="p-2">{{ 'IN LOADING' | translate }}</span>
+            </div>
+            <ng-template #pageLoaded>
+                <div>
+                    <ion-grid *ngIf=" re && re?.available_schedules?.length; else NoSchedule">
+                        <ion-row>
+                            <ion-col *ngFor="let schedule of re.available_schedules" col-4 col-md-4 col-lg-3>
+                                <div class="d-flex justify-content-center">
+                                    <div class="teacher-profile-photo">
+                                        <img src="{{ schedule.teacher.photoURL }}">
+                                    </div>
+                                </div>
+                                <div class="text-center mt-1 mb-3">
+                                    <div>{{ a.preTeacherName( schedule.teacher.name )}}</div>
+                                    <div class="grade" [attr.grade]=" schedule.teacher.grade ">
+                                        추천:
+                                        <i class="star fas fa-star" *ngFor="let i of a.countStar(schedule.teacher.grade)"></i>
+                                        <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(schedule.teacher.grade)"></i>
+
+                                    </div>
+                                    <div>
+                                        ({{ schedule.teacher.total_reservation }} 명 참여)
+                                    </div>
+                                    <div>
+                                        {{ class_begin(schedule) }} / {{ schedule.duration }} {{ 'MINUTE' | translate }}
+                                    </div>
+                                    <div>
+                                        {{ schedule.point }} 포인트
+                                    </div>
+
+                                    <div class="reserve-button pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
+                                        {{ 'RESERVE NOW' | translate }}
+                                    </div>
+                                    <div class="d-flex" *ngIf=" loading[schedule.idx] ">
+                                        <ion-spinner></ion-spinner>
+                                        <span class="p-4">{{ 'IN RESERVING' | translate }}</span>
+                                    </div>
+
+                                </div>
+
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+
+
+                    <ng-template #NoSchedule>
+                      <div class="alert alert-warning mx-3 my-5 p-5">
+                          <div class="mb-3">앗, 지금 이 시간에 수업 가능한 선생님이 없습니다.</div>
+                          <div>다른 시간에 예약을 시도 해 주세요.</div>
                       </div>
-                      <div class="text-center mt-1 mb-3">
-                        <div>{{ a.preTeacherName( schedule.teacher.name )}}</div>
-                        <div class="grade" [attr.grade]=" schedule.teacher.grade ">
-                          추천:
-                          <i class="star fas fa-star" *ngFor="let i of a.countStar(schedule.teacher.grade)"></i>
-                          <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(schedule.teacher.grade)"></i>
-          
-                        </div>
-                        <div>
-                          ({{ schedule.teacher.total_reservation }} 명 참여)
-                        </div>
-                        <div>
-                          {{ class_begin(schedule) }} / {{ schedule.duration }} {{ 'MINUTE' | translate }}
-                        </div>
-                        <div>
-                            {{ schedule.point }} 포인트
-                          </div>
+                    </ng-template>
 
-                        <div class="reserve-button pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
-                            {{ 'RESERVE NOW' | translate }}
-                        </div>
-                        <div class="d-flex" *ngIf=" loading[schedule.idx] ">
-                            <ion-spinner></ion-spinner>
-                            <span class="p-4">{{ 'IN RESERVING' | translate }}</span>
-                        </div>
+                </div>
+            </ng-template>
 
-                      </div>
-          
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-          </div>
-      </ng-template>
-      
-    </section>
+        </section>
 
-  </div>
-  <!--/page-->
+    </div>
+    <!--/page-->
     <hook-content-bottom></hook-content-bottom>
 </ion-content>

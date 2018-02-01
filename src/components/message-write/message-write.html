@@ -3,7 +3,7 @@
     <ion-title>{{title}}</ion-title>
     <ion-buttons start>
       <button ion-button class="cancel" (click)="onClickCancel()">
-        <span ion-text color="primary">Cancel</span>
+        <span ion-text color="primary">{{ 'CANCEL' | translate }}</span>
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -14,8 +14,11 @@
       <ion-textarea class="w-100" rows="10" [(ngModel)]="message" placeholder="{{title}}"></ion-textarea>
     </ion-item>
     <ion-item>
-        <button ion-button type="button" (click)="onClickSubmit()">Submit</button>
-        <button color="secondary" ion-button type="button" (click)="onClickCancel()">Cancel</button>
+      <div *ngIf=" a.isStudent ">가능하면 영어로 적어주시기 바랍니다.</div>
+    </ion-item>
+    <ion-item>
+        <button class="p-4" ion-button type="button" (click)="onClickSubmit()">{{ 'SUBMIT' | translate }}</button>
+        <button class="p-4" color="secondary" ion-button type="button" (click)="onClickCancel()">{{ 'CANCEL' | translate }}</button>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -153,7 +153,7 @@ export class SessionList {
 
   onClickRefundRequest(book) {
     // console.log(book);
-    const modal = this.modalCtrl.create(MessageWrite, { title: "Why Request Refund?" });
+    const modal = this.modalCtrl.create(MessageWrite, { title: "포인트 복구 사유를 적어주세요." });
     modal.onDidDismiss(re => {
       // console.log("onDidDismiss", re);
       if (re) {

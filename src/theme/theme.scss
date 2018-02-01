@@ -41,6 +41,11 @@ ul.buttons {
 .d-flex {
   display: flex;
 }
+.d-flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
 
 .justify-content-between {
   justify-content: space-between;

@@ -7,14 +7,14 @@
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-label>Begin Date</ion-label>
+            <ion-label>{{ 'DATE BEGIN' | translate }}</ion-label>
             <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
           </ion-item>
         </ion-col>
 
         <ion-col>
           <ion-item>
-            <ion-label>End Date</ion-label>
+            <ion-label>{{ 'DATE END' | translate }}</ion-label>
             <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
           </ion-item>
         </ion-col>
@@ -36,24 +36,32 @@
     <ion-list *ngIf=" past ">
       <ion-item>
         <ion-checkbox [(ngModel)]="show_refund_in_progress" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
-        <ion-label>Display sessions in progress of Refund</ion-label>
+        <ion-label>
+          
+          {{ 'DISPLAY SESSION IN PROGRESS' | translate }}
+        </ion-label>
       </ion-item>
       <ion-item>
         <ion-checkbox [(ngModel)]="show_refunded" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
-        <ion-label>Display refunded sessions</ion-label>
+        <ion-label>
+          
+          {{ 'DISPLAY REFUNDED SESSION' | translate }}
+        </ion-label>
       </ion-item>
       <ng-container *ngIf="a.isStudent">
         <ion-item>
           <ion-checkbox [(ngModel)]="displayTeacherName" color="vibrant"></ion-checkbox>
-          <ion-label>Display Teacher Name</ion-label>
+          <ion-label>
+            선생님 이름 표시
+          </ion-label>
         </ion-item>
         <ion-item>
           <ion-checkbox [(ngModel)]="displayDate" color="vibrant"></ion-checkbox>
-          <ion-label>Display Date</ion-label>
+          <ion-label>날짜 표시</ion-label>
         </ion-item>
         <ion-item>
           <ion-checkbox [(ngModel)]="displayPoint" color="vibrant"></ion-checkbox>
-          <ion-label>Display Point</ion-label>
+          <ion-label>포인트 표시</ion-label>
         </ion-item>
       </ng-container>
     </ion-list>
@@ -97,6 +105,14 @@
     <ng-container *ngIf=" past ">{{ 'NO MORE PASTS' | translate }}</ng-container>
   </div>
 
+  <div class="d-flex my-5 mx-4 p-4 alert alert-warning rounded-0" *ngIf=" re == null ">
+    <ion-spinner></ion-spinner>
+    <span class="px-3 py-2">
+        {{ 'IN LOADING' | translate }}
+    </span>
+  </div>
+
+  
   
   <div class="books my-5" *ngIf=" books.length ">
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -204,20 +220,17 @@
 
               </div>
 
-              <div class="student buttons text-center" text-center *ngIf=" a.isStudent ">
-
+              <div class="student buttons d-flex-column mr-2 text-center" text-center *ngIf=" a.isStudent ">
                 <button class="dark" (click)=" onClickEvaluateView(book.idx)" *ngIf=" !refunded(book) ">강의평가</button>
-                <button class="lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">후기작성</button>
-
-                <span class="darkred" *ngIf=" rejected( book ) ">Rejected</span>
-                <span class="darkred" *ngIf=" refunded(book) ">Refunded</span>
+                <button class="lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) "  *ngIf=" !refund_in_progress(book) ">후기작성</button>
+                <span class="darkred py-2" *ngIf=" rejected( book ) ">포인트 복구 거절 됨</span>
+                <span class="darkred py-2" *ngIf=" refunded(book) ">복구됨</span>
                 <ng-container *ngIf=" !book.refund_timeover && ! rejected( book ) ">
                   <ng-container *ngIf=" ! refunded( book ) ">
                     <button class="" (click)=" onClickCancelRefundRequest( book )" *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}</button>
                     <button class="warning" (click)=" onClickRefundRequest( book )" *ngIf=" book.refund_request_at == 0 ">{{ "REQUEST REFUND" | translate }}</button>
                   </ng-container>
                 </ng-container>
-
               </div>
             </div>
 

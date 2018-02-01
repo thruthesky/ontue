@@ -1,173 +1,229 @@
 {
 
-  "HTTP ERROR": "Connection Error",
-  "HTTP ERROR DESC": "Connection to the server has failed. Please notify this error to admin immediately.",
-  "PHP_ERROR_DESC": "Server program error. Please notify admin immediately.",
+    "HTTP ERROR": "Connection Error",
+    "HTTP ERROR DESC": "Connection to the server has failed. Please notify this error to admin immediately.",
+    "PHP_ERROR_DESC": "Server program error. Please notify admin immediately.",
 
 
-  "SITE NAME": "OnTue",
+    "SITE NAME": "OnTue",
 
-  "CLOSE": "Close",
-  "ALL MENU": "MENU",
-  "MENU": "Menu",
+    "CLOSE": "Close",
+    "ALL MENU": "MENU",
+    "MENU": "Menu",
 
-  "RESERVATIONS": "Reservation",
+    "RESERVATIONS": "Reservation",
 
-  "Time": "Time",
-  "MINUTE": "min",
+    "Time": "Time",
+    "MINUTE": "min",
 
-  "HOME": "Home",
-  "BACK": "Back",
-  "NAME": "Name",
-  "NICKNAME DESC": "Please input English name. English Only.",
-  "NICKNAME": "Nickname",
-  "EMAIL": "Email",
-  "USERNAME": "Username",
-  "PASSWORD": "Password",
-  "LOGIN": "Login",
-  "LOGIN BUTTON": "SUBMIT",
-  "LOGOUT": "Logout",
-  "REGISTER": "Register",
-  "REGISTER BUTTON": "SUBMIT",
-  "UPDATE PROFILE": "Profile Update",
-  "UPDATE PROFILE BUTTON": "SUBMIT",
-  "SEARCH": "Search",
-  "SETTINGS": "Settings",
-  "SKIP": "Skip",
-  "CONTINUE": "Continue",
-  "EDIT_PROFILE": "Edit Profile",
-  "DONE": "Done",
-  "CANCEL": "Cancel",
-  "DELETE": "Delete",
-  "LOADING": "Please wait while loading...",
-  "PAYMENT": "Payments",
+    "HOME": "Home",
+    "BACK": "Back",
+    "NAME": "Name",
+    "NICKNAME DESC": "Please input English name. English Only.",
+    "NICKNAME": "Nickname",
+    "EMAIL": "Email",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "LOGIN": "Login",
+    "LOGIN BUTTON": "SUBMIT",
+    "LOGOUT": "Logout",
+    "REGISTER": "Register",
+    "REGISTER BUTTON": "SUBMIT",
+    "UPDATE PROFILE": "Profile Update",
+    "UPDATE PROFILE BUTTON": "SUBMIT",
+    "SEARCH": "Search",
+    "SETTINGS": "Settings",
+    "SKIP": "Skip",
+    "CONTINUE": "Continue",
+    "EDIT_PROFILE": "Edit Profile",
+    "DONE": "Done",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "LOADING": "Please wait while loading...",
+    "PAYMENT": "Payments",
 
-  "discussion": "Discussion",
-
-
-  "LOGIN_BEFORE_PAYMENT": "Please login before you are going to pay for tuition fee.",
-  "NOTE_TAX_EXCLUSIVE": "Tax is excluded.",
+    "discussion": "Discussion",
 
 
-
-"sunday": "Sun",
-"monday": "Mon",
-"tuesday": "Tue",
-"wednesday": "Wed",
-"thursday": "Thu",
-"friday": "Fri",
-"saturday": "Sat"
+    "LOGIN_BEFORE_PAYMENT": "Please login before you are going to pay for tuition fee.",
+    "NOTE_TAX_EXCLUSIVE": "Tax is excluded.",
 
 
-  , "SCHEDULE TABLE SEARCH OPTIONS": "Search Options"
-  , "SCHEDULE TABLE SEARCH OPTIONS SHORT": "Options"
-  , "SELECT_TEACHER_TITLE": "Select a teacher"
-  , "PAST LIST PAGE": "Past"
-  , "RESERVATION LIST PAGE": "Reserve"
-  , "TEACHER PAYMENT INFO": "PAYMENT INFORMATION"
-  , "PAYMENT PAGE TITLE": "Pay as less as you like."
 
-  , "SEARCHED SESSIONS": "Result"
-  , "TOTAL": "Total"
-  , "SEARCHED POINT": "Point"
-  , "REFUNDED SESSIONS": "Refunded"
-  , "SESSIONS IN REFUND PROGRESS": "Refund in progress"
-  , "HELP SHORT": "Help"
-  , "MUST READ": "Help"
-  , "HELP": "Help"
-  , "AVAILABLE SESSIONS": "Instant Book"
-  , "TEACHER LIST": "Teachers"
-  , "ALL SCHEDULE TABLE": "All Teacher"
-  , "QNA SHORT": "QnA"
-  , "QNA": "QnA"
-  , "CLASS NO": "No."
-  , "DATE": "Date"
-  , "STUDENT": "Student"
-  , "NO MORE RESERVATIONS": "Ooh, there is no reservations."
-  , "NO MORE PASTS": "OOh, there is no past sessions. You can search past sessions through options."
-  , "NO MORE MESSGES": "No more messages."
-  , "PHOTO UPLOAD": "Upload Photo"
-  , "CHOOSE USER TYPE": "Please choose your member type."
-  , "NAME REQUIRED": "Please input your name."
-  , "EMAIL REQUIRED": "Please input your email."
-  , "PASSWORD REQUIRED": "Please input password."
-  , "PHONE NUMBER REQUIRED": "Please input your phone number."
-  , "PHONE NUMBER": "Phone Number"
-  , "KAKAOTALK ID": "Kakaotalk ID"
-  , "KAKAOTALK ID SHORT": "Kakaotalk ID"
-  , "KAKAOTALK FRIEND ADD": "KakaoID"
-  , "KAKAOTALK ID REQUIRED": "Please input Kakaotalk ID. You can  get it on your Kakaotalk profile."
-  , "SCHEDULE AVAILABLE PAGE TITLE": "Available teachers at this time"
-  , "IN LOADING": "Loading! Please wait a second."
-  , "IN RESERVING": "Reserving..."
-  , "INBOX": "In Box"
-  , "SENT": "Sent Box"
-  , "LOADING SCHEDULE": "Requesting schedules..."
-  , "GOT SCHEDULE": "Schedule received. Going to display."
-  , "DISPLAYING SCHEDULE": " has been displayed."
-  , "SCHEDULE DISPLAYED": "Schedules are displayed."
-  , "TIME NOW": "Now"
-  , "NATIONALITY": "Nationality"
-  , "TAKEN": "Sessions"
-  , "CURRICULUM VITAE": "Curriculum Vitae"
-  , "ADD KAKAO": "Add Kakao Friend"
-
-  , "PREVIOUS WEEK": "Prev"
-  , "TODAY": "Today"
-  , "NEXT WEEK": "Next"
-  , "NEXT MONTH": "Next month"
-  , "HAD SESSIONS": ""
-  , "CHOOSE DIFFERENT HOURS": "Please choose different hours from class begin to class end."
-  , "SETTINGS PAGE": "Settings page"
-  , "SETTINGS PAGE DESC": "You can set your language and timezone."
-  , "SELECT YOUR LANGUAGE": "Select your language"
-  , "SELECT YOUR TIMEZONE": "Select your timezone"
-  , "PAYMENT HISTORY PAGE TITLE": "Payment History"
-  , "PAYMENT HISTORY PAGE DESC": "You can view your payment history."
-  , "No.": "번호"
-
-  , "CLASS COMMENTS": "Comments"
-, "RESERVATION LIST": "Book"
-, "RESERVE NOW": "Reserve"
-, "RESERVE SESSION": "Reserve"
-  , "PAYMENT SHORT": "Pay"
-  , "PAYMENT METHOD SHORT": "Pay with"
-  , "PAYMENT RECEIPT PAGE TITLE": "Payment Receipt"
-  , "PAYMENT INFO": "Payment Information"
-  , "PAYMENT NO": "Receipt No."
-  , "RECEIVED FROM": "Received From"
-  , "PAYMENT FOR": "결제 내용"
-  , "STUDENT COMMENTS": [
-    { "name": "유진형", "date": "2018년 1월 24일", "title": "❝ 우리 가족에게 꼭 맞는 최고의 선택 ❞", "description": "우리 가족이 카톡잉글리시를 시작한지 4개월정도 되었네요.<br> 처음에는 진형이를 초등학교 입학시키고 영어 때문에, 카톡잉글리시를 시작했는데, 지금은 진형이 뿐만아니라 저를 포함한 우리 가족과 친척 들이 모두 카톡잉글리로 영어 공부를 하고 있습니다." },
-    { "name": "노승민", "date": "2018년 1월 10일",  "title": "❝ 면접에서 영어 인터뷰에 대한 자신감 ❞", "description": "취업 시험을 볼 때 영어로 면접을 할 때마다 가슴이 두근거렸습니다.<br>그래서 여러 화상영어 사이트를 통해서 공부를 해 봤는데, 카톡잉글리시는 뭐라고 할까요?<br>카톡으로 선생님과 늘 대화하니까 매 순간 내 자신이 영어를 사용하고 있다는 것을 발견하게됩니다." },
-    { "name": "여주형", "date": "2018년 1월 3일",  "title": "❝ 고맙습니다, 야니 선생님. 고맙습니다, 카톡잉글리시 ❞", "description": "다른 몇 군데에서 화상영어를 1년 반 정도 하다가 카톡잉글리에서 약 3개월째 인데, 매우 만족하고 있습니다.<br>카톡잉글리시의 선생님들은 다른 사이트의 선생님과 틀린데 학생을 배려하고 영어 실력 향상을 위해서 매우 적극적인데,<br>학생이 직접 강사에게 돈을 주는 직거래 시스템과 자유로운 예약/취소의 기능 때문이지 않을까 생각합니다.<br>아이와 아이 아빠가 야니 선생님과 수업을 하는데 정말 다른 어떤 곳과도 비교 할 수 없네요." },
-    { "name": "안영신", "date": "2017년 12월 15일",  "title": "❝ 선생님과 하루 종일 카톡으로 대화 ❞", "description": "처음으로 작성하는 후기입니다.<br> 카톡잉글리시가 온튜의 계열사라는 것을 모르는 분들이 많겠지만, 저는 10년 전부터 이 사이트를 이용했습니다.<br> 그 때나 지금이나 직거래 시스템은 변한게 없지만, 강사의 수익이 수업료의 90%로 크게 늘었네요.<br> 최근에 카톡으로 수업을 할 수 있도록 했는데 아주 좋은 아이디어라고 생각합니다. 하루 종일 선생님과 톡을 하고 있으니까요. 가끔은 수업료도 안내고 공짜로 화상 통화를 하기도 ㅋㅋ.. " },
-    { "name": "이서윤", "date": "2017년 12월 11일",  "title": "❝ 선생님과 하루 종일 카톡으로 대화 ❞", "description": "안녕하세요. 서윤이 엄마에요~^^<br> 서윤이가 카톡으로 선생님과 아주 즐겁게 공부하고 있어 너무나도 감사드리는 마음에 후기를 남겨요..^^<br> 카톡으로 수업을 하니까 어디를 가든 수업을 할 수 있고, 또 선생님을 너무너무 좋아해서 같이 어디좀 나가려고해도 수업시간에는 절대 안나가려고 해요..ㅠㅠ 그래도 다행인거죠?^^ 그래도 서윤이가 좋아하니까 스스로 공부하다보니 영어실력도 많이 늘은것같아서 좋아요..ㅎㅎ 영어실력은 둘째치고 아이가 좋아하는게 더욱더 좋구요..계속해서 잘부탁드려요~^^" },
-    { "name": "오채영", "date": "2017년 12월 2일",  "title": "❝ 영어 스피킹 실력이 이전 보다 더 좋아졌습니다 ^^ ❞", "description": "10만원으로 5개월 간 수업 듣고 다시 포인트 충전했습니다. ^^<br> 직거래 시스템이라 확실히 수업료는 저렴하고 선생님은 정말 잘 챙겨주시네요.<br> 언젠간 미국에서 살고싶은 꿈을 가지고 영어공부를 하구있습니다.<br> Tannia강사님과 너무 친해져서 이번 여름휴가때 겸사겸사 강사님 보러도 갈까도 생각중이에요ㅎㅎ<br> 정말 현지에서도 영어를 내맘대로 쓰면서 자유여행 다니는게 목표에요 ㅠ_ㅠ<br> 그래도 처음보다는 많이 좋아졌다고 스스로 느껴서 만족도 하구있고 앞으로도 계속 열심히 할거에요^.^<br> 감사합니당!!ㅎㅎ" },
-    { "name": "윤정한", "date": "2017년 11월 22일",  "title": "❝ 영어를 자유롭게 구사 할 수 있게 되었습니다. ❞", "description": "안녕하세요!!! 주로 리카쌤과 샙이랑 공부하는 중2 김다현입니당ㅎㅎ<br> 초등학교 5학년때부터 리카쌤이랑 쭉 공부해왔구요, 지금은 샙쌤이랑도 거의 매일 수업합니다.<br> 영어도 넘나재밋어성 공부도 열심히해서 그런지 영어시험 점수도 잘나오구 그래서 이번에 엄마가 카톡으로 화상 채팅 할 때 더 좋은 최신 핸드폰도 바꿔줬어요 ㅎㅎㅎㅎ<br> 고마워요 카톡잉글리시ㅎㅎㅎ 사랑해요!!!!ㅎㅎㅎㅎㅎㅎㅎ :-)" },
-    { "name": "김선아", "date": "2017년 11월 9일",  "title": "❝ 미국 유학 준비중에 만난 카톡잉글리시 ❞", "description": "시작한지는 두달정도 되었고 처음에는 월~금 하루 25분씩 했는데 지금은 매일 25분씩 하루 두번씩 하고 있네요.<br> 첨에는 어색하기도 하고 과연 도움이 될까하고 시작했는데 저렴한 수업료 한번 놀라고 매우 편리함에 다시 놀라고 선생님들의 정성에 완전 반하게 되었네요.<br> 미국에 가서도 계속 할 생각인데 이번에는 꼭 영어를 마스터 할 수 있다는 자신감이 듭니다.<br> 모두들 화이팅하세요." }
-   ]
- , "REVIEW": "Review"
- , "WRITE REVIEW": "Write"
- , "OPEN REVIEW": "View"
-
- , "PAYMENT RESULT PAGE TITLE": "Payment Result"
- , "KATALKENGLISH LOGO TEXT": "HOME"
- , "PLEASE WAIT": "Please, wait..."
- , "UPDATED": "Updated successfully."
- , "REGISTERED": "Registered successfully."
- , "LEVELTEST": "Level Test"
- , "SEARCH PERIOD": "Search Period"
+    "sunday": "Sun",
+    "monday": "Mon",
+    "tuesday": "Tue",
+    "wednesday": "Wed",
+    "thursday": "Thu",
+    "friday": "Fri",
+    "saturday": "Sat"
 
 
- , "STUDENT COMMENT CREATE": "Comment for session"
- , "RATING": "Rating"
- , "RATE COMMENT": "Comment your thoughts about the session."
- 
- , "STUDENT RATE COMMENT": "You can only comment, if you have successful class with this teacher."
+        ,
+    "SCHEDULE TABLE SEARCH OPTIONS": "Search Options",
+    "SCHEDULE TABLE SEARCH OPTIONS SHORT": "Options",
+    "SELECT_TEACHER_TITLE": "Select a teacher",
+    "PAST LIST PAGE": "Past",
+    "RESERVATION LIST PAGE": "Reserve",
+    "TEACHER PAYMENT INFO": "PAYMENT INFORMATION",
+    "PAYMENT PAGE TITLE": "Pay as less as you like."
 
- , "SUBMIT": "Submit"
+        ,
+    "SEARCHED SESSIONS": "Result",
+    "TOTAL": "Total",
+    "SEARCHED POINT": "Point",
+    "REFUNDED SESSIONS": "Refunded",
+    "SESSIONS IN REFUND PROGRESS": "Refund in progress",
+    "HELP SHORT": "Help",
+    "MUST READ": "Help",
+    "HELP": "Help",
+    "AVAILABLE SESSIONS": "Instant Book",
+    "TEACHER LIST": "Teachers",
+    "ALL SCHEDULE TABLE": "All Teacher",
+    "QNA SHORT": "QnA",
+    "QNA": "QnA",
+    "CLASS NO": "No.",
+    "DATE": "Date",
+    "STUDENT": "Student",
+    "NO MORE RESERVATIONS": "Ooh, there is no reservations.",
+    "NO MORE PASTS": "OOh, there is no past sessions. You can search past sessions through options.",
+    "NO MORE MESSGES": "No more messages.",
+    "PHOTO UPLOAD": "Upload Photo",
+    "CHOOSE USER TYPE": "Please choose your member type.",
+    "NAME REQUIRED": "Please input your name.",
+    "EMAIL REQUIRED": "Please input your email.",
+    "PASSWORD REQUIRED": "Please input password.",
+    "PHONE NUMBER REQUIRED": "Please input your phone number.",
+    "PHONE NUMBER": "Phone Number",
+    "KAKAOTALK ID": "Kakaotalk ID",
+    "KAKAOTALK ID SHORT": "Kakaotalk ID",
+    "KAKAOTALK FRIEND ADD": "KakaoID",
+    "KAKAOTALK ID REQUIRED": "Please input Kakaotalk ID. You can  get it on your Kakaotalk profile.",
+    "SCHEDULE AVAILABLE PAGE TITLE": "Available teachers at this time",
+    "IN LOADING": "Loading! Please wait a second.",
+    "IN RESERVING": "Reserving...",
+    "INBOX": "In Box",
+    "SENT": "Sent Box",
+    "LOADING SCHEDULE": "Requesting schedules...",
+    "GOT SCHEDULE": "Schedule received. Going to display.",
+    "DISPLAYING SCHEDULE": " has been displayed.",
+    "SCHEDULE DISPLAYED": "Schedules are displayed.",
+    "TIME NOW": "Now",
+    "NATIONALITY": "Nationality",
+    "TAKEN": "Sessions",
+    "CURRICULUM VITAE": "Curriculum Vitae",
+    "ADD KAKAO": "Add Kakao Friend"
 
- , "COPYRIGHT": "(C) ONTUE.COM PHILIPPINES 2006-"
- , "MORE": "More"
+        ,
+    "PREVIOUS WEEK": "Prev",
+    "TODAY": "Today",
+    "NEXT WEEK": "Next",
+    "NEXT MONTH": "Next month",
+    "HAD SESSIONS": "",
+    "CHOOSE DIFFERENT HOURS": "Please choose different hours from class begin to class end.",
+    "SETTINGS PAGE": "Settings page",
+    "SETTINGS PAGE DESC": "You can set your language and timezone.",
+    "SELECT YOUR LANGUAGE": "Select your language",
+    "SELECT YOUR TIMEZONE": "Select your timezone",
+    "PAYMENT HISTORY PAGE TITLE": "Payment History",
+    "PAYMENT HISTORY PAGE DESC": "You can view your payment history.",
+    "No.": "번호"
+
+        ,
+    "CLASS COMMENTS": "Comments",
+    "RESERVATION LIST": "Book",
+    "RESERVE NOW": "Reserve",
+    "RESERVE SESSION": "Reserve",
+    "PAYMENT SHORT": "Pay",
+    "PAYMENT METHOD SHORT": "Pay with",
+    "PAYMENT RECEIPT PAGE TITLE": "Payment Receipt",
+    "PAYMENT INFO": "Payment Information",
+    "PAYMENT NO": "Receipt No.",
+    "RECEIVED FROM": "Received From",
+    "PAYMENT FOR": "결제 내용",
+    "STUDENT COMMENTS": [{
+            "name": "유진형",
+            "date": "2018년 1월 24일",
+            "title": "❝ 우리 가족에게 꼭 맞는 최고의 선택 ❞",
+            "description": "우리 가족이 카톡잉글리시를 시작한지 4개월정도 되었네요.<br> 처음에는 진형이를 초등학교 입학시키고 영어 때문에, 카톡잉글리시를 시작했는데, 지금은 진형이 뿐만아니라 저를 포함한 우리 가족과 친척 들이 모두 카톡잉글리로 영어 공부를 하고 있습니다."
+        },
+        {
+            "name": "노승민",
+            "date": "2018년 1월 10일",
+            "title": "❝ 면접에서 영어 인터뷰에 대한 자신감 ❞",
+            "description": "취업 시험을 볼 때 영어로 면접을 할 때마다 가슴이 두근거렸습니다.<br>그래서 여러 화상영어 사이트를 통해서 공부를 해 봤는데, 카톡잉글리시는 뭐라고 할까요?<br>카톡으로 선생님과 늘 대화하니까 매 순간 내 자신이 영어를 사용하고 있다는 것을 발견하게됩니다."
+        },
+        {
+            "name": "여주형",
+            "date": "2018년 1월 3일",
+            "title": "❝ 고맙습니다, 야니 선생님. 고맙습니다, 카톡잉글리시 ❞",
+            "description": "다른 몇 군데에서 화상영어를 1년 반 정도 하다가 카톡잉글리에서 약 3개월째 인데, 매우 만족하고 있습니다.<br>카톡잉글리시의 선생님들은 다른 사이트의 선생님과 틀린데 학생을 배려하고 영어 실력 향상을 위해서 매우 적극적인데,<br>학생이 직접 강사에게 돈을 주는 직거래 시스템과 자유로운 예약/취소의 기능 때문이지 않을까 생각합니다.<br>아이와 아이 아빠가 야니 선생님과 수업을 하는데 정말 다른 어떤 곳과도 비교 할 수 없네요."
+        },
+        {
+            "name": "안영신",
+            "date": "2017년 12월 15일",
+            "title": "❝ 선생님과 하루 종일 카톡으로 대화 ❞",
+            "description": "처음으로 작성하는 후기입니다.<br> 카톡잉글리시가 온튜의 계열사라는 것을 모르는 분들이 많겠지만, 저는 10년 전부터 이 사이트를 이용했습니다.<br> 그 때나 지금이나 직거래 시스템은 변한게 없지만, 강사의 수익이 수업료의 90%로 크게 늘었네요.<br> 최근에 카톡으로 수업을 할 수 있도록 했는데 아주 좋은 아이디어라고 생각합니다. 하루 종일 선생님과 톡을 하고 있으니까요. 가끔은 수업료도 안내고 공짜로 화상 통화를 하기도 ㅋㅋ.. "
+        },
+        {
+            "name": "이서윤",
+            "date": "2017년 12월 11일",
+            "title": "❝ 선생님과 하루 종일 카톡으로 대화 ❞",
+            "description": "안녕하세요. 서윤이 엄마에요~^^<br> 서윤이가 카톡으로 선생님과 아주 즐겁게 공부하고 있어 너무나도 감사드리는 마음에 후기를 남겨요..^^<br> 카톡으로 수업을 하니까 어디를 가든 수업을 할 수 있고, 또 선생님을 너무너무 좋아해서 같이 어디좀 나가려고해도 수업시간에는 절대 안나가려고 해요..ㅠㅠ 그래도 다행인거죠?^^ 그래도 서윤이가 좋아하니까 스스로 공부하다보니 영어실력도 많이 늘은것같아서 좋아요..ㅎㅎ 영어실력은 둘째치고 아이가 좋아하는게 더욱더 좋구요..계속해서 잘부탁드려요~^^"
+        },
+        {
+            "name": "오채영",
+            "date": "2017년 12월 2일",
+            "title": "❝ 영어 스피킹 실력이 이전 보다 더 좋아졌습니다 ^^ ❞",
+            "description": "10만원으로 5개월 간 수업 듣고 다시 포인트 충전했습니다. ^^<br> 직거래 시스템이라 확실히 수업료는 저렴하고 선생님은 정말 잘 챙겨주시네요.<br> 언젠간 미국에서 살고싶은 꿈을 가지고 영어공부를 하구있습니다.<br> Tannia강사님과 너무 친해져서 이번 여름휴가때 겸사겸사 강사님 보러도 갈까도 생각중이에요ㅎㅎ<br> 정말 현지에서도 영어를 내맘대로 쓰면서 자유여행 다니는게 목표에요 ㅠ_ㅠ<br> 그래도 처음보다는 많이 좋아졌다고 스스로 느껴서 만족도 하구있고 앞으로도 계속 열심히 할거에요^.^<br> 감사합니당!!ㅎㅎ"
+        },
+        {
+            "name": "윤정한",
+            "date": "2017년 11월 22일",
+            "title": "❝ 영어를 자유롭게 구사 할 수 있게 되었습니다. ❞",
+            "description": "안녕하세요!!! 주로 리카쌤과 샙이랑 공부하는 중2 김다현입니당ㅎㅎ<br> 초등학교 5학년때부터 리카쌤이랑 쭉 공부해왔구요, 지금은 샙쌤이랑도 거의 매일 수업합니다.<br> 영어도 넘나재밋어성 공부도 열심히해서 그런지 영어시험 점수도 잘나오구 그래서 이번에 엄마가 카톡으로 화상 채팅 할 때 더 좋은 최신 핸드폰도 바꿔줬어요 ㅎㅎㅎㅎ<br> 고마워요 카톡잉글리시ㅎㅎㅎ 사랑해요!!!!ㅎㅎㅎㅎㅎㅎㅎ :-)"
+        },
+        {
+            "name": "김선아",
+            "date": "2017년 11월 9일",
+            "title": "❝ 미국 유학 준비중에 만난 카톡잉글리시 ❞",
+            "description": "시작한지는 두달정도 되었고 처음에는 월~금 하루 25분씩 했는데 지금은 매일 25분씩 하루 두번씩 하고 있네요.<br> 첨에는 어색하기도 하고 과연 도움이 될까하고 시작했는데 저렴한 수업료 한번 놀라고 매우 편리함에 다시 놀라고 선생님들의 정성에 완전 반하게 되었네요.<br> 미국에 가서도 계속 할 생각인데 이번에는 꼭 영어를 마스터 할 수 있다는 자신감이 듭니다.<br> 모두들 화이팅하세요."
+        }
+    ],
+    "REVIEW": "Review",
+    "WRITE REVIEW": "Write",
+    "OPEN REVIEW": "View"
+
+        ,
+    "PAYMENT RESULT PAGE TITLE": "Payment Result",
+    "KATALKENGLISH LOGO TEXT": "HOME",
+    "PLEASE WAIT": "Please, wait...",
+    "UPDATED": "Updated successfully.",
+    "REGISTERED": "Registered successfully.",
+    "LEVELTEST": "Level Test",
+    "SEARCH PERIOD": "Search Period"
+
+
+        ,
+    "STUDENT COMMENT CREATE": "Comment for session",
+    "RATING": "Rating",
+    "RATE COMMENT": "Comment your thoughts about the session."
+
+        ,
+    "STUDENT RATE COMMENT": "You can only comment, if you have successful class with this teacher."
+
+        ,
+    "SUBMIT": "Submit"
+
+        ,
+    "COPYRIGHT": "(C) ONTUE.COM PHILIPPINES 2006-",
+    "MORE": "More"
+
+        ,
+    "DISPLAY SESSION IN PROGRESS": "Display sessions in progress of Refund",
+    "DISPLAY REFUNDED SESSION": "Display refunded sessions"
+
+        ,
+    "DATE BEGIN": "Select Begin Date",
+    "DATE END": "Select End Date"
 }
