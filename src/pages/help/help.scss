@@ -125,6 +125,33 @@ help-page {
   }
   
 
+  .problem .desc {
+    background: #753650;
+    color: white;
+    &>div:first-child {
+      background-color: #251a1f;
+      color: white;
+    }
+  }
+  
+  .refund .desc {
+    background: #366375;
+    color: white;
+    &>div:first-child {
+      background-color: #1a2025;
+      color: white;
+    }
+  }
+  .cancel .desc {
+    background: #647536;
+    color: white;
+    &>div:first-child {
+      background-color: #23251a;
+      color: white;
+    }
+  }
+  
+
 
   
 }

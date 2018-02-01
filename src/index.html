@@ -2,84 +2,84 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <title>카톡잉글리시</title>
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: cdvfile: https://ssl.gstatic.com 'unsafe-eval'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; media-src *">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
+    <meta charset="UTF-8">
+    <title>카톡영어</title>
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: cdvfile: https://ssl.gstatic.com 'unsafe-eval'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
 
-  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico?version=20180128-1">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#4e8ef7">
+    <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico?version=20180128-1">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4e8ef7">
 
-  <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- add to homescreen for ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <!-- cordova.js required for cordova apps -->
-  <!-- <script src="cordova.js"></script> -->
-
-
-  <script>
-     if ('serviceWorker' in navigator) {
-       navigator.serviceWorker.register('service-worker.js')
-         .then(() => console.log('service worker installed'))
-         .catch(err => console.error('Error', err));
-     }
-
-  </script>
-
-  <script>
-    function detect_ie_version() {
-      if (!window.document['documentMode']) return false;
-      var ua = window.navigator.userAgent;
-      var msie = ua.indexOf('MSIE ');
-      if (msie > 0) {
-        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-      }
-      var trident = ua.indexOf('Trident/');
-      if (trident > 0) {
-        var rv = ua.indexOf('rv:');
-        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-      }
-      return false;
-    }
-    var version = detect_ie_version();
-    if (version && version < 11) {
-      location.href = "/wp-content/plugins/xapi-2/lms/www/index.php";
-    }
-
-  </script>
+    <!-- cordova.js required for cordova apps -->
+    <script src="cordova.js"></script>
 
 
-  <link href="build/main.css" rel="stylesheet">
+    <script>
+        // if ('serviceWorker' in navigator) {
+        //     navigator.serviceWorker.register('service-worker.js')
+        //         .then(() => console.log('service worker installed'))
+        //         .catch(err => console.error('Error', err));
+        // }
+
+    </script>
+
+    <script>
+        function detect_ie_version() {
+            if (!window.document['documentMode']) return false;
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE ');
+            if (msie > 0) {
+                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+            }
+            var trident = ua.indexOf('Trident/');
+            if (trident > 0) {
+                var rv = ua.indexOf('rv:');
+                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+            }
+            return false;
+        }
+        var version = detect_ie_version();
+        if (version && version < 11) {
+            location.href = "/wp-content/plugins/xapi-2/lms/www/index.php";
+        }
+
+    </script>
+
+
+    <link href="build/main.css" rel="stylesheet">
 
 
 </head>
 
 <body>
 
-  <!-- Ionic's root component and where the app will load -->
-  <ion-app></ion-app>
+    <!-- Ionic's root component and where the app will load -->
+    <ion-app></ion-app>
 
-  <!-- The polyfills js is generated during the build process -->
-  <script src="build/polyfills.js"></script>
+    <!-- The polyfills js is generated during the build process -->
+    <script src="build/polyfills.js"></script>
 
-  <!-- The vendor js is generated during the build process
+    <!-- The vendor js is generated during the build process
        It contains all of the dependencies in node_modules -->
-  <script src="build/vendor.js"></script>
+    <script src="build/vendor.js"></script>
 
-  <!-- The main bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
+    <!-- The main bundle js is generated during the build process -->
+    <script src="build/main.js"></script>
 
 
 
-  <script defer src="assets/font-awesome/fontawesome.min.js"></script>
-  <script defer src="assets/font-awesome/fa-light.min.js"></script>
-  <script defer src="assets/font-awesome/fa-solid.min.js"></script>
+    <script defer src="assets/font-awesome/fontawesome.min.js"></script>
+    <script defer src="assets/font-awesome/fa-light.min.js"></script>
+    <script defer src="assets/font-awesome/fa-solid.min.js"></script>
 
-  <script defer src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script defer src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 
 

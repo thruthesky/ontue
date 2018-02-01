@@ -115,7 +115,7 @@ export class AppService {
             .limit(1)
             .onSnapshot(shot => {
                 shot.forEach(doc => {
-                    console.log(doc.data());
+                    // console.log(doc.data());
                 });
             });
 
@@ -145,6 +145,12 @@ export class AppService {
             }
         }, 500);
 
+
+        /// change webbrowser title for teacher.
+        /// google crawler will run javascript.
+        if ( this.teacherTheme ) {
+            document.title = "OnTue.COM";
+        }
     }
 
     /**
@@ -169,6 +175,7 @@ export class AppService {
             this.set(KEY_LMS_INFO, re);
             this.info = this.get(KEY_LMS_INFO);
 
+            console.log( "lms info: ", this.info );
             // If student is accessing the site.
             if (this.info['user'] !== void 0) {
                 if (this.info['user']['no_of_total_sessions'] !== void 0) this.updateLmsInfoUserNoOfTotalSessions(this.info['user']['no_of_total_sessions']);
@@ -182,6 +189,13 @@ export class AppService {
         }, e => {
             //
         });
+    }
+
+    lmsInfoCancellableMinutes() {
+        if ( this.info && this.info['MAX_CANCELLABLE_TIME'] ) {
+            return parseInt(this.info['MAX_CANCELLABLE_TIME']) / 60;
+        }
+        else return 0;
     }
 
     /**
@@ -896,13 +910,13 @@ export class AppService {
 
     log(data) {
         data['stamp'] = (new Date).getTime();
-        console.log(data);
+        // console.log(data);
         this.firebase.db.collection("user-activity-log").add(data)
             .then(function (docRef) {
-                console.log("Document written with ID: ", docRef.id);
+                // console.log("Document written with ID: ", docRef.id);
             })
             .catch(function (error) {
-                console.error("Error adding document: ", error);
+                // console.error("Error adding document: ", error);
             });
     }
 }
