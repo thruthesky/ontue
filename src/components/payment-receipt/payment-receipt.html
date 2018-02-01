@@ -13,7 +13,7 @@
   <div id="section-to-print">
     <div class="d-flex justify-content-between">
         <h1 class="mt-2">{{ 'PAYMENT INFO' | translate }}</h1>
-        <button ion-button (click)="onClickPrint()" id="not-to-print">{{ 'PRINT' | translate }}</button>
+        <button ion-button (click)="onClickPrint()" id="not-to-print" *ngIf=" a.isDesktop() ">{{ 'PRINT' | translate }}</button>
     </div>
 
     <table class="payinfo">
