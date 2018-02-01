@@ -8,8 +8,8 @@
       <table *ngIf="teacher_name(); else singleTeacherLoader">
         <tr valign="top">
           <td>
-            <div class="teacher-profile-photo position-relative mt-1" (click)=" playTeacherYoutube(); ">
-              <img src="{{ teacher_photoURL() }}">
+            <div class="teacher-profile-photo size-100x120 of-hidden position-relative mt-1" (click)=" playTeacherYoutube(); ">
+              <img class="w-100" src="{{ teacher_photoURL() }}">
               <i class="fas fa-play-circle position-absolute bottom-0 right-0 mr-3 mb-3 red fs-3rem pointer"></i>
             </div>
             <div class="grade mt-1 text-center" [attr.grade]=" teacher_grade() ">
