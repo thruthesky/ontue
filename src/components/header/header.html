@@ -277,36 +277,4 @@
 <!--student-wide-menu-->
 
 
-<section class="teacher-mobile-toolbar d-md-none" *ngIf=" a.teacherTheme ">
-  <ion-grid no-padding>
-    <ion-row no-padding>
-      <ion-col>
-        <img class="pointer" src="assets/img/ontue.png" (click)=" a.open('home')">
-      </ion-col>
-      <ion-col text-right="">
-        <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" a.open('teacher-dashboard') "></ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</section>
-
-
-<!--<ion-toolbar class="student-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme ">-->
-<ion-toolbar class="teacher-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme ">
-  <div class="menus d-flex justify-content-between">
-    <img class="pointer" src="assets/img/ontue.png" (click)=" a.open('home')">
-    <ng-container *ngIf=" a.user.isLogin; else userLogout ">
-      <div class="p-3 pointer" (click)=" a.open('session-future') ">Reserved</div>
-      <div class="p-3 pointer" (click)=" a.open('session-past') ">Past</div>
-      <div class="p-3 pointer" (click)=" a.open('schedule-edit') ">Schedule</div>
-    </ng-container>
-    <ng-template #userLogout>
-      <div class="p-3 pointer" (click)=" a.open('login') ">Login</div>
-      <div class="p-3 pointer" (click)=" a.open('register') ">Register</div>
-    </ng-template>
-    <div class="p-3 pointer" (click)=" a.open('teacher-list') ">Teachers</div>
-    <div class="p-3 pointer" (click)=" a.onClickContactAdmin() ">Contact Us</div>
-    <div class="p-3 pointer" (click)=" a.open('how-to-use') ">How To</div>
-    <ion-icon class="p-3 fs-xl pointer" name="menu" (click)=" a.open('teacher-dashboard') "></ion-icon>
-  </div>
-</ion-toolbar>
+  <teacher-header-component></teacher-header-component>
