@@ -264,7 +264,7 @@ export class AppService {
 
     get isStudent(): boolean {
         if (this.user.isLogout) return false;
-        return this.lms.getUserType() === 'student';
+        return this.lms.getUserType() !== 'teacher';
     }
 
 
