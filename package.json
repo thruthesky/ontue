@@ -14,6 +14,12 @@
     "publish:all": "node pwa-check.js && npm run ionic:build -- --prod --copy copy.js && node pwa-patch.js && npm run scp:all",
     "serve": "node app-check.js && ionic-app-scripts serve --copy copy.js",
     "pwa": "node pwa-check.js && ionic-app-scripts serve --copy copy.js",
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> c3a17faa7c098ee2e1f472152bb86ed6586e15d0
     "scp": "cd www && scp -r *.js *.html *.json build ontue@ontue.com:./www",
     "scp:all": "cd www && scp -r * ontue@ontue.com:./www",
     "s": "npm run ionic:serve",

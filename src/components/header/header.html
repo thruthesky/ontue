@@ -24,37 +24,45 @@
       <ion-col col-5 class="">
         <div class="top-right-menu d-flex p-2 pt-sm-4" style="justify-content: flex-end">
 
-          <ng-container *ngIf=" a.user.isLogout ">
-            <span class="" (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
-            <span class="pl-2" (click)="a.open('register')">{{ 'REGISTER' | translate }}</span>
+          <ng-container *ngIf=" a.language == 'en' ">
+            <div class="pl-2 pr-0" (click)=" a.setLanguage('ko') ">한국어로 보기</div>
           </ng-container>
-          <ng-container *ngIf=" a.user.isLogin ">
-            <ng-container [ngSwitch]="a.page">
-              <ng-container *ngSwitchCase=" 'schedule-table' ">
-                <!-- <span (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
-                <span class="pl-2" (click)="a.open('menu')">메뉴</span>
-                <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
-              </ng-container>
+          <ng-container *ngIf=" a.language == 'ko' ">
 
-              <ng-container *ngSwitchCase=" 'payment' ">
-                <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
-                <span class="pl-3" (click)="a.open('teacher-list')">{{ 'RESERVE NOW' | translate }}</span>
-              </ng-container>
-
-
-              <ng-container *ngSwitchCase=" 'session-future' ">
-                <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
-                <span class="pl-3" (click)="a.open('payment')">{{ 'PAYMENT' | translate }}</span>
-              </ng-container>
-
-
-              <ng-container *ngSwitchDefault>
-                <span (click)="a.open('payment')">{{ 'PAYMENT SHORT' | translate }}</span>
-                <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
-                <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
-              </ng-container>
-            </ng-container>
+              <ng-container *ngIf=" a.user.isLogout ">
+                  <span class="" (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
+                  <span class="pl-2" (click)="a.open('register')">{{ 'REGISTER' | translate }}</span>
+                </ng-container>
+      
+                <ng-container *ngIf=" a.user.isLogin ">
+                  <ng-container [ngSwitch]="a.page">
+                    <ng-container *ngSwitchCase=" 'schedule-table' ">
+                      <!-- <span (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
+                      <span class="pl-2" (click)="a.open('menu')">메뉴</span>
+                      <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
+                    </ng-container>
+      
+                    <ng-container *ngSwitchCase=" 'payment' ">
+                      <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
+                      <span class="pl-3" (click)="a.open('teacher-list')">{{ 'RESERVE NOW' | translate }}</span>
+                    </ng-container>
+      
+      
+                    <ng-container *ngSwitchCase=" 'session-future' ">
+                      <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
+                      <span class="pl-3" (click)="a.open('payment')">{{ 'PAYMENT' | translate }}</span>
+                    </ng-container>
+      
+      
+                    <ng-container *ngSwitchDefault>
+                      <span (click)="a.open('payment')">{{ 'PAYMENT SHORT' | translate }}</span>
+                      <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
+                      <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
           </ng-container>
+
 
         </div>
       </ion-col>

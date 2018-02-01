@@ -264,7 +264,7 @@ export class AppService {
 
     get isStudent(): boolean {
         if (this.user.isLogout) return false;
-        return this.lms.getUserType() === 'student';
+        return this.lms.getUserType() !== 'teacher';
     }
 
 
@@ -564,7 +564,7 @@ export class AppService {
         if (!lang) lang = 'en';
         return lang;
     }
-    get language(): string {
+    get language(): 'en' | 'ko' {
         return this.getUserLanguage();
     }
     get isKorean(): boolean {
@@ -670,7 +670,11 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE o
+<<<<<<< HEAD
         if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme.
+=======
+        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
+>>>>>>> c3a17faa7c098ee2e1f472152bb86ed6586e15d0
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE
@@ -776,7 +780,7 @@ export class AppService {
 
     /**
      * @note don't call this method twice.
-     * 
+     *
      * - It request permission to the user.
      * - If user accepts ( or already accepted )
      *      a) check if token updated/changed, if yes, then update it.

@@ -18,7 +18,7 @@ content = content.replace('main.js', 'main.js?version=' + hash);
 content = content.replace('main.css', 'main.css?version=' + hash);
 content = content.replace('vendor.js', 'vendor.js?version=' + hash);
 content = content.replace('polyfills.js', 'polyfills.js?version=' + hash);
-content = content.replace('manifest.js', 'manifest.js?version=' + hash);
+content = content.replace('manifest.json', 'manifest.json?version=' + hash);
 
 
 fs.writeFileSync('www/index.html', content);
