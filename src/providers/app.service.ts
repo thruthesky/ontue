@@ -564,7 +564,7 @@ export class AppService {
         if (!lang) lang = 'en';
         return lang;
     }
-    get language(): string {
+    get language(): 'en' | 'ko' {
         return this.getUserLanguage();
     }
     get isKorean(): boolean {
