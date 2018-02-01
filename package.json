@@ -20,7 +20,6 @@
 
 
 
-
     "scp": "cd www && scp -r *.js *.html *.json build ontue@ontue.com:./www",
     "scp:all": "cd www && scp -r * ontue@ontue.com:./www",
     "s": "npm run ionic:serve",

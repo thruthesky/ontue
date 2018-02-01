@@ -670,7 +670,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE o
-        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme.
+        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE
@@ -776,7 +776,7 @@ export class AppService {
 
     /**
      * @note don't call this method twice.
-     * 
+     *
      * - It request permission to the user.
      * - If user accepts ( or already accepted )
      *      a) check if token updated/changed, if yes, then update it.
