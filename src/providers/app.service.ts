@@ -175,7 +175,7 @@ export class AppService {
             this.set(KEY_LMS_INFO, re);
             this.info = this.get(KEY_LMS_INFO);
 
-            console.log( "lms info: ", this.info );
+            // console.log( "lms info: ", this.info );
             // If student is accessing the site.
             if (this.info['user'] !== void 0) {
                 if (this.info['user']['no_of_total_sessions'] !== void 0) this.updateLmsInfoUserNoOfTotalSessions(this.info['user']['no_of_total_sessions']);
@@ -799,7 +799,7 @@ export class AppService {
         let platform = 'web';
         if (this.isApp()) platform = 'app';
         this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
-            console.log("Token updated:");
+            // console.log("Token updated:");
         }, e => console.error(e));
 
 
@@ -810,7 +810,7 @@ export class AppService {
         FCMPlugin.getToken(token => {
             this.pushToken = token;
             this.updatePushToken();
-            console.log('initAppPushMessage getToken: ', token);
+            // console.log('initAppPushMessage getToken: ', token);
         });
 
         //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
@@ -833,7 +833,7 @@ export class AppService {
                 this.firebase.messaging.getToken()
                     .then(currentToken => { /// Got token
                         this.pushToken = currentToken;
-                        console.log("Got token: ", this.pushToken);
+                        // console.log("Got token: ", this.pushToken);
                         this.updatePushToken();
                     })
                     .catch(err => {
@@ -850,18 +850,18 @@ export class AppService {
             this.firebase.messaging.getToken()
                 .then(refreshedToken => { // Token refreshed
                     this.pushToken = refreshedToken
-                    console.log("Token Refreshed: ", this.pushToken);
+                    // console.log("Token Refreshed: ", this.pushToken);
                     this.updatePushToken();
                 })
                 .catch(err => {
-                    console.log('Unable to retrieve refreshed token ', err);
+                    // console.log('Unable to retrieve refreshed token ', err);
                 });
         });
 
         // When the user is on the site(opened the site), the user will not get push notification.
         // Instead, you can do whatever in this handler.
         this.firebase.messaging.onMessage(payload => {
-            console.log("Message received. ", payload);
+            // console.log("Message received. ", payload);
             // ...
             const notification = payload['notification'];
             // const title = notification['title'];

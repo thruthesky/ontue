@@ -26,7 +26,7 @@ export class HomeStudentBannerComponent implements OnInit, AfterViewInit, OnDest
     ngOnDestroy() {
         if ( this.timerID ) {
             clearTimeout( this.timerID );
-            console.log('timer cleared: ', this.timerID);
+            // console.log('timer cleared: ', this.timerID);
         }
         this.pageDestroyed = true; // to stop the animation that lives on closure.
     }
@@ -54,7 +54,7 @@ export class HomeStudentBannerComponent implements OnInit, AfterViewInit, OnDest
             return;
         }
         if ( this.debugging != -1 ) return;
-        console.log("animate: ", this.no);
+        // console.log("animate: ", this.no);
         if (this.no >= this.intervals.length) this.no = 0;
         this.timerID = setTimeout(() => {
             this.no++;
