@@ -7,7 +7,12 @@
     }
 }
 
-.toolbar-md{min-height: 100%!important}
+
+
+// warning. john added this and it applied all the toolbars in the site.
+// had a big problem with this.
+// .toolbar-md{min-height: 100%!important}
+
 .button-inner{text-transform: none}//to make ion-button not capitalize
 .align-items-center{ align-items: center }
 .fs-2-25em{ font-size: 2.25em!important }

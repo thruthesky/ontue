@@ -1,5 +1,5 @@
     $mobile-height: 240px;
-    $height: 420px;
+    $height: 440px;
     $padding-top: 20px;
     $bg-orange: rgb(253, 186, 1);
     $bg-yellow: rgb(255, 208, 0);
@@ -12,6 +12,8 @@
     }
 
     #student-banner {
+      background-color: white;
+
       @include default;
       animation: slideDown .2s 1;
       animation-timing-function: ease-in;
@@ -26,10 +28,11 @@
           margin-top: 96px;
         }
         @media (min-width: $md) {
+          padding-top: 20px;
           // wide screen
           font-size: 4em;
           .text {
-            margin-top: 170px;
+            margin-top: 156px;
           }
         }
       }
@@ -60,6 +63,10 @@
             }
           }
           @media (min-width: $md) {
+
+            .image {
+              padding-top: 20px;
+            }
             img {
               width: auto;
               height: 400px;
@@ -67,7 +74,7 @@
             .text {
               margin-left: 2em;
               .text-1 {
-                margin-top: .4em;
+                margin-top: .6em;
                 font-size: 4em;
               }
               .text-2 {
@@ -156,6 +163,9 @@
             }
           }
           @media (min-width: $md) {
+            .image {
+              padding-top: 20px;
+            }
             img {
               margin-left: 0;
               margin-right: 20px;
@@ -164,7 +174,7 @@
             }
             .text {
               .text-1 {
-                margin-top: .5em;
+                margin-top: .6em;
                 font-size: 3em;
               }
               .text-2 {

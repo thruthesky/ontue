@@ -1,99 +1,101 @@
 <ion-header>
-  <header-content [title]=" '수업료 결제' "></header-content>
+    <header-content [title]=" '수업료 결제' "></header-content>
 </ion-header>
 <ion-content>
-  <div class="page">
-    <hook-content-top></hook-content-top>
+    <div class="page">
+        <hook-content-top></hook-content-top>
 
-    <section class="page-header">
-      {{ 'PAYMENT PAGE TITLE' | translate }}
-    </section>
+        <section class="page-header">
+            {{ 'PAYMENT PAGE TITLE' | translate }}
+        </section>
 
-    <section class="page-body">
+        <section class="page-body">
 
-      <div class="alert alert-warning rounded-0 my-2 p-3" *ngIf="inLoadingPaymentRate">
-        <i class="fal fa-spinner fa-spin"></i> {{ 'LOADING PAYMENT INFORMATION' | translate }}
-      </div>
+            <div class="alert alert-warning rounded-0 my-2 p-3" *ngIf="inLoadingPaymentRate">
+                <i class="fal fa-spinner fa-spin"></i> {{ 'LOADING PAYMENT INFORMATION' | translate }}
+            </div>
 
-      <section class="alert alert-warning rounded-0 my-2 p-3" *ngIf=" errorOnExchangeRate ">
-        앗, 환율 책정 문제 발생하여 결제를 할 수 없습니다. 관리자에게 알려주세요.
-      </section>
+            <section class="alert alert-warning rounded-0 my-2 p-3" *ngIf=" errorOnExchangeRate ">
+                앗, 환율 책정 문제 발생하여 결제를 할 수 없습니다. 관리자에게 알려주세요.
+            </section>
 
-      <div *ngIf=" a.user.isLogin; else loginFirst ">
-        <div class="mt-4 mt-md-6 p-2 ">
-          <div class="blue">{{'SELECT AMOUNT'| translate}}</div>
-          <div>금액을 선택하시고 구매 버튼을 클릭하시면 됩니다.</div>
+            <div *ngIf=" a.user.isLogin; else loginFirst ">
+                <div class="mt-4 mt-md-6 p-2 ">
+                    <div class="blue">{{'SELECT AMOUNT'| translate}}</div>
+                    <div>금액을 선택하시고 구매 버튼을 클릭하시면 됩니다.</div>
 
-        </div>
-        <div class="amounts d-flex justify-content-around my-4 px-2 py-5 bg-amount">
-          <!-- <div>
+                </div>
+                <div class="amounts d-flex justify-content-around mt-4 mb-4 mb-md-6 px-2 py-5 bg-amount">
+                    <!-- <div>
             <input id="a2000" type="radio" name="amount" [(ngModel)]="amount" [value]="2000">
             <label for="a2000">2천 원</label>
           </div> -->
-          <div>
-            <input id="a10000" type="radio" name="amount" [(ngModel)]="amount" [value]="10000">
-            <label for="a10000">1만원</label>
-          </div>
-          <div class="d-none d-md-flex">
-            <input id="a20000" type="radio" name="amount" [(ngModel)]="amount" [value]="20000">
-            <label for="a20000">2만원</label>
-          </div>
-          <div>
-            <input id="a30000" type="radio" name="amount" [(ngModel)]="amount" [value]="30000">
-            <label for="a30000">3만원</label>
-          </div>
-          <div>
-            <input id="a50000" type="radio" name="amount" [(ngModel)]="amount" [value]="50000">
-            <label for="a50000">5만원</label>
-          </div>
-          <div>
-            <input id="a100000" type="radio" name="amount" [(ngModel)]="amount" [value]="100000">
-            <label for="a100000">10만원</label>
-          </div>
-          <div class="d-none d-md-flex">
-            <input id="a150000" type="radio" name="amount" [(ngModel)]="amount" [value]="150000">
-            <label for="a150000">15만원</label>
-          </div>
-          <div>
-            <input id="a200000" type="radio" name="amount" [(ngModel)]="amount" [value]="200000">
-            <label for="a200000">20만원</label>
-          </div>
-        </div>
-      </div>
+                    <div>
+                        <input id="a10000" type="radio" name="amount" [(ngModel)]="amount" [value]="10000">
+                        <label for="a10000">1만원</label>
+                    </div>
+                    <div class="d-none d-md-flex">
+                        <input id="a20000" type="radio" name="amount" [(ngModel)]="amount" [value]="20000">
+                        <label for="a20000">2만원</label>
+                    </div>
+                    <div>
+                        <input id="a30000" type="radio" name="amount" [(ngModel)]="amount" [value]="30000">
+                        <label for="a30000">3만원</label>
+                    </div>
+                    <div>
+                        <input id="a50000" type="radio" name="amount" [(ngModel)]="amount" [value]="50000">
+                        <label for="a50000">5만원</label>
+                    </div>
+                    <div>
+                        <input id="a100000" type="radio" name="amount" [(ngModel)]="amount" [value]="100000">
+                        <label for="a100000">10만원</label>
+                    </div>
+                    <div class="d-none d-md-flex">
+                        <input id="a150000" type="radio" name="amount" [(ngModel)]="amount" [value]="150000">
+                        <label for="a150000">15만원</label>
+                    </div>
+                    <div>
+                        <input id="a200000" type="radio" name="amount" [(ngModel)]="amount" [value]="200000">
+                        <label for="a200000">20만원</label>
+                    </div>
+                </div>
+            </div>
 
-      <ng-template #loginFirst>
-        <div class="my-5 py-5 text-center border-red red pointer" (click)=" a.open('login') ">
-          앗, 회원 로그인을 먼저 해 주세요.
-        </div>
-      </ng-template>
+            <ng-template #loginFirst>
+                <div class="my-5 py-5 text-center border-red red pointer" (click)=" a.open('login') ">
+                    앗, 회원 로그인을 먼저 해 주세요.
+                </div>
+            </ng-template>
 
 
 
-      <div class="py-5 text-center" *ngIf=" ! paypal_ready ">
-        <div>
-          <i class="fa fa-spinner fa-spin"></i> 페이팔 신용카드 결제를 초기화 중입니다.</div>
-        <div>잠시만 기다려주세요.</div>
-      </div>
+            <div class="py-5 text-center" *ngIf=" ! paypal_ready ">
+                <div>
+                    <i class="fa fa-spinner fa-spin"></i> 페이팔 신용카드 결제를 초기화 중입니다.</div>
+                <div>잠시만 기다려주세요.</div>
+            </div>
 
-      <div class="mt-md-5 mb-5">
-        <button class="w-100 bg-white" id="paypal-button"></button>
-      </div>
+            <div class="mt-md-5 mb-5">
+                <button class="w-100 bg-white" id="paypal-button"></button>
+            </div>
 
-      <div class="my-md-6 p-3 p-md-4 bg-desc" *ngIf=" amount_in_usd_with_tax() ">
-        <div>{{ amount | number }} 원 결제(세금 {{ payment_rate.paypal_student_fee }}% 별도)를 선택하였습니다.</div>
-        <div>
-          {{ amount | number }} 포인트가 충전되며 결제는 약 <b>{{ amount_in_usd_with_tax() }} 달러(세금 포함)</b>가 결제됩니다.
-        </div>
-        <div class="mt-3">
-          페이팔은 전 세계적으로 가장 많이 쓰이는 신용카드결제이며 매우 안전하며 편리합니다. 페이팔에서 회원 가입없이 바로 결제하셔도 됩니다.
-        </div>
-        <div class="mt-3">
-          결제가 어려우시면  <span class="app-button mt-0" (click)=" a.onClickContactAdmin() ">카톡으로 질문</span> 해 주세요.
-        </div>
-      </div>
+            <div class="my-md-6 p-3 p-md-4 bg-desc" *ngIf=" amount_in_usd_with_tax() ">
+                <div>{{ amount | number }} 원 결제(세금 {{ payment_rate.paypal_student_fee }}% 별도)를 선택하였습니다.</div>
+                <div>
+                    {{ amount | number }} 포인트가 충전되며 결제는 약
+                    <b>{{ amount_in_usd_with_tax() }} 달러(세금 포함)</b>가 결제됩니다.
+                </div>
+                <div class="mt-3">
+                    페이팔은 전 세계적으로 가장 많이 쓰이는 신용카드결제이며 매우 안전하며 편리합니다. 페이팔에서 회원 가입없이 바로 결제하셔도 됩니다.
+                </div>
+                <div class="mt-3">
+                    결제가 어려우시면
+                    <span class="app-button mt-0" (click)=" a.onClickContactAdmin() ">카톡으로 질문</span> 해 주세요.
+                </div>
+            </div>
 
-    </section>
-  </div>
-  <!--/page-->
-  <hook-content-bottom></hook-content-bottom>
+        </section>
+    </div>
+    <!--/page-->
+    <hook-content-bottom></hook-content-bottom>
 </ion-content>

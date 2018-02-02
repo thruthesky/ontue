@@ -1,15 +1,18 @@
+
 .page-body {
   padding: .5em;
   @media ( min-width: $md ) { padding: 0;}
+
   min-height: 300px;
+  @media ( min-width: $md ) { min-height: 540px; }
 }
 
 @media (min-width: $lg) {
-  // header-content ion-grid {
-  //   max-width: $lg+48!important;
-  // }
+  // warning. john commented out this and had a big problem.
+  header-content ion-grid {
+    max-width: $lg+48!important;
+  }
   ion-content {
-    
     .page {
       position: relative!important;
       margin: auto!important;
