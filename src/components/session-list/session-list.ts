@@ -70,8 +70,13 @@ export class SessionList {
   }
 
   request(options = {}) {
+
+    let order = 'date DESC, class_begin DESC';
+
+    if ( this.future ) order = 'date ASC, class_begin ASC';
+
     let defaults = {
-      orderby: 'date DESC, class_begin DESC',
+      orderby: order,
       future: this.future,
       past: this.past
     };
