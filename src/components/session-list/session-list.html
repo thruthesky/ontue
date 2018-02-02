@@ -117,7 +117,7 @@
   <div class="books my-5" *ngIf=" books.length ">
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr class="" text-center style="height: 4em;">
-        <td *ngIf="a.isStudent">{{ 'TEACHER' | translate }}</td>
+        <td *ngIf="a.isStudent"><div class="pl-2">{{ 'TEACHER' | translate }}</div></td>
         <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
         <td *ngIf="a.isTeacher">{{ 'CLASS NO' | translate }}</td>
         <td *ngIf="displayDate">{{ 'DATE' | translate }}</td>
@@ -138,7 +138,7 @@
 
       <tr class="" text-center *ngFor="let book of books; let i = index; let o = odd; let e = even" [ngClass]=" { 'odd': o, 'even': e } ">
         <td *ngIf="a.isStudent">
-          <section class="teacher-photo my-2 py-2">
+          <section class="teacher-photo my-2 py-2 pl-2">
 
             <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
               <img class="d-block w-100" src="{{ photoURL( book )  }}">

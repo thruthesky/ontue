@@ -17,6 +17,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+
     <!-- cordova.js required for cordova apps -->
     <script src="cordova.js"></script>
 
@@ -27,6 +28,21 @@
         //         .then(() => console.log('service worker installed'))
         //         .catch(err => console.error('Error', err));
         // }
+
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics for www.katalkenglish.com -->
+    <!-- This may add other domains like www.ontue.com -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101539242-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-101539242-4');
 
     </script>
 
@@ -54,6 +70,8 @@
 
 
     <link href="build/main.css" rel="stylesheet">
+
+
 
 
 </head>
