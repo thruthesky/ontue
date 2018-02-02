@@ -5,10 +5,12 @@
 }
 
 @media (min-width: $lg) {
-  header-content ion-grid {
-    max-width: $lg+48!important;
-  }
+  // header-content ion-grid {
+  //   max-width: $lg+48!important;
+  // }
   ion-content {
+    ::-webkit-scrollbar{display: none!important}
+
     .page {
       position: relative!important;
       margin: auto!important;

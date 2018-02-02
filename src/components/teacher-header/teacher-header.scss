@@ -1,12 +1,13 @@
 #logo{
-    ion-icon{font-size: 3em!important}
+    //dont use button because the font size will collapse
+    ion-icon{font-size: 2.5em!important}
     span{
-        font-size: 1.5em;
+        font-size: 1.25em;
         font-family:Arial, Helvetica, sans-serif
     }
 }
 
-.menus{max-width: 992px!important}
+.toolbar-md{min-height: 100%!important}
 .button-inner{text-transform: none}//to make ion-button not capitalize
 .align-items-center{ align-items: center }
 .fs-2-25em{ font-size: 2.25em!important }
