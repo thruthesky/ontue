@@ -16,32 +16,44 @@
 
 
 <!-- <ion-toolbar class="student-wide-menu d-none d-md-block" *ngIf=" a.teacherTheme "> -->
-<ion-toolbar color="blue" class="teacher-wide-menu">
-  <div class="menus mx-auto py-0">
-        <ion-buttons class="d-flex align-items-center justify-content-between">
-            <div class="pb-1 d-flex align-items-center justify-content-end pointer" (click)=" a.open('home')" id="logo">
-                <ion-icon color="white" name="logo-buffer"></ion-icon>
-                <span color="white" class="ml-2" ion-text>Ontue</span>
-            </div>
-            <div class="d-none d-md-flex w-100 justify-content-center">
-                <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)="  a.open('teacher-list') ">Teachers</div>
-                <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)="  a.onClickContactAdmin() ">Contact Us</div>
-                <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)="  a.open('how-to-use') ">FAQ</div>
-                <ng-container *ngIf=" a.user.isLogin; else userLogout ">
-                    <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)=" a.open('session-future') ">Reserved</div>
-                    <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)=" a.open('session-past') ">Past</div>
-                    <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)=" a.open('schedule-edit') ">Schedule</div>
-                </ng-container>
-                <ng-template #userLogout>
-                  <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)=" a.open('login') ">Login</div>
-                  <div ion-button color="white" class="px-5 fs-110 hover-effect" (click)=" a.open('register') ">Register</div>
-                </ng-template>
-            </div>
-            <div ion-button icon-start icon-start color="white" class="d-md-none px-3 fs-110 hover-effect" (click)=" a.onClickContactAdmin() "> Contact Us</div>
-            <div class="px-5" (click)=" a.open('teacher-dashboard') " ion-button>
-                <ion-icon color="white" class="fs-2-25em" name="ios-menu"></ion-icon>
-            </div>
-          </ion-buttons>
-        </div>
+<ion-toolbar color="blue" class="teacher-wide-menu px-0">
+    <ion-grid fixed class="py-0">
+        <ion-row>
+            <ion-col class="d-flex align-items-center" col-md-3>
+                <ion-buttons (click)=" a.open('home')" id="logo">
+                    <div ion-button class="pointer">
+                        <ion-icon color="white" name="logo-buffer"></ion-icon>
+                        <span color="white" class="ml-2" ion-text>Ontue</span>
+                    </div>
+                </ion-buttons>
+            </ion-col>
+            <ion-col class=" d-flex align-items-center justify-content-center" text-center col-md-6>
+                <ion-buttons class="d-none d-md-block">
+                    <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)="  a.open('teacher-list') ">Teachers</button>
+                    <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)="  a.onClickContactAdmin() ">Contact Us</button>
+                    <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)="  a.open('how-to-use') ">FAQ</button>
+                    <ng-container *ngIf=" a.user.isLogin; else userLogout ">
+                        <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)=" a.open('session-future') ">Reserved</button>
+                        <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)=" a.open('session-past') ">Past</button>
+                        <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)=" a.open('schedule-edit') ">Schedule</button>
+                    </ng-container>
+                    <ng-template #userLogout>
+                        <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)=" a.open('login') ">Login</button>
+                        <button ion-button color="white" class="py-5 px-4 fs-110 hover-effect" (click)=" a.open('register') ">Register</button>
+                    </ng-template>
+                </ion-buttons>
+                <ion-buttons class="d-md-none">
+                        <button ion-button icon-start icon-start color="white" class=" fs-110 hover-effect" (click)=" a.onClickContactAdmin() "> Contact Us</button>
+                </ion-buttons>
+            </ion-col>
+            <ion-col col-md-3>
+                <ion-buttons text-right>
+                    <button class="py-5" (click)=" a.open('teacher-dashboard') " ion-button>
+                        <ion-icon color="white" class="fs-2-25em" name="ios-menu"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-toolbar>
 
