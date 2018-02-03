@@ -4,7 +4,6 @@
 <ion-content>
   <teacher-intro-component *ngIf=" a.teacherTheme "></teacher-intro-component>
   <home-student-banner-component *ngIf=" a.studentTheme && a.user.isLogout "></home-student-banner-component>
-  <!-- warning. john commented '.page' out this and had a big problem -->
   <div class="page">
     <hook-content-top></hook-content-top>
     <home-student-content-component *ngIf=" a.studentTheme "></home-student-content-component>

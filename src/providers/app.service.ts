@@ -875,6 +875,13 @@ export class AppService {
         this.updatePushToken();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'login' });
     }
+    /**
+     * This method is being called when a user opens 'register' page.
+     */
+    onUserRegisterPage() {
+        this.updatePushToken();
+        this.log({ activity: 'open-register' });
+    }
     onUserRegister() {
         this.updatePushToken();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'register' });

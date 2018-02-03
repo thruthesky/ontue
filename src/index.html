@@ -30,20 +30,19 @@
 
 
     <!-- cordova.js required for cordova apps -->
-    <script src="cordova.js"></script>
+    <!-- <script src="cordova.js"></script> -->
 
 
     <script>
-        // if ('serviceWorker' in navigator) {
-        //     navigator.serviceWorker.register('service-worker.js')
-        //         .then(() => {})
-        //         .catch(err => console.error('Error', err));
-        // }
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => {})
+                .catch(err => console.error('Error', err));
+        }
 
     </script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics for www.katalkenglish.com -->
-    <!-- This may add other domains like www.ontue.com -->
+    <!-- Global site tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101539242-4"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -53,9 +52,17 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'UA-101539242-4');
+        if (location.hostname.indexOf('katalkenglish') != -1) {
+            console.log('Tracking katalk english for Analytics and Adwords');
+            gtag('config', 'UA-101539242-4'); // Katalk English Google Analytics
+            gtag('config', 'AW-1059724698'); // Katalk English Google Adwords
+        } else {
+            console.log('Ontue tracking');
+            gtag('config', 'UA-101539242-5'); // OnTue Google Analytics
+        }
 
     </script>
+
 
     <script>
         function detect_ie_version() {

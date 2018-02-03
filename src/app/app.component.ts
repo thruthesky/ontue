@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { StatusBar } from '@ionic-native/status-bar';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
@@ -59,6 +59,8 @@ import { HowToUsePage } from '../pages/how-to-use/how-to-use';
 
 import { MyPointPage } from '../pages/my-point/my-point';
 
+import { StudentRegisterSuccessPage } from '../pages/student-register-success/student-register-success';
+
 
 
 
@@ -76,30 +78,18 @@ export class MyApp {
 
   constructor(
     platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
+    // statusBar: StatusBar,
+    // splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService
   ) {
-
-
-
-
-
-
-    // do the lexing... ...
-
-    // language study.
-
-    // console.log('f: ', f);
-
 
     this.a.initTranslate();
 
     platform.ready().then(() => {
       this.a.platform = platform;
-      statusBar.styleDefault();
-      splashScreen.hide();
+      // statusBar.styleDefault();
+      // splashScreen.hide();
 
       this.a.onetimeInitPushMessage();
     });
@@ -168,6 +158,8 @@ export class MyApp {
     this.a.pages['how-to-use'] = HowToUsePage;
 
     this.a.pages['my-point'] = MyPointPage;
+    
+    this.a.pages['student-register-success'] = StudentRegisterSuccessPage;
 
     setTimeout(() => this.test(), 100);
   }
@@ -249,6 +241,10 @@ export class MyApp {
 
     // this.a.open('schedule-available');
     // this.a.open('help');
+
+
+    // this.a.open('student-register-success');
+
 
   }
 

@@ -53,9 +53,10 @@ export class RegisterPage {
     public navParams: NavParams,
     public modalCtrl: ModalController
   ) {
+    a.onUserRegisterPage();
     this.offset = this.a.lms.getUserLocalTimezoneOffset();
     a.lms.timezones().subscribe(re => {
-      console.log(re);
+      // console.log(re);
       this.tz = re;
     });
 
@@ -72,6 +73,7 @@ export class RegisterPage {
     if (a.teacherTheme && !a.getLanguage()) {
       a.setLanguage('en');
     }
+
   }
 
   ngAfterViewInit() { // TEST
@@ -82,7 +84,7 @@ export class RegisterPage {
     this.inLoading = true;
     this.a.user.data().subscribe((userData: USER_DATA_RESPONSE) => {
       setTimeout(() => this.inLoading = false, 1000);
-      console.log('userData::', userData);
+      // console.log('userData::', userData);
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
       this.account['display_name'] = userData['display_name'];
@@ -110,7 +112,7 @@ export class RegisterPage {
       this.account['kakao_qrmark_string'] = userData.kakao_qrmark_string;
       if (this.account.kakao_qrmark_URL && !this.account.kakao_qrmark_string) {
         this.a.lms.update_kakao_qrmark_string().subscribe(re => {
-          console.log(re);
+          // console.log(re);
           if (re['kakao_qrmark_string']) {
             this.account.kakao_qrmark_string = re['kakao_qrmark_string'];
           }
@@ -127,7 +129,7 @@ export class RegisterPage {
 
 
   onSubmit() {
-    console.log('Submit', this.account);
+    // console.log('Submit', this.account);
 
     if (this.a.teacherTheme) {
       if (!this.user_type || !this.user_type.length) return this.a.showAlert(this.a.i18n['CHOOSE USER TYPE']);
@@ -157,24 +159,38 @@ export class RegisterPage {
 
   }
 
+  /**
+   * This will only be called when user registers.
+   */
   profile_register() {
     this.account.user_login = this.account.user_email;
     delete this.account.kakao_qrmark_URL;
     delete this.account.kakao_qrmark_string;
 
     if (this.a.teacherTheme && this.patchBirthday()) return;
-    this.a.user.register(this.account).subscribe(re => {
+
+
+    this.a.user.register(this.account).subscribe(re => { /// Registration success
       console.log("user.register => success: re: ", re);
       this.a.onUserRegister();
       this.account.user_pass = null;
       this.a.lms.timezone_set(this.offset).subscribe(() => {
       }, () => {
       });
-      // this.a.open('home');
+      
       this.a.hideLoader();
-      this.a.alert(this.a.i18n['REGISTERED']);
-      this.a.open('home');
-    }, reg => {
+
+      console.log("tehem: ", this.a.studentTheme);
+      if (this.a.studentTheme) {
+        this.a.open('student-register-success');
+      }
+      else {
+        this.a.open('home');
+        this.a.alert(this.a.i18n['REGISTERED']);
+      }
+
+
+    }, reg => {                 /// Registration Failed.
       this.a.hideLoader();
       // alert(reg.message);
       this.a.alert(reg);
@@ -188,7 +204,7 @@ export class RegisterPage {
     delete this.account.kakao_qrmark_URL;
     delete this.account.kakao_qrmark_string;
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
-      console.log('updateUserInfo:', res);
+      // console.log('updateUserInfo:', res);
       this.a.hideLoader();
       this.a.alert(this.a.i18n['UPDATED']);
       this.a.onUserProfileUpdate();
@@ -201,7 +217,7 @@ export class RegisterPage {
 
 
   onSuccessUploadPicture(file) {
-    console.log("onSuccessUpdateProfilePicture::", this.files);
+    // console.log("onSuccessUpdateProfilePicture::", this.files);
 
 
     /**
@@ -227,7 +243,7 @@ export class RegisterPage {
     if (this.a.user.isLogin) {
       this.a.user.update(data).subscribe((res: USER_UPDATE_RESPONSE) => {
 
-        console.log("updatePrimaryPhoto", file);
+        // console.log("updatePrimaryPhoto", file);
         this.files[0] = file;
         this.a.render(100);
         this.a.render(5000); // on mobile, the image is updated very late.
@@ -259,7 +275,7 @@ export class RegisterPage {
     this.a.lms.setUserType(this.user_type).subscribe(re => { // update on server
       this.a.user.loadProfile() // reload user profile.
         .subscribe(re => {
-          console.log(re);
+          // console.log(re);
           this.user_type = re['user_type'];
           this.a.hideLoader();
         },
@@ -277,9 +293,9 @@ export class RegisterPage {
   onSuccessUploadQRMark(file: FILE) {
     this.showQRMark = false;
 
-    console.log("onSuccessUploadQRMark", this.qrmarks);
+    // console.log("onSuccessUploadQRMark", this.qrmarks);
     if (this.qrmarks.length > 1) {
-      console.log("qrmarks>1");
+      // console.log("qrmarks>1");
       this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => { }, e => this.a.alert(e));
     }
 
@@ -288,11 +304,11 @@ export class RegisterPage {
       kakao_qrmark_URL: file.url,
       user_email: this.account.user_email
     };
-    console.log("data", data);
+    // console.log("data", data);
     this.a.user.update(data).subscribe(re => {
-      console.log("update", re);
+      // console.log("update", re);
       this.a.lms.update_kakao_qrmark_string().subscribe(re => {
-        console.log("update_kakao_qrmark_string", re);
+        // console.log("update_kakao_qrmark_string", re);
         if (!re.kakao_qrmark_string) {
           this.a.alert("Invalid QR MARK, Please try again");
           this.fileUploadQRMark.deleteFile(this.qrmarks[0], () => {
@@ -340,8 +356,8 @@ export class RegisterPage {
   }
 
   userProfilePhoto(files) {
-    if ( files.length ) {
-      if ( files[0]['url_portrait'] ) return files[0]['url_portrait'];
+    if (files.length) {
+      if (files[0]['url_portrait']) return files[0]['url_portrait'];
       else return files[0]['url'];
     }
     else return this.a.anonymousPhotoURL;
