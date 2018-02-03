@@ -1,172 +1,130 @@
 <section id="home-teacher-content" class="mt-md-3 bg-light">
-    <ion-grid fixed no-padding>
-
-        <ion-row>
-            <ion-col class=" pr-md-3" col-sm-auto col-md-3>
-                <div class="bg-white rounded border cover">
-                    <ion-list text-wrap no-lines>
-                        <ion-list-header class="cover-header mb-0 border border-left-0 border-right-0 border-top-0">
+    <ion-grid no-padding>
+        <ion-row class="m-0">
+            <ion-col class="p-0 pr-md-3 m-0" col-sm-auto col-md-3>
+                <div class="m-0 p-0 cover bg-white rounded">
+                    <ion-list class="m-0 p-0" text-wrap no-lines>
+                        <ion-list-header class="m-0 px-3 py-0 cover-header border border-left-0 border-right-0 border-top-0">
                             Reminders
-                            <button (click)="a.open('help')" ion-button clear item-end>View All</button>
+                            <button class="p-0 m-0" (click)="a.open('help')" ion-button clear item-end>View All</button>
                         </ion-list-header>
-                        <div class=" overflowscroll-y cover-content">
-                            <ion-item>
+                        <div class="px-3 py-0 m-0 overflowhidden-y cover-content">
+                            <ion-item class="p-0 m-0">
                                 <div>
                                     <h3>Steps To Become a Teacher</h3>
-                                    <p class="font-em-0-85 pt-3 pointer" (click)="showModalFAQ('kakaoInstall')">1.Install Kakaotalk app. (
+                                    <p ion-text color="dark" class="font-em-0-85 pt-3 pointer" (click)="showModalFAQ('kakaoInstall')">1.Install Kakaotalk app. (
                                         <b ion-text color="blue">THIS IS A MANDATORY REQUIREMENT
                                             <i class="fa fa-question-circle"></i>
                                         </b> )</p>
-                                    <p class="font-em-0-85 pt-3">2.Register</p>
-                                    <p class="font-em-0-85 pt-3">3.Complete profile update with all your data.</p>
-                                    <ul class="font-em-0-85">
+                                    <p ion-text color="dark" class="font-em-0-85 pt-3">2.Register</p>
+                                    <p ion-text color="dark" class="font-em-0-85 pt-3">3.Complete profile update with all your data.</p>
+                                    <ul class="m-3 px-3 py-0 font-em-0-85">
                                         <li>You will need to upload nice photo</li>
                                         <li>You will need to upload a short introduction video on youtube</li>
                                     </ul>
-                                    <p class="font-em-0-85 pt-3">4.Add your schedule.</p>
-                                    <p class="font-em-0-85 pt-3">5.Contact to admin to get higher grade</p>
-                                    <p class="font-em-0-85 pt-3">Teacher Grading System</p>
-                                    <ul class="font-em-0-85">
-                                        <li>1 Star - Teacher who are </li>
-                                        <li>You will need to upload a short introduction video on youtube</li>
-                                    </ul>
-                                    <p class="font-em-0-85">
-                                        (
-                                        <span ion-text color="red">Important Note:</span> Teacher must use smart phone to add contact to admin. Once
-                                        teacher added contact to admin, teacher can use PC to chat with admin. ) Admin will
-                                        check your environment.
-                                    </p>
-                                    <ul class="font-em-0-85">
-                                        <li>Good audio/video device</li>
-                                        <li>Fast speed of internet</li>
-                                        <li>Calm space to conduct the lesson</li>
-                                    </ul>
-                                    <p class="font-em-0-85 pt-3">Update your payment information so that you can get your pay.</p>
+                                    <p ion-text color="dark" class="font-em-0-85 pt-3">4.Add your schedule.</p>
+                                    <p ion-text color="dark" class="font-em-0-85 pt-3">5.Contact to admin to get higher grade</p>
+                                    <p ion-text color="dark" class="font-em-0-85 pt-3">6.Update your payment information so that you can get your pay.</p>
                                 </div>
                             </ion-item>
-                            <button class="border border-top-0 border-left-0 border-right-0" ion-item>
-                                <div>
-                                    <h3>Important Tips</h3>
-                                    <p class="font-em-0-85 pt-3">1.Teacher must add student using smart phone.</p>
-                                    <p class="font-em-0-85 pt-3">2.There is no way to add friend in kakao with desktop software.</p>
-                                    <p class="font-em-0-85 pt-3">3.Teacher without grade will not be shown if Recommended teacher is selected.</p>
-                                    <p class="font-em-0-85 pt-3">4.But they will be shown if the option "Show all teachers" is selected.</p>
-                                </div>
-                            </button>
-                            <button class="border border-top-0 border-left-0 border-right-0" ion-item>
-                                <div>
-                                    <h3>Teacher's Guideline</h3>
-                                    <p class="font-em-0-85 pt-3">1.Nickname should be less than or equal to 8 letters.</p>
-                                    <p class="font-em-0-85 pt-3">2.Profile image is best fit on 100px of width and 120px of height.</p>
-                                </div>
-                            </button>
                         </div>
                     </ion-list>
                 </div>
             </ion-col>
-            <ion-col class="pt-3 pt-md-0 px-3 px-md-0" col-sm-auto col-md-6>
-                <ion-grid no-padding class="cover">
-                    <ion-row class="mb-4">
-                        <ion-col class="cover-by-2 border bg-white mr-3 ">
+            <ion-col class="p-0  m-0" col-sm-auto col-md-6>
+                <ion-grid class="cover m-0" no-padding>
+                    <ion-row class="m-0 pb-0-5">
+                        <ion-col class=" h-50 m-0 p-0 pr-0-5" col-md-6 col-sm-12>
                             <ion-grid class="p-0">
                                 <ion-row>
-                                    <ion-col class="cover-by-4 bg-blue d-flex flex-column justify-content-center align-items-center">
-                                        <div ion-text color="white" class="fw-bold fs-3rem mr-1">{{site_info.no_of_teacher}}</div>
+                                    <ion-col class="cover-by-4 bg-blue d-flex flex-column justify-content-center align-items-center" col-md-6 col-sm-12>
+                                        <div ion-text color="white" class="fw-bold fs-3rem">{{site_info.no_of_teacher}}</div>
                                         <div ion-text color="white">Teachers</div>
                                     </ion-col>
-                                    <ion-col class="cover-by-4 bg-blue-80 d-flex flex-column justify-content-center align-items-center">
-                                        <div ion-text color="white" class="fw-bold fs-3rem mr-1">{{site_info.no_of_student}}</div>
+                                    <ion-col class="cover-by-4 bg-blue-80 d-flex flex-column justify-content-center align-items-center" col-md-6 col-sm-12>
+                                        <div ion-text color="white" class="fw-bold fs-3rem">{{site_info.no_of_student}}</div>
                                         <div ion-text color="white">Students</div>
                                     </ion-col>
                                 </ion-row>
                                 <ion-row>
-                                    <ion-col class="cover-by-4 bg-blue-60 d-flex flex-column justify-content-center align-items-center">
-                                        <div ion-text color="white" class="fw-bold fs-3rem mr-1">{{site_info.no_of_reservations}}</div>
+                                    <ion-col class="cover-by-4 bg-blue-60 d-flex flex-column justify-content-center align-items-center" col-md-6 col-sm-12>
+                                        <div ion-text color="white" class="fw-bold fs-3rem">{{site_info.no_of_reservations}}</div>
                                         <div ion-text color="white">Reservations</div>
                                     </ion-col>
-                                    <ion-col class="cover-by-4 bg-blue-40 d-flex flex-column justify-content-center align-items-center">
-                                        <div ion-text color="white" class="fw-bold fs-3rem mr-1">{{site_info.no_of_past}}</div>
+                                    <ion-col class="cover-by-4 bg-blue-40 d-flex flex-column justify-content-center align-items-center" col-md-6 col-sm-12>
+                                        <div ion-text color="white" class="fw-bold fs-3rem">{{site_info.no_of_past}}</div>
                                         <div ion-text color="white">Past</div>
                                     </ion-col>
                                 </ion-row>
                             </ion-grid>
                         </ion-col>
-                        <ion-col class="border cover-by-2 overflowscroll-y bg-white view-hover">
-                            <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 p-2 text-center">Recently Graded Teachers</h2>
-                            <div *ngFor="let teacher of site_info.recent_graded_teachers" class="item border border-right-0 border-left-0 border-bottom-0 d-flex align-items-center jusitfy-content-center">
-                                <img class="img-resize" [src]="a.checkPhotoURL(teacher.photoURL)">
-                                <div class="d-flex justify-content-between align-items-center w-100 p-3">
-                                    <h2 class="fs-lg fw-light">{{a.preTeacherName(teacher.display_name)}}</h2>
-                                    <sup item-end>3:30pm</sup>
-                                    <div class="d-flex justify-content-center align-items-center item-hover-effect  w-100 h-100 position-absolute top-0 left-0">
-                                        <p ion-text color="blue" (click)="a.open('schedule-table', { ID: teacher.ID })" class=" bg-white py-2 px-3 rounded">Veiw Profile</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ion-col>
-                    </ion-row>
-                    <ion-row>
-                        <ion-col *ngIf="site_info.comment_from_student.length" class=" view-hover cover-by-2 overflowscroll-y border bg-white mr-3 view-hover">
-                            <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 p-2 text-center">Student's Comment</h2>
+                        <ion-col class="pl-0-5 cover-by-2 overflowhidden-y" col-md-6 col-sm-12>
+                            <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 pt-0-5 pb-0-5  text-center">Recently Graded Teachers</h2>
                             <ion-list no-lines>
-                                <div ion-item *ngFor="let student_comment of site_info.comment_from_student" (click)="onClickCommentList(student_comment.idx_teacher)"
-                                    class="item border border-top-0 border-left-0 border-right-0">
-                                    <div class="d-flex justify-content-center align-items-center item-hover-effect  w-100 h-100 position-absolute top-0 left-0">
-                                        <p ion-text color="blue" class=" bg-white py-2 px-3 rounded">View</p>
-                                    </div>
+                                <ion-item class="border border-left-0 border-right-0 border-bottom-0 pt-0-5 pb-0-5 m-0" (click)="a.open('schedule-table', { ID: teacher.ID })" *ngFor="let teacher of site_info.recent_graded_teachers">
                                     <ion-avatar item-start>
-                                        <img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
+                                            <img [src]="a.checkPhotoURL(teacher.photoURL)">
                                     </ion-avatar>
-                                    <h3>{{a.preTeacherName(student_comment.teacher_name)}}
-                                        <div class="ml-2 d-inline-block">
-                                            <span *ngIf="student_comment.rate < 1">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-                                            <span *ngIf="student_comment.rate >= 1">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-
-                                            <span *ngIf="student_comment.rate < 2">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-                                            <span *ngIf="student_comment.rate >= 2">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-
-                                            <span *ngIf="student_comment.rate < 3">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-                                            <span *ngIf="student_comment.rate >= 3">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-
-                                            <span *ngIf="student_comment.rate < 4">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-                                            <span *ngIf="student_comment.rate >= 4">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-
-                                            <span *ngIf="student_comment.rate < 5">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-                                            <span *ngIf="student_comment.rate >= 5">
-                                                <ion-icon color="yellow" name="star"></ion-icon>
-                                            </span>
-                                        </div>
-                                    </h3>
-                                    <p>{{student_comment.comment}}</p>
-                                </div>
+                                    <h3 class="font">{{a.preTeacherName(teacher.display_name)}}</h3>
+                                </ion-item>
                             </ion-list>
                         </ion-col>
-                        <ion-col *ngIf="site_info.recent_reservations.length" class=" view-hover cover-by-2 overflowscroll-y border bg-white view-hover">
-                            <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 p-2 text-center">Recent Reservations</h2>
-                            <ion-list no-lines>
-                                <div ion-item *ngFor="let reservation of site_info.recent_reservations" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })"
-                                    class="item border border-top-0 border-left-0 border-right-0">
-                                    <div class="d-flex justify-content-center align-items-center item-hover-effect  w-100 h-100 position-absolute top-0 left-0">
-                                        <p ion-text color="blue" class=" bg-white py-2 px-3 rounded">View</p>
+                    </ion-row>
+                    <ion-row class="m-0 pt-0-5">
+                        <ion-col class="cover-by-2 pr-0-5 view-hover overflowhidden-y" *ngIf="site_info.comment_from_student.length" col-md-6 col-sm-12>
+                                <h2 ion-text color="white" class="m-0 pt-0-5 pb-0-5 fs-110 fw-light bg-blue text-center">Student's Comment</h2>
+                                <ion-list no-lines>
+                                    <div class="border border-top-0 border-left-0 border-right-0 pointer" ion-item *ngFor="let student_comment of site_info.comment_from_student" (click)="onClickCommentList(student_comment.idx_teacher)"
+                                        >
+                                        <ion-avatar item-start>
+                                            <img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
+                                        </ion-avatar>
+                                        <h3>{{a.preTeacherName(student_comment.teacher_name)}}
+                                            <div class="ml-2 d-inline-block">
+                                                <span *ngIf="student_comment.rate < 1">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+                                                <span *ngIf="student_comment.rate >= 1">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+    
+                                                <span *ngIf="student_comment.rate < 2">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+                                                <span *ngIf="student_comment.rate >= 2">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+    
+                                                <span *ngIf="student_comment.rate < 3">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+                                                <span *ngIf="student_comment.rate >= 3">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+    
+                                                <span *ngIf="student_comment.rate < 4">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+                                                <span *ngIf="student_comment.rate >= 4">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+    
+                                                <span *ngIf="student_comment.rate < 5">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+                                                <span *ngIf="student_comment.rate >= 5">
+                                                    <ion-icon color="yellow" name="star"></ion-icon>
+                                                </span>
+                                            </div>
+                                        </h3>
+                                        <p class="fs-lg">{{student_comment.comment}}</p>
                                     </div>
+                                </ion-list>
+                        </ion-col>
+                        <ion-col class="cover-by-2 p-0 pl-0-5 view-hover overflowhidden-y" *ngIf="site_info.recent_reservations.length" col-md-6 col-sm-12>
+                            <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 pt-0-5 pb-0-5 text-center">Recent Reservations</h2>
+                            <ion-list no-lines>
+                                <div class="border border-top-0 border-left-0 border-right-0" ion-item *ngFor="let reservation of site_info.recent_reservations" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })">
                                     <ion-avatar item-start>
                                         <img [src]="a.checkPhotoURL(reservation.teacher_photoURL)">
                                     </ion-avatar>
@@ -179,13 +137,66 @@
                     </ion-row>
                 </ion-grid>
             </ion-col>
-            <ion-col class="pl-md-3" col-sm-auto col-md-3>
-                <div class="bg-white rounded border cover">
-
+            <ion-col class="p-0 pl-md-3 m-0" col-sm-auto col-md-3>
+                <div class="bg-white cover">
                 </div>
             </ion-col>
         </ion-row>
-
+        <!-- <ion-row class="mt-3">
+            <ion-col class="pr-0-5" col-md-6 col-sm-12>
+                <div class="bg-white m-0 p-0 h-100">
+                    <ion-list text-wrap no-lines>
+                            <ion-item class="p-0 m-0 pl-3">
+                                <h3 ion-text color="dark">Teacher Grading System</h3>
+                                <ul class="p-0 mt-3">
+                                    <li>1 Star - Teacher who are </li>
+                                    <li>You will need to upload a short introduction video on youtube</li>
+                                </ul>
+                                <p class="p-0">
+                                    (
+                                    <span ion-text color="red">Important Note:</span> Teacher must use smart phone to add contact to admin. Once
+                                    teacher added contact to admin, teacher can use PC to chat with admin. ) Admin will
+                                    check your environment.
+                                </p>
+                                <ul class="p-0 mt-3">
+                                    <li>Good audio/video device</li>
+                                    <li>Fast speed of internet</li>
+                                    <li>Calm space to conduct the lesson</li>
+                                </ul>
+                            </ion-item>
+                    </ion-list>
+                </div>
+             </ion-col>
+            <ion-col class=" pl-0-5" col-md-6 col-sm-12>
+            <div class="bg-white pl-3 m-0 p-0 h-100">
+                <ion-list text-wrap no-lines>
+                    <ion-item class="p-0 m-0">
+                            <h3>Important Tips</h3>
+                            <p class="font-em-0-85 pt-3">1.Teacher must add student using smart phone.</p>
+                            <p class="font-em-0-85 pt-3">2.There is no way to add friend in kakao with desktop software.</p>
+                            <p class="font-em-0-85 pt-3">3.Teacher without grade will not be shown if Recommended teacher is selected.</p>
+                            <p class="font-em-0-85 pt-3">4.But they will be shown if the option "Show all teachers" is selected.</p>
+                    </ion-item>
+                    <ion-item class="p-0 m-0">
+                            <h3>Teacher's Guideline</h3>
+                            <p class="font-em-0-85 pt-3">1.Nickname should be less than or equal to 8 letters.</p>
+                            <p class="font-em-0-85 pt-3">2.Profile image is best fit on 100px of width and 120px of height.</p>
+                    </ion-item>
+                </ion-list>
+            </div>
+            </ion-col>
+        </ion-row> -->
+        <ion-row class="mt-3">
+            <ion-col class="p-0 view-hover"  *ngIf="site_info.comment_from_teacher.length">
+                <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 pt-0-5 pb-0-5 text-center">Comment from Teachers without Name</h2>
+                <ion-list text-wrap no-lines>
+                    <div class="p-0 m-0 pl-3 border border-top-0 border-left-0 border-right-0" ion-item  *ngFor="let teacher_comment of site_info.comment_from_teacher">
+                        <h2 class="fs-110">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
+                        <p class="fw-light line-h-2em">{{ teacher_comment.comment }}</p>
+                    </div>
+                </ion-list>
+            </ion-col>
+        </ion-row>
         <div>
 
             <!-- <ion-card class="p-3">
@@ -289,16 +300,16 @@
       </ion-slides>
     </ion-card> -->
 
-            <ion-card class="p-3" text-wrap>
+            <!-- <ion-card class="p-3" text-wrap>
                 <div>comment from teacher without name.</div>
                 <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_teacher.length">
-                    <ion-slide *ngFor="let teacher_comment of site_info.comment_from_teacher" class="text-center">
+                    <ion-slide *ngFor="let teacher_comment of site_info.comment_from_teacher" class="text-center"> -->
                         <!-- <img class="size-80" [src]="a.checkPhotoURL(reservation.student_photoURL)"> -->
-                        <div>{{ teacher_comment.comment }}</div>
+                        <!-- <div>{{ teacher_comment.comment }}</div>
                         <div>-{{ a.preTeacherName(teacher_comment.teacher_name) }}</div>
                     </ion-slide>
                 </ion-slides>
-            </ion-card>
+            </ion-card> -->
             <!-- 
     <ion-card class="p-3" text-wrap>
       <div>Recent reservations. without student name.</div>
