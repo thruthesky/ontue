@@ -30,21 +30,21 @@
 
 
     <!-- cordova.js required for cordova apps -->
-    <script src="cordova.js"></script>
+    <!-- <script src="cordova.js"></script> -->
 
 
     <script>
-        // if ('serviceWorker' in navigator) {
-        //     navigator.serviceWorker.register('service-worker.js')
-        //         .then(() => {})
-        //         .catch(err => console.error('Error', err));
-        // }
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => {})
+                .catch(err => console.error('Error', err));
+        }
 
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics for www.katalkenglish.com -->
     <!-- This may add other domains like www.ontue.com -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101539242-4"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101539242-4"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -54,6 +54,19 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-101539242-4');
+
+    </script> -->
+    <!-- Global site tag (gtag.js) - Google AdWords: 1059724698 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1059724698"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-1059724698');
 
     </script>
 

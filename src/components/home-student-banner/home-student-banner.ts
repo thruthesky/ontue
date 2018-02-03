@@ -50,7 +50,7 @@ export class HomeStudentBannerComponent implements OnInit, AfterViewInit, OnDest
 
     animate() {
         if ( this.pageDestroyed ) { // to stop the animation that lives on closure.
-            console.log("Page has destroyed already. no more banner rotation");
+            // console.log("Page has destroyed already. no more banner rotation");
             return;
         }
         if ( this.debugging != -1 ) return;
