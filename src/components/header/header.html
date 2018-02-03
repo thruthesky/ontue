@@ -171,14 +171,23 @@
             </ion-col>
 
             <ion-col *ngIf=" a.user.isLogin ">
-                <div class="item header-reservation blue" (click)=" a.open('session-future') ">
-                    <div class="icon">
-                        <i class="fal fa-indent"></i>
+                    <div class="item header-reservation blue" (click)=" a.open('session-future') ">
+                        <div class="icon">
+                            <i class="fal fa-indent"></i>
+                        </div>
+                        <div class="text">{{ 'RESERVATIONS' | translate }}</div>
                     </div>
-                    <div class="text">{{ 'RESERVATIONS' | translate }}</div>
-                </div>
-            </ion-col>
+                </ion-col>
 
+                <ion-col *ngIf=" a.user.isLogout ">
+                        <div class="item header-reservation blue" (click)=" a.open('student-adv') ">
+                            <div class="icon">
+                                <i class="fal fa-usd-circle"></i>
+                            </div>
+                            <div class="text">{{ 'ADV MENU' | translate }}</div>
+                        </div>
+                    </ion-col>
+            
 
             <ion-col *ngIf=" ! a.newUser ">
                 <div class="item header-teacher-list" (click)="a.open( 'teacher-list' )">
