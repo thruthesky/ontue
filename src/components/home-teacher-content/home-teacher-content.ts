@@ -34,6 +34,21 @@ export class HomeTeacherContentComponent implements OnInit {
     qrmark: HowToGetQRCodeComponent
   };
 
+
+  activity = {
+    visit: " visit the site.",
+    login: " has log in.",
+    'open-register': "Visited the registration.",
+    register: " has registered.",
+    'view-profile': " has view the profile of ",
+    'update-profile': " update profile.",
+    reserve: " made reservation to ",
+    cancel: " cancel reservation ",
+    payment: " trying to pay ",
+    evaluate: " evaluate to student ",
+    comment: " comment to teacher"
+  };
+
     constructor(
       public a: AppService,
       public modalCtrl: ModalController

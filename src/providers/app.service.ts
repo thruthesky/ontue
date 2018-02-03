@@ -118,9 +118,9 @@ export class AppService {
           .limit(10)
           .get().then( s => {
 
-          console.log('snap::', s);
+          // console.log('snap::', s);
           s.forEach(doc => {
-            console.log("get:", doc.data());
+            // console.log("get:", doc.data());
             this.activity_log.unshift(doc.data());
           });
         }).catch(error => {
@@ -140,7 +140,7 @@ export class AppService {
                 }
 
                 shot.forEach(doc => {
-                    console.log("onSnapshot::",doc.data());
+                    // console.log("onSnapshot::",doc.data());
                     this.activity_log.unshift(doc.data());
                 });
             });
@@ -696,7 +696,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE o
-        if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
+        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE
@@ -933,11 +933,11 @@ export class AppService {
     onBeginPayment() {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'payment' });
     }
-    onTeacherEvaluateSession() {
-        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'evaluate' });
+    onTeacherEvaluateSession( student_name = '') {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'evaluate', target: student_name  });
     }
-    onStudentCommentToTeacher() {
-        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'comment' });
+    onStudentCommentToTeacher( teacher_name = '') {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'comment', target: teacher_name  });
     }
 
 
