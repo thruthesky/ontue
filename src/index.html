@@ -44,7 +44,7 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics for www.katalkenglish.com -->
     <!-- This may add other domains like www.ontue.com -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101539242-4"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101539242-4"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -53,22 +53,12 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'UA-101539242-4');
-
-    </script> -->
-    <!-- Global site tag (gtag.js) - Google AdWords: 1059724698 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1059724698"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'AW-1059724698');
+        // https://support.google.com/adwords/answer/6095821?co=ADWORDS.IsAWNCustomer%3Dtrue&oco=0
+        // gtag('config', 'UA-101539242-4'); // 구글 Analytics 의 코드 번호 인데, 이를 없애고
+        gtag('config', 'AW-1059724698'); // 구글 애드워즈의 것으로 config 설정을 한다.
 
     </script>
+    
 
     <script>
         function detect_ie_version() {

@@ -12,6 +12,10 @@
   header-content ion-grid {
     max-width: $lg+48!important;
   }
+  footer .copyright {
+    margin: 0 auto;
+    max-width: $lg+48;
+  }
   ion-content {
     .page {
       position: relative!important;

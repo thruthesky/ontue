@@ -1,4 +1,8 @@
-section.copyright {
-    background-color: #f3f5fa;
-    color: #777;
+hook-content-bottom {
+    footer {
+        background-color: #f3f5fa;
+        section.copyright {
+            color: #777;
+        }
+    }
 }
