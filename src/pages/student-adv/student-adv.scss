@@ -1,3 +1,28 @@
-student-adv {
-    font-size: 2rem!important;
+student-adv-page {
+    .page-body {
+        font-size: 2rem;
+        text-align: center;
+        & > div {
+            padding-top: 3em;
+            line-height: 200%;
+        }
+
+        .why {
+            img {
+                width: 160px;
+                @media ( min-width: $md ) {
+                    width: 240px;
+                }
+            }
+        }
+        .where, .office, .uber {
+            img {
+                border-radius: 50%;
+                width: 240px;
+                @media ( min-width: $md ) {
+                    width: 380px;
+                }
+            }
+        }
+    }
 }
