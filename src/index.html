@@ -52,13 +52,19 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
-        // https://support.google.com/adwords/answer/6095821?co=ADWORDS.IsAWNCustomer%3Dtrue&oco=0
-        // gtag('config', 'UA-101539242-4'); // 구글 Analytics 의 코드 번호 인데, 이를 없애고
-        gtag('config', 'AW-1059724698'); // 구글 애드워즈의 것으로 config 설정을 한다.
+// console.log("location.hostname.indexOf('katalkenglish')", location.hostname);
+        if (location.hostname.indexOf('katalkenglish') != -1) {
+            console.log('Tracking katalk english for Analytics and Adwords');
+            gtag('config', 'UA-101539242-4'); // Katalk English Google Analytics
+            gtag('config', 'AW-1059724698'); // Katalk English Google Adwords
+        }
+        else {
+            console.log('Ontue tracking');
+            gtag('config', 'UA-101539242-5'); // OnTue Google Analytics
+        }
 
     </script>
-    
+
 
     <script>
         function detect_ie_version() {
