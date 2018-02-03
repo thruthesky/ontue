@@ -54,6 +54,7 @@ import { TeacherDashboardPage } from '../pages/teacher-dashboard/teacher-dashboa
 import { HowToUsePage } from '../pages/how-to-use/how-to-use';
 import { MyPointPage } from '../pages/my-point/my-point';
 import { StudentRegisterSuccessPage } from '../pages/student-register-success/student-register-success';
+import { StudentAdvPage } from '../pages/student-adv/student-adv';
 
 
 
@@ -177,7 +178,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherHeaderComponent,
     TeacherIntro2Component,
     StudentRegisterSuccessPage,
-    PageNavigatorComponent
+    PageNavigatorComponent,
+    StudentAdvPage
   ],
   imports: [
     BrowserModule,
@@ -249,7 +251,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherHeaderComponent,
     TeacherIntro2Component,
     StudentRegisterSuccessPage,
-    PageNavigatorComponent
+    PageNavigatorComponent,
+    StudentAdvPage
   ],
   providers: [
     // StatusBar,

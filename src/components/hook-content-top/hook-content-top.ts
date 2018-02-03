@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppService } from '../../providers/app.service';
 
 
@@ -8,6 +8,8 @@ import { AppService } from '../../providers/app.service';
 })
 
 export class HookContentTopComponent implements OnInit {
+
+    @Input() showLoginBox = true;
     constructor(
         public a: AppService
     ) { }
