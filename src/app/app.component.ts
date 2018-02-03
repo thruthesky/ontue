@@ -159,7 +159,7 @@ export class MyApp {
     this.a.pages['how-to-use'] = HowToUsePage;
 
     this.a.pages['my-point'] = MyPointPage;
-    
+
     this.a.pages['student-register-success'] = StudentRegisterSuccessPage;
     this.a.pages['student-adv'] = StudentAdvPage;
 
@@ -248,7 +248,7 @@ export class MyApp {
 
     // this.a.open('student-register-success');
 
-    this.a.open('student-adv');
+    // this.a.open('student-adv');
 
 
   }

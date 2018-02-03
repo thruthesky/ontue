@@ -92,6 +92,9 @@ export class AppService {
     /// push token
     pushToken: string = null;
 
+
+    activity_log = [];
+
     /// EO Firebase
     constructor(
         public ngZone: NgZone,
@@ -111,11 +114,34 @@ export class AppService {
 
         const db = this.firebase.db;
         db.collection("user-activity-log")
+          .orderBy("stamp", "desc")
+          .limit(10)
+          .get().then( s => {
+
+          console.log('snap::', s);
+          s.forEach(doc => {
+            console.log("get:", doc.data());
+            this.activity_log.unshift(doc.data());
+          });
+        }).catch(error => {
+          console.log("Error getting document:", error);
+        });
+
+
+
+        let first = true;
+        db.collection("user-activity-log")
             .orderBy("stamp", "desc")
             .limit(1)
             .onSnapshot(shot => {
+                if(first){
+                  first = false;
+                  return;
+                }
+
                 shot.forEach(doc => {
-                    // console.log(doc.data());
+                    console.log("onSnapshot::",doc.data());
+                    this.activity_log.unshift(doc.data());
                 });
             });
 
