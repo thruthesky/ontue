@@ -59,7 +59,7 @@
                           (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}</span>
                   </div>
                   <div class="description" [innerHTML]="comment.comment"></div>
-                  
+
                 </div>
 
                 <div class="more pointer text-center mx-3 py-2" (click)="onClickShowMore(comment)"><i class="fa fa-angle-double-down"></i> {{ 'MORE' | translate }}</div>
@@ -71,7 +71,13 @@
 
       </ion-grid>
 
-
+      <page-navigator [no_of_total_items]=" pageOption['totalRecord']"
+                      [no_of_items_in_one_page]=" pageOption['limitPerPage'] "
+                      [no_of_pages_in_navigator]=" pageOption['limitPerNavigation'] "
+                      [no_of_current_page]=" pageOption['currentPage'] "
+                      [show_prev_next]=" true "
+                      (pageClick)="onPostPageClick($event)">
+      </page-navigator>
     </section>
   </div>
   <hook-content-bottom></hook-content-bottom>

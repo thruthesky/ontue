@@ -99,6 +99,7 @@ import { HowToRegisterComponent } from '../components/how-to-register/how-to-reg
 import { TeacherPolicyComponent } from '../components/teacher-policy/teacher-policy';
 import { TeacherHeaderComponent } from '../components/teacher-header/teacher-header';
 import { TeacherIntro2Component } from '../components/teacher-intro2/teacher-intro2';
+import { PageNavigatorComponent } from '../components/page-navigator/page-navigator';
 
 
 
@@ -175,7 +176,8 @@ export function createTranslateLoader(http: HttpClient) {
     HowToRegisterComponent,
     TeacherHeaderComponent,
     TeacherIntro2Component,
-    StudentRegisterSuccessPage
+    StudentRegisterSuccessPage,
+    PageNavigatorComponent
   ],
   imports: [
     BrowserModule,
@@ -246,7 +248,8 @@ export function createTranslateLoader(http: HttpClient) {
     HowToRegisterComponent,
     TeacherHeaderComponent,
     TeacherIntro2Component,
-    StudentRegisterSuccessPage
+    StudentRegisterSuccessPage,
+    PageNavigatorComponent
   ],
   providers: [
     // StatusBar,

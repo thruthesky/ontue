@@ -13,6 +13,13 @@ export class ClassCommentPage {
 
   comments = [];
 
+  pageOption = {
+    limitPerPage: 10,
+    currentPage: 1,
+    limitPerNavigation: 4,
+    totalRecord: 0
+  };
+
   constructor(
     public a: AppService,
     public alertCtrl: AlertController,
@@ -23,10 +30,15 @@ export class ClassCommentPage {
 
 
   loadClassComment() {
-
-    this.a.lms.get_latest_student_comment_to_teachers().subscribe( res => {
+    this.a.lms.get_latest_student_comment_to_teachers({
+      limit:this.pageOption['limitPerPage'],
+      page: this.pageOption['currentPage']
+    }).subscribe( res => {
       // console.log("loadClassComment:: ", res);
-      this.comments = res;
+      this.comments = res['comments'];
+      this.pageOption.currentPage = res['page'];
+      this.pageOption.limitPerPage = res['limit'];
+      this.pageOption.totalRecord = res['total'];
     }, e => {
       this.a.alert(e);
     });
@@ -35,8 +47,8 @@ export class ClassCommentPage {
 
 
   onClickDelete(comment){
-    console.log('user.id', this.a.user.id);
-    console.log("onClickDelete:: ", comment);
+    // console.log('user.id', this.a.user.id);
+    // console.log("onClickDelete:: ", comment);
 
     let confirm = this.alertCtrl.create({
       title: 'Delete Comment',
@@ -93,6 +105,11 @@ export class ClassCommentPage {
     createCommentModal.present();
   }
 
+
+  onPostPageClick( $event ) {
+    this.pageOption['currentPage'] = $event;
+    this.loadClassComment();
+  }
 
 }
 

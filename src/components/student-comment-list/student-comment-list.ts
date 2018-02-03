@@ -23,6 +23,13 @@ export class StudentCommentList{
 
   error = null;
 
+  pageOption = {
+    limitPerPage: 10,
+    currentPage: 1,
+    limitPerNavigation: 4,
+    totalRecord: 0
+  };
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -121,4 +128,11 @@ export class StudentCommentList{
   onClickCancel() {
     this.viewCtrl.dismiss();
   }
+
+  onPostPageClick( $event ) {
+    this.pageOption['currentPage'] = $event;
+    this.loadCommentList();
+  }
+
+
 }
