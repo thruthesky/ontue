@@ -1,8 +1,8 @@
 <section id="home-teacher-content" class="mt-md-3 bg-light">
     <ion-grid no-padding>
         <ion-row class="m-0">
-            <ion-col class="p-0 pr-md-3 m-0" col-sm-auto col-md-3>
-                <div class="m-0 p-0 cover bg-white rounded">
+            <ion-col class="reminders p-0 pr-md-3 m-0" col-sm-auto col-md-3>
+                <div class="cover m-0 p-0 bg-white rounded">
                     <ion-list class="m-0 p-0" text-wrap no-lines>
                         <ion-list-header class="m-0 px-3 py-0 cover-header border border-left-0 border-right-0 border-top-0">
                             Reminders
@@ -31,7 +31,7 @@
                     </ion-list>
                 </div>
             </ion-col>
-            <ion-col class="p-0  m-0" col-sm-auto col-md-6>
+            <ion-col class="widgets p-0  m-0" col-sm-auto col-md-6>
                 <ion-grid class="cover m-0" no-padding>
                     <ion-row class="m-0 pb-0-5">
                         <ion-col class=" h-50 m-0 p-0 pr-0-5" col-md-6 col-sm-12>
@@ -187,7 +187,7 @@
             </ion-col>
         </ion-row> -->
         <ion-row class="mt-3">
-            <ion-col class="p-0 view-hover"  *ngIf="site_info.comment_from_teacher.length">
+            <ion-col class="p-0"  *ngIf="site_info.comment_from_teacher.length">
                 <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 pt-0-5 pb-0-5 text-center">Comment from Teachers without Name</h2>
                 <ion-list text-wrap no-lines>
                     <div class="p-0 m-0 pl-3 border border-top-0 border-left-0 border-right-0" ion-item  *ngFor="let teacher_comment of site_info.comment_from_teacher">
