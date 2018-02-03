@@ -42,7 +42,7 @@ export class TeacherListPage {
   }
 
   onClickTeacher(teacher) {
-    console.log(teacher);
+    // console.log(teacher);
     this.a.open('schedule-table', teacher);
   }
 
@@ -56,7 +56,7 @@ export class TeacherListPage {
       limit: this.limit
     }).subscribe(re => {
       this.loading = false;
-      console.log(re);
+      // console.log(re);
       this.re = re;
       this.teachers = this.teachers.concat( this.re.teachers );
       if ( this.re.teachers.length < this.limit ) {

@@ -407,7 +407,7 @@ export class LMSService extends Base {
 
 
   get_student_comments_to_teacher(req) {
-    console.log("get_student_comments_to_teacher", req);
+    // console.log("get_student_comments_to_teacher", req);
     req['route'] = 'lms.get_student_comments_to_teacher';
     return this.x.post(req)
   }

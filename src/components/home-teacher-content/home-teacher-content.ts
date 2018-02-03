@@ -39,7 +39,7 @@ export class HomeTeacherContentComponent implements OnInit {
       public modalCtrl: ModalController
     ) {
       this.a.lms.get_teacher_site_info().subscribe( res => {
-          console.log("site info", res);
+          // console.log("site info::", res);
           this.site_info = res['site_info'];
       }, () => {})
 
