@@ -1,8 +1,16 @@
 ion-nav.teacher {
+
+    //
     ion-content {
         background-color: blue;
         .page {
             background-color: #f3f3f3;
+            home-teacher-content-component {
+                .cover-by-2 {
+                    background-color: red;
+                }
+            }
         }
     }
+
 }
