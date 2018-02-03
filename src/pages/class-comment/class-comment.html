@@ -70,14 +70,15 @@
 
 
       </ion-grid>
-
-      <page-navigator [no_of_total_items]=" pageOption['totalRecord']"
-                      [no_of_items_in_one_page]=" pageOption['limitPerPage'] "
-                      [no_of_pages_in_navigator]=" pageOption['limitPerNavigation'] "
-                      [no_of_current_page]=" pageOption['currentPage'] "
-                      [show_prev_next]=" true "
-                      (pageClick)="onPostPageClick($event)">
-      </page-navigator>
+      <div class="px-3">
+        <page-navigator [no_of_total_items]=" pageOption['totalRecord']"
+                        [no_of_items_in_one_page]=" pageOption['limitPerPage'] "
+                        [no_of_pages_in_navigator]=" pageOption['limitPerNavigation'] "
+                        [no_of_current_page]=" pageOption['currentPage'] "
+                        [show_prev_next]=" true "
+                        (pageClick)="onPostPageClick($event)">
+        </page-navigator>
+      </div>
     </section>
   </div>
   <hook-content-bottom></hook-content-bottom>
