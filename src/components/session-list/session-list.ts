@@ -81,7 +81,7 @@ export class SessionList {
       past: this.past
     };
 
-    console.log(defaults);
+    // console.log(defaults);
 
     defaults['show_refund_in_progress'] = this.show_refund_in_progress;
     defaults['show_refunded'] = this.show_refunded;
@@ -133,7 +133,7 @@ export class SessionList {
 
   sessionSearch() {
     this.a.lms.session_search(this.request()).subscribe(re => {
-      console.log("Result of class_search(): ", re);
+      // console.log("Result of class_search(): ", re);
       this.re = re;
       this.re['total_session_refunded'] = this.a.toInt(this.re['total_session_refunded']);
       this.re['total_session_refund_in_progress'] = this.a.toInt(this.re['total_session_refund_in_progress']);
@@ -142,7 +142,7 @@ export class SessionList {
       this.teacher_summary = re['teacher_summary'];
     }, e => {
 
-      console.log('sessionSearch::', e);
+      // console.log('sessionSearch::', e);
       this.a.alert(e);
     });
 

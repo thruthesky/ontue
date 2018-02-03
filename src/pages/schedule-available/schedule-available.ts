@@ -17,7 +17,7 @@ export class ScheduleAvailablePage implements OnInit {
         a.lms.schedule_available().subscribe( re => {
             this.pageInLoading = false;
             this.re = re;
-            console.log("schedule_available(): ", re);
+            // console.log("schedule_available(): ", re);
         }, e => a.alert(e) );
     }
 

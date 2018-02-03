@@ -10,7 +10,7 @@ import { USER_LOGIN } from './../../angular-xapi/interfaces';
 })
 export class LoginPage {
 
-    
+
     account = <USER_LOGIN>{};
     constructor(
         public a: AppService
@@ -27,7 +27,7 @@ export class LoginPage {
         this.a.showLoader();
         this.a.user.login( this.account.user_email, this.account.user_pass ).subscribe(re => {
             // this.loading = false;
-            console.log("user.login => success: re...: ", re);
+            // console.log("user.login => success: re...: ", re);
             this.a.onUserLogin();
             this.a.open('home');
         }, e => {
