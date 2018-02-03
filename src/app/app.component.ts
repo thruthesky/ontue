@@ -61,6 +61,7 @@ import { MyPointPage } from '../pages/my-point/my-point';
 
 import { StudentRegisterSuccessPage } from '../pages/student-register-success/student-register-success';
 
+import { StudentAdvPage } from '../pages/student-adv/student-adv';
 
 
 
@@ -160,6 +161,8 @@ export class MyApp {
     this.a.pages['my-point'] = MyPointPage;
     
     this.a.pages['student-register-success'] = StudentRegisterSuccessPage;
+    this.a.pages['student-adv'] = StudentAdvPage;
+
 
     setTimeout(() => this.test(), 100);
   }
@@ -244,6 +247,8 @@ export class MyApp {
 
 
     // this.a.open('student-register-success');
+
+    this.a.open('student-adv');
 
 
   }
