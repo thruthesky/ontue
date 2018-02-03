@@ -113,35 +113,36 @@ export class AppService {
 
 
         const db = this.firebase.db;
-        db.collection("user-activity-log")
-          .orderBy("stamp", "desc")
-          .limit(10)
-          .get().then( s => {
+        // db.collection("user-activity-log")
+        //   .orderBy("stamp", "desc")
+        //   .limit(10)
+        //   .get().then( s => {
+        //
+        //   // console.log('snap::', s);
+        //   s.forEach(doc => {
+        //     console.log("get:", doc.data());
+        //     this.activity_log.unshift(doc.data());
+        //   });
+        // }).catch(error => {
+        //   console.log("Error getting document:", error);
+        // });
 
-          // console.log('snap::', s);
-          s.forEach(doc => {
-            // console.log("get:", doc.data());
-            this.activity_log.unshift(doc.data());
-          });
-        }).catch(error => {
-          console.log("Error getting document:", error);
-        });
 
 
-
-        let first = true;
+        // let first = true;
         db.collection("user-activity-log")
             .orderBy("stamp", "desc")
-            .limit(1)
+            .limit(10)
             .onSnapshot(shot => {
-                if(first){
-                  first = false;
-                  return;
-                }
+                // if(first){
+                //   first = false;
+                //   return;
+                // }
 
                 shot.forEach(doc => {
-                    // console.log("onSnapshot::",doc.data());
-                    this.activity_log.unshift(doc.data());
+                    console.log("onSnapshot::",doc.data());
+                    // this.activity_log.unshift(doc.data());
+                    // console.log(this.activity_log);
                 });
             });
 
