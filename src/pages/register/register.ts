@@ -53,6 +53,7 @@ export class RegisterPage {
     public navParams: NavParams,
     public modalCtrl: ModalController
   ) {
+    a.onUserRegisterPage();
     this.offset = this.a.lms.getUserLocalTimezoneOffset();
     a.lms.timezones().subscribe(re => {
       // console.log(re);
@@ -72,6 +73,7 @@ export class RegisterPage {
     if (a.teacherTheme && !a.getLanguage()) {
       a.setLanguage('en');
     }
+
   }
 
   ngAfterViewInit() { // TEST

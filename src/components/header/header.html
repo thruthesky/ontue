@@ -106,21 +106,31 @@
             <ng-container *ngSwitchDefault>
 
                 <div class="group default">
-                    <ng-container *ngIf=" ! a.newUser ; else NewUser">
-                        <div class="" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
-                        <div class="" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
+                    <ng-container *ngIf=" a.user.isLogout ">
+                            <div class="" (click)=" a.open('login') ">로그인</div>
+                            <div class="" (click)=" a.open('register') ">회원가입</div>
+                            <div class="" (click)=" a.open('help') ">{{ "HELP" | translate }}</div>
+                            <div>매일 25분 월 1만원</div>
                     </ng-container>
-                    <ng-template #NewUser>
-                        <div class="" (click)=" a.open('help') ">{{ "MUST READ" | translate }}</div>
-                        <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
-                    </ng-template>
+                    <ng-container *ngIf=" a.user.isLogin ">
+                        <ng-container *ngIf=" ! a.newUser ; else NewUser">
+                            <div class="" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
+                            <div class="" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
+                        </ng-container>
+                        <ng-template #NewUser>
+                            <div class="" (click)=" a.open('help') ">{{ "MUST READ" | translate }}</div>
+                            <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
+                        </ng-template>
+                        <div class="" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
+                        <div class="" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
+                    </ng-container>
 
-                    <div class="" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
-                    <div class="" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
                 </div>
 
             </ng-container>
+
         </ng-container>
+
     </nav>
 </section>
 <!--student-mobile-toolbar-->
