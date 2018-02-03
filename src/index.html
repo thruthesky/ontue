@@ -42,8 +42,7 @@
 
     </script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics for www.katalkenglish.com -->
-    <!-- This may add other domains like www.ontue.com -->
+    <!-- Global site tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-101539242-4"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -52,13 +51,12 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-// console.log("location.hostname.indexOf('katalkenglish')", location.hostname);
+
         if (location.hostname.indexOf('katalkenglish') != -1) {
             console.log('Tracking katalk english for Analytics and Adwords');
             gtag('config', 'UA-101539242-4'); // Katalk English Google Analytics
             gtag('config', 'AW-1059724698'); // Katalk English Google Adwords
-        }
-        else {
+        } else {
             console.log('Ontue tracking');
             gtag('config', 'UA-101539242-5'); // OnTue Google Analytics
         }
