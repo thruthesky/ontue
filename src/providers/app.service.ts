@@ -113,41 +113,49 @@ export class AppService {
 
 
         const db = this.firebase.db;
-        // db.collection("user-activity-log")
-        //   .orderBy("stamp", "desc")
-        //   .limit(10)
-        //   .get().then( s => {
-        //
-        //   // console.log('snap::', s);
-        //   s.forEach(doc => {
-        //     console.log("get:", doc.data());
-        //     this.activity_log.unshift(doc.data());
-        //   });
-        // }).catch(error => {
-        //   console.log("Error getting document:", error);
-        // });
 
 
-
-        // let first = true;
         db.collection("user-activity-log")
-            .orderBy("stamp", "desc")
-            .limit(10)
-            .onSnapshot(shot => {
-                // if(first){
-                //   first = false;
-                //   return;
-                // }
+          .orderBy("stamp", "desc")
+          .limit(10)
+          .get().then( s => {
 
-                shot.forEach(doc => {
-                    console.log("onSnapshot::",doc.data());
-                    // this.activity_log.unshift(doc.data());
-                    // console.log(this.activity_log);
-                });
-            });
+            // console.log("get::", s);
+          s.forEach(doc => {
+            console.log("get:forEach::", doc.data());
+            this.activity_log.push(doc.data());
+          });
+          console.log("get::", this.activity_log);
+
+        }).catch(error => {
+          console.log("Error getting document:", error);
+        });
 
 
-        /// for page service
+
+      db.collection("user-activity-log")
+        .orderBy("stamp", "desc")
+        .limit(1)
+        .onSnapshot(shot => {
+          shot.forEach(doc => {
+            console.log("onSnapshot::",doc.data());
+            let data = doc.data();
+            if( this.activity_log.length && this.activity_log[0]['idx_user'] != data['idx_user']
+              && this.activity_log[0]['stamp'] != data['stamp'] )
+              this.activity_log.unshift(doc.data());
+          });
+          this.render();
+        }, error => {
+          console.log("snap error::", error);
+        });
+
+
+
+
+
+
+
+      /// for page service
         window['a'] = {
             open: this.open.bind(this),
             alert: this.alert.bind(this)
@@ -901,6 +909,7 @@ export class AppService {
     onUserLogin() {
         this.updatePushToken();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'login' });
+        console.log("userLogin::Log::");
     }
     /**
      * This method is being called when a user opens 'register' page.
@@ -947,10 +956,10 @@ export class AppService {
         // console.log(data);
         this.firebase.db.collection("user-activity-log").add(data)
             .then(function (docRef) {
-                // console.log("Document written with ID: ", docRef.id);
+                console.log("Document written with ID: ", docRef.id);
             })
             .catch(function (error) {
-                // console.error("Error adding document: ", error);
+                console.error("Error adding document: ", error);
             });
     }
 }
