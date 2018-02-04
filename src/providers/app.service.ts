@@ -830,6 +830,9 @@ export class AppService {
     updatePushToken() {
         let platform = 'web';
         if (this.isApp()) platform = 'app';
+        if ( ! this.pushToken ) {
+            console.log("updatePushToken(): token is empty. It will not update. just return.");
+        }
         this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
             // console.log("Token updated:");
         }, e => console.error(e));
