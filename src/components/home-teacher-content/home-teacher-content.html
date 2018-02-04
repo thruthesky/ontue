@@ -163,7 +163,7 @@
                     <ion-list>
                       <ion-item *ngFor="let a of a.activity_log" text-wrap>
                         <div><span *ngIf="a.name">{{a.name}}</span> {{ activity[a.activity] }} <span *ngIf="a.target">{{a.target}}</span></div>
-                        <div *ngIf="a.stamp">{{ a.stamp }}</div>
+                        <div *ngIf="a.stamp">{{ a.date }}</div>
                       </ion-item>
                     </ion-list>
                   </div>
