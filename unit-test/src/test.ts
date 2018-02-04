@@ -59,6 +59,7 @@ class T {
         { click: '.header-class-payment', find: 'payment-page', message: 'Payment page opended'},
         { click: '.header-class-help', find: '.part.qna', message: 'Help page opended'},
         { click: '.header-class-menu', find: '.menu-schedule-table', message: 'Menu page opended'},
+        { click: '.menu-schedule-table', find: '.schedule-table-content', message: 'All schedule table page opended'},
     ];
 
     for( const rule of rules ) {
@@ -68,6 +69,6 @@ class T {
 
     
 
-    await t.wait(500000);
+    await t.wait(5000000);
     await t.end();
 })();
