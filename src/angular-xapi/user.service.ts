@@ -42,7 +42,7 @@ export class UserService extends Base {
     }
 
     logout() {
-        console.log('user service::logout');
+        // console.log('user service::logout');
         this.rawSetUserProfile(null);
     }
 

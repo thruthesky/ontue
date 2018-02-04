@@ -70,51 +70,70 @@
                             </ion-list>
                         </ion-col>
                     </ion-row>
-                    <ion-row class="m-0 pt-0-5">
-                        <ion-col class="cover-by-2 pr-0-5 view-hover overflowhidden-y" *ngIf="site_info.comment_from_student.length" col-md-6 col-sm-12>
+                    <ion-row class="student-feedback m-0 pt-0-5">
+                        <ion-col class="cover-by-2 pr-0-5 view-hover overflowhidden-y" *ngIf="site_info.comment_from_student['total']" col-md-6 col-sm-12>
                                 <h2 ion-text color="white" class="m-0 pt-0-5 pb-0-5 fs-110 fw-light bg-blue text-center">Student's Comment</h2>
                                 <ion-list no-lines>
-                                    <div class="border border-top-0 border-left-0 border-right-0 pointer" ion-item *ngFor="let student_comment of site_info.comment_from_student" (click)="onClickCommentList(student_comment.idx_teacher)"
+                                    <div class="border border-top-0 border-left-0 border-right-0 pointer" ion-item
+                                         *ngFor="let student_comment of site_info.comment_from_student.comments"
+                                         (click)="onClickCommentList(student_comment.idx_teacher)"
                                         >
                                         <ion-avatar item-start>
                                             <img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
                                         </ion-avatar>
                                         <h3>{{a.preTeacherName(student_comment.teacher_name)}}
                                             <div class="ml-2 d-inline-block">
-                                                <span *ngIf="student_comment.rate < 1">
-                                                    <ion-icon color="white" name="star"></ion-icon>
-                                                </span>
-                                                <span *ngIf="student_comment.rate >= 1">
-                                                    <ion-icon color="yellow" name="star"></ion-icon>
-                                                </span>
-    
-                                                <span *ngIf="student_comment.rate < 2">
-                                                    <ion-icon color="white" name="star"></ion-icon>
-                                                </span>
-                                                <span *ngIf="student_comment.rate >= 2">
-                                                    <ion-icon color="yellow" name="star"></ion-icon>
-                                                </span>
-    
-                                                <span *ngIf="student_comment.rate < 3">
-                                                    <ion-icon color="white" name="star"></ion-icon>
-                                                </span>
-                                                <span *ngIf="student_comment.rate >= 3">
-                                                    <ion-icon color="yellow" name="star"></ion-icon>
-                                                </span>
-    
-                                                <span *ngIf="student_comment.rate < 4">
-                                                    <ion-icon color="white" name="star"></ion-icon>
-                                                </span>
-                                                <span *ngIf="student_comment.rate >= 4">
-                                                    <ion-icon color="yellow" name="star"></ion-icon>
-                                                </span>
-    
-                                                <span *ngIf="student_comment.rate < 5">
-                                                    <ion-icon color="white" name="star"></ion-icon>
-                                                </span>
-                                                <span *ngIf="student_comment.rate >= 5">
-                                                    <ion-icon color="yellow" name="star"></ion-icon>
-                                                </span>
+
+                                              <span *ngIf="student_comment.rate < 1"><i class="fal fa-star"></i></span>
+                                              <span *ngIf="student_comment.rate >= 1"><i class="fas fa-star"></i></span>
+
+                                              <span *ngIf="student_comment.rate < 2"><i class="fal fa-star"></i></span>
+                                              <span *ngIf="student_comment.rate >= 2"><i class="fas fa-star"></i></span>
+
+                                              <span *ngIf="student_comment.rate < 3"><i class="fal fa-star"></i></span>
+                                              <span *ngIf="student_comment.rate >= 3"><i class="fas fa-star"></i></span>
+
+                                              <span *ngIf="student_comment.rate < 4"><i class="fal fa-star"></i></span>
+                                              <span *ngIf="student_comment.rate >= 4"><i class="fas fa-star"></i></span>
+
+                                              <span *ngIf="student_comment.rate < 5"><i class="fal fa-star"></i></span>
+                                              <span *ngIf="student_comment.rate >= 5"><i class="fas fa-star"></i></span>
+
+                                              <!---->
+                                                <!--<span *ngIf="student_comment.rate < 1">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+                                                <!--<span *ngIf="student_comment.rate >= 1">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+
+                                                <!--<span *ngIf="student_comment.rate < 2">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+                                                <!--<span *ngIf="student_comment.rate >= 2">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+
+                                                <!--<span *ngIf="student_comment.rate < 3">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+                                                <!--<span *ngIf="student_comment.rate >= 3">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+
+                                                <!--<span *ngIf="student_comment.rate < 4">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+                                                <!--<span *ngIf="student_comment.rate >= 4">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+
+                                                <!--<span *ngIf="student_comment.rate < 5">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
+                                                <!--<span *ngIf="student_comment.rate >= 5">-->
+                                                    <!--<ion-icon color="yellow" name="star"></ion-icon>-->
+                                                <!--</span>-->
                                             </div>
                                         </h3>
                                         <p class="fs-lg">{{student_comment.comment}}</p>
@@ -138,7 +157,16 @@
                 </ion-grid>
             </ion-col>
             <ion-col class="p-0 pl-md-3 m-0" col-sm-auto col-md-3>
-                <div class="bg-white cover">
+                <div class="cover bg-white">
+                  <div class="activity log" *ngIf="a.activity_log && a.activity_log.length">
+                    <h2 class="m-0 pt-0-5 pb-0-5 fs-110 fw-light bg-blue text-center white">Activity Log</h2>
+                    <ion-list>
+                      <ion-item *ngFor="let a of a.activity_log" text-wrap>
+                        <div><span *ngIf="a.name">{{a.name}}</span> {{ activity[a.activity] }} <span *ngIf="a.target">{{a.target}}</span></div>
+                        <div *ngIf="a.stamp">{{ a.stamp }}</div>
+                      </ion-item>
+                    </ion-list>
+                  </div>
                 </div>
             </ion-col>
         </ion-row>
@@ -188,7 +216,7 @@
         </ion-row> -->
         <ion-row class="mt-3">
             <ion-col class="p-0"  *ngIf="site_info.comment_from_teacher.length">
-                <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 pt-0-5 pb-0-5 text-center">Comment from Teachers without Name</h2>
+                <h2 ion-text color="white" class="fs-110 fw-light bg-blue m-0 pt-0-5 pb-0-5 text-center">Recent Evaluation</h2>
                 <ion-list text-wrap no-lines>
                     <div class="p-0 m-0 pl-3 border border-top-0 border-left-0 border-right-0" ion-item  *ngFor="let teacher_comment of site_info.comment_from_teacher">
                         <h2 class="fs-110">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
@@ -197,7 +225,9 @@
                 </ion-list>
             </ion-col>
         </ion-row>
-        <div>
+        <div  class="mt-3">
+
+          Activity Log
 
             <!-- <ion-card class="p-3">
       <h2 class="fs-4rem">Steps you need to do to become a teacher.</h2>
@@ -258,7 +288,7 @@
       <div>reservations: {{site_info.no_of_reservations}}</div>
       <div>past: {{site_info.no_of_past}}</div>
     </ion-card> -->
-            <!-- 
+            <!--
     <ion-card class="p-3" text-wrap>
       <h2>Recently graded teachers</h2>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_graded_teachers.length">
@@ -271,7 +301,7 @@
       </ion-slides>
     </ion-card> -->
 
-            <!-- 
+            <!--
     <ion-card class="p-3" text-wrap>
       <div>Comment from student</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_student.length">
@@ -310,7 +340,7 @@
                     </ion-slide>
                 </ion-slides>
             </ion-card> -->
-            <!-- 
+            <!--
     <ion-card class="p-3" text-wrap>
       <div>Recent reservations. without student name.</div>
       <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_reservations.length">
@@ -327,7 +357,7 @@
 
         </div>
 
-        <!-- 
+        <!--
   <h1>TEACHER GUIDELINE</h1>
   <ul>
     <li>Nickname should be less than or equal to 8 letters.</li>

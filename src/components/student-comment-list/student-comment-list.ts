@@ -23,6 +23,13 @@ export class StudentCommentList{
 
   error = null;
 
+  pageOption = {
+    limitPerPage: 10,
+    currentPage: 1,
+    limitPerNavigation: 4,
+    totalRecord: 0
+  };
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -40,23 +47,27 @@ export class StudentCommentList{
   loadCommentList() {
     let data = {
       idx_teacher:this.idx_teacher,
-      limit: this.limit
+      limit: this.pageOption.limitPerPage,
+      page: this.pageOption.currentPage
     };
     this.a.lms.get_student_comments_to_teacher(data).subscribe( (res:STUDENT_COMMENTS_TO_TEACHER) => {
-      console.log("get_comment_from_student_to_teaceher:: ", res);
-      if( res && res.length ) {
-        this.comments = res;
+      // console.log("get_comment_from_student_to_teaceher:: ", res);
+      if( res && res['comments'] && res['comments'].length ) {
+        this.comments = res['comments'];;
       } else {
         this.error = "No available review yet for this teacher."
       }
+      this.pageOption.currentPage = res['page'];
+      this.pageOption.limitPerPage = res['limit'];
+      this.pageOption.totalRecord = res['total']
     }, e => {
       this.a.alert(e);
     })
   }
 
   onClickDelete(comment){
-    console.log('user.id', this.a.user.id);
-    console.log("onClickDelete:: ", comment);
+    // console.log('user.id', this.a.user.id);
+    // console.log("onClickDelete:: ", comment);
 
     let confirm = this.alertCtrl.create({
       title: 'Delete Comment',
@@ -65,13 +76,13 @@ export class StudentCommentList{
         {
           text: 'Yes',
           handler: () => {
-            console.log('Yes');
+            // console.log('Yes');
             this.a.showLoader();
             let data = {
               idx: comment.idx
             };
             this.a.lms.student_comment_to_teacher_delete(data).subscribe( res => {
-              console.log("student_comment_to_teacher_delete:: ", res);
+              // console.log("student_comment_to_teacher_delete:: ", res);
               if( res['idx'] == comment.idx ) {
                 comment.idx = '';
                 this.a.alert("Comment Deleted...");
@@ -86,7 +97,7 @@ export class StudentCommentList{
         {
           text: 'cancel',
           handler: () => {
-            console.log('cancel');
+            // console.log('cancel');
           }
         }
       ]
@@ -121,4 +132,11 @@ export class StudentCommentList{
   onClickCancel() {
     this.viewCtrl.dismiss();
   }
+
+  onPostPageClick( $event ) {
+    this.pageOption['currentPage'] = $event;
+    this.loadCommentList();
+  }
+
+
 }

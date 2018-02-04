@@ -379,9 +379,9 @@ export class LMSService extends Base {
     return this.x.post(data);
   }
 
-  /**
-   * @deprecated
-   */
+  // /**
+  //  * @deprecated
+  //  */
   // stats() {
   //   return this.x.post({route: 'lms.stats'});
   // }
@@ -407,7 +407,7 @@ export class LMSService extends Base {
 
 
   get_student_comments_to_teacher(req) {
-    console.log("get_student_comments_to_teacher", req);
+    // console.log("get_student_comments_to_teacher", req);
     req['route'] = 'lms.get_student_comments_to_teacher';
     return this.x.post(req)
   }
@@ -424,10 +424,9 @@ export class LMSService extends Base {
     return this.x.post(req)
   }
 
-  get_latest_student_comment_to_teachers(){
-    return this.x.post({
-      route: 'lms.get_latest_student_comment_to_teachers',
-    });
+  get_latest_student_comment_to_teachers(req){
+    req['route'] =  'lms.get_latest_student_comment_to_teachers';
+    return this.x.post(req);
   }
 
   get_teacher_site_info(){

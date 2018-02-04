@@ -8,8 +8,8 @@
             </ion-col>
             <ion-col col-5 class="p-0 text-center" text-center>
 
-                <div class="fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
-                    {{ title }}
+                <div class="d-flex fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
+                    <div>{{ title }}</div>
                     <img class="h-8" src="assets/img/talk.png">
                 </div>
                 <ng-template #logo>
@@ -107,10 +107,13 @@
 
                 <div class="group default">
                     <ng-container *ngIf=" a.user.isLogout ">
+                        <div class="d-flex">
                             <div class="" (click)=" a.open('login') ">로그인</div>
-                            <div class="" (click)=" a.open('register') ">회원가입</div>
-                            <div class="" (click)=" a.open('help') ">{{ "HELP" | translate }}</div>
-                            <div>매일 25분 월 1만원</div>
+                            <div class="pl-2" (click)=" a.open('register') ">회원가입</div>
+                        </div>
+
+                        <div class="" (click)=" a.open('teacher-list') ">{{ "LEVELTEST" | translate }}</div>
+                        <div (click)=" a.open('student-adv') ">매일 25분 월 1만원</div>
                     </ng-container>
                     <ng-container *ngIf=" a.user.isLogin ">
                         <ng-container *ngIf=" ! a.newUser ; else NewUser">

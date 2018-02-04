@@ -1,3 +1,3 @@
-<section *ngIf=" a.page != 'home' && a.page != 'login' && a.page != 'register' && a.page != 'help' && a.page != 'teacher-list' && a.page != 'how-to-use' ">
+<section *ngIf=" showLoginBox && a.page != 'home' && a.page != 'login' && a.page != 'register' && a.page != 'help' && a.page != 'teacher-list' && a.page != 'how-to-use' ">
     <login-box-component></login-box-component>
 </section>
