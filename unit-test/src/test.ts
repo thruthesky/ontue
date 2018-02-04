@@ -45,7 +45,7 @@ class T {
     const t = new T();
     t.ok("Begin new test. at : " + (new Date).toLocaleString());
     await t.init({ headless: true, devtools: true });
-    await t.open('https://www.katalkenglish.com/');
+    await t.open('http://localhost:8100/');
     await t.click('page-home .header-login');
     await t.find('[name="email"]');
 
