@@ -137,7 +137,7 @@ export class AppService {
 
 
       db.collection("user-activity-log")
-        .orderBy("stamp", "desc")
+        .orderBy("stamp", "asc")
         .limit(10)
         .onSnapshot(shot => {
           this.activity_log = [];
@@ -147,12 +147,18 @@ export class AppService {
             // if( this.activity_log.length && this.activity_log[0]['idx_user'] != data['idx_user']
             //   && this.activity_log[0]['stamp'] != data['stamp'] )
               this.activity_log.push(doc.data());
+
+              console.log(this.activity_log);
           });
-          this.render();
+          this.render( 1000);
         }, error => {
           console.log("snap error::", error);
         });
 
+
+        // setInterval( () => {
+        //     this.onBeginPayment();
+        // }, 1000 );
 
 
       /// for page service
@@ -954,7 +960,7 @@ export class AppService {
 
     log(data) {
         data['stamp'] = (new Date).getTime();
-        // console.log(data);
+        console.log(data);
         this.firebase.db.collection("user-activity-log").add(data)
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
