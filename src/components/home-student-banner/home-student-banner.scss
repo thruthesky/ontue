@@ -22,11 +22,12 @@
         color: black;
         background-color: $bg-orange;
         text-align: center;
-        font-size: 2.5em;
+        font-size: 2.2em;
         .text {
           animation: delay2 1s 1;
           margin-top: 96px;
         }
+        .price { color: blue; }
         @media (min-width: $md) {
           padding-top: 20px;
           // wide screen
@@ -58,7 +59,7 @@
             }
             .text-2 {
               animation: delay2 1.8s 1;
-              margin-top: .5em;
+              margin-top: 1.5em;
               font-size: 1em;
             }
           }

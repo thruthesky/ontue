@@ -115,21 +115,24 @@ export class AppService {
         const db = this.firebase.db;
 
 
-        db.collection("user-activity-log")
-          .orderBy("stamp", "desc")
-          .limit(10)
-          .get().then( s => {
+        // TODO
+        // @todo do the realtime data reloading only on teacher theme.
 
-            // console.log("get::", s);
-          s.forEach(doc => {
-            console.log("get:forEach::", doc.data());
-            this.activity_log.push(doc.data());
-          });
-          console.log("get::", this.activity_log);
+      db.collection("user-activity-log")
+        .orderBy("stamp", "desc")
+        .limit(10)
+        .get().then( s => {
 
-        }).catch(error => {
-          console.log("Error getting document:", error);
+        // console.log("get::", s);
+        s.forEach(doc => {
+          console.log("get:forEach::", doc.data());
+          this.activity_log.push(doc.data());
         });
+        console.log("get::", this.activity_log);
+
+      }).catch(error => {
+        console.log("Error getting document:", error);
+      });
 
 
 
@@ -148,10 +151,6 @@ export class AppService {
         }, error => {
           console.log("snap error::", error);
         });
-
-
-
-
 
 
 
@@ -187,6 +186,7 @@ export class AppService {
             document.title = "OnTue.COM";
         }
     }
+
 
     /**
      * Gets LMS information from backend and saves into localStorage.
