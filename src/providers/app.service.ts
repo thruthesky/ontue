@@ -118,34 +118,35 @@ export class AppService {
         // TODO
         // @todo do the realtime data reloading only on teacher theme.
 
+      // db.collection("user-activity-log")
+      //   .orderBy("stamp", "desc")
+      //   .limit(10)
+      //   .get().then( s => {
+      //
+      //   // console.log("get::", s);
+      //   s.forEach(doc => {
+      //     console.log("get:forEach::", doc.data());
+      //     this.activity_log.push(doc.data());
+      //   });
+      //   console.log("get::", this.activity_log);
+      //
+      // }).catch(error => {
+      //   console.log("Error getting document:", error);
+      // });
+
+
+
       db.collection("user-activity-log")
         .orderBy("stamp", "desc")
         .limit(10)
-        .get().then( s => {
-
-        // console.log("get::", s);
-        s.forEach(doc => {
-          console.log("get:forEach::", doc.data());
-          this.activity_log.push(doc.data());
-        });
-        console.log("get::", this.activity_log);
-
-      }).catch(error => {
-        console.log("Error getting document:", error);
-      });
-
-
-
-      db.collection("user-activity-log")
-        .orderBy("stamp", "desc")
-        .limit(1)
         .onSnapshot(shot => {
+          this.activity_log = [];
           shot.forEach(doc => {
             console.log("onSnapshot::",doc.data());
-            let data = doc.data();
-            if( this.activity_log.length && this.activity_log[0]['idx_user'] != data['idx_user']
-              && this.activity_log[0]['stamp'] != data['stamp'] )
-              this.activity_log.unshift(doc.data());
+            // let data = doc.data();
+            // if( this.activity_log.length && this.activity_log[0]['idx_user'] != data['idx_user']
+            //   && this.activity_log[0]['stamp'] != data['stamp'] )
+              this.activity_log.push(doc.data());
           });
           this.render();
         }, error => {
