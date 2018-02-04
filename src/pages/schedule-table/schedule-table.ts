@@ -221,8 +221,14 @@ export class ScheduleTablePage {
       }
       else {
         this.days = 6;
-        this.class_begin_hour = 18;
-        this.class_end_hour = 22;
+        /**
+         * @todo @attention You will need to change this value later when there are many schedules.
+         *  But as of 2018-02-05. There are only few teachers with few schedules.
+         *  So, show all the schedules by default.
+         *  @todo And the problem here is that student timezone.
+         */
+        this.class_begin_hour = 0;
+        this.class_end_hour = 24;
       }
       // console.log("platforms: ", this.platform.platforms());
       if ( this.platform.is('core') ) {

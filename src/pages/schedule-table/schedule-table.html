@@ -223,8 +223,9 @@
 
         </ion-list>
 
+
         <div class="buttons mb-7 d-flex justify-content-center">
-          <button class="red pt-0 px-5" (click)="display_options = false">
+          <button class="red p-5" (click)="display_options = false">
             <i class="fal fa-times"></i> {{ 'CLOSE' | translate }}
           </button>
         </div>
@@ -236,7 +237,7 @@
 
 
 
-      <div class="buttons d-flex justify-content-between mt-4 mb-4">
+      <div class="buttons d-flex justify-content-between mt-4 mb-4 px-md-3">
         <div>
           <span class="black" (click)="onClickNavigate('previous-week')">
             <ion-icon name="arrow-back"></ion-icon> {{ 'PREVIOUS WEEK' | translate }}</span>
@@ -365,13 +366,14 @@
       <!--/schedule-body-table-->
 
 
-    </section>
-    <!--/schedule-table-->
-
-
     <div class="m-5 p-5 text-center" *ngIf=" no_more_schedule && ! singleTeacher">
       앗, 더 이상 수업 시간표가 없습니다. 옵션을 통해서 더 많은 수업 시간표를 출력 할 수 있습니다.
     </div>
+
+
+    </section>
+    <!--/schedule-table-->
+
 
 
   </div>

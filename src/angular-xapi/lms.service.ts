@@ -139,6 +139,7 @@ export class LMSService extends Base {
 
   }
 
+
   timezone(): Observable<string> {
     const data = {
       route: 'lms.timezone_info',
