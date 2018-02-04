@@ -43,14 +43,13 @@ class T {
 
 (async () => {
     const t = new T();
-    t.ok("Begin new test ... at : " + (new Date).toLocaleString());
-    await t.init({ headless: false, devtools: true });
+    t.ok("Begin new test. at : " + (new Date).toLocaleString());
+    await t.init({ headless: true, devtools: true });
     await t.open('https://www.katalkenglish.com/');
     await t.click('page-home .header-login');
     await t.exist('[name="email"]');
 
     await t.clickExist('.header-register', '[name="nickname"]');
-
-    await t.wait(500000);
+    // await t.wait(500000);
     await t.end();
 })();
