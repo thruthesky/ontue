@@ -184,6 +184,7 @@ export class AppService {
         }
     }
 
+    
     /**
      * Gets LMS information from backend and saves into localStorage.
      * @note to get LMS information after loading from backend, use
