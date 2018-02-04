@@ -12,19 +12,19 @@ class T {
     }
     async click(selector) {
         await this.wait(500);
-        await this.page.waitForSelector(selector, { timeout: 10000 }).catch(e => this.error('Cannot find: ' + selector));
+        await this.page.waitForSelector(selector, { timeout: 7000 }).catch(e => this.error('click() : Cannot find: ' + selector));
         await this.page.click(selector);
     }
-    async exist(selector) {
+    async find(selector, message = '') {
         await this.wait(500);
         await this.page.waitForSelector(selector, { timeout: 1000 })
-            .then(x => this.ok(`${selector} exists.`))
-            .catch(e => this.error('exits() cannot find: ' + selector));
+            .then(x => this.ok(`${selector} found. message: ${message}`))
+            .catch(e => this.error('find() cannot find: ' + selector));
 
     }
-    async clickExist( click_selector, exist_selector ) {
-        await this.click( click_selector );
-        await this.exist( exist_selector );
+    async clickFind( o ) {
+        await this.click( o['click'] );
+        await this.find( o['find'], o['message'] );
     }
     async wait(n) {
         await this.page.waitFor(n);
@@ -43,13 +43,25 @@ class T {
 
 (async () => {
     const t = new T();
-    t.ok("Begin new test ... at : " + (new Date).toLocaleString());
-    await t.init({ headless: false, devtools: true });
-    await t.open('https://www.katalkenglish.com/');
+    t.ok("Begin new test. at : " + (new Date).toLocaleString());
+    await t.init({ headless: true, devtools: true });
+    await t.open('http://localhost:8100/');
     await t.click('page-home .header-login');
-    await t.exist('[name="email"]');
+    await t.find('[name="email"]');
 
-    await t.clickExist('.header-register', '[name="nickname"]');
+    const rules = [
+        { click: '.header-register', find: '[name="nickname"]', message: 'Register page opened.'},
+        { click: '.header-adv', find: '.where', message: 'Student Adv page opened.'},
+        { click: '.header-leveltest', find: '.teacher-profile-photo', message: 'Level test page opened.'},
+        { click: '.teacher-profile-photo', find: '.teacher-profile-photo', message: 'Schedule table page opened.'},
+    ];
+
+    for( const rule of rules ) {
+        await t.clickFind( rule );
+    }
+
+
+    
 
     await t.wait(500000);
     await t.end();
