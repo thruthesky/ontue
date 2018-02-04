@@ -171,22 +171,45 @@ export class AppService {
           });
 
 
+          // db.collection("user-activity-log")
+          //   .orderBy("stamp", "desc")
+          //   .limit(1)
+          //   .onSnapshot(shot => {
+          //     shot.forEach(doc => {
+          //       // console.log("onSnapshot::",doc.data());
+          //
+          //       // let data = doc.data();
+          //       // if( this.activity_log.length && this.activity_log[0]['idx_user'] != data['idx_user']
+          //       //   && this.activity_log[0]['stamp'] != data['stamp'] )
+          //       this.activity_log.push(doc.data());
+          //
+          //       // console.log(this.activity_log);
+          //     });
+          //     // this.render( 1000);
+          //   }, error => {
+          //     console.log("snap error::", error);
+          //   });
+
+
           db.collection("user-activity-log")
             .orderBy("stamp", "desc")
             .limit(1)
             .onSnapshot(shot => {
-              this.activity_log = [];
-              shot.forEach(doc => {
-                // console.log("onSnapshot::",doc.data());
-
-                // let data = doc.data();
-                // if( this.activity_log.length && this.activity_log[0]['idx_user'] != data['idx_user']
-                //   && this.activity_log[0]['stamp'] != data['stamp'] )
-                this.activity_log.push(doc.data());
-
-                // console.log(this.activity_log);
+              shot.docChanges.forEach((change) => {
+                if (change.type === "added") {
+                  console.log("New: ", change.doc.data());
+                  let data = change.doc.data();
+                  if (this.activity_log.length && this.activity_log[0]['idx_user'] != data['idx_user']
+                    && this.activity_log[0]['stamp'] != data['stamp'])
+                    this.activity_log.unshift(data);
+                }
+                if (change.type === "modified") {
+                  console.log("Modified: ", change.doc.data());
+                }
+                if (change.type === "removed") {
+                  console.log("Removed: ", change.doc.data());
+                }
               });
-              // this.render( 1000);
             }, error => {
               console.log("snap error::", error);
             });
