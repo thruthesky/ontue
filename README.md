@@ -74,6 +74,15 @@ $  ionic cordova run android --livereload --address=192.168.0.2 // [MACBOOK_INTE
 
 ````
 
+# Test
+
+````
+$ cd unit-teset
+$ npm i
+$ tsc
+$ npm run test
+````
+
 # Publish
 
 
