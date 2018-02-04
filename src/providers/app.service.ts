@@ -138,7 +138,7 @@ export class AppService {
 
       db.collection("user-activity-log")
         .orderBy("stamp", "desc")
-        .limit(10)
+        .limit(1)
         .onSnapshot(shot => {
           this.activity_log = [];
           shot.forEach(doc => {
