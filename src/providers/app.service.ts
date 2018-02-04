@@ -937,40 +937,40 @@ export class AppService {
 
 
 
-db.collection(firestoreLogCollection)
-    .orderBy("stamp", "desc")
-    .limit(10)
-    .get().then(s => {
-        s.forEach(doc => {
-            let data = doc.data();
-            data['id'] = doc.id;
-            data['date'] = this.serverTime(data['stamp']);
-            this.activity_log.push(data);
-        });
-    }).catch(error => {
-        console.log("Error getting document:", error);
-    });
+        db.collection(firestoreLogCollection)
+            .orderBy("stamp", "desc")
+            .limit(10)
+            .get().then(s => {
+                s.forEach(doc => {
+                    let data = doc.data();
+                    data['id'] = doc.id;
+                    data['date'] = this.serverTime(data['stamp']);
+                    this.activity_log.push(data);
+                });
+            }).catch(error => {
+                console.log("Error getting document:", error);
+            });
 
-db.collection(firestoreLogCollection)
-    .orderBy("stamp", "desc")
-    .limit(1)
-    .onSnapshot(shot => {
-        shot.forEach(doc => {
-            let data = doc.data();
-            data['id'] = doc.id;
-            data['date'] = this.serverTime(data['stamp']);
-            const i = this.activity_log.findIndex(v => v['id'] == doc.id);
-            if (i != -1) {
-                this.activity_log[i] = data;
-            }
-            else {
-                this.activity_log.unshift(data);
-                this.activity_log.pop();
-            }
-        });
-    }, error => {
-        console.log("snap error::", error);
-    });
+        db.collection(firestoreLogCollection)
+            .orderBy("stamp", "desc")
+            .limit(1)
+            .onSnapshot(shot => {
+                shot.forEach(doc => {
+                    let data = doc.data();
+                    data['id'] = doc.id;
+                    data['date'] = this.serverTime(data['stamp']);
+                    const i = this.activity_log.findIndex(v => v['id'] == doc.id);
+                    if (i != -1) {
+                        this.activity_log[i] = data;
+                    }
+                    else {
+                        this.activity_log.unshift(data);
+                        this.activity_log.pop();
+                    }
+                });
+            }, error => {
+                console.log("snap error::", error);
+            });
     }
 
     serverTime(obj) {
