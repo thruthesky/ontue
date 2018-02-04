@@ -113,6 +113,10 @@ export class AppService {
 
 
         const db = this.firebase.db;
+
+        // TODO
+        // @todo do the realtime data reloading only on teacher theme.
+
         // db.collection("user-activity-log")
         //   .orderBy("stamp", "desc")
         //   .limit(10)
