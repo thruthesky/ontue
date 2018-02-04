@@ -1,0 +1,13 @@
+<div class="cover-by-2 overflowhidden-y bg-white">
+    <h2  class="fs-110 fw-light bg-blue m-0 py-3  text-center" ion-text color="white">Recently Graded Teachers</h2>
+    <ion-list no-lines>
+        <ion-item class="pointer border border-left-0 border-right-0 border-bottom-0" (click)="a.open('schedule-table', { ID: teacher.ID })" *ngFor="let teacher of teachers">
+            <ion-avatar item-start>
+                    <img [src]="a.checkPhotoURL(teacher.photoURL)">
+            </ion-avatar>
+            <h3>{{a.preTeacherName(teacher.display_name)}}</h3>
+            <p class="fs-lg">Grade: 1</p>
+            <sup item-end>02-02-18</sup>
+        </ion-item>
+    </ion-list>
+</div>

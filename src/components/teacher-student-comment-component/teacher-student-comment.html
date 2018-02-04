@@ -1,0 +1,47 @@
+<div class="cover-by-2  overflowhidden-y bg-white">
+        <h2 class="fs-110 fw-light m-0 py-3 bg-blue text-center" ion-text color="white">Student's Comment</h2>
+        <ion-list no-lines>
+            <ion-item class="border border-top-0 border-left-0 border-right-0 pointer"
+                    *ngFor="let student_comment of student_comments"
+                    (click)="onClickCommentList(student_comment.idx_teacher)"
+                >
+                <ion-avatar item-start>
+                    <img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
+                </ion-avatar>
+                <h3>{{a.preTeacherName(student_comment.teacher_name)}}
+                    <div class="ml-2 d-inline-block">
+
+                        <span *ngIf="student_comment.rate < 1"><i class="fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="student_comment.rate >= 1"><i class="fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="student_comment.rate < 2"><i class="fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="student_comment.rate >= 2"><i class="fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="student_comment.rate < 3"><i class="fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="student_comment.rate >= 3"><i class="fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="student_comment.rate < 4"><i class="fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="student_comment.rate >= 4"><i class="fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="student_comment.rate < 5"><i class="fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="student_comment.rate >= 5"><i class="fas fa-star" ion-text color="yellow"></i></span>
+
+                    </div>
+                </h3>
+                <p class="fs-md">{{student_comment.comment}}</p>
+            </ion-item>
+        </ion-list>
+        </div>
+<!-- <div class="cover-by-2 overflowhidden-y bg-white">
+    <h2  class="fs-110 fw-light bg-blue m-0 py-3  text-center" ion-text color="white">Recently Graded Teachers</h2>
+    <ion-list no-lines>
+        <ion-item class="pointer border border-left-0 border-right-0 border-bottom-0" (click)="a.open('schedule-table', { ID: teacher.ID })" *ngFor="let teacher of teachers">
+            <ion-avatar item-start>
+                    <img [src]="a.checkPhotoURL(teacher.photoURL)">
+            </ion-avatar>
+            <h3>{{a.preTeacherName(teacher.display_name)}}</h3>
+            <p class="fs-lg">Grade-1</p>
+            <sup item-end>02-02-18</sup>
+        </ion-item>
+    </ion-list>
+</div> -->
