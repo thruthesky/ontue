@@ -54,6 +54,11 @@ class T {
         { click: '.header-adv', find: '.where', message: 'Student Adv page opened.'},
         { click: '.header-leveltest', find: '.teacher-profile-photo', message: 'Level test page opened.'},
         { click: '.teacher-profile-photo', find: '.teacher-profile-photo', message: 'Schedule table page opened.'},
+        { click: '.header-schedule-available', find: 'schedule-available-page', message: 'Instant book page opended'},
+        { click: '.header-class-comment', find: '.comment-wrapper', message: 'Class comment page opended'},
+        { click: '.header-class-payment', find: 'payment-page', message: 'Payment page opended'},
+        { click: '.header-class-help', find: '.part.qna', message: 'Help page opended'},
+        { click: '.header-class-menu', find: '.menu-schedule-table', message: 'Menu page opended'},
     ];
 
     for( const rule of rules ) {
