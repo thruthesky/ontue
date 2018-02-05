@@ -19,7 +19,7 @@ class T {
         await this.wait(500);
         await this.page.waitForSelector(selector, { timeout: 1000 })
             .then(x => this.ok(`${selector} found. message: ${message}`))
-            .catch(e => this.error('find() cannot find: ' + selector));
+            .catch(e => this.error('find() cannot find: ' + selector + ' message: ' + message));
 
     }
     async clickFind( o ) {
@@ -45,11 +45,13 @@ class T {
     const t = new T();
     t.ok("Begin new test. at : " + (new Date).toLocaleString());
     await t.init({ headless: true, devtools: true });
-    await t.open('http://localhost:8100/');
-    await t.click('page-home .header-login');
-    await t.find('[name="email"]');
+    await t.open('http://www.katalkenglish.com');
+    await t.wait(1000);
+    await t.find('.teacher-profile-photo', "First page is not homepage. The website is down? or is there any debugging code to redirect a sub page?");
 
     const rules = [
+        // { click: '.header-home', find: '.teacher-profile-photo', message: 'Home page opened.'},
+        { click: '.header-login', find: '[name="email"]', message: 'Login page opened.'},
         { click: '.header-register', find: '[name="nickname"]', message: 'Register page opened.'},
         { click: '.header-adv', find: '.where', message: 'Student Adv page opened.'},
         { click: '.header-leveltest', find: '.teacher-profile-photo', message: 'Level test page opened.'},
@@ -66,8 +68,6 @@ class T {
         await t.clickFind( rule );
     }
 
-
-    
 
     await t.wait(5000000);
     await t.end();

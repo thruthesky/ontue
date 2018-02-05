@@ -890,7 +890,9 @@ export class AppService {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'update-profile' });
     }
 
-    onLmsReserve(teacher_name) {
+
+    onLmsReserve( teacher_name ) {
+        if ( ! teacher_name ) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'reserve', target: teacher_name });
     }
     /**
@@ -901,7 +903,9 @@ export class AppService {
     onLmsCancel(teacher_name = '') {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'cancel', target: teacher_name });
     }
-    onUserViewProfile(teacher_name) {
+
+    onUserViewProfile( teacher_name ) {
+        if ( ! teacher_name ) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'view-profile', target: teacher_name });
     }
     onBeginPayment() {

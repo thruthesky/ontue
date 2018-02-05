@@ -290,6 +290,10 @@
       </div>
 
 
+      <div class="mt-2 mb-4 p-5 bg-orange black fs-2rem text-center" *ngIf=" a.user.isLogout ">
+        앗! 로그인을 해야지만 수업 시간을 확인 할 수 있습니다.
+      </div>
+
 
       <div class="table schedule-table" *ngIf=" schedule_table_rows.length " width="100%">
 
@@ -324,7 +328,7 @@
             </div>
 
             <div class="td session-datetime pt-2 text-center">
-              <div>
+              <div *ngIf=" a.user.isLogin ">
                 {{ session_time( sessions[0] ) }}
               </div>
               <div>

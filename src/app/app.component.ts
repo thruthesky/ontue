@@ -185,7 +185,7 @@ export class MyApp {
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
     // this.a.open('schedule-table', { ID: 806 }); /// tabetha
     // this.a.open('schedule-table', { ID: 945 }); /// Teacher
-
+    // this.a.open('schedule-table', { ID: 124 }); /// Kevin. Ontue Teacher.
 
     // this.a.open('schedule-table', { ID: 137 }); /// teacher21
     // this.a.open('schedule-table', { ID: 138 }); /// teacher22
@@ -242,7 +242,7 @@ export class MyApp {
     // this.a.open('session-future');
     // this.a.open('password-change');
 
-    // this.a.open('schedule-available');
+    this.a.open('schedule-available');
     // this.a.open('help');
 
 
