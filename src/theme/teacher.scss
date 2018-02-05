@@ -46,7 +46,7 @@ ion-nav.teacher {
         .cover-header{height: 3em!important}
         .cover-content{height: 30em!important}
         .cover-by-2{height: calc(32.28em/2)!important}
-        .cover-by-4{height: calc(32.28em/4)!important}
+        .cover-by-4{height: calc(32.27em/4)!important}
         .flex-column{flex-direction: column!important}
         .fw-light{font-weight: lighter!important}
         .pr-0-5{padding-right: 0.5rem!important}
@@ -55,6 +55,15 @@ ion-nav.teacher {
         .pb-0-5{padding-bottom: 0.5rem!important}
         .line-h-2em{line-height: 2em!important}
 
+        
+        .outline-effect{  
+            box-shadow: 0 0.5px 1px rgba(0,0,0,0.32)!important;
+            margin-left: 1px!important;
+        }
+        .outline-effect-right{  
+            box-shadow: 0 0.5px 1px rgba(0,0,0,0.32)!important;
+            margin-right: 1px!important;
+        }
     }
                 // .page {
         //     background-color: #f3f3f3;

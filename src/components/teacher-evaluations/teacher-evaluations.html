@@ -1,8 +1,10 @@
-<h2  class="fs-110 fw-light bg-blue m-0 py-3 text-center" ion-text color="white">Recent Evaluation</h2>
-<ion-list text-wrap no-lines>
-    <div class="p-0 m-0 pl-3 border border-top-0 border-left-0 border-right-0" ion-item  *ngFor="let teacher_comment of evaluations">
-        <img [src]="a.checkPhotoURL(evaluations.teacher_photoURL)" item-start>
-        <h2 class="fs-110">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
-        <p class="fw-light line-h-2em">{{ teacher_comment.comment }}</p>
-    </div>
-</ion-list>
+<div class="m-0 outline-effect outline-effect-right rounded">
+    <h2  class="fs-xl fw-light bg-blue m-0 py-4 text-center" ion-text color="white">Recent Evaluation</h2>
+    <ion-list text-wrap no-lines>
+        <div class="p-0 m-0 pl-3 border border-bottom-0 border-left-0 border-right-0" ion-item  *ngFor="let teacher_comment of evaluations">
+            <img [src]="a.checkPhotoURL(evaluations.teacher_photoURL)" item-start>
+            <h2 class="fs-110">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
+            <p class="fw-light line-h-2em">{{ teacher_comment.comment }}</p>
+        </div>
+    </ion-list>
+</div>
