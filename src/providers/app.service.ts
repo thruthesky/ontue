@@ -15,10 +15,13 @@ declare let FCMPlugin;
 
 const KEY_LMS_INFO = 'lms-info';
 
+
 import * as firebase from "firebase";
 import "firebase/firestore"; // required for side-effect??? @see https://firebase.google.com/docs/firestore/quickstart?authuser=0
+import { firestore } from 'firebase';
 
 
+const firestoreLogCollection = 'user-activity-log-2';
 const firebaseConfig = {
     apiKey: "AIzaSyCF9jsyLjQEDi4963DpOYi2wV0j19XSM2Q",
     authDomain: "ontue-30fb9.firebaseapp.com",
@@ -112,45 +115,6 @@ export class AppService {
         this.firebase.messaging = firebase.messaging();
 
 
-        const db = this.firebase.db;
-
-        // TODO
-        // @todo do the realtime data reloading only on teacher theme.
-
-        // db.collection("user-activity-log")
-        //   .orderBy("stamp", "desc")
-        //   .limit(10)
-        //   .get().then( s => {
-        //
-        //   // console.log('snap::', s);
-        //   s.forEach(doc => {
-        //     console.log("get:", doc.data());
-        //     this.activity_log.unshift(doc.data());
-        //   });
-        // }).catch(error => {
-        //   console.log("Error getting document:", error);
-        // });
-
-
-
-        // let first = true;
-        db.collection("user-activity-log")
-            .orderBy("stamp", "desc")
-            .limit(10)
-            .onSnapshot(shot => {
-                // if(first){
-                //   first = false;
-                //   return;
-                // }
-
-                shot.forEach(doc => {
-                    // console.log("onSnapshot::",doc.data());
-                    // this.activity_log.unshift(doc.data());
-                    // console.log(this.activity_log);
-                });
-            });
-
-
         /// for page service
         window['a'] = {
             open: this.open.bind(this),
@@ -177,11 +141,10 @@ export class AppService {
         }, 500);
 
 
-        /// change webbrowser title for teacher.
-        /// google crawler will run javascript.
-        if ( this.teacherTheme ) {
+        if (this.teacherTheme) {
             document.title = "OnTue.COM";
         }
+        this.listenActivityLog();
     }
 
 
@@ -224,7 +187,7 @@ export class AppService {
     }
 
     lmsInfoCancellableMinutes() {
-        if ( this.info && this.info['MAX_CANCELLABLE_TIME'] ) {
+        if (this.info && this.info['MAX_CANCELLABLE_TIME']) {
             return parseInt(this.info['MAX_CANCELLABLE_TIME']) / 60;
         }
         else return 0;
@@ -701,7 +664,7 @@ export class AppService {
     get studentTheme() {
 
 
-        // COMMENT OUT FOR REAL CASE o
+        // COMMENT OUT FOR REAL CASE
         // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
 
 
@@ -830,7 +793,7 @@ export class AppService {
     updatePushToken() {
         let platform = 'web';
         if (this.isApp()) platform = 'app';
-        if ( ! this.pushToken ) {
+        if (!this.pushToken) {
             console.log("updatePushToken(): token is empty. It will not update. just return.");
             return;
         }
@@ -910,6 +873,7 @@ export class AppService {
     onUserLogin() {
         this.updatePushToken();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'login' });
+        // console.log("userLogin::Log::");
     }
     /**
      * This method is being called when a user opens 'register' page.
@@ -926,6 +890,7 @@ export class AppService {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'update-profile' });
     }
 
+
     onLmsReserve( teacher_name ) {
         if ( ! teacher_name ) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'reserve', target: teacher_name });
@@ -935,9 +900,10 @@ export class AppService {
      * If a sesison is cancelled on session reservation list, then there will be no name on teacher name variable.
      * @param teacher_name teacher name of the session
      */
-    onLmsCancel( teacher_name = '' ) {
+    onLmsCancel(teacher_name = '') {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'cancel', target: teacher_name });
     }
+
     onUserViewProfile( teacher_name ) {
         if ( ! teacher_name ) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'view-profile', target: teacher_name });
@@ -945,23 +911,78 @@ export class AppService {
     onBeginPayment() {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'payment' });
     }
-    onTeacherEvaluateSession( student_name = '') {
-        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'evaluate', target: student_name  });
+    onTeacherEvaluateSession(student_name = '') {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'evaluate', target: student_name });
     }
-    onStudentCommentToTeacher( teacher_name = '') {
-        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'comment', target: teacher_name  });
+    onStudentCommentToTeacher(teacher_name = '') {
+        this.log({ idx_user: this.user.id, name: this.user.name, activity: 'comment', target: teacher_name });
     }
 
 
     log(data) {
-        data['stamp'] = (new Date).getTime();
+        // data['name'] = 'test' + (new Date).getTime();
+        data['stamp'] = firestore.FieldValue.serverTimestamp();
         // console.log(data);
-        this.firebase.db.collection("user-activity-log").add(data)
-            .then(function (docRef) {
+        const col = this.firebase.db.collection(firestoreLogCollection);
+        col.add(data)
+            .then((docRef) => {
                 // console.log("Document written with ID: ", docRef.id);
+                // col.doc( docRef.id ).get().then( doc => console.log('got doc: ', doc.data()));
             })
-            .catch(function (error) {
-                // console.error("Error adding document: ", error);
+            .catch((error) => {
+                console.error("Error adding document: ", error);
             });
     }
+
+    listenActivityLog() {
+
+        if (!this.teacherTheme) return;
+        const db = this.firebase.db;
+
+
+
+        db.collection(firestoreLogCollection)
+            .orderBy("stamp", "desc")
+            .limit(10)
+            .get().then(s => {
+                s.forEach(doc => {
+                    let data = doc.data();
+                    data['id'] = doc.id;
+                    data['date'] = this.serverTime(data['stamp']);
+                    this.activity_log.push(data);
+                });
+            }).catch(error => {
+                console.log("Error getting document:", error);
+            });
+
+        db.collection(firestoreLogCollection)
+            .orderBy("stamp", "desc")
+            .limit(1)
+            .onSnapshot(shot => {
+                shot.forEach(doc => {
+                    let data = doc.data();
+                    data['id'] = doc.id;
+                    data['date'] = this.serverTime(data['stamp']);
+                    const i = this.activity_log.findIndex(v => v['id'] == doc.id);
+                    if (i != -1) {
+                        this.activity_log[i] = data;
+                    }
+                    else {
+                        this.activity_log.unshift(data);
+                        this.activity_log.pop();
+                    }
+                });
+            }, error => {
+                console.log("snap error::", error);
+            });
+    }
+
+    serverTime(obj) {
+
+        let d = new Date(obj);
+
+        return d.toLocaleTimeString();
+
+    }
+
 }

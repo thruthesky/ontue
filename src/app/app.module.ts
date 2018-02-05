@@ -101,6 +101,14 @@ import { TeacherPolicyComponent } from '../components/teacher-policy/teacher-pol
 import { TeacherHeaderComponent } from '../components/teacher-header/teacher-header';
 import { TeacherIntro2Component } from '../components/teacher-intro2/teacher-intro2';
 import { PageNavigatorComponent } from '../components/page-navigator/page-navigator';
+import { TeacherRemindersComponent } from '../components/teacher-reminders/teacher-reminders';
+import { TeacherGradingSystemComponent } from '../components/teacher-grading-system/teacher-grading-system';
+import { TeacherGuidelinesComponent } from '../components/teacher-guidelines/teacher-guidelines';
+import { GradedTeachersComponent } from '../components/graded-teachers/graded-teachers';
+import { TeacherStatisticsComponent } from '../components/teacher-statistics/teacher-statistics';
+import { TeacherStudentCommentComponent } from '../components/teacher-student-comment-component/teacher-student-comment';
+import { TeacherReservationsComponent } from '../components/teacher-reservations/teacher-reservations';
+import { TeacherEvaluationsComponent } from '../components/teacher-evaluations/teacher-evaluations';
 
 
 
@@ -179,7 +187,15 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherIntro2Component,
     StudentRegisterSuccessPage,
     PageNavigatorComponent,
-    StudentAdvPage
+    StudentAdvPage,
+    TeacherRemindersComponent,
+    TeacherGradingSystemComponent,
+    TeacherGuidelinesComponent,
+    GradedTeachersComponent,
+    TeacherStatisticsComponent,
+    TeacherStudentCommentComponent,
+    TeacherReservationsComponent,
+    TeacherEvaluationsComponent
   ],
   imports: [
     BrowserModule,
@@ -252,7 +268,16 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherIntro2Component,
     StudentRegisterSuccessPage,
     PageNavigatorComponent,
-    StudentAdvPage
+    StudentAdvPage,
+    TeacherRemindersComponent,
+    TeacherGradingSystemComponent,
+    TeacherGuidelinesComponent,
+    GradedTeachersComponent,
+    TeacherStatisticsComponent,
+    TeacherStudentCommentComponent,
+    TeacherReservationsComponent,
+    TeacherEvaluationsComponent
+  
   ],
   providers: [
     // StatusBar,

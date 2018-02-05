@@ -107,7 +107,7 @@ export class TeacherCurriculumVitaePage {
       this.account.kakao_qrmark_URL = userData.kakao_qrmark_URL;
       if ( this.account.kakao_qrmark_URL && ! this.account.kakao_qrmark_string ) {
         this.a.lms.update_kakao_qrmark_string().subscribe( re => {
-          console.log( re );
+          // console.log( re );
           if ( re['kakao_qrmark_string'] ) {
             this.account.kakao_qrmark_string = re['kakao_qrmark_string'];
           }

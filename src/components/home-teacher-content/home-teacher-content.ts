@@ -78,5 +78,4 @@ export class HomeTeacherContentComponent implements OnInit {
     modal.present();
   }
 
-
 }
