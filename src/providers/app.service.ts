@@ -113,6 +113,10 @@ export class AppService {
 
 
         const db = this.firebase.db;
+
+        // TODO
+        // @todo do the realtime data reloading only on teacher theme.
+
         // db.collection("user-activity-log")
         //   .orderBy("stamp", "desc")
         //   .limit(10)
@@ -140,7 +144,7 @@ export class AppService {
                 // }
 
                 shot.forEach(doc => {
-                    console.log("onSnapshot::",doc.data());
+                    // console.log("onSnapshot::",doc.data());
                     // this.activity_log.unshift(doc.data());
                     // console.log(this.activity_log);
                 });
@@ -179,6 +183,7 @@ export class AppService {
             document.title = "OnTue.COM";
         }
     }
+
 
     /**
      * Gets LMS information from backend and saves into localStorage.
@@ -825,6 +830,10 @@ export class AppService {
     updatePushToken() {
         let platform = 'web';
         if (this.isApp()) platform = 'app';
+        if ( ! this.pushToken ) {
+            console.log("updatePushToken(): token is empty. It will not update. just return.");
+            return;
+        }
         this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
             // console.log("Token updated:");
         }, e => console.error(e));

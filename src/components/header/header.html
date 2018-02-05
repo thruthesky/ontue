@@ -10,7 +10,7 @@
 
                 <div class="d-flex fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
                     <div>{{ title }}</div>
-                    <img class="h-8" src="assets/img/talk.png">
+                    <img class="h-8 pl-2" src="assets/img/talk.png">
                 </div>
                 <ng-template #logo>
                     <div class="pt-2 pointer text-center" text-center (click)="a.open('home')">
@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="" (click)=" a.open('teacher-list') ">{{ "LEVELTEST" | translate }}</div>
-                        <div (click)=" a.open('student-adv') ">매일 25분 월 1만원</div>
+                        <div (click)=" a.open('student-adv') ">월 20회 1만원</div>
                     </ng-container>
                     <ng-container *ngIf=" a.user.isLogin ">
                         <ng-container *ngIf=" ! a.newUser ; else NewUser">
@@ -171,14 +171,23 @@
             </ion-col>
 
             <ion-col *ngIf=" a.user.isLogin ">
-                <div class="item header-reservation blue" (click)=" a.open('session-future') ">
-                    <div class="icon">
-                        <i class="fal fa-indent"></i>
+                    <div class="item header-reservation blue" (click)=" a.open('session-future') ">
+                        <div class="icon">
+                            <i class="fal fa-indent"></i>
+                        </div>
+                        <div class="text">{{ 'RESERVATIONS' | translate }}</div>
                     </div>
-                    <div class="text">{{ 'RESERVATIONS' | translate }}</div>
-                </div>
-            </ion-col>
+                </ion-col>
 
+                <ion-col *ngIf=" a.user.isLogout ">
+                        <div class="item header-adv blue" (click)=" a.open('student-adv') ">
+                            <div class="icon">
+                                <i class="fal fa-usd-circle"></i>
+                            </div>
+                            <div class="text">{{ 'ADV MENU' | translate }}</div>
+                        </div>
+                    </ion-col>
+            
 
             <ion-col *ngIf=" ! a.newUser ">
                 <div class="item header-teacher-list" (click)="a.open( 'teacher-list' )">

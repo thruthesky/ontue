@@ -1,0 +1,21 @@
+{
+  "name": "unit-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node dist/test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/puppeteer": "^1.0.0",
+    "puppeteer": "^1.0.0",
+    "typescript": "^2.7.1",
+    "typings": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.0"
+  }
+}

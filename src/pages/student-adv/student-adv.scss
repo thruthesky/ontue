@@ -1,3 +1,45 @@
-student-adv {
-    font-size: 2rem!important;
+student-adv-page {
+    .page-body {
+        padding: 1em;
+        @media ( min-width: $md ) {
+            padding: 3em;
+        }
+        font-size: 1.9rem;
+        @media ( min-width: $md ) {
+            font-size: 2.2em;
+        }
+        text-align: center;
+        & > div {
+            padding-top: 3em;
+            line-height: 200%;
+        }
+
+        .why {
+            img {
+                width: 160px;
+                @media ( min-width: $md ) {
+                    width: 240px;
+                }
+            }
+        }
+        .where, .office, .uber, .bubble {
+            img {
+                border-radius: 50%;
+                width: 240px;
+                @media ( min-width: $md ) {
+                    width: 320px;
+                }
+            }
+        }
+        
+        .yes, .surprise {
+            img {
+                width: 240px;
+                @media ( min-width: $md ) {
+                    width: 320px;
+                }
+            }
+        }
+        
+    }
 }
