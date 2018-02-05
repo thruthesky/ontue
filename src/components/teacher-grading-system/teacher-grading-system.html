@@ -1,53 +1,47 @@
 <div class="bg-white m-0 p-0 h-100 outline-effect">
   <ion-list class="p-0 m-0" text-wrap no-lines>
-    <h2  class="fs-110 fw-light bg-blue m-0 py-3 text-center" ion-text color="white">Teacher Grading System</h2>
+    <div class="bg-blue d-flex align-items-center justify-content-between px-3">
+        <h2 class="fs-110 fw-light m-0 py-3" ion-text color="white">Teacher Grading System</h2>
+        <ion-buttons>
+            <button clear ion-button icon-only color="white" (click)="previous()"><ion-icon  name="arrow-dropleft"></ion-icon></button>
+            <button clear ion-button icon-only color="white" (click)="next()"><ion-icon  name="arrow-dropright"></ion-icon></button>
+        </ion-buttons>
+    </div>
     <ion-item class="p-0 m-0 pl-3">
-      <ul class="p-0 mt-3">
-        <li>
-            <div class="fs-110 fw-bold">Grade 1 <i class="fa fa-star"></i></div>
-            <div>Having only good english teaching skill does not help to earn grade.</div>
-            <div>A Good teacher must have</div>
-            <ul>
-              <li>
-                <div>Good Environment/Work Place.</div>
-                <div class="fs-90">( No unwanted sounds, No people at the back, etc... )</div>
-              </li>
-              <li>Good Devices.( PC/Laptop, Headset with mic)</li>
-              <li>Good Internet.( Reasonable Connection )</li>
-              <li>Good Profile Picture</li>
-              <li>Good Video Introduction</li>
-              <li>Prepared and Always ready to teach.</li>
-              <li>Finishing the evaluation on time.</li>
-              <li>Following our promotion schedule.</li>
-              <li>Following our guidelines.</li>
-              <li>Following our policy.</li>
-              <li>Always present in class.</li>
-              <li>Always records their class.</li>
-            </ul>
-        </li>
-        <li>
-          <div class="fs-110 fw-bold">Grade 2 <i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-          <div>Communication comes first then the Teaching comes next.</div>
-          <div>No matter how good you teach, but you failed to communicate with he student. It will not work.</div>
-          <div>A Good teacher who is0</div>
-          <ul>
-            <li>Capable of winning student's heart.</li>
-            <li>Good Communication Skills.</li>
-            <li>Good Teaching Skills.</li>
-          </ul>
-        </li>
-      </ul>
-      <p class="p-0">
-        (
-        <span ion-text color="red">Important Note:</span> Teacher must use smart phone to add contact to admin. Once
-        teacher added contact to admin, teacher can use PC to chat with admin. ) Admin will
-        check your environment.
-      </p>
-      <ul class="p-0 mt-3">
-        <li>Good audio/video device</li>
-        <li>Fast speed of internet</li>
-        <li>Calm space to conduct the lesson</li>
-      </ul>
+    <ion-slides #gradingSystem autoplay="8000" loop speed="1000">
+        <ion-slide>
+            <h3 class="fw-bold" ion-text color="blue">GRADE 1 </h3>
+            <i class="fa fa-star" ion-text color="yellow"></i>
+                <h4 class="text-center mt-3">Having only good english teaching skill does not help to earn grade.</h4>
+                <div class="fs-lg pt-2">A Good teacher must have</div>
+                <div class="fs-lg pt-2">Good Environment/Work Place.</div>
+                <div class="fs-lg">( No unwanted sounds, No people at the back, etc... )</div>
+                <div class="fs-lg pt-2">Good Devices.( PC/Laptop, Headset with mic)</div>
+                <div class="fs-lg pt-2">Good Internet.( Reasonable Connection )</div>
+                <div class="fs-lg pt-2">Good Profile Picture</div>
+                <div class="fs-lg pt-2">Good Video Introduction</div>
+                <div class="fs-lg pt-2">Prepared and Always ready to teach.</div>
+                <div class="fs-lg pt-2">Finishing the evaluation on time.</div>
+                <div class="fs-lg pt-2">Following our promotion schedule.</div>
+                <div class="fs-lg pt-2">Following our guidelines.</div>
+                <div class="fs-lg pt-2">Following our policy.</div>
+                <div class="fs-lg pt-2">Always present in class.</div>
+                <div class="fs-lg pt-2">Always records their class.</div>
+        </ion-slide>
+        <ion-slide>
+                <h3 class="fw-bold" ion-text color="blue">GRADE 2 </h3>
+                <i  class="fa fa-star" ion-text color="yellow"></i>
+                <i  class="fa fa-star" ion-text color="yellow"></i>
+                <p class="fw-lightapt-2 text-center mt-3">Communication comes first then the Teaching comes next.
+                    No matter how good you teach, but you failed to communicate with he student. It will not work.
+                </p>
+                <div  class="fw-light pt-2" ion-text color="blue">A Good teacher:</div>
+                <div class="fw-light pt-2">Good Environment/Work Place.</div>
+                <div class="fw-light pt-2">Capable of winning student's heart.</div>
+                <div class="fw-light pt-2">Good Communication Skills.</div>
+                <div class="fw-light pt-2">Good Teaching Skills.</div>
+        </ion-slide>
+    </ion-slides>
     </ion-item>
   </ion-list>
 </div>
