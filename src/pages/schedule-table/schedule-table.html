@@ -290,8 +290,14 @@
       </div>
 
 
-      <div class="mt-2 mb-4 p-5 bg-orange black fs-2rem text-center" *ngIf=" a.user.isLogout ">
-        앗! 로그인을 해야지만 예약을 할 수 있습니다.
+      <div class="help-how-to-reserve mt-2 mb-4 pointer" (click)=" showHelpReserve = false " *ngIf=" showHelpReserve && schedule_table_rows.length ">
+        <!-- 앗! 로그인을 해야지만 예약을 할 수 있습니다. -->
+        <div class="wrapper">
+          <div class="x fa-2x">
+            <i class="fal fa-times" data-fa-transform="shrink-5.5" data-fa-mask="fas fa-circle"></i>
+          </div>
+          <img classs="" src="assets/img/how-to-reserve.png">
+        </div>
       </div>
 
 
@@ -370,9 +376,9 @@
       <!--/schedule-body-table-->
 
 
-    <div class="m-5 p-5 text-center" *ngIf=" no_more_schedule && ! singleTeacher">
-      앗, 더 이상 수업 시간표가 없습니다. 옵션을 통해서 더 많은 수업 시간표를 출력 할 수 있습니다.
-    </div>
+      <div class="m-5 p-5 text-center" *ngIf=" no_more_schedule && ! singleTeacher">
+        앗, 더 이상 수업 시간표가 없습니다. 옵션을 통해서 더 많은 수업 시간표를 출력 할 수 있습니다.
+      </div>
 
 
     </section>
@@ -431,7 +437,7 @@
     </div>
   </div>
 
-  
+
   <hook-content-bottom></hook-content-bottom>
 
 
