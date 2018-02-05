@@ -665,7 +665,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE
-        if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
+        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE
@@ -873,7 +873,7 @@ export class AppService {
     onUserLogin() {
         this.updatePushToken();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'login' });
-        console.log("userLogin::Log::");
+        // console.log("userLogin::Log::");
     }
     /**
      * This method is being called when a user opens 'register' page.
@@ -926,7 +926,7 @@ export class AppService {
         const col = this.firebase.db.collection(firestoreLogCollection);
         col.add(data)
             .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
+                // console.log("Document written with ID: ", docRef.id);
                 // col.doc( docRef.id ).get().then( doc => console.log('got doc: ', doc.data()));
             })
             .catch((error) => {
