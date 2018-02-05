@@ -35,10 +35,10 @@
                 <div class="cover bg-white overflowhidden-y outline-effect-right">
                   <div class="activity log" *ngIf="a.activity_log && a.activity_log.length">
                    <h2 class="fs-110 fw-light bg-blue m-0 py-3 text-center" ion-text color="white">Activity Log</h2>
-                    <ion-list>
-                      <ion-item *ngFor="let a of a.activity_log" text-wrap>
+                    <ion-list no-lines>
+                      <ion-item class="border border-left-0 border-right-0 border-bottom-0" *ngFor="let a of a.activity_log" text-wrap>
                         <div>{{a.name}} {{ activity[a.activity] }} <span *ngIf="a.target">{{a.target}}</span></div>
-                        <div *ngIf="a.stamp">{{ a.date }}</div>
+                        <sup item-end *ngIf="a.stamp">{{ a.date }}</sup>
                       </ion-item>
                     </ion-list>
                   </div>
