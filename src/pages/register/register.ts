@@ -151,14 +151,14 @@ export class RegisterPage {
     this.account.kakao_qrmark_URL = this.qrmarks.length ? this.qrmarks[0].url : '';
     this.account.user_type = this.user_type;
 
-    console.log("isLogin::", this.a.user.isLogin);
-    console.log(this.account);
+    // console.log("isLogin::", this.a.user.isLogin);
+    // console.log(this.account);
     if (this.a.user.isLogin) { // UPDATE
-      console.log('GOING TO UPDATE');
+      // console.log('GOING TO UPDATE');
       this.profile_update();
     }
     else { // REGISTER
-      console.log('GOING TO REGISTER');
+      // console.log('GOING TO REGISTER');
       this.profile_register();
     }
 

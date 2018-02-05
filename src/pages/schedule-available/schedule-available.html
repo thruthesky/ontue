@@ -8,7 +8,8 @@
 
     
     <section class="page-header">
-      <div class="">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
+            <div class="" *ngIf=" a.user.isLogin ">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
+            <div class="" *ngIf=" a.user.isLogout ">앗! 로그인을 하셔야지만 회원님의 국가별 시간에 맞추어 수업 시간표를 표시할 수 있습니다.</div>
     </section>
     <section class="page-desc">
       주의! 아래의 수업을 예약하면 곧 수업이 시작됩니다.
@@ -18,10 +19,10 @@
     <section class="page-body">
 
       <div class="my-5 py-5 bg-orange black fs-2rem text-center" *ngIf=" a.user.isLogout ">
-        앗! 로그인을 해야지만 현재 가능한 수업을 확인 할 수 있습니다.
+        앗! <span class="blue">로그인을 해야</span>지만 수업 시간을 확인하고 예약 할 수 있습니다.
       </div>
 
-      <div *ngIf=" a.user.isLogin ">
+      <div>
 
 
             <div class="d-flex my-5 mx-4 p-4 alert alert-warning rounded-0" *ngIf=" pageInLoading; else pageLoaded ">
@@ -34,8 +35,8 @@
                         <ion-row>
                           <ion-col *ngFor="let schedule of re.available_schedules" col-4 col-md-4 col-lg-3>
                             <div class="d-flex justify-content-center">
-                              <div class="teacher-profile-photo">
-                                <img src="{{ schedule.teacher.photoURL }}">
+                              <div class="teacher-profile-photo size-100x120 of-hidden">
+                                <img class="w-100" src="{{ schedule.teacher.photoURL }}">
                               </div>
                             </div>
                             <div class="text-center mt-1 mb-3">
@@ -50,7 +51,8 @@
                                 ({{ schedule.teacher.total_reservation }} 명 참여)
                               </div>
                               <div>
-                                {{ class_begin(schedule) }} / {{ schedule.duration }} {{ 'MINUTE' | translate }}
+                                <span *ngIf=" a.user.isLogin ">{{ class_begin(schedule) }} / </span>
+                                {{ schedule.duration }} {{ 'MINUTE' | translate }}
                               </div>
                               <div>
                                 {{ schedule.point }} 포인트

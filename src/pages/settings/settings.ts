@@ -21,7 +21,7 @@ export class SettingsPage {
 
     if( a.user.isLogin ){
       a.lms.timezone().subscribe( re => {
-        console.log('timezone', re);
+        // console.log('timezone', re);
         this.userTZ = re['offset'];
       });
     }
@@ -40,9 +40,9 @@ export class SettingsPage {
 
 
   onClickTimezone( offset ) {
-    console.log(offset);
+    // console.log(offset);
     this.a.lms.timezone_set( offset ).subscribe( re => {
-      console.log(re);
+      // console.log(re);
       this.a.user.loadProfile().subscribe( () => {} );
     }, e => this.a.alert(e) );
   }
