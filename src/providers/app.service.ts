@@ -664,8 +664,8 @@ export class AppService {
     get studentTheme() {
 
 
-        // COMMENT OUT FOR REAL CASE o
-        // if (this.NO_SCHEDULE_PER_PAGE) return false;  // show teacher theme. test
+        // COMMENT OUT FOR REAL CASE
+        if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE

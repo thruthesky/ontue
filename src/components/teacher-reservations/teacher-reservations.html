@@ -1,0 +1,13 @@
+<div class="overflowhidden-y cover-by-2 bg-white">
+        <h2  class="fs-110 fw-light bg-blue m-0 py-3 text-center" ion-text color="white">Recent Reservations</h2>
+        <ion-list no-lines>
+            <ion-item class="pointer border border-top-0 border-left-0 border-right-0" *ngFor="let reservation of reservations" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })">
+                <ion-avatar item-start>
+                    <img [src]="a.checkPhotoURL(reservation.teacher_photoURL)">
+                </ion-avatar>
+                <h3>{{ a.preTeacherName(reservation.teacher_name) }}</h3>
+                <p [innerHtml]="getFirstTwo(reservation.class_begin)+':'+getLastTwo(reservation.class_begin)" class="fs-lg"></p>
+                <sup item-end>{{ reservation.display_date }}</sup>
+            </ion-item>
+        </ion-list>
+    </div>

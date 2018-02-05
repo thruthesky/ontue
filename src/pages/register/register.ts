@@ -131,19 +131,24 @@ export class RegisterPage {
   onSubmit() {
     // console.log('Submit', this.account);
 
-    if (this.a.teacherTheme) {
-      if (!this.user_type || !this.user_type.length) return this.a.showAlert(this.a.i18n['CHOOSE USER TYPE']);
-    }
 
     if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(this.a.i18n['EMAIL REQUIRED']);
     if (this.a.user.isLogout && (!this.account.user_pass || !this.account.user_pass.length)) return this.a.showAlert(this.a.i18n['PASSWORD REQUIRED']);
     if (!this.account.name || !this.account.name.length) return this.a.showAlert(this.a.i18n["NAME REQUIRED"]);
+    if (this.a.teacherTheme) {
+      if (!this.month || !this.month.length) return this.a.showAlert("Birth month is required.");
+      if (!this.day || !this.day.length) return this.a.showAlert("Birth day is required.");
+      if (!this.year || !this.year.length) return this.a.showAlert("Birth year is required.");
+      this.patchBirthday();
+      this.user_type = "T";
+    }
     if (this.a.user.isLogin && this.user_type == "T" && !this.qrmarks.length) return this.a.showAlert('*Teacher must upload QR Mark...');
     if (!this.account.phone_number) return this.a.showAlert(this.a.i18n['PHONE NUMBER REQUIRED']);
     if (!this.account.kakaotalk_id) return this.a.showAlert(this.a.i18n['KAKAOTALK ID REQUIRED']);
     //if( !this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(-80024, '*Nickname is required...');
 
     this.account.photoURL = this.files.length ? this.files[0].url : '';
+    this.account.kakao_qrmark_URL = this.qrmarks.length ? this.qrmarks[0].url : '';
     this.account.user_type = this.user_type;
 
     console.log("isLogin::", this.a.user.isLogin);
@@ -164,11 +169,8 @@ export class RegisterPage {
    */
   profile_register() {
     this.account.user_login = this.account.user_email;
-    delete this.account.kakao_qrmark_URL;
+    // delete this.account.kakao_qrmark_URL;
     delete this.account.kakao_qrmark_string;
-
-    if (this.a.teacherTheme && this.patchBirthday()) return;
-
 
     this.a.user.register(this.account).subscribe(re => { /// Registration success
       console.log("user.register => success: re: ", re);
@@ -177,7 +179,7 @@ export class RegisterPage {
       this.a.lms.timezone_set(this.offset).subscribe(() => {
       }, () => {
       });
-      
+
       this.a.hideLoader();
 
       console.log("tehem: ", this.a.studentTheme);
@@ -199,9 +201,8 @@ export class RegisterPage {
 
   profile_update() {
     this.a.showLoader();
-    if (this.a.teacherTheme && this.patchBirthday()) return;
 
-    delete this.account.kakao_qrmark_URL;
+    // delete this.account.kakao_qrmark_URL;
     delete this.account.kakao_qrmark_string;
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
       // console.log('updateUserInfo:', res);
@@ -287,8 +288,8 @@ export class RegisterPage {
       this.a.alert(e);
       this.a.hideLoader();
     });
-
   }
+
 
   onSuccessUploadQRMark(file: FILE) {
     this.showQRMark = false;
@@ -333,9 +334,7 @@ export class RegisterPage {
 
 
   patchBirthday() { // 19881105 (YYYYMMDD)
-    // console.log("Birthday:: ",this.birthday);
     this.account.birthday = this.year + this.month + this.day
-    // console.log("Birthday:: ",this.account.birthday);
   }
 
   showModalFAQ(modal_name) {

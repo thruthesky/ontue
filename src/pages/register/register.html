@@ -45,20 +45,7 @@
             <ul class="profile-form list-style-none">
               <li *ngIf=" a.teacherTheme ">
                 <label class="label">User Type</label>
-                <div class="input">
-                  <div class="p-2">
-                    <span class="mr-3">I am a</span>
-                    <label class="mr-3">
-                      <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="S" (ngModelChange)="onClickType()"> Student
-                    </label>
-                    <label class="mr-3">
-                      <input class="w-10" type="radio" name="user_type" [(ngModel)]="user_type" value="T" (ngModelChange)="onClickType()"> Teacher
-                    </label>
-                  </div>
-                  <div class="ml-2">
-                    <small class="text-muted">Choose user user-type.</small>
-                  </div>
-                </div>
+                <div class="input p-2">Teacher</div>
               </li>
 
               <li *ngIf=" a.teacherTheme ">
@@ -175,7 +162,7 @@
                   </div>
                   <div class="alert alert-success" *ngIf=" qrmarks.length && account.kakao_qrmark_string != '' ">
                     QR Mark is successfully uploaded.
-                    Your QR Mark string: 
+                    Your QR Mark string:
                     {{ account.kakao_qrmark_string }} ( {{ account.kakao_qrmark_URL }} )
                   </div>
 
