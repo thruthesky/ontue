@@ -150,6 +150,7 @@ class T {
     if (email == id + '@test.com' ) t.ok("login email matches on profile update.");
     else t.error("Email on profile update page does not match with login id");
 
+    t.ok("TEST FINISHED");
     await t.wait(500);
     await t.end();
 })();
