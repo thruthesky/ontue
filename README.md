@@ -76,6 +76,22 @@ $  ionic cordova run android --livereload --address=192.168.0.2 // [MACBOOK_INTE
 
 # Test
 
+* Test localhost. You can put the backendUrl in app.service.ts to remote to test.
+
+````
+$ node dist/test.js --server=localhost
+````
+
+
+* Test remote site
+
+````
+$ node dist/test.js
+````
+
+
+
+* Development
 ````
 $ git checkout -b test
 $ cd unit-teset

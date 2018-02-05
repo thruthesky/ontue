@@ -1,7 +1,16 @@
 import * as puppeteer from 'puppeteer';
+import * as yargs from 'yargs';
 
-const login_id = 'testlogin@gmail.com';
-const login_password = '12345a';
+
+let homepageUrl = 'https://www.katalkenglish.com';
+if (yargs.argv.server == 'localhost') homepageUrl = 'http://localhost:8100';
+console.log("\nBegin test for : ", homepageUrl);
+
+
+// const login_id = 'testlogin@gmail.com';
+// const login_password = '12345a';
+const d = new Date();
+const id = 'test-user-' + d.getHours() + d.getMinutes() + d.getSeconds();
 
 class T {
     browser;
@@ -51,12 +60,36 @@ class T {
         await this.page.waitFor(100);
         await this.page.type(`[name="password"]`, password, { delay: 50 });
         await this.page.waitFor(100);
-
         await this.page.click('.input .app-button');
-        await this.page.waitFor('page-home .header-home').then(x => this.ok("Login success!")).catch(x => this.error('Login Failed!'));
 
+        await this.page.waitFor('home-page .header-home').then(x => this.ok("Login success!")).catch(x => this.error('Login Failed!'));
         await this.page.waitFor(200);
     }
+
+    async register(id) {
+        this.ok("Registration begins ... !");
+        await this.clickFind({ click: '.header-register', find: '[name="nickname"]', message: 'Register page opened.' });
+        await this.wait(100);
+        await this.page.type('[name="email"]', id + '@test.com', { delay: 50 }).catch(x => this.error('Cannot type email'));
+        await this.wait(100);
+        await this.page.type(`[name="password"]`, id, { delay: 50 });
+        await this.wait(100);
+
+        await this.page.type('[name="name"]', id + '-name');
+        await this.page.type('[name="nickname"]', id + '-nickname');
+        await this.page.type('[name="phone_number"]', '0123456789');
+        await this.page.type('[name="kakaotalk_id"]', id + '-kakaotalk-id');
+
+        await this.clickFind({ click: '.form-submit-button button', find: 'student-register-success-page .header-menu', message: 'Registration success!' });
+
+    }
+
+    async  logout() {
+        await this.wait(500);
+        await this.clickFind({ click: '.header-menu', find: '.menu-logout', message: 'Menu page opened' });
+        await this.clickFind({ click: '.menu-logout', find: 'home-page', message: 'Logged out!' });
+    }
+
 
     /**
      * Ajax 콜이 완료되면 값이 Input 박스에 들어가는 경우가 있을 때,
@@ -64,11 +97,11 @@ class T {
      * @param selector selector for input element
      */
     async waitForTextValueAppear(selector) {
-        for( let i = 0; i < 100; i ++ ) {
+        for (let i = 0; i < 100; i++) {
             this.wait(100);
             const handle = await this.page.$(selector);
             const v = await this.page.evaluate((input) => input.value, handle);
-            if ( v ) return v;
+            if (v) return v;
         }
     }
 
@@ -77,13 +110,13 @@ class T {
 (async () => {
     const t = new T();
     t.ok("Begin new test. at : " + (new Date).toLocaleString());
-    await t.init({ headless: true, devtools: true });
-    await t.open('http://www.katalkenglish.com');
+    await t.init({ headless: true, devtools: false });
+    await t.open(homepageUrl);
     await t.wait(1000);
     await t.find('.teacher-profile-photo', "First page is not homepage. The website is down? or is there any debugging code to redirect a sub page?");
     const rules = [
         // { click: '.header-home', find: '.teacher-profile-photo', message: 'Home page opened.'},
-        { click: '.header-register', find: '[name="nickname"]', message: 'Register page opened.' },
+        // { click: '.header-register', find: '[name="nickname"]', message: 'Register page opened.' },
         { click: '.header-adv', find: '.where', message: 'Student Adv page opened.' },
         { click: '.header-leveltest', find: '.teacher-profile-photo', message: 'Level test page opened.' },
         { click: '.teacher-profile-photo', find: '.teacher-profile-photo', message: 'Schedule table page opened.' },
@@ -96,25 +129,27 @@ class T {
         // { click: '.header-login', find: '[name="email"]', message: 'Login page opened.' },
     ];
 
-    // for (const rule of rules) {
-    //     await t.clickFind(rule);
-    // }
+    for (const rule of rules) {
+        await t.clickFind(rule);
+    }
 
 
-    await t.login(login_id, login_password);
+    await t.register(id);
+    await t.logout();
+    await t.login(id + '@test.com', id);
 
     // after login, you will need to re-visit the site. Or click will not work. Maybe because of 'modal loader?'
-    await t.open('http://www.katalkenglish.com');
+    await t.open(homepageUrl);
 
     // check meber information. check email.
     await t.clickFind({ click: '.header-class-menu', find: '.menu-profile', message: 'Menu page opended' });
     await t.clickFind({ click: '.menu-profile', find: '[name="email"]', message: 'Profile page opended' });
 
     const email = await t.waitForTextValueAppear('[name="email"]');
-console.log('email: ', email);
-    if (email == login_id) t.ok("login email matches on profile update.");
+    console.log('email: ', email);
+    if (email == id + '@test.com' ) t.ok("login email matches on profile update.");
     else t.error("Email on profile update page does not match with login id");
 
-    await t.wait(5000000);
+    await t.wait(500);
     await t.end();
 })();

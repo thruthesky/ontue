@@ -4,7 +4,7 @@ import { AppService } from './../../providers/app.service';
 
 
 @Component({
-  selector: 'page-home',
+  selector: 'home-page',
   templateUrl: 'home.html'
 })
 export class HomePage {

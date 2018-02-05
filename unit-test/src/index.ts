@@ -41,6 +41,7 @@ async function login(page: puppeteer.Page, email, password) {
 
 
 
+
 (async () => {
   const browser = await puppeteer.launch();
 
