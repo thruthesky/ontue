@@ -1,8 +1,7 @@
 student-adv-page {
     .page-body {
-        padding: 1em;
         @media ( min-width: $md ) {
-            padding: 3em;
+            padding: 0 3em;
         }
         font-size: 1.9rem;
         @media ( min-width: $md ) {

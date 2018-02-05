@@ -48,6 +48,7 @@ export class RegisterPage {
     qrmark: HowToGetQRCodeComponent
   };
 
+  showFindKakaotalkIDBox = false;
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -350,6 +351,10 @@ export class RegisterPage {
       this.showModalFAQ('kakaoID');
     }
     else {
+      this.showFindKakaotalkIDBox = true;
+      setTimeout(() => {
+        document.querySelector('.kakaotalk-id-find-box').scrollIntoView();
+      }, 200);
       this.a.alert("프로필 관리 메뉴에서 카카오톡 아이디를 찾을 수 있습니다.");
     }
   }

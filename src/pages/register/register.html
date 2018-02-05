@@ -12,9 +12,9 @@
     </section>
 
     <div class="loader" *ngIf=" inLoading ">
-        <i class="fal fa-spinner fa-spin"></i>
-        {{ 'IN LOADING' | translate }}
-      </div>
+      <i class="fal fa-spinner fa-spin"></i>
+      {{ 'IN LOADING' | translate }}
+    </div>
 
     <section class="page-body">
       <section class="page-body-wrapper">
@@ -139,18 +139,22 @@
                 </div>
               </li>
 
-
-
               <li>
                 <label class="label">{{ 'KAKAOTALK ID SHORT' | translate }}</label>
                 <div class="input">
                   <input class="w-100" type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id">
-                  <div class="pt-2 fs-lg pointer" (click)=" onClickKakaoIDHelp() ">
+                  <div class="py-3 fs-lg pointer" (click)=" onClickKakaoIDHelp() ">
                     {{ 'FIND KAKAOTALK ID' | translate }}
                     <i class="fa fa-question-circle"></i>
                   </div>
                 </div>
               </li>
+
+              <div class="kakaotalk-id-find-box" (click)=" showFindKakaotalkIDBox = false " *ngIf=" showFindKakaotalkIDBox ">
+                
+                  <img src="assets/img/find-kakaotalk-id.jpg">
+                
+              </div>
 
               <li *ngIf=" a.teacherTheme ">
                 <label class="label">Upload Kakaotalk QR Mark</label>
@@ -158,19 +162,19 @@
                   <file-upload-widget #fileUploadWidgetQRMARK [title]="true" [fileSelectionButton]="true" [files]="qrmarks" [showUploadedFiles]="true"
                     (success)="onSuccessUploadQRMark( $event )"></file-upload-widget>
                   <div class="fs-lg mt-2 pointer" text-wrap (click)="showModalFAQ('qrmark')">
-                    QR Mark is required for teacher. How to get QR MARK <i class="fa fa-question-circle"></i>
+                    QR Mark is required for teacher. How to get QR MARK
+                    <i class="fa fa-question-circle"></i>
                   </div>
                   <div class="alert alert-success" *ngIf=" qrmarks.length && account.kakao_qrmark_string != '' ">
-                    QR Mark is successfully uploaded.
-                    Your QR Mark string:
-                    {{ account.kakao_qrmark_string }} ( {{ account.kakao_qrmark_URL }} )
+                    QR Mark is successfully uploaded. Your QR Mark string: {{ account.kakao_qrmark_string }} ( {{ account.kakao_qrmark_URL }}
+                    )
                   </div>
 
                   <div class="alert alert-warning" *ngIf=" account.kakao_qrmark_URL != '' && account.kakao_qrmark_string == '' ">
 
                     <i class="fas fa-spinner fa-spin"></i>
-                    There is something wrong in converting Kakao QR Mark into string.
-                    If this message does not appear within 10 seconds, please contact to admin.
+                    There is something wrong in converting Kakao QR Mark into string. If this message does not appear within 10 seconds, please
+                    contact to admin.
                   </div>
 
                 </div>
@@ -182,11 +186,11 @@
               <!--</li>-->
 
               <li>
-                  <label class="label"></label>
-                  <div class="input form-submit-button">
-                      <button class="app-button px-5 py-3 fs-lg" *ngIf="a.user.isLogout">{{ 'REGISTER BUTTON' | translate }}</button>
-                      <button class="app-button px-5 py-3 fs-lg" *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE BUTTON' | translate }}</button>
-                  </div>
+                <label class="label"></label>
+                <div class="input form-submit-button">
+                  <button class="app-button px-5 py-3 fs-lg" *ngIf="a.user.isLogout">{{ 'REGISTER BUTTON' | translate }}</button>
+                  <button class="app-button px-5 py-3 fs-lg" *ngIf="a.user.isLogin">{{ 'UPDATE PROFILE BUTTON' | translate }}</button>
+                </div>
               </li>
 
 

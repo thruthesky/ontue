@@ -1,6 +1,5 @@
 register-page {
   @include theme('purple');
-
   .page {
     .page-body {
       .page-body-wrapper {
@@ -10,12 +9,10 @@ register-page {
       }
     }
   }
-
   .qr-mark .uploaded-files .file img {
     max-width: 150px;
   }
 }
-
 
 .profile-form {
   li {
@@ -39,5 +36,18 @@ register-page {
       }
     }
   }
+  .kakaotalk-id-find-box {
+    margin-bottom: 2em;
+    @media ( min-width: $md) {
+      margin-left: 122px;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      padding: 5px;
+      @media ( min-width: $md ) { padding: 8px; }
+      border: 1px solid #dfdfdf;
+      background-color: white;
+    }
+  }
 }
-
