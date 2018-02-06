@@ -1,7 +1,8 @@
 <div class="outline-effect outline-effect-right rounded m-0">
     <h2  class="fs-xl fw-light bg-blue m-0 py-4 text-center" ion-text color="white">Recent Evaluation</h2>
     <ion-list class="m-0" text-wrap no-lines>
-        <div class="p-0 m-0 border border-bottom-0 border-left-0 border-right-0" ion-item  *ngFor="let teacher_comment of evaluations">
+        <div class="p-0 m-0 border border-bottom-0 border-left-0 border-right-0" ion-item
+          *ngFor="let teacher_comment of evaluations; let i=index">
             <img class="mx-5 my-3" [src]="a.checkPhotoURL(evaluations.teacher_photoURL)" item-start>
             <h2 class="fs-110 my-3">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
             <p class="fw-light line-h-2em my-3">{{ teacher_comment.comment }}</p>
@@ -10,9 +11,10 @@
     <div class="bg-blue p-3" text-center>
         <ion-buttons>
             <button  color="white" outline ion-button>Previous</button>
-            <button  color="white" outline ion-button>1</button>
-            <button  color="white" outline ion-button>2</button>
-            <button  color="white" outline ion-button>3</button>
+            <button  color="white" outline ion-button> 1</button>
+            <button  color="white" outline ion-button> 2</button>
+            <button  color="white" outline ion-button> 3</button>
+            <button  color="white" outline ion-button> 4</button>
             <button  color="white" outline ion-button>Next</button>
         </ion-buttons>
     </div>
