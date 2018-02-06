@@ -26,6 +26,10 @@ ion-nav.teacher {
         .min-height-56{min-height: 56px!important}
     }
 
+    .activity-log{
+        .item-inner{padding:0!important}
+    }
+
     ion-content {
         background-color: #edf0f5;
         ::-webkit-scrollbar{
@@ -42,7 +46,7 @@ ion-nav.teacher {
         .font-em-0-75{font-size:0.75em!important}
         .font-em-0-85{font-size:0.85em!important}
         .overflowhidden-y{overflow-y: hidden!important}
-        .cover{height: 33em!important}
+        .cover{height: calc(235.953px*2)!important}// height of the four boxes(stats,students comment etc..)
         .cover-header{height: 3em!important}
         .cover-content{height: 30em!important}
         .cover-by-2{height: calc(32.28em/2)!important}
@@ -64,6 +68,8 @@ ion-nav.teacher {
             box-shadow: 0 0.5px 1px rgba(0,0,0,0.32)!important;
             margin-right: 1px!important;
         }
+        
+        .cover-slider{height: 225.95px!important}
     }
                 // .page {
         //     background-color: #f3f3f3;

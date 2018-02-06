@@ -109,6 +109,7 @@ import { TeacherStatisticsComponent } from '../components/teacher-statistics/tea
 import { TeacherStudentCommentComponent } from '../components/teacher-student-comment-component/teacher-student-comment';
 import { TeacherReservationsComponent } from '../components/teacher-reservations/teacher-reservations';
 import { TeacherEvaluationsComponent } from '../components/teacher-evaluations/teacher-evaluations';
+import { TeacherStepComponent } from '../components/teacher-steps/teacher-steps';
 
 
 
@@ -195,7 +196,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherStatisticsComponent,
     TeacherStudentCommentComponent,
     TeacherReservationsComponent,
-    TeacherEvaluationsComponent
+    TeacherEvaluationsComponent,
+    TeacherStepComponent,
   ],
   imports: [
     BrowserModule,
@@ -276,7 +278,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherStatisticsComponent,
     TeacherStudentCommentComponent,
     TeacherReservationsComponent,
-    TeacherEvaluationsComponent
+    TeacherEvaluationsComponent,
+    TeacherStepComponent,
   
   ],
   providers: [
