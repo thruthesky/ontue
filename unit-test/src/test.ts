@@ -103,6 +103,7 @@ class T {
             const v = await this.page.evaluate((input) => input.value, handle);
             if (v) return v;
         }
+        throw `Failed to get value from the selector ${selector}`;
     }
 
 }
