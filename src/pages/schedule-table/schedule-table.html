@@ -291,7 +291,6 @@
 
 
       <div class="help-how-to-reserve mt-2 mb-4 pointer" (click)=" showHelpReserve = false " *ngIf=" showHelpReserve && schedule_table_rows.length ">
-        <!-- 앗! 로그인을 해야지만 예약을 할 수 있습니다. -->
         <div class="wrapper">
           <div class="x fa-2x">
             <i class="fal fa-times" data-fa-transform="shrink-5.5" data-fa-mask="fas fa-circle"></i>
@@ -300,6 +299,10 @@
         </div>
       </div>
 
+
+      <div class="warning blank">
+        앗! 로그인을 해야지만 예약을 할 수 있습니다.
+      </div>
 
       <div class="table schedule-table" *ngIf=" schedule_table_rows.length " width="100%">
 
