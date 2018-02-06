@@ -1,9 +1,9 @@
-<div class="cover-by-2 overflowhidden-y bg-white outline-effect">
+<div class="cover-by-2 student-comment overflowhidden-y bg-white outline-effect">
     <h2 class="fs-110 fw-light m-0 py-3 bg-blue text-center" ion-text color="white">Student Comments</h2>
     <ion-list no-lines>
-        <ion-item class="border border-top-0 border-left-0 border-right-0 pointer"
-                *ngFor="let student_comment of student_comments"
-                (click)="onClickCommentList(student_comment.idx_teacher)"
+        <ion-item class="pointer"
+                *ngFor="let student_comment of student_comments let i=index"
+                (click)="onClickCommentList(student_comment.idx_teacher)"   
             >
             <ion-avatar item-start>
                 <img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
@@ -28,7 +28,7 @@
 
                 </div>
             </h3>
-            <p class="fs-md">{{student_comment.comment}}</p>
+            <p class="content" lang="ko">{{student_comment.comment}}</p>
         </ion-item>
     </ion-list>
 </div>
