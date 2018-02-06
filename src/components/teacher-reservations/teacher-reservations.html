@@ -7,7 +7,7 @@
                         <img [src]="a.checkPhotoURL(reservation.teacher_photoURL)">
                     </ion-avatar>
                     <h3>{{ a.preTeacherName(reservation.teacher_name) }}</h3>
-                    <p  [innerHtml]="getFirstTwo(reservation.class_begin)+':'+getLastTwo(reservation.class_begin)"></p>
+                    <p class="fs-custom" [innerHtml]="getFirstTwo(reservation.class_begin)+':'+getLastTwo(reservation.class_begin)"></p>
                     <sup item-end>{{ reservation.display_date }}</sup>
                 </ion-item>
             </ng-container>
