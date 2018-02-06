@@ -236,8 +236,9 @@
     </section>
 
     <script>
-      let theme = 'student';
-      if (this.hostname == "ontue.com" || this.hostname == 'www.ontue.com') theme = 'teacher';
+      var theme = 'student';
+      var hname = window.location.hostname;
+      if (hname == "ontue.com" || hname == 'www.ontue.com') theme = 'teacher';
       if (theme == 'student') {
       } else {
         var title = document.querySelector('.text.title');
