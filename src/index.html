@@ -112,18 +112,29 @@
         font-size: 10pt;
       }
 
-      .shell .menu .top {
+      .shell .menu .inner {
         display: flex;
         justify-content: space-between;
+        margin: 0 auto;
+        max-width: 800px;
         padding: 1em 0;
+      }
+
+      .shell .menu .top {
         background-color: white;
       }
 
       .shell .menu .bottom {
-        padding: 1em 0;
-        display: flex;
-        justify-content: space-between;
         background-color: #dadff0;
+      }
+
+      .d-md-show {
+        display: none;
+      }
+      @media (min-width: 600px) {
+        .d-md-show {
+          display: block;
+        }
       }
 
       .shell .header {
@@ -167,14 +178,20 @@
 
       <div class="menu">
         <div class="top">
-          <span class="pl text1">카톡 화상영어</span>
-          <span class="pr text2">도움말 수업료</span>
+          <div class="inner">
+            <span class="pl text1">카톡 화상영어</span>
+            <span class="pr text2">도움말 수업료</span>
+          </div>
         </div>
         <div class="bottom">
-          <span class="pl text1">월 1만원</span>
-          <span class="text2">처음 오시분 필독</span>
-          <span class="text3">레벨테스트</span>
-          <span class="pr text4">질문하기</span>
+          <div class="inner">
+            <span class="pl text1">월 1만원</span>
+            <span class="text2">처음 오시분 필독</span>
+            <span class="text3">레벨테스트</span>
+            <span class="pr text4 d-md-show">선생님 목록</span>
+            <span class="pr text5 d-md-show">무료체험 5회</span>
+            <span class="pr text6">질문하기</span>
+          </div>
         </div>
       </div>
 
@@ -210,18 +227,19 @@
             </g>
           </svg>
         </div>
-        <div class="text wait">카톡 화상영어를 로딩중입니다.
-          <br>잠시만 기다려주세요.</div>
+        <div class="text wait">
+          카톡 화상영어를 로딩중입니다.
+          <br>
+          잠시만 기다려주세요.
+        </div>
       </div>
     </section>
 
     <script>
       let theme = 'student';
       if (this.hostname == "ontue.com" || this.hostname == 'www.ontue.com') theme = 'teacher';
-      if (theme === 'student') {
-
+      if (theme == 'student') {
       } else {
-
         var title = document.querySelector('.text.title');
         var wait = document.querySelector('.text.wait');
         var intro = document.querySelector('.text.intro');
@@ -231,6 +249,8 @@
         var b2 = document.querySelector('.shell .menu .bottom .text2');
         var b3 = document.querySelector('.shell .menu .bottom .text3');
         var b4 = document.querySelector('.shell .menu .bottom .text4');
+        var b5 = document.querySelector('.shell .menu .bottom .text5');
+        var b6 = document.querySelector('.shell .menu .bottom .text6');
 
         title.innerHTML = "OnTue.COM";
         wait.innerHTML = "Please wait. We are loading OnTue.COM";
@@ -241,6 +261,8 @@
         b2.innerHTML = "Schedules";
         b3.innerHTML = "Salary";
         b4.innerHTML = "FAQ";
+        b5.innerHTML = "My Reservations";
+        b6.innerHTML = "Student Comment";
       }
 
     </script>
