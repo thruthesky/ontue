@@ -212,6 +212,7 @@ export class AppService {
 
     /**
      * Returns total number of sessions of the login user.
+     * it includes past and future.
      */
     get lmsInfoUserNoOfTotalSessions(): number {
         let count = this.get('no_of_total_sessions');
@@ -871,6 +872,7 @@ export class AppService {
 
 
     onUserLogin() {
+        this.updateLMSInfo();
         this.updatePushToken();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'login' });
         // console.log("userLogin::Log::");
