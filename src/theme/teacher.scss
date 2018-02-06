@@ -47,10 +47,8 @@ ion-nav.teacher {
         .font-em-0-85{font-size:0.85em!important}
         .overflowhidden-y{overflow-y: hidden!important}
         .cover{height: calc(235.953px*2)!important}// height of the four boxes(stats,students comment etc..)
-        .cover-header{height: 3em!important}
-        .cover-content{height: 30em!important}
-        .cover-by-2{height: calc(32.28em/2)!important}
-        .cover-by-4{height: calc(32.27em/4)!important}
+        .cover-by-2{height: 225.953px!important}
+        .cover-by-4{height: calc(225.953px/2)!important}
         .flex-column{flex-direction: column!important}
         .fw-light{font-weight: lighter!important}
         .pr-0-5{padding-right: 0.5rem!important}
@@ -78,6 +76,7 @@ ion-nav.teacher {
         //         }
         //     }
         // }
+
 
 
 }
