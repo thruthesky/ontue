@@ -22,8 +22,8 @@
       <!-- {{ schedules | json }} -->
 
 
-      <div class="alert alert-warning" *ngIf="data && !data['low_price_class']">
-        <div [innerHTML]=" data['low_price_class_message']"></div>
+      <div class="alert alert-warning" *ngIf="data && !data['promo_class']">
+        {{data['promo_class_message']}}
       </div>
 
       <table width="100%" class="schedule-edit text-center my-3" *ngIf=" data ">
