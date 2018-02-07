@@ -99,6 +99,12 @@ ion-nav.teacher {
             }
 
         }
+        .scale-effect-target{transition: all .15s ease-in-out!important}
+        .scale-effect:hover{
+            .scale-effect-target{
+                transform: scale(1.15)!important;
+            }
+        }
 }
 
     
