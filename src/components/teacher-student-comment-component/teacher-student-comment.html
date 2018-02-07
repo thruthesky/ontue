@@ -1,6 +1,6 @@
 <div class="custom-card-korean cover-by-2 overflowhidden-y bg-white outline-effect">
     <p class="fs-90 m-0 py-3 bg-blue text-center" ion-text color="white">Student Comments</p>
-    <ion-list class="m-0" no-lines>
+    <ion-list class="list-hover-effect m-0" no-lines>
      <ng-container *ngFor="let student_comment of student_comments let i=index">
         <ion-item class="pointer"
                 (click)="onClickCommentList(student_comment.idx_teacher)" 
@@ -9,7 +9,7 @@
             <ion-avatar item-start>
                 <img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
             </ion-avatar>
-            <h3 ion-text color="blue">{{a.preTeacherName(student_comment.teacher_name)}}
+            <h3>{{a.preTeacherName(student_comment.teacher_name)}}
                 <div class="ml-2 d-inline-block">
 
                     <span *ngIf="student_comment.rate < 1"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>

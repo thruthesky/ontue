@@ -89,7 +89,16 @@ ion-nav.teacher {
         }
 
 
-        .list-hover{}
+        .list-hover-effect{
+            ion-item{padding-right: 3px!important}
+            ion-item:hover{
+                background:rgba(#007bff,0.1)!important;
+                color:#007bff!important;
+                border-right:3px solid #007bff!important;
+                padding-right: 0!important;
+            }
+
+        }
 }
 
     
