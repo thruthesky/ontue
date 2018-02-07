@@ -1,4 +1,4 @@
-<div class="cover-by-2 overflowhidden-y bg-white outline-effect">
+<div class="custom-card cover-by-2 overflowhidden-y bg-white outline-effect">
     <h2 class="fs-110 fw-light m-0 py-3 bg-blue text-center" ion-text color="white">Recently Graded Teachers</h2>
     <ion-list no-lines>
         <ng-container *ngFor="let teacher of teachers; let i=index">
@@ -10,7 +10,7 @@
                         <img [src]="a.checkPhotoURL(teacher.photoURL)">
                 </ion-avatar>
                 <h3>{{a.preTeacherName(teacher.display_name)}}</h3>
-                <p class="fs-lg">Grade: {{teacher.grade}}</p>
+                <p class="fs-card">Grade: {{teacher.grade}}</p>
             </ion-item>
         </ng-container>
     </ion-list>

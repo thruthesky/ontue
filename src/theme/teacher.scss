@@ -77,9 +77,11 @@ ion-nav.teacher {
         //     }
         // }
 
-
-        .fs-custom{font-size:70%!important}
-        .fs-custom1{font-size:66%!important}
+        .custom-card{
+            ion-label{margin:10.6px!important}
+            .fs-card{font-size:1.4rem!important}
+            .fs-card-korean{font-size:1.3rem!important}
+        }
 }
 
     
