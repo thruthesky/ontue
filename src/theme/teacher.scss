@@ -26,6 +26,10 @@ ion-nav.teacher {
         .min-height-56{min-height: 56px!important}
     }
 
+    .activity-log{
+        .item-inner{padding:0!important}
+    }
+
     ion-content {
         background-color: #edf0f5;
         ::-webkit-scrollbar{
@@ -42,11 +46,9 @@ ion-nav.teacher {
         .font-em-0-75{font-size:0.75em!important}
         .font-em-0-85{font-size:0.85em!important}
         .overflowhidden-y{overflow-y: hidden!important}
-        .cover{height: 33em!important}
-        .cover-header{height: 3em!important}
-        .cover-content{height: 30em!important}
-        .cover-by-2{height: calc(32.28em/2)!important}
-        .cover-by-4{height: calc(32.27em/4)!important}
+        .cover{height: calc(235.953px*2)!important}// height of the four boxes(stats,students comment etc..)
+        .cover-by-2{height: 225.953px!important}
+        .cover-by-4{height: calc(225.953px/2)!important}
         .flex-column{flex-direction: column!important}
         .fw-light{font-weight: lighter!important}
         .pr-0-5{padding-right: 0.5rem!important}
@@ -55,7 +57,6 @@ ion-nav.teacher {
         .pb-0-5{padding-bottom: 0.5rem!important}
         .line-h-2em{line-height: 2em!important}
 
-        
         .outline-effect{  
             box-shadow: 0 0.5px 1px rgba(0,0,0,0.32)!important;
             margin-left: 1px!important;
@@ -64,6 +65,8 @@ ion-nav.teacher {
             box-shadow: 0 0.5px 1px rgba(0,0,0,0.32)!important;
             margin-right: 1px!important;
         }
+        
+        .cover-slider{height: 225.95px!important}
     }
                 // .page {
         //     background-color: #f3f3f3;
@@ -75,6 +78,8 @@ ion-nav.teacher {
         // }
 
 
+        .fs-custom{font-size:70%!important}
+        .fs-custom1{font-size:66%!important}
 }
 
     

@@ -1,0 +1,11 @@
+<div class="cover bg-white overflowhidden-y outline-effect-right">
+        <div class="activity-log" *ngIf="a.activity_log && a.activity_log.length">
+         <h2 class="fs-110 fw-light bg-blue m-0 py-3 text-center" ion-text color="white">Activity Log</h2>
+          <ion-list class="px-3 m-0"  no-lines>
+            <ion-item class="p-0" *ngFor="let a of a.activity_log" text-wrap>
+              <div>{{a.name}} {{ actv[a.activity] }} <span *ngIf="a.target">{{a.target}}</span></div>
+              <!-- <sup item-end *ngIf="a.stamp">{{ a.date }}</sup> -->
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>

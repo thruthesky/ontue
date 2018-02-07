@@ -1,13 +1,13 @@
 <section id="home-teacher-content" class="mt-md-3 bg-light">
     <ion-grid no-padding>
-        <ion-row class="m-0">
+        <ion-row class="m-0 my-3">
             <ion-col class="p-0 pr-md-3 m-0 " col-sm-auto col-md-3>
                 <teacher-reminders-component></teacher-reminders-component>
             </ion-col>
-            <ion-col class="p-0 m-0" col-sm-auto col-md-6>
-                <ion-grid class="cover m-0" no-padding>
-                    <ion-row class="pb-0-5 m-0">
-                        <ion-col class="pr-0-5 m-0 p-0" col-md-6 col-sm-12>
+            <ion-col class="cover p-0 m-0" col-sm-auto col-md-6>
+                <ion-grid class="m-0" no-padding>
+                    <ion-row class="pb-3 m-0">
+                        <ion-col class="px-3  m-0 p-0" col-md-6 col-sm-12>
                             <teacher-statistics-component
                              [no_teachers]="site_info.no_of_teacher"
                              [no_students]="site_info.no_of_student"
@@ -15,59 +15,45 @@
                              [no_pasts]="site_info.no_of_past"
                              ></teacher-statistics-component>
                         </ion-col>
-                        <ion-col class="pl-0-5" col-md-6 col-sm-12>
+                        <ion-col class="px-3" col-md-6 col-sm-12>
                             <graded-teachers-component *ngIf="site_info.recent_graded_teachers.length"
-                             [teachers] = "site_info.recent_graded_teachers "
+                             [teachers]="site_info.recent_graded_teachers "
                              ></graded-teachers-component>
                         </ion-col>
                     </ion-row>
-                    <ion-row class="student-feedback m-0 pt-0-5">
-                        <ion-col class="pr-0-5"  col-md-6 col-sm-12 *ngIf="site_info.comment_from_student['total']">
+                    <ion-row class="student-feedback m-0 pt-3">
+                        <ion-col class="px-3"  col-md-6 col-sm-12 *ngIf="site_info.comment_from_student['total']">
                             <teacher-student-comment-component [student_comments] = "site_info.comment_from_student.comments "></teacher-student-comment-component>
                         </ion-col>
-                        <ion-col class="pl-0-5" col-md-6 col-sm-12>
+                        <ion-col class="px-3" col-md-6 col-sm-12>
                             <teacher-reservations-component [reservations]="site_info.recent_reservations"></teacher-reservations-component>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-col>
-            <ion-col class="p-0 pl-md-3 m-0" col-sm-auto col-md-3>
-                <div class="cover bg-white outline-effect-right">
-                  <div class="activity log" *ngIf="a.activity_log && a.activity_log.length">
-                   <h2 class="fs-110 fw-light bg-blue m-0 py-3 text-center" ion-text color="white">Activity Log</h2>
-                    <ion-list>
-                      <ion-item *ngFor="let a of a.activity_log" text-wrap>
-                        <div>{{a.name}} {{ activity[a.activity] }} <span *ngIf="a.target">{{a.target}}</span></div>
-                        <div *ngIf="a.stamp">{{ a.date }}</div>
-                      </ion-item>
-                    </ion-list>
-                  </div>
-                </div>
+            <ion-col class="cover p-0 pl-md-3 m-0" col-sm-12 col-md-3>
+              <teacher-activity-log-component [actv]="activity"></teacher-activity-log-component>
             </ion-col>
         </ion-row>
-        <!-- <ion-row class="mt-3">
+        <ion-row class="my-3">
+          <ion-col class="pr-3">
+              <teacher-steps-component></teacher-steps-component>
+          </ion-col>
+          <ion-col class="pl-3">
+              <teacher-guidelines-component></teacher-guidelines-component>
+          </ion-col>
+        </ion-row>
+        <ion-row class="my-3">
             <ion-col>
-                <ion-slides class="bg-white outline-effect outline-effect-right m-0 p-0">
-                  <ion-slide></ion-slide>
-                  <ion-slide>2</ion-slide>
-                  <ion-slide>3</ion-slide>
-                </ion-slides>
-            </ion-col>
-        </ion-row> -->
-        <ion-row class="mt-3">
-            <ion-col class="pr-0-5" col-md-6 col-sm-12>
                 <teacher-grading-system-component></teacher-grading-system-component>
              </ion-col>
-            <ion-col class="pl-0-5" col-md-6 col-sm-12>
-                <teacher-guidelines-component></teacher-guidelines-component>
-            </ion-col>
         </ion-row>
-        <ion-row class="mt-3">
+        <ion-row class="my-3">
             <ion-col class="p-0" *ngIf="site_info.comment_from_teacher.length">
                 <teacher-evaluations-component [evaluations]="site_info.comment_from_teacher"></teacher-evaluations-component>
             </ion-col>
         </ion-row>
-        <div class="mt-3">
+        <!-- <div class="mt-3"> -->
 
           <!--Activity Log-->
 
@@ -197,7 +183,7 @@
       </ion-slides>
     </ion-card> -->
 
-        </div>
+        <!-- </div> -->
 
         <!--
   <h1>TEACHER GUIDELINE</h1>
