@@ -37,6 +37,15 @@ ul.buttons {
   text-align: center!important;
 }
 
+.text-left {
+  text-align: left!important;
+}
+@media (min-width: $md) {
+  .text-md-left {
+    text-align: left!important;
+  }
+}
+
 //
 .d-flex {
   display: flex;

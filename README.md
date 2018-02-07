@@ -147,6 +147,21 @@ https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/
 
 https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.84vq694dis52
 
+## Warning
+
+* Example 1
+````
+  <div class="warning">
+    앗! 로그인을 해야지만 예약을 할 수 있습니다.
+  </div>
+````
+* Example 2
+````
+      <div class="warning text-md-left">
+        <span class="pr-2"><i class="fas fa-exclamation-triangle"></i></span>
+        앗! 로그인을 해야지만 예약을 할 수 있습니다.
+      </div>
+````
 
 ## Schedule Table
 
