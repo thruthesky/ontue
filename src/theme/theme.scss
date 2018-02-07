@@ -347,3 +347,25 @@ $color-loader: rgb(38, 38, 82);
     color: $color-loader;
   }
 }
+
+$bg-color-warning: rgb(83, 54, 0);
+.warning {
+  margin-bottom: 1em;
+  padding: 1em;
+  text-align: center;
+  background-color: $bg-color-warning;
+  animation: aniWarning 3s infinite;
+  color: white;
+}
+
+@keyframes aniWarning {
+  35% {
+    background-color: $bg-color-warning;
+  }
+  50% {
+    background-color: rgb(168, 109, 0);
+  }
+  75% {
+    background-color: $bg-color-warning;
+  }
+}
