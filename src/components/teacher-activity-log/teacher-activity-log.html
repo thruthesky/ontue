@@ -1,24 +1,30 @@
 <div class="cover bg-white overflowhidden-y outline-effect-right">
       <div class="activity-log" *ngIf="a.activity_log && a.activity_log.length">
         <p class="fs-90 bg-blue m-0 py-3 text-center" ion-text color="white">Activity Log</p>
-        <ion-list class="m-0"  no-lines>
-          <ion-item class="p-0 px-3 border border-bottom-0 border-left-0 border-right-0" *ngFor="let a of a.activity_log" text-wrap>
-            <div>{{a.name}} {{ actv[a.activity] }} 
-              <span *ngIf="a.target">{{a.target}}</span>
-              <div class="fs-lg d-flex align-items-center" *ngIf="a.stamp">{{ a.date }}
-                <i class="fs-2rem ml-2 fal fa-sign-in-alt" ion-text color="blue" *ngIf="a.activity=='login'" ></i>
-                <i class="fs-2rem ml-2 fal fa-eye" ion-text color="grey" *ngIf="a.activity=='visit'" ></i>
-                <i class="fs-2rem ml-2 fal fa-list-alt" ion-text color="brown" *ngIf="a.activity=='open-register'" ></i>
-                <i class="fs-2rem ml-2 fal fa-registered" ion-text color="pink" *ngIf="a.activity=='register'" ></i>
-                <i class="fs-2rem ml-2 fal fa-eye" ion-text color="orange" *ngIf="a.activity=='view-profile'" ></i>
-                <i class="fs-2rem ml-2 fal fa-edit" ion-text color="amber" *ngIf="a.activity=='update-profile'" ></i>
-                <i class="fs-2rem ml-2 fal fa-calendar-check" ion-text color="yellow" *ngIf="a.activity=='reserve'" ></i>
-                <i class="fs-2rem ml-2 fal fa-ban" ion-text color="red" *ngIf="a.activity=='cancel'" ></i>
-                <i class="fs-2rem ml-2 fal fa-money-bill" ion-text color="green" *ngIf="a.activity=='payment'" ></i>
-                <i class="fs-2rem ml-2 fal fa-tasks" ion-text color="purple" *ngIf="a.activity=='evaluate'" ></i>
-                <i class="fs-2rem ml-2 fal fa-comment-alt" ion-text color="indigo" *ngIf="a.activity=='comment'" ></i>
-              </div>
-            </div>
+        <ion-list class="m-0 p-0"  no-lines>
+          <ion-item class="p-0 border border-bottom-0 border-left-0 border-right-0" *ngFor="let a of a.activity_log" text-wrap>
+            <ion-grid no-padding>
+                <ion-row>
+                    <ion-col class="pl-3" col-10>
+                        <span>{{a.name}} {{ actv[a.activity] }}</span>
+                        <span *ngIf="a.target">{{a.target}}</span>
+                        <span class="d-inline-block" *ngIf="a.stamp">{{ a.date }}</span>
+                    </ion-col>
+                    <ion-col class="d-flex align-items-center">
+                        <i class="fs-2rem ml-2 fal fa-sign-in-alt" ion-text color="blue" *ngIf="a.activity=='login'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-eye" ion-text color="grey" *ngIf="a.activity=='visit'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-list-alt" ion-text color="brown" *ngIf="a.activity=='open-register'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-registered" ion-text color="pink" *ngIf="a.activity=='register'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-eye" ion-text color="orange" *ngIf="a.activity=='view-profile'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-edit" ion-text color="amber" *ngIf="a.activity=='update-profile'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-calendar-check" ion-text color="yellow" *ngIf="a.activity=='reserve'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-ban" ion-text color="red" *ngIf="a.activity=='cancel'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-money-bill" ion-text color="green" *ngIf="a.activity=='payment'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-tasks" ion-text color="purple" *ngIf="a.activity=='evaluate'" ></i>
+                        <i class="fs-2rem ml-2 fal fa-comment-alt" ion-text color="indigo" *ngIf="a.activity=='comment'" ></i>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
           </ion-item>
         </ion-list>
       </div>
