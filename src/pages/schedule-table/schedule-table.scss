@@ -113,4 +113,51 @@ schedule-table-page {
       background-color: #ffe818;
     }
   }
+
+  .help-how-to-reserve {
+    padding: .25em;
+    background-color: rgb(167, 167, 167);
+    opacity: 1;
+    animation: aniReserveHelper 3s infinite;
+    img {
+      display: block;
+    }
+    .wrapper {
+      position: relative;
+    }
+    .x {
+      position: absolute;
+      z-index: 100;
+      top: .25em;
+      right: .35em;
+      color: black;
+      i {
+        color: white;
+      }
+    }
+    @media ( min-width: $sm ) {
+      display: flex;
+      justify-content: center;
+    }
+    @media (min-width: $sm) {
+      position: absolute;
+      z-index: 1234;
+      right: .5em;
+    }
+  }
+}
+
+@keyframes aniReserveHelper {
+  20% {
+    // opacity: 1;
+    background-color: rgb(167, 167, 167);
+  }
+  50% {
+    // opacity: .1;
+    background-color: darkorange;
+  }
+  80% {
+    // opacity: 1;
+    background-color: rgb(167, 167, 167);
+  }
 }

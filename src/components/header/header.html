@@ -283,6 +283,15 @@
             </ion-col>
 
 
+            <ion-col *ngIf=" a.user.isLogin ">
+                    <div class="item header-adv blue" (click)=" a.open('student-adv') ">
+                        <div class="icon">
+                            <i class="fal fa-usd-circle"></i>
+                        </div>
+                        <div class="text">{{ 'ADV MENU' | translate }}</div>
+                    </div>
+                </ion-col>
+        
             <ion-col class="d-none d-sm-block">
                 <div class="item header-class-help" (click)="a.open('help')">
                     <div class="icon">

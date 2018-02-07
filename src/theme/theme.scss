@@ -315,21 +315,35 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 
+$bg-loader: rgb(212, 212, 211);
+$color-loader: rgb(38, 38, 82);
+
 .loader {
   padding: 1em;
   animation: aniLoader 2.5s infinite;
-  background-color: rgb(224, 224, 243);
-  color: #448;
+  background-color: $bg-loader;
+  color: $color-loader;
 }
+
+
+.loader-big {
+  display: flex;
+  margin: 1em 2em;
+  padding: 2em;
+  animation: aniLoader 2.5s infinite;
+  background-color: $bg-loader;
+  color: $color-loader;
+}
+
 
 @keyframes aniLoader {
   20% {
-    color: #448;
+    color: $color-loader;
   }
   30% {
     color: transparent;
   }
   40% {
-    color: #448;
+    color: $color-loader;
   }
 }

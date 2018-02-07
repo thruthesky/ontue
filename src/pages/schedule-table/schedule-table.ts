@@ -157,6 +157,7 @@ export class ScheduleTablePage {
   status = null;
   // status_n = 0;
 
+  showHelpReserve = false;
 
   constructor(
     public platform: Platform,
@@ -168,6 +169,9 @@ export class ScheduleTablePage {
     // public cdr: ChangeDetectorRef
   ) {
 
+
+    this.showHelpReserve = !a.lmsInfoUserNoOfTotalSessions;
+    
     this.default_photo_url = a.urlBackend + "/wp-content/plugins/xapi-2/lms/img/default-teacher-photo.jpg";
 
     this.params = navParams.data;
