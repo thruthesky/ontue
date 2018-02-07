@@ -1,8 +1,8 @@
 <div class="custom-card cover-by-2 overflowhidden-y bg-white outline-effect">
-    <p class="fs-90 fw-light m-0 py-3 bg-blue text-center" ion-text color="white">Student Comments</p>
+    <p class="fs-90 m-0 py-3 bg-blue text-center" ion-text color="white">Student Comments</p>
     <ion-list class="m-0" no-lines>
      <ng-container *ngFor="let student_comment of student_comments let i=index">
-        <ion-item class="pointer border border-left-0 border-right-0 border-bottom-0"
+        <ion-item class="pointer"
                 (click)="onClickCommentList(student_comment.idx_teacher)" 
                 *ngIf="i<3"  
             >

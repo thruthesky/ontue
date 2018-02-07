@@ -1,8 +1,8 @@
 <div class="custom-card cover-by-2 overflowhidden-y bg-white outline-effect">
-    <p class="fs-90 fw-light m-0 py-3 bg-blue text-center" ion-text color="white">Recently Graded Teachers</p>
+    <p class="fs-90 m-0 py-3 bg-blue text-center" ion-text color="white">Recently Graded Teachers</p>
     <ion-list no-lines>
         <ng-container *ngFor="let teacher of teachers; let i=index">
-            <ion-item class="pointer border border-left-0 border-right-0 border-bottom-0"
+            <ion-item class="pointer"
             (click)="a.open('schedule-table', { ID: teacher.ID })"
             *ngIf="i<3"
             >

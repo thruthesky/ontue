@@ -30,6 +30,7 @@ ion-nav.teacher {
     }
 
     ion-content {
+        font-family: sans-serif,Arial, Helvetica!important;
         font-size: 16px!important;
         background-color: #edf0f5;
         ::-webkit-scrollbar{
@@ -79,8 +80,8 @@ ion-nav.teacher {
 
         .custom-card{
             ion-label{margin:10.6px!important}
-            .fs-card{font-size:2vh!important}
-            .fs-card-korean{font-size:1.85vh!important}
+            .fs-card{font-size:2.3vh!important}
+            .fs-card-korean{font-size:2.15vh!important}
         }
 }
 
