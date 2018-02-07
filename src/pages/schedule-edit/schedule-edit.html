@@ -11,14 +11,19 @@
 
     <section class="page-body">
 
-      Your No.: {{ a.user.id }}
-      Your timezone: {{ timezone_name }}
-      and your time is now: {{ time }}<br>
+      <div>
+        <div>Your ID No.: {{ a.user.id }}</div>
+        <div>Your timezone: {{ timezone_name }}</div>
+        <div>Your time is now: {{ time }}</div>
+        <div>
+          <button ion-button class="add-schedule" *ngIf="data" (click)='onClickAddSchedule()'>Add Schedule</button>
+        </div>
+      </div>
       <!-- {{ schedules | json }} -->
-      <button ion-button class="add-schedule" *ngIf="data" (click)='onClickAddSchedule()'>Add Schedule</button>
 
-      <div class="alert alert-warning" *ngIf="data && !data.low_price_class">
-        {{ data.low_price_class_message }}
+
+      <div class="alert alert-warning" *ngIf="data && !data['low_price_class']">
+        <div [innerHTML]=" data['low_price_class_message']"></div>
       </div>
 
       <table width="100%" class="schedule-edit text-center my-3" *ngIf=" data ">
