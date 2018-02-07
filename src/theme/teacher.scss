@@ -77,17 +77,28 @@ ion-nav.teacher {
         //         }
         //     }
         // }
+        
+        //for windows
+        // .custom-card-korean{
+        //     ion-label{margin:.65em 0!important}
+        //     .fs-card{font-size:1em!important}
+        // }
 
+        // .custom-card-eng{
+        //     ion-label{margin:.75em 0!important}
+        //     .fs-card{font-size:.8em!important}
+        // }
+        
+        //for ios
         .custom-card-korean{
-            ion-label{margin:.65em 0!important}
+            ion-label{margin:.6em 0!important}
             .fs-card{font-size:1em!important}
         }
 
         .custom-card-eng{
-            ion-label{margin:.75em 0!important}
+            ion-label{margin:.7em 0!important}
             .fs-card{font-size:.8em!important}
         }
-
 
         .list-hover-effect{
             ion-item{padding-right: 3px!important}
