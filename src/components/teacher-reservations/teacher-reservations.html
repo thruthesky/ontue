@@ -2,7 +2,7 @@
         <p  class="fs-90 bg-blue m-0 py-3 text-center" ion-text color="white">Recent Reservations</p>
         <ion-list no-lines>
             <ng-container *ngFor="let reservation of reservations; let i=index">
-                <ion-item  class="pointer border" *ngIf="i<3" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })">
+                <ion-item  class="pointer" *ngIf="i<3" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })">
                     <ion-avatar item-start>
                         <img [src]="a.checkPhotoURL(reservation.teacher_photoURL)">
                     </ion-avatar>

@@ -78,15 +78,14 @@ ion-nav.teacher {
         //     }
         // }
 
-        //text in korean are in different size even at the same px in HTML.
         .custom-card-korean{
-            ion-label{margin:8.1pt 0!important}
-            .fs-card{font-size:11.5pt!important}
+            ion-label{margin:.65em 0!important}
+            .fs-card{font-size:1em!important}
         }
 
         .custom-card-eng{
-            ion-label{margin:8pt 0!important}
-            .fs-card{font-size:11.5pt!important}
+            ion-label{margin:.75em 0!important}
+            .fs-card{font-size:.8em!important}
         }
 
 
