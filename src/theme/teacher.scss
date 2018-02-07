@@ -56,7 +56,6 @@ ion-nav.teacher {
         .pl-0-5{padding-left: 0.5rem!important}
         .pt-0-5{padding-top: 0.5rem!important}
         .pb-0-5{padding-bottom: 0.5rem!important}
-        .line-h-2em{line-height: 2em!important}
 
         .outline-effect{  
             box-shadow: 0 0.5px 1px rgba(0,0,0,0.32)!important;
@@ -78,10 +77,14 @@ ion-nav.teacher {
         //     }
         // }
 
-        .custom-card{
-            ion-label{margin:10.6px!important}
+        .custom-card-korean{
+            ion-label{margin:10.6px 0!important}
             .fs-card{font-size:1.4rem!important}
-            .fs-card-korean{font-size:1.4rem!important}
+        }
+
+        .custom-card-eng{
+            ion-label{margin:11.5px 0!important}
+            .fs-card{font-size:1.4rem!important}
         }
 }
 
