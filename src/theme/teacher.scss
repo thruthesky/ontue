@@ -60,6 +60,13 @@ ion-nav.teacher {
             opacity: 0.5;
         }
 
+        .title-style{
+            border-top: 4px solid #007bff;
+            border-bottom: 1px solid #007bff;
+            font-family:'Times New Roman', Times, serif;
+            letter-spacing: 0.3em
+        }
+
         // height of the four boxes(stats,students comment etc..)
         .cover{height: calc(235.953px*2)!important}
         .cover-by-2{height: 225.953px!important}
