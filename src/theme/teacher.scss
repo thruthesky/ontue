@@ -18,7 +18,7 @@ ion-nav.teacher {
     .pl-0-5{padding-left: 0.5rem!important}
     .pt-0-5{padding-top: 0.5rem!important}
     .pb-0-5{padding-bottom: 0.5rem!important}
-    .line-h-2em{line-height: 2em!important}
+    .line-h-1-8em{line-height: 1.8em!important}
 
     //for the header/navbar
     .teacher-wide-menu{
@@ -47,7 +47,7 @@ ion-nav.teacher {
     }
 
     ion-content {
-        font-family: sans-serif,Arial, Helvetica!important;
+        font-family:sans-serif,Arial, Helvetica!important;
         font-size: 16px!important;
         background-color: #edf0f5;
         ::-webkit-scrollbar{
@@ -56,6 +56,8 @@ ion-nav.teacher {
 
         .activity-log{
             .item-inner{padding:0!important}
+            ion-label{margin: 0.2em 0!important}
+            opacity: 0.5;
         }
 
         // height of the four boxes(stats,students comment etc..)
@@ -104,8 +106,10 @@ ion-nav.teacher {
                 transform: scale(1.15)!important;
             }
         }
+
+
     }
-                // .page {
+        // .page {
         //     background-color: #f3f3f3;
         //     home-teacher-content-component {
         //         .cover-by-2 {
