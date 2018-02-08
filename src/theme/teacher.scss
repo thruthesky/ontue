@@ -91,11 +91,13 @@ ion-nav.teacher {
         
         //for ios
         .custom-card-korean{
+            ion-list{padding:.5em 0!important }
             ion-label{margin:.6em 0!important}
             .fs-card{font-size:1em!important}
         }
 
         .custom-card-eng{
+            ion-list{padding:.45em 0!important }
             ion-label{margin:.7em 0!important}
             .fs-card{font-size:.8em!important}
         }
