@@ -62,7 +62,7 @@ ion-nav.teacher {
 
         .title-style{
             border-top: 4px solid #007bff;
-            border-bottom: 1px solid #007bff;
+            border-bottom: 4px solid #007bff;
             font-family:'Times New Roman', Times, serif;
             letter-spacing: 0.3em
         }
@@ -103,18 +103,16 @@ ion-nav.teacher {
                 border-right:3px solid #007bff!important;
                 padding-right: 0!important;
             }
-
         }
 
-        //for the activity log icons
-        .scale-effect-target{transition: all .15s ease-in-out!important}
-        .scale-effect:hover{
-            .scale-effect-target{
-                transform: scale(1.15)!important;
-            }
-        }
-
-
+        .border-blue-side-effect{border-left:3px solid #007bff!important}
+        .border-red-side-effect{border-left:3px solid #f53d3d!important}
+        .border-orange-side-effect{border-left:3px solid #FFA000!important}
+        .border-indigo-side-effect{border-left:3px solid #303F9F!important}
+        .border-violet-side-effect{border-left:3px solid #512DA8!important}
+        .border-brown-side-effect{border-left:3px solid #5D4037!important}
+        .border-green-side-effect{border-left:3px solid #32db64!important}
+        
     }
         // .page {
         //     background-color: #f3f3f3;

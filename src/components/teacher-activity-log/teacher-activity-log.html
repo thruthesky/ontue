@@ -4,13 +4,13 @@
         <ion-list class="m-0 p-0"  no-lines>
           <ion-item class="p-0" *ngFor="let a of a.activity_log" text-wrap>
             <ion-grid no-padding>
-                <ion-row class="scale-effect">
+                <ion-row>
                     <ion-col class="pl-3 font-em-0-85" col-10>
                         <span><span class="fw-bold">{{a.name}}</span> {{ actv[a.activity] }}</span>
                         <span *ngIf="a.target">{{a.target}}</span>
                         <!-- <span class="d-inline-block fs-sm" *ngIf="a.stamp">{{ a.date }}</span> -->
                     </ion-col>
-                    <ion-col class="scale-effect-target d-flex align-items-center">
+                    <ion-col class="d-flex align-items-center">
                         <i class="fs-2rem ml-2 fal fa-sign-in-alt" ion-text color="blue" *ngIf="a.activity=='login'" ></i>
                         <i class="fs-2rem ml-2 fal fa-eye" ion-text color="grey" *ngIf="a.activity=='visit'" ></i>
                         <i class="fs-2rem ml-2 fal fa-list-alt" ion-text color="brown" *ngIf="a.activity=='open-register'" ></i>
