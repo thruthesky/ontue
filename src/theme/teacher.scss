@@ -1,7 +1,7 @@
 ion-nav.teacher {
-
     //utilities,can be used all over teahers page
     .align-items-center{ align-items: center }
+    .align-items-end{ align-items: end }
     .bg-light{background-color:#edf0f5!important }
     .bg-blue{background-color:#007bff!important }
     .bg-blue-80{background-color:rgba(#007bff,0.80)!important }
@@ -61,10 +61,10 @@ ion-nav.teacher {
             p{background: rgba(#007bff,0.8) }
         }
 
+        .guidelines,.teacher-evaluation{ ion-label{margin: 0!important}}
+
         .title-style{
-            border-top: 4px solid #007bff;
-            border-bottom: 4px solid #007bff;
-            font-family:'Times New Roman', Times, serif;
+            font-family:roboto,Arial, Helvetica, sans-serif;
             letter-spacing: 0.3em
         }
 
@@ -74,6 +74,9 @@ ion-nav.teacher {
         .cover-by-4{height: calc(225.953px/2)!important}
 
         .outline-effect, .outline-effect-right{  
+            -moz-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
+            -webkit-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
+            -ms-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
             box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
         }
 

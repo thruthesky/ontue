@@ -4,7 +4,7 @@
         <ion-list class="m-0 p-0"  no-lines>
           <ion-item class="p-0" *ngFor="let a of a.activity_log" text-wrap>
             <ion-grid no-padding>
-                <ion-row>
+                <ion-row class="pt-2">
                     <ion-col class="pl-3 font-em-0-85" col-10>
                         <span><span class="fw-bold">{{a.name}}</span> {{ actv[a.activity] }}</span>
                         <span *ngIf="a.target">{{a.target}}</span>
