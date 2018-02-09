@@ -57,7 +57,8 @@ ion-nav.teacher {
         .activity-log{
             .item-inner{padding:0!important}
             ion-label{margin: 0.2em 0!important}
-            opacity: 0.5;
+            ion-item{background:rgba(233, 233, 233, 0.3)!important}
+            p{background: rgba(#007bff,0.8) }
         }
 
         .title-style{
@@ -112,6 +113,8 @@ ion-nav.teacher {
         .border-violet-effect{border-bottom:3px solid #512DA8!important}
         .border-brown-effect{border-bottom:3px solid #5D4037!important}
         .border-green-effect{border-bottom:3px solid #32db64!important}
+        .border-dark-effect{border-bottom:3px solid #222!important}
+        .border-light{border-width: 1px!important}
         
     }
         // .page {

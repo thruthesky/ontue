@@ -9,8 +9,25 @@
                 <ion-avatar item-start>
                         <img [src]="a.checkPhotoURL(teacher.photoURL)">
                 </ion-avatar>
-                <h3>{{a.preTeacherName(teacher.display_name)}}</h3>
-                <p class="fs-card">Grade: {{teacher.grade}}</p>
+                    <h3>{{a.preTeacherName(teacher.display_name)}}
+                        <div class="ml-2 d-inline-block">
+                            <span *ngIf="teacher.grade < 1"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="teacher.grade >= 1"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+    
+                            <span *ngIf="teacher.grade < 2"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="teacher.grade >= 2"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+    
+                            <span *ngIf="teacher.grade < 3"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="teacher.grade >= 3"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+    
+                            <span *ngIf="teacher.grade < 4"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="teacher.grade >= 4"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+    
+                            <span *ngIf="teacher.grade < 5"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="teacher.grade >= 5"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+                        </div>
+                    </h3>
+                <p class="fs-card">Grade:{{teacher.grade}}</p>
             </ion-item>
         </ng-container>
     </ion-list>
