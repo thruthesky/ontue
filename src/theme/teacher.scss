@@ -1,5 +1,4 @@
 ion-nav.teacher {
-
     //utilities,can be used all over teahers page
     .align-items-center{ align-items: center }
     .align-items-end{ align-items: end }
@@ -75,6 +74,9 @@ ion-nav.teacher {
         .cover-by-4{height: calc(225.953px/2)!important}
 
         .outline-effect, .outline-effect-right{  
+            -moz-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
+            -webkit-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
+            -ms-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
             box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
         }
 
