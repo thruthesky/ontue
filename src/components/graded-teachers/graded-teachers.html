@@ -1,5 +1,5 @@
 <div class="custom-card-eng cover-by-2 overflowhidden-y bg-white outline-effect">
-    <p class="fs-90 m-0 py-3 bg-blue text-center" ion-text color="white">Recently Graded Teachers</p>
+    <p class="fs-90 m-0 py-3 mb-1 bg-blue text-center" ion-text color="white">Recently Graded Teachers</p>
     <ion-list class="list-hover-effect" no-lines>
         <ng-container *ngFor="let teacher of teachers; let i=index">
             <ion-item class="pointer"
@@ -10,24 +10,24 @@
                         <img [src]="a.checkPhotoURL(teacher.photoURL)">
                 </ion-avatar>
                     <h3>{{a.preTeacherName(teacher.display_name)}}
-                        <div class="ml-2 d-inline-block">
-                            <span *ngIf="teacher.grade < 1"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                            <span *ngIf="teacher.grade >= 1"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-    
-                            <span *ngIf="teacher.grade < 2"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                            <span *ngIf="teacher.grade >= 2"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-    
-                            <span *ngIf="teacher.grade < 3"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                            <span *ngIf="teacher.grade >= 3"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-    
-                            <span *ngIf="teacher.grade < 4"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                            <span *ngIf="teacher.grade >= 4"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-    
-                            <span *ngIf="teacher.grade < 5"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                            <span *ngIf="teacher.grade >= 5"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-                        </div>
                     </h3>
-                <p class="fs-card">Grade:{{teacher.grade}}</p>
+                    <div class="fs-card">
+                        <span *ngIf="teacher.grade < 1"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="teacher.grade >= 1"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="teacher.grade < 2"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="teacher.grade >= 2"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="teacher.grade < 3"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="teacher.grade >= 3"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="teacher.grade < 4"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="teacher.grade >= 4"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+
+                        <span *ngIf="teacher.grade < 5"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                        <span *ngIf="teacher.grade >= 5"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+                    </div>
+                <p item-end>{{teacher.grade}}/5</p>
             </ion-item>
         </ng-container>
     </ion-list>

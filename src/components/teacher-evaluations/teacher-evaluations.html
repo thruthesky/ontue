@@ -1,11 +1,30 @@
-<div class="outline-effect outline-effect-right rounded m-0">
-    <h2  class="fs-xl bg-blue m-0 py-4 text-center" ion-text color="white">Recent Evaluation</h2>
+<div class="teacher-evaluation outline-effect outline-effect-right rounded m-0">
+    <h2  class="title-style fs-3rem m-0 py-5 fw-light bg-blue text-center" ion-text color="white">RECENT EVALUATION</h2>
     <ion-list class="m-0" text-wrap no-lines>
-        <div class="p-0 m-0 border border-bottom-0 border-left-0 border-right-0" ion-item
+        <div class="m-0 p-3 border border-top-0 border-left-0 border-right-0 " ion-item
           *ngFor="let teacher_comment of evaluations; let i=index">
-            <img class="mx-5 my-3" [src]="a.checkPhotoURL(evaluations.teacher_photoURL)" item-start>
-            <h2 class="fs-110 my-3">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
-            <p class="fw-light line-h-2em my-3">{{ teacher_comment.comment }}</p>
+          <ion-grid>
+              <ion-row align-items-end>
+                  <ion-col col-md-3 class="d-flex">
+                        <ion-thumbnail>
+                            <img class="ml-2 mr-4 rounded" src="../assets/img/student/1.jpg">
+                        </ion-thumbnail>
+                        <ion-thumbnail>
+                            <img class="mx-4 rounded" src="../assets/img/student/2.jpg">
+                        </ion-thumbnail>
+                  </ion-col>
+                  <ion-col>
+                    <h2 class="fs-2rem fw-bold d-inline" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
+                    <span class="fs-110 d-inline">00-00-0000 at 00:00am</span>
+                  </ion-col>
+                  <ion-col text-right>
+                    <span class="mr-3" ion-text color="blue">#{{i+1}}</span>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>   
+            <p class="fs-110 line-h-1-8em my-3 mx-4 bg-light rounded p-5" ion-text color="dark" text-justify>
+                {{ teacher_comment.comment }}
+            </p>
         </div>
     </ion-list>
     <div class="bg-blue p-3" text-center>
