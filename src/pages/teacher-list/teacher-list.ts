@@ -22,7 +22,7 @@ export class TeacherListPage {
   gender = '';
   recommend = 'Y';
   page_no: number;
-  limit = 30; // default should be 60. it looks good in 60.
+  limit = 100; // default should be enough numbers NOT to scroll. Instead, put a option button to show all teachers.
 
   noMoreTeachers: boolean;
   loading: boolean;

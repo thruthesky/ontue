@@ -6,10 +6,10 @@
     <hook-content-top></hook-content-top>
 
 
-    
+
     <section class="page-header">
-            <div class="" *ngIf=" a.user.isLogin ">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
-            <div class="" *ngIf=" a.user.isLogout ">앗! 로그인을 하셔야지만 회원님의 국가별 시간에 맞추어 수업 시간표를 표시할 수 있습니다.</div>
+      <div class="" *ngIf=" a.user.isLogin ">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
+      <div class="" *ngIf=" a.user.isLogout ">앗! 로그인을 하셔야지만 회원님의 국가별 시간에 맞추어 수업 시간표를 표시할 수 있습니다.</div>
     </section>
     <section class="page-desc">
       주의! 아래의 수업을 예약하면 곧 수업이 시작됩니다.
@@ -19,70 +19,83 @@
     <section class="page-body">
 
       <div class="my-5 py-5 bg-orange black fs-2rem text-center" *ngIf=" a.user.isLogout ">
-        앗! <span class="blue">로그인을 해야</span>지만 수업 시간을 확인하고 예약 할 수 있습니다.
+        앗!
+        <span class="blue">로그인을 해야</span>지만 수업 시간을 확인하고 예약 할 수 있습니다.
       </div>
 
       <div>
 
 
-            <div class="d-flex my-5 mx-4 p-4 alert alert-warning rounded-0" *ngIf=" pageInLoading; else pageLoaded ">
-                    <ion-spinner></ion-spinner>
-                    <span class="p-2">{{ 'IN LOADING' | translate }}</span>
-                  </div>
-                  <ng-template #pageLoaded>
-                    <div>
-                      <ion-grid *ngIf=" re && re?.available_schedules?.length; else NoSchedule">
-                        <ion-row>
-                          <ion-col *ngFor="let schedule of re.available_schedules" col-4 col-md-4 col-lg-3>
-                            <div class="d-flex justify-content-center">
-                              <div class="teacher-profile-photo size-100x120 of-hidden">
-                                <img class="w-100" src="{{ schedule.teacher.photoURL }}">
-                              </div>
-                            </div>
-                            <div class="text-center mt-1 mb-3">
-                              <div>{{ a.preTeacherName( schedule.teacher.name )}}</div>
-                              <div class="grade" [attr.grade]=" schedule.teacher.grade ">
-                                추천:
-                                <i class="star fas fa-star" *ngFor="let i of a.countStar(schedule.teacher.grade)"></i>
-                                <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(schedule.teacher.grade)"></i>
-            
-                              </div>
-                              <div>
-                                ({{ schedule.teacher.total_reservation }} 명 참여)
-                              </div>
-                              <div>
-                                <span *ngIf=" a.user.isLogin ">{{ class_begin(schedule) }} / </span>
-                                {{ schedule.duration }} {{ 'MINUTE' | translate }}
-                              </div>
-                              <div>
-                                {{ schedule.point }} 포인트
-                              </div>
-            
-                              <div class="reserve-button pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
-                                {{ 'RESERVE NOW' | translate }}
-                              </div>
-                              <div class="d-flex" *ngIf=" loading[schedule.idx] ">
-                                <ion-spinner></ion-spinner>
-                                <span class="p-4">{{ 'IN RESERVING' | translate }}</span>
-                              </div>
-            
-                            </div>
-            
-                          </ion-col>
-                        </ion-row>
-                      </ion-grid>
-            
-            
-                      <ng-template #NoSchedule>
-                        <div class="alert alert-warning mx-3 my-5 p-5">
-                          <div class="mb-3">앗, 지금 이 시간에 수업 가능한 선생님이 없습니다.</div>
-                          <div>다른 시간에 예약을 시도 해 주세요.</div>
+        <div class="d-flex my-5 mx-4 p-4 alert alert-warning rounded-0" *ngIf=" pageInLoading; else pageLoaded ">
+          <ion-spinner></ion-spinner>
+          <span class="p-2">{{ 'IN LOADING' | translate }}</span>
+        </div>
+        <ng-template #pageLoaded>
+          <div class="mt-md-2">
+            <ion-grid *ngIf=" re && re?.available_schedules?.length; else NoSchedule">
+              <ion-row>
+                <ion-col *ngFor="let schedule of re.available_schedules" col-4 col-sm-3 col-lg-2>
+                  <div class="teacher mt-md-5 mb-md-3">
+                    
+                        <div class="d-flex justify-content-center">
+                          <div class="teacher-profile-photo size-100x120 of-hidden">
+                            <img class="w-100" src="{{ schedule.teacher.photoURL }}">
+                          </div>
                         </div>
-                      </ng-template>
-            
-                    </div>
-                  </ng-template>
-            
+                        <div class="text-center mt-1">
+                          <div>{{ a.preTeacherName( schedule.teacher.name )}}</div>
+                          <div class="grade" [attr.grade]=" schedule.teacher.grade ">
+                            추천:
+                            <i class="star fas fa-star" *ngFor="let i of a.countStar(schedule.teacher.grade)"></i>
+                            <!-- <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(schedule.teacher.grade)"></i> -->
+
+                          </div>
+                          <div>
+                            ({{ schedule.teacher.total_reservation }} 명 참여)
+                          </div>
+                          <div>
+                            <span *ngIf=" a.user.isLogin ">{{ class_begin(schedule) }} / </span>
+                            {{ schedule.duration }} {{ 'MINUTE' | translate }}
+                          </div>
+                          <div>
+                            {{ schedule.point }} 포인트
+                          </div>
+
+                          <div class="reserve-button pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
+                            {{ 'RESERVE NOW' | translate }}
+                          </div>
+                          <div class="d-flex p-3" *ngIf=" loading[schedule.idx] ">
+                            <ion-spinner></ion-spinner>
+                            <span class="p-2">{{ 'IN RESERVING' | translate }}</span>
+                          </div>
+
+                        </div>
+                      </div>
+                      
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+            <ng-template #NoSchedule>
+              <div class="alert alert-warning mx-3 my-5 p-5">
+                <h2 class="mb-3">앗, 지금 즉시 수업을 예약 할 수 없습니다.</h2>
+                지금 즉시 수업(예약)을 할 수 없는 이유는 주로 아래와 같습니다.
+                <ol>
+                  <li>
+                    지금 현재 시간에 수업 가능한 선생님이 없습니다.
+                  </li>
+                  <li>
+                    회원님께서 곧 수업이 있는 경우 지금 즉시 수업 시작되는 다른 수업을 예약 할 수 없습니다.
+                  </li>
+                </ol>
+                <div>다른 시간에 다시 예약을 시도 해 주세요.</div>
+              </div>
+            </ng-template>
+
+          </div>
+        </ng-template>
+
       </div>
 
     </section>
