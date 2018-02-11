@@ -1,6 +1,6 @@
 <section id="home-teacher-content" class="mt-md-3 bg-light">
     <ion-grid no-padding>
-        <ion-row class="m-0 my-3">
+        <ion-row class="m-0 my-3 px-1px">
             <ion-col class="p-0 pr-md-3 m-0 " col-sm-auto col-md-3>
                 <teacher-reminders-component></teacher-reminders-component>
             </ion-col>
@@ -35,7 +35,7 @@
               <teacher-activity-log-component [actv]="activity"></teacher-activity-log-component>
             </ion-col>
         </ion-row>
-        <ion-row class="my-3">
+        <ion-row class="my-3 px-1px">
           <ion-col class="pr-3">
               <teacher-steps-component></teacher-steps-component>
           </ion-col>
@@ -43,12 +43,12 @@
               <teacher-guidelines-component></teacher-guidelines-component>
           </ion-col>
         </ion-row>
-        <ion-row class="my-3">
+        <ion-row class="my-3 px-1px">
             <ion-col>
                 <teacher-grading-system-component></teacher-grading-system-component>
              </ion-col>
         </ion-row>
-        <ion-row class="my-3">
+        <ion-row class="my-3 px-1px">
             <ion-col class="p-0" *ngIf="site_info.comment_from_teacher.length">
                 <teacher-evaluations-component [evaluations]="site_info.comment_from_teacher"></teacher-evaluations-component>
             </ion-col>

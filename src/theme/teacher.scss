@@ -15,6 +15,7 @@ ion-nav.teacher {
     .flex-column{flex-direction: column!important}
     .fw-light{font-weight: lighter!important}
     .line-h-1-8em{line-height: 1.8em!important}
+    .px-1px{padding: 0 1px !important}// for the outline effect to be not hidden in overflow
 
     //for the header/navbar
     .teacher-wide-menu{
@@ -69,13 +70,9 @@ ion-nav.teacher {
         .cover-by-2{height: 225.953px!important}
         .cover-by-4{height: calc(225.953px/2)!important}
 
-        .outline-effect, .outline-effect-right{  
-            outline: 1px solid rgba(0,0,0,0.28)!important;
+        .outline-effect{  
+            outline: 1px solid #e2e2e2!important;
         }
-
-        .outline-effect{ margin-left: 1px!important}
-         //the effect is cut in some parts of the ion-col because of its padding,this is my remedy
-        .outline-effect-right{margin-right: 1px!important}
         
         .cover-slider{height: 225.95px!important}
 
