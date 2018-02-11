@@ -1,8 +1,8 @@
-<div class="cover-by-2 overflowhidden-y bg-white outline-effect">
-    <h2 class="fs-110 fw-light m-0 py-3 bg-blue text-center" ion-text color="white">Student Comments</h2>
-    <ion-list class="m-0" no-lines>
+<div class="custom-card-korean cover-by-2 overflowhidden-y bg-white outline-effect">
+    <p class="fs-90 m-0 py-3 bg-blue text-center" ion-text color="white">Student Comments</p>
+    <ion-list class="list-hover-effect m-0" no-lines>
      <ng-container *ngFor="let student_comment of student_comments let i=index">
-        <ion-item class="pointer border border-left-0 border-right-0 border-top-0"
+        <ion-item class="pointer"
                 (click)="onClickCommentList(student_comment.idx_teacher)" 
                 *ngIf="i<3"  
             >
@@ -29,7 +29,7 @@
 
                 </div>
             </h3>
-            <p class="fs-custom1" >{{student_comment.comment}}</p>
+            <p class="fs-card-korean" >{{student_comment.comment}}</p>
         </ion-item>
      </ng-container>
     </ion-list>
