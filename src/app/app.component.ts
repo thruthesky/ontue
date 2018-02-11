@@ -93,6 +93,10 @@ export class MyApp {
       // splashScreen.hide();
 
       this.a.onetimeInitPushMessage();
+
+      /// it should be here.
+      /// Test code should run after platform is ready.
+      setTimeout(() => this.test(), 100);
     });
 
   }
@@ -164,7 +168,6 @@ export class MyApp {
     this.a.pages['student-adv'] = StudentAdvPage;
 
 
-    setTimeout(() => this.test(), 100);
   }
 
   test() {
@@ -197,7 +200,7 @@ export class MyApp {
 
     // this.a.open('login');
 
-    // this.a.open('register');
+    this.a.open('register');
 
     // this.a.open('menu');
     // this.a.open('my-point');

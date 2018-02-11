@@ -138,6 +138,15 @@
                   <input class="" type="text" [(ngModel)]="account.phone_number" name="phone_number">
                 </div>
               </li>
+              
+              <li *ngIf=" a.teacherTheme ">
+                <label class="label">Bookable Time</label>
+                <div class="input">
+                  <div><input class="" type="number" [(ngModel)]="account.bookable_time" name="bookable_time"></div>
+                  <div class="small">Input minutes to prevent a sudden booking.</div>
+                </div>
+              </li>
+              
 
               <li>
                 <label class="label">{{ 'KAKAOTALK ID SHORT' | translate }}</label>
