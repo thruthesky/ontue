@@ -14,10 +14,6 @@ ion-nav.teacher {
     .overflowhidden-y{overflow-y: hidden!important}
     .flex-column{flex-direction: column!important}
     .fw-light{font-weight: lighter!important}
-    .pr-0-5{padding-right: 0.5rem!important}
-    .pl-0-5{padding-left: 0.5rem!important}
-    .pt-0-5{padding-top: 0.5rem!important}
-    .pb-0-5{padding-bottom: 0.5rem!important}
     .line-h-1-8em{line-height: 1.8em!important}
 
     //for the header/navbar
@@ -74,10 +70,7 @@ ion-nav.teacher {
         .cover-by-4{height: calc(225.953px/2)!important}
 
         .outline-effect, .outline-effect-right{  
-            -moz-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
-            -webkit-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
-            -ms-box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
-            box-shadow: 0 0 0.5px rgba(0,0,0,0.28)!important;
+            outline: 1px solid rgba(0,0,0,0.28)!important;
         }
 
         .outline-effect{ margin-left: 1px!important}
