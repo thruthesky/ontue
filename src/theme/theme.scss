@@ -37,6 +37,15 @@ ul.buttons {
   text-align: center!important;
 }
 
+.text-left {
+  text-align: left!important;
+}
+@media (min-width: $md) {
+  .text-md-left {
+    text-align: left!important;
+  }
+}
+
 //
 .d-flex {
   display: flex;
@@ -345,5 +354,27 @@ $color-loader: rgb(38, 38, 82);
   }
   40% {
     color: $color-loader;
+  }
+}
+
+$bg-color-warning: rgb(83, 54, 0);
+.warning-box {
+  margin-bottom: 1em;
+  padding: 1em;
+  text-align: center;
+  background-color: $bg-color-warning;
+  animation: aniWarning 3s infinite;
+  color: white;
+}
+
+@keyframes aniWarning {
+  35% {
+    background-color: $bg-color-warning;
+  }
+  50% {
+    background-color: rgb(168, 109, 0);
+  }
+  75% {
+    background-color: $bg-color-warning;
   }
 }

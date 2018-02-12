@@ -35,6 +35,7 @@
 "USERNAME": "로그인 아이디",
 "PASSWORD": "비밀번호",
 "CHANGE PASSWORD": "비밀번호 변경",
+"CHANGE PASSWORD DESC": "비밀번호 변경를 변경합니다.",
 "LOGIN": "로그인",
 "LOGIN BUTTON": "로그인하기",
 "LOGOUT": "로그아웃",
@@ -160,7 +161,7 @@
 , "ADD FRIEND": "친구추가"
 , "FIND KAKAOTALK ID": "카카오톡 아이디는 프로필 관리에서 확인 할 수 있습니다. 카카오톡 아이디 확인 방법"
 , "KAKAOTALK ID REQUIRED": "카카오톡 아이디를 입력해야 합니다. 카카오톡 아이디는 프로필에서 확인 할 수 있습니다."
-, "SCHEDULE AVAILABLE PAGE TITLE": "지금 바로 수업 가능한 선생님 목록"
+, "SCHEDULE AVAILABLE PAGE TITLE": "즉시 수업 가능한 선생님 목록"
 , "IN LOADING": "로딩 중입니다. 잠시만 기다려주세요."
 , "IN RESERVING": "예약 중..."
 , "RESERVE NOW": "예약하기"
@@ -234,4 +235,8 @@
  , "DATE BEGIN": "수업 시작 날짜 선택"
  , "DATE END": "수업 끝 날짜 선택"
  , "ADV MENU": "월 1만원"
+ , "OLD PASSWORD": "현재 비밀번호"
+ , "NEW PASSWORD": "새 비밀번호"
+ , "CHANGE PASSWORD BUTTON": "비밀번호 변경"
+ , "CANCEL BUTTON": "취소"
 }

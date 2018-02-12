@@ -55,7 +55,7 @@ export class ScheduleEditPage {
         usd_to_kwr: this.data['usd_to_kwr'],
         share_teacher: this.data['share_teacher'],
         max_point_per_minute: this.data['max_point_per_minute']
-      } );
+      }, {cssClass:'add-schedule'} );
     modal.onDidDismiss(()=> {
       this.getMySchedule();
     });
@@ -69,7 +69,7 @@ export class ScheduleEditPage {
       usd_to_kwr: this.data['usd_to_kwr'],
       share_teacher: this.data['share_teacher'],
       max_point_per_minute: this.data['max_point_per_minute']
-    });
+    }, {cssClass:'add-schedule'});
     modal.onDidDismiss(()=> {
       this.getMySchedule();
     });

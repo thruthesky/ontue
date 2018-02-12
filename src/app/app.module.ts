@@ -283,7 +283,7 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherEvaluationsComponent,
     TeacherStepComponent,
     TeacherActivityLogComponent
-  
+
   ],
   providers: [
     // StatusBar,

@@ -19,7 +19,7 @@
 
     <div class="mb-3">
       <div>Your timezone: ({{ timezone_offset > 0 ? "+" + timezone_offset : timezone_offset }}) {{ timezone_name }}</div>
-      <div>and your time is now: {{ time }}</div>
+      <div>Your time is now: {{ time }}</div>
       <div>
         <button ion-button class="update-tz" (click)="dismiss(); a.open('settings')">Update Timezone</button>
       </div>
@@ -27,29 +27,37 @@
 
     <div class="mb-3">
       Class Begin:
-      <input class="w-8" type="text" name="class_begin_hour" [(ngModel)]="data.class_begin_hour"> :
-      <input class="w-8" type="text" name="class_begin_minute" [(ngModel)]="data.class_begin_minute"> Ex) 12:30
+      <input class="w-8" type="text" name="class_begin_hour" [(ngModel)]="data.class_begin_hour">(0-23)Hour :
+      <input class="w-8" type="text" name="class_begin_minute" [(ngModel)]="data.class_begin_minute">(0-60)Min
+      <div>
+        <small>Ex) 8:30= 8:30am, 11:30= 11:30am, 15:00= 3:00pm, 20:00=8:00pm</small>
+      </div>
     </div>
 
     <div class="mb-3">
       Class Duration:
       <input type="text" name="duration" [(ngModel)]="data.duration">
-      <small class="muted">How many minutes do you want to have the class?</small>
+      <div>
+        <small class="muted">
+          How many minutes do you want to have the class?
+        </small>
+      </div>
+      <div>
+        <small class="muted">
+          Ex) 10 = 10mins class, 25 = 25mins class, 120= 120mins(2hrs) class.
+        </small>
+      </div>
     </div>
 
     <div class="mb-2">
       POINT:
       <input type="text" name="point" [(ngModel)]="data.point">
-      <p>
-        * If you think you are a good teacher, put 6,000 POINT for 25 minutes session.<br>
-        * Our recommendation for 25 minutes session is 2,000 POINT.<br>
-        * Our recommendation for native is 7,000 POINT for 25 minutes session.
-      </p>
-    </div>
-    <div class="alert alert-warning mb-2" *ngIf=" maxPoint() ">
-      You cannot raise more than {{ max_point_per_minute }} per minute.
-      The point for {{ data['duration'] }} minutes class must be less than or equal to {{ data['duration'] *
-      max_point_per_minute }}
+        <small class="d-block muted">
+          How many Points you will charge the student per class.
+        </small>
+        <small class="d-block muted">
+          Ex) 500,1000,2000,2500,3000,4000,5000...
+        </small>
     </div>
 
     <table>
@@ -93,9 +101,26 @@
     </table>
 
 
+    <ul>
+      <li>Promo Schedule Graded Teacher must have.</li>
+      <li><b>2</b> schedule with <b>10mins</b> duration for <b>500points</b> and minimum of <b>5days</b></li>
+      <li><b>2</b> schedule with <b>20mins</b> duration for <b>1000points</b> and minimum of <b>5days</b></li>
+      <li><b>2</b> schedule with <b>25mins</b>  duration for <b>2500points</b> and minimum of <b>5days</b></li>
+    </ul>
+    <div class="alert alert-warning mb-2" *ngIf=" maxPoint() ">
+      You cannot raise more than {{ max_point_per_minute }} per minute.
+      The point for {{ data['duration'] }} minutes class must be less than or equal to {{ data['duration'] *
+      max_point_per_minute }}
+    </div>
+
+
     <div>
-      PreRe:
-      <input type="text" name="prere" [(ngModel)]="data.prere">
+      <div>PreRe:<input type="text" name="prere" [(ngModel)]="data.prere"></div>
+      <div>
+        <small class="muted">
+          If you want to make the schedule limited to specific student, you can add the student email here.
+        </small>
+      </div>
     </div>
 
 
