@@ -5,17 +5,17 @@
           *ngFor="let teacher_comment of evaluations; let i=index">
           <ion-grid>
               <ion-row align-items-end>
-                  <ion-col col-md-3 class="d-flex">
-                        <ion-thumbnail>
-                            <img class="ml-2 mr-4 rounded" src="../assets/img/student/1.jpg">
+                  <ion-col col-md-3 class="d-flex" *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
+                        <ion-thumbnail *ngIf="teacher_comment['teacher_photoURL']">
+                            <img class="ml-2 mr-4 rounded" src="{{teacher_comment['teacher_photoURL']}}">
                         </ion-thumbnail>
-                        <ion-thumbnail>
-                            <img class="mx-4 rounded" src="../assets/img/student/2.jpg">
+                        <ion-thumbnail *ngIf="teacher_comment['student_photoURL']">
+                            <img class="mx-4 rounded" src="{{teacher_comment['student_photoURL']}}">
                         </ion-thumbnail>
                   </ion-col>
                   <ion-col>
                     <h2 class="fs-2rem fw-bold d-inline" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
-                    <span class="fw-light d-inline">00-00-0000 at 00:00am</span>
+                    <span class="fs-110 d-inline">{{teacher_comment['date']}}</span>
                   </ion-col>
                   <ion-col text-right>
                     <span class="mr-3" ion-text color="blue">#{{i+1}}</span>
