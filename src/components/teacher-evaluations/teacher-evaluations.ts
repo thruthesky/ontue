@@ -1,4 +1,4 @@
-import { Component, Input, OnInit  } from '@angular/core';
+import { Component, Input, OnInit,} from '@angular/core';
 import { AppService } from './../../providers/app.service';
 
 
@@ -9,7 +9,6 @@ import { AppService } from './../../providers/app.service';
 export class TeacherEvaluationsComponent implements OnInit  {
 
   @Input() evaluations = [];
-
   constructor(
       public a: AppService,
     ) {
@@ -17,5 +16,15 @@ export class TeacherEvaluationsComponent implements OnInit  {
     }
 
   ngOnInit() { }
+
+  more($id){
+    document.getElementById(('less_'+$id)).classList.remove('d-none');
+    document.getElementById(('more_'+$id)).classList.add('d-none');
+  }
+
+  less($id){
+    document.getElementById(('less_'+$id)).classList.add('d-none');
+    document.getElementById(('more_'+$id)).classList.remove('d-none');
+  }
   
 }

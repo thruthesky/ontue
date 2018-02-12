@@ -1,6 +1,6 @@
 <div class="teacher-evaluation outline-effect rounded m-0">
-    <h2  class="title-style fs-3rem m-0 py-5 fw-light bg-blue text-center" ion-text color="white">RECENT EVALUATION</h2>
-    <ion-list class="m-0" text-wrap no-lines>
+    <h2  class="title-style py-5 fs-3rem m-0 fw-light bg-blue text-center" ion-text color="white">RECENT EVALUATION</h2>
+    <ion-list class="m-0" no-lines>
         <div class="m-0 p-3 border border-top-0 border-left-0 border-right-0 " ion-item
           *ngFor="let teacher_comment of evaluations; let i=index">
           <ion-grid>
@@ -15,17 +15,17 @@
                   </ion-col>
                   <ion-col>
                     <h2 class="fs-2rem fw-bold d-inline" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
-                    <span class="fs-110 d-inline">00-00-0000 at 00:00am</span>
+                    <span class="fw-light d-inline">00-00-0000 at 00:00am</span>
                   </ion-col>
                   <ion-col text-right>
                     <span class="mr-3" ion-text color="blue">#{{i+1}}</span>
                   </ion-col>
               </ion-row>
           </ion-grid> 
-          <div class="bg-light  p-0 m-0 rounded my-3 mx-4 outline-effect px-5">
-            <p class="white-space-pre fs-110 line-h-1-8em m-0 p-0 " ion-text color="dark">
-                {{ teacher_comment.comment.slice(0,100) }}
-            </p>
+          <div class="bg-light p-5 m-0 rounded my-3 mx-4 outline-effect">
+              <!--- dont re-arrange it will affect the white-spacing-->
+            <p id="more_{{i}}" class="white-space-pre line-h-1-8em m-0 p-0 fw-light my-3" ion-text color="dark">{{teacher_comment.comment.slice(0,200)}}<ng-container *ngIf="teacher_comment.comment.length>200"><span class="fs-xl"> ...</span><span class="ml-3 pointer" ion-text color="blue" (click)="more(i)">View more</span></ng-container></p>
+            <p id="less_{{i}}" class="d-none white-space-pre line-h-1-8em m-0 p-0 fw-light my-3" ion-text color="dark">{{teacher_comment.comment}}<ng-container *ngIf="teacher_comment.comment.length>200"><span class="pointer" ion-text color="blue" (click)="less(i)"> View less</span></ng-container></p>
           </div>  
         </div>
     </ion-list>
