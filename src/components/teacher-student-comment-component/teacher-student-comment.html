@@ -1,36 +1,40 @@
 <div class="cover-by-2 overflowhidden-y bg-white outline-effect">
-    <p class="fs-90 m-0 py-3 bg-blue text-center" ion-text color="white">Student Comments</p>
-    <ion-list class="list-hover-effect m-0" no-lines>
-     <ng-container *ngFor="let student_comment of student_comments let i=index">
-        <ion-item class="pointer"
+    <p class="fs-90 m-0 py-3 mb-2 bg-blue text-center" ion-text color="white">Student Comments</p>
+    <div class="list-hover-effect m-0" no-lines>
+     <ng-container *ngFor="let student_comment of student_comments; let i=index">
+        <ion-grid class="pointer item"
                 (click)="onClickCommentList(student_comment.idx_teacher)" 
-                *ngIf="i<3"  
-            >
-            <ion-avatar item-start>
-                <img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
-            </ion-avatar>
-            <h3>{{a.preTeacherName(student_comment.teacher_name)}}
-                <div class="ml-2 d-inline-block">
-
-                    <span *ngIf="student_comment.rate < 1"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                    <span *ngIf="student_comment.rate >= 1"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-
-                    <span *ngIf="student_comment.rate < 2"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                    <span *ngIf="student_comment.rate >= 2"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-
-                    <span *ngIf="student_comment.rate < 3"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                    <span *ngIf="student_comment.rate >= 3"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-
-                    <span *ngIf="student_comment.rate < 4"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                    <span *ngIf="student_comment.rate >= 4"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-
-                    <span *ngIf="student_comment.rate < 5"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
-                    <span *ngIf="student_comment.rate >= 5"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
-
-                </div>
-            </h3>
-            <p class="fs-card-korean" >{{student_comment.comment}}</p>
-        </ion-item>
+                *ngIf="i<3" no-padding>
+            <ion-row  class="py-3 px-3" align-items-center justify-content-between>
+                <ion-col  class="d-flex align-items-center" col-md-4>
+                    <img class="image-rounded" [src]="a.checkPhotoURL(student_comment.teacher_photoURL)"/>
+                </ion-col>
+                <ion-col col-md>
+                    <div class="d-flex align-items-center">
+                        <h3 class="fs-90 m-0 p-0">{{a.preTeacherName(student_comment.teacher_name)}}</h3>
+                        <div class="ml-2 m-0 p-0">
+            
+                            <span *ngIf="student_comment.rate < 1"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="student_comment.rate >= 1"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+            
+                            <span *ngIf="student_comment.rate < 2"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="student_comment.rate >= 2"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+            
+                            <span *ngIf="student_comment.rate < 3"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="student_comment.rate >= 3"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+            
+                            <span *ngIf="student_comment.rate < 4"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="student_comment.rate >= 4"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+            
+                            <span *ngIf="student_comment.rate < 5"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
+                            <span *ngIf="student_comment.rate >= 5"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
+        
+                        </div>
+                    </div>
+                    <p class="fs-90 m-0 p-0">{{student_comment.comment.slice(0,10)}}</p>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
      </ng-container>
-    </ion-list>
+    </div>
 </div>

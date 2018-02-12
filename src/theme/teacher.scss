@@ -9,13 +9,21 @@ ion-nav.teacher {
     .bg-blue-40{background-color:rgba(#007bff,0.45)!important }
     .bg-secondary-yellow{background: #FBC02D!important}
     .bg-darkorange{background-color:#F57C00!important }
+    .bg-muted{background:rgba(#edf0f5, 0.3)!important;}
     .font-em-0-75{font-size:0.75em!important}
     .font-em-0-85{font-size:0.85em!important}
     .overflowhidden-y{overflow-y: hidden!important}
+    .overflowellipsis-y{text-overflow:ellipsis!important }
     .flex-column{flex-direction: column!important}
     .fw-light{font-weight: lighter!important}
     .line-h-1-8em{line-height: 1.8em!important}
     .px-1px{padding: 0 1px !important}// for the outline effect to be not hidden in overflow
+    .image-rounded{    
+        border-radius: 50%!important;
+        overflow: hidden!important;
+        width: 40px!important;
+        height: 40px!important;
+    }
 
     //for the header/navbar
     .teacher-wide-menu{
@@ -52,14 +60,13 @@ ion-nav.teacher {
         }
 
         .activity-log{
-            .item-inner{padding:0!important}
-            ion-label{margin: 0.2em 0!important}
-            ion-item{background:rgba(#edf0f5, 0.5)!important}
+            .item{margin: 0.2em 0!important}
             p{background: rgba(#007bff,0.8) }
         }
 
         .guidelines,.teacher-evaluation{ ion-label{margin: 0!important}}
 
+        .teacher-evaluation{ .white-space-pre{white-space: pre-line!important} }
         .title-style{
             font-family:roboto,Arial, Helvetica, sans-serif;
             letter-spacing: 0.3em
@@ -90,8 +97,8 @@ ion-nav.teacher {
         }
 
         .list-hover-effect{
-            ion-item{padding-right: 3px!important}
-            ion-item:hover{
+            .item{padding-right: 3px!important}
+            .item:hover{
                 background:rgba(#007bff,0.1)!important;
                 color:#007bff!important;
                 border-right:3px solid #007bff!important;
