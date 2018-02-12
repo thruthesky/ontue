@@ -4,7 +4,13 @@ schedule-available-page {
     .reserve-button {
         margin-top: .5em;
         padding: 1em 0;
-        background-color: map-get( map-get( $color-maps, 'orange' ), 700 );
+        background-color: map-get( map-get( $color-maps, 'orange' ), 600 );
+        &:hover {
+
+            background-color: map-get( map-get( $color-maps, 'orange' ), 700 );
+        }
         color: white;
     }
+
+  
 }

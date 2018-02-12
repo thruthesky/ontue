@@ -90,7 +90,7 @@
       <div class="teachers mt-md-5 mb-5 mb-md-6">
         <ion-grid *ngIf=" re ">
           <ion-row>
-            <ion-col *ngFor="let teacher of teachers" col-4 col-md-4 col-lg-3 (click)="onClickTeacher(teacher)">
+            <ion-col *ngFor="let teacher of teachers" (click)="onClickTeacher(teacher)">
               <div class="d-flex justify-content-center mt-1 mt-md-3 pointer">
                 <div class="teacher-profile-photo">
                   <img src="{{ teacher.photoURL }}">
