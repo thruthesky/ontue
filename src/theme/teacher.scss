@@ -83,19 +83,6 @@ ion-nav.teacher {
         
         .cover-slider{height: 225.95px!important}
 
-        //the size of korean text != to the size of eng text
-        .custom-card-korean{
-            ion-list{padding:.5em 0!important }
-            ion-label{margin:.6em 0!important}
-            .fs-card{font-size:1em!important}
-        }
-
-        .custom-card-eng{
-            ion-list{padding:.45em 0!important }
-            ion-label{margin:.7em 0!important}
-            .fs-card{font-size:.8em!important}
-        }
-
         .list-hover-effect{
             .item{padding-right: 3px!important}
             .item:hover{
