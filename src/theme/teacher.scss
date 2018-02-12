@@ -2,7 +2,7 @@ ion-nav.teacher {
     //utilities,can be used all over teahers page
     .align-items-center{ align-items: center }
     .align-items-end{ align-items: end }
-    .bg-light{background-color:#edf0f5!important }
+    .bg-light{background-color:#f9f9f9!important }
     .bg-blue{background-color:#007bff!important }
     .bg-blue-80{background-color:rgba(#007bff,0.80)!important }
     .bg-blue-60{background-color:rgba(#007bff,0.60)!important }
@@ -46,7 +46,7 @@ ion-nav.teacher {
     ion-content {
         font-family:sans-serif,Arial, Helvetica!important;
         font-size: 16px!important;
-        background-color: #edf0f5;
+        background-color: #f9f9f9!important;
         ::-webkit-scrollbar{
             display: none
         }
@@ -54,7 +54,7 @@ ion-nav.teacher {
         .activity-log{
             .item-inner{padding:0!important}
             ion-label{margin: 0.2em 0!important}
-            ion-item{background:rgba(233, 233, 233, 0.4)!important}
+            ion-item{background:rgba(#edf0f5, 0.5)!important}
             p{background: rgba(#007bff,0.8) }
         }
 
