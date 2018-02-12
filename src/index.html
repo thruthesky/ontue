@@ -23,7 +23,6 @@
   <meta name="theme-color" content="#4e8ef7">
 
   <!-- add to homescreen for ios -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 
@@ -34,11 +33,11 @@
 
 
   <script>
-     if ('serviceWorker' in navigator) {
-       navigator.serviceWorker.register('service-worker.js')
-         .then(() => {})
-         .catch(err => console.error('Error', err));
-     }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => {})
+        .catch(err => console.error('Error', err));
+    }
 
   </script>
 
@@ -178,6 +177,7 @@
       .pt-03 {
         padding-top: .325em;
       }
+
       .pl {
         padding-left: 1em;
       }
@@ -327,7 +327,9 @@
         </div>
       </div>
       <div class="bottom pt pb" style="position: fixed; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255,255, .5); font-size: 9pt;">
-        일대일 원어민 카톡화상영어 <span class="d-md-show">Copyright</span> (C) 2018 <span class="d-md-show">All Rights Reserved.</span>
+        일대일 원어민 카톡화상영어
+        <span class="d-md-show">Copyright</span> (C) 2018
+        <span class="d-md-show">All Rights Reserved.</span>
       </div>
     </section>
 
