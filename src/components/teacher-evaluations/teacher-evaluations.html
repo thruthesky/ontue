@@ -7,10 +7,10 @@
               <ion-row align-items-end>
                   <ion-col col-md-3 class="d-flex" *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
                         <ion-thumbnail *ngIf="teacher_comment['teacher_photoURL']">
-                            <img class="ml-2 mr-4 rounded" src="{{teacher_comment['teacher_photoURL']}}">
+                            <img class="ml-2 mr-4 rounded" alt="teacher's photo" src="{{teacher_comment['teacher_photoURL']}}">
                         </ion-thumbnail>
                         <ion-thumbnail *ngIf="teacher_comment['student_photoURL']">
-                            <img class="mx-4 rounded" src="{{teacher_comment['student_photoURL']}}">
+                            <img class="mx-4 rounded" alt="student's photo" src="{{teacher_comment['student_photoURL']}}">
                         </ion-thumbnail>
                   </ion-col>
                   <ion-col>
