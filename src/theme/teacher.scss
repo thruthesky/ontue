@@ -9,22 +9,16 @@ ion-nav.teacher {
     .bg-blue-40{background-color:rgba(#007bff,0.45)!important }
     .bg-secondary-yellow{background: #FBC02D!important}
     .bg-darkorange{background-color:#F57C00!important }
-    .bg-muted{background:rgba(#edf0f5, 0.3)!important;}
+    .bg-muted{background:rgba(#FFF, 0.3)!important}
     .font-em-0-75{font-size:0.75em!important}
     .font-em-0-85{font-size:0.85em!important}
-    .fs-8em{font-size: 5em!important}
-    .overflowhidden-y{overflow-y: hidden!important}
-    .overflowellipsis-y{text-overflow:ellipsis!important }
+    .fs-4em{font-size: 4em!important}
+    .fs-9em{font-size: 9em!important}
+    .text-nowrap{white-space: nowrap!important}
     .flex-column{flex-direction: column!important}
     .fw-light{font-weight: lighter!important}
     .line-h-1-8em{line-height: 1.8em!important}
     .px-1px{padding: 0 1px !important}// for the outline effect to be not hidden in overflow
-    .image-rounded{    
-        border-radius: 50%!important;
-        overflow: hidden!important;
-        width: 40px!important;
-        height: 40px!important;
-    }
 
 
     //for the header/navbar
@@ -66,12 +60,18 @@ ion-nav.teacher {
             p{background: rgba(#007bff,0.8) }
         }
 
-        .guidelines,.teacher-evaluation{ ion-label{margin: 0!important}}
-        .guidelines{ .item-inner{padding: 0!important}}
+        .guidelines,.teacher-evaluation{ 
+            ion-label{margin: 0!important}
+        }
+
+        .guidelines{ 
+            .item-inner{padding: 0!important}
+        }
 
         .teacher-evaluation{ 
             .white-space-pre{white-space: pre-line!important} 
         }
+
         .title-style{
             font-family:roboto,Arial, Helvetica, sans-serif;
             letter-spacing: 0.3em
@@ -106,18 +106,9 @@ ion-nav.teacher {
         .border-brown-effect{border-bottom:3px solid #5D4037!important}
         .border-green-effect{border-bottom:3px solid #32db64!important}
         .border-dark-effect{border-bottom:3px solid #222!important}
-        .border-light{border-width: 1px!important}
-        .border-1px{border-width: 1px!important;}
+        .border-1px{border-width: 1px!important}
         
     }
-        // .page {
-        //     background-color: #f3f3f3;
-        //     home-teacher-content-component {
-        //         .cover-by-2 {
-        //             background-color: red;
-        //         }
-        //     }
-        // }
         
 }
 

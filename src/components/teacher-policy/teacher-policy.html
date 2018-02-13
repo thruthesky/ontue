@@ -1,75 +1,75 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      <b>Installing</b> or
-      <b>Creating</b> a Kakaotalk App Account</ion-title>
-    <ion-buttons start>
-      <button ion-button class="close" (click)="dismiss()">
-        <span ion-text color="primary">{{ 'CLOSE' | translate }}</span>
-      </button>
-    </ion-buttons>
+  <ion-toolbar class="px-5" color="blue">
+    <ion-grid no-padding>
+      <ion-row align-items-center >
+        <ion-col>       
+          <ion-title class="p-0">
+          <span class="fw-bold"> TERMS AND CONDITION</span>
+        </ion-title>
+      </ion-col>
+        <ion-col text-right col-md-2>
+            <button  ion-button clear small color="white" start (click)="dismiss()">
+                <span class="text-uppercase mr-2 fw-light mt-1">{{'CLOSE'| translate}}</span><ion-icon class="mt-1" name="close"></ion-icon>
+            </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <section id="teacher-policy" class="p-4 mb-5">
-    <h1>Terms & Conditions</h1>
-    The terms and conditions in this page explain the agreement between OnTue and you.
+  <section class="p-5" id="teacher-policy">
+    <h1 class="fs-2rem m-0 fw-light" ion-text color="blue">TERMS AND CONDITION</h1>
+    <p class="fw-light fs-110 line-height-1-6em mt-1 mb-5">The terms and conditions in this page explain the agreement between OnTue and you.</p>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">TERMS</h2>
+    <p class="fw-light fs-110 mt-1 mb-5">* Cutoff Period of payable dates.</p>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">CONDITION</h2>
+    <p class="line-height-1-6em fw-light fs-110 mt-1 mb-5">Teachers can freely register and set up profile, open schedules.
+      
+    Trial session is a common practice and it helps Teachers to gain more Students.
+
+    Students can have two trial sessions to each Teacher but maximum of 5 test sessions all in all.
+
+    Teachers must record the session. It is very important matter.
+    If a Teacher fails on hand over the record of the session,
+    Company will not only accept the request from Students but also pull back the grade of the Teacher
+
+    Students can request point refund of the session when they think they have right.
+
+    Company will, then, ask the session record to Teacher and decide what to do after watching the session.
+
+    Company can give a higher grade to a Teacher than other Teachers.
+
+    Teachers who have higher grade will have better chance for their profile to be display to Students.</p>
 
 
-    <h2>Terms</h2>
-
-    * cutoff Period of payable dates.
-
-
-    <h2>Condition</h2>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">SESSION CANCELATION</h2>
+    <p class="fw-light fs-110  mt-1 mb-5">Teachers can cancel their reserve sessions.</p>
 
 
-    <div>Teachers can freely register and set up profile, open schedules.</div>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">PAYMENT</h2>
 
-    <div>Trial session is a common practice and it helps Teachers to gain more Students.</div>
-
-    <div>Students can have two trial sessions to each Teacher but maximum of 5 test sessions all in all.</div>
-
-    <div>Teachers must record the session. It is very important matter.</div>
-    <div>If a Teacher fails on hand over the record of the session,</div>
-    <div>Company will not only accept the request from Students but also pull back the grade of the Teacher</div>
-
-    <div>Students can request point refund of the session when they think they have right.</div>
-
-    <div>Company will, then, ask the session record to Teacher and decide what to do after watching the session.</div>
-
-    <div>Company can give a higher grade to a Teacher than other Teachers.</div>
-
-    <div>Teachers who have higher grade will have better chance for their profile to be display to Students.</div>
-
-
-    <h3>Session Cancellation</h3>
-    Teachers can cancel their reserve sessions.
-
-
-    <h2>Payment</h2>
-
-    * Payment is on every 7th and 22nd. ** On 7th, Sessions before the 1st day of current month will be paid. ** On 22nd, Session
+    <p class="fw-light fs-110  line-height-1-6em  mt-1 mb-5">* Payment is on every 7th and 22nd. ** On 7th, Sessions before the 1st day of current month will be paid. ** On 22nd, Session
     before 16th of current month will be paid. ** Sessions in Refund progress will be paid on next cutoff if it is settled.
     ** Sessions with no evaluation will be paid on next cutoff if it is evaluated. * Teachers can choose a payment method
     between paypal, gcash, western union. ** If a Teacher choose Western Union as his payment to be delivered, then the teacher
     must pay for Western Union Transaction fee since it is every expensive. ** Transaction fee of paypal, gcash will be held
     by Company. * If payment information of a Teacher is incorrect, then the teacher will get his payment on next cutoff
-    if he settled the problem. * Payments less than 100 pesos or 2 USD dollars will be added to next cutoff.
+    if he settled the problem. * Payments less than 100 pesos or 2 USD dollars will be added to next cutoff.</p>
 
 
-    <h2>POINT REFUND</h2>
-    * If a teacher failed to submit class record on the request of admin in 24 working hours, the point of session will be returned
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">POINT REFUND</h2>
+    <p class="fw-light fs-110  line-height-1-6em  mt-1 mb-5">* If a teacher failed to submit class record on the request of admin in 24 working hours, the point of session will be returned
     to the student.
     <br> * If a teacher does not turn on his camera, the point of the session will be returned to the student.
     <br> * If a session has been failed due to any incidents that are occurred on teacher's side, the point of the session will
-    be refunded. * Point of failure sessions that are not caused by student will be refunded. For instance, the internet
+    be refunded. 
+    <br>* Point of failure sessions that are not caused by student will be refunded. For instance, the internet
     cable under the sea was corrupted. And teacher cannot connect to student. It's not teacher's fault. The problem has occurred
     by the nature. But we need to protect our valuable customers. We will refund any session that has failed if that is not
-    student's fault.
+    student's fault.</p>
 
-    <h2>Teaching Environemnt</h2>
-    <ul>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">TEACHING ENVIRONMENT</h2>
+    <ul class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
       <li>We don't consider a teacher as a good who teaches very well.</li>
       <li>
         We consider a teacher as a good teacher * If he has a good internet, headset, clam space ( no one and nothing interrupts.
@@ -80,52 +80,48 @@
 
     </ul>
 
-    <h2>The First Class</h2>
-    <ul>
-      <ul>
-        The first class may be or may NOT be a free class.
-        When it is a free class, it means student is new to our service and the student is giving a trial
-        NOT only our system but also How the teacher is.
-        It is a big chance for you to have a new student
-        when you have a free class
-        since free class means that the student has not decided yet to study with which teacher.
-        You must be very careful to win this session.
-        Smile. Speak Slowly. And you will win.
-      </ul>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">THE FIRST CLASS</h2>
+    <ul class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
+        <li>The first class may be or may NOT be a free class.</li>
+        <li>When it is a free class, it means student is new to our service and the student is giving a trial</li>
+        <li>NOT only our system but also How the teacher is.</li>
+        <li>It is a big chance for you to have a new student</li>
+        <li>when you have a free class</li>
+        <li>since free class means that the student has not decided yet to study with which teacher.</li>
+        <li>You must be very careful to win this session.</li>
+        <li>Smile. Speak Slowly. And you will win.</li>
+      
     </ul>
-    <h2>Rules on conducting sessions</h2>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">RULES ON CONDUCTING A SESSION</h2>
 
-    <ul>
-      <li>
+    <ul  class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
+      <li class="mt-3">
         Teacher must add the student's kakao as his friend and must be able to communicate before class time. If the teacher did
         not contact with the student, the teacher must cancel the session.
 
       </li>
 
-      <li>
+      <li class="mt-3">
         Do not send book in class time. Students are using smart phones. It is extremly difficult to open a book while doing video
         chat. If teacher asks the receive books, student will go in panic. So, it is bad idea sending books in class time.
         Teacher must send books before class time or after class time. Teacher will know if student is using smart phone
         or computer by watching their video.
       </li>
 
-      <li>
+      <li class="mt-3">
         Winning Point!
         <br> It is proven that if a teacher smile all the time and speak very slowly, the teacher will win on online video education.
 
       </li>
 
-      <li>
+      <li class="mt-3">
         Communication. What we are doing is communication after all. Teaching and learning comes after the teacher and student build
         a good relationship. Try to communicate with your students. The first class which may be a free class with a student
         is very important give a good impression and you are a good communicator and you can have a good relationship.
 
       </li>
 
-      <li>
-
-
-
+      <li class="mt-3">
 
         Student cannot open the book. Teacher must send the book before class time. It is better that teacher send book(s) to the
         student for 1 month. Teacher must know student is using Mobile or Desktop. If student is using Mobile, then teacher
@@ -136,22 +132,22 @@
 
     </ul>
 
-    <h2>Grading System</h2>
+    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">GRADING SYSTEM</h2>
 
-    <ul>
-      <li>
+    <ul  class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
+      <li class="mt-3">
         Good teacher will have grade 1. Again, as we explain above, good teacher is who has good internet, good environment, good
         devices. We believe all teachers has some level of good english teaching skills. So, having only good english teaching
         skill does not help to earn grade 1.
       </li>
-      <li>
+      <li class="mt-3">
         Grade 2. Again, Having good english teaching skill only does not help to earn grade 2. We will give grade 2 to those teachers
         whom we see he/she is a capable of wining student's heart. Communication comes first and Teaching comes at last.
         English teaching is a communication after all. We will observe your perfomance based on your communication skills.
         You will need a good personality.
       </li>
 
-      <li>
+      <li class="mt-3">
         Grade 3. Teachers who are always sought after students. Teachers who always win when they meet new students.
       </li>
     </ul>

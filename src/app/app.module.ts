@@ -99,7 +99,6 @@ import { HowToGetKakaoIDComponent } from '../components/how-to-get-kakao-id/how-
 import { HowToRegisterComponent } from '../components/how-to-register/how-to-register';
 import { TeacherPolicyComponent } from '../components/teacher-policy/teacher-policy';
 import { TeacherHeaderComponent } from '../components/teacher-header/teacher-header';
-import { TeacherIntro2Component } from '../components/teacher-intro2/teacher-intro2';
 import { PageNavigatorComponent } from '../components/page-navigator/page-navigator';
 import { TeacherRemindersComponent } from '../components/teacher-reminders/teacher-reminders';
 import { TeacherGradingSystemComponent } from '../components/teacher-grading-system/teacher-grading-system';
@@ -186,7 +185,6 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherPolicyComponent,
     HowToRegisterComponent,
     TeacherHeaderComponent,
-    TeacherIntro2Component,
     StudentRegisterSuccessPage,
     PageNavigatorComponent,
     StudentAdvPage,
@@ -269,7 +267,6 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherPolicyComponent,
     HowToRegisterComponent,
     TeacherHeaderComponent,
-    TeacherIntro2Component,
     StudentRegisterSuccessPage,
     PageNavigatorComponent,
     StudentAdvPage,
