@@ -354,6 +354,8 @@ export class ScheduleTablePage {
     this.header = re.header;
     this.schedules = re.schedule; // whole schedules
     this.student = re.student;
+
+    this.student['timezone_country'] = this.a.translateTimezoneCountry( this.student['timezone_country'] );
     this.teacher_profile = re.teacher; // single teacher
 
 
@@ -453,12 +455,14 @@ export class ScheduleTablePage {
 
       // console.log(this.student['timezone_country']);
 
-      this.student['timezone_country'] = this.a.translateTimezoneCountry( this.student['timezone_country'] );
+
+      
       // let country = '';
       // if ( this.student['timezone'] == 8 ) country = '필리핀,중국';
       // else if ( this.student['timezone'] == 9 ) country = '한국,일본';
       this.time = this.student['timezone_country'] + ' '
-        // + date.getDate() + '일 ' + ap + ' '
+        // + date.getDate() + '일 '
+        + ap + ' '
         + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
     }
     this.timer = setTimeout(() => this.updateTime(), 1000);

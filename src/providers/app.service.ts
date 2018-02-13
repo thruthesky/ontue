@@ -1026,10 +1026,11 @@ export class AppService {
             if ( !cname ) return '(시간대 없음)';
             else if (cname == 'Philippines, China') return '필리핀, 중국';
             else if (cname == 'Korea, Japan') return '한국, 일본';
+            else return cname;
         }
         else {
             if ( ! cname ) return '(No timezone)';
-            return cname;
+            else return cname;
         }
 
     }
