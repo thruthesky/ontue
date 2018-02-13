@@ -112,7 +112,7 @@
                             <div class="pl-3" (click)=" a.open('register') ">회원가입</div>
                         </div>
 
-                        <div class="" (click)=" a.open('teacher-list') ">{{ "LEVELTEST" | translate }}</div>
+                        <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
                         <div (click)=" a.open('student-adv') ">월 20회 1만원</div>
                     </ng-container>
                     <ng-container *ngIf=" a.user.isLogin ">

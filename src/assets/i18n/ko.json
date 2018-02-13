@@ -172,7 +172,7 @@
 , "GOT SCHEDULE": "수업 스케쥴을 표시합니다."
 , "DISPLAYING SCHEDULE": " 개의 스케쥴을 표시하였습니다."
 , "SCHEDULE DISPLAYED": "스케쥴을 표시하였습니다."
-, "TIME NOW": "현재시간"
+, "TIMEZONE NOW": "현재 시간대"
 , "SELECT HOURS": "시간 선택"
 , "NATIONALITY": "국적"
 , "TAKEN": "참여"
@@ -210,7 +210,7 @@
   { "name": "김선아", "date": "2017년 11월 9일",  "title": "❝ 미국 유학 준비중에 만난 카톡잉글리시 ❞", "description": "시작한지는 두달정도 되었고 처음에는 월~금 하루 25분씩 했는데 지금은 매일 25분씩 하루 두번씩 하고 있네요.<br> 첨에는 어색하기도 하고 과연 도움이 될까하고 시작했는데 저렴한 수업료 한번 놀라고 매우 편리함에 다시 놀라고 선생님들의 정성에 완전 반하게 되었네요.<br> 미국에 가서도 계속 할 생각인데 이번에는 꼭 영어를 마스터 할 수 있다는 자신감이 듭니다.<br> 모두들 화이팅하세요." }
  ]
  , "LEVELTEST": "레벨테스트"
- , "LEVELTEST PAGE TITLE": "레벨테스트"
+ , "LEVELTEST PAGE TITLE": "회원 가입 후 무료 체험 5회"
  , "REVIEW": "평가"
  , "WRITE REVIEW": "평가"
  , "OPEN REVIEW": "목록"
@@ -239,4 +239,5 @@
  , "NEW PASSWORD": "새 비밀번호"
  , "CHANGE PASSWORD BUTTON": "비밀번호 변경"
  , "CANCEL BUTTON": "취소"
+ , "CONFIRM": "확인"
 }

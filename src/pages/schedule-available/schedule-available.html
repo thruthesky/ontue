@@ -3,22 +3,21 @@
 </ion-header>
 <ion-content>
   <div class="page">
-    <hook-content-top></hook-content-top>
+    <hook-content-top [showLoginBox]=" false " ></hook-content-top>
 
-
-
-    <section class="page-header">
-      <div class="" *ngIf=" a.user.isLogin ">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
-      <div class="" *ngIf=" a.user.isLogout ">앗! 로그인을 하셔야지만 회원님의 국가별 시간에 맞추어 수업 시간표를 표시할 수 있습니다.</div>
+    <section class="page-header" *ngIf=" a.user.isLogin ">
+      <div class="">{{ "SCHEDULE AVAILABLE PAGE TITLE" | translate }}</div>
     </section>
-    <section class="page-desc">
+
+    <section class="page-desc" *ngIf=" a.user.isLogin ">
       주의! 아래의 수업을 예약하면 곧 수업이 시작됩니다.
     </section>
 
 
     <section class="page-body">
 
-      <div class="my-5 py-5 bg-orange black fs-2rem text-center" *ngIf=" a.user.isLogout ">
+      <div class="p-5 bg-orange black fs-2rem text-center" *ngIf=" a.user.isLogout ">
+        
         앗!
         <span class="blue">로그인을 해야</span>지만 수업 시간을 확인하고 예약 할 수 있습니다.
       </div>

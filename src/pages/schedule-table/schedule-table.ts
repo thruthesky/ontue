@@ -97,7 +97,7 @@ export class ScheduleTablePage {
   schedule_table_rows: Array<SESSION> = []; // whole table rows;
   length_of_schedule_table_rows = 0; // total length of schedule table rows.
   no_schedule = false; // If the teacher has no schedule table, it sets to true.
-  student = {};
+  student = {}; // Get's login user information from backend. it is more accurate than localStorage.
   teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0, kakao_qrmark_string: '' };
   teachers = {};
 
@@ -171,13 +171,13 @@ export class ScheduleTablePage {
 
 
     this.showHelpReserve = !a.lmsInfoUserNoOfTotalSessions;
-    
+
     this.default_photo_url = a.urlBackend + "/wp-content/plugins/xapi-2/lms/img/default-teacher-photo.jpg";
 
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
 
-    this.initScheduleTableWidth( () => {
+    this.initScheduleTableWidth(() => {
       this.loadOptions();
       this.loadScheduleTable();
     });
@@ -215,7 +215,7 @@ export class ScheduleTablePage {
   /**
    * This sets the number of columns on schedule table based on the device.
    */
-  initScheduleTableWidth( callback ) {
+  initScheduleTableWidth(callback) {
 
     this.platform.ready().then(() => {
       if (this.singleTeacher) {
@@ -235,11 +235,11 @@ export class ScheduleTablePage {
         this.class_end_hour = 24;
       }
       // console.log("platforms: ", this.platform.platforms());
-      if ( this.platform.is('core') ) {
+      if (this.platform.is('core')) {
         // console.log("platform is core...");
         this.days = 20;
       }
-      else if ( this.platform.is('tablet') ) {
+      else if (this.platform.is('tablet')) {
         this.days = 15;
       }
       callback();
@@ -370,8 +370,8 @@ export class ScheduleTablePage {
 
     if (this.singleTeacher) {
 
-      this.a.onUserViewProfile( this.teacher_profile.name );
-    
+      this.a.onUserViewProfile(this.teacher_profile.name);
+
       this.schedule_table_rows = re.table;
       // this.onClickShowCurriculum(); //test
 
@@ -451,7 +451,15 @@ export class ScheduleTablePage {
       if (hour != 12) hour = hour % 12;
 
 
-      this.time = date.getDate() + '일 ' + ap + ' ' + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
+      // console.log(this.student['timezone_country']);
+
+      this.student['timezone_country'] = this.a.translateTimezoneCountry( this.student['timezone_country'] );
+      // let country = '';
+      // if ( this.student['timezone'] == 8 ) country = '필리핀,중국';
+      // else if ( this.student['timezone'] == 9 ) country = '한국,일본';
+      this.time = this.student['timezone_country'] + ' '
+        // + date.getDate() + '일 ' + ap + ' '
+        + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
     }
     this.timer = setTimeout(() => this.updateTime(), 1000);
   }
@@ -537,7 +545,7 @@ export class ScheduleTablePage {
   teacher_ID(session) {
     const teacher = this.teacher(session);
     // console.log('teacher: ', teacher);
-    if ( teacher ) return teacher.idx;
+    if (teacher) return teacher.idx;
     else return 0;
 
     // const idx_teacher = this.schedules[ session[ this.IDX_SCHEDULE ] ][ this.IDX_TEACHER ];
@@ -592,15 +600,19 @@ export class ScheduleTablePage {
    */
   saveOptions() {
 
-    this.a.set( KEY_WEEKEND, this.displayWeekends );
-    this.a.set( KEY_DAYS, this.days );
+    this.a.set(KEY_WEEKEND, this.displayWeekends);
+    this.a.set(KEY_DAYS, this.days);
 
   }
+
+  /**
+   * Load saved user schedule table options.
+   */
   loadOptions() {
-    let w = this.a.get( KEY_WEEKEND );
-    if ( w !== null ) this.displayWeekends = w;
-    let d = this.a.get( KEY_DAYS );
-    if ( d !== null ) this.days = d;
+    let w = this.a.get(KEY_WEEKEND);
+    if (w !== null) this.displayWeekends = w;
+    let d = this.a.get(KEY_DAYS);
+    if (d !== null) this.days = d;
   }
 
   onChangeValue() {
@@ -617,11 +629,11 @@ export class ScheduleTablePage {
   onClickSession(session: SESSION) {
 
     // console.log('onClickSession', session);
-    if ( session['in_progress'] === true ) {
+    if (session['in_progress'] === true) {
       console.log("It is reserving/cancelling... return");
       return;
     }
-    
+
     if (session[this.STATUS] == 'past') return;
     if (session[this.OPEN] == 'open') this.reserveSession(session);
     else if (session[this.OPEN] == 'reserved' && session[this.OWNER] == 'me') this.cancelSession(session);
@@ -637,7 +649,7 @@ export class ScheduleTablePage {
     session['in_progress'] = true;
     this.a.lms.session_reserve({ idx_schedule: session[this.IDX_SCHEDULE], date: session[this.DATE] }).subscribe(re => {
       // console.log("class_reserve: ", re);
-      
+
       // setTimeout(() => session['in_progress'] = false, 500);
       session['in_progress'] = false;
 
@@ -651,7 +663,7 @@ export class ScheduleTablePage {
       this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
       this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
-      this.a.onLmsReserve( this.teacher_name( session ) );
+      this.a.onLmsReserve(this.teacher_name(session));
     }, e => {
       session['in_progress'] = false;
       this.a.alert(e);
@@ -673,7 +685,7 @@ export class ScheduleTablePage {
       this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
       this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
       this.updatePoint();
-      this.a.onLmsCancel( this.teacher_name( session ) );
+      this.a.onLmsCancel(this.teacher_name(session));
     }, e => {
       session['in_progress'] = false;
       this.a.alert(e);
@@ -777,7 +789,7 @@ export class ScheduleTablePage {
   }
   doInfinite(infiniteScroll) {
     // console.log('doInfinite');
-    if ( this.no_more_schedule ) {
+    if (this.no_more_schedule) {
       infiniteScroll.complete();
       return;
     }
@@ -799,8 +811,8 @@ export class ScheduleTablePage {
   onClickCommentCreate() {
     const createCommentModal = this.modalCtrl.create(StudentCommentEdit, { idx_teacher: this.teacher_profile['ID'] }, { cssClass: 'student-comment-create' }
     );
-    createCommentModal.onDidDismiss( res => {
-      if(res == 'success') this.onClickCommentList();
+    createCommentModal.onDidDismiss(res => {
+      if (res == 'success') this.onClickCommentList();
     });
     createCommentModal.present();
   }
@@ -818,7 +830,7 @@ export class ScheduleTablePage {
   onClickAddKakao() {
     const url = this.teacher_kakaoURL();
     // console.log("kakao::url:: ", url);
-    if ( url ) window.open( url, '_blank' );
+    if (url) window.open(url, '_blank');
     else this.a.alert('앗, 이 선생님의 카카오톡을 입력하지 않았습니다.');
   }
 

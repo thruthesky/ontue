@@ -171,6 +171,13 @@ export class MyApp {
   }
 
   test() {
+
+    
+      // this.a.okDialog( '즉시 수업', '<div class="my-3">지금 곧 시작하는 수업을 예약 하였습니다.</div>수업 예약 페이지로 이동을 합니다.', () => alert('go') );
+      
+
+    
+
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
     // this.a.open('payment-history');
@@ -185,7 +192,7 @@ export class MyApp {
 
     // this.a.open('schedule-table', { ID: 809 }); // one schedule, Imno4
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
-    // this.a.open('schedule-table', { ID: 806 }); /// tabetha
+    this.a.open('schedule-table', { ID: 806 }); /// tabetha
     // this.a.open('schedule-table', { ID: 945 }); /// Teacher
     // this.a.open('schedule-table', { ID: 124 }); /// Kevin. Ontue Teacher.
 
@@ -200,13 +207,12 @@ export class MyApp {
 
     // this.a.open('login');
 
-    this.a.open('register');
+    // this.a.open('register');
 
     // this.a.open('menu');
     // this.a.open('my-point');
 
-    // this.a.open('reservation', {past: true})
-
+    
     // this.a.open('past');
 
     // this.a.open('dayoff');

@@ -1,5 +1,5 @@
 <ion-header>
-  <header-content [title]=" '수업예약' "></header-content>
+  <header-content [title]=" title "></header-content>
 </ion-header>
 
 <ion-content>
@@ -8,7 +8,7 @@
 
 
     <section class="page-header d-flex justify-content-between">
-      <h2 class="title white" *ngIf=" mode == 'leveltest' ">{{ "LEVELTEST PAGE TITLE" | translate }}</h2>
+      <div class="title white" *ngIf=" mode == 'leveltest' ">{{ "LEVELTEST PAGE TITLE" | translate }}</div>
       <h2 class="title white" *ngIf=" mode != 'leveltest' ">
         {{ "SELECT TEACHER TO RESERVE" | translate }}
       </h2>
@@ -64,9 +64,6 @@
         </div>
 
         <div *ngIf="a.user.isLogout ">
-          <div>어서오세요
-            <b>{{ a.user.name }}님,</b>
-          </div>
           <div>
             현재 표시되는 선생님은 {{ re.total }} 명입니다. 로그인을 하시면 회원님의 수업 정보가 표시됩니다.
           </div>
