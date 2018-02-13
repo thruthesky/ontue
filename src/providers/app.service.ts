@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import { NavController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { XapiService, UserService, ForumService, LMSService } from './../angular-xapi/angular-xapi.module';
 import { FileService } from "../angular-xapi/file.service";
 
@@ -108,7 +108,8 @@ export class AppService {
         public xapi: XapiService,
         public file: FileService,
         public lms: LMSService,
-        private translate: TranslateService
+        public translate: TranslateService,
+        public alertCtrl: AlertController
     ) {
 
         this.firebase.db = firebase.firestore();
@@ -418,6 +419,34 @@ export class AppService {
 
     }
 
+
+    /**
+     * Show an alert.
+     * 
+     * @param title title
+     * @param message subTitle
+     * @param callback callback
+     * 
+     * @code
+     * 
+     *       this.a.okDialog( '즉시 수업', '<div class="my-3">지금 곧 시작하는 수업을 예약 하였습니다.</div>수업 예약 페이지로 이동을 합니다.', () => alert('go') );
+     * 
+     * @endcode
+     */
+    okDialog(title, message, callback = null) {
+
+        let close = { text: this.i18n['CONFIRM'] };
+        if (callback) close['handler'] = () => callback();
+        let alert = this.alertCtrl.create({
+            title: title,
+            subTitle: message,
+            buttons: [close],
+            enableBackdropDismiss: false
+        });
+
+        alert.present();
+    }
+
     /**
      * This reports ( logs ) error message into backend.
      * @param msg Message to report to server.
@@ -523,6 +552,7 @@ export class AppService {
             'PHP_ERROR_DESC',
             "SELECT_TEACHER_TITLE",
             "CLOSE",
+            "CONFIRM",
             'CHOOSE USER TYPE',
             "NAME REQUIRED",
             'EMAIL REQUIRED',
@@ -893,8 +923,8 @@ export class AppService {
     }
 
 
-    onLmsReserve( teacher_name ) {
-        if ( ! teacher_name ) return;
+    onLmsReserve(teacher_name) {
+        if (!teacher_name) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'reserve', target: teacher_name });
     }
     /**
@@ -906,8 +936,8 @@ export class AppService {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'cancel', target: teacher_name });
     }
 
-    onUserViewProfile( teacher_name ) {
-        if ( ! teacher_name ) return;
+    onUserViewProfile(teacher_name) {
+        if (!teacher_name) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'view-profile', target: teacher_name });
     }
     onBeginPayment() {
@@ -984,6 +1014,24 @@ export class AppService {
         let d = new Date(obj);
 
         return d.toLocaleTimeString();
+
+    }
+
+
+    translateTimezoneCountry(cname) {
+        /**
+         * @todo @attention This translation should be done in 
+         */
+        if (this.isKorean) {
+            if ( !cname ) return '(시간대 없음)';
+            else if (cname == 'Philippines, China') return '필리핀, 중국';
+            else if (cname == 'Korea, Japan') return '한국, 일본';
+            else return cname;
+        }
+        else {
+            if ( ! cname ) return '(No timezone)';
+            else return cname;
+        }
 
     }
 

@@ -1,27 +1,29 @@
 payment-page {
-    @include theme('amber');
-
-    .amounts {
-        & > div {
-            display: flex;
-            align-items: center;
-            input[type='radio'] {
-                cursor: pointer
-            }
-            label {
-                padding-left: 6px;
-                @media (min-width: $md) { padding-left: 8px; }
-                color: white;
-                cursor: pointer
-            }
+  @include theme('amber');
+  .page {
+      background-color: white!important;
+  }
+  .amounts {
+    &>div {
+      display: flex;
+      align-items: center;
+      input[type='radio'] {
+        cursor: pointer
+      }
+      label {
+        padding-left: 6px;
+        @media (min-width: $md) {
+          padding-left: 8px;
         }
+        color: white;
+        cursor: pointer
+      }
     }
-    .bg-amount {
-        background-color: #1862c5;
-    }
-    .bg-desc {
-        background-color: #d9dde8;
-    }
-
-
+  }
+  .bg-amount {
+    background-color: #1862c5;
+  }
+  .bg-desc {
+    background-color: #d9dde8;
+  }
 }
