@@ -433,18 +433,18 @@ export class AppService {
      * 
      * @endcode
      */
-    okDialog( title, message, callback = null ) {
+    okDialog(title, message, callback = null) {
 
         let close = { text: this.i18n['CONFIRM'] };
-        if ( callback ) close['handler'] = () => callback();
+        if (callback) close['handler'] = () => callback();
         let alert = this.alertCtrl.create({
             title: title,
             subTitle: message,
-            buttons: [ close ],
+            buttons: [close],
             enableBackdropDismiss: false
-          });
+        });
 
-          alert.present();
+        alert.present();
     }
 
     /**
@@ -923,8 +923,8 @@ export class AppService {
     }
 
 
-    onLmsReserve( teacher_name ) {
-        if ( ! teacher_name ) return;
+    onLmsReserve(teacher_name) {
+        if (!teacher_name) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'reserve', target: teacher_name });
     }
     /**
@@ -936,8 +936,8 @@ export class AppService {
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'cancel', target: teacher_name });
     }
 
-    onUserViewProfile( teacher_name ) {
-        if ( ! teacher_name ) return;
+    onUserViewProfile(teacher_name) {
+        if (!teacher_name) return;
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'view-profile', target: teacher_name });
     }
     onBeginPayment() {
@@ -1018,16 +1018,19 @@ export class AppService {
     }
 
 
-    translateTimezoneCountry( cname ) {
-
-      /**
-       * @todo @attention This translation should be done in 
-       */
-      if (this.isKorean) {
-        if ( cname == 'Philippines, China') return '필리핀, 중국';
-        else if ( cname == 'Korea, Japan' ) return '한국, 일본';
-      }
-      return cname;
+    translateTimezoneCountry(cname) {
+        /**
+         * @todo @attention This translation should be done in 
+         */
+        if (this.isKorean) {
+            if ( !cname ) return '(시간대 없음)';
+            else if (cname == 'Philippines, China') return '필리핀, 중국';
+            else if (cname == 'Korea, Japan') return '한국, 일본';
+        }
+        else {
+            if ( ! cname ) return '(No timezone)';
+            return cname;
+        }
 
     }
 
