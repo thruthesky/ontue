@@ -422,15 +422,15 @@ export class AppService {
 
     /**
      * Show an alert.
-     * 
+     *
      * @param title title
      * @param message subTitle
      * @param callback callback
-     * 
+     *
      * @code
-     * 
+     *
      *       this.a.okDialog( '즉시 수업', '<div class="my-3">지금 곧 시작하는 수업을 예약 하였습니다.</div>수업 예약 페이지로 이동을 합니다.', () => alert('go') );
-     * 
+     *
      * @endcode
      */
     okDialog(title, message, callback = null) {
@@ -696,7 +696,7 @@ export class AppService {
 
 
         // COMMENT OUT FOR REAL CASE
-        if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
+        // if ( this.NO_SCHEDULE_PER_PAGE ) return false;  // show teacher theme. test
 
 
         /////  UNCOMMENT BELOW FOR REAL CASE
@@ -1020,7 +1020,7 @@ export class AppService {
 
     translateTimezoneCountry(cname) {
         /**
-         * @todo @attention This translation should be done in 
+         * @todo @attention This translation should be done in
          */
         if (this.isKorean) {
             if ( !cname ) return '(시간대 없음)';
