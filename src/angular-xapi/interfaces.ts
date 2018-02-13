@@ -94,6 +94,7 @@ export interface USER_REGISTER extends REQUEST {
     nationality?: string;
     hobby?: string;
     youtube_video_url?: string;
+    bookable_time?: number;
 };
 
 export type USER_UPDATE = USER_REGISTER;

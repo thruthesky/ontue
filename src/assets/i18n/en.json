@@ -109,7 +109,7 @@
     "GOT SCHEDULE": "Schedule received. Going to display.",
     "DISPLAYING SCHEDULE": " has been displayed.",
     "SCHEDULE DISPLAYED": "Schedules are displayed.",
-    "TIME NOW": "Now",
+    "TIMEZONE NOW": "Timezone",
     "NATIONALITY": "Nationality",
     "TAKEN": "Sessions",
     "CURRICULUM VITAE": "Curriculum Vitae",
@@ -228,4 +228,5 @@
     "DATE BEGIN": "Select Begin Date",
     "DATE END": "Select End Date"
  , "ADV MENU": "Direct Deal"
+ , "CONFIRM": "OK"
 }
