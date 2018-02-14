@@ -1,3 +1,15 @@
+.focus-effect{
+  transition: all 0.3s ease-in-out;
+  &:focus{
+    border:1px solid rgba(#007bff,0.5)!important;
+  }
+}
+
+.radio-effect:checked+span{
+  background: transparent!important;
+  border-color: #007bff!important
+}
+
 .payment-information-history {
   ion-item {
     .item-inner {

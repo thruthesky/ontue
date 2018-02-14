@@ -4,60 +4,75 @@
   <ion-content>
     <div class="page">
       <hook-content-top></hook-content-top>
-      <section class="page-header">
-        <div>{{ "PAYMENT SETTING" | translate }}</div>
-      </section>
-      <section class="page-body">
-        <ion-grid class="payment-information" no-padding>
-          <ion-row justify-content-between>
-            <ion-col class="mr-3">
-                <label>First Name</label>
-                <input class="p-3 w-100 mx-auto rounded border border-red" type="text" [(ngModel)]="payment_information['first_name']" />
-      
-                <label>Middle Name</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['middle_name']" />
-      
-                <label>Last Name</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['last_name']" />
-      
-                <label>Phone Number</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['phone_number']" />
-      
-                <label>Email</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['email']" />
-            </ion-col>
-            <ion-col class="ml-3">
-                <label>Country</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['country']" />
-      
-                <label>Province</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['province']" />
-      
-                <label>City</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['city']" />
-      
-                <label>Address</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['address']" />
-      
-                <label>Zipcode</label>
-                <input class="p-3 w-100 mx-auto rounded" type="text" [(ngModel)]="payment_information['zipcode']" />
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        <h1 text-center class="fs-3rem">{{ "PAYMENT SETTING" | translate }}</h1>
+        <p text-center>Please Fill Out the Appropriate Information</p>
+        <h2>Choose a Payment Method</h2>
         <ion-grid>
-            <div>Payment Method</div>
             <ion-row>
-              <ion-col>
-                  <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash"> GCAsh
+              <ion-col text-right>
+                <label>
+                  <input class="d-none radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash">
+                  <span class="d-inline-block p-5 border bg-white fs-lg fw-bold">
+                      GCAsh
+                  </span>
+                </label>
               </ion-col>
-              <ion-col>
-                  <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="western-union"> Western Union
+              <ion-col text-center>
+                <label>
+                  <input class="d-none radio-effect"  type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="western-union">
+                  <span class="d-inline-block p-5 border bg-white fs-lg fw-bold">
+                      Western Union
+                  </span>
+                </label>
               </ion-col>
-              <ion-col>
-                  <input type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal"> Paypal
+              <ion-col text-left>
+                <label>
+                    <input class="d-none radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal">
+                    <span class="d-inline-block p-5 border bg-white fs-lg fw-bold">
+                        Paypal
+                    </span>
+                </label>
               </ion-col>
             </ion-row>
           </ion-grid>
+      <section class="page-body">
+        <ion-grid class="payment-information" no-padding>
+          <ion-row justify-content-between>
+            <ion-col col-5 class="mx-5">
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">First Name</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['first_name']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Middle Name</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['middle_name']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Last Name</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['last_name']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Phone Number</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['phone_number']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Email</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['email']" />
+            </ion-col>
+            <ion-col col-5 class="mx-5">
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Country</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['country']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Province</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['province']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">City</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['city']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Address</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['address']" />
+      
+                <label class="mt-5 d-block mb-2 fs-90 fw-bold">Zipcode</label>
+                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['zipcode']" />
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
         <div>
             <button ion-button (click)="onClickSubmit()">UPDATE</button>
           </div>
