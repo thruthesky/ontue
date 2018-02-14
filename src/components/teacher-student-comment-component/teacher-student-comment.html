@@ -31,7 +31,7 @@
         
                         </div>
                     </div>
-                    <p class="fs-90 m-0 p-0">{{student_comment.comment.slice(0,10)}}</p>
+                    <p class="fs-90 m-0 p-0">{{student_comment.comment.slice(0,12)}}<span class="fw-bold" *ngIf="student_comment.comment.length>12">...</span></p>
                 </ion-col>
             </ion-row>
         </ion-grid>

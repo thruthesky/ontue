@@ -1,19 +1,60 @@
-.payment-information-history {
-  ion-item {
-    .item-inner {
-      padding-left: 1em;
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
+#settings-payment{
+  
+  .outline-effect{ outline: 1px solid #e2e2e2!important}
+
+  .form-effect{
+    label{
+      transition: all 0.2s ease-in-out;
+      order: -1
     }
-    &.odd {
-      .item-inner {
-        background-color: #b2b2b2;
+    .focus-effect{
+      transition: all 0.2s ease-in-out;
+      &:focus{
+        border:1px solid rgba(#007bff,0.5)!important;
       }
-    }
-    &.even {
-      .item-inner {
-        background-color: #ececec;
+      &:focus+label{
+        color:#007bff!important;
       }
     }
   }
+
+  .radio-effect:checked+div{
+    background: transparent!important;
+    border-color: #007bff!important;
+    svg{
+      transform: scale(0.9, 0.9);
+    }
+  }
+
+
+  .hover-effect-color{
+      transition: all .2s ease-in-out!important;
+      svg{ transition: all .2s ease-in-out!important }
+
+        &:hover{
+          svg{ transform: scale(0.9, 0.9) }
+        }
+  }
+
+
+  .payment-information-history {
+    ion-item {
+      .item-inner {
+        padding-left: 1em;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+      }
+      &.odd {
+        .item-inner {
+          background-color: #b2b2b2;
+        }
+      }
+      &.even {
+        .item-inner {
+          background-color: #ececec;
+        }
+      }
+    }
+  }
+
 }

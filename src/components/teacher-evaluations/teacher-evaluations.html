@@ -6,12 +6,12 @@
           <ion-grid>
               <ion-row align-items-end>
                   <ion-col col-md-3 class="d-flex" *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
-                        <ion-thumbnail *ngIf="teacher_comment['teacher_photoURL']">
-                            <img class="ml-2 mr-4 rounded" alt="teacher's photo" src="{{teacher_comment['teacher_photoURL']}}">
-                        </ion-thumbnail>
-                        <ion-thumbnail *ngIf="teacher_comment['student_photoURL']">
-                            <img class="mx-4 rounded" alt="student's photo" src="{{teacher_comment['student_photoURL']}}">
-                        </ion-thumbnail>
+                        <div *ngIf="teacher_comment['teacher_photoURL']">
+                            <img class="ml-2 mr-4 size-80 rounded-50" alt="teacher's photo" src="{{teacher_comment['teacher_photoURL']}}">
+                        </div>
+                        <div *ngIf="teacher_comment['student_photoURL']">
+                            <img class="mx-4  size-80 rounded-50" alt="student's photo" src="{{teacher_comment['student_photoURL']}}">
+                        </div>
                   </ion-col>
                   <ion-col>
                         <h2 class="fs-2rem fw-bold m-0" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
