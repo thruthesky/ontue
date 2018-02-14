@@ -19,12 +19,14 @@ export class TeacherEvaluationsComponent implements OnInit  {
 
   more($id){
     document.getElementById(('less_'+$id)).classList.remove('d-none');
+    document.getElementById(('less_'+$id)).classList.add('hide-effect');
     document.getElementById(('more_'+$id)).classList.add('d-none');
   }
 
   less($id){
     document.getElementById(('less_'+$id)).classList.add('d-none');
     document.getElementById(('more_'+$id)).classList.remove('d-none');
+    document.getElementById(('more_'+$id)).classList.add('hide-effect');
   }
   
 }
