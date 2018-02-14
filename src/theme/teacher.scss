@@ -70,10 +70,7 @@ ion-nav.teacher {
 
         .teacher-evaluation{ 
             .white-space-pre{white-space: pre-line!important} 
-            .hide-effect{
-                animation: fade-in-effect 0.5s ease-in-out;
-            }
-
+            .hide-effect{ animation: fade-in-effect 0.5s ease-in-out }
             @keyframes fade-in-effect {
                 0%{ opacity: 0 }
                 100%{opacity: 1 }
