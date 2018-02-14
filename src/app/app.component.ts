@@ -93,6 +93,10 @@ export class MyApp {
       // splashScreen.hide();
 
       this.a.onetimeInitPushMessage();
+
+      /// it should be here.
+      /// Test code should run after platform is ready.
+      setTimeout(() => this.test(), 100);
     });
 
   }
@@ -164,10 +168,16 @@ export class MyApp {
     this.a.pages['student-adv'] = StudentAdvPage;
 
 
-    setTimeout(() => this.test(), 100);
   }
 
   test() {
+
+    
+      // this.a.okDialog( '즉시 수업', '<div class="my-3">지금 곧 시작하는 수업을 예약 하였습니다.</div>수업 예약 페이지로 이동을 합니다.', () => alert('go') );
+      
+
+    
+
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
     // this.a.open('payment-history');
@@ -202,8 +212,7 @@ export class MyApp {
     // this.a.open('menu');
     // this.a.open('my-point');
 
-    // this.a.open('reservation', {past: true})
-
+    
     // this.a.open('past');
 
     // this.a.open('dayoff');

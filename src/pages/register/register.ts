@@ -85,12 +85,13 @@ export class RegisterPage {
     this.inLoading = true;
     this.a.user.data().subscribe((userData: USER_DATA_RESPONSE) => {
       setTimeout(() => this.inLoading = false, 1000);
-      // console.log('userData::', userData);
+      console.log('userData::', userData);
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
       this.account['display_name'] = userData['display_name'];
       this.account.phone_number = userData.phone_number;
       this.account.kakao_qrmark_URL = userData.kakao_qrmark_URL;
+      this.account.bookable_time = userData.bookable_time;
       this.user_type = userData.user_type;
       if (userData.birthday.length > 0) {
         this.year = userData.birthday.substr(0, 4);
