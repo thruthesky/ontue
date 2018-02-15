@@ -16,12 +16,17 @@ export class SettingsPaymentInfoPage {
 
 
     constructor(public a: AppService) {
+      if (a.user.isLogin && a.isTeacher) {
         this.loadPaymentInformation();
+      }
+      else {
+        a.open('home');
+        a.alert("User type must be teacher and should login first...");
+      }
     }
 
 
     onClickSubmit() {
-
         this.a.lms.payment_information_update( this.payment_information ).subscribe( re => {
             console.log(re);
             this.a.alert("Success");

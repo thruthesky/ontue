@@ -110,6 +110,7 @@ import { TeacherReservationsComponent } from '../components/teacher-reservations
 import { TeacherEvaluationsComponent } from '../components/teacher-evaluations/teacher-evaluations';
 import { TeacherStepComponent } from '../components/teacher-steps/teacher-steps';
 import { TeacherActivityLogComponent } from '../components/teacher-activity-log/teacher-activity-log';
+import { TeacherGradeComponent } from '../components/teacher-grade/teacher-grade';
 
 
 
@@ -197,7 +198,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherReservationsComponent,
     TeacherEvaluationsComponent,
     TeacherStepComponent,
-    TeacherActivityLogComponent
+    TeacherActivityLogComponent,
+    TeacherGradeComponent
   ],
   imports: [
     BrowserModule,
@@ -279,8 +281,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherReservationsComponent,
     TeacherEvaluationsComponent,
     TeacherStepComponent,
-    TeacherActivityLogComponent
-
+    TeacherActivityLogComponent,
+    TeacherGradeComponent
   ],
   providers: [
     // StatusBar,
