@@ -17,6 +17,7 @@
         <div>Your time is now: {{ time }}</div>
         <div>
           <button ion-button class="add-schedule" *ngIf="data" (click)='onClickAddSchedule()'>Add Schedule</button>
+          <button ion-button class="add-dayoff" (click)="a.open('dayoff')">Add Dayoff</button>
         </div>
       </div>
       <!-- {{ schedules | json }} -->

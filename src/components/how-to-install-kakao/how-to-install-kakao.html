@@ -1,72 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title><b>Installing</b> or <b>Creating</b> a Kakaotalk App Account</ion-title>
-    <ion-buttons start>
-      <button ion-button class="close" (click)="dismiss()">
-        <span ion-text color="primary">{{ 'CLOSE' | translate }}</span>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar class="px-5" color="blue">
+      <ion-grid no-padding>
+        <ion-row align-items-center >
+          <ion-col>       
+            <ion-title class="p-0">
+            <span class="fw-bold fs-90">INSTALLING/CREATING A KAKAOTALK APP ACCOUNT</span>
+          </ion-title>
+        </ion-col>
+          <ion-col text-right col-md-2>
+              <button  ion-button clear small color="white" start (click)="dismiss()">
+                <span class="text-uppercase mr-2 fw-light mt-1">{{'CLOSE'| translate}}</span><ion-icon class="mt-1" name="close"></ion-icon>
+              </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
 <ion-content>
-  <section class="how-to" id="how-to-install-kakao">
-    <ul class="list-style-none">
-      <li>
-        <div class="desc">
-          <div><b>Why Kakaotalk?</b></div>
-          <div>Most of the student are from Korea, and most of them have kakaotalk.</div>
-          <div>And it would be more convenient for them to have class with kakaotalk app.</div>
-        </div>
-      </li>
-      <li>
-        <div class="desc">
-          1. Install <b>Kakaotalk App</b> from Google Play(android) or AppStore(iphone) to your smart phone
-        </div>
-      </li>
-      <li>
-        <img src="assets/img/kakao/1.jpg">
-      </li>
-      <li>
-        <div class="desc">2. After installation. Open Kakaotalk app.</div>
-      </li>
-      <li>
-        <div class="desc">3. Select your <b>country code</b> and enter your <b>phone number</b>, and press <b>Next</b>
-          button.
-        </div>
-      </li>
-      <li>
-        <img src="assets/img/kakao/2.jpg">
-      </li>
-      <li>
-        <div class="desc">
-          4. Kakaotalk will send you a sms containing the <b>4-digit verification code</b>.
-          Input the code and press the <b>Next</b>
-          button.
-          <div class="ml-3 fs-90">
-            <span class="d-block mt-2">*If you are using your number on the same device it will automatically add the verification number.</span>
-            <span
-              class="d-block mt-2">*If not then you need to type the 4-digit verification code that you will received.</span>
-          </div>
-        </div>
-      </li>
-      <li>
-        <img src="assets/img/kakao/3.jpg">
-      </li>
-      <li>
-        <div class="desc">5. Press <b>Sign Up Button</b></div>
-      </li>
-      <li>
-        <img src="assets/img/kakao/4.jpg">
-      </li>
-      <li>
-        <div class="desc">6. Enter your name, upload your photo and press get started.</div>
-      </li>
-      <li>
-        <img src="assets/img/kakao/5.jpg">
-      </li>
-      <li>
-        <div class="desc">5. Viola! You Successfully Installed and Created your kakaotalk Account.</div>
-      </li>
-    </ul>
+  <section class="how-to p-5" id="how-to-install-kakao">
+
+          <h2 class="fs-2rem m-0 fw-light" ion-text color="blue">WHY KAKAOTALK?</h2>
+          <p class="fw-light fs-110 line-height-1-6em mt-1 mb-5">Most of the student are from Korea, and most of them have kakaotalk.
+          And it would be more convenient for them to have class with kakaotalk app.</p>
+          <p class="fw-light fs-110 line-height-1-6em mt-1">1. Install Kakaotalk App from Google Play(android) or AppStore(iphone) to your smart phone</p>
+              <img class="mb-5 outline-effect ml-5" src="assets/img/kakao/1.jpg">
+          <p class="fw-light fs-110 line-height-1-6em mt-1 mb-5">2. After installation. Open Kakaotalk app.</p>
+          <p class="fw-light fs-110 line-height-1-6em mt-1">3. Select your country code and enter your phone number, and press Next button.</p>
+              <img class="mb-5 outline-effect ml-5" src="assets/img/kakao/2.jpg">
+          <p class="fw-light fs-110 line-height-1-6em mt-1 mb-5">
+            4. Kakaotalk will send you a sms containing the 4-digit verification code.
+            Input the code and press the Next button.
+          </p>
+            <ul class="fw-light fs-110 line-height-1-6em mt-1 mb-5">
+              <li>*If you are using your number on the same device it will automatically add the verification number.</li>
+              <li>*If not then you need to type the 4-digit verification code that you will received.</li>
+            </ul>
+              <img class="mb-5 outline-effect ml-5" src="assets/img/kakao/3.jpg">
+          <p class="fw-light fs-110 line-height-1-6em mt-1">5. Press Sign Up Button</p>
+              <img class="mb-5 outline-effect ml-5" src="assets/img/kakao/4.jpg">
+          <p class="fw-light fs-110 line-height-1-6em mt-1">6. Enter your name, upload your photo and press get started.</p>
+              <img class="mb-5 outline-effect ml-5" src="assets/img/kakao/5.jpg">
+          <p class="fw-light fs-110 line-height-1-6em mt-1">7. Viola! You Successfully Installed and Created your kakaotalk Account.</p>
+
   </section>
 </ion-content>

@@ -2,41 +2,77 @@
   <header-content [title]=" 'How to Use' "></header-content>
 </ion-header>
 <ion-content>
-  <div class="page">
+  <div class="page pt-3 pb-5">
     <hook-content-top></hook-content-top>
-    <section class="page-header bg-skyblue white">
-      <div class="fs-2rem">Tips and Guides</div>
-    </section>
-    <section id="how-to-use" class="page-body">
-
-      <div class="title">Things you need to know.</div>
-      <ul class="content list-style-none">
-        <li>
-          <div class="sub-title pointer" (click)="showModalFAQ('teacherPolicy')">
-            <span class="px-2"><i class="fal fa-chevron-circle-right"></i></span>
-            <span><b>OnTue.com Policy</b>.</span>
-          </div>
-        </li>
-        <li>
-          <div class="sub-title pointer" (click)="showModalFAQ('kakaoInstall')">
-            <span class="px-2"><i class="fal fa-chevron-circle-right"></i></span>
-            <span>How to <b>Install</b> Or <b>Create</b> Kakaotalk App Account.</span>
-          </div>
-        </li>
-        <li>
-          <div class="sub-title pointer" (click)="showModalFAQ('qrmark')">
-            <span class="px-2"><i class="fal fa-chevron-circle-right"></i></span>
-            <span>How to Get <b>QR MARK</b>.</span>
-          </div>
-        </li>
-        <li>
-          <div class="sub-title pointer" (click)="showModalFAQ('kakaoID')">
-            <span class="px-2"><i class="fal fa-chevron-circle-right"></i></span>
-            <span>How to Get <b>Kakaotalk ID</b>.</span>
-          </div>
-        </li>
-      </ul>
-
+    <section id="how-to-use" class="page-body m-0 my-1 p-0 mb-5 pb-5">
+        <section class="page-header bg-blue my-3">
+          <ion-grid class="cover-by-2 bg-white outline-effect px-1px">
+            <ion-row class="h-100" align-items-center justify-content-between>
+              <ion-col text-center>
+                  <h2 class="fs-4rem m-0" ion-text color="blue">Tips and Guides</h2>
+                  <p ion-text color="dark">Things you need to know. Choose among the topics to learn more.</p>
+              </ion-col>
+              <ion-col col-md-5 text-center>
+                  <i class="fs-9em fal fa-cog mr-4" ion-text color="blue"></i>
+                  <i class="fs-9em fas fa-lightbulb" ion-text color="blue"></i>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </section>
+      <ion-grid class="px-1px" no-padding>
+        <ion-row class="my-3">
+          <ion-col class="mr-3">
+              <ion-grid class="pointer cover-by-4 outline-effect bg-white hover-effect-color" (click)="showModalFAQ('teacherPolicy')" no-padding>
+                <ion-row class="h-100" align-items-center>
+                  <ion-col text-center col-4>
+                      <i class="fs-4em fal fa-archive"></i>
+                  </ion-col>
+                  <ion-col>
+                      <div>OnTue.com Policy.</div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+          </ion-col>
+          <ion-col class="ml-3 ">
+              <ion-grid class="pointer cover-by-4 outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('kakaoInstall')" no-padding>
+                  <ion-row class="h-100" align-items-center>
+                    <ion-col text-center col-4>
+                        <i class="fs-4em fal fa-plus-square"></i>
+                    </ion-col>
+                    <ion-col>
+                        <div>Install Or Create Kakaotalk App Account.</div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+          </ion-col>
+        </ion-row>
+        <ion-row class="mt-3">
+          <ion-col class="mr-3 ">
+              <ion-grid class="pointer cover-by-4 outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('qrmark')" no-padding>
+                  <ion-row class="h-100" align-items-center>
+                    <ion-col text-center col-4>
+                        <i class="fs-4em fal fa-qrcode "></i>
+                    </ion-col>
+                    <ion-col>
+                        <div>How to Get QR MARK.</div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+          </ion-col>
+          <ion-col class="ml-3 ">
+              <ion-grid class="pointer cover-by-4 outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('kakaoID')" no-padding>
+                  <ion-row class="h-100" align-items-center>
+                    <ion-col text-center col-4>
+                        <i class="fs-4em fal fa-id-badge"></i>
+                    </ion-col>
+                    <ion-col>
+                        <div>How to Get Kakaotalk ID.</div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </section>
   </div>
   <!--/page-->

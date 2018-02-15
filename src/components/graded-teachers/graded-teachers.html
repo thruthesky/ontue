@@ -1,16 +1,16 @@
-<div class="custom-card-eng cover-by-2 overflowhidden-y bg-white outline-effect">
-    <p class="fs-90 m-0 py-3 mb-1 bg-blue text-center" ion-text color="white">Recently Graded Teachers</p>
-    <ion-list class="list-hover-effect" no-lines>
-        <ng-container *ngFor="let teacher of teachers; let i=index">
-            <ion-item class="pointer"
+<div class="cover-by-2 of-hidden bg-white outline-effect">
+    <p class="fs-90 m-0 py-3 mb-2 bg-blue text-center" ion-text color="white">Recently Graded Teachers</p>
+    <div class="list-hover-effect">
+    <ng-container *ngFor="let teacher of teachers; let i=index">
+        <ion-grid class="pointer item"
             (click)="a.open('schedule-table', { ID: teacher.ID })"
-            *ngIf="i<3"
-            >
-                <ion-avatar item-start>
-                        <img [src]="a.checkPhotoURL(teacher.photoURL)">
-                </ion-avatar>
-                    <h3>{{a.preTeacherName(teacher.display_name)}}
-                    </h3>
+            *ngIf="i<3" no-padding>
+            <ion-row class="py-3 px-4" align-items-center justify-content-between>
+                <ion-col class="d-flex align-items-center" col-md-4>
+                    <img class="size-40 rounded-circle" [src]="a.checkPhotoURL(teacher.photoURL)">
+                </ion-col>
+                <ion-col col-md>
+                    <h3 class=" fs-90 p-0 m-0">{{a.preTeacherName(teacher.display_name)}}</h3>
                     <div class="fs-card">
                         <span *ngIf="teacher.grade < 1"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
                         <span *ngIf="teacher.grade >= 1"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
@@ -27,8 +27,12 @@
                         <span *ngIf="teacher.grade < 5"><i class="fs-md fal fa-star" ion-text color="yellow"></i></span>
                         <span *ngIf="teacher.grade >= 5"><i class="fs-md fas fa-star" ion-text color="yellow"></i></span>
                     </div>
-                <p item-end>{{teacher.grade}}/5</p>
-            </ion-item>
+                </ion-col>
+                <ion-col text-right col-md-2>
+                     <p class="fs-lg m-0 p-0">{{teacher.grade}}/5</p>
+                </ion-col>
+            </ion-row>
+            </ion-grid>
         </ng-container>
-    </ion-list>
+    </div>
 </div>
