@@ -199,7 +199,7 @@ export class MyApp {
     // this.a.open('schedule-table', { ID: 137 }); /// teacher21
     // this.a.open('schedule-table', { ID: 138 }); /// teacher22
 
-    // this.a.open('teacher-list');
+    this.a.open('teacher-list');
 
     // this.a.open('teacher-list', {mode: 'leveltest'});
 
