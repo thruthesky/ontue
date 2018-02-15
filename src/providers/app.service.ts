@@ -64,9 +64,7 @@ export class AppService {
 
     i18n = {}; // This holds translated text from ngx-translation. Some texts needs to be loaded beforehand.
 
-
     inLoadingMyPoint = false;
-
 
     platform = null;
     hostname = window.location.hostname;
