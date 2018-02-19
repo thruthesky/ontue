@@ -148,7 +148,7 @@ export class AppService {
         this.listenActivityLog();
 
 
-        setInterval( () => this.updateUserTimezone(), 2000 );
+        setInterval(() => this.updateUserTimezone(), 2000);
     }
 
 
@@ -190,7 +190,7 @@ export class AppService {
                 if (this.info['user']['no_of_total_sessions'] !== void 0) this.updateLmsInfoUserNoOfTotalSessions(this.info['user']['no_of_total_sessions']);
                 if (this.info['user']['no_of_reservation'] !== void 0) this.updateLmsInfoUserNoOfReservation(this.info['user']['no_of_reservation']);
                 if (this.info['user']['no_of_past'] !== void 0) this.updateLmsInfoUserNoOfPast(this.info['user']['no_of_past']);
-                
+
             }
 
             if (callback) callback(re);
@@ -1056,8 +1056,8 @@ export class AppService {
 
     updateUserTimezone() {
         const info = this.get(KEY_LMS_INFO);
-        if ( ! info || ! info['user'] ) return;
-        console.log( info );
+        if (!info || !info['user']) return;
+        console.log(info);
         const user = info['user'];
         console.log(`updateUserTimezone: `, user);
 
@@ -1069,25 +1069,32 @@ export class AppService {
         let date = this.lms.userDate(user['timezone']);
         let hour = date.getHours();
         let ap = '';
-        if (hour < 12) ap = '오전';
-        else ap = '오후';
+
+        if (hour < 12) ap = 'am';
+        else ap = 'pm';
         if (hour != 12) hour = hour % 12;
 
 
-        // console.log(this.student['timezone_country']);
+        let min: any = date.getMinutes();
+        if (min < 10) min = '0' + min;
 
 
 
-        // let country = '';
-        // if ( this.student['timezone'] == 8 ) country = '필리핀,중국';
-        // else if ( this.student['timezone'] == 9 ) country = '한국,일본';
-        this.userTime = user['timezone_country'] + ' '
-            // + date.getDate() + '일 '
-            + ap + ' '
-            + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
+        if (this.isKorean) {
+            if (ap == 'am') ap = '오전';
+            else ap = '오후';
 
-        console.log( this.userTime );
+            this.userTime = user['timezone_country'] + ' '
+                + ap + ' '
+                + hour + '시 ' + min + '분';
+        }
+        else {
+            this.userTime = user['timezone_country'] + ' '
+            + hour + ':' + min + ' ' + ap;
+        }
+        
+        console.log(this.userTime);
     }
-    
+
 
 }
