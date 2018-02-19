@@ -99,7 +99,7 @@
           <ion-spinner class="size-3" *ngIf=" a.inLoadingMyPoint "></ion-spinner>
         </div>
         <div class="pl-3 mt-2 mt-md-0 ml-md-4">
-          {{ 'TIMEZONE NOW' | translate }}: {{ time }}
+          {{ 'TIMEZONE NOW' | translate }}: {{ a.userTime }}
           <span class="app-button secondary ml-4" (click)=" a.open('settings') ">시간대 변경하기</span>
         </div>
       </div>
@@ -119,8 +119,8 @@
 
           <ion-item *ngIf=" singleTeacher ">
             <div class="buttons pointers">
-              <button class="primary" (click)=" a.open('schedule-table') ">모든 강사 표시</button>
-              <button class="primary" (click)=" a.open('schedule-available') ">즉시 수업 가능한 강사 표시</button>
+              <button class="primary" (click)=" a.open('schedule-table') ">전체 강사 시간표</button>
+              <button class="primary" (click)=" a.open('schedule-available') ">지금 바로 수업 시작</button>
             </div>
           </ion-item>
           <ion-item>

@@ -98,6 +98,13 @@
       <span class="mr-3" *ngIf=" re.total_session_refunded ">{{ 'REFUNDED SESSIONS' | translate }} : {{re.total_session_refunded}}</span>
       <span *ngIf=" re.total_session_refund_in_progress ">{{ 'SESSIONS IN REFUND PROGRESS' | translate }} : {{re.total_session_refund_in_progress}}</span>
     </div>
+
+
+    <div class="pl-3 mt-2 mt-md-0 ml-md-4">
+      {{ 'TIMEZONE NOW' | translate }}: {{ a.userTime }}
+      <span class="app-button secondary ml-4" (click)=" a.open('settings') ">시간대 변경하기</span>
+    </div>
+
   </section>
 
   <div class="my-5 p-5 text-center" *ngIf=" re && books.length == 0 ">

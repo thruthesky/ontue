@@ -84,6 +84,8 @@ export class AppService {
 
     thisYear = (new Date).getFullYear();
 
+    userTime = '';
+
     /// Firebase
     firebase: {
         db: firebase.firestore.Firestore;
@@ -144,11 +146,23 @@ export class AppService {
             document.title = "OnTue.COM";
         }
         this.listenActivityLog();
+
+
+        setInterval( () => this.updateUserTimezone(), 2000 );
     }
 
 
+
+
     /**
-     * Gets LMS information from backend and saves into localStorage.
+     * 
+     *      Gets LMS information from backend and saves into localStorage.
+     * 
+     *      And initialize LMS information.
+     *  
+     *          - Runs timer for local timzeone.
+     * 
+     * 
      * @note to get LMS information after loading from backend, use
      *      - this.lmsInfoUserNoOfTotalSessions
      *      - this.lmsInfoUserNoOfReservation
@@ -166,6 +180,7 @@ export class AppService {
         if (!this.info) this.info = {};
         // console.log("info from cache: ", this.info);
         this.lms.info().subscribe(re => {
+            console.log("re: ", re);
             this.set(KEY_LMS_INFO, re);
             this.info = this.get(KEY_LMS_INFO);
 
@@ -175,11 +190,16 @@ export class AppService {
                 if (this.info['user']['no_of_total_sessions'] !== void 0) this.updateLmsInfoUserNoOfTotalSessions(this.info['user']['no_of_total_sessions']);
                 if (this.info['user']['no_of_reservation'] !== void 0) this.updateLmsInfoUserNoOfReservation(this.info['user']['no_of_reservation']);
                 if (this.info['user']['no_of_past'] !== void 0) this.updateLmsInfoUserNoOfPast(this.info['user']['no_of_past']);
+                
             }
 
             if (callback) callback(re);
 
+
+
+
             // console.log("updated info from remote: ", this.info);
+
         }, e => {
             //
         });
@@ -913,10 +933,12 @@ export class AppService {
         this.log({ activity: 'open-register' });
     }
     onUserRegister() {
+        this.updateLMSInfo();
         this.updatePushToken();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'register' });
     }
     onUserProfileUpdate() {
+        this.updateLMSInfo();
         this.log({ idx_user: this.user.id, name: this.user.name, activity: 'update-profile' });
     }
 
@@ -1008,11 +1030,8 @@ export class AppService {
     }
 
     serverTime(obj) {
-
         let d = new Date(obj);
-
         return d.toLocaleTimeString();
-
     }
 
 
@@ -1021,16 +1040,54 @@ export class AppService {
          * @todo @attention This translation should be done in
          */
         if (this.isKorean) {
-            if ( !cname ) return '(시간대 없음)';
+            if (!cname) return '(시간대 없음)';
             else if (cname == 'Philippines, China') return '필리핀, 중국';
             else if (cname == 'Korea, Japan') return '한국, 일본';
             else return cname;
         }
         else {
-            if ( ! cname ) return '(No timezone)';
+            if (!cname) return '(No timezone)';
             else return cname;
         }
 
     }
+
+
+
+    updateUserTimezone() {
+        const info = this.get(KEY_LMS_INFO);
+        if ( ! info || ! info['user'] ) return;
+        console.log( info );
+        const user = info['user'];
+        console.log(`updateUserTimezone: `, user);
+
+        if (user && user['timezone']) {
+        }
+        else return;
+
+        // this.time = this.a.lms.localeString(this.re['student']['timezone']);
+        let date = this.lms.userDate(user['timezone']);
+        let hour = date.getHours();
+        let ap = '';
+        if (hour < 12) ap = '오전';
+        else ap = '오후';
+        if (hour != 12) hour = hour % 12;
+
+
+        // console.log(this.student['timezone_country']);
+
+
+
+        // let country = '';
+        // if ( this.student['timezone'] == 8 ) country = '필리핀,중국';
+        // else if ( this.student['timezone'] == 9 ) country = '한국,일본';
+        this.userTime = user['timezone_country'] + ' '
+            // + date.getDate() + '일 '
+            + ap + ' '
+            + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
+
+        console.log( this.userTime );
+    }
+    
 
 }
