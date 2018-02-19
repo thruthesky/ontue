@@ -118,7 +118,7 @@
 , "RECOMMENDED TEACHER": "추천 강사"
 , "NOT RECOMMENED TEACHER": "비추천 강사"
 , "ALL TEACHER": "전체 강사"
-, "TEACHER LIST OPTIONS": "강사 검색 옵션"
+, "TEACHER LIST OPTIONS": "옵션 선택을 통해서 더 많은 선생님을 검색해 보세요."
 , "SELECT TEACHER": "선생님 선택"
 , "SELECT_TEACHER_TITLE": "선생님을 선택하세요."
 , "PAST LIST PAGE": "지난수업"
@@ -240,4 +240,5 @@
  , "CHANGE PASSWORD BUTTON": "비밀번호 변경"
  , "CANCEL BUTTON": "취소"
  , "CONFIRM": "확인"
+ , "CLOSE LIST OPTION BOX": "선생님 검색 옵션 창 닫기"
 }
