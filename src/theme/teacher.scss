@@ -51,9 +51,7 @@ ion-nav.teacher {
         font-family:sans-serif,Arial, Helvetica!important;
         font-size: 16px!important;
         background-color: #f9f9f9!important;
-        ::-webkit-scrollbar{
-            display: none
-        }
+        .scroll-content{overflow: overlay!important}
 
         .activity-log{
             .item{margin: 0.2em 0!important}

@@ -8,28 +8,33 @@ import {NavParams, Slides, ViewController} from "ionic-angular";
 })
 export class TeacherGradeComponent {
 
-
   @ViewChild(Slides) slides: Slides;
   grade = 0;
-
   constructor(
     public a: AppService,
     public nav: NavParams,
     public viewCtrl: ViewController
   ) {
 
-
   }
-
-  ionViewDidEnter() {
+  ionViewCanEnter() {
     let grade = this.nav.get('grade');
     console.log(grade);
     if( grade ) this.grade = grade;
-    this.slides.slideTo(this.grade, 100);
+    this.slides.initialSlide=this.grade;
+    this.slides.simulateTouch=false;
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  next(){
+    this.slides.slideNext(0);
+  }
+
+  prev(){
+    this.slides.slidePrev(0);
   }
 
 

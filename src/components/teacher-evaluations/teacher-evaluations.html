@@ -3,27 +3,21 @@
     <ion-list class="m-0" no-lines>
         <div class="m-0 p-3 border border-top-0 border-left-0 border-right-0 " ion-item
           *ngFor="let teacher_comment of evaluations; let i=index">
-          <ion-grid>
-              <ion-row align-items-end>
-                  <ion-col col-md-3 class="d-flex" *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
-                        <div *ngIf="teacher_comment['teacher_photoURL']">
-                            <img class="ml-2 mr-4 size-80 rounded-50" alt="teacher's photo" src="{{teacher_comment['teacher_photoURL']}}">
-                        </div>
-                        <div *ngIf="teacher_comment['student_photoURL']">
-                            <img class="mx-4  size-80 rounded-50" alt="student's photo" src="{{teacher_comment['student_photoURL']}}">
-                        </div>
-                  </ion-col>
-                  <ion-col>
-                        <h2 class="fs-2rem fw-bold m-0" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}</h2>
-                        <span class="fw-light fs-90">{{teacher_comment['date'].slice(0,4)}}-{{teacher_comment['date'].slice(4,6)}}-{{teacher_comment['date'].slice(6,9)}}</span>
+          <ion-grid no-padding>
+              <ion-row class="mx-4 mt-3" align-items-end>
+                  <ion-col *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
+                        <img class="mr-2 size-80 rounded-2 d-inline-block" *ngIf="teacher_comment['teacher_photoURL']" src="{{teacher_comment['teacher_photoURL']}}">
+                        <img class="mr-4  size-80 rounded-2 d-inline-block"  *ngIf="teacher_comment['student_photoURL']" src="{{teacher_comment['student_photoURL']}}">
+                        <img class="mr-4  size-80 rounded-2 d-inline-block"  *ngIf="teacher_comment['student_photoURL'].length==0" src="../assets/img/student.png">
+                        <h2 class="fs-2rem fw-bold m-0  d-inline-block" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}<span class="fw-light fs-lg ml-3 black">{{teacher_comment['date'].slice(0,4)}}-{{teacher_comment['date'].slice(4,6)}}-{{teacher_comment['date'].slice(6,9)}}</span></h2> 
                   </ion-col>
                   <ion-col text-right>
-                    <span class="mr-3" ion-text color="blue">#{{i+1}}</span>
+                        <span class="mr-3" ion-text color="blue">#{{i+1}}</span>
                   </ion-col>
               </ion-row>
-          </ion-grid> 
+          </ion-grid>
           <div class="bg-light p-5 m-0 rounded my-3 mx-4 outline-effect">
-              <!--- dont re-arrange it will affect the white-spacing-->
+              <!--- if re-arranged, it will affect the white-spacing-->
             <span id="more_{{i}}" class="white-space-pre line-h-1-8em m-0 p-0 fw-light my-3 fs-90" ion-text color="dark">{{teacher_comment.comment.slice(0,200)}}<ng-container *ngIf="teacher_comment.comment.length>200"><span class="fs-xl"> ...</span><span class="ml-3 pointer text-nowrap" ion-text color="blue" (click)="more(i)">View more</span></ng-container></span>
             <span id="less_{{i}}" class="d-none white-space-pre line-h-1-8em m-0 p-0 fw-light my-3 fs-90" ion-text color="dark">{{teacher_comment.comment}}<ng-container *ngIf="teacher_comment.comment.length>200"><span class="pointer text-nowrap" ion-text color="blue" (click)="less(i)"> View less</span></ng-container></span>
           </div>  
