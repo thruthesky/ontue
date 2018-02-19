@@ -6,9 +6,12 @@
           <ion-grid no-padding>
               <ion-row class="mx-4 mt-3" align-items-end>
                   <ion-col *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
-                        <img class="mr-2 size-80 rounded-2 d-inline-block" *ngIf="teacher_comment['teacher_photoURL']" src="{{teacher_comment['teacher_photoURL']}}">
+
+                        <span class="d-block size-80x90 of-hidden"><img class="mr-2 w-100 rounded-2 d-inline-block" *ngIf="teacher_comment['teacher_photoURL']" src="{{teacher_comment['teacher_photoURL']}}"></span>
+
                         <img class="mr-4  size-80 rounded-2 d-inline-block"  *ngIf="teacher_comment['student_photoURL']" src="{{teacher_comment['student_photoURL']}}">
                         <img class="mr-4  size-80 rounded-2 d-inline-block"  *ngIf="teacher_comment['student_photoURL'].length==0" src="../assets/img/student.png">
+
                         <h2 class="fs-2rem fw-bold m-0  d-inline-block" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}<span class="fw-light fs-lg ml-3 black">{{teacher_comment['date'].slice(0,4)}}-{{teacher_comment['date'].slice(4,6)}}-{{teacher_comment['date'].slice(6,9)}}</span></h2> 
                   </ion-col>
                   <ion-col text-right>
