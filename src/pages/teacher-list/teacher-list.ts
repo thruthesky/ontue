@@ -22,7 +22,7 @@ export class TeacherListPage {
   gender = '';
   recommend = 'Y';
   page_no: number;
-  limit = 100; // default should be enough numbers NOT to scroll. Instead, put a option button to show all teachers.
+  limit = 60; // default should be 100 or more numbers NOT to scroll. Instead, put a option button to show all teachers.
 
   noMoreTeachers: boolean;
   loading: boolean;
@@ -84,6 +84,11 @@ export class TeacherListPage {
   onClickShowMoreTeacher() {
     this.page_no ++;
     this.loadTeachers();
+  }
+
+  onClickShowAllTeachers() {
+    this.display_options = true;
+    document.querySelector('.scroll-content').scrollTo(0,0);
   }
 
 }

@@ -34,7 +34,7 @@
 
         <ion-item>
           <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
-          <ion-select (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-grade'}">
+          <ion-select (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님 등급을 선택하세요.', cssClass:'select-grade'}">
             <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
             <ion-option value="">{{"ALL TEACHER" | translate}}</ion-option>
           </ion-select>
@@ -44,7 +44,7 @@
 
       <button class="p-4 w-100 fs-lg bg-lightgrey" (click)=" display_options = false ">
         <i class="fal fa-times"></i>
-        {{ "CLOSE" | translate }}
+        {{ "CLOSE LIST OPTION BOX" | translate }}
       </button>
 
     </section>
@@ -121,9 +121,13 @@
 
       <button class="show-more-teachers" (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers ">강사 더보기...</button>
 
-      <!-- <div class="alert alert-info rounded-0 border-0" *ngIf=" noMoreTeachers ">
-      더 이상 강사가 없습니다.
-    </div> -->
+      <div class="mt-5 mx-md-5 mb-md-5 text-center" *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' " (click)=" onClickShowAllTeachers() ">
+        더 이상 추천 강사가 없습니다. 옵션을 통해 더 많은 강사를 볼 수 있습니다.
+        <div class="no-more-teachers py-3 text-center">
+          옵션 창 열기
+        </div>
+      </div>
+
     </section>
 
   </div>

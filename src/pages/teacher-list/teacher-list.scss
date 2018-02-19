@@ -22,4 +22,11 @@ teacher-list-page {
     font-size: 1.4rem !important;
     cursor: pointer;
   }
+
+  .no-more-teachers {
+    margin: 1em 0;
+    padding: 1em;
+    background-color: rgb(230, 130, 0);
+    color: white;
+  }
 }
