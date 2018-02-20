@@ -2,12 +2,12 @@
   <header-content [title]=" 'TEACHER DASHBOARD' "></header-content>
 </ion-header>
 <ion-content>
-  <div class="page">
+  <div class="page pt-5">
     <hook-content-top></hook-content-top>
-    <section class="page-header bg-blue-40 white fw-bold text-center">
+    <section class="page-header bg-blue-80 white fw-light fs-2rem lspacing-0-1rem p-5 text-center">
       <div>{{ "TEACHER DASHBOARD" | translate }}</div>
     </section>
-    <section class="page-body mt-3">
+    <section class="page-body mt-4">
 
       <div id="teacher-navigation">
         <ion-grid class="px-1px" id="visitor-navigation" no-padding>
@@ -16,7 +16,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color"  (click)="a.open('session-future')">
                   <i class="fa fa-calendar-alt fa-3x mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Reserved Class</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Reserved Class</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -24,7 +24,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('session-past')">
                   <i class="fa fa-calendar-times fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Past Class</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Past Class</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -32,7 +32,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('schedule-edit')">
                   <i class="fa fa-calendar-plus fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Add/Edit Schedule</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Add/Edit Schedule</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -41,7 +41,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('teacher-curriculum-vitae')">
                   <i class="fa fa-edit fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Curriculum Vitae</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Curriculum Vitae</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -49,7 +49,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('login')">
                   <i class="fa fa-sign-in fa-3x mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Login</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Login</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -57,8 +57,8 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('register')">
                   <i class="fa fa-address-card fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold" *ngIf="a.user.isLogin">Update Profile</div>
-                  <div class="bg-blue-40 p-3 fw-bold" *ngIf="a.user.isLogout">Register</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem" *ngIf="a.user.isLogin">Update Profile</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem" *ngIf="a.user.isLogout">Register</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -66,7 +66,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('settings-payment-info')">
                   <i class="fa fa-credit-card fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Payment Information</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Payment Information</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -75,7 +75,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('message')">
                   <i class="fa fa-comment-alt fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Messages</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Messages</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -83,7 +83,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)=" a.onClickContactAdmin() ">
                   <i class="fa fa-phone-square fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Contact Us</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Contact Us</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -91,7 +91,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('how-to-use')">
                   <i class="fal fa-book fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">FAQ</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">FAQ</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -100,7 +100,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="showModal('teacherPolicy')">
                   <i class="fal fa-info-circle fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Policy</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Policy</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -109,7 +109,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('password-change')" *ngIf="a.user.isLogin">
                   <i class="fa fa-key fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Change Password</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Change Password</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -118,7 +118,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('settings')">
                   <i class="fa fa-cogs fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Settings</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Settings</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
@@ -127,7 +127,7 @@
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.user.logout()">
                   <i class="fa fa-sign-out fa-3x  mb-5 mt-2"></i>
-                  <div class="bg-blue-40 p-3 fw-bold">Logout</div>
+                  <div class="bg-blue-80 p-3 fw-bold lspacing-0-1rem">Logout</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>

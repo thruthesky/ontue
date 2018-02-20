@@ -19,7 +19,7 @@
   }
 
   .radio-effect:checked+div{
-    background: transparent!important;
+    background:  rgba(#007bff,0.1)!important;
     border-color: #007bff!important;
     svg{
       transform: scale(0.9, 0.9);
