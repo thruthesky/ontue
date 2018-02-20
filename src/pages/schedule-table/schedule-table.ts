@@ -137,8 +137,8 @@ export class ScheduleTablePage {
   private typing = new Subject<string>();
 
   singleTeacher = null;
-  time = null;
-  timer = null;
+  // time = null;
+  // timer = null;
   urlYoutube = null;
 
   no_of_schedules = 0;
@@ -199,7 +199,7 @@ export class ScheduleTablePage {
 
 
 
-    this.updateTime();
+    // this.updateTime();
   }
 
 
@@ -209,7 +209,7 @@ export class ScheduleTablePage {
 
 
   ngOnDestroy() {
-    if (this.timer) clearTimeout(this.timer);
+    // if (this.timer) clearTimeout(this.timer);
   }
 
   /**
@@ -441,33 +441,6 @@ export class ScheduleTablePage {
     const keys = Object.keys(this.schedules);
     return this.schedules[keys[0]];
   }
-
-  updateTime() {
-    if (this.student && this.student['timezone']) {
-      // this.time = this.a.lms.localeString(this.re['student']['timezone']);
-      let date = this.a.lms.userDate(this.student['timezone']);
-      let hour = date.getHours();
-      let ap = '';
-      if (hour < 12) ap = '오전';
-      else ap = '오후';
-      if (hour != 12) hour = hour % 12;
-
-
-      // console.log(this.student['timezone_country']);
-
-
-      
-      // let country = '';
-      // if ( this.student['timezone'] == 8 ) country = '필리핀,중국';
-      // else if ( this.student['timezone'] == 9 ) country = '한국,일본';
-      this.time = this.student['timezone_country'] + ' '
-        // + date.getDate() + '일 '
-        + ap + ' '
-        + hour + '시 ' + date.getMinutes() + '분'; // + date.getSeconds() + '초';
-    }
-    this.timer = setTimeout(() => this.updateTime(), 1000);
-  }
-
 
   /**
    * Returns teacher information
