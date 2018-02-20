@@ -7,11 +7,11 @@
                         <ion-col class="d-flex align-items-center" col-md-4>
                             <span class="size-40 rounded-circle of-hidden"><img  [src]="a.checkPhotoURL(reservation.teacher_photoURL)"/></span>
                         </ion-col>
-                        <ion-col col-md-3>
+                        <ion-col col-md-4>
                             <h3 class="fs-90 m-0 p-0">{{ a.preTeacherName(reservation.teacher_name) }}</h3>
                             <div  class="fs-lg m-0 p-0 mt-1" [innerHtml]="getFirstTwo(reservation.class_begin)+':'+getLastTwo(reservation.class_begin)"></div>
                         </ion-col>
-                        <ion-col text-right col-md-5>
+                        <ion-col text-right col-md-4>
                             <span class="fs-lg m-0 p-0">{{ reservation.display_date }}</span>
                         </ion-col>
                     </ion-row>

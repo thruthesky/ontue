@@ -1,0 +1,29 @@
+.form-effect{
+  label{
+    transition: all 0.2s ease-in-out;
+    order: -1
+  }
+  .focus-effect{
+    transition: all 0.2s ease-in-out;
+    &:focus{
+      border:1px solid rgba(#007bff,0.5)!important;
+    }
+    &:focus+label{
+      color:#007bff!important;
+    }
+  }
+}
+
+.checkbox-effect{
+  &+div{  transition: all 0.2s ease-in-out;}
+  &:checked+div{
+    background:  rgba(#007bff,0.1)!important;
+    border-color: #007bff!important;
+  }
+  
+  &:hover+div{
+    border-color: #007bff!important;
+  }
+}
+
+.border-top{border-top: 1px solid skyblue}

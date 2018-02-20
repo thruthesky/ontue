@@ -1,128 +1,207 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>ADD SCHEDULE</ion-title>
-    <ion-buttons start>
-      <button ion-button class="cancel" (click)="dismiss()">
-        <span ion-text color="primary">Cancel</span>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
+    <ion-toolbar class="px-5" color="blue">
+      <ion-grid no-padding>
+        <ion-row align-items-center >
+          <ion-col>       
+            <ion-title class="p-0">
+            <span class="fw-bold fs-90">ADD SCHEDULE</span>
+          </ion-title>
+        </ion-col>
+        <ion-col text-right col-md-2>
+          <button class="p-0"  icon-end  ion-button clear small color="white" (click)="dismiss()">
+              <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span><ion-icon name="close"></ion-icon>
+          </button>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
 <ion-content>
-  <div class="box mb-2 p-5 bg-indigo white">
+
+  <!-- <div class="box mb-2 p-5 bg-indigo white">
     You can add schedule.
-  </div>
+  </div> -->
 
+  <div class="content p-5">
+    <ion-grid class="border-top py-5" no-padding>
+      <ion-row align-items-center>
+        <ion-col col-md-9>
+            <ion-grid no-padding>
+                <ion-row class="mb-3" text-left>
+                  <ion-col col-md-4>
+                      <div class="py-4 px-2 bg-dodgerblue white" text-center>Your timezone:</div>
+                  </ion-col>
+                  <ion-col text-center>
+                      <div class="py-4 px-2"> ({{ timezone_offset > 0 ? "+" + timezone_offset : timezone_offset }}) {{ timezone_name }}</div>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-md-4>
+                      <div class="py-4 px-2 bg-dodgerblue white" text-center>Your time is now:</div>
+                  </ion-col>
+                  <ion-col text-center>
+                      <div class="py-4 px-2"> {{ time }}</div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+        </ion-col>
+        <ion-col col-md-3>
+            <div>
+              <button class="update-tz" ion-button block (click)="dismiss(); a.open('settings')">Update Timezone</button>
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <div class="content p-3">
+    <ion-grid class="py-5 border-top" no-padding>
+        <ion-row align-items-center>
+          <ion-col col-md-9>
+              <ion-grid no-padding>
+                  <ion-row class="mb-3" align-items-center>
+                    <ion-col col-md-4>
+                        <div class="py-4 px-2 bg-dodgerblue white" text-center>Class Begin</div>
+                    </ion-col>
+                    <ion-col class="form-effect">
+                        <div class="d-flex justify-content-around px-2">
+                            <div class="d-flex align-items-center"><input class="focus-effect w-20 p-2 rounded-2" placeholder="0-23" type="text" name="class_begin_hour" [(ngModel)]="data.class_begin_hour"><label class="label mr-3">Hour:</label></div>
+                            <div class="d-flex align-items-center"><input class="focus-effect w-20 p-2 rounded-2" placeholder="0-60" type="text" name="class_begin_minute" [(ngModel)]="data.class_begin_minute"><label class="label mr-3">Min</label></div>
+                        </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+          </ion-col>
+          <ion-col col-md-3>
+              <div> Ex) 8:30= 8:30am, 11:30= 11:30am, 15:00= 3:00pm, 20:00=8:00pm </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
-    <div class="mb-3">
-      <div>Your timezone: ({{ timezone_offset > 0 ? "+" + timezone_offset : timezone_offset }}) {{ timezone_name }}</div>
-      <div>Your time is now: {{ time }}</div>
-      <div>
-        <button ion-button class="update-tz" (click)="dismiss(); a.open('settings')">Update Timezone</button>
-      </div>
-    </div>
+      <ion-grid class="py-5 border-top" no-padding>
+          <ion-row align-items-center>
+            <ion-col col-md-9>
+                <ion-grid no-padding>
+                    <ion-row class="mb-3" align-items-center>
+                      <ion-col col-md-4>
+                          <div class="py-4 px-2 bg-dodgerblue white" text-center>Class Duration</div>
+                      </ion-col>
+                      <ion-col class="form-effect">
+                              <div class="d-flex align-items-center justify-content-center"><input class="focus-effect w-20 p-2 rounded-2"  type="text"  name="duration" [(ngModel)]="data.duration"><label class="label mr-3">How many minutes?</label></div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+            </ion-col>
+            <ion-col col-md-3>
+                <div>  Ex) 10 = 10mins class, 25 = 25mins class, 120= 120mins(2hrs) class. </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+   
+        <ion-grid class="py-5 border-top" no-padding>
+            <ion-row align-items-center>
+              <ion-col col-md-9>
+                  <ion-grid no-padding>
+                      <ion-row class="mb-3" align-items-center>
+                        <ion-col col-md-4>
+                            <div class="py-4 px-2 bg-dodgerblue white" text-center>Points</div>
+                        </ion-col>
+                        <ion-col class="form-effect">
+                                <div class="d-flex align-items-center justify-content-center"><input class="focus-effect w-20 p-2 rounded-2" type="text" name="point" [(ngModel)]="data.point"><label class="label mr-3">How many points?</label></div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+              </ion-col>
+              <ion-col col-md-3>
+                  <div>   Ex) 500,1000,2000,2500,3000,4000,5000... </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
 
-    <div class="mb-3">
-      Class Begin:
-      <input class="w-8" type="text" name="class_begin_hour" [(ngModel)]="data.class_begin_hour">(0-23)Hour :
-      <input class="w-8" type="text" name="class_begin_minute" [(ngModel)]="data.class_begin_minute">(0-60)Min
-      <div>
-        <small>Ex) 8:30= 8:30am, 11:30= 11:30am, 15:00= 3:00pm, 20:00=8:00pm</small>
-      </div>
-    </div>
+        <ion-grid class="py-5 border-top" no-padding>
+          <ion-row justify-content-between text-center>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect"  type="checkbox" name="sunday" [(ngModel)]="data.sunday" (change)="allDays=false">
+                        <div class="px-3 border py-2 mx-1 pointer">Sun</div>
+                  </label>
+            </ion-col>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect"  type="checkbox" name="monday" [(ngModel)]="data.monday" (change)="allDays=false">
+                        <div class="px-3 border py-2 mx-1 pointer">Mon</div>
+                  </label>
+            </ion-col>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect"  type="checkbox" name="tuesday" [(ngModel)]="data.tuesday" (change)="allDays=false">
+                        <div class="px-3 border py-2 mx-1 pointer">Tue</div>
+                  </label>
+            </ion-col>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect"  type="checkbox" name="wednesday" [(ngModel)]="data.wednesday" (change)="allDays=false">
+                        <div class="px-3 border py-2 mx-1 pointer">Wed</div>
+                  </label>
+            </ion-col>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect"  type="checkbox" name="thursday" [(ngModel)]="data.thursday" (change)="allDays=false">
+                        <div class="px-3 border py-2 mx-1 pointer">Thu</div>
+                  </label>
+            </ion-col>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect"  type="checkbox" name="friday" [(ngModel)]="data.friday" (change)="allDays=false">
+                        <div class="px-3 border py-2 mx-1 pointer">Fri</div>
+                  </label>
+            </ion-col>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect"  type="checkbox" name="saturday" [(ngModel)]="data.saturday" (change)="allDays=false">
+                        <div class="px-3 border py-2 mx-1 pointer">Sat</div>
+                  </label>
+            </ion-col>
+            <ion-col>
+                <label>
+                    <input class="d-none checkbox-effect" type="checkbox" name="allDays" [(ngModel)]="allDays" (click)="onClickAllDays()">
+                        <div class="px-3 border py-2 mx-1 pointer">All</div>
+                  </label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
-    <div class="mb-3">
-      Class Duration:
-      <input type="text" name="duration" [(ngModel)]="data.duration">
-      <div>
-        <small class="muted">
-          How many minutes do you want to have the class?
-        </small>
-      </div>
-      <div>
-        <small class="muted">
-          Ex) 10 = 10mins class, 25 = 25mins class, 120= 120mins(2hrs) class.
-        </small>
-      </div>
-    </div>
-
-    <div class="mb-2">
-      POINT:
-      <input type="text" name="point" [(ngModel)]="data.point">
-        <small class="d-block muted">
-          How many Points you will charge the student per class.
-        </small>
-        <small class="d-block muted">
-          Ex) 500,1000,2000,2500,3000,4000,5000...
-        </small>
-    </div>
-
-    <table>
-      <tr class="mb-2">
-        <td class="pr-3">Sun</td>
-        <td class="pr-3">Mon</td>
-        <td class="pr-3">Tue</td>
-        <td class="pr-3">Wed</td>
-        <td class="pr-3">Thu</td>
-        <td class="pr-3">Fri</td>
-        <td class="pr-3">Sat</td>
-        <td class="pr-3">All</td>
-      </tr>
-      <tr>
-        <td class="p-3">
-          <input type="checkbox" name="sunday" [(ngModel)]="data.sunday" (change)="allDays=false">
-        </td>
-        <td class="p-3">
-          <input type="checkbox" name="monday" [(ngModel)]="data.monday" (change)="allDays=false">
-        </td>
-        <td class="p-3">
-          <input type="checkbox" name="tuesday" [(ngModel)]="data.tuesday" (change)="allDays=false">
-        </td>
-        <td class="p-3">
-          <input type="checkbox" name="wednesday" [(ngModel)]="data.wednesday" (change)="allDays=false">
-        </td>
-        <td class="p-3">
-          <input type="checkbox" name="thursday" [(ngModel)]="data.thursday" (change)="allDays=false">
-        </td>
-        <td class="p-3">
-          <input type="checkbox" name="friday" [(ngModel)]="data.friday" (change)="allDays=false">
-        </td>
-        <td class="p-3">
-          <input type="checkbox" name="saturday" [(ngModel)]="data.saturday" (change)="allDays=false">
-        </td>
-        <td class="p-3">
-          <input type="checkbox" name="allDays" [(ngModel)]="allDays" (click)="onClickAllDays()">
-        </td>
-
-      </tr>
-    </table>
-
-
-    <ul>
-      <li>Promo Schedule Graded Teacher must have.</li>
-      <li><b>2</b> schedule with <b>10mins</b> duration for <b>500points</b> and minimum of <b>5days</b></li>
-      <li><b>2</b> schedule with <b>20mins</b> duration for <b>1000points</b> and minimum of <b>5days</b></li>
-      <li><b>2</b> schedule with <b>25mins</b>  duration for <b>2500points</b> and minimum of <b>5days</b></li>
+  <div class=" mt-4 mb-5 border p-3">
+    <h4 class="fw-light">Promo Schedule Graded Teacher must have.</h4>
+    <ul  class="fw-light">
+      <li class="mt-4"><b>2</b> schedule with <b>10mins</b> duration for <b>500points</b> and minimum of <b>5days</b></li>
+      <li class="mt-4"><b>2</b> schedule with <b>20mins</b> duration for <b>1000points</b> and minimum of <b>5days</b></li>
+      <!-- <li class="mt-4"><b>2</b> schedule with <b>25mins</b>  duration for <b>2500points</b> and minimum of <b>5days</b></li> -->
     </ul>
+  </div>
     <div class="alert alert-warning mb-2" *ngIf=" maxPoint() ">
       You cannot raise more than {{ max_point_per_minute }} per minute.
       The point for {{ data['duration'] }} minutes class must be less than or equal to {{ data['duration'] *
       max_point_per_minute }}
     </div>
 
-
-    <div>
-      <div>PreRe:<input type="text" name="prere" [(ngModel)]="data.prere"></div>
-      <div>
-        <small class="muted">
-          If you want to make the schedule limited to specific student, you can add the student email here.
-        </small>
-      </div>
-    </div>
-
+    <ion-grid class="py-5 border-top" no-padding>
+        <ion-row align-items-center>
+          <ion-col col-md-9>
+              <ion-grid no-padding>
+                  <ion-row align-items-center>
+                    <ion-col col-md-4>
+                        <div class="py-4 px-2 bg-dodgerblue white" text-center>PreRe</div>
+                    </ion-col>
+                    <ion-col class="form-effect">
+                            <div class="d-flex-column align-items-center justify-content-center"><input class="focus-effect p-2 rounded-2 mt-2"  type="text" name="prere" [(ngModel)]="data.prere"><label class="label">Student Email</label></div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+          </ion-col>
+          <ion-col col-md-3>
+              <div>  If you want to make the schedule limited to specific student, you can add the student email here. </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
     <div class="alert alert-info" *ngIf=" calculateEarning() ">
       You will earn
@@ -140,10 +219,8 @@
       @see Policy
 
     </div>
-
-    <button ion-button type="submit" (click)="onSubmit()">Submit</button>
-
+    <div class="pt-5 pb-3 border-top" text-center>
+        <button class="px-5 py-4" ion-button type="submit" (click)="onSubmit()">Submit</button>
+    </div>
   </div>
-
-
 </ion-content>
