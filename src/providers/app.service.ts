@@ -1092,8 +1092,8 @@ export class AppService {
             this.userTime = user['timezone_country'] + ' '
             + hour + ':' + min + ' ' + ap;
         }
-        
-        console.log(this.userTime);
+
+        // console.log(this.userTime);
     }
 
 
