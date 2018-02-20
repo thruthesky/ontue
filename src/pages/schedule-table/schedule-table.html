@@ -335,7 +335,7 @@
               <div class="photo">
                 <img src="{{ teacher_photoURL( sessions[0] ) }}">
               </div>
-              <div class="teacher-name">{{ teacher_name( sessions[0] ) }}</div>
+              
             </div>
 
             <div class="td session-datetime pt-2 text-center">
@@ -344,6 +344,9 @@
               </div>
               <div>
                 {{ session_duration( sessions[0] ) }} {{ 'MINUTE' | translate }}
+              </div>
+              <div class="teacher-name fs-xs" *ngIf=" ! singleTeacher ">
+                {{ teacher_name( sessions[0] ) }}
               </div>
 
             </div>
