@@ -479,11 +479,11 @@ export class ScheduleTablePage {
     // console.log(session);
     const teacher = this.teacher(session);
     // console.log('teacher: ', teacher);
-    if (teacher) name = teacher.display_name;
+    if (teacher) name = teacher.name;
     else name = this.teacher_profile['name'];
-    return name;
+    // return name;
 
-    // return this.a.preTeacherName( name );
+    return this.a.preTeacherName( name, 7 );
   }
 
   /**

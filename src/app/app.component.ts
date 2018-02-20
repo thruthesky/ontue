@@ -188,7 +188,7 @@ export class MyApp {
 
     // this.a.open('class-comment');
 
-    // this.a.open('schedule-table'); // All schedule
+    this.a.open('schedule-table'); // All schedule
 
     // this.a.open('schedule-table', { ID: 809 }); // one schedule, Imno4
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
