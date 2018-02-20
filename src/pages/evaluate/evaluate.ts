@@ -31,10 +31,10 @@ export class EvaluatePage {
   constructor(navParams: NavParams,
               public a: AppService) {
     this.idx = navParams.data['idx'];
-    console.log(this.idx);
+    // console.log(this.idx);
 
     this.a.lms.get_session_evaluation(this.idx).subscribe(res => {
-      console.log("get_session_evaluation");
+      // console.log("get_session_evaluation");
       let session = res.session;
       this.point = session.point;
       if (session.student_absent == "y") this.student_absent = true;
@@ -66,10 +66,13 @@ export class EvaluatePage {
     if ( this.student_absent ) {
       if ( this.comment.length <= 2 ) {
         this.a.alert("You must comment even if the student was absent.");
+        return;
       }
       if ( this.comment.length < 10 ) {
         this.a.alert("You must comment more than 10 characters.");
+        return;
       }
+      data['comment'] = this.comment;
     }
     else {
 
@@ -121,10 +124,10 @@ export class EvaluatePage {
 
 
 
-    console.log(data);
+    // console.log("onClickSubmitEvaluation", data);
 
     this.a.lms.session_evaluate(data).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.a.alert("Evaluation Submitted!!!");
       this.a.open('session-past');
       this.a.onTeacherEvaluateSession();
