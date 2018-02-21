@@ -1,4 +1,4 @@
-import { Component, Input, OnInit  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { AppService } from './../../providers/app.service';
 import {ModalController} from "ionic-angular";
 
@@ -8,16 +8,28 @@ import {ModalController} from "ionic-angular";
 })
 export class TeacherActivityLogComponent implements OnInit  {
 
-  @Input() actv = [];
+  actv = {
+    visit: " visit the site.",
+    login: " has log in.",
+    'open-register': "Someone visit the registration.",
+    register: " has registered.",
+    'view-profile': " has view the profile of ",
+    'update-profile': " update profile.",
+    reserve: " made reservation to ",
+    cancel: " cancel reservation ",
+    payment: " trying to pay ",
+    evaluate: " evaluate to student ",
+    comment: " comment to teacher"
+  };
 
   constructor(
       public a: AppService,
       public modalCtrl: ModalController
     ) {
-    
+
     }
 
   ngOnInit() { }
-  
+
 
 }

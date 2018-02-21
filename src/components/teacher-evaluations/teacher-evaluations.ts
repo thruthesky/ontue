@@ -1,4 +1,4 @@
-import {Component, Input, OnInit,} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppService} from './../../providers/app.service';
 
 
@@ -8,7 +8,7 @@ import {AppService} from './../../providers/app.service';
 })
 export class TeacherEvaluationsComponent implements OnInit {
 
-  @Input() evaluations = [];
+  evaluations = [];
 
 
   pageOption = {
