@@ -11,7 +11,7 @@ export class TeacherActivityLogComponent implements OnInit  {
   actv = {
     visit: " visit the site.",
     login: " has log in.",
-    'open-register': "Someone visit the registration.",
+    'open-register': " visit the registration.",
     register: " has registered.",
     'view-profile': " has view the profile of ",
     'update-profile': " update profile.",
