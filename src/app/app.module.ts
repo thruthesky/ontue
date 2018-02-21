@@ -55,6 +55,8 @@ import { HowToUsePage } from '../pages/how-to-use/how-to-use';
 import { MyPointPage } from '../pages/my-point/my-point';
 import { StudentRegisterSuccessPage } from '../pages/student-register-success/student-register-success';
 import { StudentAdvPage } from '../pages/student-adv/student-adv';
+import { StudentCurriculumnPage } from '../pages/student-curriculumn/student-curriculumn';
+
 
 
 
@@ -197,7 +199,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherReservationsComponent,
     TeacherEvaluationsComponent,
     TeacherStepComponent,
-    TeacherActivityLogComponent
+    TeacherActivityLogComponent,
+    StudentCurriculumnPage
   ],
   imports: [
     BrowserModule,
@@ -279,7 +282,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherReservationsComponent,
     TeacherEvaluationsComponent,
     TeacherStepComponent,
-    TeacherActivityLogComponent
+    TeacherActivityLogComponent,
+    StudentCurriculumnPage
 
   ],
   providers: [

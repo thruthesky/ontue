@@ -63,6 +63,9 @@ import { StudentRegisterSuccessPage } from '../pages/student-register-success/st
 
 import { StudentAdvPage } from '../pages/student-adv/student-adv';
 
+import { StudentCurriculumnPage } from '../pages/student-curriculumn/student-curriculumn';
+
+
 
 
 
@@ -166,6 +169,7 @@ export class MyApp {
 
     this.a.pages['student-register-success'] = StudentRegisterSuccessPage;
     this.a.pages['student-adv'] = StudentAdvPage;
+    this.a.pages['student-curriculumn'] = StudentCurriculumnPage;
 
 
   }
@@ -188,7 +192,7 @@ export class MyApp {
 
     // this.a.open('class-comment');
 
-    this.a.open('schedule-table'); // All schedule
+    // this.a.open('schedule-table'); // All schedule
 
     // this.a.open('schedule-table', { ID: 809 }); // one schedule, Imno4
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
@@ -259,6 +263,8 @@ export class MyApp {
     // this.a.open('student-adv');
 
 
+    // this.a.open('student-curriculumn');
+    
   }
 
 
