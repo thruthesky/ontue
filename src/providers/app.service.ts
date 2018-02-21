@@ -133,6 +133,7 @@ export class AppService {
         // Just in case the app may need sometime to init.
         // Try to connect to the server first before it display the first page.
         setTimeout(() => {
+            // console.log("going to call this.updateLMSInfo()");
             this.updateLMSInfo();
             if (this.user.isLogin) {
                 this.log({ idx_user: this.user.id, name: this.user.name, activity: 'visit' });
@@ -178,7 +179,7 @@ export class AppService {
         if (!this.info) this.info = {};
         // console.log("info from cache: ", this.info);
         this.lms.info().subscribe(re => {
-            console.log("re: ", re);
+            // console.log("re: ", re);
             this.set(KEY_LMS_INFO, re);
             this.info = this.get(KEY_LMS_INFO);
 
@@ -188,21 +189,25 @@ export class AppService {
                 if (this.info['user']['no_of_total_sessions'] !== void 0) this.updateLmsInfoUserNoOfTotalSessions(this.info['user']['no_of_total_sessions']);
                 if (this.info['user']['no_of_reservation'] !== void 0) this.updateLmsInfoUserNoOfReservation(this.info['user']['no_of_reservation']);
                 if (this.info['user']['no_of_past'] !== void 0) this.updateLmsInfoUserNoOfPast(this.info['user']['no_of_past']);
-
             }
 
             if (callback) callback(re);
 
-
-
-
             // console.log("updated info from remote: ", this.info);
 
         }, e => {
-            //
+            console.error( e );
         });
     }
 
+
+    lmsInfoBook() {
+        this.info = this.get( KEY_LMS_INFO );
+        if (this.info && this.info['user'] && this.info['user']['book_next']) {
+            return this.info['user']['book_next'];
+        }
+        else return '';
+    }
     lmsInfoCancellableMinutes() {
         if (this.info && this.info['MAX_CANCELLABLE_TIME']) {
             return parseInt(this.info['MAX_CANCELLABLE_TIME']) / 60;
@@ -1055,9 +1060,9 @@ export class AppService {
     updateUserTimezone() {
         const info = this.get(KEY_LMS_INFO);
         if (!info || !info['user']) return;
-        console.log(info);
+        // console.log(info);
         const user = info['user'];
-        console.log(`updateUserTimezone: `, user);
+        // console.log(`updateUserTimezone: `, user);
 
         if (user && user['timezone']) {
         }
@@ -1090,7 +1095,6 @@ export class AppService {
             this.userTime = user['timezone_country'] + ' '
             + hour + ':' + min + ' ' + ap;
         }
-
         // console.log(this.userTime);
     }
 
