@@ -15,35 +15,35 @@
           <ion-col col-5>
             <ion-grid no-padding>
               <ion-row class="mt-4 mb-2">
-                <ion-col class="mr-4"> <div class="p-4 bg-white border">Your ID No:</div></ion-col>
-                <ion-col> <div class="p-4 bg-white border"> {{ a.user.id }}</div></ion-col>
+                <ion-col class="mr-4" col-md-5> <div class="p-4 bg-white border fw-bold dodgerblue  border-dodgerblue">Your ID No:</div></ion-col>
+                <ion-col> <div class="p-4 bg-white border border-dodgerblue"> {{ a.user.id }}</div></ion-col>
               </ion-row>
               <ion-row class="my-3">
-                <ion-col class="mr-4"> <div class="p-4 bg-white border">Your timezone:</div></ion-col>
-                <ion-col> <div class="p-4 bg-white border"> {{ timezone_name }}</div></ion-col>
+                <ion-col class="mr-4" col-md-5> <div class="p-4 bg-white border fw-bold dodgerblue  border-dodgerblue">Your timezone:</div></ion-col>
+                <ion-col> <div class="p-4 bg-white border border-dodgerblue"> {{ timezone_name }}</div></ion-col>
               </ion-row>
               <ion-row class="mb-4 mt-2">
-                <ion-col class="mr-4"> <div class="p-4 bg-white border">Your time is now:</div></ion-col>
-                <ion-col> <div class="p-4 bg-white border"> {{ time }}</div></ion-col>
+                <ion-col class="mr-4"  col-md-5> <div class="p-4 bg-white border fw-bold dodgerblue  border-dodgerblue">Your time is now:</div></ion-col>
+                <ion-col> <div class="p-4 bg-white border border-dodgerblue"> {{ time }}</div></ion-col>
               </ion-row>
             </ion-grid>
           </ion-col>
           <ion-col>
             <div class="py-4 d-flex justify-content-between h-100">
-              <button class="add-schedule h-100 w-100 my-0 ml-4 mr-2" color="green" 
-               ion-button  *ngIf="data" (click)='onClickAddSchedule()'>
-               <div class="fs-2rem fw-light d-flex-column align-items-center">
+              <div class="add-schedule rounded h-100 w-100 my-0 ml-4 mr-2 bg-light-green white pointer"
+                *ngIf="data" (click)='onClickAddSchedule()'>
+               <div class="fs-2rem fw-light h-100 d-flex-column align-items-center justify-content-center">
                   <i class="fal fa-calendar-plus fa-3x mb-4"></i>
                   Add Schedule
                </div> 
-              </button>
-              <button class="add-dayoff h-100 w-100 m-0 ml-3"  color="orange"
-               ion-button *ngIf="data" (click)="a.open('dayoff')">
-               <div class="fs-2rem fw-light d-flex-column align-items-center">
+              </div>
+              <div class="add-dayoff rounded h-100 w-100 m-0 ml-3 bg-light-orange white pointer" 
+               *ngIf="data" (click)="a.open('dayoff')">
+               <div class="fs-2rem fw-light  h-100 d-flex-column align-items-center justify-content-center">
                   <i class="fal fa-calendar-minus fa-3x mb-4"></i>
                   Add Day off
                </div> 
-              </button>
+              </div>
             </div>
          </ion-col>
         </ion-row>

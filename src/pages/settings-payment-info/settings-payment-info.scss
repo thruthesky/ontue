@@ -18,7 +18,8 @@
     }
   }
 
-  .radio-effect:checked+div{
+  .opacity-0{opacity: 0!important}
+  .radio-effect:checked+div,.radio-effect:focus+div{
     background:  rgba(#007bff,0.1)!important;
     border-color: #007bff!important;
     svg{
