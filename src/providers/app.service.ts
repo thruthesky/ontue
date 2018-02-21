@@ -1099,4 +1099,11 @@ export class AppService {
     }
 
 
+    /**
+     * Returns true if the width of the screen is less than 756px.
+     */
+    isMobileWidth() {
+        return window.innerWidth < 756;
+    }
+
 }
