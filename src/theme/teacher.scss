@@ -19,7 +19,10 @@ ion-nav.teacher {
     .fw-light{font-weight: lighter!important}
     .line-h-1-8em{line-height: 1.8em!important}
     .px-1px{padding: 0 1px !important}// for the outline effect to be not hidden in overflow
-
+    .size-80x90{
+        height: 90px!important;
+        width: 80px!important;
+    }
 
     //for the header/navbar
     .teacher-wide-menu{
@@ -51,9 +54,7 @@ ion-nav.teacher {
         font-family:sans-serif,Arial, Helvetica!important;
         font-size: 16px!important;
         background-color: #f9f9f9!important;
-        ::-webkit-scrollbar{
-            display: none
-        }
+        .scroll-content{overflow: overlay!important}
 
         .activity-log{
             .item{margin: 0.2em 0!important}
@@ -70,6 +71,11 @@ ion-nav.teacher {
 
         .teacher-evaluation{ 
             .white-space-pre{white-space: pre-line!important} 
+            .hide-effect{ animation: fade-in-effect 0.5s ease-in-out }
+            @keyframes fade-in-effect {
+                0%{ opacity: 0 }
+                100%{opacity: 1 }
+            }
         }
 
         .title-style{

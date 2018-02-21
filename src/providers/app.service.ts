@@ -154,14 +154,14 @@ export class AppService {
 
 
     /**
-     * 
+     *
      *      Gets LMS information from backend and saves into localStorage.
-     * 
+     *
      *      And initialize LMS information.
-     *  
+     *
      *          - Runs timer for local timzeone.
-     * 
-     * 
+     *
+     *
      * @note to get LMS information after loading from backend, use
      *      - this.lmsInfoUserNoOfTotalSessions
      *      - this.lmsInfoUserNoOfReservation
@@ -1095,9 +1095,15 @@ export class AppService {
             this.userTime = user['timezone_country'] + ' '
             + hour + ':' + min + ' ' + ap;
         }
-        
         // console.log(this.userTime);
     }
 
+
+    /**
+     * Returns true if the width of the screen is less than 756px.
+     */
+    isMobileWidth() {
+        return window.innerWidth < 756;
+    }
 
 }

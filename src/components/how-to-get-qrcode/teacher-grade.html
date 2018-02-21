@@ -1,0 +1,102 @@
+<ion-content id="teacher-grade">
+  <ion-toolbar class="px-5" color="blue">
+      <ion-grid no-padding>
+        <ion-row align-items-center >
+          <ion-col>       
+            <ion-title class="p-0">
+            <span class="fw-bold fs-90">Teacher Grade</span>
+          </ion-title>
+        </ion-col>
+        <ion-col text-right col-md-2>
+          <button class="p-0" icon-end  ion-button clear small color="white" (click)="dismiss()">
+              <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span><ion-icon name="close"></ion-icon>
+          </button>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  <div class="content px-5 py-4">
+    <ion-slides>
+      <ion-slide>
+        <div text-left>
+            <div class="p-0 m-0 d-flex align-items-center justify-content-center">
+                <button class="d-inline-block mr-3" icon-only ion-button clear small disabled>
+                    <ion-icon  name="arrow-back" color="black"></ion-icon>
+                </button>
+                <h3 class="m-0 fw-light fs-2rem" ion-text color="blue" text-center>GRADE 1</h3>
+                <button class="d-inline-block ml-3" icon-only ion-button clear small (click)="next()">
+                    <ion-icon name="arrow-forward" color="blue"></ion-icon>
+                </button>
+            </div>
+          <p class="fw-light fs-90  m-0 p-0">Having only good english teaching skill does not help to earn grade.</p>
+          <h4 class="m-0 mt-3 fw-light dodgerblue border border-dodgerblue p-2 rounded-2 d-inline-block"  ion-text color="blue">A Good teacher must have</h4>
+            <ul class="fw-light fs-90 mt-3 mb-5">
+              <li class="mt-1">Good Environment/Work Place. ( No unwanted sounds, No people at the back, etc... )</li>
+              <li class="mt-1">Good Devices. ( PC/Laptop, Headset with mic)</li>
+              <li class="mt-1">Good Internet. ( Reasonable Connection )</li>
+              <li class="mt-1">Good Profile Picture.</li>
+              <li class="mt-1">Good Video Introduction.</li>
+              <li class="mt-1">Prepared and Always ready to teach.</li>
+              <li class="mt-1">Finishing the evaluation on time.</li>
+              <li class="mt-1">Following our promotion schedule.</li>
+              <li class="mt-1">Following our guidelines.</li>
+              <li class="mt-1">Following our policy.</li>
+              <li class="mt-1">Always present in class.</li>
+              <li class="mt-1">Always records their class.</li>
+            </ul>
+
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div text-left>
+            <div class="p-0 m-0 d-flex align-items-center justify-content-center">
+                <button class="d-inline-block mr-3" icon-only ion-button clear small (click)="prev()">
+                    <ion-icon  name="arrow-back" color="black"></ion-icon>
+                </button>
+                <h3 class="m-0 fw-light fs-2rem" ion-text color="blue">GRADE 2</h3>
+                <button class="d-inline-block ml-3" icon-only ion-button clear small (click)="next()">
+                    <ion-icon name="arrow-forward" color="blue"></ion-icon>
+                </button>
+            </div>
+            <p class="fw-light fs-90  m-0 p-0">
+            Communication comes first then the teaching comes next.
+            No matter how good you teach, but you failed to communicate with the student. It will not work.
+            </p>
+            <h4 class="m-0 mt-3 fw-light dodgerblue border border-dodgerblue p-2 rounded-2 d-inline-block"  ion-text color="blue">A Good teacher must have</h4>
+            <ul class="fw-light fs-90 mt-3 mb-5">
+                <li class="mt-1">Passed all criteria from grade 1.</li>
+                <li class="mt-1">Capable of winning student's heart.</li>
+                <li class="mt-1">Good Communication Skills.</li>
+                <li class="mt-1">Good Teaching Skills.</li>
+              </ul>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div text-left>
+            <div class="p-0 m-0 d-flex align-items-center justify-content-center">
+                <button class="d-inline-block mr-3" icon-only ion-button clear small (click)="prev()">
+                    <ion-icon  name="arrow-back" color="black"></ion-icon>
+                </button>
+                <h3 class="m-0 fw-light fs-2rem" ion-text color="blue">GRADE 3</h3>
+                <button class="d-inline-block ml-3" icon-only ion-button clear small disabled>
+                    <ion-icon name="arrow-forward" color="blue"></ion-icon>
+                </button>
+            </div>
+            <p class="fw-light fs-90  m-0 p-0">
+              Consistent Reservation. Good Performance, Good Attitude, and
+            Professionalism.
+            </p>
+             <h4 class="m-0 mt-3 fw-light dodgerblue border border-dodgerblue p-2 rounded-2 d-inline-block"  ion-text color="blue">A Good teacher who is</h4>
+             <ul class="fw-light fs-90 mt-3 mb-5">
+                <li class="mt-1">Passed all criteria from grade 2.</li>
+                <li class="mt-1">Popular to students.</li>
+                <li class="mt-1">Most Requested teacher.</li>
+                <li class="mt-1">Giving Importance to student growth.</li>
+                <li class="mt-1">Always winning the student's heart.</li>
+              </ul>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
+

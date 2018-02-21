@@ -27,14 +27,21 @@ export class ScheduleEditPage {
     public a: AppService
   ) {
 
+    if (a.user.isLogin && a.isTeacher) {
+      this.a.lms.timezone().subscribe( re => {
+        this.timezone_name = re['name'];
+        this.timezone_offset = parseInt(re['offset']);
+      }, () => {} );
+      this.updateTime();
 
-    this.a.lms.timezone().subscribe( re => {
-      this.timezone_name = re['name'];
-      this.timezone_offset = parseInt(re['offset']);
-    }, () => {} );
-    this.updateTime();
+      this.getMySchedule();
+    }
+    else {
+      a.open('home');
+      a.alert("User type must be teacher and should login first...");
+    }
 
-    this.getMySchedule();
+
 
 
   }

@@ -8,8 +8,8 @@
         </ion-title>
       </ion-col>
         <ion-col text-right col-md-2>
-            <button  ion-button clear small color="white" start (click)="dismiss()">
-                <span class="text-uppercase mr-2 fw-light mt-1">{{'CLOSE'| translate}}</span><ion-icon class="mt-1" name="close"></ion-icon>
+            <button class="p-0"  icon-end  ion-button clear small color="white" (click)="dismiss()">
+                <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span><ion-icon name="close"></ion-icon>
             </button>
         </ion-col>
       </ion-row>
@@ -18,33 +18,38 @@
 </ion-header>
 <ion-content>
   <section class="p-5" id="teacher-policy">
-    <h1 class="fs-2rem m-0 fw-light" ion-text color="blue">TERMS AND CONDITION</h1>
+    <h1 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2">TERMS AND CONDITION</h1>
     <p class="fw-light fs-110 line-height-1-6em mt-1 mb-5">The terms and conditions in this page explain the agreement between OnTue and you.</p>
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">TERMS</h2>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">TERMS</h2>
     <p class="fw-light fs-110 mt-1 mb-5">* Cutoff Period of payable dates.</p>
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">CONDITION</h2>
-    <div class="line-height-1-6em fw-light fs-110 mt-1 mb-5">
-      <div>Teachers can freely register and set up profile, open schedules.</div>
 
-      <div>Trial session is a common practice and it helps Teachers to gain more Students.</div>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">CONDITION</h2>
+    <ul class="fw-light fs-110 mt-1 mb-5">
+      <li>Teachers can freely register and set up profile, open schedules.</li>
 
-      <div>Students can have two trial sessions to each Teacher but maximum of 5 test sessions all in all.</div>
+      <li>Trial session is a common practice and it helps Teachers to gain more Students.</li>
 
-      <div>Teachers must record the session. It is very important matter.</div>
-      <div>If a Teacher fails on hand over the record of the session,</div>
-      <div>Company will not only accept the request from Students but also pull back the grade of the Teacher</div>
+      <li>Students can have two trial sessions to each Teacher but maximum of 5 test sessions all in all.</li>
 
-      <div>Students can request point refund of the session when they think they have right.</div>
+      <li>Teachers must record the session. It is very important matter.</li>
 
-      <div>Company will, then, ask the session record to Teacher and decide what to do after watching the session.</div>
+      <li>If a Teacher fails on hand over the record of the session,</li>
 
-      <div>Company can give a higher grade to a Teacher than other Teachers.</div>
+      <li>Company will not only accept the request from Students but also pull back the grade of the Teacher</li>
 
-      <div>Teachers who have higher grade will have better chance for their profile to be display to Students.</div>
-    </div>
+      <li>Students can request point refund of the session when they think they have right.</li>
 
-    <h2>Bookable Time</h2>
+      <li>Company will, then, ask the session record to Teacher and decide what to do after watching the session.</li>
+
+      <li>Company can give a higher grade to a Teacher than other Teachers.</li>
+
+      <li>Teachers who have higher grade will have better chance for their profile to be display to Students.</li>
+    </ul>
+
     <div>
+
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2" ion-text color="blue">Bookable Time</h2>
+    <p class="fw-light fs-110  line-height-1-6em  mt-1 mb-5">
       Bookable time is an time interval to prevent a sudden booking by student.
       The input unit is minutes.
       If you put numbre 1 in bookable time, it means, student cannot book(reserve) your schedule that would begin in 1 minutes.
@@ -53,12 +58,12 @@
     </div>
 
 
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">SESSION CANCELATION</h2>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">SESSION CANCELATION</h2>
     <p class="fw-light fs-110  mt-1 mb-5">Teachers can cancel their reserve sessions.</p>
 
 
 
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">PAYMENT</h2>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">PAYMENT</h2>
     <p class="fw-light fs-110  line-height-1-6em  mt-1 mb-5">
       * Payment is on every 7th and 22nd. ** On 7th, Sessions before the 1st day of current month will be paid. ** On 22nd, Session
       before 16th of current month will be paid. ** Sessions in Refund progress will be paid on next cutoff if it is settled.
@@ -69,7 +74,8 @@
       if he settled the problem. * Payments less than 100 pesos or 2 USD dollars will be added to next cutoff.</p>
 
 
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">POINT REFUND</h2>
+
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">POINT REFUND</h2>
     <p class="fw-light fs-110  line-height-1-6em  mt-1 mb-5">* If a teacher failed to submit class record on the request of admin in 24 working hours, the point of session will be returned
     to the student.
     <br> * If a teacher does not turn on his camera, the point of the session will be returned to the student.
@@ -78,9 +84,10 @@
     <br>* Point of failure sessions that are not caused by student will be refunded. For instance, the internet
     cable under the sea was corrupted. And teacher cannot connect to student. It's not teacher's fault. The problem has occurred
     by the nature. But we need to protect our valuable customers. We will refund any session that has failed if that is not
-    student's fault.</p>
+    student's fault.
+    </p>
 
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">TEACHING ENVIRONMENT</h2>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">TEACHING ENVIRONMENT</h2>
     <ul class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
       <li>We don't consider a teacher as a good who teaches very well.</li>
       <li>
@@ -92,7 +99,7 @@
 
     </ul>
 
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">THE FIRST CLASS</h2>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">THE FIRST CLASS</h2>
     <ul class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
         <li>The first class may be or may NOT be a free class.</li>
         <li>When it is a free class, it means student is new to our service and the student is giving a trial</li>
@@ -106,7 +113,7 @@
     </ul>
 
 
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">RULES ON CONDUCTING A SESSION</h2>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">RULES ON CONDUCTING A SESSION</h2>
     <ul  class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
       <li class="mt-3">
         Teacher must add the student's kakao as his friend and must be able to communicate before class time. If the teacher did
@@ -145,7 +152,7 @@
 
     </ul>
 
-    <h2 class="fs-2rem m-0 fw-light"  ion-text color="blue">GRADING SYSTEM</h2>
+    <h2 class="fs-2rem m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue p-2"  ion-text color="blue">GRADING SYSTEM</h2>
     <ul  class="fw-light fs-110  line-height-1-6em mt-1 mb-5">
       <li class="mt-3">
         Good teacher will have grade 1. Again, as we explain above, good teacher is who has good internet, good environment, good

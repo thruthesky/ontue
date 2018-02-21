@@ -1,4 +1,164 @@
 <ion-header>
+    <header-content [title]=" 'PAYMENT SETTING' "></header-content>
+  </ion-header>
+  <ion-content>
+    <div id="settings-payment" class="page bg-white outline-effect">
+      <hook-content-top></hook-content-top>
+      <div class="my-5 pb-3">
+          <h1 class="fs-3rem fw-bold"  text-center ion-text color="blue">{{ "PAYMENT SETTING" | translate }}</h1>
+          <p class="fs-90" text-center>Please Choose a Payment Method and Fill Out the Appropriate Information</p>
+      </div>
+        <ion-grid>
+            <ion-row>
+              <ion-col text-right>
+                <label class="hover-effect-color">
+                  <input class="d-none radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash">
+                  <div class="d-inline-block px-5 py-3 border bg-light rounded-2 fs-lg fw-bold" text-center>
+                      <i class="fal fa-money-bill d-inline-block mx-auto fs-4rem" ion-text color="green"></i>
+                      <span class="d-block mt-3 m-0" text-center>GCAsh</span>
+                  </div>
+                </label>
+              </ion-col>
+              <ion-col text-center>
+                <label class="hover-effect-color">
+                  <input class="d-none radio-effect"  type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="western-union">
+                  <div class="d-inline-block px-5 py-3 border bg-light rounded-2 fs-lg fw-bold" text-center>
+                      <i class="fal fa-barcode d-inline-block fs-4rem mx-auto" ion-text color="yellow"></i>
+                      <span class="d-block mt-3 m-0" text-center>Western Union</span>
+                  </div>
+                </label>
+              </ion-col>
+              <ion-col text-left>
+                <label class="hover-effect-color">
+                    <input class="d-none radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal">
+                    <div class="d-inline-block px-5 py-3 border bg-light rounded-2 fs-lg fw-bold" text-center>
+                        <i class="fal fa-credit-card d-inline-block fs-4rem mx-auto" ion-text color="blue"></i>
+                        <span class="d-block mt-3 m-0" text-center>Paypal</span>
+                    </div>
+                </label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      <section class="page-body mt-5">
+        <ion-grid class="payment-information" no-padding>
+          <ion-row justify-content-center>
+            <ion-col col-5 class="pr-5 mr-1">
+              <div class="d-flex-column form-effect">
+                  <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['first_name']" />
+                  <label class="mt-5 mb-2 fs-90 fw-bold">First Name</label>
+              </div>
+
+              <div class="d-flex-column form-effect">
+                  <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['middle_name']" />
+                  <label class="mt-5 mb-2 fs-90 fw-bold">Middle Name</label>
+              </div>
+
+              <div class="d-flex-column form-effect">
+                  <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['last_name']" />
+                  <label class="mt-5 mb-2 fs-90 fw-bold">Last Name</label>
+              </div>
+
+              <div class="d-flex-column form-effect">
+                  <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['phone_number']" />
+                  <label class="mt-5 mb-2 fs-90 fw-bold">Phone Number</label>
+              </div>
+
+              <div class="d-flex-column form-effect">
+                  <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['email']" />
+                  <label class="mt-5 mb-2 fs-90 fw-bold">Email</label>
+              </div>
+            </ion-col>
+            <ion-col col-5 class="pl-5 ml-1">
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['country']" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">Country</label>
+                </div>
+
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['province']" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">Province</label>
+                </div>
+
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['city']" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">City</label>
+                </div>
+
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['address']" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">Address</label>
+                </div>
+
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="payment_information['zipcode']" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">Zipcode</label>
+                </div>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="m-5 p-5" text-center>
+            <button class="fw-bold" ion-button outline color="blue" round (click)="onClickSubmit()">UPDATE</button>
+        </div>
+  
+        <hr>
+  
+        <div class="pl-3 py-5 fs-2rem bg-lightgrey">{{ "PAYMENT INFORMATION HISTORY" | translate }}</div>
+        <button ion-button (click)="onClickShowHistory()">Show History</button>
+        <hr>
+  
+  
+        <ion-list class="payment-information-history mb-5">
+          <ng-container *ngFor="let info of payment_information_history; let odd = odd">
+            <ion-item class="head" no-padding [class.odd]=" odd " [class.even]=" !odd " (click)="info['more'] =  !info['more']" >
+            Date/Time Changed: {{a.shortDate(info.stamp)}}
+            </ion-item>
+  
+            <ng-container *ngIf="info['more']">
+              <ion-item class="border-top-1-solid">
+                <ion-label>First Name: {{info['first_name']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Middle Name: {{info['middle_name']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Last Name: {{info['last_name']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Phone Number: {{info['phone_number']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Email: {{info['email']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Country: {{info['country']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Province: {{info['province']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>City: {{info['city']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Address: {{info['address']}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Zipcode: {{info['zipcode']}}</ion-label>
+              </ion-item>
+              <ion-item  class="border-bottom-1-solid">
+                <ion-label>Payment Method: {{info['payment_method']}}</ion-label>
+              </ion-item>
+            </ng-container>
+          </ng-container>
+        </ion-list>
+      </section>
+    </div>
+    <hook-content-bottom></hook-content-bottom>
+  </ion-content>
+  
+
+<!-- <ion-header>
   <header-content [title]=" 'PAYMENT SETTING' "></header-content>
 </ion-header>
 <ion-content>
@@ -126,4 +286,4 @@
     </section>
   </div>
   <hook-content-bottom></hook-content-bottom>
-</ion-content>
+</ion-content> -->
