@@ -15,7 +15,7 @@
             <ion-item>
               <ion-label>Select Date</ion-label>
               <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY"
-                            pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
+                pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
             </ion-item>
           </ion-item-group>
 
@@ -25,8 +25,8 @@
       <hr>
       <ion-item-group *ngIf=" dayoffs ">
         <button ion-item *ngFor="let dayoff of dayoffs" (click)=" onClickDeleteDate( dayoff ) ">
-          {{ dayoff.date }}
-          <ion-icon name="trash"></ion-icon>
+          {{ dayoff.date.slice(0,4) }}/{{ dayoff.date.slice(4,6) }}/{{ dayoff.date.slice(6,8) }}
+          <ion-icon color="danger" name="trash"></ion-icon>
         </button>
 
       </ion-item-group>

@@ -10,18 +10,31 @@
     </section>
 
     <section class="page-body">
-
-      <div>
-        <div>Your ID No.: {{ a.user.id }}</div>
-        <div>Your timezone: {{ timezone_name }}</div>
-        <div>Your time is now: {{ time }}</div>
-        <div>
-          <button ion-button class="add-schedule" *ngIf="data" (click)='onClickAddSchedule()'>Add Schedule</button>
-          <button ion-button class="add-dayoff" *ngIf="data" (click)="a.open('dayoff')">Add Dayoff</button>
-        </div>
-      </div>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-8>
+            <ion-grid no-padding>
+              <ion-row class="mt-4 mb-2">
+                <ion-col class="mr-4"> <div class="p-4 bg-white border">Your ID No:</div></ion-col>
+                <ion-col col-md-8> <div class="p-4 bg-white border"> {{ a.user.id }}</div></ion-col>
+              </ion-row>
+              <ion-row class="my-3">
+                <ion-col class="mr-4"> <div class="p-4 bg-white border">Your timezone:</div></ion-col>
+                <ion-col col-md-8> <div class="p-4 bg-white border"> {{ timezone_name }}</div></ion-col>
+              </ion-row>
+              <ion-row class="mb-4 mt-2">
+                <ion-col class="mr-4"> <div class="p-4 bg-white border">Your time is now:</div></ion-col>
+                <ion-col col-md-8> <div class="p-4 bg-white border"> {{ time }}</div></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+          <ion-col class="d-flex-column justify-content-center">
+              <button class="add-schedule p-5 ml-4 mb-4"  ion-button  *ngIf="data" (click)='onClickAddSchedule()'>Add Schedule</button>
+              <button class="add-dayoff p-5 ml-4"  ion-button  *ngIf="data" (click)="a.open('dayoff')">Add Dayoff</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
       <!-- {{ schedules | json }} -->
-
 
       <div class="alert alert-warning" *ngIf="data && !data['promo_class']">
         {{data['promo_class_message']}}

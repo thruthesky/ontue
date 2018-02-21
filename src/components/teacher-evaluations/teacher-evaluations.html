@@ -7,10 +7,10 @@
               <ion-row class="mx-4 mt-3" align-items-end>
                   <ion-col *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
 
-                        <span class="d-block size-80 of-hidden mr-2 d-inline-block border rounded" *ngIf="teacher_comment['teacher_photoURL']"><img class="w-100" src="{{teacher_comment['teacher_photoURL']}}"></span>
+                        <span class="d-block size-80 of-hidden mr-2 d-inline-block rounded-2" *ngIf="teacher_comment['teacher_photoURL']"><img src="{{teacher_comment['teacher_photoURL']}}"></span>
 
-                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded" *ngIf="teacher_comment['student_photoURL']"><img class="w-100"  src="{{teacher_comment['student_photoURL']}}"></span>
-                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded" *ngIf="teacher_comment['student_photoURL'].length==0"><img class="w-100"  src="../assets/img/student.png"></span>
+                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded-2" *ngIf="teacher_comment['student_photoURL']"><img  src="{{teacher_comment['student_photoURL']}}"></span>
+                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded-2" *ngIf="teacher_comment['student_photoURL'].length==0"><img  src="../assets/img/student.png"></span>
 
                         <h2 class="fs-2rem fw-bold m-0  d-inline-block" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}<span class="fw-light fs-lg ml-3 black">{{teacher_comment['date'].slice(0,4)}}-{{teacher_comment['date'].slice(4,6)}}-{{teacher_comment['date'].slice(6,9)}}</span></h2> 
                   </ion-col>
