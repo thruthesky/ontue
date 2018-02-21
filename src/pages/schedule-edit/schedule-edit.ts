@@ -86,7 +86,7 @@ export class ScheduleEditPage {
 
   getMySchedule(){
     this.a.lms.my_schedules().subscribe( re =>{
-      console.log('getMySchedule', re);
+      // console.log('getMySchedule', re);
       this.data = re;
 
       // this.onClickAddSchedule(); // TEST ONLY

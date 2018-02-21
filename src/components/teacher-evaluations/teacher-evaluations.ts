@@ -18,11 +18,11 @@ export class TeacherEvaluationsComponent implements OnInit {
     totalRecord: 0
   };
 
-
+  commentCount = 1;
 
 
   constructor(public a: AppService,) {
-
+    this.loadEvaluations();
   }
 
   ngOnInit() {
@@ -35,10 +35,12 @@ export class TeacherEvaluationsComponent implements OnInit {
       page: this.pageOption.currentPage
     };
     this.a.lms.get_teacher_evaluations_to_student(data).subscribe(res => {
-      this.evaluations = res['evaluations'];
+      // console.log(res);
+      this.evaluations = res['comments'];
       this.pageOption.currentPage = res['page'];
       this.pageOption.limitPerPage = res['limit'];
-      this.pageOption.totalRecord = res['total']
+      this.pageOption.totalRecord = res['total'];
+      this.commentCount = res['page'];
     }, error => {
       this.a.alert(error);
     })
@@ -56,7 +58,6 @@ export class TeacherEvaluationsComponent implements OnInit {
     let d = date.slice(6, 9);
     return `${y}-${m}-${d}`;
   }
-
 
 
 }
