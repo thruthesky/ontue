@@ -3,7 +3,7 @@ import { AppService } from '../../providers/app.service';
 import { HowToGetQRCodeComponent } from "../../components/how-to-get-qrcode/how-to-get-qrcode";
 import { HowToGetKakaoIDComponent } from "../../components/how-to-get-kakao-id/how-to-get-kakao-id";
 import { ModalController } from "ionic-angular";
-import { HowToInstallKakaoComponent } from "../../components/how-to-install-kakao/how-to-install-kakao";
+import { HowToInstallKakaoMobileComponent } from "../../components/how-to-install-kakao-mobile/how-to-install-kakao-mobile";
 import { TeacherPolicyComponent } from "../../components/teacher-policy/teacher-policy";
 
 @Component({
@@ -18,7 +18,7 @@ export class HowToUsePage {
 
   _modal = {
     teacherPolicy: TeacherPolicyComponent,
-    kakaoInstall: HowToInstallKakaoComponent,
+    kakaoInstall: HowToInstallKakaoMobileComponent,
     kakaoID: HowToGetKakaoIDComponent,
     qrmark: HowToGetQRCodeComponent
   };

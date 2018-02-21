@@ -5,7 +5,7 @@ import {ModalController} from "ionic-angular";
 import {HowToGetQRCodeComponent} from "../how-to-get-qrcode/how-to-get-qrcode";
 import {HowToGetKakaoIDComponent} from "../how-to-get-kakao-id/how-to-get-kakao-id";
 import {TeacherPolicyComponent} from "../teacher-policy/teacher-policy";
-import {HowToInstallKakaoComponent} from "../how-to-install-kakao/how-to-install-kakao";
+import {HowToInstallKakaoMobileComponent} from "../how-to-install-kakao-mobile/how-to-install-kakao-mobile";
 
 @Component({
     selector: 'home-teacher-content-component',
@@ -29,7 +29,7 @@ export class HomeTeacherContentComponent implements OnInit {
 
   _modal = {
     teacherPolicy: TeacherPolicyComponent,
-    kakaoInstall: HowToInstallKakaoComponent,
+    kakaoInstall: HowToInstallKakaoMobileComponent,
     kakaoID: HowToGetKakaoIDComponent,
     qrmark: HowToGetQRCodeComponent
   };
