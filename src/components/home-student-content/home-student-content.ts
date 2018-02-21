@@ -28,6 +28,7 @@ export class HomeStudentContentComponent implements OnInit {
     constructor(
         public a: AppService
     ) {
+
         this.loadTeachers();
     }
 
@@ -53,11 +54,15 @@ export class HomeStudentContentComponent implements OnInit {
     }
 
     loadTeachers() {
-        this.a.lms.teacher_list({
+        let opt = {
             recommend: true,
             page_no: 1,
-            limit: 6
-        }).subscribe(re => {
+            limit: 8
+        };
+        if ( this.a.isMobileWidth() ) {
+            opt.limit = 6;
+        }
+        this.a.lms.teacher_list(opt).subscribe(re => {
             // console.log("teachers: ", re);
             this.teachers = re['teachers'];
             this.total_teachers = re['total'];

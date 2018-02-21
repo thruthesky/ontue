@@ -6,7 +6,8 @@
   <div class="page">
 
     <div class="page-header white text-center">
-      궁금한 점이 있으시면 언제든지 <span class="app-button mt-0" (click)=" a.onClickContactAdmin() ">카톡으로 질문</span> 해 주세요!
+      궁금한 점이 있으시면 언제든지
+      <span class="app-button mt-0" (click)=" a.onClickContactAdmin() ">카톡으로 질문</span> 해 주세요!
     </div>
     <section class="page-body">
 
@@ -35,18 +36,18 @@
 
 
         <ion-item class="menu-message" (click)="a.open('my-point')" *ngIf=" a.user.isLogin ">
-            <ion-icon name="logo-usd" item-start></ion-icon>
-            나의 포인트
-          </ion-item>
+          <ion-icon name="logo-usd" item-start></ion-icon>
+          나의 포인트
+        </ion-item>
 
 
 
 
 
-          <ion-item class="menu-message" (click)="a.open('message')" *ngIf=" a.user.isLogin ">
-              <ion-icon name="chatboxes" item-start></ion-icon>
-              {{ 'MESSAGE' | translate }}
-            </ion-item>
+        <ion-item class="menu-message" (click)="a.open('message')" *ngIf=" a.user.isLogin ">
+          <ion-icon name="chatboxes" item-start></ion-icon>
+          {{ 'MESSAGE' | translate }}
+        </ion-item>
 
 
 
@@ -56,12 +57,19 @@
           {{ 'QNA' | translate }}
         </ion-item>
 
+        
 
-        <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
-          <ion-icon name="people" item-start></ion-icon>
-          {{ 'RESERVE SESSION' | translate }}
-        </ion-item>
+        <ion-item class="menu-teacher-list" (click)="a.open('student-curriculumn')" *ngIf=" a.studentTheme ">
+            <ion-icon name="bookmarks" item-start></ion-icon>
+            교재 및 수업 과정 안내
+          </ion-item>
 
+
+          <ion-item class="menu-teacher-list" (click)="a.open('teacher-list')">
+              <ion-icon name="people" item-start></ion-icon>
+              {{ 'RESERVE SESSION' | translate }}
+            </ion-item>
+      
 
 
         <ion-item class="menu-schedule-table" (click)="a.open('schedule-table')">

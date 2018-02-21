@@ -1,16 +1,18 @@
-
 .page-body {
   padding: .5em;
-  @media ( min-width: $md ) { padding: 0;}
-
+  @media ( min-width: $md) {
+    padding: 0;
+  }
   min-height: 300px;
-  @media ( min-width: $md ) { min-height: 540px; }
+  @media ( min-width: $md) {
+    min-height: 540px;
+  }
 }
 
 @media (min-width: $lg) {
   // warning. john commented out this and had a big problem.
   header-content ion-grid {
-    max-width: $lg+48!important;
+    max-width: $lg+48 !important;
   }
   footer .copyright {
     margin: 0 auto;
@@ -18,15 +20,21 @@
   }
   ion-content {
     .page {
-      position: relative!important;
-      margin: auto!important;
-      width: $lg!important;
+      position: relative !important;
+      margin: auto !important;
+      width: $lg !important;
       overflow: hidden;
     }
     .page-full {
-      position: relative!important;
-      margin: auto!important;
-      width: $lg!important;
+      position: relative !important;
+      margin: auto !important;
+      width: $lg !important;
+    }
+    .resize-on-break-point {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: $lg !important;
+      overflow: hidden;
     }
   }
 }
@@ -34,8 +42,8 @@
 ion-header {
   header-content {
     ion-toolbar {
-      padding-top: 0!important;
-      padding-bottom: 0!important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
     }
   }
 }
@@ -80,7 +88,6 @@ ion-header {
   }
 }
 
-
 /**
  *
  * LIST
@@ -99,21 +106,18 @@ ion-header {
   @include list-dots();
 }
 
-
-
 .how-to {
-    padding: 2em 1em;
-    .label {
-      font-size: 1.5em;
-      font-weight: 500;
-    }
-    .desc {
-      margin-bottom: 0.5em;
-      font-size: 1.2em;
-    }
-
-    img {
-      max-width: 100%;
-      padding:1em;
-    }
+  padding: 2em 1em;
+  .label {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+  .desc {
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+  img {
+    max-width: 100%;
+    padding: 1em;
+  }
 }

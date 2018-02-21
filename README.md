@@ -174,3 +174,7 @@ https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/
 * How to load a page from backend and display it as a component(directive).
 * How to load a page from backend and display it as a page.
 
+
+## CSS Tips
+
+`.resize-on-break-point` will run resize the width to centeralize on break point.
