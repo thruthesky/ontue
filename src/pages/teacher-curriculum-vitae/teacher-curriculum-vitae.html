@@ -9,32 +9,99 @@
     </section>
     <section class="page-body">
       <form (submit)="onSubmitUpdate()">
-
+          <ion-grid class="curriculum-vitae" no-padding>
+            <ion-row justify-content-center>
+              <ion-col col-5 class="pr-5 mr-2">
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" readonly [(ngModel)]="account.name" name="name" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'TEACHER ID' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect"  type="text" [(ngModel)]="account.fullname" name="fullname"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'FULL NAME' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect"  type="text" [(ngModel)]="account.display_name" name="display_name"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'NICKNAME' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="email" [(ngModel)]="account.user_email" name="user_email"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'EMAIL' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect"  type="text" [(ngModel)]="account.phone_number" name="phone_number"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'PHONE NO' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect"   type="text" [(ngModel)]="account.address" name="address"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'ADDRESS' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.last_education" name="last_education"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'EDUCATION' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect"   type="text" [(ngModel)]="account.major" name="major"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'MAJOR' | translate }}</label>
+                </div>
+              </ion-col>
+              <ion-col col-5 class="pl-5 ml-2">
+                <div class="d-flex-column form-effect">
+                    <select class="p-3 w-100 rounded-2 focus-effect border" [(ngModel)]="account.nationality" name="nationality">
+                      <option value="">Select...</option>
+                      <option *ngFor="let c of a.countries" value="{{c}}">{{c}}</option>
+                    </select>
+                   <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'NATIONALITY' | translate }}</label>
+                </div>
+                <div  class="d-flex-column form-effect">
+                  <div class="p-3 w-100 rounded-2 focus-effect border">
+                      <ion-datetime  name="birthday" max="{{minYear}}" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY"
+                      [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
+                  </div>
+                    <label>{{ 'BIRTHDAY' | translate }}</label>
+                </div>
+                <div  class="d-flex-column form-effect">
+                  <div class="p-3 w-100 rounded-2 focus-effect border">
+                      <ion-datetime  displayFormat="YYYY" [(ngModel)]="account.experience" name="experience"></ion-datetime>
+                  </div>
+                  <label>{{ 'Year you start teaching' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.youtube_video_url" name="youtube_video_url" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'YOUTUBE VIDEO' | translate }}</label>
+                </div>
+                <div class="d-flex-column form-effect">
+                    <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id" />
+                    <label class="mt-5 mb-2 fs-90 fw-bold">{{ 'KAKAOTALK ID' | translate }}</label>
+                </div>
+                </ion-col>
+              </ion-row>
+          </ion-grid>
         <ion-list>
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'TEACHER ID' | translate }}</ion-label>
             <ion-input type="text" readonly [(ngModel)]="account.name" name="name"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'FULL NAME' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.fullname" name="fullname"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'NICKNAME' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.display_name" name="display_name"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'EMAIL' | translate }}</ion-label>
             <ion-input type="email" [(ngModel)]="account.user_email" name="user_email"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'PHONE NO' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.phone_number" name="phone_number"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
           <ion-item>
             <ion-grid>
@@ -54,16 +121,16 @@
             </ion-grid>
           </ion-item>
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'BIRTHDAY' | translate }}</ion-label>
             <ion-datetime name="birthday" max="{{minYear}}" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY"
                           [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
-          </ion-item>
+          </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'ADDRESS' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.address" name="address"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
           <ion-item>
             <label>Profile Picture</label>
@@ -88,16 +155,16 @@
           </ion-item>
 
 
-          <ion-item>
+          <!-- <ion-item>
             <label class="pr-3">{{ 'NATIONALITY' | translate }}</label>
             <select [(ngModel)]="account.nationality" name="nationality">
               <option value="">Select...</option>
               <option *ngFor="let c of a.countries" value="{{c}}">{{c}}</option>
             </select>
-          </ion-item>
+          </ion-item> -->
 
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'EDUCATION' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.last_education" name="last_education"></ion-input>
           </ion-item>
@@ -105,23 +172,23 @@
           <ion-item>
             <ion-label>{{ 'MAJOR' | translate }}</ion-label>
             <ion-input text-wrap type="text" [(ngModel)]="account.major" name="major"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'Year you start teaching' | translate }}</ion-label>
             <ion-datetime displayFormat="YYYY" [(ngModel)]="account.experience" name="experience"></ion-datetime>
-          </ion-item>
+          </ion-item> -->
 
           <ion-item>
             <ion-label>{{ 'GREETINGS' | translate }}</ion-label>
             <ion-textarea rows="8" [(ngModel)]="account.introduction" name="introduction"></ion-textarea>
           </ion-item>
 
-
+<!-- 
           <ion-item>
             <ion-label>{{ 'YOUTUBE VIDEO' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.youtube_video_url" name="youtube_video_url"></ion-input>
-          </ion-item>
+          </ion-item> -->
           <!--<ion-item *ngIf="youtube_thumbnail_url">-->
           <!--<img  *ngIf="!play_video" (click)="play_video = true" src="{{youtube_thumbnail_url}}"/>-->
           <!--<iframe class="youtube-video" *ngIf="play_video"-->
@@ -132,11 +199,11 @@
           <!--</div>-->
           <!--</ion-item>-->
 
-
+<!-- 
           <ion-item>
             <ion-label>{{ 'KAKAOTALK ID' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
-          </ion-item>
+          </ion-item> -->
 
           <ion-item class="qr-mark" *ngIf="a.user.isLogin">
             Upload QR Mark
