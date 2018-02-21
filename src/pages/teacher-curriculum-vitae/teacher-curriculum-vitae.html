@@ -37,20 +37,20 @@
                     <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'EDUCATION' | translate }}</label>
                 </div>
                 <div class="d-flex-column form-effect">
-                    <input class="p-3 w-100 rounded-2 focus-effect"   type="text" [(ngModel)]="account.major" name="major"/>
-                    <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'MAJOR' | translate }}</label>
+                    <input class="p-3 w-100 rounded-2"   type="text" [(ngModel)]="account.major" name="major"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold uppercase black">{{ 'MAJOR' | translate }}</label>
                 </div>
               </ion-col>
               <ion-col col-5 class="pl-5 ml-2">
                 <div class="d-flex-column form-effect position-relative">
-                    <select class="p-3 w-100 rounded-2 focus-effect bg-light border-box" [(ngModel)]="account.nationality" name="nationality">
+                    <select class="p-3 w-100 rounded-2 bg-light h-40px border-box" [(ngModel)]="account.nationality" name="nationality">
                       <option value="">Select...</option>
                       <option *ngFor="let c of a.countries" value="{{c}}">{{c}}</option>
                     </select>
                    <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'NATIONALITY' | translate }}</label>
                 </div>
                 <div  class="d-flex-column form-effect position-relative">
-                      <ion-datetime  class="border p-3 m-0 w-100 rounded-2 h-40px  bg-light "  name="birthday" max="{{minYear}}" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY"
+                      <ion-datetime  class="border p-3 m-0 w-100 rounded-2 h-40px bg-light "  name="birthday" max="{{minYear}}" displayFormat="MM/DD/YYYY" pickerFormat="MMDDYYYY"
                       [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
                     <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'BIRTHDAY' | translate }}</label>
                 </div>
