@@ -378,3 +378,11 @@ $bg-color-warning: rgb(83, 54, 0);
     background-color: $bg-color-warning;
   }
 }
+
+
+/** Customize ionic toast */
+.error-4000102 {
+  .toast-container {
+    background-color: red;
+  }
+}
