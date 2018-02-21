@@ -6,13 +6,15 @@
 
 .curriculum-vitae{
   .outline-effect{ outline: 1px solid #e2e2e2!important}
-
+  .uppercase{text-transform: uppercase!important}
+  .h-40px{height: 40px!important}
   .form-effect{
     label{
       transition: all 0.2s ease-in-out;
       order: -1
     }
-    .focus-effect{
+    .focus-effect>*{
+      height: 40px!important;
       transition: all 0.2s ease-in-out;
       &:focus{
         border:1px solid rgba(#007bff,0.5)!important;

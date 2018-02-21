@@ -259,25 +259,62 @@
   <!--/books-->
 
 
-  <ul *ngIf=" a.isTeacher ">
-    <li>Total Points from payable sessions - {{teacher_summary['total_points_from_payable_session']}}</li>
-    <li>Your Total Share Points - {{teacher_summary['total_teacher_share_points']}}</li>
-    <li>No. of payable sessions - {{teacher_summary['counts_of_payable_session']}}</li>
-    <li>No. of not Payable sessions - {{teacher_summary['counts_of_not_payable_session']}}</li>
-    <li>No. of paid sessions - {{teacher_summary['counts_of_paid_session']}}</li>
-    <li>No. of refunded sessions - {{teacher_summary['counts_of_refunded_session']}}</li>
-    <li>No. of refund in progress - {{teacher_summary['counts_of_rejected_refund'] + teacher_summary['counts_of_requested_refund']}}</li>
-    <li>No. of Incomplete Evaluation - {{teacher_summary['counts_of_incomplete_eval']}}</li>
-    <li>Rejected - Point Refund Request Rejected.</li>
-    <li>Accept - Accept Refund Request</li>
-    <li>Reject - Reject Refund Request</li>
-    <li>
+  <ion-grid class="mb-5" no-padding *ngIf=" a.isTeacher ">
+    <ion-row>
+      <ion-col class="mr-3 border">
+        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div>Total Points from payable sessions</div>
+          <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['total_points_from_payable_session']}}</div>
+        </div>
+        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div>Your Total Share Points</div>
+          <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['total_teacher_share_points']}}</div>
+        </div>
+        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div>No. of payable sessions</div>
+          <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['counts_of_payable_session']}}</div>
+        </div>
+        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div>No. of not Payable sessions</div>
+          <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['counts_of_not_payable_session']}}</div>
+        </div>
+        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div>Session not evaluated. <span class="red fw-bold">*No pay</span>.</div><!--  Session not evaluated. You need to evaluate the session or you will not get paid on the session.-->
+          <div class="w-90px fs-90  bg-blue white py-4 text-center" [class.warning]=" true ">Eval</div>
+        </div>
+        <div class="d-flex justify-content-between pl-4 align-items-center bg-white ">
+          <div>Reject Refund Request</div>
+          <div class="w-90px fs-90  bg-blue white py-4 text-center">Reject</div>
+        </div>
+      </ion-col>
+      <ion-col class="ml-3 border">
+          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+              <div>No. of paid sessions</div>
+              <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['counts_of_paid_session']}}</div>
+            </div>
+            <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+              <div>No. of refunded sessions</div>
+              <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['counts_of_refunded_session']}}</div>
+            </div>
+          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+            <div>No. of refund in progress</div>
+            <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['counts_of_rejected_refund'] + teacher_summary['counts_of_requested_refund']}}</div>
+          </div>
+          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+            <div>No. of Incomplete Evaluation</div>
+            <div class="w-90px fs-90  bg-blue white py-4 text-center">{{teacher_summary['counts_of_incomplete_eval']}}</div>
+          </div>
+          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+            <div>Point Refund Request Rejected.</div>
+            <div class="w-90px fs-90  bg-blue white py-4 text-center">Rejected</div>
+          </div>
+          <div class="d-flex justify-content-between pl-4 align-items-center bg-white">
+            <div>Accept Refund Request</div>
+            <div class="w-90px fs-90  bg-blue white py-4 text-center">Accept</div>
+          </div>
 
-      <button class="bg-white blue" [class.warning]=" true ">
-        Eval
-      </button>
-      - Session not evaluated. You need to evaluate the session or you will not get paid on the session.
-    </li>
-  </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </section>
