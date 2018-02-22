@@ -8,28 +8,40 @@
       <div>{{ "DAY OFF" | translate }}</div>
     </section>
     <section class="page-body">
-      <button ion-button (click)='onClickCreateDayoff()'>Create a Day-off</button>
-      <section *ngIf="showForm">
-        <form>
-          <ion-item-group>
-            <ion-item>
-              <ion-label>Select Date</ion-label>
-              <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY"
-                pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
-            </ion-item>
-          </ion-item-group>
-
-          <button ion-button type="submit" (click)="onClickSubmit()">Create</button>
-        </form>
-      </section>
+      <div class="d-flex mt-5">
+          <button ion-button (click)='onClickCreateDayoff()'>Create a Day-off</button>
+          <section class="w-100 pl-5" *ngIf="showForm">
+              <form class="w-100  d-flex">
+                <ion-item-group class="w-100  border rounded-2 mr-5">
+                  <ion-item>
+                    <ion-label>Select Date</ion-label>
+                    <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY"
+                      pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
+                  </ion-item>
+                </ion-item-group>
+                <button class="px-5" color="orange" ion-button type="submit" (click)="onClickSubmit()">Create</button>
+              </form>
+            </section>
+      </div>
       <hr>
-      <ion-item-group *ngIf=" dayoffs ">
+      <ion-grid class="px-1px"  no-padding>
+        <ion-row class="mx-minus-10px" justify-content-between>
+          <ion-col class="d-flex align-items-center p-3 hide-effect" col-md-6 *ngFor="let dayoff of dayoffs">
+              <div class="pointer white h-100 px-3 d-flex align-items-center bg-light-red" 
+              (click)=" onClickDeleteDate( dayoff )">
+                Delete
+                <i class="fal fa-trash-alt ml-2 "></i>
+             </div>
+            <div class="p-5 bg-white border w-100">{{ preDate(dayoff.date)}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- <ion-item-group *ngIf=" dayoffs ">
         <button ion-item *ngFor="let dayoff of dayoffs" (click)=" onClickDeleteDate( dayoff ) ">
-          {{ dayoff.date.slice(0,4) }}/{{ dayoff.date.slice(4,6) }}/{{ dayoff.date.slice(6,8) }}
+          {{ preDate(dayoff.date)}}
           <ion-icon color="danger" name="trash"></ion-icon>
         </button>
-
-      </ion-item-group>
+      </ion-item-group> -->
     </section>
   </div>
   <hook-content-bottom></hook-content-bottom>

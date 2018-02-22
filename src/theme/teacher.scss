@@ -6,6 +6,12 @@ ion-nav.teacher {
   .align-items-end {
     align-items: end !important
   }
+  .mx-minus-15px{
+    margin: 0 -15px!important
+  }
+  .mx-minus-10px{
+    margin: 0 -10px!important
+  }
   .bg-light {
     background-color: #f9f9f9 !important
   }
@@ -88,6 +94,7 @@ ion-nav.teacher {
       left: 0;
     }
 
+
     .fs-2-25em {
       font-size: 2.25em !important
     }
@@ -134,22 +141,6 @@ ion-nav.teacher {
       }
     }
 
-    .teacher-evaluation {
-      .white-space-pre {
-        white-space: pre-line !important
-      }
-      .hide-effect {
-        animation: fade-in-effect 0.5s ease-in-out
-      }
-      @keyframes fade-in-effect {
-        0% {
-          opacity: 0
-        }
-        100% {
-          opacity: 1
-        }
-      }
-    }
 
     .title-style {
       font-family: roboto, Arial, Helvetica, sans-serif;
@@ -165,10 +156,6 @@ ion-nav.teacher {
     }
     .cover-by-4 {
       height: calc(225.953px / 2) !important
-    }
-
-    .outline-effect {
-      outline: 1px solid #e2e2e2 !important;
     }
 
     .cover-slider {
@@ -215,7 +202,31 @@ ion-nav.teacher {
       border-width: 1px !important
     }
 
+    .bg-light-red{ 
+      background: #f53d3d!important
+    }
+
   }
+
+
+  .white-space-pre {
+    white-space: pre-line !important
+  }
+
+  .hide-effect {
+    animation: fade-in-effect 0.5s ease-in-out
+  }
+
+  @keyframes fade-in-effect {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
+    }
+  }
+
+  .opacity-0{opacity: 0!important}
 
   .line-height-1-8em {
     line-height: 1.8em !important

@@ -4,7 +4,7 @@
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
-    <section class="page-header bg-blue-80 white fw-light fs-2rem lspacing-0-1rem p-5 text-center mt-5">
+    <section class="page-header bg-blue-80 white fw-light fs-2rem p-5 text-center mt-5">
       <div>{{ "TEACHER DASHBOARD" | translate }}</div>
     </section>
     <section class="page-body mt-4">
@@ -12,122 +12,122 @@
       <div id="teacher-navigation">
         <ion-grid class="px-1px" id="visitor-navigation" no-padding>
           <ion-row class="mx-minus-15px">
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color"  (click)="a.open('session-future')">
-                  <i class="fa fa-calendar-alt fa-3x mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Reserved Class</div>
+                  <i class="fa fa-calendar-alt fa-3x mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Reserved Class</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('session-past')">
-                  <i class="fa fa-calendar-times fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Past Class</div>
+                  <i class="fa fa-calendar-times fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Past Class</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('schedule-edit')">
-                  <i class="fa fa-calendar-plus fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Add/Edit Schedule</div>
+                  <i class="fa fa-calendar-plus fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Add/Edit Schedule</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('teacher-curriculum-vitae')">
-                  <i class="fa fa-edit fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Curriculum Vitae</div>
+                  <i class="fa fa-edit fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Curriculum Vitae</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogout">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogout">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('login')">
-                  <i class="fa fa-sign-in fa-3x mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Login</div>
+                  <i class="fa fa-sign-in fa-3x mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Login</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-4 class="text-center">
+            <ion-col col-3 class="text-center">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('register')">
-                  <i class="fa fa-address-card fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel" *ngIf="a.user.isLogin">Update Profile</div>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel" *ngIf="a.user.isLogout">Register</div>
+                  <i class="fa fa-address-card fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel" *ngIf="a.user.isLogin">Update Profile</div>
+                  <div class="p-3 mt-2 fw-bold lebel" *ngIf="a.user.isLogout">Register</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('settings-payment-info')">
-                  <i class="fa fa-credit-card fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Payment Information</div>
+                  <i class="fa fa-credit-card fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Payment Information</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('message')">
-                  <i class="fa fa-comment-alt fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Messages</div>
+                  <i class="fa fa-comment-alt fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Messages</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-4 class="text-center">
+            <ion-col col-3 class="text-center">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)=" a.onClickContactAdmin() ">
-                  <i class="fa fa-phone-square fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Contact Us</div>
+                  <i class="fa fa-phone-square fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Contact Us</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-4 class="text-center">
+            <ion-col col-3 class="text-center">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('how-to-use')">
-                  <i class="fal fa-book fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">FAQ</div>
+                  <i class="fal fa-book fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">FAQ</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-4 class="text-center">
+            <ion-col col-3 class="text-center">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="showModal('teacherPolicy')">
-                  <i class="fal fa-info-circle fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Policy</div>
+                  <i class="fal fa-info-circle fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Policy</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-4 class="text-center">
+            <ion-col col-3 class="text-center"  *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
-                <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('password-change')" *ngIf="a.user.isLogin">
-                  <i class="fa fa-key fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Change Password</div>
+                <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('password-change')">
+                  <i class="fa fa-key fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Change Password</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-4 class="text-center">
+            <ion-col col-3 class="text-center">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('settings')">
-                  <i class="fa fa-cogs fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Settings</div>
+                  <i class="fa fa-cogs fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Settings</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-4 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.user.logout()">
-                  <i class="fa fa-sign-out fa-3x  mb-5 mt-2"></i>
-                  <div class="p-3 fw-bold lspacing-0-1rem lebel">Logout</div>
+                  <i class="fa fa-sign-out fa-3x  mb-5 mt-4"></i>
+                  <div class="p-3 mt-2 fw-bold lebel">Logout</div>
                 </div>
               <!-- </ion-card> -->
             </ion-col>

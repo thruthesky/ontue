@@ -9,7 +9,49 @@
     </section>
     <section class="page-body bg-white">
       <form (submit)="onSubmitUpdate()">
-          <ion-grid class="curriculum-vitae" no-padding>
+          <ion-grid class="curriculum-vitae mb-5 border" no-padding>
+            <ion-row class="mt-5" justify-content-center align-items-stretch>
+              <ion-col  class="pr-5 mr-2" col-md-5 >
+                <label class="pointer">
+                        <div class="profile-user d-flex-column align-items-center justify-content-center h-100  border-stripes py-3"
+                              (click)="fileUpload.onClickCamera()">
+                            <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: 0.001; font-size: 10em;"
+                                  type="file"
+                                  (change)="fileUpload.onChangeFile($event)">
+                            <div class="profile-user-photo d-inline-block size-100 my-3 of-hidden rounded-50">
+                                <img src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
+                            </div>
+                            <button type="button" class="btn submit fs-lg my-3" [class.skip]="files && files.length">
+                              <i class="fa fa-camera mr-2"></i>
+                              {{ 'PRIMARY PHOTO' | translate }}
+                            </button>
+                            <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files"
+                                                [showUploadedFiles]="false"
+                                                (success)="onSuccessUploadPicture($event)">
+                            </file-upload-widget>
+                        </div>
+                  </label>
+              </ion-col>
+              <ion-col col-5 class="pl-5 ml-2" col-md-5>
+              <label class="pointer">
+                    <div class="qr-mark  p-4 d-flex-column align-items-center justify-content-center h-100 border" *ngIf="a.user.isLogin">
+                            Upload QR Mark
+                            <i class="fal fa-qrcode fa-5x my-3"></i>
+                                <file-upload-widget class="mb-4 mt-1" #fileUploadWidgetQRMARK
+                                  [title]="false"
+                                  [fileSelectionButton]="true"
+                                  [files]="qrmarks"
+                                  [showUploadedFiles]="showQRMark"
+                                  (success)="onSuccessUploadQRMark( $event )">
+                                </file-upload-widget>
+                      <div class="fs-lg text-center" text-wrap>
+                        QR Mark is required for teacher, open your mobile KakaoTalk > Edit Profile>
+                        My QR Code > Click Download.
+                      </div>
+                  </div>
+                </label>
+              </ion-col>
+            </ion-row>
             <ion-row justify-content-center align-items-center>
               <ion-col col-5 class="pr-5 mr-2">
                 <div class="d-flex-column form-effect">
@@ -79,8 +121,20 @@
                 </div>
                 </ion-col>
               </ion-row>
+              <ion-row class="mt-5 " justify-content-center>
+                <ion-col col-10>
+                  <div class="m-0 p-0">
+                      <ion-label class="bg-blue white text-center fs-white p-3 m-0">{{ 'GREETINGS' | translate }}</ion-label>
+                      <ion-textarea class="outline-effect bg-light px-3 py-2" rows="8" [(ngModel)]="account.introduction" name="introduction"></ion-textarea>
+                  </div>
+                  <div class="my-4" text-center>
+                      <button class="my-4" outline rounded-circle ion-button color="primary">{{ 'UPDATE BUTTON' | translate }}</button>
+                  </div>
+                </ion-col>
+              </ion-row>
+
           </ion-grid>
-        <ion-list  margin-top>
+        <!-- <ion-list  margin-top> -->
           <!-- <ion-item>
             <ion-label>{{ 'TEACHER ID' | translate }}</ion-label>
             <ion-input type="text" readonly [(ngModel)]="account.name" name="name"></ion-input>
@@ -135,7 +189,7 @@
             <ion-input type="text" [(ngModel)]="account.address" name="address"></ion-input>
           </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <label>Profile Picture</label>
             <div class="text-center mt-5">
               <div class="profile-user p-relative d-inline-block of-hidden text-center"
@@ -155,7 +209,7 @@
                                     (success)="onSuccessUploadPicture($event)"></file-upload-widget>
               </div>
             </div>
-          </ion-item>
+          </ion-item> -->
 
 
           <!-- <ion-item>
@@ -182,10 +236,10 @@
             <ion-datetime displayFormat="YYYY" [(ngModel)]="account.experience" name="experience"></ion-datetime>
           </ion-item> -->
 
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>{{ 'GREETINGS' | translate }}</ion-label>
             <ion-textarea rows="8" [(ngModel)]="account.introduction" name="introduction"></ion-textarea>
-          </ion-item>
+          </ion-item> -->
 
 <!-- 
           <ion-item>
@@ -207,7 +261,7 @@
             <ion-label>{{ 'KAKAOTALK ID' | translate }}</ion-label>
             <ion-input type="text" [(ngModel)]="account.kakaotalk_id" name="kakaotalk_id"></ion-input>
           </ion-item> -->
-
+<!-- 
           <ion-item class="qr-mark" *ngIf="a.user.isLogin">
             Upload QR Mark
             <file-upload-widget #fileUploadWidgetQRMARK
@@ -220,15 +274,15 @@
               >
               My QR Code > Click Download.
             </div>
-          </ion-item>
+          </ion-item> -->
 
-
+<!-- 
           <ion-item>
             <button ion-button color="primary" block>{{ 'UPDATE BUTTON' | translate }}</button>
-          </ion-item>
+          </ion-item> -->
 
 
-        </ion-list>
+        <!-- </ion-list> -->
       </form>
 
     </section>

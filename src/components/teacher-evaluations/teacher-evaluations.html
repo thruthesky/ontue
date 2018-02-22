@@ -6,10 +6,10 @@
           <ion-grid no-padding>
               <ion-row class="mx-4 mt-3" align-items-end>
                   <ion-col *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
-                        <span class="d-block size-80 of-hidden mr-2 d-inline-block rounded-2" *ngIf="teacher_comment['teacher_photoURL']">
+                        <span class=" size-80 of-hidden mr-2 d-inline-block rounded-2" *ngIf="teacher_comment['teacher_photoURL']">
                           <img src="{{teacher_comment['teacher_photoURL']}}">
                         </span>
-                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded-2">
+                        <span class=" size-80 of-hidden mr-4 d-inline-block rounded-2">
                           <img  src="{{a.checkPhotoURL(teacher_comment['student_photoURL'])}}">
                         </span>
                         <h2 class="fs-2rem fw-bold m-0  d-inline-block" ion-text color="blue">
@@ -23,9 +23,9 @@
               </ion-row>
           </ion-grid>
           <div class="bg-light p-5 m-0 rounded my-3 mx-4 outline-effect">
-            <div  class="line-h-1-8em m-0 p-0 fw-light my-3 fs-90 hide-effect" ion-text color="dark">
-              <span class="white-space-pre" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}} <span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
-              <span class="white-space-pre" *ngIf="teacher_comment['more']">{{teacher_comment.comment}}</span>
+            <div  class="line-h-1-8em m-0 p-0 fw-light my-3 fs-90" ion-text color="dark">
+              <span class="white-space-pre  hide-effect" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}} <span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
+              <span class="white-space-pre  hide-effect" *ngIf="teacher_comment['more']">{{teacher_comment.comment}}</span>
             </div>
             <ng-container *ngIf="teacher_comment.comment.length>200">
               <span class="pointer text-nowrap" ion-text color="blue" (click)="teacher_comment['more'] = !teacher_comment['more']"> {{teacher_comment['more']? 'View Less' : 'View More'}}</span>
