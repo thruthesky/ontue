@@ -1,32 +1,63 @@
-import { Component, Input, OnInit,} from '@angular/core';
-import { AppService } from './../../providers/app.service';
+import {Component, OnInit} from '@angular/core';
+import {AppService} from './../../providers/app.service';
 
 
 @Component({
   selector: 'teacher-evaluations-component',
   templateUrl: 'teacher-evaluations.html'
 })
-export class TeacherEvaluationsComponent implements OnInit  {
+export class TeacherEvaluationsComponent implements OnInit {
 
-  @Input() evaluations = [];
-  constructor(
-      public a: AppService,
-    ) {
-    
-    }
+  evaluations = [];
 
-  ngOnInit() { }
 
-  more($id){
-    document.getElementById(('less_'+$id)).classList.remove('d-none');
-    document.getElementById(('less_'+$id)).classList.add('hide-effect');
-    document.getElementById(('more_'+$id)).classList.add('d-none');
+  pageOption = {
+    limitPerPage: 5,
+    currentPage: 1,
+    limitPerNavigation: 4,
+    totalRecord: 0
+  };
+
+  commentCount = 1;
+
+
+  constructor(public a: AppService,) {
+    this.loadEvaluations();
   }
 
-  less($id){
-    document.getElementById(('less_'+$id)).classList.add('d-none');
-    document.getElementById(('more_'+$id)).classList.remove('d-none');
-    document.getElementById(('more_'+$id)).classList.add('hide-effect');
+  ngOnInit() {
   }
-  
+
+
+  loadEvaluations() {
+    let data = {
+      limit: this.pageOption.limitPerPage,
+      page: this.pageOption.currentPage
+    };
+    this.a.lms.get_teacher_evaluations_to_student(data).subscribe(res => {
+      // console.log(res);
+      this.evaluations = res['comments'];
+      this.pageOption.currentPage = res['page'];
+      this.pageOption.limitPerPage = res['limit'];
+      this.pageOption.totalRecord = res['total'];
+      this.commentCount = res['page'];
+    }, error => {
+      this.a.alert(error);
+    })
+  }
+
+  onPostPageClick($event) {
+    this.pageOption['currentPage'] = $event;
+    this.loadEvaluations();
+  }
+
+  preDate(date) {
+    if (!date) return '';
+    let y = date.slice(0, 4);
+    let m = date.slice(4, 6);
+    let d = date.slice(6, 9);
+    return `${y}-${m}-${d}`;
+  }
+
+
 }

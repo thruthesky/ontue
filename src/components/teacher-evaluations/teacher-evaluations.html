@@ -6,34 +6,40 @@
           <ion-grid no-padding>
               <ion-row class="mx-4 mt-3" align-items-end>
                   <ion-col *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
-
-                        <span class="d-block size-80 of-hidden mr-2 d-inline-block rounded-2" *ngIf="teacher_comment['teacher_photoURL']"><img src="{{teacher_comment['teacher_photoURL']}}"></span>
-
-                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded-2" *ngIf="teacher_comment['student_photoURL']"><img  src="{{teacher_comment['student_photoURL']}}"></span>
-                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded-2" *ngIf="teacher_comment['student_photoURL'].length==0"><img  src="../assets/img/student.png"></span>
-
-                        <h2 class="fs-2rem fw-bold m-0  d-inline-block" ion-text color="blue">{{ a.preTeacherName(teacher_comment.teacher_name) }}<span class="fw-light fs-lg ml-3 black">{{teacher_comment['date'].slice(0,4)}}-{{teacher_comment['date'].slice(4,6)}}-{{teacher_comment['date'].slice(6,9)}}</span></h2> 
+                        <span class="d-block size-80 of-hidden mr-2 d-inline-block rounded-2" *ngIf="teacher_comment['teacher_photoURL']">
+                          <img src="{{teacher_comment['teacher_photoURL']}}">
+                        </span>
+                        <span class="d-block size-80 of-hidden mr-4 d-inline-block rounded-2">
+                          <img  src="{{a.checkPhotoURL(teacher_comment['student_photoURL'])}}">
+                        </span>
+                        <h2 class="fs-2rem fw-bold m-0  d-inline-block" ion-text color="blue">
+                          {{ a.preTeacherName(teacher_comment.teacher_name) }}
+                          <span class="fw-light fs-lg ml-3 black">{{preDate(teacher_comment['date'])}}</span>
+                        </h2>
                   </ion-col>
                   <ion-col text-right>
-                        <span class="mr-3" ion-text color="blue">#{{i+1}}</span>
+                        <span class="mr-3" ion-text color="blue">#{{(i+1) + ((commentCount - 1) * pageOption['limitPerPage'])}}</span>
                   </ion-col>
               </ion-row>
           </ion-grid>
           <div class="bg-light p-5 m-0 rounded my-3 mx-4 outline-effect">
-              <!--- if re-arranged, it will affect the white-spacing-->
-            <span id="more_{{i}}" class="white-space-pre line-h-1-8em m-0 p-0 fw-light my-3 fs-90" ion-text color="dark">{{teacher_comment.comment.slice(0,200)}}<ng-container *ngIf="teacher_comment.comment.length>200"><span class="fs-xl"> ...</span><span class="ml-3 pointer text-nowrap" ion-text color="blue" (click)="more(i)">View more</span></ng-container></span>
-            <span id="less_{{i}}" class="d-none white-space-pre line-h-1-8em m-0 p-0 fw-light my-3 fs-90" ion-text color="dark">{{teacher_comment.comment}}<ng-container *ngIf="teacher_comment.comment.length>200"><span class="pointer text-nowrap" ion-text color="blue" (click)="less(i)"> View less</span></ng-container></span>
-          </div>  
+            <div  class="line-h-1-8em m-0 p-0 fw-light my-3 fs-90 hide-effect" ion-text color="dark">
+              <span class="white-space-pre" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}} <span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
+              <span class="white-space-pre" *ngIf="teacher_comment['more']">{{teacher_comment.comment}}</span>
+            </div>
+            <ng-container *ngIf="teacher_comment.comment.length>200">
+              <span class="pointer text-nowrap" ion-text color="blue" (click)="teacher_comment['more'] = !teacher_comment['more']"> {{teacher_comment['more']? 'View Less' : 'View More'}}</span>
+            </ng-container>
+          </div>
         </div>
     </ion-list>
-    <div class="bg-blue p-3" text-center>
-        <ion-buttons>
-            <button  color="white" outline ion-button>Previous</button>
-            <button  color="white" outline ion-button> 1</button>
-            <button  color="white" outline ion-button> 2</button>
-            <button  color="white" outline ion-button> 3</button>
-            <button  color="white" outline ion-button> 4</button>
-            <button  color="white" outline ion-button>Next</button>
-        </ion-buttons>
+    <div class="pagination bg-blue p-3" text-center>
+      <page-navigator class="mx-auto" [no_of_total_items]=" pageOption['totalRecord'] "
+                      [no_of_items_in_one_page]=" pageOption['limitPerPage'] "
+                      [no_of_pages_in_navigator]=" pageOption['limitPerNavigation'] "
+                      [no_of_current_page]=" pageOption['currentPage'] "
+                      [show_prev_next]=" true "
+                      (pageClick)="onPostPageClick($event)">
+      </page-navigator>
     </div>
 </div>

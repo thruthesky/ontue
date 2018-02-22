@@ -101,20 +101,20 @@
         <div class="m-5 p-5" text-center>
             <button class="fw-bold" ion-button outline color="blue" round (click)="onClickSubmit()">UPDATE</button>
         </div>
-  
+
         <hr>
-  
+
         <div class="pl-3 py-5 fs-2rem bg-lightgrey">{{ "PAYMENT INFORMATION HISTORY" | translate }}</div>
         <button ion-button (click)="onClickShowHistory()">Show History</button>
         <hr>
-  
-  
+
+
         <ion-list class="payment-information-history mb-5">
           <ng-container *ngFor="let info of payment_information_history; let odd = odd">
             <ion-item class="head" no-padding [class.odd]=" odd " [class.even]=" !odd " (click)="info['more'] =  !info['more']" >
             Date/Time Changed: {{a.shortDate(info.stamp)}}
             </ion-item>
-  
+
             <ng-container *ngIf="info['more']">
               <ion-item class="border-top-1-solid">
                 <ion-label>First Name: {{info['first_name']}}</ion-label>
@@ -156,7 +156,7 @@
     </div>
     <hook-content-bottom></hook-content-bottom>
   </ion-content>
-  
+
 
 <!-- <ion-header>
   <header-content [title]=" 'PAYMENT SETTING' "></header-content>

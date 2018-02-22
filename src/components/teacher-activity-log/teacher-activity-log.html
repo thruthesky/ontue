@@ -7,7 +7,7 @@
                     <ion-col class="pl-3 font-em-0-75 d-flex align-items-center" col-10>
                         <div class="d-flex align-items-center">
                             <span>
-                                <span class="fw-bold">{{a.name}}</span>
+                                <span class="fw-bold">{{a.name ? a.name : 'Guess'}}</span>
                                  {{ actv[a.activity] }}
                                  <span *ngIf="a.target">{{a.target}}</span>
                              </span>

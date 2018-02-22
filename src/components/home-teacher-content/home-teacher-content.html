@@ -32,7 +32,7 @@
                 </ion-grid>
             </ion-col>
             <ion-col class="cover p-0 pl-md-3 m-0" col-sm-12 col-md-3>
-              <teacher-activity-log-component [actv]="activity"></teacher-activity-log-component>
+              <teacher-activity-log-component></teacher-activity-log-component>
             </ion-col>
         </ion-row>
         <ion-row class="my-3 px-1px">
@@ -49,148 +49,10 @@
              </ion-col>
         </ion-row>
         <ion-row class="my-3 px-1px">
-            <ion-col class="p-0" *ngIf="site_info.comment_from_teacher.length">
-                <teacher-evaluations-component [evaluations]="site_info.comment_from_teacher"></teacher-evaluations-component>
+            <ion-col class="p-0">
+                <teacher-evaluations-component></teacher-evaluations-component>
             </ion-col>
         </ion-row>
-        <!-- <div class="mt-3"> -->
-
-          <!--Activity Log-->
-
-            <!-- <ion-card class="p-3">
-      <h2 class="fs-4rem">Steps you need to do to become a teacher.</h2>
-      <div class="fs-xl">
-        <ol>
-          <li class="pointer" (click)="showModalFAQ('kakaoInstall')">Install Kakaotalk app. ( <b>THIS IS A MANDATORY REQUIREMENT</b> ) <i class="fa fa-question-circle"></i> </li>
-          <li>
-            Register
-          </li>
-          <li>
-            Complete profile update with all your data.
-            <ul>
-              <li>You will need to upload nice photo</li>
-              <li>You will need to upload a short introduction video on youtube</li>
-            </ul>
-          </li>
-          <li>
-            Add your schedule.
-          </li>
-          <li>
-            <div>Contact to admin to get higher grade.</div>
-            <div>Teacher Grading System</div>
-            <ul>
-              <li>1 Star - Teacher who are </li>
-              <li>You will need to upload a short introduction video on youtube</li>
-            </ul>
-            ( Important Note: Teacher must use smart phone to add contact to admin. Once teacher added contact to admin,
-            teacher can use PC to chat with admin. )
-            Admin will check your environment.
-            <ul>
-              <li>Good audio/video device</li>
-              <li>Fast speed of internet</li>
-              <li>Calm space to conduct the lesson</li>
-            </ul>
-          </li>
-          <li>
-            Update your payment information so that you can get your pay.
-          </li>
-        </ol>
-
-
-        <div>* Important Tips !!</div>
-        <div>  - Teacher must add student using smart phone.</div>
-        <div>  - There is no way to add friend in kakao with desktop software.</div>
-
-        <div>  * Teachers Table</div>
-        <div>  - Teacher without grade will not be shown if Recommended teacher is selected.</div>
-        <div>  - But they will be shown if the option "Show all teachers" is selected.</div>
-      </div>
-    </ion-card> -->
-
-            <!-- <ion-card class="p-3">
-      <div>
-        * Statistics:
-      </div>
-      <div>no of teacher: {{site_info.no_of_teacher}}</div>
-      <div>student: {{site_info.no_of_student}}</div>
-      <div>reservations: {{site_info.no_of_reservations}}</div>
-      <div>past: {{site_info.no_of_past}}</div>
-    </ion-card> -->
-            <!--
-    <ion-card class="p-3" text-wrap>
-      <h2>Recently graded teachers</h2>
-      <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_graded_teachers.length">
-        <ion-slide *ngFor="let teacher of site_info.recent_graded_teachers" class="text-center pointer">
-          <div (click)="a.open('schedule-table', { ID: teacher.ID })">
-            <img class="mx-auto size-80" [src]="a.checkPhotoURL(teacher.photoURL)">
-            <div>{{a.preTeacherName(teacher.display_name)}}</div>
-          </div>
-        </ion-slide>
-      </ion-slides>
-    </ion-card> -->
-
-            <!--
-    <ion-card class="p-3" text-wrap>
-      <div>Comment from student</div>
-      <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_student.length">
-        <ion-slide *ngFor="let student_comment of site_info.comment_from_student" class="text-center pointer"
-                   (click)="onClickCommentList(student_comment.idx_teacher)">
-          <img class="mx-auto size-80" [src]="a.checkPhotoURL(student_comment.teacher_photoURL)">
-          <div>{{a.preTeacherName(student_comment.teacher_name)}}</div>
-          <div class="rating mb-2">
-            <span *ngIf="student_comment.rate < 1"><i class="fal fa-star"></i></span>
-            <span *ngIf="student_comment.rate >= 1"><i class="fas fa-star"></i></span>
-
-            <span *ngIf="student_comment.rate < 2"><i class="fal fa-star"></i></span>
-            <span *ngIf="student_comment.rate >= 2"><i class="fas fa-star"></i></span>
-
-            <span *ngIf="student_comment.rate < 3"><i class="fal fa-star"></i></span>
-            <span *ngIf="student_comment.rate >= 3"><i class="fas fa-star"></i></span>
-
-            <span *ngIf="student_comment.rate < 4"><i class="fal fa-star"></i></span>
-            <span *ngIf="student_comment.rate >= 4"><i class="fas fa-star"></i></span>
-
-            <span *ngIf="student_comment.rate < 5"><i class="fal fa-star"></i></span>
-            <span *ngIf="student_comment.rate >= 5"><i class="fas fa-star"></i></span>
-          </div>
-          <div>{{student_comment.comment}}</div>
-        </ion-slide>
-      </ion-slides>
-    </ion-card> -->
-
-            <!-- <ion-card class="p-3" text-wrap>
-                <div>comment from teacher without name.</div>
-                <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.comment_from_teacher.length">
-                    <ion-slide *ngFor="let teacher_comment of site_info.comment_from_teacher" class="text-center"> -->
-                        <!-- <img class="size-80" [src]="a.checkPhotoURL(reservation.student_photoURL)"> -->
-                        <!-- <div>{{ teacher_comment.comment }}</div>
-                        <div>-{{ a.preTeacherName(teacher_comment.teacher_name) }}</div>
-                    </ion-slide>
-                </ion-slides>
-            </ion-card> -->
-            <!--
-    <ion-card class="p-3" text-wrap>
-      <div>Recent reservations. without student name.</div>
-      <ion-slides [autoplay]="3000" [speed]="1000" [loop]="true" *ngIf="site_info.recent_reservations.length">
-        <ion-slide *ngFor="let reservation of site_info.recent_reservations" class="text-center pointer">
-          <div (click)="a.open('schedule-table', { ID: reservation.idx_teacher })">
-            <img class="size-80 mx-auto" [src]="a.checkPhotoURL(reservation.teacher_photoURL)">
-            <div>{{ a.preTeacherName(reservation.teacher_name) }}</div>
-            <div>{{ reservation.display_date }}</div>
-            <div>{{ reservation.class_begin }}</div>
-          </div>
-        </ion-slide>
-      </ion-slides>
-    </ion-card> -->
-
-        <!-- </div> -->
-
-        <!--
-  <h1>TEACHER GUIDELINE</h1>
-  <ul>
-    <li>Nickname should be less than or equal to 8 letters.</li>
-    <li>Profile image is best fit on 100px of width and 120px of height.</li>
-  </ul> -->
 
     </ion-grid>
 </section>

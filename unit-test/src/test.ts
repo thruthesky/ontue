@@ -78,7 +78,8 @@ class T {
         await this.page.type('[name="name"]', id + '-name');
         await this.page.type('[name="nickname"]', id + '-nickname');
         await this.page.type('[name="phone_number"]', '0123456789');
-        await this.page.type('[name="kakaotalk_id"]', id + '-kakaotalk-id');
+        const kid = id.replace(/\-/g, '');
+        await this.page.type('[name="kakaotalk_id"]', kid).then( x => this.ok("kakatalk_id: " + kid) )
 
         await this.clickFind({ click: '.form-submit-button button', find: 'student-register-success-page .header-menu', message: 'Registration success!' });
 
@@ -111,7 +112,7 @@ class T {
 (async () => {
     const t = new T();
     t.ok("Begin new test. at : " + (new Date).toLocaleString());
-    await t.init({ headless: true, devtools: false });
+    await t.init({ headless: false, devtools: false });
     await t.open(homepageUrl);
     await t.wait(1000);
     await t.find('.teacher-profile-photo', "First page is not homepage. The website is down? or is there any debugging code to redirect a sub page?");

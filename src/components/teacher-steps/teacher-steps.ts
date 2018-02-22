@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from './../../providers/app.service';
-import {HowToInstallKakaoComponent} from "../how-to-install-kakao/how-to-install-kakao";
+import {HowToInstallKakaoMobileComponent} from "../how-to-install-kakao-mobile/how-to-install-kakao-mobile";
 import {ModalController} from "ionic-angular";
 
 @Component({
@@ -17,7 +17,7 @@ export class TeacherStepComponent {
   }
 
   showKakaoInstall(){
-    const modal = this.modalCtrl.create( HowToInstallKakaoComponent );
+    const modal = this.modalCtrl.create( HowToInstallKakaoMobileComponent );
     modal.onDidDismiss(()=> {});
     modal.present();
   }

@@ -5,7 +5,7 @@ import {ModalController} from "ionic-angular";
 import {HowToGetQRCodeComponent} from "../how-to-get-qrcode/how-to-get-qrcode";
 import {HowToGetKakaoIDComponent} from "../how-to-get-kakao-id/how-to-get-kakao-id";
 import {TeacherPolicyComponent} from "../teacher-policy/teacher-policy";
-import {HowToInstallKakaoComponent} from "../how-to-install-kakao/how-to-install-kakao";
+import {HowToInstallKakaoMobileComponent} from "../how-to-install-kakao-mobile/how-to-install-kakao-mobile";
 
 @Component({
     selector: 'home-teacher-content-component',
@@ -29,25 +29,13 @@ export class HomeTeacherContentComponent implements OnInit {
 
   _modal = {
     teacherPolicy: TeacherPolicyComponent,
-    kakaoInstall: HowToInstallKakaoComponent,
+    kakaoInstall: HowToInstallKakaoMobileComponent,
     kakaoID: HowToGetKakaoIDComponent,
     qrmark: HowToGetQRCodeComponent
   };
 
 
-  activity = {
-    visit: " visit the site.",
-    login: " has log in.",
-    'open-register': "Visited the registration.",
-    register: " has registered.",
-    'view-profile': " has view the profile of ",
-    'update-profile': " update profile.",
-    reserve: " made reservation to ",
-    cancel: " cancel reservation ",
-    payment: " trying to pay ",
-    evaluate: " evaluate to student ",
-    comment: " comment to teacher"
-  };
+
 
     constructor(
       public a: AppService,

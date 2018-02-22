@@ -445,4 +445,9 @@ export class LMSService extends Base {
     });
   }
 
+  get_teacher_evaluations_to_student(req) {
+    req['route'] = 'lms.get_teacher_evaluations_to_student';
+    return this.x.post(req)
+  }
+
 }
