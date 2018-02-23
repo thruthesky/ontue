@@ -1,6 +1,6 @@
 <div class="of-hidden cover-by-2 bg-white outline-effect">
-        <p  class="fs-90 bg-silver m-0 mb-2 py-3 text-center white">Recent Reservations</p>
-        <div class="list-hover-effect">
+        <p  class="fs-90 bg-silver m-0 py-3 text-center white">Recent Reservations</p>
+        <div class="list-hover-effect my-0-25em">
             <ng-container *ngFor="let reservation of reservations; let i=index">
                 <ion-grid class="pointer item" *ngIf="i<3" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })" no-padding>
                     <ion-row class="px-4 py-3" align-items-center justify-content-between>

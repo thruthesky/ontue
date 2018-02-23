@@ -23,7 +23,7 @@
               </ion-row>
           </ion-grid>
           <div class="bg-light p-5 m-0 rounded my-3 mx-4 outline-effect">
-            <div  class="line-h-1-8em m-0 p-0 fw-light my-3 fs-90" ion-text color="dark">
+            <div  class="line-h-1-8em m-0 p-0 my-3 " ion-text color="dark">
               <span class="white-space-pre  hide-effect" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}} <span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
               <span class="white-space-pre  hide-effect" *ngIf="teacher_comment['more']">{{teacher_comment.comment}}</span>
             </div>

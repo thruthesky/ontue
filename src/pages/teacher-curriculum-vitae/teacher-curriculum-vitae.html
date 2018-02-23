@@ -21,7 +21,7 @@
                             <div class="profile-user-photo d-inline-block size-100 my-3 of-hidden rounded-50">
                                 <img src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
                             </div>
-                            <button type="button" class="btn submit fs-lg my-3" [class.skip]="files && files.length">
+                            <button type="button" class="btn submit fs-lg my-3" [class.skip]="files && files.length" (click)="fileUpload.onClickCamera()">
                               <i class="fa fa-camera mr-2"></i>
                               {{ 'PRIMARY PHOTO' | translate }}
                             </button>
