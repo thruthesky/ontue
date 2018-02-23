@@ -9,28 +9,25 @@
 //}
 
 #teacher-navigation{
-.px-1px{padding: 0 1px !important}
 .hover-effect-color{
+
     transition: all .2s ease-in-out!important;
-    .lebel{
-      transition: all .2s ease-in-out!important;
-      color:white;
-      background-color:rgba(#007bff,0.8)
+    color:#FBC02D;
+
+    .lebel{ 
+      transition: all .2s ease-in-out!important 
     }
-    svg{
-        color:#FBC02D;
-        transition: all .2s ease-in-out!important;
-      }
+
+    svg{ 
+      transition: all .2s ease-in-out!important
+    }
+
       &:hover{
+        color:#007bff;
+        background:rgba(#007bff,0.04)!important;
         svg{
           transform: scale(0.9, 0.9);
-          color:#007bff!important;
         }
-        .lebel{
-          color:#007bff;
-          background-color:rgba(#007bff,0.2)
-        }
-        background:rgba(#007bff,0.04)!important;
       }
     
   }

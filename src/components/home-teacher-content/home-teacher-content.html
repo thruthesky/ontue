@@ -9,16 +9,16 @@
                     <ion-row class="pb-3 m-0">
                         <ion-col class="px-3  m-0 p-0" col-md-6 col-sm-12>
                             <teacher-statistics-component
-                             [no_teachers]="site_info.no_of_teacher"
-                             [no_students]="site_info.no_of_student"
-                             [no_reservations]="site_info.no_of_reservations"
-                             [no_pasts]="site_info.no_of_past"
-                             ></teacher-statistics-component>
+                                [no_teachers]="site_info.no_of_teacher"
+                                [no_students]="site_info.no_of_student"
+                                [no_reservations]="site_info.no_of_reservations"
+                                [no_pasts]="site_info.no_of_past"
+                                ></teacher-statistics-component>
                         </ion-col>
                         <ion-col class="px-3" col-md-6 col-sm-12>
                             <graded-teachers-component *ngIf="site_info.recent_graded_teachers.length"
-                             [teachers]="site_info.recent_graded_teachers "
-                             ></graded-teachers-component>
+                                [teachers]="site_info.recent_graded_teachers ">
+                            </graded-teachers-component>
                         </ion-col>
                     </ion-row>
                     <ion-row class="student-feedback m-0 pt-3">
@@ -32,27 +32,26 @@
                 </ion-grid>
             </ion-col>
             <ion-col class="cover p-0 pl-md-3 m-0" col-sm-12 col-md-3>
-              <teacher-activity-log-component></teacher-activity-log-component>
+                <teacher-activity-log-component></teacher-activity-log-component>
             </ion-col>
         </ion-row>
-        <ion-row class="my-3 px-1px">
-          <ion-col class="pr-3">
-              <teacher-steps-component></teacher-steps-component>
-          </ion-col>
-          <ion-col class="pl-3">
-              <teacher-guidelines-component></teacher-guidelines-component>
-          </ion-col>
+        <ion-row class="mt-3 mb-5 px-1px">
+            <ion-col class="pr-3">
+                <teacher-steps-component></teacher-steps-component>
+            </ion-col>
+            <ion-col class="pl-3">
+                <teacher-guidelines-component></teacher-guidelines-component>
+            </ion-col>
         </ion-row>
-        <ion-row class="my-3 px-1px">
+        <ion-row class="my-5 px-1px">
             <ion-col class="p-0">
                 <teacher-grading-system-component></teacher-grading-system-component>
              </ion-col>
         </ion-row>
-        <ion-row class="my-3 px-1px">
+        <ion-row class="my-5 px-1px">
             <ion-col class="p-0">
                 <teacher-evaluations-component></teacher-evaluations-component>
             </ion-col>
         </ion-row>
-
     </ion-grid>
 </section>

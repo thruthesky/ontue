@@ -63,11 +63,6 @@ ion-nav.teacher {
   .px-1px {
     padding: 0 1px !important
   }
-  // for the outline effect to be not hidden in overflow
-  .size-80x90 {
-    height: 90px !important;
-    width: 80px !important;
-  }
 
   //for the header/navbar
   .teacher-wide-menu {
@@ -120,14 +115,6 @@ ion-nav.teacher {
       overflow: overlay !important
     }
 
-    .activity-log {
-      .item {
-        margin: 0.2em 0 !important
-      }
-      p {
-        background: rgba(#007bff, 0.8)
-      }
-    }
 
     .guidelines, .teacher-evaluation {
       ion-label {
@@ -164,46 +151,21 @@ ion-nav.teacher {
 
     .list-hover-effect {
       .item {
-        padding-right: 3px !important
+        transition: all .2s ease-in-out!important;
       }
       .item:hover {
         background: rgba(#007bff, 0.1) !important;
         color: #007bff !important;
-        border-right: 3px solid #007bff !important;
-        padding-right: 0 !important;
       }
     }
 
-    .border-blue-effect {
-      border-bottom: 3px solid #007bff !important
-    }
-    .border-red-effect {
-      border-bottom: 3px solid #f53d3d !important
-    }
-    .border-orange-effect {
-      border-bottom: 3px solid #FFA000 !important
-    }
-    .border-indigo-effect {
-      border-bottom: 3px solid #303F9F !important
-    }
-    .border-violet-effect {
-      border-bottom: 3px solid #512DA8 !important
-    }
-    .border-brown-effect {
-      border-bottom: 3px solid #5D4037 !important
-    }
-    .border-green-effect {
-      border-bottom: 3px solid #32db64 !important
-    }
-    .border-dark-effect {
-      border-bottom: 3px solid #222 !important
-    }
-    .border-1px {
-      border-width: 1px !important
-    }
 
     .bg-light-red{ 
       background: #f53d3d!important
+    }
+
+    .bg-silver{
+      background: rgba(#707070,0.73)!important
     }
 
   }
@@ -226,11 +188,15 @@ ion-nav.teacher {
     }
   }
 
+  .my-0-2em {
+    margin: 0.2em 0 !important
+  } 
   .opacity-0{opacity: 0!important}
 
   .line-height-1-8em {
     line-height: 1.8em !important
   }
+  
   .outline-effect {
     outline: 1px solid #e2e2e2 !important
   }
