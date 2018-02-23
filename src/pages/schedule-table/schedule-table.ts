@@ -159,6 +159,9 @@ export class ScheduleTablePage {
 
   showHelpReserve = false;
 
+
+  loadComplete = false; /// This will become true after the first schedule load.
+
   constructor(
     public platform: Platform,
     public a: AppService,
@@ -204,6 +207,7 @@ export class ScheduleTablePage {
 
 
 
+
   ngAfterViewInit() {
   }
 
@@ -212,6 +216,8 @@ export class ScheduleTablePage {
     // if (this.timer) clearTimeout(this.timer);
   }
 
+
+  
   /**
    * This sets the number of columns on schedule table based on the device.
    */
@@ -335,6 +341,7 @@ export class ScheduleTablePage {
     }
     this.status = 'LOADING SCHEDULE';
     this.a.lms.schedule_table(opt).subscribe(re => {
+      this.loadComplete = true;
       this.displayScheduleTable(re);
       if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
@@ -475,7 +482,7 @@ export class ScheduleTablePage {
    * @param session a session
    */
   teacher_name(session = null) {
-    let name = 'NoName';
+    let name = 'No Name';
     // console.log(session);
     const teacher = this.teacher(session);
     // console.log('teacher: ', teacher);
@@ -483,7 +490,7 @@ export class ScheduleTablePage {
     else name = this.teacher_profile['name'];
     // return name;
 
-    return this.a.preTeacherName( name, 7 );
+    return this.a.preTeacherName( name, 7, '...' );
   }
 
   /**
