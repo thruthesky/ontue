@@ -1,13 +1,13 @@
 <section id="home-teacher-content" class="mt-md-3 bg-light">
     <ion-grid no-padding>
         <ion-row class="m-0 my-3 px-1px">
-            <ion-col class="p-0 pr-md-3 m-0 " col-sm-auto col-md-3>
+            <ion-col class="p-0 pr-md-3 m-0 " col-md-3>
                 <teacher-reminders-component></teacher-reminders-component>
             </ion-col>
-            <ion-col class="cover p-0 m-0" col-sm-auto col-md-6>
+            <ion-col class="cover p-0 m-0" col-md-6>
                 <ion-grid class="m-0" no-padding>
                     <ion-row class="pb-3 m-0">
-                        <ion-col class="px-3  m-0 p-0" col-md-6 col-sm-12>
+                        <ion-col class="px-3  m-0 p-0" col-md-6>
                             <teacher-statistics-component
                                 [no_teachers]="site_info.no_of_teacher"
                                 [no_students]="site_info.no_of_student"
@@ -15,23 +15,23 @@
                                 [no_pasts]="site_info.no_of_past"
                                 ></teacher-statistics-component>
                         </ion-col>
-                        <ion-col class="px-3" col-md-6 col-sm-12>
+                        <ion-col class="px-3" col-md-6>
                             <graded-teachers-component *ngIf="site_info.recent_graded_teachers.length"
                                 [teachers]="site_info.recent_graded_teachers ">
                             </graded-teachers-component>
                         </ion-col>
                     </ion-row>
                     <ion-row class="student-feedback m-0 pt-3">
-                        <ion-col class="px-3"  col-md-6 col-sm-12 *ngIf="site_info.comment_from_student['total']">
+                        <ion-col class="px-3"  col-md-6 *ngIf="site_info.comment_from_student['total']">
                             <teacher-student-comment-component [student_comments] = "site_info.comment_from_student.comments "></teacher-student-comment-component>
                         </ion-col>
-                        <ion-col class="px-3" col-md-6 col-sm-12>
+                        <ion-col class="px-3" col-md-6>
                             <teacher-reservations-component [reservations]="site_info.recent_reservations"></teacher-reservations-component>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
             </ion-col>
-            <ion-col class="cover p-0 pl-md-3 m-0" col-sm-12 col-md-3>
+            <ion-col class="cover p-0 pl-md-3 m-0" col-md-3>
                 <teacher-activity-log-component></teacher-activity-log-component>
             </ion-col>
         </ion-row>
