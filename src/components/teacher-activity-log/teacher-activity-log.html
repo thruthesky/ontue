@@ -1,33 +1,33 @@
 <div class="cover activity-log  bg-muted of-hidden outline-effect">
-    <p class="bg-blue-60 fs-90 m-0 py-3 text-center white">Activity Log</p>
-      <div class="px-4" *ngIf="a.activity_log && a.activity_log.length">
-          <div class="m-0 py-3  border border-top-0 border-right-0 border-left-0" *ngFor="let a of a.activity_log" text-wrap>
-            <ion-grid class="my-0-2em pl-3 pr-1" no-padding>
-                <ion-row align-items-center>
-                    <ion-col class="font-em-0-75 d-flex align-items-center" col-10>
-                        <div class="d-flex align-items-center">
+  <p class="bg-blue-60 fs-90 m-0 py-3 text-center white">Activity Log</p>
+  <div class="px-4" *ngIf="a.activity_log && a.activity_log.length">
+    <div class="m-0 py-3  border border-top-0 border-right-0 border-left-0" *ngFor="let a of a.activity_log" text-wrap>
+      <ion-grid class="my-0-2em pl-3 pr-1" no-padding>
+        <ion-row align-items-center>
+          <ion-col class="font-em-0-75 d-flex align-items-center" col-10>
+            <div class="d-flex align-items-center">
                             <span>
-                                <span class="fw-bold">{{a.name ? a.name : 'Guess'}}</span>
+                                <span class="fw-bold">{{a.name ? a.name : 'Guest'}}</span>
                                  {{ actv[a.activity] }}
                                  <span *ngIf="a.target">{{a.target}}</span>
                              </span>
-                        </div>
-                    </ion-col>
-                    <ion-col class="d-flex align-items-center justify-content-center">
-                        <i class="fs-2rem fal fa-sign-in-alt" ion-text color="blue" *ngIf="a.activity=='login'" ></i>
-                        <i class="fs-2rem fal fa-eye" ion-text color="grey" *ngIf="a.activity=='visit'" ></i>
-                        <i class="fs-2rem fal fa-list-alt" ion-text color="brown" *ngIf="a.activity=='open-register'" ></i>
-                        <i class="fs-2rem fal fa-registered" ion-text color="pink" *ngIf="a.activity=='register'" ></i>
-                        <i class="fs-2rem fal fa-eye" ion-text color="orange" *ngIf="a.activity=='view-profile'" ></i>
-                        <i class="fs-2rem fal fa-edit" ion-text color="amber" *ngIf="a.activity=='update-profile'" ></i>
-                        <i class="fs-2rem fal fa-calendar-check" ion-text color="yellow" *ngIf="a.activity=='reserve'" ></i>
-                        <i class="fs-2rem fal fa-ban" ion-text color="red" *ngIf="a.activity=='cancel'" ></i>
-                        <i class="fs-2rem fal fa-money-bill" ion-text color="green" *ngIf="a.activity=='payment'" ></i>
-                        <i class="fs-2rem fal fa-tasks" ion-text color="purple" *ngIf="a.activity=='evaluate'" ></i>
-                        <i class="fs-2rem fal fa-comment-alt" ion-text color="indigo" *ngIf="a.activity=='comment'" ></i>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </div>
-      </div>
+            </div>
+          </ion-col>
+          <ion-col class="d-flex align-items-center justify-content-center">
+            <i class="fs-2rem fal fa-sign-in-alt" ion-text color="blue" *ngIf="a.activity=='login'"></i>
+            <i class="fs-2rem fal fa-eye" ion-text color="grey" *ngIf="a.activity=='visit'"></i>
+            <i class="fs-2rem fal fa-list-alt" ion-text color="brown" *ngIf="a.activity=='open-register'"></i>
+            <i class="fs-2rem fal fa-registered" ion-text color="pink" *ngIf="a.activity=='register'"></i>
+            <i class="fs-2rem fal fa-eye" ion-text color="orange" *ngIf="a.activity=='view-profile'"></i>
+            <i class="fs-2rem fal fa-edit" ion-text color="amber" *ngIf="a.activity=='update-profile'"></i>
+            <i class="fs-2rem fal fa-calendar-check" ion-text color="yellow" *ngIf="a.activity=='reserve'"></i>
+            <i class="fs-2rem fal fa-ban" ion-text color="red" *ngIf="a.activity=='cancel'"></i>
+            <i class="fs-2rem fal fa-money-bill" ion-text color="green" *ngIf="a.activity=='payment'"></i>
+            <i class="fs-2rem fal fa-tasks" ion-text color="purple" *ngIf="a.activity=='evaluate'"></i>
+            <i class="fs-2rem fal fa-comment-alt" ion-text color="indigo" *ngIf="a.activity=='comment'"></i>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
+  </div>
+</div>
