@@ -696,8 +696,8 @@ export class AppService {
      * @param name Teacher name
      * @param length Number of maximum name length
      */
-    preTeacherName(name, length = 8) {
-        if (!name) return 'No Name';
+    preTeacherName(name, length = 8, $default = 'No Name') {
+        if (!name) return $default;
         if (name.length > length) name = name.substr(0, length);
         return name;
     }
