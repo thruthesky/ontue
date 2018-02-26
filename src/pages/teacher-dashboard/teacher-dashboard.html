@@ -12,7 +12,7 @@
       <div id="teacher-navigation">
         <ion-grid class="px-1px" id="visitor-navigation" no-padding>
           <ion-row class="mx-minus-15px">
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color"  (click)="a.open('session-future')">
                   <i class="fa fa-calendar-alt fa-3x mb-4 mt-3"></i>
@@ -20,7 +20,7 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('session-past')">
                   <i class="fa fa-calendar-times fa-3x  mb-4 mt-3"></i>
@@ -28,7 +28,7 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('schedule-edit')">
                   <i class="fa fa-calendar-plus fa-3x  mb-4 mt-3"></i>
@@ -37,7 +37,7 @@
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('teacher-curriculum-vitae')">
                   <i class="fa fa-edit fa-3x  mb-4 mt-3"></i>
@@ -45,7 +45,7 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogout">
+            <ion-col class="text-center" *ngIf="a.user.isLogout"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('login')">
                   <i class="fa fa-sign-in fa-3x mb-4 mt-3"></i>
@@ -53,7 +53,7 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-3 class="text-center">
+            <ion-col class="text-center"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('register')">
                   <i class="fa fa-address-card fa-3x  mb-4 mt-3"></i>
@@ -62,7 +62,7 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('settings-payment-info')">
                   <i class="fa fa-credit-card fa-3x  mb-4 mt-3"></i>
@@ -71,7 +71,7 @@
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('message')">
                   <i class="fa fa-comment-alt fa-3x  mb-4 mt-3"></i>
@@ -79,7 +79,7 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-3 class="text-center">
+            <ion-col class="text-center"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)=" a.onClickContactAdmin() ">
                   <i class="fa fa-phone-square fa-3x  mb-4 mt-3"></i>
@@ -87,7 +87,7 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
-            <ion-col col-3 class="text-center">
+            <ion-col class="text-center"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('how-to-use')">
                   <i class="fal fa-book fa-3x  mb-4 mt-3"></i>
@@ -96,7 +96,7 @@
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-3 class="text-center">
+            <ion-col class="text-center"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="showModal('teacherPolicy')">
                   <i class="fal fa-info-circle fa-3x  mb-4 mt-3"></i>
@@ -105,7 +105,7 @@
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-3 class="text-center"  *ngIf="a.user.isLogin">
+            <ion-col class="text-center"  *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('password-change')">
                   <i class="fa fa-key fa-3x  mb-4 mt-3"></i>
@@ -114,7 +114,7 @@
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-3 class="text-center">
+            <ion-col class="text-center"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.open('settings')">
                   <i class="fa fa-cogs fa-3x  mb-4 mt-3"></i>
@@ -123,7 +123,7 @@
               <!-- </ion-card> -->
             </ion-col>
 
-            <ion-col col-3 class="text-center" *ngIf="a.user.isLogin">
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-12 >
               <!-- <ion-card> -->
                 <div class="pt-5 pointer outline-effect bg-white m-4 hover-effect-color" (click)="a.user.logout()">
                   <i class="fa fa-sign-out fa-3x  mb-4 mt-3"></i>
