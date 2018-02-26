@@ -1,17 +1,16 @@
-<div class="cover bg-muted of-hidden outline-effect">
-      <div class="activity-log" *ngIf="a.activity_log && a.activity_log.length">
-        <p class="fs-90 m-0 py-3 text-center" ion-text color="white">Activity Log</p>
-          <div class="p-0 m-0 py-3 border border-top-0 border-right-0 border-left-0" *ngFor="let a of a.activity_log" text-wrap>
-            <ion-grid class="item" no-padding>
+<div class="cover activity-log  bg-muted of-hidden outline-effect">
+    <p class="bg-blue-60 fs-90 m-0 py-3 text-center white">Activity Log</p>
+      <div class="px-4" *ngIf="a.activity_log && a.activity_log.length">
+          <div class="m-0 py-3  border border-top-0 border-right-0 border-left-0" *ngFor="let a of a.activity_log" text-wrap>
+            <ion-grid class="my-0-2em pl-3 pr-1" no-padding>
                 <ion-row align-items-center>
-                    <ion-col class="pl-3 font-em-0-75 d-flex align-items-center" col-10>
+                    <ion-col class="font-em-0-75 d-flex align-items-center" col-10>
                         <div class="d-flex align-items-center">
                             <span>
                                 <span class="fw-bold">{{a.name ? a.name : 'Guess'}}</span>
                                  {{ actv[a.activity] }}
                                  <span *ngIf="a.target">{{a.target}}</span>
                              </span>
-                            <!-- <span class="d-inline-block fs-sm" *ngIf="a.stamp">{{ a.date }}</span> -->
                         </div>
                     </ion-col>
                     <ion-col class="d-flex align-items-center justify-content-center">

@@ -47,6 +47,13 @@ export class TeacherDayoffPage {
         }, e => this.a.alert(e) );
     }
 
+    preDate(date) {
+        if (!date) return '';
+        let y = date.slice(0, 4);
+        let m = date.slice(4, 6);
+        let d = date.slice(6, 9);
+        return `${y}-${m}-${d}`;
+      }
 
 
 }

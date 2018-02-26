@@ -5,26 +5,26 @@
             <ion-col col-md-3>
                 <ion-buttons  id="logo" class="px-md-3 py-0 m-0" (click)=" a.open('home')">
                     <div class="min-height-56 p-0 m-0 pointer" ion-button>
-                        <img class="size-30" src="assets/img/logo/withcenter-icon.png">
+                            <i class="fas fa-video fa-2x border border-white p-2 rounded-2 white"></i>
                         <span  class="ml-2" color="white" ion-text>Ontue</span>
                     </div>
                 </ion-buttons>
             </ion-col>
             <ion-col text-center col-md-6>
                 <ion-buttons class="min-height-56 d-none d-md-flex justify-content-between p-0 m-0">
-                    <button class="min-height-56 p-0 m-0 fs-110 pl-3 hover-effect" (click)="a.open('teacher-list')" ion-button color="white">Teachers</button>
+                    <button class="min-height-56 p-0 m-0 pl-3 hover-effect" (click)="a.open('teacher-list')" ion-button color="white">Teachers</button>
 
-                    <button class="min-height-56 p-0 m-0 fs-110 hover-effect" (click)="a.onClickContactAdmin()"  ion-button color="white">Contact Us</button>
-                    <button class="min-height-56 p-0 m-0 fs-110 hover-effect" (click)="a.open('how-to-use')" ion-button color="white">FAQ</button>
+                    <button class="min-height-56 p-0 m-0 hover-effect" (click)="a.onClickContactAdmin()"  ion-button color="white">Contact Us</button>
+                    <button class="min-height-56 p-0 m-0 hover-effect" (click)="a.open('how-to-use')" ion-button color="white">FAQ</button>
                     
                     <ng-container *ngIf=" a.user.isLogin; else userLogout ">
-                        <button class="min-height-56 m-0 p-0 fs-110 hover-effect" (click)="a.open('session-future')" ion-button color="white">Reserved</button>
-                        <button class="min-height-56 m-0 p-0 fs-110 hover-effect" (click)="a.open('session-past')" ion-button color="white">Past</button>
-                        <button class="min-height-56 m-0 p-0 fs-110 pr-3 hover-effect" (click)="a.open('schedule-edit')" ion-button color="white">Schedule</button>
+                        <button class="min-height-56 m-0 p-0 hover-effect" (click)="a.open('session-future')" ion-button color="white">Reserved</button>
+                        <button class="min-height-56 m-0 p-0 hover-effect" (click)="a.open('session-past')" ion-button color="white">Past</button>
+                        <button class="min-height-56 m-0 p-0 pr-3 hover-effect" (click)="a.open('schedule-edit')" ion-button color="white">Schedule</button>
                     </ng-container>
                     <ng-template #userLogout>
-                        <button class="min-height-56 m-0 p-0 fs-110 hover-effect" (click)="a.open('login')" ion-button color="white">Login</button>
-                        <button class="min-height-56 m-0 p-0 fs-110 pr-3 hover-effect" (click)="a.open('register')" ion-button color="white">Register</button>
+                        <button class="min-height-56 m-0 p-0 hover-effect" (click)="a.open('login')" ion-button color="white">Login</button>
+                        <button class="min-height-56 m-0 p-0 pr-3 hover-effect" (click)="a.open('register')" ion-button color="white">Register</button>
                     </ng-template>
                 </ion-buttons>
                 <ion-buttons class="d-md-none">

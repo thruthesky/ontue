@@ -11,7 +11,7 @@
         <ion-grid no-padding>
             <ion-row justify-content-center>
               <ion-col class="mr-4" col-3>
-                <label class="hover-effect-color">
+                <label class="hover-icon-effect">
                   <input class="position-absolute opacity-0 radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash">
                   <div class="d-inline-block p-5 border bg-light rounded-2 fs-lg fw-bold w-100" text-center>
                       <i class="fal fa-tablet-alt d-inline-block mx-auto fs-4rem" ion-text color="green"></i>
@@ -20,7 +20,7 @@
                 </label>
               </ion-col>
               <ion-col class="mx-5" col-3>
-                <label class="hover-effect-color">
+                <label class="hover-icon-effect">
                   <input class="position-absolute opacity-0 radio-effect"  type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="western-union">
                   <div class="d-inline-block p-5 border bg-light rounded-2 fs-lg fw-bold w-100" text-center>
                       <i class="fal fa-barcode d-inline-block fs-4rem mx-auto" ion-text color="yellow"></i>
@@ -29,7 +29,7 @@
                 </label>
               </ion-col>
               <ion-col class="ml-4" col-3>
-                <label class="hover-effect-color">
+                <label class="hover-icon-effect">
                     <input class="position-absolute opacity-0 radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal">
                     <div class="d-inline-block p-5 border bg-light rounded-2 fs-lg fw-bold w-100" text-center>
                         <i class="fal fa-credit-card d-inline-block fs-4rem mx-auto" ion-text color="blue"></i>
@@ -103,10 +103,45 @@
         </div>
 
         <hr>
-
+        
         <div class="pl-3 py-5 fs-2rem bg-lightgrey">{{ "PAYMENT INFORMATION HISTORY" | translate }}</div>
         <button ion-button (click)="onClickShowHistory()">Show History</button>
         <hr>
+
+        <table class="fs-lg text-center w-100 my-5">
+            <thead>
+              <tr>
+                <th class="py-3 border hide-effect bg-blue white">Date/Time Changed</th>
+                <th class="py-3 border hide-effect bg-blue white">First Name</th>
+                <th class="py-3 border hide-effect bg-blue white">Middle Name</th>
+                <th class="py-3 border hide-effect bg-blue white">Last Name</th>
+                <th class="py-3 border hide-effect bg-blue white">Phone Number</th>
+                <th class="py-3 border hide-effect bg-blue white">Email</th>
+                <th class="py-3 border hide-effect bg-blue white">Country</th>
+                <th class="py-3 border hide-effect bg-blue white">Province</th>
+                <th class="py-3 border hide-effect bg-blue white">City</th>
+                <th class="py-3 border hide-effect bg-blue white">Address</th>
+                <th class="py-3 border hide-effect bg-blue white">Zipcode</th>
+                <th class="py-3 border hide-effect bg-blue white">Payment Method</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let info of payment_information_history">
+              <tr>
+                  <td class="py-3 border hide-effect">{{a.shortDate(info.stamp)}}</td>
+                  <td class="py-3 border hide-effect">{{info['first_name']}}</td>
+                  <td class="py-3 border hide-effect">{{info['middle_name']}}</td>
+                  <td class="py-3 border hide-effect">{{info['last_name']}}</td>
+                  <td class="py-3 border hide-effect">{{info['phone_number']}}</td>
+                  <td class="py-3 border hide-effect">{{info['email']}}</td>
+                  <td class="py-3 border hide-effect">{{info['country']}}</td>
+                  <td class="py-3 border hide-effect">{{info['province']}}</td>
+                  <td class="py-3 border hide-effect">{{info['city']}}</td>
+                  <td class="py-3 border hide-effect"> {{info['address']}}</td>
+                  <td class="py-3 border hide-effect">{{info['zipcode']}}</td>
+                  <td class="py-3 border hide-effect">{{info['payment_method']}}</td>
+              </tr>
+            </tbody>
+            </table>
 
 
         <ion-list class="payment-information-history mb-5">
@@ -116,37 +151,37 @@
             </ion-item>
 
             <ng-container *ngIf="info['more']">
-              <ion-item class="border-top-1-solid">
+              <ion-item class="border-top-1-solid hide-effect">
                 <ion-label>First Name: {{info['first_name']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Middle Name: {{info['middle_name']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Last Name: {{info['last_name']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Phone Number: {{info['phone_number']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Email: {{info['email']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Country: {{info['country']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Province: {{info['province']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>City: {{info['city']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Address: {{info['address']}}</ion-label>
               </ion-item>
-              <ion-item>
+              <ion-item class="hide-effect">
                 <ion-label>Zipcode: {{info['zipcode']}}</ion-label>
               </ion-item>
-              <ion-item  class="border-bottom-1-solid">
+              <ion-item  class="border-bottom-1-solid hide-effect">
                 <ion-label>Payment Method: {{info['payment_method']}}</ion-label>
               </ion-item>
             </ng-container>

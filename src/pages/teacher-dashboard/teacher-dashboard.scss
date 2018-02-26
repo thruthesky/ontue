@@ -7,33 +7,23 @@
 //  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 //  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 //}
-.lspacing-0-1rem{letter-spacing: 0.1rem}
+
 #teacher-navigation{
-.outline-effect{ outline: 1px solid #e2e2e2!important}
-.bg-blue-80{background-color:rgba(#007bff,0.8)!important }
-.mx-minus-15px{margin: 0 -15px!important}
-.px-1px{padding: 0 1px !important}
 .hover-effect-color{
-    transition: all .2s ease-in-out!important;
-    .lebel{
-      transition: all .2s ease-in-out!important;
-      color:white;
-      background-color:rgba(#007bff,0.8)
+
+    transition: all .1s ease-in-out!important;
+    color:#FBC02D;
+
+    svg{ 
+      transition: all .1s ease-in-out!important 
     }
-    svg{
-        color:#FBC02D;
-        transition: all .2s ease-in-out!important;
-      }
       &:hover{
-        svg{
-          transform: scale(0.9, 0.9);
-          color:#007bff!important;
-        }
-        .lebel{
-          color:#007bff;
-          background-color:rgba(#007bff,0.2)
-        }
+        color:#007bff;
         background:rgba(#007bff,0.04)!important;
+        svg{
+          color:#007bff;
+          transform: scale(0.9, 0.9);
+        }
       }
     
   }

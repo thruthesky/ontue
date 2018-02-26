@@ -1,10 +1,26 @@
 ion-nav.teacher {
+  font-size: 16px !important;
   //utilities,can be used all over teahers page
   .align-items-center {
     align-items: center !important
   }
   .align-items-end {
     align-items: end !important
+  }
+  .mx-minus-15px{
+    margin: 0 -15px!important
+  }
+
+  .my-0-25em{
+    margin: .25em 0!important
+  }
+
+  .h-100{
+    height: 100%!important
+  }
+
+  .mx-minus-10px{
+    margin: 0 -10px!important
   }
   .bg-light {
     background-color: #f9f9f9 !important
@@ -23,6 +39,9 @@ ion-nav.teacher {
   }
   .bg-secondary-yellow {
     background: #FBC02D !important
+  }
+  .secondary-yellow{
+    color:#FBC02D !important
   }
   .bg-darkorange {
     background-color: #F57C00 !important
@@ -51,17 +70,17 @@ ion-nav.teacher {
   .fw-light {
     font-weight: lighter !important
   }
+
+  .fw-normal{
+    font-weight: normal!important
+  }
   .line-h-1-8em {
     line-height: 1.8em !important
   }
   .px-1px {
     padding: 0 1px !important
   }
-  // for the outline effect to be not hidden in overflow
-  .size-80x90 {
-    height: 90px !important;
-    width: 80px !important;
-  }
+
 
   //for the header/navbar
   .teacher-wide-menu {
@@ -88,15 +107,14 @@ ion-nav.teacher {
       left: 0;
     }
 
+
     .fs-2-25em {
       font-size: 2.25em !important
-    }
-    .hover-effect {
-      font-family: Arial, Helvetica, sans-serif
     }
     .hover-effect:hover {
       opacity: 0.7 !important
     }
+
     .max-width-992 {
       max-width: 992px !important
     }
@@ -106,21 +124,11 @@ ion-nav.teacher {
   }
 
   ion-content {
-    font-family: sans-serif, Arial, Helvetica !important;
-    font-size: 16px !important;
     background-color: #f9f9f9 !important;
     .scroll-content {
       overflow: overlay !important
     }
 
-    .activity-log {
-      .item {
-        margin: 0.2em 0 !important
-      }
-      p {
-        background: rgba(#007bff, 0.8)
-      }
-    }
 
     .guidelines, .teacher-evaluation {
       ion-label {
@@ -134,28 +142,8 @@ ion-nav.teacher {
       }
     }
 
-    .teacher-evaluation {
-      .white-space-pre {
-        white-space: pre-line !important
-      }
-      .hide-effect {
-        animation: fade-in-effect 0.5s ease-in-out
-      }
-      @keyframes fade-in-effect {
-        0% {
-          opacity: 0
-        }
-        100% {
-          opacity: 1
-        }
-      }
-    }
-
-    .title-style {
-      font-family: roboto, Arial, Helvetica, sans-serif;
-      letter-spacing: 0.3em
-    }
-
+    .title-style { letter-spacing: 0.3em }
+    @media screen and (min-width: 544px){
     // height of the four boxes(stats,students comment etc..)
     .cover {
       height: calc(235.953px * 2) !important
@@ -167,59 +155,77 @@ ion-nav.teacher {
       height: calc(225.953px / 2) !important
     }
 
-    .outline-effect {
-      outline: 1px solid #e2e2e2 !important;
-    }
-
     .cover-slider {
       height: 225.95px !important
     }
+  }
 
     .list-hover-effect {
       .item {
-        padding-right: 3px !important
+        transition: all .1s ease-in-out!important;
       }
       .item:hover {
         background: rgba(#007bff, 0.1) !important;
         color: #007bff !important;
-        border-right: 3px solid #007bff !important;
-        padding-right: 0 !important;
       }
     }
 
-    .border-blue-effect {
-      border-bottom: 3px solid #007bff !important
+
+    .bg-light-red{ 
+      background: #f53d3d!important
     }
-    .border-red-effect {
-      border-bottom: 3px solid #f53d3d !important
-    }
-    .border-orange-effect {
-      border-bottom: 3px solid #FFA000 !important
-    }
-    .border-indigo-effect {
-      border-bottom: 3px solid #303F9F !important
-    }
-    .border-violet-effect {
-      border-bottom: 3px solid #512DA8 !important
-    }
-    .border-brown-effect {
-      border-bottom: 3px solid #5D4037 !important
-    }
-    .border-green-effect {
-      border-bottom: 3px solid #32db64 !important
-    }
-    .border-dark-effect {
-      border-bottom: 3px solid #222 !important
-    }
-    .border-1px {
-      border-width: 1px !important
+
+    .bg-silver{
+      background: rgba(#707070,0.73)!important
     }
 
   }
+
+
+  .white-space-pre {
+    white-space: pre-line !important
+  }
+
+  .hide-effect {
+    animation: fade-in-effect 0.5s ease-in-out
+  }
+
+  @keyframes fade-in-effect {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
+    }
+  }
+
+  .hover-icon-effect{
+    .text-effect, .icon-effect, svg{transition:all .2s ease-in-out!important}
+    &:hover{
+      .icon-effect,svg{
+        transform:scale(0.9,0.9)!important;
+      }
+      .text-effect{
+        color:#007bff!important
+      }
+    }
+  }
+  .font-arial{
+    font-family: Arial, Helvetica, sans-serif!important;
+  }
+  .my-0-2em {
+    margin: 0.2em 0 !important
+  } 
+  .opacity-0{opacity: 0!important}
 
   .line-height-1-8em {
     line-height: 1.8em !important
   }
+
+  .h-35{
+    height: 35%!important
+  }
+  
   .outline-effect {
     outline: 1px solid #e2e2e2 !important
   }

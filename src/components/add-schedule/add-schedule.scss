@@ -1,8 +1,7 @@
 .form-effect{
-  label{
-    transition: all 0.2s ease-in-out;
-    order: -1
-  }
+  label{transition: all 0.2s ease-in-out}
+
+  .label-first{order: -1!important}
   .focus-effect{
     transition: all 0.2s ease-in-out;
     &:focus{
