@@ -43,18 +43,19 @@
 
 
 
-
-        <ion-item class="menu-message" (click)="a.open('message')" *ngIf=" a.user.isLogin ">
-          <ion-icon name="chatboxes" item-start></ion-icon>
-          {{ 'MESSAGE' | translate }}
-        </ion-item>
-
-
-
-
         <ion-item class="menu-qna" (click)=" a.onClickContactAdmin() ">
           <ion-icon name="help-circle" color="primary" item-start></ion-icon>
           {{ 'QNA' | translate }}
+        </ion-item>
+
+        <ion-item class="menu-future-sessions" (click)="a.open('session-future')">
+          <ion-icon name="list-box" color="primary" item-start></ion-icon>
+          {{ 'RESERVATIONS LONG TEXT' | translate }}
+        </ion-item>
+
+        <ion-item class="menu-past-sessions" (click)="a.open('session-past')">
+          <ion-icon name="list-box" color="light" item-start></ion-icon>
+          {{ 'PASTS LONG TEXT' | translate }}
         </ion-item>
 
         
@@ -98,16 +99,6 @@
           {{ 'PAYMENT HISTORY' | translate }}
         </ion-item>
 
-        <ion-item class="menu-future-sessions" (click)="a.open('session-future')">
-          <ion-icon name="list-box" color="primary" item-start></ion-icon>
-          {{ 'RESERVATIONS LONG TEXT' | translate }}
-        </ion-item>
-
-        <ion-item class="menu-past-sessions" (click)="a.open('session-past')">
-          <ion-icon name="list-box" color="light" item-start></ion-icon>
-          {{ 'PASTS LONG TEXT' | translate }}
-        </ion-item>
-
 
 
 
@@ -122,6 +113,16 @@
           <ion-icon name="key" item-start></ion-icon>
           {{ 'CHANGE PASSWORD' | translate }}
         </ion-item>
+
+
+
+
+
+        <ion-item class="menu-message" (click)="a.open('message')" *ngIf=" a.user.isLogin ">
+          <ion-icon name="chatboxes" item-start></ion-icon>
+          {{ 'MESSAGE' | translate }}
+        </ion-item>
+
 
         <ion-item class="menu-settings" (click)="a.open('settings')">
           <ion-icon name="settings" item-start></ion-icon>

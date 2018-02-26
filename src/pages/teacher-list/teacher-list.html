@@ -111,15 +111,15 @@
         </ion-grid>
       </div>
 
-      <div class="loader-big" *ngIf=" loading ">
-        <ion-spinner></ion-spinner>
-        <span class="text px-3 py-2">
+      <div class="loader-big bg-orange" *ngIf=" loading ">
+        <ion-spinner color="white"></ion-spinner>
+        <span class="text px-3 py-2 white">
           {{ 'IN LOADING' | translate }}
         </span>
       </div>
 
 
-      <button class="show-more-teachers" (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers ">강사 더보기...</button>
+      <button class="show-more-teachers" (click)=" onClickShowMoreTeacher() " *ngIf=" ! noMoreTeachers && ! loading">강사 더보기...</button>
 
       <div class="mt-5 mx-md-5 mb-md-5 text-center" *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' " (click)=" onClickShowAllTeachers() ">
         더 이상 추천 강사가 없습니다. 옵션을 통해 더 많은 강사를 볼 수 있습니다.
