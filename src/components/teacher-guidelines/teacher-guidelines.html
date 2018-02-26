@@ -1,39 +1,86 @@
-<div class="guidelines bg-white m-0 p-0 h-100 outline-effect">
-  <div class="d-flex align-items-center justify-content-between bg-blue-60 white  mb-1 pl-5 pr-4  border border-top-0 border-right-0 border-left-0">
-      <h2 class="fs-110 m-0 py-4 fw-normal">Guideline and Tips</h2>
-      <button class="d-inline-block m-0 px-4 fs-90 float-right"
-       ion-button clear small color="white" (click)="a.open('how-to-use')">
-       More
-       <i class="fal fa-external-link-square fs-110 ml-3"></i>
-      </button>
+<div class="guidelines bg-white m-0 p-0 pb-5 h-100 outline-effect">
+  <div class="bg-blue-60 white mb-1 pl-5">
+      <h2  class="title-style ml-5 p-5 fs-3rem m-0 fw-light bg-blue text-center d-inline-block" ion-text color="white">GUIDELINES AND TIPS</h2>
   </div>
-  <ion-list text-wrap no-lines>
-    <ion-item class="p-0 m-0 px-5">
-        <h3 class="m-0 pt-4">Graded Teacher's must have <b>Promotion Schedule</b></h3>
-       <p class="black mt-3"> <b>1</b> schedule with <b>10mins</b> duration and <b>500points</b> </p>
-      <p class="black mt-3"> <b>1</b> schedule with <b>20mins</b> duration and <b>1000points</b> </p>
-    </ion-item>
-    <ion-item class="p-0 m-0 px-5 pointer" (click)="a.open('how-to-use')">
-      <div class="d-flex align-items-center">
+  <ion-grid class="pb-5">
+    <ion-row class="my-5" align-items-center  (click)="a.open('how-to-use')">
+      <ion-col class="mr-md-5 border border-left-0 border-top-0 border-bottom-0" text-center>
+          <i class="fal fa-info-circle fa-10x dimgrey"></i>
+      </ion-col>
+      <ion-col class="pl-md-5" col-md-8>
           <h3 class="m-0 pt-5 dodgerblue">Important Tips</h3>
-      </div>
-      <ol class="pl-5 m-0">
-        <li><p class="black mt-3">Teacher must add student using smart phone.</p></li>
-        <li><p class="black mt-3">There is no way to add friend in kakao with desktop software.</p></li>
-        <li><p class="black mt-3">Teacher without grade will not be shown if Recommended teacher is selected.</p></li>
-        <li><p class="black mt-3">But they will be shown if the option "Show all teachers" is selected.</p></li>
-      </ol>
-      <i class="fas fa-chevron-right dodgerblue" item-end></i>
-    </ion-item>
-    <ion-item class="p-0 m-0 px-5 pointer" (click)="a.open('how-to-use')">
-      <div class="d-flex align-items-center">
+          <p class="black mt-3">Teacher must add student using smart phone.</p>
+          <p class="black mt-3">There is no way to add friend in kakao with desktop software.</p>
+          <p class="black mt-3">Teacher without grade will not be shown if Recommended teacher is selected.</p>
+          <p class="black mt-3">But they will be shown if the option "Show all teachers" is selected.</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="my-5" align-items-center  (click)="a.open('how-to-use')">
+        <ion-col class="mr-md-5 border border-left-0 border-top-0 border-bottom-0" text-center>
+            <i class="fal fa-bullhorn fa-10x dimgrey"></i>
+        </ion-col>
+        <ion-col class="pl-md-5" col-md-8>
+          <h3  class="m-0 pt-5 dodgerblue" >Graded Teacher's must have <b>Promotion Schedule</b></h3>
+         <ul class="pl-5 m-0">
+            <li><p class="black mt-3"><b>1</b> schedule with <b>10mins</b> duration and <b>500points</b></p> </li>
+            <li><p class="black mt-3"><b>1</b> schedule with <b>20mins</b> duration and <b>1000points</b></p></li>
+          </ul>
+      </ion-col>
+    </ion-row>
+    <ion-row class="my-5" align-items-center (click)="a.open('how-to-use')">
+        <ion-col class="mr-md-5 border border-left-0 border-top-0 border-bottom-0" text-center>
+            <i class="fal fa-anchor fa-10x dimgrey"></i>
+        </ion-col>
+        <ion-col class="pl-md-5" col-md-8>
           <h3 class="m-0 pt-5 dodgerblue">Teacher's Guideline</h3>
-      </div>
-      <ol class="pl-5 m-0">
-        <li><p class="black mt-3">Nickname should be less than or equal to 8 letters.</p></li>
-        <li><p class="black mt-3">Profile image is best fit on 100px of width and 120px of height.</p></li>
-      </ol>
-      <i class="fas fa-chevron-right dodgerblue" item-end></i>
-    </ion-item>
-  </ion-list>
+          <ul class="pl-5 m-0">
+            <li><p class="black mt-3">Nickname should be less than or equal to 8 letters.</p></li>
+            <li><p class="black mt-3">Profile image is best fit on 100px of width and 120px of height.</p></li>
+          </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>
+
+
+
+<!-- <div class="guidelines bg-white m-0 p-0 h-100 outline-effect">
+    <div class="d-flex align-items-center justify-content-between bg-blue-60 white  mb-1 pl-5 pr-4  border border-top-0 border-right-0 border-left-0">
+        <h2 class="fs-110 m-0 py-4 fw-normal">Guideline and Tips</h2>
+        <button class="d-inline-block m-0 px-4 fs-90 float-right"
+         ion-button clear small color="white" (click)="a.open('how-to-use')">
+         More
+         <i class="fal fa-external-link-square fs-110 ml-3"></i>
+        </button>
+    </div>
+    <ion-list text-wrap no-lines>
+      <ion-item class="p-0 m-0 px-5">
+          <h3 class="m-0 pt-4">Graded Teacher's must have <b>Promotion Schedule</b></h3>
+         <p class="black mt-3"> <b>1</b> schedule with <b>10mins</b> duration and <b>500points</b> </p>
+        <p class="black mt-3"> <b>1</b> schedule with <b>20mins</b> duration and <b>1000points</b> </p>
+      </ion-item>
+      <ion-item class="p-0 m-0 px-5 pointer" (click)="a.open('how-to-use')">
+        <div class="d-flex align-items-center">
+            <h3 class="m-0 pt-5 dodgerblue">Important Tips</h3>
+        </div>
+        <ol class="pl-5 m-0">
+          <li><p class="black mt-3">Teacher must add student using smart phone.</p></li>
+          <li><p class="black mt-3">There is no way to add friend in kakao with desktop software.</p></li>
+          <li><p class="black mt-3">Teacher without grade will not be shown if Recommended teacher is selected.</p></li>
+          <li><p class="black mt-3">But they will be shown if the option "Show all teachers" is selected.</p></li>
+        </ol>
+        <i class="fas fa-chevron-right dodgerblue" item-end></i>
+      </ion-item>
+      <ion-item class="p-0 m-0 px-5 pointer" (click)="a.open('how-to-use')">
+        <div class="d-flex align-items-center">
+            <h3 class="m-0 pt-5 dodgerblue">Teacher's Guideline</h3>
+        </div>
+        <ol class="pl-5 m-0">
+          <li><p class="black mt-3">Nickname should be less than or equal to 8 letters.</p></li>
+          <li><p class="black mt-3">Profile image is best fit on 100px of width and 120px of height.</p></li>
+        </ol>
+        <i class="fas fa-chevron-right dodgerblue" item-end></i>
+      </ion-item>
+    </ion-list>
+  </div> -->
+  

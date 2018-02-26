@@ -26,7 +26,7 @@
                               {{ 'PRIMARY PHOTO' | translate }}
                             </button>
                             <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files"
-                                                [showUploadedFiles]="false"
+                                                [showUploadedFiles]="true"
                                                 (success)="onSuccessUploadPicture($event)">
                             </file-upload-widget>
                         </div>

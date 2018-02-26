@@ -24,17 +24,6 @@
     }
   }
 
-
-  .hover-effect-color{
-      transition: all .2s ease-in-out!important;
-      svg{ transition: all .2s ease-in-out!important }
-
-        &:hover{
-          svg{ transform: scale(0.9, 0.9) }
-        }
-  }
-
-
   .payment-information-history {
     ion-item {
       .item-inner {

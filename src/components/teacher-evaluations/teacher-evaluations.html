@@ -1,7 +1,9 @@
 <div class="teacher-evaluation outline-effect rounded m-0 mt-5">
-    <h2  class="title-style py-5 fs-3rem m-0 fw-light bg-blue text-center" ion-text color="white">RECENT EVALUATION</h2>
+    <div class="bg-blue-60 white mb-1 px-5">
+        <h2  class="title-style p-5 ml-4 fs-3rem m-0 fw-light bg-blue d-inline-block" ion-text color="white">RECENT EVALUTAION</h2>
+    </div>
     <ion-list class="m-0" no-lines>
-        <div class="m-0 p-3 py-5 " ion-item
+        <div class="m-0 px-5 py-5 " ion-item
           *ngFor="let teacher_comment of evaluations; let i=index">
           <ion-grid no-padding>
               <ion-row class="mx-4 my-3" align-items-end>
@@ -24,7 +26,7 @@
           </ion-grid>
           <div class="bg-light p-5 m-0 rounded my-3 mx-4 outline-effect">
             <div  class="line-h-1-8em m-0 p-0 my-3 fs-90" ion-text color="dark">
-              <span class="white-space-pre  hide-effect" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}} <span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
+              <span class="white-space-pre  hide-effect" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}}<span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
               <span class="white-space-pre  hide-effect" *ngIf="teacher_comment['more']">{{teacher_comment.comment}}</span>
             </div>
             <ng-container *ngIf="teacher_comment.comment.length>200">

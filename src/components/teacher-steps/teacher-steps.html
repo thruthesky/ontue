@@ -1,43 +1,97 @@
-<div class="bg-white m-0 p-0 h-100 outline-effect">
-  <h2 class="fs-110 m-0 py-4 white fw-normal bg-blue-60 text-center" ion-text color="white">Steps To Become a Teacher</h2>
-  <ion-list  class="p-0 m-0" text-white text-wrap no-lines>
-    <ion-item class="bg-blue-80 p-0 m-0 py-4 pl-4 pointer" (click)=" showKakaoInstall()">
-        <p class="white fs-110">1.Install Kakaotalk app. (
-            <span class="fs-lg" ion-text>THIS IS A MANDATORY REQUIREMENT
-            </span> )</p>
-            <button ion-button item-end clear>
-                <i class="fas fa-chevron-right white"></i>
-            </button>
-    </ion-item>
-    <ion-item class="bg-blue-60 p-0 m-0 py-4 pl-4 pointer" (click)=" a.open('register') ">
-        <p class="white fs-110" >2.Register</p>
-        <button  item-end ion-button clear>
-            <i class="fas fa-chevron-right white"></i>
-        </button>
-    </ion-item>
-    <ion-item class="bg-blue-80  p-0 m-0 py-4 pl-4 pointer" (click)=" a.open('teacher-curriculum-vitae') ">
-        <p class="white fs-110" >3.Complete profile update with all your data.</p>
-        <button item-end ion-button clear>
-            <i class="fas fa-chevron-right white"></i>
-        </button>
-    </ion-item>
-    <ion-item class="bg-blue-60  p-0 m-0 py-4 pl-4 pointer" (click)=" a.open('schedule-edit')">
-        <p class="white fs-110" >4.Add your schedule.</p>
-        <button item-end ion-button clear>
-            <i class="fas fa-chevron-right white"></i>
-        </button>
-    </ion-item>
-    <ion-item class="bg-blue-80 p-0 m-0 py-4 pl-4 pointer" (click)="a.open('settings-payment-info')">
-        <p class="white fs-110" >5.Update your payment information to receive your payment.</p>
-        <button item-end ion-button clear>
-            <i class="fas fa-chevron-right white"></i>
-        </button>
-    </ion-item>
-    <ion-item class="bg-blue-60 p-0 m-0 py-4 pl-4 pointer" (click)="a.onClickContactAdmin()">
-      <p class="white fs-110" >6.Contact to admin to get higher grade</p>
-      <button item-end ion-button clear>
-            <i class="fas fa-chevron-right white"></i>
-      </button>
-    </ion-item>
-  </ion-list>
+<div class="m-0 h-100 bg-white border p-3">
+  <h2 class="fs-4rem py-5  mt-5 fw-light font-arial text-center dodgerblue">Steps To Become a Teacher</h2>
+  <ion-grid  no-padding>
+    <ion-row class="pb-5 mb-5" align-items-stretch>
+        <ion-col class="my-3 hover-icon-effect" col-md-4>
+            <div  class="m-0 p-3 mr-3 h-100  pointer text-center"  (click)=" showKakaoInstall()">
+                <div class="dodgerblue fs-2rem fw-bold p-3 font-arial">Step 1</div>
+                <img class="icon-effect my-4 h-35" src="assets/img/student-adv/4.png">
+                <p class="my-3 fw-light text-effect line-height-1-8em ">Install Kakaotalk app.
+                <br><span class="fs-lg red">( THIS IS A MANDATORY REQUIREMENT )</span> </p>
+            </div>
+        </ion-col>
+        <ion-col class="my-3 hover-icon-effect" col-md-4>
+            <div  class="m-0 p-3 mx-3 h-100 pointer text-center" (click)=" a.open('register') ">
+                <div class="dodgerblue fs-2rem fw-bold p-3 font-arial">Step 2</div>
+                <i class="fal fa-list-alt fa-7x my-4" ion-text color="brown"></i>
+                <p class="my-3 fw-light  text-effect line-height-1-8em ">Register
+                <br><span class="fs-lg">( FILL OUT THE APPROPRIATE INFORMATION )</span></p>
+            </div>
+        </ion-col>
+        <ion-col class="my-3 hover-icon-effect" col-md-4>
+            <div  class="m-0 p-3 ml-3 h-100 pointer text-center" (click)=" a.open('teacher-curriculum-vitae') ">
+                <div class="dodgerblue fs-2rem fw-bold p-3 font-arial">Step 3</div>
+                <i class="fal fa-edit fa-7x my-4" ion-text color="amber"></i>
+                <p class="my-3 fw-light line-height-1-8em text-effect">Complete profile update with all your data.</p>
+            </div>
+        </ion-col>
+        <ion-col class="my-3 hover-icon-effect" col-md-4>
+            <div  class="m-0 p-3 mr-3 h-100 pointer text-center" (click)=" a.open('schedule-edit')">
+                <div class="dodgerblue fs-2rem fw-bold p-3 font-arial">Step 4</div>
+                <i class="fal fa-calendar-alt fa-7x my-4 darkorange"></i>
+                <p class="my-3 fw-light text-effect  line-height-1-8em ">Add your schedule.</p>
+            </div>
+        </ion-col>
+        <ion-col class="my-3 hover-icon-effect" col-md-4>
+            <div  class="m-0 p-3  mx-3 h-100 pointer text-center" (click)="a.open('settings-payment-info')">
+                <div class="dodgerblue fs-2rem fw-bold p-3 font-arial">Step 5</div>
+                <i class="fal fa-credit-card fa-7x my-4"  ion-text color="green"></i>
+                <p class="my-3 fw-light line-height-1-8em text-effect">Update your payment information to receive your pay.</p>
+            </div>
+        </ion-col>
+        <ion-col class="my-3 hover-icon-effect" col-md-4>
+            <div class="m-0 p-3 ml-3 h-100 pointer text-center" (click)="a.onClickContactAdmin()">
+                <div class="dodgerblue fs-2rem fw-bold p-3 font-arial">Step 6</div>
+                <i class="fal fa-phone square fa-7x my-4 dodgerblue"></i>
+                <p class="my-3 fw-light text-effect  line-height-1-8em ">Contact to admin to get higher grade</p>
+            </div>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>
+
+
+<!-- <div class="bg-white m-0 p-0 h-100 outline-effect">
+    <h2 class="fs-110 m-0 py-4 white fw-normal bg-blue-60 text-center" ion-text color="white">Steps To Become a Teacher</h2>
+    <ion-list  class="p-0 m-0" text-white text-wrap no-lines>
+      <ion-item class="bg-blue-80 p-0 m-0 py-4 pl-4 pointer" (click)=" showKakaoInstall()">
+          <p class="white fs-110">1.Install Kakaotalk app. (
+              <span class="fs-lg" ion-text>THIS IS A MANDATORY REQUIREMENT
+              </span> )</p>
+              <button ion-button item-end clear>
+                  <i class="fas fa-chevron-right white"></i>
+              </button>
+      </ion-item>
+      <ion-item class="bg-blue-60 p-0 m-0 py-4 pl-4 pointer" (click)=" a.open('register') ">
+          <p class="white fs-110" >2.Register</p>
+          <button  item-end ion-button clear>
+              <i class="fas fa-chevron-right white"></i>
+          </button>
+      </ion-item>
+      <ion-item class="bg-blue-80  p-0 m-0 py-4 pl-4 pointer" (click)=" a.open('teacher-curriculum-vitae') ">
+          <p class="white fs-110" >3.Complete profile update with all your data.</p>
+          <button item-end ion-button clear>
+              <i class="fas fa-chevron-right white"></i>
+          </button>
+      </ion-item>
+      <ion-item class="bg-blue-60  p-0 m-0 py-4 pl-4 pointer" (click)=" a.open('schedule-edit')">
+          <p class="white fs-110" >4.Add your schedule.</p>
+          <button item-end ion-button clear>
+              <i class="fas fa-chevron-right white"></i>
+          </button>
+      </ion-item>
+      <ion-item class="bg-blue-80 p-0 m-0 py-4 pl-4 pointer" (click)="a.open('settings-payment-info')">
+          <p class="white fs-110" >5.Update your payment information to receive your payment.</p>
+          <button item-end ion-button clear>
+              <i class="fas fa-chevron-right white"></i>
+          </button>
+      </ion-item>
+      <ion-item class="bg-blue-60 p-0 m-0 py-4 pl-4 pointer" (click)="a.onClickContactAdmin()">
+        <p class="white fs-110" >6.Contact to admin to get higher grade</p>
+        <button item-end ion-button clear>
+              <i class="fas fa-chevron-right white"></i>
+        </button>
+      </ion-item>
+    </ion-list>
+  </div> -->
+  
