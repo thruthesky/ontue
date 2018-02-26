@@ -163,6 +163,16 @@ https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/
       </div>
 ````
 
+## Loader
+````
+      <div class="loader-big bg-orange" *ngIf=" loading ">
+        <ion-spinner color="white"></ion-spinner>
+        <span class="text px-3 py-2 white">
+          {{ 'IN LOADING' | translate }}
+        </span>
+      </div>
+````
+
 ## Schedule Table
 
 ### Schedule Table Menu
