@@ -11,7 +11,7 @@
       <form (submit)="onSubmitUpdate()">
           <ion-grid class="curriculum-vitae mb-5 border" no-padding>
             <ion-row class="mt-5" justify-content-center align-items-stretch>
-              <ion-col  class="pr-5 mr-2" col-md-5 >
+              <ion-col  class="pr-md-5 pr-0 mr-md-2 mx-0 mb-5 mb-md-0" col-md-5  col-11>
                 <label class="pointer">
                         <div class="profile-user d-flex-column align-items-center justify-content-center h-100  border-stripes py-3"
                               (click)="fileUpload.onClickCamera()">
@@ -32,11 +32,11 @@
                         </div>
                   </label>
               </ion-col>
-              <ion-col col-5 class="pl-5 ml-2" col-md-5>
+              <ion-col col-5 class="pl-md-5 pl-0 ml-md-2 ml-0" col-md-5 col-11>
               <label class="pointer">
                     <div class="qr-mark  p-4 d-flex-column align-items-center justify-content-center h-100 border" *ngIf="a.user.isLogin">
                         <span *ngIf="qrmarks.length==0">Upload QR Mark</span>
-                        
+
                         <span *ngIf="qrmarks.length==0"><i class="fal fa-qrcode fa-5x my-3"></i></span>
 
                         <span  class="{{qrmarks.length?  'd-inline' : 'position-absolute'}} of-hidden size-100 my-4 d-flex align-items-center">
@@ -63,7 +63,7 @@
               </ion-col>
             </ion-row>
             <ion-row justify-content-center align-items-center>
-              <ion-col col-5 class="pr-5 mr-2">
+              <ion-col class="pr-md-5 pr-0 mr-md-2 mr-0" col-11  col-md-5 >
                 <div class="d-flex-column form-effect">
                     <input class="p-3 w-100 rounded-2 focus-effect" type="text" readonly [(ngModel)]="account.name" name="name" />
                     <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'TEACHER ID' | translate }}</label>
@@ -93,7 +93,7 @@
                     <label class="mt-5 mb-2 fs-90 fw-bold uppercase black">{{ 'MAJOR' | translate }}</label>
                 </div>
               </ion-col>
-              <ion-col col-5 class="pl-5 ml-2">
+              <ion-col  class="pl-md-5 pl-0 ml-md-2 ml-0" col-11 col-md-5>
                 <div class="d-flex-column form-effect position-relative">
                     <select class="p-3 w-100 rounded-2 bg-light h-40px border-box" [(ngModel)]="account.nationality" name="nationality">
                       <option value="">Select...</option>
