@@ -1,4 +1,4 @@
-<div class="cover-by-2 of-hidden bg-white outline-effect">
+<div class="cover-by-2 of-hidden bg-white outline-effect mb-5 mb-md-0">
     <p class="fs-90 m-0 py-3 bg-silver white text-center">Student Comments</p>
     <div class="list-hover-effect my-0-25em" no-lines>
      <ng-container *ngFor="let student_comment of student_comments; let i=index">
@@ -6,10 +6,10 @@
                 (click)="onClickCommentList(student_comment.idx_teacher)" 
                 *ngIf="i<3" no-padding>
             <ion-row  class="py-3 px-4" align-items-center justify-content-between>
-                <ion-col  class="d-flex align-items-center" col-md-4>
+                <ion-col  class="d-flex align-items-center" col-md-4 col-4>
                     <span class="size-40 rounded-circle of-hidden"><img [src]="a.checkPhotoURL(student_comment.teacher_photoURL)"/></span>
                 </ion-col>
-                <ion-col col-md>
+                <ion-col col-md col-8>
                     <div class="d-flex align-items-center">
                         <h3 class="fs-90 m-0 p-0">{{a.preTeacherName(student_comment.teacher_name)}}</h3>
                         <div class="ml-2 m-0 p-0">

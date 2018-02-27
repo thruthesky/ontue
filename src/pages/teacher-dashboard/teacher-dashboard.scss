@@ -12,16 +12,16 @@
 .hover-effect-color{
 
     transition: all .1s ease-in-out!important;
-    color:#FBC02D;
+    color:#707070;
 
     svg{ 
       transition: all .1s ease-in-out!important 
     }
       &:hover{
-        color:#007bff;
+        color:rgba(#007bff,0.7);
         background:rgba(#007bff,0.04)!important;
         svg{
-          color:#007bff;
+          color:rgba(#007bff,0.7);
           transform: scale(0.9, 0.9);
         }
       }

@@ -11,49 +11,63 @@
       <form (submit)="onSubmitUpdate()">
           <ion-grid class="curriculum-vitae mb-5 border" no-padding>
             <ion-row class="mt-5" justify-content-center align-items-stretch>
-              <ion-col  class="pr-5 mr-2" col-md-5 >
+              <ion-col  class="pr-md-5 pr-0 mr-md-2 mx-0 mb-5 mb-md-0" col-md-5  col-11>
                 <label class="pointer">
                         <div class="profile-user d-flex-column align-items-center justify-content-center h-100  border-stripes py-3"
                               (click)="fileUpload.onClickCamera()">
                             <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: 0.001; font-size: 10em;"
                                   type="file"
                                   (change)="fileUpload.onChangeFile($event)">
-                            <div class="profile-user-photo d-inline-block size-100 my-3 of-hidden rounded-50">
-                                <img src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
+                            <div class="profile-user-photo d-inline-block size-100 my-3 of-hidden rounded-50 d-flex align-items-center">
+                                <img  src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
                             </div>
                             <button type="button" class="btn submit fs-lg my-3" [class.skip]="files && files.length" (click)="fileUpload.onClickCamera()">
                               <i class="fa fa-camera mr-2"></i>
                               {{ 'PRIMARY PHOTO' | translate }}
                             </button>
                             <file-upload-widget #fileUploadWidget [title]="false" [fileSelectionButton]="false" [files]="files"
-                                                [showUploadedFiles]="true"
+                                                [showUploadedFiles]="false"
                                                 (success)="onSuccessUploadPicture($event)">
                             </file-upload-widget>
                         </div>
                   </label>
               </ion-col>
-              <ion-col col-5 class="pl-5 ml-2" col-md-5>
+              <ion-col col-5 class="pl-md-5 pl-0 ml-md-2 ml-0" col-md-5 col-11>
               <label class="pointer">
-                    <div class="qr-mark  p-4 d-flex-column align-items-center justify-content-center h-100 border" *ngIf="a.user.isLogin">
-                            Upload QR Mark
-                            <i class="fal fa-qrcode fa-5x my-3"></i>
-                                <file-upload-widget class="mb-4 mt-1" #fileUploadWidgetQRMARK
-                                  [title]="false"
-                                  [fileSelectionButton]="true"
-                                  [files]="qrmarks"
-                                  [showUploadedFiles]="showQRMark"
-                                  (success)="onSuccessUploadQRMark( $event )">
-                                </file-upload-widget>
-                      <div class="fs-lg text-center" text-wrap>
-                        QR Mark is required for teacher, open your mobile KakaoTalk > Edit Profile>
-                        My QR Code > Click Download.
-                      </div>
+                    <div class="qr-mark  p-4 d-flex-column align-items-center justify-content-center h-100 border" 
+                    *ngIf="a.user.isLogin" (click)="fileUploadQRMark.onClickCamera()">
+                        <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: 0.001; font-size: 10em;"
+                        type="file"
+                        (change)="fileUploadQRMark.onChangeFile($event)">  
+                      <span *ngIf="qrmarks.length==0">Upload QR Mark</span>
+
+                        <span *ngIf="qrmarks.length==0"><i class="fal fa-qrcode fa-5x my-3"></i></span>
+
+                        <span  class="{{qrmarks.length?  'd-inline' : 'position-absolute'}} of-hidden size-100 my-4 d-flex align-items-center">
+                          <file-upload-widget #fileUploadWidgetQRMARK
+                            [title]="false"
+                            [fileSelectionButton]="false"
+                            [files]="qrmarks"
+                            [showUploadedFiles]="showQRMark"
+                            (success)="onSuccessUploadQRMark( $event )">
+                          </file-upload-widget>
+                        </span>
+
+                        <div class="fs-lg text-center" text-wrap>
+                          QR Mark is required for teacher, open your mobile KakaoTalk > Edit Profile>
+                          My QR Code > Click Download.
+                        </div>
+
+                        <div class="mb-3 mt-3 px-4 py-3 bg-dodgerblue white">
+                            <i class="fal fa-qrcode mr-3"></i>
+                            {{qrmarks.length? 'UPDATE': 'UPLOAD'}} QR MARK
+                        </div>
                   </div>
                 </label>
               </ion-col>
             </ion-row>
             <ion-row justify-content-center align-items-center>
-              <ion-col col-5 class="pr-5 mr-2">
+              <ion-col class="pr-md-5 pr-0 mr-md-2 mr-0" col-11  col-md-5 >
                 <div class="d-flex-column form-effect">
                     <input class="p-3 w-100 rounded-2 focus-effect" type="text" readonly [(ngModel)]="account.name" name="name" />
                     <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'TEACHER ID' | translate }}</label>
@@ -79,11 +93,11 @@
                     <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'EDUCATION' | translate }}</label>
                 </div>
                 <div class="d-flex-column form-effect">
-                    <input class="p-3 w-100 rounded-2"   type="text" [(ngModel)]="account.major" name="major"/>
+                    <input class="p-3 w-100 rounded-2  focus-effect"   type="text" [(ngModel)]="account.major" name="major"/>
                     <label class="mt-5 mb-2 fs-90 fw-bold uppercase black">{{ 'MAJOR' | translate }}</label>
                 </div>
               </ion-col>
-              <ion-col col-5 class="pl-5 ml-2">
+              <ion-col  class="pl-md-5 pl-0 ml-md-2 ml-0" col-11 col-md-5>
                 <div class="d-flex-column form-effect position-relative">
                     <select class="p-3 w-100 rounded-2 bg-light h-40px border-box" [(ngModel)]="account.nationality" name="nationality">
                       <option value="">Select...</option>

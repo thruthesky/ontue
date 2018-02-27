@@ -1,8 +1,8 @@
-<div class="teacher-evaluation outline-effect rounded m-0 mt-5">
-    <div class="bg-blue-60 white mb-1 px-5">
+<div class="teacher-evaluation outline-effect  bg-white rounded m-0 mt-5">
+    <div class="bg-blue-60 white px-5">
         <h2  class="title-style p-5 ml-4 fs-3rem m-0 fw-light bg-blue d-inline-block" ion-text color="white">RECENT EVALUTAION</h2>
     </div>
-    <ion-list class="m-0" no-lines>
+    <ion-list class="mx-0 my-5 " no-lines>
         <div class="m-0 px-5 py-5 " ion-item
           *ngFor="let teacher_comment of evaluations; let i=index">
           <ion-grid no-padding>
@@ -36,7 +36,8 @@
         </div>
     </ion-list>
     <div class="pagination bg-blue p-3" text-center>
-      <page-navigator class="mx-auto" [no_of_total_items]=" pageOption['totalRecord'] "
+      <page-navigator class="evaluation-pagination mx-auto"
+                      [no_of_total_items]=" pageOption['totalRecord'] "
                       [no_of_items_in_one_page]=" pageOption['limitPerPage'] "
                       [no_of_pages_in_navigator]=" pageOption['limitPerNavigation'] "
                       [no_of_current_page]=" pageOption['currentPage'] "
