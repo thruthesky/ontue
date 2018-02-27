@@ -23,12 +23,18 @@ schedule-table-page {
   }
   [icon-name="radio-button-off"] {
     color: #88f;
+    cursor: pointer;
   }
   [icon-name="checkmark"] {
     color: grey;
   }
   [owner="me"] {
     color: #d00!important;
+    cursor: pointer;
+  }
+  [icon-name="heart"] {
+    color: #d00!important;
+    cursor: pointer;
   }
   .play-youtube {
     position: absolute;
