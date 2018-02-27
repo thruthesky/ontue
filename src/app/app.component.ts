@@ -197,7 +197,7 @@ export class MyApp {
     // this.a.open('schedule-table', { ID: 809 }); // one schedule, Imno4
     // this.a.open('schedule-table', { ID: 969 }); // many schedule
     // this.a.open('schedule-table', { ID: 806 }); /// tabetha
-    this.a.open('schedule-table', {ID: 990}); // teacher betty
+    // this.a.open('schedule-table', {ID: 990}); // teacher betty
     // this.a.open('schedule-table', { ID: 945 }); /// Teacher
     // this.a.open('schedule-table', { ID: 124 }); /// Kevin. Ontue Teacher.
     // this.a.open('schedule-table', { ID: 168 }); /// Gee. Ontue Teacher.
