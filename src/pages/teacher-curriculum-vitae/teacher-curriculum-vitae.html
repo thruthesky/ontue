@@ -34,8 +34,12 @@
               </ion-col>
               <ion-col col-5 class="pl-md-5 pl-0 ml-md-2 ml-0" col-md-5 col-11>
               <label class="pointer">
-                    <div class="qr-mark  p-4 d-flex-column align-items-center justify-content-center h-100 border" *ngIf="a.user.isLogin">
-                        <span *ngIf="qrmarks.length==0">Upload QR Mark</span>
+                    <div class="qr-mark  p-4 d-flex-column align-items-center justify-content-center h-100 border" 
+                    *ngIf="a.user.isLogin" (click)="fileUploadQRMark.onClickCamera()">
+                        <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey" style="opacity: 0.001; font-size: 10em;"
+                        type="file"
+                        (change)="fileUploadQRMark.onChangeFile($event)">  
+                      <span *ngIf="qrmarks.length==0">Upload QR Mark</span>
 
                         <span *ngIf="qrmarks.length==0"><i class="fal fa-qrcode fa-5x my-3"></i></span>
 
@@ -54,10 +58,10 @@
                           My QR Code > Click Download.
                         </div>
 
-                        <button class="mb-3 mt-3 px-4 py-3 bg-dodgerblue white">
+                        <div class="mb-3 mt-3 px-4 py-3 bg-dodgerblue white">
                             <i class="fal fa-qrcode mr-3"></i>
                             {{qrmarks.length? 'UPDATE': 'UPLOAD'}} QR MARK
-                        </button>
+                        </div>
                   </div>
                 </label>
               </ion-col>

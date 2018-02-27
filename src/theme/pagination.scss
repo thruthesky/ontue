@@ -10,19 +10,19 @@
 .page-link {
   position: relative;
   display: block;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
   color: #007bff;
   background-color: #fff;
-  // border: 1px solid #dee2e6;
+  border: 1px solid #dee2e6;
 }
 
 .page-link:hover {
   color: #0056b3;
   text-decoration: none;
   background-color: #e9ecef;
-  // border-color: #dee2e6;
+  border-color: #dee2e6;
 }
 
 .page-link:focus {
@@ -49,8 +49,8 @@
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: rgba(white,0.4);
-  // border-color: #007bff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .page-item.disabled .page-link {
@@ -91,11 +91,4 @@
 .pagination-sm .page-item:last-child .page-link {
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
-}
-
-.page-itempage-indicator{
-  .page-link{
-    border-bottom-left-radius: 0.3rem;
-    border-top-left-radius: 0.3rem;
-  }
 }
