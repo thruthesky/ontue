@@ -9,7 +9,10 @@
                         </ion-col>
                         <ion-col col-md-4 col-3>
                             <h3 class="fs-90 m-0 p-0">{{ a.preTeacherName(reservation.teacher_name) }}</h3>
-                            <div  class="fs-lg m-0 p-0 mt-1 fw-light" [innerHtml]="getFirstTwo(reservation.class_begin)+':'+getLastTwo(reservation.class_begin)"></div>
+                            <div  class="fs-lg m-0 p-0 mt-1 fw-light" 
+                                [innerHtml]="getFirstTwo(reservation.class_begin)+':'
+                                +getLastTwo(reservation.class_begin)">
+                            </div>
                         </ion-col>
                         <ion-col text-right col-md-4 col-3>
                             <span class="fs-lg m-0 p-0 fw-light">{{ reservation.display_date }}</span>
