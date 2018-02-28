@@ -7,7 +7,7 @@
     <section class="page-header">
       <div>{{ "DAY OFF" | translate }}</div>
     </section>
-    <section class="page-desc">
+    <section class="page-desc bg-lightgrey">
       <div>Creating Day Off will prevent student to reserve on the date specified.</div>
       <div>If there is already a reservation on the date you want to make day off, you may still add it.</div>
       <div>You can still teach on the reserve class even you already set it as your day off.</div>
@@ -41,8 +41,8 @@
             <div class="p-5 bg-white border w-100">{{ preDate(dayoff.date)}}</div>
           </ion-col>
         </ion-row>
-        <ion-row *ngIf="dayoffs.length">
-          <div class="p-5 text-center">
+        <ion-row *ngIf="!dayoffs.length">
+          <div class="p-5 mx-auto">
           <i class="fa fa-spinner fa-spin fs-2rem"></i> Loading...
           </div>
         </ion-row>
