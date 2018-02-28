@@ -37,14 +37,14 @@
       <ion-item>
         <ion-checkbox [(ngModel)]="show_refund_in_progress" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
         <ion-label>
-          
+
           {{ 'DISPLAY SESSION IN PROGRESS' | translate }}
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-checkbox [(ngModel)]="show_refunded" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
         <ion-label>
-          
+
           {{ 'DISPLAY REFUNDED SESSION' | translate }}
         </ion-label>
       </ion-item>
@@ -119,8 +119,8 @@
     </span>
   </div>
 
-  
-  
+
+
   <div class="books my-5" *ngIf=" books.length ">
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr class="" text-center style="height: 4em;">
@@ -205,26 +205,6 @@
                   </ng-template>
                 </ng-container>
 
-
-                <!--/-->
-
-                <!-- <ng-container *ngIf=" rejected( book ) ">
-                <span class="alert alert-warning">Rejected</span>
-              </ng-container>
-
-              <span class="darkred" *ngIf=" refunded(book) ">Refunded</span>
-
-
-              <ng-container *ngIf=" ! rejected( book ) ">
-
-                <ng-container *ngIf=" ! refunded( book ) ">
-                  <button (click)=" onClickRefund( book ) " *ngIf=" refundable(book) && !refund_request(book) ">Refund</button>
-                  <button class="primary" (click)=" onClickRefund( book ) " *ngIf="refund_request(book)">Accept</button>
-                  <button class="dark" (click)=" onClickRejectRefundRequest( book ) " *ngIf="refund_request(book)">Reject</button>
-                </ng-container>
-              </ng-container> -->
-
-
               </div>
 
               <div class="student buttons d-flex-column mr-2 text-center" text-center *ngIf=" a.isStudent ">
@@ -249,6 +229,11 @@
               <span class="pl-5" *ngIf=" book.process ">
                 <i class="fal fa-spinner fa-spin"></i>
               </span>
+              <button [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' " (click)="onClickReady( book )">
+                <!--<i class="fal fa-times"></i>-->
+                <span class="white" *ngIf=" book.ready "><i class="fal fa-spinner fa-spin"></i></span>
+                <span class="pl-2 white">{{ 'READY' | translate }}</span>
+              </button>
             </div>
 
           </section>

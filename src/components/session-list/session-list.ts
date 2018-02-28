@@ -320,4 +320,26 @@ export class SessionList {
     createCommentModal.present();
   }
 
+  onClickReady( book ) {
+    if ( book.stamp_checked > 0 ) return;
+
+    book['ready'] = true;
+    console.log(book);
+    let data = {
+      idx: book.idx,
+      idx_teacher: book.idx_teacher
+    };
+    console.log(data);
+    this.a.lms.session_stamp_checked(data).subscribe(re => {
+      console.log(re);
+      book['stamp_checked'] = 1;
+      book['ready'] = false;
+    }, e => {
+      book['ready'] = false;
+      this.a.alert(e)
+    });
+
+
+  }
+
 }

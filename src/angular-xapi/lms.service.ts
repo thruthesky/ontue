@@ -450,4 +450,10 @@ export class LMSService extends Base {
     return this.x.post(req)
   }
 
+  session_stamp_checked( req ) {
+    req['route'] = 'lms.session_stamp_checked';
+    req['session_id'] = this.user.sessionId;
+    return this.x.post(req)
+  }
+
 }
