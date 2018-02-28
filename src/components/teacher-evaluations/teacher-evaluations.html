@@ -1,25 +1,25 @@
 <div class="teacher-evaluation outline-effect  bg-white rounded m-0 mt-5">
-    <div class="bg-blue-60 white px-5">
-        <h2  class="title-style p-5 ml-4 fs-3rem m-0 fw-light bg-blue d-inline-block" ion-text color="white">Recent Evaluation</h2>
+    <div class="bg-blue-60 white px-md-5">
+        <h2  class="title-style p-5 ml-md-4 fs-3rem m-0 fw-light bg-blue d-md-inline-block" ion-text color="white" text-center text-md-left>Recent Evaluation</h2>
     </div>
     <ion-list class="mx-0 my-5 " no-lines>
         <div class="m-0 px-5 py-5 " ion-item
           *ngFor="let teacher_comment of evaluations; let i=index">
           <ion-grid no-padding>
               <ion-row class="mx-4 my-3" align-items-end>
-                  <ion-col *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']">
+                  <ion-col class="my-3 my-md-0" *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']" text-md-left text-center col-12 col-md-6>
                         <span class=" size-80 of-hidden mr-2 d-inline-block rounded-2" *ngIf="teacher_comment['teacher_photoURL']">
                           <img src="{{teacher_comment['teacher_photoURL']}}">
                         </span>
                         <span class=" size-80 of-hidden mr-4 d-inline-block rounded-2">
                           <img  src="{{a.checkPhotoURL(teacher_comment['student_photoURL'])}}">
                         </span>
-                        <h2 class="fs-2rem fw-bold m-0  d-inline-block" ion-text color="blue">
+                        <h2 class="fs-2rem fw-bold mx-0  d-md-inline-block my-3 my-md-0" ion-text color="blue">
                           {{ a.preTeacherName(teacher_comment.teacher_name) }}
                           <span class="fw-light fs-lg ml-3 black">{{preDate(teacher_comment['date'])}}</span>
                         </h2>
                   </ion-col>
-                  <ion-col text-right>
+                  <ion-col text-md-right text-center col-12 col-md-6>
                         <span class="mr-3" ion-text color="blue">#{{(i+1) + ((commentCount - 1) * pageOption['limitPerPage'])}}</span>
                   </ion-col>
               </ion-row>

@@ -11,14 +11,14 @@
       <form (submit)="onSubmitUpdate()">
         <ion-grid class="curriculum-vitae mb-5 border" no-padding>
           <ion-row class="mt-5" justify-content-center align-items-stretch>
-            <ion-col class="pr-md-5 pr-0 mr-md-2 mx-0 mb-5 mb-md-0" col-md-5 col-11>
-              <div class="p-relative of-hidden pointer">
+            <ion-col class="pr-md-5 pr-0 mr-md-2 mx-0 mb-5 mb-md-0 " col-md-5 col-11>
+              <div class="p-relative of-hidden pointer  h-100  border-stripes d-flex  align-items-center justify-content-center">
                 <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey"
                        style="opacity: 0.001; font-size: 15em;"
                        type="file"
                        (change)="fileUpload.onChangeFile($event)">
                 <div
-                  class="profile-user d-flex-column align-items-center justify-content-center h-100  border-stripes py-3"
+                  class="profile-user d-flex-column align-items-center justify-content-center py-3"
                   (click)="fileUpload.onClickCamera()">
 
                   <div
@@ -158,16 +158,17 @@
               </div>
             </ion-col>
           </ion-row>
-          <ion-row class="mt-5 " justify-content-center>
+          <ion-row class="mt-5" justify-content-center>
             <ion-col col-10>
               <div class="m-0 p-0">
                 <ion-label class="bg-blue white text-center fs-white p-3 m-0">{{ 'GREETINGS' | translate }}</ion-label>
-                <ion-textarea class="outline-effect bg-light px-3 py-2" rows="8" [(ngModel)]="account.introduction"
-                              name="introduction"></ion-textarea>
+                <textarea class="bg-light px-3 py-2  input-effect border w-100" rows="8" [(ngModel)]="account.introduction"
+                              name="introduction">
+                </textarea>
               </div>
-              <div class="my-4" text-center>
-                <button class="my-4" outline rounded-circle ion-button color="primary">{{ 'UPDATE BUTTON' | translate
-                  }}
+              <div class="my-5" text-center>
+                <button ion-button class="my-4" outline block>
+                  {{ 'UPDATE BUTTON' | translate }}
                 </button>
               </div>
             </ion-col>

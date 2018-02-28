@@ -4,7 +4,7 @@
             <ng-container *ngFor="let reservation of reservations; let i=index">
                 <ion-grid class="pointer item" *ngIf="i<3" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })" no-padding>
                     <ion-row class="px-4 py-3" align-items-center justify-content-center>
-                        <ion-col class="d-flex align-items-center" col-md-4 col-2>
+                        <ion-col class="d-flex align-items-center" col-md-4 col-3>
                             <span class="size-40 rounded-circle of-hidden"><img  [src]="a.checkPhotoURL(reservation.teacher_photoURL)"/></span>
                         </ion-col>
                         <ion-col col-md-4 col-3>

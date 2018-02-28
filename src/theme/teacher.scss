@@ -132,6 +132,39 @@ ion-nav.teacher {
   }
 
   ion-content {
+
+    /***states**/
+    @media screen and (min-width: 544px){
+
+      .cover {
+        height: calc(235.953px * 2) !important
+      }
+      .cover-by-2 {
+        height: 225.953px !important
+      }
+      .cover-by-4 {
+        height: calc(225.953px / 2) !important
+      }
+  
+      .cover-slider {
+        height: 225.95px !important
+      }
+  
+    }
+  
+    @media screen and (max-width: 544px){
+      .border-sm-0{
+        border: none!important;
+      }
+      
+      .grid-order-first{
+        order: -1;
+      }
+    }
+
+        /***end of states**/
+
+
     background-color: #f9f9f9 !important;
     .scroll-content {
       overflow: overlay !important
@@ -149,23 +182,6 @@ ion-nav.teacher {
         padding: 0 !important
       }
     }
-
-    @media screen and (min-width: 544px){
-    // height of the four boxes(stats,students comment etc..)
-    .cover {
-      height: calc(235.953px * 2) !important
-    }
-    .cover-by-2 {
-      height: 225.953px !important
-    }
-    .cover-by-4 {
-      height: calc(225.953px / 2) !important
-    }
-
-    .cover-slider {
-      height: 225.95px !important
-    }
-  }
 
     .list-hover-effect {
       .item {
@@ -186,6 +202,16 @@ ion-nav.teacher {
       background: rgba(#707070,0.73)!important
     }
 
+  }
+
+  .input-effect{
+      transition:all .2s ease-in-out;
+      border-bottom-left-radius: 2px!important;
+      border-bottom-right-radius: 2px!important;
+      &:focus{
+      border: 1px solid #007bff!important;
+      background:white!important
+      }
   }
 
 
@@ -256,6 +282,7 @@ ion-nav.teacher {
     background-color:#e53935
   }
 
+
   .pagination {
     .evaluation{
 
@@ -280,6 +307,6 @@ ion-nav.teacher {
 
       }
     }
-}
+  }
 
 }
