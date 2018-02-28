@@ -1,6 +1,6 @@
 ion-nav.teacher {
   font-size: 16px !important;
-  //utilities,can be used all over teahers page
+
   .align-items-center {
     align-items: center !important
   }
@@ -11,6 +11,7 @@ ion-nav.teacher {
   .align-items-stretch {
     align-items: stretch !important
   }
+
   .mx-minus-15px{
     margin: 0 -15px!important
   }
@@ -26,24 +27,31 @@ ion-nav.teacher {
   .mx-minus-10px{
     margin: 0 -10px!important
   }
+
   .bg-light {
     background-color: #f9f9f9 !important
   }
+
   .bg-blue {
     background-color: #007bff !important
   }
+
   .bg-blue-80 {
     background-color: rgba(#007bff, 0.80) !important
   }
+
   .bg-blue-60 {
     background-color: rgba(#007bff, 0.60) !important
   }
+
   .bg-blue-40 {
     background-color: rgba(#007bff, 0.45) !important
   }
+
   .bg-secondary-yellow {
     background: rgba(#FBC02D,0.9) !important
   }
+
   .secondary-yellow{
     color:#FBC02D !important
   }
@@ -51,30 +59,39 @@ ion-nav.teacher {
   .font-opacity-0-6{
     color: rgba(black,0.8)!important
   }
+
   .bg-darkorange {
     background-color: #F57C00!important
   }
+
   .bg-muted {
     background: rgba(#FFF, 0.3) !important
   }
+
   .font-em-0-75 {
     font-size: 0.75em !important
   }
+
   .font-em-0-85 {
     font-size: 0.85em !important
   }
+
   .fs-4em {
     font-size: 4em !important
   }
+
   .fs-9em {
     font-size: 9em !important
   }
+
   .text-nowrap {
     white-space: nowrap !important
   }
+
   .flex-column {
     flex-direction: column !important
   }
+
   .fw-light {
     font-weight: lighter !important
   }
@@ -82,9 +99,11 @@ ion-nav.teacher {
   .fw-normal{
     font-weight: normal!important
   }
+
   .line-h-1-8em {
     line-height: 1.8em !important
   }
+
   .px-1px {
     padding: 0 1px !important
   }
@@ -133,7 +152,11 @@ ion-nav.teacher {
 
   ion-content {
 
-    /***states**/
+    background-color: #f9f9f9 !important;
+    .scroll-content {
+      overflow: overlay !important
+    }
+
     @media screen and (min-width: 544px){
 
       .cover {
@@ -161,15 +184,6 @@ ion-nav.teacher {
         order: -1;
       }
     }
-
-        /***end of states**/
-
-
-    background-color: #f9f9f9 !important;
-    .scroll-content {
-      overflow: overlay !important
-    }
-
 
     .guidelines, .teacher-evaluation {
       ion-label {
@@ -292,7 +306,7 @@ ion-nav.teacher {
 
       .page-link {
         border:none;
-        padding: 0.75rem 1rem;
+        padding: 1rem 1.25rem;
       }
 
       .page-item.active {
