@@ -107,21 +107,22 @@
 
         <div class="group default">
           <ng-container *ngIf=" a.user.isLogout ">
-            <div class="" (click)=" a.open('login') ">로그인</div>
-            <div class="" (click)=" a.open('register') ">회원가입</div>
+            <!-- <div class="" (click)=" a.open('login') ">로그인</div>
+            <div class="" (click)=" a.open('register') ">회원가입</div> -->
             <div (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">무료체험</div>
             <div class="" (click)=" a.open('schedule-table') ">전체시간표</div>
-            <div (click)=" a.open('student-adv') ">월 1만원</div>
+            <div (click)=" a.open('student-adv') ">월 20회 1만원</div>
+            <div (click)=" a.open('student-adv') ">질문하기</div>
           </ng-container>
           <ng-container *ngIf=" a.user.isLogin ">
+            <div class="" (click)=" a.open('schedule-table') ">전체시간표</div>
             <ng-container *ngIf=" ! a.newUser ; else NewUser">
               <!-- <div class="" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div> -->
-              <div class="" (click)=" a.open('schedule-table') ">전체시간표</div>
               <div class="" (click)=" a.open('teacher-list') ">선생님목록</div>
             </ng-container>
             <ng-template #NewUser>
-              <div class="" (click)=" a.open('help') ">{{ "MUST READ" | translate }}</div>
-              <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
+              <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">무료체험</div>
+              <!-- <div class="" (click)=" a.open('help') ">필독사항</div> -->
             </ng-template>
             <div class="" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
             <div class="" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
@@ -190,13 +191,13 @@
 
 
       <ion-col *ngIf=" ! a.newUser ">
-            <div class="item header-teacher-list" (click)="a.open( 'schedule-table' )">
-              <div class="icon">
-                <i class="fal fa-calendar-alt"></i>
-              </div>
-              <div class="text">전체시간표</div>
-            </div>
-          </ion-col>
+        <div class="item header-teacher-list" (click)="a.open( 'schedule-table' )">
+          <div class="icon">
+            <i class="fal fa-calendar-alt"></i>
+          </div>
+          <div class="text">전체시간표</div>
+        </div>
+      </ion-col>
 
       <ion-col *ngIf=" ! a.newUser ">
         <div class="item header-teacher-list" (click)="a.open( 'teacher-list' )">
