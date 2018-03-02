@@ -38,7 +38,7 @@
                 <div class="mx-0 py-0"> ({{ timezone_offset > 0 ? "+" + timezone_offset : timezone_offset }}) {{ timezone_name }}</div>
             </ion-col>
             <ion-col>
-                <div class="mx-0 py-0"> {{ time }}</div>
+                <div class="mx-0 py-0 text-center text-md-left"> {{ time }}</div>
             </ion-col>
             <ion-col col-md-3>
                 <button class="update-tz p-0 m-0 pointer bg-white" ion-text color="blue" (click)="dismiss(); a.open('settings')">Update Timezone</button>
@@ -46,21 +46,21 @@
         </ion-row>
     </ion-grid>
 
-    <ion-grid no-padding>
+    <ion-grid class="mt-2 mt-md-0" no-padding>
         <ion-row class="form-effect  py-2" align-items-center>
-            <ion-col>
+            <ion-col class="d-none d-md-block">
                     <div>Start Time</div>
             </ion-col>
             <ion-col class="d-flex">
                 <label class="d-flex align-items-center">
-                  <span class="mr-1">Hour</span>
+                  <span class="mr-2 mr-md-1">Hour</span>
                 <input class="focus-effect w-20 p-2 rounded-2" placeholder="0-23" type="text" name="class_begin_hour" [(ngModel)]="data.class_begin_hour">
-                <span class="mx-1 fw-bold">:</span>
-                  <span class="mr-1"> Min</span>
+                <span class="mx-2 mx-md-1 fw-bold">:</span>
+                  <span class="mr-2 mr-md-1"> Min</span>
                 <input class="focus-effect w-20 p-2 rounded-2" placeholder="0-60" type="text" name="class_begin_minute" [(ngModel)]="data.class_begin_minute">
               </label>
             </ion-col>
-            <ion-col col-md-3>
+            <ion-col col-md-3 col-4>
                     <div class="fs-lg"> Ex) 20:30=8:30pm, 11:30= 11:30am </div>
             </ion-col>
         </ion-row>
@@ -68,7 +68,7 @@
 
         <ion-grid no-padding>
             <ion-row class="form-effect py-2" align-items-center>
-                <ion-col>
+                <ion-col class="d-none d-md-block">
                         <div> Duration</div>
                 </ion-col>
                 <ion-col>
@@ -78,7 +78,7 @@
                                 <input class="focus-effect w-100 p-2 rounded-2"  type="text"  name="duration" [(ngModel)]="data.duration">
                             </ion-col>
                             <ion-col  col-md-5 pull-md-7>
-                                <div class="h-100">Min</div>
+                                <div class="h-100 ml-3 ml-md-0">Min</div>
                             </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -90,8 +90,8 @@
         </ion-grid>
 
         <ion-grid no-padding>
-                <ion-row class="form-effect border-bottom py-2" align-items-center>
-                    <ion-col>
+                <ion-row class="form-effect border-bottom pt-2 pb-3 pb-md-2" align-items-center>
+                    <ion-col class="d-none d-md-block">
                             <div> Points</div>
                     </ion-col>
                     <ion-col>
@@ -101,7 +101,10 @@
                                     <input class="focus-effect w-100 p-2 rounded-2" type="text" name="point" [(ngModel)]="data.point">
                                 </ion-col>
                                 <ion-col col-md-5 pull-md-7 >
-                                    <div class="h-100">Quantity</div>
+                                    <div class="h-100 ml-3 ml-md-0">
+                                       <span class="d-block d-md-none">Points</span>
+                                       <span class="d-none d-md-block">Quantity</span>
+                                    </div>
                                 </ion-col>
                             </ion-row>
                         </ion-grid>
@@ -116,7 +119,7 @@
                 <ion-row class="form-effect py-3" align-items-stretch>
                     <ion-col col-12 col-md-6  text-center>
                         <div class="d-flex-column align-items-center justify-content-center h-100">
-                            <input class="focus-effect p-2 rounded-2 mt-2"  type="text" name="prere" [(ngModel)]="data.prere">
+                            <input class="focus-effect p-2 rounded-2 mt-2 mb-3 mb-0"  type="text" name="prere" [(ngModel)]="data.prere">
                             <label class="label-first">Student Email</label>
                         </div>
                   </ion-col>
@@ -129,50 +132,50 @@
             </ion-grid>
 
         <ion-grid no-padding>
-          <ion-row class="pb-3 pt-2 border-bottom " justify-content-between text-center>
-            <ion-col>
+          <ion-row class="pb-3 border-bottom " justify-content-between text-center>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="sunday" [(ngModel)]="data.sunday" (change)="allDays=false">
                         <div class="px-3 border py-2 mr-1 pointer">Sun</div>
                   </label>
             </ion-col>
-            <ion-col>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="monday" [(ngModel)]="data.monday" (change)="allDays=false">
                         <div class="px-3 border py-2 mx-1 pointer">Mon</div>
                   </label>
             </ion-col>
-            <ion-col>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="tuesday" [(ngModel)]="data.tuesday" (change)="allDays=false">
                         <div class="px-3 border py-2 mx-1 pointer">Tue</div>
                   </label>
             </ion-col>
-            <ion-col>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="wednesday" [(ngModel)]="data.wednesday" (change)="allDays=false">
                         <div class="px-3 border py-2 mx-1 pointer">Wed</div>
                   </label>
             </ion-col>
-            <ion-col>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="thursday" [(ngModel)]="data.thursday" (change)="allDays=false">
                         <div class="px-3 border py-2 mx-1 pointer">Thu</div>
                   </label>
             </ion-col>
-            <ion-col>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="friday" [(ngModel)]="data.friday" (change)="allDays=false">
                         <div class="px-3 border py-2 mx-1 pointer">Fri</div>
                   </label>
             </ion-col>
-            <ion-col>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="saturday" [(ngModel)]="data.saturday" (change)="allDays=false">
                         <div class="px-3 border py-2 mx-1 pointer">Sat</div>
                   </label>
             </ion-col>
-            <ion-col>
+            <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect" type="checkbox" name="allDays" [(ngModel)]="allDays" (click)="onClickAllDays()">
                         <div class="px-3 border py-2 ml-1 pointer">All</div>
