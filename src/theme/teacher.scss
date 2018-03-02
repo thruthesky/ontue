@@ -176,7 +176,14 @@ ion-nav.teacher {
       .d-md-table{
         display: table!important;
       }
-  
+
+      .w-md-50{
+        width: 50%!important
+      }
+
+      .d-md-flex-row{
+        flex-direction: row!important;
+      }
     }
   
     @media screen and (max-width: 544px){
@@ -282,8 +289,8 @@ ion-nav.teacher {
     line-height: 1.8em !important
   }
 
-  .h-35{
-    height: 35%!important
+  .h-7em{
+    height: 7em!important
   }
   
   .outline-effect {
