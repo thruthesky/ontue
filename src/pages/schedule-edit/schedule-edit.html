@@ -42,14 +42,14 @@
           </ion-col>
           <ion-col>
             <div class="py-4 d-flex justify-content-between h-100">
-              <div class="add-schedule rounded h-100 w-100 my-0 ml-md-4 mr-2 bg-light-green white pointer p-3 p-md-0"
+              <div class="add-schedule rounded h-100 w-100 my-0 ml-md-4 mr-md-2 mr-3 bg-light-green white pointer p-3 p-md-0"
                 *ngIf="data" (click)='onClickAddSchedule()'>
                <div class="fs-2rem fw-light h-100 d-flex-column align-items-center justify-content-center">
                   <i class="fal fa-calendar-plus fa-3x mb-4"></i>
                   Add Schedule
                </div> 
               </div>
-              <div class="add-dayoff rounded h-100 w-100 m-0 ml-md-3 bg-light-orange white pointer  p-3 p-md-0" 
+              <div class="add-dayoff rounded h-100 w-100 m-0 ml-md-3 ml-2 bg-light-orange white pointer  p-3 p-md-0" 
                *ngIf="data" (click)="a.open('dayoff')">
                <div class="fs-2rem fw-light  h-100 d-flex-column align-items-center justify-content-center">
                   <i class="fal fa-calendar-minus fa-3x mb-4"></i>

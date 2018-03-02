@@ -4,7 +4,7 @@
   <ion-content>
     <div id="settings-payment" class="page bg-white outline-effect">
       <hook-content-top></hook-content-top>
-      <div class="my-5 pb-3">
+      <div class="m-5 py-3">
           <h1 class="fs-3rem fw-bold"  text-center ion-text color="blue">{{ "PAYMENT SETTING" | translate }}</h1>
           <p class="fs-90" text-center>Please Choose a Payment Method and Fill Out the Appropriate Information</p>
       </div>
@@ -40,7 +40,7 @@
             </ion-row>
           </ion-grid>
       <section class="page-body mt-5">
-        <ion-grid class="payment-information" no-padding>
+        <ion-grid class="payment-information  px-5" no-padding>
           <ion-row justify-content-center>
             <ion-col class="pr-md-5 mr-md-2"  col-md-5 col-12 >
               <div class="d-flex-column form-effect">
@@ -98,7 +98,7 @@
           </ion-row>
         </ion-grid>
 
-        <div class="m-5 p-5" text-center>
+        <div class="m-md-5 m-0 p-5" text-center>
             <button class="fw-bold" ion-button outline color="blue" round (click)="onClickSubmit()">UPDATE</button>
         </div>
 
@@ -108,7 +108,7 @@
         <button ion-button (click)="onClickShowHistory()">Show History</button>
         <hr>
 
-        <table class="fs-lg text-center w-100 my-5">
+        <table class="fs-lg text-center w-100 my-5 d-none d-md-table">
             <thead>
               <tr>
                 <th class="py-3 border hide-effect bg-blue white">Date/Time Changed</th>
