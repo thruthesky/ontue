@@ -22,7 +22,7 @@
     You can add schedule.
   </div> -->
 
-  <div class="content h-100 d-flex-column align-items-stretch justify-content-between px-5">
+  <div class="content h-100 d-flex-column align-items-center justify-content-stretch px-5">
 
         <div class="border-bottom py-3">
             <div class="m-0 p-0 ">Promo Schedule Graded Teacher must have.</div>
@@ -114,14 +114,16 @@
 
             <ion-grid no-padding>
                 <ion-row class="form-effect py-3" align-items-stretch>
-                    <ion-col text-center>
+                    <ion-col col-12 col-md-6  text-center>
                         <div class="d-flex-column align-items-center justify-content-center h-100">
                             <input class="focus-effect p-2 rounded-2 mt-2"  type="text" name="prere" [(ngModel)]="data.prere">
                             <label class="label-first">Student Email</label>
                         </div>
                   </ion-col>
-                    <ion-col class="border border-darkorange">
-                            <div class="h-100 p-3 pr-0 darkorange d-flex align-items-center justify-content-center"> You can make the schedule limited to specific student, by adding the student email here. </div>
+                    <ion-col col-12 col-md-6 class="border border-darkorange">
+                            <div class="h-100 p-3 pr-0 darkorange d-flex align-items-center justify-content-center">
+                               You can make the schedule limited to specific student, by adding the student email here. 
+                              </div>
                     </ion-col>
                 </ion-row>
             </ion-grid>
