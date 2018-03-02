@@ -169,7 +169,7 @@
 , "RESERVE SESSION": "수업예약"
 , "INBOX": "받은 쪽지 함"
 , "SENT": "보낸 쪽지 함"
-, "LOADING SCHEDULE": "서버에 수업 스케쥴을 요청합니다."
+, "LOADING SCHEDULE": "수업 스케쥴을 가져옵니다. 약 10초가 걸립니다."
 , "GOT SCHEDULE": "수업 스케쥴을 표시합니다."
 , "DISPLAYING SCHEDULE": " 개의 스케쥴을 표시하였습니다."
 , "SCHEDULE DISPLAYED": "스케쥴을 표시하였습니다."

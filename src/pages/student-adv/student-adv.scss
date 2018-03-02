@@ -3,14 +3,14 @@ student-adv-page {
         @media ( min-width: $md ) {
             padding: 0 3em;
         }
-        font-size: 1.9rem;
+        font-size: 1.8em;
         @media ( min-width: $md ) {
             font-size: 2.2em;
         }
         text-align: center;
         & > div {
-            padding-top: 3em;
-            line-height: 200%;
+            padding-top: 2em;
+            line-height: 160%;
         }
 
         .why {
