@@ -737,13 +737,15 @@ export class AppService {
             else if (this.isMobile()) window.open(this.teacher_kakaoplus_url);
             else this.alert("Please use smart phone to add contact with admin. Once you have added use Kakao to chat with admin.");
         }
-        else {
+        else { // student
             if (this.isMobileWeb()) {
                 // this.alert('isMobileWeb() open kakao plus ulr');
                 window.open(this.student_kakaoplus_deeplink);
             }
-            else {
-                window.open(this.student_kakaoplus_url);
+            else { // computer
+
+                this.alert("카톡영어에서는 카카오톡으로 상담을 합니다. 컴퓨터에서는 친구추가가 안되며 핸드폰에서 질문하기 메뉴를 클릭하시면 친구추가됩니다.");
+                // window.open(this.student_kakaoplus_url);
             }
         }
     }

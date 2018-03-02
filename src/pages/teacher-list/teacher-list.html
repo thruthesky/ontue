@@ -57,7 +57,7 @@
             <b>{{ a.user.name }}님,</b>
           </div>
           <div>
-            현재 표시되는 선생님은 {{ re.total }} 명이며, 예약된 수업은 {{ a.lmsInfoUserNoOfTotalSessions }}회이며 지난 수업은
+            전체 선생님 수는 {{ re.total }} 명이며, 회원님의 예약된 수업은 {{ a.lmsInfoUserNoOfTotalSessions }}회이며 지난 수업은
             <span *ngIf=" a.lmsInfoUserNoOfPast ">{{ a.lmsInfoUserNoOfPast }}회입니다.</span>
             <span *ngIf=" a.lmsInfoUserNoOfPast == 0">없습니다.</span>
           </div>
@@ -65,15 +65,12 @@
 
         <div *ngIf="a.user.isLogout ">
           <div>
-            현재 표시되는 선생님은 {{ re.total }} 명입니다. 로그인을 하시면 회원님의 수업 정보가 표시됩니다.
+            현재 표시되는 선생님은 {{ re.total }} 명입니다. 옵션을 통해서 모든 선생님을 볼 수 있습니다. 로그인을 하시면 회원님의 수업 정보가 표시됩니다.
           </div>
         </div>
 
       </div>
 
-      <div>
-        참고: 레벨테스트와 수업예약하는 방법은 동일합니다.
-      </div>
     </section>
 
 

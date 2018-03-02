@@ -1,318 +1,330 @@
 <section class="student-mobile-toolbar d-md-none" [attr.page]=" a.page " *ngIf=" a.studentTheme ">
-    <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
-        <ion-row>
-            <ion-col col-3>
-                <div class="pl-3 pt-sm-3 fs-2rem pointer" (click)="a.open('menu')">
-                    <img src="assets/img/menu-icon.png">
-                </div>
-            </ion-col>
-            <ion-col col-5 class="p-0 text-center" text-center>
+  <ion-grid class="px-0" [class.pb-0]=" a.page != 'home' ">
+    <ion-row>
+      <ion-col col-3>
+        <div class="pl-3 pt-sm-3 fs-2rem pointer" (click)="a.open('menu')">
+          <img src="assets/img/menu-icon.png">
+        </div>
+      </ion-col>
+      <ion-col col-5 class="p-0 text-center" text-center>
 
-                <div class="d-flex fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
-                    <div>{{ title }}</div>
-                    <img class="h-8 pl-2" src="assets/img/talk.png">
-                </div>
-                <ng-template #logo>
-                    <div class="pt-2 pointer text-center" text-center (click)="a.open('home')">
-                        <img src="assets/img/logo/katalk-english.png">
-                    </div>
-                </ng-template>
-
-
-            </ion-col>
-            <ion-col col-4 class="">
-                <div class="top-right-menu d-flex p-2 pt-sm-4" style="justify-content: flex-end">
-
-                    <ng-container *ngIf=" a.language == 'en' ">
-                        <div class="pl-2 pr-0" (click)=" a.setLanguage('ko') ">한국어로 보기</div>
-                    </ng-container>
-                    <ng-container *ngIf=" a.language == 'ko' ">
-
-                        <ng-container *ngIf=" a.user.isLogout ">
-                            <span class="" (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
-                            <span class="pl-2" (click)="a.open('register')">{{ 'REGISTER SHORT' | translate }}</span>
-                        </ng-container>
-
-                        <ng-container *ngIf=" a.user.isLogin ">
-                            <ng-container [ngSwitch]="a.page">
-                                <ng-container *ngSwitchCase=" 'schedule-table' ">
-                                    <!-- <span (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
-                                    <span class="pl-2" (click)="a.open('menu')">메뉴</span>
-                                    <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
-                                </ng-container>
-
-                                <ng-container *ngSwitchCase=" 'payment' ">
-                                    <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
-                                    <span class="pl-3" (click)="a.open('teacher-list')">{{ 'RESERVE NOW' | translate }}</span>
-                                </ng-container>
+        <div class="d-flex fs-2rem text-center pointer" style="padding-top: .63rem;" *ngIf=" title; else logo " (click)=" a.open('home') ">
+          <div>{{ title }}</div>
+          <img class="h-8 pl-2" src="assets/img/talk.png">
+        </div>
+        <ng-template #logo>
+          <div class="pt-2 pointer text-center" text-center (click)="a.open('home')">
+            <img src="assets/img/logo/katalk-english.png">
+          </div>
+        </ng-template>
 
 
-                                <ng-container *ngSwitchCase=" 'session-future' ">
-                                    <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
-                                    <span class="pl-3" (click)="a.open('payment')">{{ 'PAYMENT' | translate }}</span>
-                                </ng-container>
+      </ion-col>
+      <ion-col col-4 class="">
+        <div class="top-right-menu d-flex p-2 pt-sm-4" style="justify-content: flex-end">
 
-                                <ng-container *ngSwitchCase=" 'help' ">
-                                    <span class="px-3" (click)="a.open('home')">{{ 'HOME' | translate }}</span>
-                                </ng-container>
+          <ng-container *ngIf=" a.language == 'en' ">
+            <div class="pl-2 pr-0" (click)=" a.setLanguage('ko') ">한국어로 보기</div>
+          </ng-container>
+          <ng-container *ngIf=" a.language == 'ko' ">
 
-                                <ng-container *ngSwitchDefault>
-                                    <span class="" (click)="a.open('help')">도움말</span>
-                                    <span (click)="a.open('payment')">{{ 'PAYMENT SHORT' | translate }}</span>
-                                    <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
-                                    <!-- <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span> -->
-                                </ng-container>
-                            </ng-container>
-                        </ng-container>
-                    </ng-container>
-
-
-                </div>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-
-    <nav class="submenu m-0 p-0">
-        <ng-container [ngSwitch]=" a.page ">
-            <ng-container *ngSwitchCase=" 'payment' ">
-                <div class="group payment">
-                    <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
-                    <div class="p-pay-history" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
-                    <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
-                </div>
+            <ng-container *ngIf=" a.user.isLogout ">
+              <span class="" (click)="a.open('login')">{{ 'LOGIN' | translate }}</span>
+              <span class="pl-2" (click)="a.open('register')">{{ 'REGISTER SHORT' | translate }}</span>
             </ng-container>
 
-            <ng-container *ngSwitchCase=" 'session-future' ">
-                <div class="group session-future">
-                    <!-- <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div> -->
-                    <div class="past" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
-                    <div class="reserve" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
-                    <div class="all" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-                    <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
-                </div>
+            <ng-container *ngIf=" a.user.isLogin ">
+              <ng-container [ngSwitch]="a.page">
+                <ng-container *ngSwitchCase=" 'schedule-table' ">
+                  <!-- <span (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
+                  <span class="pl-2" (click)="a.open('menu')">메뉴</span>
+                  <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span>
+                </ng-container>
+
+                <ng-container *ngSwitchCase=" 'payment' ">
+                  <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
+                  <span class="pl-3" (click)="a.open('teacher-list')">{{ 'RESERVE NOW' | translate }}</span>
+                </ng-container>
+
+
+                <ng-container *ngSwitchCase=" 'session-future' ">
+                  <!-- <span class="px-2" (click)="a.open('home')">{{ 'HOME' | translate }}</span> -->
+                  <span class="pl-3" (click)="a.open('payment')">{{ 'PAYMENT' | translate }}</span>
+                </ng-container>
+
+                <ng-container *ngSwitchCase=" 'help' ">
+                  <span class="px-3" (click)="a.open('home')">{{ 'HOME' | translate }}</span>
+                </ng-container>
+
+                <ng-container *ngSwitchDefault>
+                  <span class="" (click)="a.open('help')">도움말</span>
+                  <span (click)="a.open('payment')">{{ 'PAYMENT SHORT' | translate }}</span>
+                  <!-- <span class="pl-2" (click)="a.open('teacher-list')">수업예약</span>       -->
+                  <!-- <span class="pl-2" (click)="a.open('session-future')">{{ 'RESERVATION LIST' | translate }}</span> -->
+                </ng-container>
+              </ng-container>
             </ng-container>
+          </ng-container>
 
-            <ng-container *ngSwitchCase=" 'session-past' ">
-                <div class="group session-past">
-                    <!-- <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div> -->
-                    <div class="reserved" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
-                    <div class="teacher" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
-                    <div class="schedule" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
-                    <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
-                </div>
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <nav class="submenu m-0 p-0">
+    <ng-container [ngSwitch]=" a.page ">
+      <ng-container *ngSwitchCase=" 'payment' ">
+        <div class="group payment">
+          <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div>
+          <div class="p-pay-history" (click)=" a.open('payment-history') ">{{ 'PAYMENT HISTORY' | translate }}</div>
+          <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase=" 'session-future' ">
+        <div class="group session-future">
+          <!-- <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div> -->
+          <div class="past" (click)=" a.open('session-past') ">{{ 'PAST LIST PAGE' | translate }}</div>
+          <div class="reserve" (click)=" a.open('teacher-list') ">{{ 'RESERVE SESSION' | translate }}</div>
+          <div class="all" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+          <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase=" 'session-past' ">
+        <div class="group session-past">
+          <!-- <div class="help" (click)=" a.open('help') ">{{ "HELP SHORT" | translate }}</div> -->
+          <div class="reserved" (click)=" a.open('session-future') ">{{ 'RESERVATION LIST PAGE' | translate }}</div>
+          <div class="teacher" (click)=" a.open('teacher-list') ">{{ 'TEACHER LIST' | translate }}</div>
+          <div class="schedule" (click)=" a.open('schedule-table') ">{{ 'ALL SCHEDULE TABLE' | translate }}</div>
+          <div class="qna" (click)=" a.onClickContactAdmin() ">{{ "QNA SHORT" | translate }}</div>
+        </div>
+      </ng-container>
+
+
+      <ng-container *ngSwitchDefault>
+
+        <div class="group default">
+          <ng-container *ngIf=" a.user.isLogout ">
+            <div class="" (click)=" a.open('login') ">로그인</div>
+            <div class="" (click)=" a.open('register') ">회원가입</div>
+            <div (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">무료체험</div>
+            <div class="" (click)=" a.open('schedule-table') ">전체시간표</div>
+            <div (click)=" a.open('student-adv') ">월 1만원</div>
+          </ng-container>
+          <ng-container *ngIf=" a.user.isLogin ">
+            <ng-container *ngIf=" ! a.newUser ; else NewUser">
+              <!-- <div class="" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div> -->
+              <div class="" (click)=" a.open('schedule-table') ">전체시간표</div>
+              <div class="" (click)=" a.open('teacher-list') ">선생님목록</div>
             </ng-container>
+            <ng-template #NewUser>
+              <div class="" (click)=" a.open('help') ">{{ "MUST READ" | translate }}</div>
+              <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
+            </ng-template>
+            <div class="" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
+            <div class="" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
+          </ng-container>
 
+        </div>
 
-            <ng-container *ngSwitchDefault>
+      </ng-container>
 
-                <div class="group default">
-                    <ng-container *ngIf=" a.user.isLogout ">
-                        <div class="d-flex">
-                            <div class="" (click)=" a.open('login') ">로그인</div>
-                            <div class="pl-3" (click)=" a.open('register') ">회원가입</div>
-                        </div>
+    </ng-container>
 
-                        <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
-                        <div (click)=" a.open('student-adv') ">월 20회 1만원</div>
-                    </ng-container>
-                    <ng-container *ngIf=" a.user.isLogin ">
-                        <ng-container *ngIf=" ! a.newUser ; else NewUser">
-                            <div class="" (click)=" a.open('session-future') ">{{ "RESERVATION LIST PAGE" | translate }}</div>
-                            <div class="" (click)=" a.open('teacher-list') ">{{ "RESERVE SESSION" | translate }}</div>
-                        </ng-container>
-                        <ng-template #NewUser>
-                            <div class="" (click)=" a.open('help') ">{{ "MUST READ" | translate }}</div>
-                            <div class="" (click)=" a.open('teacher-list', {mode: 'leveltest'}) ">{{ "LEVELTEST" | translate }}</div>
-                        </ng-template>
-                        <div class="" (click)=" a.open('schedule-available') ">{{ "AVAILABLE SESSIONS" | translate }}</div>
-                        <div class="" (click)=" a.onClickContactAdmin() ">{{ "QNA" | translate }}</div>
-                    </ng-container>
-
-                </div>
-
-            </ng-container>
-
-        </ng-container>
-
-    </nav>
+  </nav>
 </section>
 <!--student-mobile-toolbar-->
 
 
 <ion-toolbar class="student-wide-menu d-none d-md-block" *ngIf=" a.studentTheme ">
-    <ion-grid no-padding>
-        <ion-row id="header-icons">
-            <ion-col>
-                <div class="item header-home" (click)="a.open( 'home' )">
-                    <div class="icon">
-                        <img src="assets/img/logo/withcenter-icon.png">
-                    </div>
-                    <div class="text">{{ 'KATALKENGLISH LOGO TEXT' | translate }}</div>
-                </div>
-            </ion-col>
+  <ion-grid no-padding>
+    <ion-row id="header-icons">
+      <ion-col>
+        <div class="item header-home" (click)="a.open( 'home' )">
+          <div class="icon">
+            <img src="assets/img/logo/withcenter-icon.png">
+          </div>
+          <div class="text">{{ 'KATALKENGLISH LOGO TEXT' | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <ion-col *ngIf=" a.user.isLogout ">
-                <div class="item header-login" (click)=" a.open('login') ">
-                    <div class="icon">
-                        <i class="fal fa-sign-in"></i>
-                    </div>
-                    <div class="text">{{ 'LOGIN' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col *ngIf=" a.user.isLogout ">
+        <div class="item header-login" (click)=" a.open('login') ">
+          <div class="icon">
+            <i class="fal fa-sign-in"></i>
+          </div>
+          <div class="text">{{ 'LOGIN' | translate }}</div>
+        </div>
+      </ion-col>
 
-            <ion-col *ngIf=" a.user.isLogout ">
-                <div class="item header-register" (click)=" a.open('register') ">
-                    <div class="icon">
-                        <i class="fal fa-user-plus"></i>
-                    </div>
-                    <div class="text">{{ 'REGISTER' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col *ngIf=" a.user.isLogout ">
+        <div class="item header-register" (click)=" a.open('register') ">
+          <div class="icon">
+            <i class="fal fa-user-plus"></i>
+          </div>
+          <div class="text">{{ 'REGISTER' | translate }}</div>
+        </div>
+      </ion-col>
 
-            <ion-col *ngIf=" a.user.isLogin ">
-                    <div class="item header-reservation blue" (click)=" a.open('session-future') ">
-                        <div class="icon">
-                            <i class="fal fa-indent"></i>
-                        </div>
-                        <div class="text">{{ 'RESERVATIONS' | translate }}</div>
-                    </div>
-                </ion-col>
+      <ion-col *ngIf=" a.user.isLogin ">
+        <div class="item header-reservation blue" (click)=" a.open('session-future') ">
+          <div class="icon">
+            <i class="fal fa-indent"></i>
+          </div>
+          <div class="text">{{ 'RESERVATIONS' | translate }}</div>
+        </div>
+      </ion-col>
 
-                <ion-col *ngIf=" a.user.isLogout ">
-                        <div class="item header-adv blue" (click)=" a.open('student-adv') ">
-                            <div class="icon">
-                                <i class="fal fa-usd-circle"></i>
-                            </div>
-                            <div class="text">{{ 'ADV MENU' | translate }}</div>
-                        </div>
-                    </ion-col>
-            
-
-            <ion-col *ngIf=" ! a.newUser ">
-                <div class="item header-teacher-list" (click)="a.open( 'teacher-list' )">
-                    <div class="icon">
-                        <i class="fal fa-calendar-alt"></i>
-                    </div>
-                    <div class="text">{{ 'RESERVE SESSION' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col *ngIf=" a.user.isLogout ">
+        <div class="item header-adv blue" (click)=" a.open('student-adv') ">
+          <div class="icon">
+            <i class="fal fa-usd-circle"></i>
+          </div>
+          <div class="text">{{ 'ADV MENU' | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <ion-col *ngIf=" a.newUser ">
-                <div class="item header-leveltest brown" (click)="a.open( 'teacher-list', {mode: 'leveltest'} )">
-                    <div class="icon">
-                        <i class="fal fa-calendar-alt"></i>
-                    </div>
-                    <div class="text">{{ 'LEVELTEST' | translate }}</div>
-                </div>
-            </ion-col>
+
+      <ion-col *ngIf=" ! a.newUser ">
+            <div class="item header-teacher-list" (click)="a.open( 'schedule-table' )">
+              <div class="icon">
+                <i class="fal fa-calendar-alt"></i>
+              </div>
+              <div class="text">전체시간표</div>
+            </div>
+          </ion-col>
+
+      <ion-col *ngIf=" ! a.newUser ">
+        <div class="item header-teacher-list" (click)="a.open( 'teacher-list' )">
+          <div class="icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="text">선생님목록</div>
+        </div>
+      </ion-col>
 
 
-            <ion-col>
-                <div class="item header-schedule-available indigo" (click)="a.open( 'schedule-available' )">
-                    <div class="icon">
-                        <i class="fal fa-calendar-exclamation"></i>
-                    </div>
-                    <div class="text">{{ 'AVAILABLE SESSIONS' | translate }}</div>
-                </div>
-            </ion-col>
 
 
-            <ion-col class="d-none d-sm-block" *ngIf=" a.user.isLogin ">
-                <div class="item header-message" (click)="a.open('message')">
-                    <div class="icon">
-                        <i class="fal fa-comment"></i>
-                    </div>
-                    <div class="text">{{ 'MESSAGE' | translate }}</div>
-                </div>
-            </ion-col>
+
+      <ion-col *ngIf=" a.newUser ">
+        <div class="item header-leveltest brown" (click)="a.open( 'teacher-list', {mode: 'leveltest'} )">
+          <div class="icon">
+            <i class="fal fa-calendar-alt"></i>
+          </div>
+          <div class="text">{{ 'LEVELTEST' | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <!-- <ion-col>
+      <ion-col>
+        <div class="item header-schedule-available indigo" (click)="a.open( 'schedule-available' )">
+          <div class="icon">
+            <i class="fal fa-calendar-exclamation"></i>
+          </div>
+          <div class="text">{{ 'AVAILABLE SESSIONS' | translate }}</div>
+        </div>
+      </ion-col>
+
+
+      <ion-col class="d-none d-sm-block" *ngIf=" a.user.isLogin ">
+        <div class="item header-message" (click)="a.open('message')">
+          <div class="icon">
+            <i class="fal fa-comment"></i>
+          </div>
+          <div class="text">{{ 'MESSAGE' | translate }}</div>
+        </div>
+      </ion-col>
+
+
+      <!-- <ion-col>
         <button class="header-teacher-list" (click)="a.open( 'teacher-list' )">
           <i class="fal fa-users"></i>
           <div>{{ 'TEACHER LIST' | translate }}</div>
         </button>
       </ion-col> -->
 
-            <ion-col *ngIf=" a.user.isLogin ">
-                <div class="item header-past-reservation" (click)=" a.open('session-past') ">
-                    <div class="icon">
-                        <i class="fal fa-archive grey"></i>
-                    </div>
-                    <div class="text">{{ 'PASTS' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col *ngIf=" a.user.isLogin ">
+        <div class="item header-past-reservation" (click)=" a.open('session-past') ">
+          <div class="icon">
+            <i class="fal fa-archive grey"></i>
+          </div>
+          <div class="text">{{ 'PASTS' | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <!-- <ion-col class="d-none d-sm-block">
+      <!-- <ion-col class="d-none d-sm-block">
         <button class="header-curriculum" (click)="a.open('menu')">
           <i class="fal fa-credit-card-front"></i>
           <div>{{ 'CURRICULUM' | translate }}</div>
         </button>
       </ion-col> -->
 
-            <ion-col class="d-none d-sm-block">
-                <div class="item header-class-comment" (click)="a.open('class-comment')">
-                    <div class="icon">
-                        <i class="fal fa-comment-alt"></i>
-                    </div>
-                    <div class="text">{{ 'CLASS COMMENTS' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col class="d-none d-sm-block">
+        <div class="item header-class-comment" (click)="a.open('class-comment')">
+          <div class="icon">
+            <i class="fal fa-comment-alt"></i>
+          </div>
+          <div class="text">{{ 'CLASS COMMENTS' | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <ion-col class="d-none d-sm-block">
-                <div class="item header-class-qna orange" (click)=" a.onClickContactAdmin() ">
-                    <div class="icon">
-                        <i class="fas fa-comment"></i>
-                    </div>
-                    <div class="text darkorange">{{ "QNA" | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col class="d-none d-sm-block">
+        <div class="item header-class-qna orange" (click)=" a.onClickContactAdmin() ">
+          <div class="icon">
+            <i class="fas fa-comment"></i>
+          </div>
+          <div class="text darkorange">{{ "QNA" | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <ion-col class="d-none d-sm-block">
-                <div class="item header-class-payment" (click)="a.open('payment')">
-                    <div class="icon">
-                        <i class="fal fa-credit-card"></i>
-                    </div>
-                    <div class="text">{{ 'PAYMENT' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col class="d-none d-sm-block">
+        <div class="item header-class-payment" (click)="a.open('payment')">
+          <div class="icon">
+            <i class="fal fa-credit-card"></i>
+          </div>
+          <div class="text">{{ 'PAYMENT' | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <ion-col *ngIf=" a.user.isLogin ">
-                    <div class="item header-adv blue" (click)=" a.open('student-adv') ">
-                        <div class="icon">
-                            <i class="fal fa-usd-circle"></i>
-                        </div>
-                        <div class="text">{{ 'ADV MENU' | translate }}</div>
-                    </div>
-                </ion-col>
-        
-            <ion-col class="d-none d-sm-block">
-                <div class="item header-class-help" (click)="a.open('help')">
-                    <div class="icon">
-                        <i class="fal fa-question-circle"></i>
-                    </div>
-                    <div class="text">{{ 'HELP SHORT' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col *ngIf=" a.user.isLogin ">
+        <div class="item header-adv blue" (click)=" a.open('student-adv') ">
+          <div class="icon">
+            <i class="fal fa-usd-circle"></i>
+          </div>
+          <div class="text">{{ 'ADV MENU' | translate }}</div>
+        </div>
+      </ion-col>
+
+      <ion-col class="d-none d-sm-block">
+        <div class="item header-class-help" (click)="a.open('help')">
+          <div class="icon">
+            <i class="fal fa-question-circle"></i>
+          </div>
+          <div class="text">{{ 'HELP SHORT' | translate }}</div>
+        </div>
+      </ion-col>
 
 
-            <ion-col>
-                <div class="item header-menu header-class-menu" (click)="a.open('menu')">
-                    <div class="icon">
-                        <i class="fal fa-bars"></i>
-                    </div>
-                    <div class="text">{{ 'ALL MENU' | translate }}</div>
-                </div>
-            </ion-col>
+      <ion-col>
+        <div class="item header-menu header-class-menu" (click)="a.open('menu')">
+          <div class="icon">
+            <i class="fal fa-bars"></i>
+          </div>
+          <div class="text">{{ 'ALL MENU' | translate }}</div>
+        </div>
+      </ion-col>
 
-        </ion-row>
-    </ion-grid>
+    </ion-row>
+  </ion-grid>
 
 
 </ion-toolbar>

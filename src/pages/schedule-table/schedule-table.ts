@@ -352,7 +352,7 @@ export class ScheduleTablePage {
 
   displayScheduleTable(re) {
     this.status = 'GOT SCHEDULE';
-    console.log('got data: ', re);
+    // console.log('got data: ', re);
     /// 시간표 속도 : https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.xxaqipe33arp
     this.no_of_schedules = re.no_of_schedules;
     // this.no_of_schedule_limit = re.no_of_schedule_limit;
