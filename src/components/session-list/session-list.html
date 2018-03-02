@@ -229,7 +229,7 @@
               <span class="pl-5" *ngIf=" book.process ">
                 <i class="fal fa-spinner fa-spin"></i>
               </span>
-              <button [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' " (click)="onClickReady( book )">
+              <button [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' " *ngIf=" a.isTeacher " (click)="onClickReady( book )" >
                 <!--<i class="fal fa-times"></i>-->
                 <span class="white" *ngIf=" book.ready "><i class="fal fa-spinner fa-spin"></i></span>
                 <span class="pl-2 white">{{ 'READY' | translate }}</span>
@@ -306,7 +306,6 @@
           <div>Reject Refund Request.</div>
           <div class="w-90px fs-90  bg-blue white py-4 text-center">Reject</div>
         </div>
-
       </ion-col>
     </ion-row>
   </ion-grid>
