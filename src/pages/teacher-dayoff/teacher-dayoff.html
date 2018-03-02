@@ -4,7 +4,12 @@
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
+<<<<<<< HEAD
     <section class="page-header bg-blue mt-5">
+=======
+
+    <section class="page-header bg-blue mt-5 d-none d-md-block">
+>>>>>>> b90bbe0026e2e84ffd350f1ea5a97302f5a07300
         <ion-grid class="bg-white outline-effect px-1px" no-padding>
           <ion-row class="h-100 p-5" align-items-center justify-content-between>
             <ion-col text-center col-12 col-md-8>
@@ -50,8 +55,8 @@
             <div class="p-5 bg-white border w-100">{{ preDate(dayoff.date)}}</div>
           </ion-col>
         </ion-row>
-        <ion-row *ngIf="dayoffs.length">
-          <div class="p-5 text-center">
+        <ion-row *ngIf="!dayoffs.length">
+          <div class="p-5 mx-auto">
           <i class="fa fa-spinner fa-spin fs-2rem"></i> Loading...
           </div>
         </ion-row>

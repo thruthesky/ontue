@@ -101,21 +101,43 @@ export class SessionList {
     this.books.map(book => this.onClickCancel(book));
   }
   onClickCancel(book) {
-    book['process'] = true;
-    this.a.lms.session_cancel(book.idx).subscribe(re => {
-      // console.log(re);
-      this.books = this.books.filter(book => book.idx != re['idx_reservation']);
 
-      this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
-      this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
-      this.updatePoint();
+    let confirm = this.alertCtrl.create({
+      title: 'Cancel Class',
+      message: 'Are you sure you want to cancel the session?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('yes continue');
+            book['process'] = true;
+            this.a.lms.session_cancel(book.idx).subscribe(re => {
+              // console.log(re);
+              this.books = this.books.filter(book => book.idx != re['idx_reservation']);
+
+              this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
+              this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
+              this.updatePoint();
 
 
-      this.a.onLmsCancel();
-    }, e => {
-      book['process'] = false;
-      this.a.alert(e);
+              this.a.onLmsCancel();
+            }, e => {
+              book['process'] = false;
+              this.a.alert(e);
+            });
+          }
+        },
+        {
+          text: 'Cancel',
+          handler: () => {
+            console.log('Cancel');
+          }
+        }
+      ]
     });
+    confirm.present();
+
+
 
   }
 

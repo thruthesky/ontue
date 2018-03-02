@@ -229,7 +229,7 @@
               <span class="pl-5" *ngIf=" book.process ">
                 <i class="fal fa-spinner fa-spin"></i>
               </span>
-              <button [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' " (click)="onClickReady( book )">
+              <button [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' " *ngIf=" a.isTeacher " (click)="onClickReady( book )" >
                 <!--<i class="fal fa-times"></i>-->
                 <span class="white" *ngIf=" book.ready "><i class="fal fa-spinner fa-spin"></i></span>
                 <span class="pl-2 white">{{ 'READY' | translate }}</span>
@@ -267,9 +267,14 @@
           <div>Session not evaluated. <span class="red fw-bold">*No pay</span>.</div><!--  Session not evaluated. You need to evaluate the session or you will not get paid on the session.-->
           <div class="w-90px fs-90  bg-blue white py-4 text-center" [class.warning]=" true ">Eval</div>
         </div>
+
+        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white ">
+          <div>Session you confirmed.</div>
+          <div class="w-90px fs-90  bg-green white py-4 text-center">Ready</div>
+        </div>
         <div class="d-flex justify-content-between pl-4 align-items-center bg-white ">
-          <div>Reject Refund Request</div>
-          <div class="w-90px fs-90  bg-blue white py-4 text-center">Reject</div>
+          <div>Session you must confirm.</div>
+          <div class="w-90px fs-90 bg-red white py-4 text-center">Ready</div>
         </div>
       </ion-col>
       <ion-col class="ml-md-3 border">
@@ -293,11 +298,14 @@
             <div>Point Refund Request Rejected.</div>
             <div class="w-90px fs-90  bg-blue white py-4 text-center">Rejected</div>
           </div>
-          <div class="d-flex justify-content-between pl-4 align-items-center bg-white">
+          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
             <div>Accept Refund Request</div>
             <div class="w-90px fs-90  bg-blue white py-4 text-center">Accept</div>
           </div>
-
+        <div class="d-flex justify-content-between pl-4 align-items-center bg-white ">
+          <div>Reject Refund Request.</div>
+          <div class="w-90px fs-90  bg-blue white py-4 text-center">Reject</div>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
