@@ -4,25 +4,24 @@
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
-    <section class="page-header">
-      <div>{{ "CURRICULUM VITAE" | translate }}</div>
-    </section>
-    <section class="page-body bg-white">
+    <section class="page-body bg-white border">
+        <div class="m-5">
+            <h1 class="fs-3rem fw-bold"  text-center ion-text color="blue">{{ "CURRICULUM VITAE" | translate }}</h1>
+            <p class="fs-90" text-center>Please Fill Out the Appropriate Information</p>
+        </div>
       <form (submit)="onSubmitUpdate()">
-        <ion-grid class="curriculum-vitae mb-5 border" no-padding>
-          <ion-row class="mt-5" justify-content-center align-items-stretch>
-            <ion-col class="pr-md-5 pr-0 mr-md-2 mx-0 mb-5 mb-md-0" col-md-5 col-11>
-              <div class="p-relative of-hidden pointer">
+        <ion-grid class="curriculum-vitae mb-5" no-padding>
+          <ion-row class="mt-4" justify-content-center align-items-stretch>
+            <ion-col class="pr-md-5 pr-0 mr-md-2 mx-0 mb-5 mb-md-0 " col-md-5 col-11>
+              <div class="p-relative of-hidden pointer  h-100  border-stripes d-flex  align-items-center justify-content-center">
                 <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey"
                        style="opacity: 0.001; font-size: 15em;"
                        type="file"
                        (change)="fileUpload.onChangeFile($event)">
-                <div
-                  class="profile-user d-flex-column align-items-center justify-content-center h-100  border-stripes py-3"
+                <div class="profile-user d-flex-column align-items-center justify-content-center py-3"
                   (click)="fileUpload.onClickCamera()">
 
-                  <div
-                    class="profile-user-photo d-inline-block size-100 my-3 of-hidden rounded-50 d-flex align-items-center">
+                  <div class="profile-user-photo d-inline-block size-100 my-3 of-hidden rounded-50 d-flex align-items-center">
                     <img src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
                   </div>
                   <button type="button" class="btn submit fs-lg my-3" [class.skip]="files && files.length"
@@ -158,16 +157,17 @@
               </div>
             </ion-col>
           </ion-row>
-          <ion-row class="mt-5 " justify-content-center>
+          <ion-row class="mt-5" justify-content-center>
             <ion-col col-10>
               <div class="m-0 p-0">
-                <ion-label class="bg-blue white text-center fs-white p-3 m-0">{{ 'GREETINGS' | translate }}</ion-label>
-                <ion-textarea class="outline-effect bg-light px-3 py-2" rows="8" [(ngModel)]="account.introduction"
-                              name="introduction"></ion-textarea>
+                <ion-label class="bg-blue white text-center p-3 m-0">{{ 'GREETINGS' | translate }}</ion-label>
+                <textarea class="bg-light px-3 py-2  input-effect border w-100" rows="8" [(ngModel)]="account.introduction"
+                              name="introduction">
+                </textarea>
               </div>
-              <div class="my-4" text-center>
-                <button class="my-4" outline rounded-circle ion-button color="primary">{{ 'UPDATE BUTTON' | translate
-                  }}
+              <div class="mt-5 mb-3" text-center>
+                <button class="py-4 w-md-50 w-100 rounded-2 bg-blue white hover-effect">
+                  {{ 'UPDATE BUTTON' | translate }}
                 </button>
               </div>
             </ion-col>

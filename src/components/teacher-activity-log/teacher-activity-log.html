@@ -1,19 +1,19 @@
 <div class="cover activity-log  bg-muted of-hidden outline-effect">
-  <p class="bg-blue-60 fs-90 m-0 py-3 text-center white">Activity Log</p>
+  <p class="bg-blue-40 fs-90 m-0 py-3 mb-3 text-center white fw-bold">Activity Log</p>
   <div class="px-4" *ngIf="a.activity_log && a.activity_log.length">
-    <div class="m-0 py-3  border border-top-0 border-right-0 border-left-0" *ngFor="let a of a.activity_log" text-wrap>
-      <ion-grid class="my-0-2em pl-3 pr-1" no-padding>
+    <div class="m-0 py-3" *ngFor="let a of a.activity_log" text-wrap>
+      <ion-grid class="my-0-2em pl-2" no-padding>
         <ion-row align-items-center>
           <ion-col class="font-em-0-75 d-flex align-items-center" col-10>
             <div class="d-flex align-items-center">
-                            <span>
-                                <span class="fw-bold">{{a.name ? a.name : 'Guest'}}</span>
-                                 {{ actv[a.activity] }}
-                                 <span *ngIf="a.target">{{a.target}}</span>
-                             </span>
+                <span>
+                    <span class="fw-bold">{{a.name ? a.name : 'Guest'}}</span>
+                      {{ actv[a.activity] }}
+                      <span *ngIf="a.target">{{a.target}}</span>
+                  </span>
             </div>
           </ion-col>
-          <ion-col class="d-flex align-items-center justify-content-center">
+          <ion-col class="d-flex align-items-center justify-content-center pl-2">
             <i class="fs-2rem fal fa-sign-in-alt" ion-text color="blue" *ngIf="a.activity=='login'"></i>
             <i class="fs-2rem fal fa-eye" ion-text color="grey" *ngIf="a.activity=='visit'"></i>
             <i class="fs-2rem fal fa-list-alt" ion-text color="brown" *ngIf="a.activity=='open-register'"></i>

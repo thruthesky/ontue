@@ -1,18 +1,21 @@
 <div class="of-hidden cover-by-2 bg-white outline-effect mb-5 mb-md-0">
-        <p  class="fs-90 outline-effect fw-light  font-arial m-0 py-3 text-center dodgerblue">Recent Reservations</p>
+        <p  class="fs-90  m-0 py-3 text-center bg-blue-60 fw-bold white">Recent Reservations</p>
         <div class="list-hover-effect my-0-25em">
             <ng-container *ngFor="let reservation of reservations; let i=index">
                 <ion-grid class="pointer item" *ngIf="i<3" (click)="a.open('schedule-table', { ID: reservation.idx_teacher })" no-padding>
-                    <ion-row class="px-4 py-3" align-items-center justify-content-between>
-                        <ion-col class="d-flex align-items-center" col-md-4>
+                    <ion-row class="px-4 py-3" align-items-center justify-content-center>
+                        <ion-col class="d-flex align-items-center" col-md-4 col-3>
                             <span class="size-40 rounded-circle of-hidden"><img  [src]="a.checkPhotoURL(reservation.teacher_photoURL)"/></span>
                         </ion-col>
-                        <ion-col col-md-4>
+                        <ion-col col-md-4 col-3>
                             <h3 class="fs-90 m-0 p-0">{{ a.preTeacherName(reservation.teacher_name) }}</h3>
-                            <div  class="fs-lg m-0 p-0 mt-1" [innerHtml]="getFirstTwo(reservation.class_begin)+':'+getLastTwo(reservation.class_begin)"></div>
+                            <div  class="fs-lg m-0 p-0 mt-1 fw-light" 
+                                [innerHtml]="getFirstTwo(reservation.class_begin)+':'
+                                +getLastTwo(reservation.class_begin)">
+                            </div>
                         </ion-col>
-                        <ion-col text-right col-md-4>
-                            <span class="fs-lg m-0 p-0">{{ reservation.display_date }}</span>
+                        <ion-col text-right col-md-4 col-3>
+                            <span class="fs-lg m-0 p-0 fw-light">{{ reservation.display_date }}</span>
                         </ion-col>
                     </ion-row>
                 </ion-grid>

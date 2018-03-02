@@ -1,6 +1,6 @@
 ion-nav.teacher {
   font-size: 16px !important;
-  //utilities,can be used all over teahers page
+
   .align-items-center {
     align-items: center !important
   }
@@ -11,6 +11,7 @@ ion-nav.teacher {
   .align-items-stretch {
     align-items: stretch !important
   }
+
   .mx-minus-15px{
     margin: 0 -15px!important
   }
@@ -26,24 +27,31 @@ ion-nav.teacher {
   .mx-minus-10px{
     margin: 0 -10px!important
   }
+
   .bg-light {
     background-color: #f9f9f9 !important
   }
+
   .bg-blue {
     background-color: #007bff !important
   }
+
   .bg-blue-80 {
     background-color: rgba(#007bff, 0.80) !important
   }
+
   .bg-blue-60 {
     background-color: rgba(#007bff, 0.60) !important
   }
+
   .bg-blue-40 {
     background-color: rgba(#007bff, 0.45) !important
   }
+
   .bg-secondary-yellow {
     background: rgba(#FBC02D,0.9) !important
   }
+
   .secondary-yellow{
     color:#FBC02D !important
   }
@@ -51,30 +59,39 @@ ion-nav.teacher {
   .font-opacity-0-6{
     color: rgba(black,0.8)!important
   }
+
   .bg-darkorange {
     background-color: #F57C00!important
   }
+
   .bg-muted {
     background: rgba(#FFF, 0.3) !important
   }
+
   .font-em-0-75 {
     font-size: 0.75em !important
   }
+
   .font-em-0-85 {
     font-size: 0.85em !important
   }
+
   .fs-4em {
     font-size: 4em !important
   }
+
   .fs-9em {
     font-size: 9em !important
   }
+
   .text-nowrap {
     white-space: nowrap !important
   }
+
   .flex-column {
     flex-direction: column !important
   }
+
   .fw-light {
     font-weight: lighter !important
   }
@@ -82,9 +99,11 @@ ion-nav.teacher {
   .fw-normal{
     font-weight: normal!important
   }
+
   .line-h-1-8em {
     line-height: 1.8em !important
   }
+
   .px-1px {
     padding: 0 1px !important
   }
@@ -132,11 +151,50 @@ ion-nav.teacher {
   }
 
   ion-content {
+
     background-color: #f9f9f9 !important;
     .scroll-content {
       overflow: overlay !important
     }
 
+    @media screen and (min-width: 544px){
+
+      .cover {
+        height: calc(235.953px * 2) !important
+      }
+      .cover-by-2 {
+        height: 225.953px !important
+      }
+      .cover-by-4 {
+        height: calc(225.953px / 2) !important
+      }
+  
+      .cover-slider {
+        height: 225.95px !important
+      }
+
+      .d-md-table{
+        display: table!important;
+      }
+
+      .w-md-50{
+        width: 50%!important
+      }
+
+      .d-md-flex-row{
+        flex-direction: row!important;
+      }
+    }
+  
+    @media screen and (max-width: 544px){
+      .border-sm-0{
+        border: none!important;
+      }
+      
+      .grid-order-first{
+        order: -1;
+      }
+    }
 
     .guidelines, .teacher-evaluation {
       ion-label {
@@ -149,24 +207,6 @@ ion-nav.teacher {
         padding: 0 !important
       }
     }
-
-    .title-style { letter-spacing: 0.3em }
-    @media screen and (min-width: 544px){
-    // height of the four boxes(stats,students comment etc..)
-    .cover {
-      height: calc(235.953px * 2) !important
-    }
-    .cover-by-2 {
-      height: 225.953px !important
-    }
-    .cover-by-4 {
-      height: calc(225.953px / 2) !important
-    }
-
-    .cover-slider {
-      height: 225.95px !important
-    }
-  }
 
     .list-hover-effect {
       .item {
@@ -187,6 +227,16 @@ ion-nav.teacher {
       background: rgba(#707070,0.73)!important
     }
 
+  }
+
+  .input-effect{
+      transition:all .2s ease-in-out;
+      border-bottom-left-radius: 2px!important;
+      border-bottom-right-radius: 2px!important;
+      &:focus{
+      border: 1px solid #007bff!important;
+      background:white!important
+      }
   }
 
 
@@ -239,12 +289,16 @@ ion-nav.teacher {
     line-height: 1.8em !important
   }
 
-  .h-35{
-    height: 35%!important
+  .h-7em{
+    height: 7em!important
   }
   
   .outline-effect {
-    outline: 1px solid rgba(#e2e2e2,0.3) !important
+    outline: 1px solid rgba(#e2e2e2,0.5) !important
+  }
+
+  .border-lightsilver{
+    border:1px solid rgba(#e2e2e2,0.3) !important
   }
   .text-uppercase {
     text-transform: uppercase !important
@@ -253,18 +307,20 @@ ion-nav.teacher {
     background-color: rgba(#007bff, 0.45) !important
   }
 
-}
+  .bg-orange-80{
+    background-color:rgba(#c25e00,0.8)!important
+  }
 
 
-.pagination {
+  .pagination {
     .evaluation{
 
       .page-link {
         border:none;
-        padding: 0.75rem 1rem;
+        padding: 1rem 1.25rem;
       }
 
-      .page-link:hover,.page-item.active {
+      .page-item.active {
         background: white;
       }
 
@@ -280,4 +336,6 @@ ion-nav.teacher {
 
       }
     }
+  }
+
 }
