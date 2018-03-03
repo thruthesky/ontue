@@ -2,24 +2,24 @@
   <header-content [title]=" 'How to Use' "></header-content>
 </ion-header>
 <ion-content>
-  <div class="page pt-3 pb-5">
+  <div class="page pt-3 pb-0 pb-md-5">
     <hook-content-top></hook-content-top>
     <section id="how-to-use" class="page-body m-0 my-1 p-0 mb-5 pb-5">
         <section class="page-header bg-blue my-3">
           <ion-grid class="cover-by-2 bg-white outline-effect px-1px">
-            <ion-row class="h-100" align-items-center justify-content-between>
+            <ion-row class="h-100  p-4 p-md-0" align-items-center justify-content-between>
               <ion-col text-center>
                   <h2 class="fs-4rem m-0" ion-text color="blue">Tips and Guides</h2>
                   <p ion-text color="dark">Things you need to know. Choose among the topics to learn more.</p>
               </ion-col>
-              <ion-col class="grid-order-first" col-md-5 col-12 text-center>
+              <ion-col class="d-none d-md-block" col-md-5 col-12 text-center>
                   <i class="fs-9em fal fa-cog mr-4" ion-text color="blue"></i>
                   <i class="fs-9em fas fa-lightbulb" ion-text color="blue"></i>
               </ion-col>
             </ion-row>
           </ion-grid>
         </section>
-      <ion-grid class="px-1px" no-padding>
+      <ion-grid class="px-1px mt-5 mt-md-0" no-padding>
         <ion-row class="my-md-3 my-0">
           <ion-col class="mr-md-3" col-12 col-md>
               <ion-grid class="pointer cover-by-4 outline-effect bg-white hover-effect-color" (click)="showModalFAQ('teacherPolicy')" no-padding>
