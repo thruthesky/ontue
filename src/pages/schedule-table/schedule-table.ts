@@ -217,7 +217,7 @@ export class ScheduleTablePage {
   }
 
 
-  
+
   /**
    * This sets the number of columns on schedule table based on the device.
    */
@@ -577,11 +577,11 @@ export class ScheduleTablePage {
   }
 
   /**
-   * 
+   *
    * Saves options to re-use on next access.
-   * 
+   *
    * @attention It only saves `display weekends`, `select no of days` options.
-   * 
+   *
    */
   saveOptions() {
 
@@ -806,7 +806,9 @@ export class ScheduleTablePage {
   onClickCommentList() {
     const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: this.teacher_profile['ID'] }, { cssClass: 'student-comment-list' }
     );
-    createCommentModal.onDidDismiss(() => { });
+    createCommentModal.onDidDismiss(reason => {
+      if(reason == 'commentCreate') this.onClickCommentCreate();
+    });
     createCommentModal.present();
   }
 

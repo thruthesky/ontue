@@ -138,5 +138,9 @@ export class StudentCommentList{
     this.loadCommentList();
   }
 
+  onClickCommentCreate() {
+    this.viewCtrl.dismiss('commentCreate');
+  }
+
 
 }

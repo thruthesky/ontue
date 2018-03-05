@@ -5,7 +5,7 @@
 <ion-content #content>
   <div class="page">
     <div class="single-teacher p-3" *ngIf=" singleTeacher ">
-      
+
 
       <table *ngIf=" loadComplete; else singleTeacherLoader">
         <tr valign="top">
@@ -20,7 +20,7 @@
             </div>
 
             <div class="comment d-flex justify-content-center">
-              <div class="pointer p-2" *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">{{ 'WRITE REVIEW' | translate }}</div>
+              <!--<div class="pointer p-2" *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">{{ 'WRITE REVIEW' | translate }}</div>-->
               <div class="pointer p-2" (click)="onClickCommentList()">{{ 'OPEN REVIEW' | translate }}</div>
             </div>
 
@@ -429,7 +429,7 @@
           <ion-icon name="heart" icon-name="heart"></ion-icon> - 선예약 된 수업. 해당 학생에게만 예약이 가능한 수업.
         </li>
 
-        
+
         <li>
           <ion-icon name="checkmark" icon-name="checkmark"></ion-icon> - 다른 학생에 의해 예약된 수업.
         </li>
