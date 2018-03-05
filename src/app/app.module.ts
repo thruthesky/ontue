@@ -41,7 +41,6 @@ import { SettingsPaymentInfoPage } from '../pages/settings-payment-info/settings
 import { PaymentPage } from '../pages/payment/payment';
 import { PaymentResultPage } from '../pages/payment-result/payment-result';
 import { PaymentHistoryPage } from '../pages/payment-history/payment-history';
-// import { PolicyPage } from '../pages/policy/policy';
 import { IntroComponent } from '../components/intro/intro';
 import { PagePage } from '../pages/page/page';
 import { SessionPastPage } from '../pages/session-past/session-past';
@@ -88,7 +87,6 @@ import { RefundRequestView } from '../components/refund-request-view/refund-requ
 import { StudentCommentList } from '../components/student-comment-list/student-comment-list';
 import { StudentCommentEdit } from '../components/student-comment-edit/student-comment-edit';
 
-import { TeacherIntroComponent } from '../components/teacher-intro/teacher-intro';
 import { HomeStudentBannerComponent } from '../components/home-student-banner/home-student-banner';
 
 import { HomeStudentContentComponent } from '../components/home-student-content/home-student-content';
@@ -114,6 +112,7 @@ import { TeacherEvaluationsComponent } from '../components/teacher-evaluations/t
 import { TeacherStepComponent } from '../components/teacher-steps/teacher-steps';
 import { TeacherActivityLogComponent } from '../components/teacher-activity-log/teacher-activity-log';
 import { TeacherGradeComponent } from '../components/teacher-grade/teacher-grade';
+import { TeacherLeveltestComponent } from '../components/teacher-leveltest/teacher-leveltest';
 
 
 
@@ -154,7 +153,6 @@ export function createTranslateLoader(http: HttpClient) {
     SettingsPaymentInfoPage,
     PaymentPage,
     PageComponent,
-    // PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
     PaymentHistoryPage,
@@ -175,7 +173,6 @@ export function createTranslateLoader(http: HttpClient) {
     StudentCommentList,
     StudentCommentEdit,
     ClassCommentPage,
-    TeacherIntroComponent,
     HomeStudentBannerComponent,
     TeacherDashboardPage,
     HomeStudentContentComponent,
@@ -204,7 +201,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherStepComponent,
     TeacherActivityLogComponent,
     TeacherGradeComponent,
-    StudentCurriculumnPage
+    StudentCurriculumnPage,
+    TeacherLeveltestComponent
   ],
   imports: [
     BrowserModule,
@@ -241,7 +239,6 @@ export function createTranslateLoader(http: HttpClient) {
     SettingsPaymentInfoPage,
     PaymentPage,
     PageComponent,
-    // PolicyPage,
     IntroComponent,
     TeacherCurriculumVitaePage,
     PaymentHistoryPage,
@@ -262,7 +259,6 @@ export function createTranslateLoader(http: HttpClient) {
     StudentCommentList,
     StudentCommentEdit,
     ClassCommentPage,
-    TeacherIntroComponent,
     HomeStudentBannerComponent,
     TeacherDashboardPage,
     PaymentResultPage,
@@ -289,8 +285,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherStepComponent,
     TeacherActivityLogComponent,
     TeacherGradeComponent,
-    StudentCurriculumnPage
-
+    StudentCurriculumnPage,
+    TeacherLeveltestComponent
   ],
   providers: [
     // StatusBar,

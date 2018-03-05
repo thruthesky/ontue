@@ -170,13 +170,6 @@ export class SessionList {
 
   }
 
-  onClickSearch() {
-    this.a.lms.session_search(this.request()).subscribe(re => {
-      console.log(re);
-    }, e => {
-      this.a.alert(e);
-    });
-  }
 
   onClickRefundRequest(book) {
     // console.log(book);

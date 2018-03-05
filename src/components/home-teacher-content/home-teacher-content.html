@@ -40,6 +40,11 @@
                     <teacher-steps-component></teacher-steps-component>
                 </ion-col>
             </ion-row>
+            <!--<ion-row class="my-5 px-1px">-->
+              <!--<ion-col>-->
+                <!--<teacher-leveltest-component></teacher-leveltest-component>-->
+              <!--</ion-col>-->
+            <!--</ion-row>-->
             <ion-row class="my-5 px-1px">
                 <ion-col>
                     <teacher-guidelines-component></teacher-guidelines-component>
@@ -57,65 +62,5 @@
             </ion-row>
         </ion-grid>
     </section>
-<!-- <section id="home-teacher-content" class="mt-md-3 bg-light">
-        <ion-grid no-padding>
-            <ion-row class="px-1px">
-                <ion-col col-12 col-md-6>
-                    <ion-grid no-padding>
-                        <ion-row>
-                            <ion-col col-12 col-md-6>
-                                <teacher-reminders-component></teacher-reminders-component>
-                            </ion-col>
-                            <ion-col col-12 col-md-6>
-                                <teacher-statistics-component
-                                [no_teachers]="site_info.no_of_teacher"
-                                [no_students]="site_info.no_of_student"
-                                [no_reservations]="site_info.no_of_reservations"
-                                [no_pasts]="site_info.no_of_past"
-                                ></teacher-statistics-component>
-    
-                                <teacher-student-comment-component  *ngIf="site_info.comment_from_student['total']" [student_comments] = "site_info.comment_from_student.comments "></teacher-student-comment-component>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-col>
-                <ion-col col-12 col-md-6>
-                    <ion-grid no-padding>
-                        <ion-row>
-                            <ion-col col-6>
-                                <graded-teachers-component *ngIf="site_info.recent_graded_teachers.length"
-                                [teachers]="site_info.recent_graded_teachers ">
-                                </graded-teachers-component>
-                                <teacher-reservations-component [reservations]="site_info.recent_reservations"></teacher-reservations-component>
-                            </ion-col>
-                            <ion-col col-6>
-                                <teacher-activity-log-component></teacher-activity-log-component>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-col>
-            </ion-row>
-            <ion-row class="my-5 px-1px">
-                <ion-col>
-                    <teacher-steps-component></teacher-steps-component>
-                </ion-col>
-            </ion-row>
-            <ion-row class="my-5 px-1px">
-                <ion-col>
-                    <teacher-guidelines-component></teacher-guidelines-component>
-                </ion-col>
-            </ion-row>
-            <ion-row class="my-5 px-1px">
-                <ion-col class="p-0">
-                    <teacher-grading-system-component></teacher-grading-system-component>
-                 </ion-col>
-            </ion-row>
-            <ion-row class="my-5 px-1px">
-                <ion-col class="p-0">
-                    <teacher-evaluations-component></teacher-evaluations-component>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </section> -->
-    
+
 
