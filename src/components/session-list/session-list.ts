@@ -109,7 +109,7 @@ export class SessionList {
         {
           text: this.a.i18n['YES'],
           handler: () => {
-            console.log('yes continue');
+            // console.log('yes continue');
             book['process'] = true;
             this.a.lms.session_cancel(book.idx).subscribe(re => {
               // console.log(re);
@@ -155,7 +155,7 @@ export class SessionList {
 
   sessionSearch() {
     this.a.lms.session_search(this.request()).subscribe(re => {
-      console.log("Result of class_search(): ", re);
+      // console.log("Result of class_search(): ", re);
       this.re = re;
       this.re['total_session_refunded'] = this.a.toInt(this.re['total_session_refunded']);
       this.re['total_session_refund_in_progress'] = this.a.toInt(this.re['total_session_refund_in_progress']);
@@ -233,23 +233,23 @@ export class SessionList {
   onClickRefund(book) {
 
     let confirm = this.alertCtrl.create({
-      title: 'Refund Class',
-      message: 'Are you sure you want to refund?',
+      title: this.a.i18n["REFUND CLASS"],
+      message: this.a.i18n["CONFIRM REFUND CLASS"],
       buttons: [
         {
-          text: 'Yes',
+          text: this.a.i18n["YES"],
           handler: () => {
-            console.log('yes continue');
+            // console.log('yes continue');
             this.a.lms.session_refund(book['idx']).subscribe(re => {
-              console.log(re);
+              // console.log(re);
               book['refund_done_at'] = 1;
             }, e => this.a.alert(e));
           }
         },
         {
-          text: 'Cancel',
+          text: this.a.i18n["CANCEL"],
           handler: () => {
-            console.log('Cancel');
+            // console.log('Cancel');
           }
         }
       ]

@@ -71,10 +71,10 @@ export class StudentCommentList{
 
     let confirm = this.alertCtrl.create({
       title: this.a.i18n["DELETE COMMENT"],
-      message: 'Are you sure you want to delete comment?',
+      message: this.a.i18n["CONFIRM DELETE COMMENT"],
       buttons: [
         {
-          text: 'Yes',
+          text: this.a.i18n["YES"],
           handler: () => {
             // console.log('Yes');
             this.a.showLoader();
@@ -95,7 +95,7 @@ export class StudentCommentList{
           }
         },
         {
-          text: 'cancel',
+          text: this.a.i18n["CANCEL"],
           handler: () => {
             // console.log('cancel');
           }

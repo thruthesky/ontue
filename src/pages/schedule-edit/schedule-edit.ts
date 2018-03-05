@@ -96,11 +96,11 @@ export class ScheduleEditPage {
   onClickDelete(idx){
     if (this.a.user.isLogin) {
       let confirm = this.alertCtrl.create({
-        title: 'Delete Schedule',
-        message: 'Are you sure you want to delete?',
+        title: this.a.i18n["DELETE SCHEDULE"],
+        message: this.a.i18n["CONFIRM DELETE"],
         buttons: [
           {
-            text: 'Yes',
+            text: this.a.i18n["YES"],
             handler: () => {
               console.log('Yes');
               this.a.showLoader();
@@ -115,7 +115,7 @@ export class ScheduleEditPage {
             }
           },
           {
-            text: 'cancel',
+            text: this.a.i18n["CANCEL"],
             handler: () => {
               console.log('cancel');
             }

@@ -73,7 +73,7 @@ export class PostPage {
     if (this.a.user.isLogout) return this.a.alert(this.a.xapi.ERROR.LOGIN_FIRST);
     this.a.xapi.post({route: 'wordpress.post_like', choice: choice, ID: post.ID, session_id: this.a.user.sessionId})
       .subscribe(re => {
-        console.log("like: ", re);
+        // console.log("like: ", re);
         post.meta['like'] = re['like'];
         post.meta['dislike'] = re['dislike'];
       }, err => this.a.showError(err));
@@ -89,7 +89,7 @@ export class PostPage {
     const createPostModal = this.modalCtrl.create(PostCreateEditPage, { method: 'create', category: this.post_id});
     createPostModal.onDidDismiss( id => {
       if(id) {
-        console.log('ID:: ', id);
+        // console.log('ID:: ', id);
         this.insertPost(id);
       }
     });
@@ -117,10 +117,10 @@ export class PostPage {
     let postPopover = this.popoverCtrl.create(PostPopoverWidget);
     postPopover.onDidDismiss( re => {
       if(re == 'edit') {
-        console.log('edit');
+        // console.log('edit');
         this.onClickPostEdit(post);
       } else if( re == 'delete') {
-        console.log('delete');
+        // console.log('delete');
         this.onClickPostDelete(post, page);
       }
     });
@@ -130,20 +130,20 @@ export class PostPage {
   onClickPostDelete(post: POST, page: PAGE) {
 
     let confirm = this.alertCtrl.create({
-      title: 'Delete Post',
-      message: 'Are you sure you cant to delete this post?',
+      title: this.a.i18n["DELETE POST"],
+      message: this.a.i18n["CONFIRM DELETE POST"],
       buttons: [
         {
-          text: 'Yes',
+          text: this.a.i18n["YES"],
           handler: () => {
-            console.log('yes continue');
+            // console.log('yes continue');
             this.postDelete(page, post.ID);
           }
         },
         {
-          text: 'Cancel',
+          text: this.a.i18n["CANCEL"],
           handler: () => {
-            console.log('Cancel');
+            // console.log('Cancel');
           }
         }
       ]
@@ -154,7 +154,7 @@ export class PostPage {
   postDelete(page, ID, password?) {
     this.a.showLoader();
     this.a.forum.postDelete({ ID: ID, post_password: password }).subscribe(res => {
-      console.log("file deleted: ", res);
+      // console.log("file deleted: ", res);
 
       let index = page.posts.findIndex(post => post.ID == res.ID);
       if (res.mode == 'delete') {
@@ -173,7 +173,7 @@ export class PostPage {
     const createPostModal = this.modalCtrl.create(PostCreateEditPage, { method: 'edit', post: post});
     createPostModal.onDidDismiss( id => {
       if(id) {
-        console.log('ID:: ', id);
+        // console.log('ID:: ', id);
         this.updatePost(post);
       }
     });
@@ -183,7 +183,7 @@ export class PostPage {
   updatePost(post: POST) {
     this.a.showLoader();
     this.a.forum.postData(post.ID).subscribe(postData => {
-      console.log("post updated: ", postData);
+      // console.log("post updated: ", postData);
       Object.assign(post, postData);
       this.a.forum.pre( post );
       this.a.hideLoader();

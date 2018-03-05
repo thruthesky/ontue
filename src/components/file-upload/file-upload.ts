@@ -48,25 +48,25 @@ export class FileUploadWidget {
     if (!this.a.xapi.isCordova()) return;
 
     let confirm = this.alertCtrl.create({
-      title: 'Photo Upload',
-      message: 'Where do you want to get photo from?',
+      title: this.a.i18n["PHOTO UPLOAD"],
+      message: this.a.i18n["CHOOSE USER TYPE"],
       buttons: [
         {
-          text: 'camera',
+          text: this.a.i18n["CAMERA"],
           handler: () => {
             // console.log('camera');
             this.takePhoto('camera');
           }
         },
         {
-          text: 'gallery',
+          text: this.a.i18n["GALLERY"],
           handler: () => {
             // console.log('gallery');
             this.takePhoto('gallery');
           }
         },
         {
-          text: 'cancel',
+          text: this.a.i18n["CANCEL"],
           handler: () => {
             // console.log('cancel');
             this.takePhoto('cancel');

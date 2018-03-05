@@ -591,8 +591,11 @@ export class AppService {
             'PLEASE WAIT',
             'UPDATED',
             'REGISTERED',
+            "PHOTO UPLOAD",
+            "CHOOSE USER TYPE",
             "DELETE COMMENT",
             "CONFIRM DELETE",
+            "COMMENT DELETED",
             "CONFIRM CANCEL SESSION",
             "YES",
             "CANCEL"
