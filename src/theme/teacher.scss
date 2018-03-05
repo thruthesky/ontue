@@ -214,15 +214,19 @@ ion-nav.teacher {
         padding: 0 !important
       }
 
-      .accordion{
-        &-item{
+      .accordion-hide{
+        &>.accordion-item{
           transition:all 0.2s ease-in-out;
           max-height: 0!important;
           overflow: hidden!important;
         }
-  
-        .accordion-item-showed{
+      }
+
+      .accordion-show{
+        &>.accordion-item{
+          transition:all 0.2s ease-in-out;
           max-height: 100%!important;
+          overflow: hidden!important;
         }
       }
 
