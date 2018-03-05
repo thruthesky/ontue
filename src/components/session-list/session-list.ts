@@ -104,10 +104,10 @@ export class SessionList {
 
     let confirm = this.alertCtrl.create({
       title: 'Cancel Class',
-      message: 'Are you sure you want to cancel the session?',
+      message: this.a.i18n['CONFIRM CANCEL SESSION'],
       buttons: [
         {
-          text: 'Yes',
+          text: this.a.i18n['YES'],
           handler: () => {
             console.log('yes continue');
             book['process'] = true;
@@ -128,7 +128,7 @@ export class SessionList {
           }
         },
         {
-          text: 'Cancel',
+          text: this.a.i18n['CANCEL'],
           handler: () => {
             console.log('Cancel');
           }

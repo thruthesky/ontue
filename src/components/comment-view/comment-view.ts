@@ -54,8 +54,8 @@ export class CommentViewWidget {
     if (this.a.user.isLogin) {
 
       let confirm = this.alertCtrl.create({
-        title: 'Delete Comment',
-        message: 'Are you sure you want to delete?',
+        title: this.a.i18n["DELETE COMMENT"],
+        message: this.a.i18n["CONFIRM DELETE"],
         buttons: [
           {
             text: 'Yes',

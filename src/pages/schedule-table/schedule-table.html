@@ -72,8 +72,8 @@
 
       <ng-template #singleTeacherLoader>
         <div class="alert alert-info border-0 rounded-0">
-            <div>선생님 정보와 수업 시간표 정보를 로드중입니다.</div>
-            <div>잠시만 기다려주세요.</div>
+          <div>선생님 정보와 수업 시간표 정보를 로드중입니다.</div>
+          <div>잠시만 기다려주세요.</div>
         </div>
       </ng-template>
     </div>
@@ -314,7 +314,8 @@
         <span class="pr-2">
           <i class="fas fa-exclamation-triangle"></i>
         </span>
-        앗! 로그인을 해야지만 예약을 할 수 있습니다.
+
+        {{ 'LOGIN_BEFORE_RESERVE' | translate }}
       </div>
 
       <div class="table schedule-table" *ngIf=" schedule_table_rows.length " width="100%">
@@ -425,7 +426,7 @@
 
       <ng-container *ngIf=" show.more_icon_desc ">
 
-      <li>
+        <li>
           <ion-icon name="heart" icon-name="heart"></ion-icon> - 선예약 된 수업. 해당 학생에게만 예약이 가능한 수업.
         </li>
 
