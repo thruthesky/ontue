@@ -590,7 +590,12 @@ export class AppService {
             "STUDENT COMMENTS",
             'PLEASE WAIT',
             'UPDATED',
-            'REGISTERED'
+            'REGISTERED',
+            "DELETE COMMENT",
+            "CONFIRM DELETE",
+            "CONFIRM CANCEL SESSION",
+            "YES",
+            "CANCEL"
         ]).subscribe(re => {
             // console.log("i81n: ", re);
             this.i18n = re;

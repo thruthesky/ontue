@@ -8,6 +8,7 @@
     "SITE NAME": "OnTue",
 
     "CLOSE": "Close",
+    "YES": "Yes",
     "ALL MENU": "MENU",
     "MENU": "Menu",
 
@@ -235,4 +236,7 @@
  , "CHANGE TIMEZONE": "Change Timezone"
  , "TEACHER": "Teacher"
  , "TIME": "Time"
+ , "DELETE COMMENT": "Delete Comment"
+ , "CONFIRM DELETE": "Are you sure you want to delete?"
+ , "CONFIRM CANCEL SESSION": "Are you sure you want to cancel the session?"
 }

@@ -70,7 +70,7 @@ export class StudentCommentList{
     // console.log("onClickDelete:: ", comment);
 
     let confirm = this.alertCtrl.create({
-      title: 'Delete Comment',
+      title: this.a.i18n["DELETE COMMENT"],
       message: 'Are you sure you want to delete comment?',
       buttons: [
         {

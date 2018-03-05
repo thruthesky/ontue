@@ -11,6 +11,7 @@
 "DONE": "완료",
 "CLOSE": "닫기",
 "OK": "예",
+"YES": "예",
 "CANCEL": "취소",
 "DELETE": "삭제",
 "EDIT": "수정",
@@ -244,4 +245,7 @@
  , "CONFIRM": "확인"
  , "CLOSE LIST OPTION BOX": "선생님 검색 옵션 창 닫기"
  , "CHANGE TIMEZONE": "시간대 변경하기"
+ , "DELETE COMMENT": "Delete Comment"
+ , "CONFIRM DELETE": "Are you sure you want to delete?"
+ , "CONFIRM CANCEL SESSION": "수업 취소하시겠습니까?"
 }
