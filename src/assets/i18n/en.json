@@ -47,6 +47,7 @@
 
 
     "LOGIN_BEFORE_PAYMENT": "Please login before you are going to pay for tuition fee.",
+    "LOGIN_BEFORE_RESERVE": "Please, login to reserve sessions.",
     "NOTE_TAX_EXCLUSIVE": "Tax is excluded.",
 
 
