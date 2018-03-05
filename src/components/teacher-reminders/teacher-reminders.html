@@ -1,7 +1,7 @@
 <ion-grid class="mb-5 mb-md-0" no-padding>
-    <ion-row class="cover-by-2 mb-3">
-        <ion-col class="overflowhidden-x border border-top-0 border-bottom-0">
-            <ion-slides class="cover-slider outline-effect" effect="fade" autoplay="10000" speed="1000" loop>
+    <ion-row class="cover-by-2 mb-3 d-none d-md-flex">
+        <ion-col class="border border-top-0 border-bottom-0">
+            <ion-slides class=" outline-effect" effect="fade" autoplay="10000" speed="1000" loop>
                 <ion-slide class="bg-white">
                     <img class="w-100"  src="../assets/img/teacher/teacherslide1.jpg" alt="quote">
                 </ion-slide>
@@ -14,11 +14,32 @@
             </ion-slides>
         </ion-col>
     </ion-row>
-    <ion-row class="cover-by-2 overflowhidden-y outline-effect bg-white  mt-0 mt-md-3">
-        <ion-col>
-            <p class="m-0 fs-90 py-3 text-center white bg-light-red fw-bold outline-effect">Important Reminder</p>
+    <ion-row class="mb-5 d-flex d-md-none cover-by-2">
+        <ion-col class=" border border-top-0 border-bottom-0">
+            <ion-slides  effect="fade" autoplay="10000" speed="1000" loop>
+                <ion-slide class="slide-bg-1 py-5 white px-4">
+                    <div class="fs-3rem mt-5 mb-3 fw-bold white font-arial">ONTUE</div>
+                    <div class="mb-4 fw-light line-height-1-8em fs-90">Earn Money While Teaching English Online. Work from The Comfort Of Your Home</div>
+                    <button ion-button color="blue" (click)=" onClickSteps() ">Apply Now</button>
+                </ion-slide>
+                <ion-slide  class="slide-bg-2 py-5 white px-4">
+                    <div class="fs-3rem mt-5 mb-3 fw-bold white font-arial">ONTUE</div>
+                    <div class="mb-4 fw-light line-height-1-8em fs-90">Earn Money While Teaching English Online. Work from The Comfort Of Your Home</div>
+                    <button ion-button color="blue" (click)=" onClickSteps() ">Apply Now</button>
+                </ion-slide>
+                <ion-slide  class="slide-bg-3 py-5 white px-4">
+                    <div class="fs-3rem mt-5 mb-3 fw-bold white font-arial">ONTUE</div>
+                    <div class="mb-4 fw-light line-height-1-8em fs-90">Earn Money While Teaching English Online. Work from The Comfort Of Your Home</div>
+                    <button ion-button color="blue" (click)=" onClickSteps() ">Apply Now</button>
+                </ion-slide>
+            </ion-slides>
+        </ion-col>
+    </ion-row>
+    <ion-row class="cover-by-2 overflowhidden-y mt-md-3 mt-0 px-md-0 px-5">
+        <ion-col class="border-darkviolet  bg-opacity-darkviolet">
+            <p class="m-0 fs-90 py-3 text-center white bg-darkviolet fw-bold">Important Reminder</p>
             <div class="px-5 px-md-4">
-                <p class="fs-90 line-h-1-8em p-0 fw-light">Teacher must use smart phone to add contact to admin. Once
+                <p class="fs-90 line-h-1-8em p-0">Teacher must use smart phone to add contact to admin. Once
                     teacher added contact to admin, teacher can use PC to chat with admin. Admin will
                     check your environment.
                 </p>

@@ -27,14 +27,19 @@
         <button ion-button (click)='onClickCreateDayoff()'>Create Day-off</button>
         <section class="w-100 pl-md-5 mt-2 mt-md-0" *ngIf="showForm">
           <form class="w-100  d-flex">
-            <ion-item-group class="w-100  border rounded-2 mr-md-5">
-              <ion-item>
-                <ion-label>Select Date</ion-label>
-                <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY"
-                              pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
-              </ion-item>
-            </ion-item-group>
-            <button class="px-md-5" color="orange" ion-button type="submit" (click)="onClickSubmit()">Create</button>
+            <ion-list class="w-100 mr-md-5 " no-lines>
+                <ion-item-group class="w-100  border rounded-2">
+                  <ion-item>
+                    <ion-label>Select Date</ion-label>
+                    <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY"
+                                  pickerFormat="YYYYMMDD" [(ngModel)]="date"></ion-datetime>
+                  </ion-item>
+                  <ion-item class="d-md-none d-block">
+                      <button class="py-4"  color="orange" block ion-button type="submit" (click)="onClickSubmit()">Create</button>
+                  </ion-item>
+                </ion-item-group>
+            </ion-list>
+            <button class="px-md-5 d-none d-md-block" color="orange" ion-button type="submit" (click)="onClickSubmit()">Create</button>
           </form>
         </section>
       </div>
