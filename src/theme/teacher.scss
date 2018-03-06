@@ -204,6 +204,12 @@ ion-nav.teacher {
             transition:all 0.2s ease-in-out;
           }
         }
+
+        .accordion-icon-180{
+          .accordion-icon-toggle{
+            transition:all 0.2s ease-in-out;
+          }
+        }
       }
 
       .accordion-show{
@@ -219,6 +225,14 @@ ion-nav.teacher {
             transform: rotate(90deg);
           }
         }
+
+        .accordion-icon-180{
+          .accordion-icon-toggle{
+            transition:all 0.2s ease-in-out;
+            transform: rotate(180deg);
+          }
+        }
+
       }
     }
   
@@ -281,7 +295,7 @@ ion-nav.teacher {
   }
 
   .hide-effect {
-    animation: fade-in-effect 0.5s ease-in-out
+    animation: fade-in-effect 0.3s ease-in-out
   }
 
   @keyframes fade-in-effect {
