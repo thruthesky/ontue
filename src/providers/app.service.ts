@@ -607,7 +607,8 @@ export class AppService {
             "CONFIRM DELETE COMMENT",
             "CAMERA",
             "GALLERY",
-            "WHY REJECT REFUND"
+            "WHY REJECT REFUND",
+            "NICKNAME REQUIRED"
         ]).subscribe(re => {
             // console.log("i81n: ", re);
             this.i18n = re;

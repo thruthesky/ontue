@@ -137,6 +137,7 @@ export class RegisterPage {
     if (!this.account.user_email || !this.account.user_email.length) return this.a.showAlert(this.a.i18n['EMAIL REQUIRED']);
     if (this.a.user.isLogout && (!this.account.user_pass || !this.account.user_pass.length)) return this.a.showAlert(this.a.i18n['PASSWORD REQUIRED']);
     if (!this.account.name || !this.account.name.length) return this.a.showAlert(this.a.i18n["NAME REQUIRED"]);
+    if (!this.account.nickname || !this.account.nickname.length ) return this.a.showAlert(this.a.i18n["NICKNAME REQUIRED"]);
     if (this.a.teacherTheme) {
       if (!this.month || !this.month.length) return this.a.showAlert("Birth month is required.");
       if (!this.day || !this.day.length) return this.a.showAlert("Birth day is required.");

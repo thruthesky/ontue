@@ -261,4 +261,12 @@
  , "GALLERY": "Gallery"
  , "WHY REJECT REFUND": "Why Reject Refund?"
  , "LOADING DOT": "Loading..."
+ , "NICKNAME REQUIRED": "Please input your nickname."
+ , "CANCEL CLASS": "Cancel Class"
+ , "CAMERA ERROR": "Camera Error"
+ , "NO FILE SELECTED": "File uploaded cancelled. No file was selected."
+ , "FILE TOO LARGE": "File upload filed. Filesize is too large."
+ , "FILE EMPTY": "File is empty. No file.id"
+ , "PASSWORD CHANGED": "Password Changed."
+ , "PAYPAL INIT FAIL": "Paypal initialization has failed."
 }
