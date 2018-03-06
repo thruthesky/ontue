@@ -48,20 +48,27 @@ ion-nav.teacher {
     background-color: rgba(#007bff, 0.45) !important
   }
 
-  .bg-secondary-yellow {
-    background: rgba(#FBC02D,0.9) !important
-  }
 
   .secondary-yellow{
     color:#FBC02D !important
   }
 
-  .font-opacity-0-6{
-    color: rgba(black,0.8)!important
+  .bg-opacity-darkviolet{
+    background: rgba(#280680,0.1)
+  }
+  
+  .bg-darkviolet {
+    background-color: rgba(#280680,0.7)!important
   }
 
-  .bg-darkorange {
-    background-color: #F57C00!important
+
+  .border-darkviolet{
+    border: 1px solid rgba(#280680,0.3)!important;
+  }
+
+  
+  .font-opacity-0-6{
+    color: rgba(black,0.8)!important
   }
 
   .bg-muted {
@@ -170,7 +177,7 @@ ion-nav.teacher {
       }
   
       .cover-slider {
-        height: 225.95px !important
+        min-height: 225.95px !important
       }
 
       .d-md-table{
@@ -206,6 +213,23 @@ ion-nav.teacher {
       .item-inner {
         padding: 0 !important
       }
+
+      .accordion-hide{
+        &>.accordion-item{
+          transition:all 0.2s ease-in-out;
+          max-height: 0!important;
+          overflow: hidden!important;
+        }
+      }
+
+      .accordion-show{
+        &>.accordion-item{
+          transition:all 0.2s ease-in-out;
+          max-height: 100%!important;
+          overflow: hidden!important;
+        }
+      }
+
     }
 
     .list-hover-effect {

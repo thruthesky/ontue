@@ -12,4 +12,9 @@ export class TeacherRemindersComponent {
       public a: AppService,
     ) {
   }
+
+
+  onClickSteps() {
+    document.querySelector('#teacher-steps').scrollIntoView({behavior: "smooth", block: "start"});
+  }
 }
