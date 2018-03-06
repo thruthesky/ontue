@@ -25,22 +25,22 @@ export class RefundRequestView {
 
   onClickRefund(book) {
     let confirm = this.alertCtrl.create({
-      title: 'Accept Refund',
-      message: 'Are you sure you want to accept the request?',
+      title: this.a.i18n["ACCEPT REFUND"],
+      message: this.a.i18n["CONFIRM ACCEPT REFUND"],
       buttons: [
         {
-          text: 'Yes',
+          text: this.a.i18n["YES"],
           handler: () => {
             this.a.lms.session_refund(book['idx']).subscribe(re => {
-              console.log(re);
+              // console.log(re);
               this.viewCtrl.dismiss('accept');
             }, e => this.a.alert(e));
           }
         },
         {
-          text: 'Cancel',
+          text: this.a.i18n["CANCEL"],
           handler: () => {
-            console.log('Cancel');
+            // console.log('Cancel');
           }
         }
       ]
@@ -51,7 +51,7 @@ export class RefundRequestView {
   }
 
   onClickRejectRefundRequest(book) {
-    const modal = this.modalCtrl.create(MessageWrite, {title: "Why Reject Refund?"});
+    const modal = this.modalCtrl.create(MessageWrite, {title: this.a.i18n["WHY REJECT REFUND"]});
     modal.onDidDismiss(re => {
       if (re) {
         this.a.lms.session_refund_reject({idx_reservation: book['idx'], refund_reject_message: re}).subscribe(res => {

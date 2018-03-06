@@ -2,6 +2,9 @@
   <ion-toolbar>
     <ion-title>{{ "STUDENT COMMENT LIST" | translate}}</ion-title>
     <ion-buttons start>
+      <button ion-button class="mr-5" *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">
+        {{ 'WRITE REVIEW' | translate }}
+      </button>
       <button ion-button class="cancel" (click)="onClickCancel()">
         <span ion-text color="primary">{{ "CLOSE" | translate}}</span>
       </button>

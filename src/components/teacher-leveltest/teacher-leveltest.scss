@@ -1,0 +1,29 @@
+teacher-leveltest-component {
+  .guideline {
+    .active {
+      background-color: rgba(#007bff,0.1);
+      color: #007bff;
+      border-left: 3px solid #007bff;
+      margin-left: -3px!important;
+    }
+  }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  }
+  .video-container iframe,
+  .video-container object,
+  .video-container embed {
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+}

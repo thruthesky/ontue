@@ -1,0 +1,104 @@
+<section class="bg-white pb-5 outline-effect">
+  <div class="bg-blue-60 white mb-5 pl-md-5">
+    <h2 class="title-style d-inline-block ml-md-5 m-0 p-5 fs-3rem fw-light bg-blue text-center" ion-text color="white">
+      Teacher Level Test Guide</h2>
+  </div>
+  <ion-grid class="px-5" no-padding>
+    <ion-row class="m-0 m-md-5">
+      <ion-col class="guideline pointers pr-5 pl-1" col-md-6 col-12>
+        <div class="p-4 rounded-2" [class.active]="view == 1 " (click)="view = 1">Level Test</div>
+        <div class="p-4 rounded-2" [class.active]="view == 2 && selectedVideo == 0 " (click)="playTeacherYoutube(0)">
+          Level Test Sample <span>Video 1</span>
+        </div>
+        <div class="p-4 rounded-2" [class.active]="view == 2 && selectedVideo == 1 " (click)="playTeacherYoutube(1)">
+          Level Test Sample <span>Video 2</span>
+        </div>
+        <div class="p-4 rounded-2" [class.active]="view == 3" (click)="view = 3">Regular Sessions</div>
+      </ion-col>
+      <ion-col col-md-6 col-12>
+        <div class="border rounded-2 hide-effect" *ngIf=" view == 1 ">
+            <div class="p-4 fs-110 text-center fw-bold bg-grey white">LEVEL TEST</div>
+            <div class="p-5 bg-lightgrey">We strongly request all teacher to follow this format.</div>
+            <div class="p-5 bg-light">It is considered a level test class when the session has 0 point.</div>
+            <div class="p-5 bg-lightgrey">First 2 minutes: Say hello to the student. Ask name, age, location, school.</div>
+            <div class="p-5 bg-light">After this, you will know how the student speaks.</div>
+            <div class="p-5 bg-lightgrey">Then, tell the student that you are going to conduct a simple English level test.</div>
+        </div>
+        <div class="video-container  hide-effect" *ngIf=" view == 2 && urlYoutube">
+          <iframe class="youtube-video border-0 hide-effect" [src]=" urlYoutube "></iframe>
+        </div>
+        <div class="hide-effect border rounded-2 " *ngIf=" view == 3 ">
+            <div class="p-4 fs-110 text-center fw-bold bg-grey white">REGULAR SESSIONS</div>
+            <div class="p-5 bg-lightgrey">1. Say hello to Student for 2 minutes.</div>
+            <div class="p-5 bg-light">2.1. <span class="fw-bold">Book</span> - Overview the last session or discuss about the book. (15 minutes) </div>
+            <div class="p-5 bg-lightgrey">2.2. <span class="fw-bold">Free Talking</span> Overview the last session or talk about new topic. (15 minutes)</div>
+            <div class="p-5 bg-light">4. Correct the student mistakes like words, expression, etc for 1 or 2 minutes.</div>
+            <div class="p-5 bg-lightgrey">5. Review/Recap for 1 or 2 minutes.</div>
+            <div class="p-5 bg-light">6. Discuss about the next class. What book will be used. Teacher may ask the student study the book in advance.</div >
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
+
+
+
+
+
+<!-- 
+<section class="bg-white pb-5">
+    <div class="bg-blue-60 white mb-5 pl-md-5">
+      <h2 class="title-style d-inline-block ml-md-5 m-0 p-5 fs-3rem fw-light bg-blue text-center" ion-text color="white">
+        Teacher LevelTest Guide</h2>
+    </div>
+    <ion-grid class="px-5" no-padding>
+      <ion-row>
+        <ion-col class="guideline pointers pr-5">
+          <div [class.active]="view == 1 " (click)="view = 1">Level Test</div>
+          <div [class.active]="view == 2 && selectedVideo == 0 " (click)="playTeacherYoutube(0)">
+            Level Test Sample <span>Video 1</span>
+          </div>
+          <div [class.active]="view == 2 && selectedVideo == 1 " (click)="playTeacherYoutube(1)">
+            Level Test Sample <span>Video 2</span>
+          </div>
+          <div [class.active]="view == 3" (click)="view = 3">Regular Sessions</div>
+        </ion-col>
+        <ion-col>
+          <div *ngIf=" view == 1 ">
+            <ul>
+              <li>We strongly request all teacher to follow this format.</li>
+              <li>It is considered a level test class when the session has 0 point.</li>
+              <li>First 2 minutes: Say hello to the student. Ask name, age, location, school.</li>
+              <li>After this, you will know how the student speaks.</li>
+              <li>Then, tell the student that you are going to conduct a simple English level test.</li>
+            </ul>
+          </div>
+          <div class="video-container" *ngIf=" view == 2 && urlYoutube">
+            <iframe class="youtube-video border-0" [src]=" urlYoutube "></iframe>
+          </div>
+          <div *ngIf=" view == 3 ">
+            <ul>
+              <li>1. Say hello to Student for 2 minutes.</li>
+              <li>2.1. (Book)Overview the last session or discuss about the book.
+                <ul>
+                  <li> Continue the book for 15 minutes.</li>
+                </ul>
+              </li>
+              <li>2.2. (Freetalking)Overview the last session or talk about new topic.</li>
+              <li>
+                <ul>
+                  <li> Freetalking for 15 minutes.</li>
+                </ul>
+              </li>
+              <li>4. Correct the student mistakes like words, expression, etc for 1 or 2 minutes.</li>
+              <li>5. Review/Recap for 1 or 2 minutes.</li>
+              <li>6. Discuss about the next class. What book will be used.<br>
+                Teacher may ask the student study the book in advance.
+              </li>
+            </ul>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section> -->
+  

@@ -51,22 +51,22 @@ export class ClassCommentPage {
     // console.log("onClickDelete:: ", comment);
 
     let confirm = this.alertCtrl.create({
-      title: 'Delete Comment',
-      message: 'Are you sure you want to delete comment?',
+      title: this.a.i18n["DELETE COMMENT"],
+      message: this.a.i18n["CONFIRM DELETE"],
       buttons: [
         {
-          text: 'Yes',
+          text: this.a.i18n["YES"],
           handler: () => {
-            console.log('Yes');
+            // console.log('Yes');
             this.a.showLoader();
             let data = {
               idx: comment.idx
             };
             this.a.lms.student_comment_to_teacher_delete(data).subscribe( res => {
-              console.log("student_comment_to_teacher_delete:: ", res);
+              // console.log("student_comment_to_teacher_delete:: ", res);
               if( res['idx'] == comment.idx ) {
                 comment.idx = '';
-                this.a.alert("Comment Deleted...");
+                this.a.alert(this.a.i18n['COMMENT DELETED']);
               }
               this.a.hideLoader();
             }, e => {
@@ -76,9 +76,9 @@ export class ClassCommentPage {
           }
         },
         {
-          text: 'cancel',
+          text: this.a.i18n["CANCEL"],
           handler: () => {
-            console.log('cancel');
+            // console.log('cancel');
           }
         }
       ]

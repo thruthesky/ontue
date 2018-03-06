@@ -191,6 +191,49 @@ ion-nav.teacher {
       .d-md-flex-row{
         flex-direction: row!important;
       }
+
+      .accordion-hide{
+        &>.accordion-item{
+          transition:all 0.2s ease-in-out;
+          max-height: 0!important;
+          overflow: hidden!important;
+        }
+
+        &+.accordion-icon{
+          .accordion-icon-toggle{
+            transition:all 0.2s ease-in-out;
+          }
+        }
+
+        .accordion-icon-180{
+          .accordion-icon-toggle{
+            transition:all 0.2s ease-in-out;
+          }
+        }
+      }
+
+      .accordion-show{
+        &>.accordion-item{
+          transition:all 0.2s ease-in-out;
+          max-height: 100%!important;
+          overflow: hidden!important;
+        }
+
+        &+.accordion-icon{
+          .accordion-icon-toggle{
+            transition:all 0.2s ease-in-out;
+            transform: rotate(90deg);
+          }
+        }
+
+        .accordion-icon-180{
+          .accordion-icon-toggle{
+            transition:all 0.2s ease-in-out;
+            transform: rotate(180deg);
+          }
+        }
+
+      }
     }
   
     @media screen and (max-width: 544px){
@@ -213,23 +256,6 @@ ion-nav.teacher {
       .item-inner {
         padding: 0 !important
       }
-
-      .accordion-hide{
-        &>.accordion-item{
-          transition:all 0.2s ease-in-out;
-          max-height: 0!important;
-          overflow: hidden!important;
-        }
-      }
-
-      .accordion-show{
-        &>.accordion-item{
-          transition:all 0.2s ease-in-out;
-          max-height: 100%!important;
-          overflow: hidden!important;
-        }
-      }
-
     }
 
     .list-hover-effect {
@@ -269,7 +295,7 @@ ion-nav.teacher {
   }
 
   .hide-effect {
-    animation: fade-in-effect 0.5s ease-in-out
+    animation: fade-in-effect 0.3s ease-in-out
   }
 
   @keyframes fade-in-effect {
