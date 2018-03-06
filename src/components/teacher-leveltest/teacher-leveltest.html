@@ -6,7 +6,8 @@
   <ion-grid class="px-5" no-padding>
     <ion-row>
       <ion-col class="guideline pointers pr-5">
-        <div [class.active]="view == 1 " (click)="view = 1">Level Test</div>
+        <div [class.active]="view == 0 " (click)="view = 0">What is Level Test</div>
+        <div [class.active]="view == 1 " (click)="view = 1">Guide for Level Test</div>
         <div [class.active]="view == 2 && selectedVideo == 0 " (click)="playTeacherYoutube(0)">
           Level Test Sample <span>Video 1</span>
         </div>
@@ -16,6 +17,14 @@
         <div [class.active]="view == 3" (click)="view = 3">Regular Sessions</div>
       </ion-col>
       <ion-col>
+        <div *ngIf=" view == 0 ">
+          <ul>
+            <li>Level test is given to assess the English language proficiency for non-native speakers.</li>
+            <li>Level test is also being done to indicate the level of the student in English and for the teacher to understand the student’s needs accurately so that the teacher can decide which class and references is right for the student.</li>
+            <li>Level test is usually the student’s first time to attend the class and this is the time that the student, together with the parent get their first impression whether the company has GOOD and COMPETENT teachers or NOT.</li>
+            <li>Teachers are expected to be at their best because once the student/parent observed that the company is really “THE BEST PLACE TO LEARN” then it gives our company a favor. We aim to make the student enroll in the company, and in effect, make the company more productive. In return, the company will also be able to contribute with the progress of numerous students with their English proficiency.</li>
+          </ul>
+        </div>
         <div *ngIf=" view == 1 ">
           <ul>
             <li>We strongly request all teacher to follow this format.</li>

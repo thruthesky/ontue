@@ -36,7 +36,10 @@
     </ion-item>
   </ion-list>
 <div class="px-3">
-  <button ion-button type="button" (click)="onClickSubmit()">{{ 'SUBMIT' | translate }}</button>
+  <button ion-button type="button" (click)="onClickSubmit()">
+    <span *ngIf="loading"><i class="fa fa-spinner fa-spin mr-2"></i>Loading...</span>
+    <span *ngIf="!loading">{{ 'SUBMIT' | translate }}</span>
+  </button>
   <button ion-button type="button" color="secondary"  (click)="onClickCancel()">{{ 'CANCEL' | translate }}</button>
 </div>
 </ion-content>
