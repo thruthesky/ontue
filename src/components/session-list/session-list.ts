@@ -259,7 +259,7 @@ export class SessionList {
   }
 
   onClickRejectRefundRequest(book) {
-    const modal = this.modalCtrl.create(MessageWrite, { title: "Why Reject Refund?" });
+    const modal = this.modalCtrl.create(MessageWrite, { title: this.a.i18n["WHY REJECT REFUND"] });
     modal.onDidDismiss(re => {
       // console.log("onDidDismiss", re);
       if (re) {

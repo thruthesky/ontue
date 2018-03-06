@@ -161,9 +161,9 @@ export class FileUploadWidget {
 
 
     }, e => {
-      console.log("Upload Error: e: ", e);
-      console.log("upload error source " + e.source);
-      console.log("upload error target " + e.target);
+      // console.log("Upload Error: e: ", e);
+      // console.log("upload error source " + e.source);
+      // console.log("upload error target " + e.target);
       this.a.showAlert(e.code);
       this.onUploadFailure();
     }, options);

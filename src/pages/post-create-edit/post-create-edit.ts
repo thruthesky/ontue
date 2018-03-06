@@ -39,10 +39,10 @@ export class PostCreateEditPage {
     this.preview = new SitePreview(a.forum).listen();
     this.preview.done.subscribe(preview => {
 
-      console.log('preview:: ', this.preview);
+      // console.log('preview:: ', this.preview);
       /// @see logic of auto titling https://docs.google.com/document/d/1m3-wYZOaZQGbAzXeVlIpJNSdTIt3HCUiIt9UTmZUgXo/edit#heading=h.qlbi1doi8u3z
       if (!this.post_title) {
-        console.log('this.post_title::');
+        // console.log('this.post_title::');
         this.post_title = preview.title;
         this.unsubscribeTyping();
         this.a.xapi.render();
@@ -61,7 +61,7 @@ export class PostCreateEditPage {
         .debounceTime(300)
         .subscribe(text => {
           this.post_title = this.a.forum.getTitleOnTextBegin(text);
-          console.log('post_title: ', this.post_title);
+          // console.log('post_title: ', this.post_title);
         });
     } else if(this.method == 'edit') {
         this.post_title = this.post.post_title;

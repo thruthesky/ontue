@@ -51,7 +51,7 @@ export class RefundRequestView {
   }
 
   onClickRejectRefundRequest(book) {
-    const modal = this.modalCtrl.create(MessageWrite, {title: "Why Reject Refund?"});
+    const modal = this.modalCtrl.create(MessageWrite, {title: this.a.i18n["WHY REJECT REFUND"]});
     modal.onDidDismiss(re => {
       if (re) {
         this.a.lms.session_refund_reject({idx_reservation: book['idx'], refund_reject_message: re}).subscribe(res => {

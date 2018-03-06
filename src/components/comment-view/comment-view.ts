@@ -58,7 +58,7 @@ export class CommentViewWidget {
         message: this.a.i18n["CONFIRM DELETE"],
         buttons: [
           {
-            text: 'Yes',
+            text: this.a.i18n["YES"],
             handler: () => {
               console.log('Yes');
               this.a.showLoader();
@@ -80,9 +80,9 @@ export class CommentViewWidget {
             }
           },
           {
-            text: 'cancel',
+            text: this.a.i18n["CANCEL"],
             handler: () => {
-              console.log('cancel');
+              // console.log('cancel');
             }
           }
         ]

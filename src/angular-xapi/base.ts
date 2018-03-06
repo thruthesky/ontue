@@ -39,9 +39,9 @@ export class Base {
     /**
      * Returns an I.ERROR_RESPONSE object from an Error Object.
      * @param e error object
-     * 
+     *
      * @code
-     
+
         if ( str instanceof Error) {
             str = this.xapi.getError(str).message;
         }
@@ -50,7 +50,7 @@ export class Base {
      * @endcode
      */
     getError( e: Error ): I.ERROR_RESPONSE {
-        console.log("getError(e): message: ", e.message);
+        // console.log("getError(e): message: ", e.message);
         let re = <I.ERROR_RESPONSE> {};
         try {
             re = JSON.parse( e.message );
@@ -58,16 +58,16 @@ export class Base {
         catch ( ex ) { // failed to JOSN parse error message. Meaning it is not error object of backend.
             console.error(" ========> JSON.parse() failed: ", ex.message );
             re['code'] = -1;
-            re['message'] = e.message; 
+            re['message'] = e.message;
         }
-        console.log("Error message has been parsed. Message: ", re);
+        // console.log("Error message has been parsed. Message: ", re);
         return re;
     }
 
 
     /**
      * To throw an error or To return an Observable error.
-     * 
+     *
      * @param code error code
      * @param message error message
      * @param obj if true, it returns Observable.throw(). if false, throws an error.
