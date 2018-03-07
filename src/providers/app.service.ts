@@ -598,7 +598,17 @@ export class AppService {
             "COMMENT DELETED",
             "CONFIRM CANCEL SESSION",
             "YES",
-            "CANCEL"
+            "CANCEL",
+            "DELETE SCHEDULE",
+            "REFUND CLASS",
+            "CONFIRM REFUND CLASS",
+            "ACCEPT REFUND",
+            "CONFIRM ACCEPT REFUND",
+            "CONFIRM DELETE COMMENT",
+            "CAMERA",
+            "GALLERY",
+            "WHY REJECT REFUND",
+            "NICKNAME REQUIRED"
         ]).subscribe(re => {
             // console.log("i81n: ", re);
             this.i18n = re;
