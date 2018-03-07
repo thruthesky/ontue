@@ -416,6 +416,11 @@ export class AppService {
             options['message'] = message;
             options['cssClass'] = 'error' + code;
         }
+        /**
+         * @todo This error happens rarely. @see https://github.com/thruthesky/ontue/issues/192
+         * @todo try to produce php error and display error log on console.
+         * @todo Sometimes, somehow, the error disappears and cannot be reproduced.
+         */
         else if (str instanceof HttpErrorResponse) { // backend wordpress response error. status may be 200.
             // console.log("instanceof HttpErrorResponse");
             const HER = str;
