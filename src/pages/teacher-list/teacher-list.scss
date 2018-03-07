@@ -17,6 +17,16 @@ teacher-list-page {
       margin:-5px;
     }
 
+    .ion-select-35-65{
+      ion-label {
+        max-width: 35%;
+      }
+      ion-select {
+        min-width: 65%;
+        text-align: right;
+      }
+    }
+
     .hover-img-effect{
       position: relative;
       transition: all 0.2s ease-in-out;
