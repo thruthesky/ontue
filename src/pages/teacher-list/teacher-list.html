@@ -19,15 +19,15 @@
     </section>
 
     <section class="options hide-effect" *ngIf=" display_options ">
-      <div class="bg-white py-4  px-5">
-        <div class="mb-3 d-flex justify-content-between" >
+      <div class="bg-white p-4">
+        <div class="mb-3 d-flex justify-content-between  px-2" >
           {{ "TEACHER LIST OPTIONS" | translate }}
           <button class="fs-90 bg-white" (click)=" display_options = false ">
               <i class="fal fa-times"></i>
               <span class="text-uppercase">{{ 'CLOSE' | translate }}</span>
           </button>
         </div>
-        <ion-list class="d-md-flex d-block m-0" no-lines>
+        <ion-list class="d-md-flex d-block m-0  px-2" no-lines>
             <ion-item class="border mr-md-2 mr-0 ion-select-35-65">
               <ion-label>{{ "GENDER" | translate }}</ion-label>
               <ion-select (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
