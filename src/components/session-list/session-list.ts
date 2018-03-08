@@ -103,7 +103,7 @@ export class SessionList {
   onClickCancel(book) {
 
     let confirm = this.alertCtrl.create({
-      title: 'Cancel Class',
+      title: this.a.i18n["CANCEL CLASS"],
       message: this.a.i18n['CONFIRM CANCEL SESSION'],
       buttons: [
         {

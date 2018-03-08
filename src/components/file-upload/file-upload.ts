@@ -103,7 +103,7 @@ export class FileUploadWidget {
       this.cordovaTransferFile(path);
     }, e => {
       // console.error('camera error: ', e);
-      alert("camera error");
+      this.a.alert(this.a.i18n["CAMERA ERROR"]);
     }, options);
   }
 
@@ -150,7 +150,7 @@ export class FileUploadWidget {
         re = JSON.parse(r.response);
       }
       catch (e) {
-        this.a.showAlert("JSON parse error on server response while file transfer...");
+        this.a.showAlert(this.a.i18n["JSON PARSE ERROR"]);
         return;
       }
 
@@ -196,9 +196,9 @@ export class FileUploadWidget {
       } else {
         // console.log(err);
         if (err.message == 'file_is_not_selected' || err.message == 'file_is_not_selected_or_file_does_not_exist') {
-          this.a.showAlert('File uploaded cancelled. No file was selected.');
+          this.a.showAlert(this.a.i18n["NO FILE SELECTED"]);
         }
-        else this.a.showAlert('File upload filed. Filesize is too large? ' + err.message);
+        else this.a.showAlert(this.a.i18n["FILE TOO LARGE"] + err.message);
       }
       this.onUploadFailure();
     });
@@ -222,7 +222,7 @@ export class FileUploadWidget {
    */
   deleteFile(file: FILE, successCallback=null, failureCallback=null) {
     if ( ! file || !file.id ) {
-      alert("File is empty. No file.id");
+      this.a.alert(this.a.i18n["FILE EMPTY"]);
       return;
     }
     let data: FILE_DELETE = {};

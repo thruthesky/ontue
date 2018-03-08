@@ -16,6 +16,8 @@ export class StudentCommentEdit {
   comment= '';
   rate = 1;
 
+  loading = false;
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -49,14 +51,21 @@ export class StudentCommentEdit {
     this.data['comment'] = this.comment;
     this.data['rate'] = this.rate;
 
+    if(this.loading) return;
+    this.loading = true;
+
+
+
     // console.log("data::", this.data);
     this.a.lms.student_comment_to_teacher_edit( this.data ).subscribe(res => {
       this.a.onStudentCommentToTeacher();
-      console.log("student_comment_to_teacher_edit", res);
+      // console.log("student_comment_to_teacher_edit", res);
         this.a.alert("코멘트를 작성하였습니다.");
         // this.viewCtrl.dismiss({comment:res['comment']});
+        this.loading = false;
         this.viewCtrl.dismiss('success');
     }, e => {
+        this.loading = false;
         this.a.alert(e);
     })
   }

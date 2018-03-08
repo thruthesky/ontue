@@ -88,7 +88,7 @@ export class TeacherListPage {
 
   onClickShowAllTeachers() {
     this.display_options = true;
-    document.querySelector('.scroll-content').scrollTo(0,0);
+    document.querySelector('.page-header').scrollIntoView({behavior: "smooth", block: "start"});
   }
 
 }

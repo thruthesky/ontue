@@ -113,7 +113,7 @@ export class EvaluatePage {
       }
       if (this.book_next) data['book_next'] = this.book_next;
       else {
-        this.a.alert("Please specify book you uses for today session.");
+        this.a.alert("Please specify book you will use for next session.");
         return;
       }
 

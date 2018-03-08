@@ -10,7 +10,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class TeacherLeveltestComponent {
 
 
-  view = 1;
+  view = 0;
   selectedVideo = null;
   youtube = ["www.youtube.com/watch?v=Mw-be1sYQls","www.youtube.com/watch?v=I7Jol4-xGpA"];
   urlYoutube = null;

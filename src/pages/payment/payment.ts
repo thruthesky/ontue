@@ -56,7 +56,7 @@ export class PaymentPage implements AfterViewInit {
 
     initPaypal() {
         let paypal = window['paypal'];
-        if (!paypal) this.a.alert("Paypal initialization has failed.");
+        if (!paypal) this.a.alert(this.a.i18n["PAYPAL INIT FAIL"]);
 
 
         let CREATE_PAYMENT_URL = this.a.urlBackend + '/wp-content/plugins/xapi-2/lms/paypal-create-payment.php';
