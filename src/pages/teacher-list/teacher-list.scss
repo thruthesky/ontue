@@ -1,24 +1,42 @@
 teacher-list-page {
+
+  font-size: 14px;
+
   .page{
     background: #f7f7f7!important;
   }
+
   @include theme('bluegrey');
 
     .teacher-profile-photo {
       width: 100px;
       height: 120px;
-      overflow: hidden;
-      padding: 2px;
+      overflow: hidden!important;
 
       img {
-        width: 100%;
         border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
+        border-top-right-radius: 2px;
+        width: 100%;
       }
     }
 
-    .teachers{
-      margin:-5px;
+    .w-100px{
+      width: 102px!important;
+    }
+
+
+    @media (min-width: $md) {
+      .teachers{
+        margin:-4px;
+      }
+
+      .flex-md-row{
+        flex-direction: row!important;
+      }
+
+      .my-md-7em{
+        margin:6em 0!important;
+      }
     }
 
     .ion-select-35-65{
@@ -28,6 +46,19 @@ teacher-list-page {
       ion-select {
         min-width: 65%;
         text-align: right;
+      }
+    }
+
+    .hide-effect {
+      animation: fade-in-effect 0.3s ease-in-out
+    }
+  
+    @keyframes fade-in-effect {
+      0% {
+        opacity: 0
+      }
+      100% {
+        opacity: 1
       }
     }
 
@@ -56,16 +87,19 @@ teacher-list-page {
     }
 
   .show-more-teachers {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
     display: block;
-    margin: 2em auto 4em;
-    padding: 1.2em 7em;
-    @media (min-width: $md) {
-      padding: 1.25em 12em;
-    }
-    background-color: rgb(41, 75, 170);
+    background-color: dodgerblue;
     color: white;
     font-size: 1.4rem !important;
-    cursor: pointer;
+    border-radius: 2px;
+
+    &:hover{
+      background-color: rgba(dodgerblue,0.7);
+    }
   }
 
   .no-more-teachers {
@@ -74,6 +108,18 @@ teacher-list-page {
     background-color: rgb(230, 130, 0);
     color: white;
   }
+
+  .loader-big{
+    height: 100%;
+    width: 100%;
+    margin:0!important;
+    position: fixed;
+    top:0;
+    left: 0;
+    background: rgba(white,0.9);
+    z-index:999999;
+  }
+
 }
 
 
