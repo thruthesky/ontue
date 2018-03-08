@@ -81,9 +81,9 @@
 
       <div class="teachers pt-md-5 mb-5 mb-md-6">
         <ion-grid *ngIf=" re " no-padding>
-          <ion-row>
+          <ion-row align-items-stretch>
             <ion-col class="mx-1 my-2 pointer hide-effect" *ngFor="let teacher of teachers" (click)="onClickTeacher(teacher)" text-center>
-              <div class="hover-img-effect text-center d-inline-block w-100px bg-white rounded-2 border">
+              <div class="hover-img-effect text-center w-100px d-inline-block bg-white rounded-2 border h-100">
                 <div class="hover-cover d-flex align-items-center justify-content-center">
                     <i class="fal fa-link fa-2x white"></i>
                 </div>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="text-uppercase mb-2 mt-4">{{ a.preTeacherName( teacher.display_name )}}</div>
                 <div class="grade fs-90 fw-light" [attr.grade]=" teacher.grade " text-center>
-                  <span class="fs-90">추천:</span>
+                  <span *ngIf="teacher.grade!=0" class="fs-90">추천:</span>
                   <span class="fs-90">
                     <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>
                   </span>
@@ -115,7 +115,7 @@
       </div>
 
       <div class="mt-5 mb-md-5 text-center pt-4 p-md-0 bg-white d-flex-column flex-md-row align-items-center justify-content-center border"
-           *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' " (click)=" onClickShowAllTeachers() ">
+           *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' " (click)="onClickShowAllTeachers() ">
         <div class="px-3 p-md-0">더 이상 추천 강사가 없습니다. 옵션을 통해 더 많은 강사를 볼 수 있습니다.</div>
         <button class="no-more-teachers py-3  d-flex align-items-center justify-content-center rounded-2 text-uppercase ml-3">
           <span>옵션 창 열기</span>

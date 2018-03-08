@@ -52,7 +52,7 @@ teacher-list-page {
     .hide-effect {
       animation: fade-in-effect 0.3s ease-in-out
     }
-  
+
     @keyframes fade-in-effect {
       0% {
         opacity: 0
@@ -61,6 +61,26 @@ teacher-list-page {
         opacity: 1
       }
     }
+
+    .h-100{
+      height: 100%;
+    }
+
+    .highlight-box{
+      animation: highlight-effect 2s ease-in-out infinite;
+    }
+
+    @keyframes highlight-effect {
+      0%,50%,100% {
+        opacity: 1
+      }
+
+      25%,75%{
+        opacity: 0.5
+      }
+
+    }
+  
 
     .hover-img-effect{
       position: relative;
