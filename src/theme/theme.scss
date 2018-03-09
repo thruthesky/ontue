@@ -313,6 +313,13 @@ ion-toast {
       color: white;
     }
   }
+  &.error-40959 {
+    // login first
+    .toast-wrapper {
+      background-color: #720019;
+      color: white;
+    }
+  }
 }
 
 
