@@ -12,21 +12,28 @@
       <h2 class="title white" *ngIf=" mode != 'leveltest' ">
         {{ "SELECT TEACHER TO RESERVE" | translate }}
       </h2>
-      <div class="pointer d-flex fs-110" (click)=" display_options = !display_options " *ngIf=" ! display_options ">
+      <button class="pointer d-flex fs-110 bg-transparent hover-effect" 
+              (click)=" display_options = !display_options " *ngIf=" ! display_options ">
         {{ 'OPTIONS' | translate }}
         <ion-icon class="ml-3" name="options"></ion-icon>
-      </div>
+      </button>
     </section>
 
     <section class="options hide-effect" *ngIf=" display_options ">
       <div class="bg-white p-4">
-        <div class="mb-3 d-flex justify-content-between  px-2" >
-          <div>{{ "TEACHER LIST OPTIONS" | translate }}</div>
-          <button class="fs-90 bg-white" (click)=" display_options = false ">
-              <i class="fal fa-times"></i>
-              <span class="text-uppercase">{{ 'CLOSE' | translate }}</span>
-          </button>
-        </div>
+        <ion-grid class="mb-3 px-2" no-padding>
+          <ion-row>
+              <ion-col>
+                  <div>{{ "TEACHER LIST OPTIONS" | translate }}</div>
+              </ion-col>
+              <ion-col text-right col-4>
+                  <button class="fs-90 bg-transparent" (click)=" display_options = false ">
+                      <i class="fal fa-times"></i>
+                      <span class="text-uppercase">{{ 'CLOSE' | translate }}</span>
+                  </button>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
         <ion-list class="d-md-flex d-block m-0  px-2" no-lines>
             <ion-item class="border mr-md-2 mr-0 ion-select-35-65">
               <ion-label>{{ "GENDER" | translate }}</ion-label>
@@ -86,13 +93,14 @@
       <div class="teachers pt-md-5 mb-5 mb-md-6">
         <ion-grid *ngIf=" re " no-padding>
           <ion-row align-items-stretch>
-            <ion-col class="mx-1 my-2 pointer hide-effect" *ngFor="let teacher of teachers" (click)="onClickTeacher(teacher)" text-center>
+            <ion-col class="mx-1 my-2 pointer hide-effect" *ngFor="let teacher of teachers"
+                     (click)="onClickTeacher(teacher)" text-center>
               <div class="hover-img-effect text-center w-100px d-inline-block bg-white rounded-2 h-100">
                 <div class="hover-cover d-flex align-items-center justify-content-center">
                     <i class="fas fa-external-link-square fa-2x white"></i>
                 </div>
                 <div class="teacher-profile-photo of-hidden ">
-                  <img class="w-100" src="{{ teacher.photoURL }}">
+                  <img class="w-100" alt="profile photo" src="{{ teacher.photoURL }}">
                 </div>
                 <div class="text-uppercase mb-2 mt-4">{{ a.preTeacherName( teacher.display_name )}}</div>
                 <div class="grade fs-90 fw-light" [attr.grade]=" teacher.grade " text-center>
@@ -110,35 +118,38 @@
         </ion-grid>
       </div>
 
-      <div class="showmoreteacher-wrapper h-0 position-relative my-5 my-md-6em border"
+      <div class="h-0 showmoreteacher-wrapper middle-line-wrapper my-5 my-md-6em"
            *ngIf=" ! noMoreTeachers && ! loading">
-          <button class="show-more-teachers d-flex align-items-center justify-content-center px-5 py-4" (click)=" onClickShowMoreTeacher()">
+          <button class="middle-line bg-dodgerblue white hover-effect rounded-2 d-flex
+                         align-items-center justify-content-center px-5 py-4"
+                 (click)=" onClickShowMoreTeacher()">
             <span>강사 더보기...</span>
             <i class="fal fa-arrow-to-bottom ml-3"></i>
           </button>
       </div>
-
-      <div class="nomoreteachers-wrapper mt-5 mb-md-5 text-center pt-4 p-md-0 bg-white d-flex-column flex-md-row align-items-center justify-content-center outline-sm-white-7px"
-           *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' " (click)="onClickShowAllTeachers() ">
+          <div class=" middle-line-wrapper  my-5em" text-center 
+              *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' ">
+              <i class="middle-line fal fa-map-signs fa-6x darkgrey"></i>
+          </div>
+      <div class="mb-md-5 text-center p-md-0 d-flex-column flex-md-row align-items-center justify-content-center"
+           *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' ">
         <div class="px-3 p-md-0">더 이상 추천 강사가 없습니다. 옵션을 통해 더 많은 강사를 볼 수 있습니다.</div>
-        <button class="no-more-teachers py-3  d-flex align-items-center justify-content-center rounded-2 text-uppercase ml-3">
+        <button class="no-more-teachers white bg-dodgerblue hover-effect   d-flex align-items-center
+                         justify-content-center rounded-2 text-uppercase ml-3"
+                (click)="onClickShowAllTeachers() ">
           <span>옵션 창 열기</span>
           <ion-icon class="ml-3" name="options"></ion-icon>
         </button>
       </div>
-      <!-- <button ion-button (click)="loading=true">show loading</button> -->
-      
 
       <div class="loader-big" *ngIf=" loading ">
           <div class="d-inline-block m-auto" text-center>
-              <ion-spinner class="size-100" color="blue" name="ios"></ion-spinner>
-              <div class="text p-5 dodgerblue fs-2rem fw-bold text-uppercase">
-                {{ 'IN LOADING' | translate }}..
-              </div>
-              <!-- <button ion-button (click)="loading=false">hide loading</button> -->
+                <ion-spinner class="size-100" name="ios"></ion-spinner>
+                <div class="text p-5 dimgrey fs-2rem fw-bold text-uppercase">
+                  {{ 'IN LOADING' | translate }}..
+                </div>
           </div>
         </div>
-
     </section>
       
   </div>
