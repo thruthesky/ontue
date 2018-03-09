@@ -1,86 +1,74 @@
 teacher-list-page {
-
+  @include theme('bluegrey');
   font-size: 14px;
-
-  .page{
-    background: #f7f7f7!important;
+  ion-content{
+    background-color: #f3f3f3!important;
   }
 
-  @include theme('bluegrey');
+  .teacher-profile-photo {
+    width: 100px;
+    height: 120px;
 
-    .teacher-profile-photo {
-      width: 100px;
-      height: 120px;
-      overflow: hidden!important;
+    img {
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    }
+  }
 
-      img {
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-        width: 100%;
-      }
+  .w-100px{
+    width: 100px!important;
+  }
+
+  @media (min-width: $md) {
+    .teachers{
+      margin:-4px;
     }
 
-    .w-100px{
-      width: 102px!important;
+    .flex-md-row{
+      flex-direction: row!important;
     }
 
+    .my-md-6em{
+      margin:6em 0!important;
+    }
+  }
 
-    @media (min-width: $md) {
-      .teachers{
-        margin:-4px;
-      }
-
-      .flex-md-row{
-        flex-direction: row!important;
-      }
-
-      .my-md-7em{
-        margin:6em 0!important;
-      }
+  @media (max-width: $sm) {
+    .nomoreteachers-wrapper {
+      outline: 7px solid white;
     }
 
-    .ion-select-35-65{
-      ion-label {
-        max-width: 35%;
-      }
-      ion-select {
-        min-width: 65%;
-        text-align: right;
-      }
+    .showmoreteacher-wrapper{
+      margin-top:5em!important;
     }
+  }
 
-    .hide-effect {
-      animation: fade-in-effect 0.3s ease-in-out
+  .ion-select-35-65{
+    ion-label {
+      max-width: 35%;
     }
-
-    @keyframes fade-in-effect {
-      0% {
-        opacity: 0
-      }
-      100% {
-        opacity: 1
-      }
+    ion-select {
+      min-width: 65%;
     }
+  }
 
-    .h-100{
-      height: 100%;
+  .hide-effect {
+    animation: fade-in-effect 0.3s ease-in-out
+  }
+
+  @keyframes fade-in-effect {
+    0% {
+      opacity: 0
     }
-
-    .highlight-box{
-      animation: highlight-effect 2s ease-in-out infinite;
+    100% {
+      opacity: 1
     }
+  }
 
-    @keyframes highlight-effect {
-      0%,50%,100% {
-        opacity: 1
-      }
+  .h-100{
+    height: 100%;
+  }
 
-      25%,75%{
-        opacity: 0.5
-      }
-
-    }
-  
 
     .hover-img-effect{
       position: relative;
@@ -136,7 +124,7 @@ teacher-list-page {
     position: fixed;
     top:0;
     left: 0;
-    background: rgba(white,0.9);
+    background: rgba(white,0.7);
     z-index:999999;
   }
 
