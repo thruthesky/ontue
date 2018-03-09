@@ -30,7 +30,7 @@
         <ion-list class="d-md-flex d-block m-0  px-2" no-lines>
             <ion-item class="border mr-md-2 mr-0 ion-select-35-65">
               <ion-label>{{ "GENDER" | translate }}</ion-label>
-              <ion-select (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
+              <ion-select text-right (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
                 <ion-option value="F">{{"FEMALE" | translate}}</ion-option>
                 <ion-option value="M">{{"MALE" | translate}}</ion-option>
                 <ion-option value="">{{"ALL" | translate}}</ion-option>
@@ -39,7 +39,7 @@
     
             <ion-item class="border ml-md-2 ml-0 ion-select-35-65">
               <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
-              <ion-select (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님 등급을 선택하세요.', cssClass:'select-grade'}">
+              <ion-select text-right (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님 등급을 선택하세요.', cssClass:'select-grade'}">
                 <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
                 <ion-option value="">{{"ALL TEACHER" | translate}}</ion-option>
               </ion-select>
@@ -83,12 +83,12 @@
         <ion-grid *ngIf=" re " no-padding>
           <ion-row align-items-stretch>
             <ion-col class="mx-1 my-2 pointer hide-effect" *ngFor="let teacher of teachers" (click)="onClickTeacher(teacher)" text-center>
-              <div class="hover-img-effect text-center w-100px d-inline-block bg-white rounded-2 border h-100">
+              <div class="hover-img-effect text-center w-100px d-inline-block bg-white rounded-2 h-100">
                 <div class="hover-cover d-flex align-items-center justify-content-center">
-                    <i class="fal fa-link fa-2x white"></i>
+                    <i class="fal fa-external-link-alt fa-2x white"></i>
                 </div>
-                <div class="teacher-profile-photo">
-                  <img src="{{ teacher.photoURL }}">
+                <div class="teacher-profile-photo of-hidden ">
+                  <img class="w-100" src="{{ teacher.photoURL }}">
                 </div>
                 <div class="text-uppercase mb-2 mt-4">{{ a.preTeacherName( teacher.display_name )}}</div>
                 <div class="grade fs-90 fw-light" [attr.grade]=" teacher.grade " text-center>
@@ -106,7 +106,7 @@
         </ion-grid>
       </div>
 
-      <div class="h-0 position-relative my-5 my-md-7em border"
+      <div class="showmoreteacher-wrapper h-0 position-relative my-5 my-md-6em border"
            *ngIf=" ! noMoreTeachers && ! loading">
           <button class="show-more-teachers d-flex align-items-center justify-content-center px-5 py-4" (click)=" onClickShowMoreTeacher()">
             <span>강사 더보기...</span>
@@ -114,7 +114,7 @@
           </button>
       </div>
 
-      <div class="mt-5 mb-md-5 text-center pt-4 p-md-0 bg-white d-flex-column flex-md-row align-items-center justify-content-center border"
+      <div class="nomoreteachers-wrapper mt-5 mb-md-5 text-center pt-4 p-md-0 bg-white d-flex-column flex-md-row align-items-center justify-content-center outline-sm-white-7px"
            *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' " (click)="onClickShowAllTeachers() ">
         <div class="px-3 p-md-0">더 이상 추천 강사가 없습니다. 옵션을 통해 더 많은 강사를 볼 수 있습니다.</div>
         <button class="no-more-teachers py-3  d-flex align-items-center justify-content-center rounded-2 text-uppercase ml-3">
@@ -122,6 +122,7 @@
           <ion-icon class="ml-3" name="options"></ion-icon>
         </button>
       </div>
+      <!-- <button ion-button (click)="loading=true">show loading</button> -->
       
 
       <div class="loader-big" *ngIf=" loading ">
@@ -130,6 +131,7 @@
               <div class="text p-5 dodgerblue fs-2rem fw-bold text-uppercase">
                 {{ 'IN LOADING' | translate }}..
               </div>
+              <!-- <button ion-button (click)="loading=false">hide loading</button> -->
           </div>
         </div>
 
