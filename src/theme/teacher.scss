@@ -159,7 +159,7 @@ ion-nav.teacher {
 
   ion-content {
 
-    background-color: #f7f7f7 !important;
+    background-color: #f7f7f7;
     .scroll-content {
       overflow: overlay !important
     }
@@ -347,9 +347,6 @@ ion-nav.teacher {
     outline: 1px solid rgba(#e2e2e2,0.5) !important
   }
 
-  .border-lightsilver{
-    border:1px solid rgba(#e2e2e2,0.3) !important
-  }
   .text-uppercase {
     text-transform: uppercase !important
   }
