@@ -21,7 +21,7 @@
     <section class="options hide-effect" *ngIf=" display_options ">
       <div class="bg-white p-4">
         <div class="mb-3 d-flex justify-content-between  px-2" >
-          {{ "TEACHER LIST OPTIONS" | translate }}
+          <div>{{ "TEACHER LIST OPTIONS" | translate }}</div>
           <button class="fs-90 bg-white" (click)=" display_options = false ">
               <i class="fal fa-times"></i>
               <span class="text-uppercase">{{ 'CLOSE' | translate }}</span>
@@ -51,10 +51,10 @@
 
     <section class="page-desc p-4">
 
-      <div *ngIf=" re ">
+      <div *ngIf=" re && a.studentTheme ">
         <div *ngIf="a.user.isLogin ">
-          <div text-center>어서오세요 {{ a.user.name }}님</div>
           <div text-center>
+              {{ a.user.name }}님,
             전체 선생님 수는 <b>{{ re.total }}</b> 명이며, 회원님의 예약된 수업은 <b>{{ a.lmsInfoUserNoOfTotalSessions }}</b>회이며 지난 수업은
             <span *ngIf=" a.lmsInfoUserNoOfPast "><b>{{ a.lmsInfoUserNoOfPast }}</b>회입니다.</span>
             <span *ngIf=" a.lmsInfoUserNoOfPast == 0">없습니다.</span>
@@ -69,12 +69,16 @@
 
       </div>
 
+
+
+    <div class="text-center p-2" *ngIf=" a.teacherTheme ">
+        In this page,
+        you will see recommended teachers who are mostly visible to students.
+        Other teachers' profile will be available by search.
+      </div>
+  
+
     </section>
-
-
-    <div class="text-center bg-white p-4" *ngIf=" a.teacherTheme ">
-      In this page, you will see teachers who are visible to students.
-    </div>
 
     <section class="page-body pb-5">
 
@@ -85,7 +89,7 @@
             <ion-col class="mx-1 my-2 pointer hide-effect" *ngFor="let teacher of teachers" (click)="onClickTeacher(teacher)" text-center>
               <div class="hover-img-effect text-center w-100px d-inline-block bg-white rounded-2 h-100">
                 <div class="hover-cover d-flex align-items-center justify-content-center">
-                    <i class="fal fa-external-link-alt fa-2x white"></i>
+                    <i class="fas fa-external-link-square fa-2x white"></i>
                 </div>
                 <div class="teacher-profile-photo of-hidden ">
                   <img class="w-100" src="{{ teacher.photoURL }}">

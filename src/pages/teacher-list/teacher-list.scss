@@ -1,49 +1,40 @@
 teacher-list-page {
   @include theme('bluegrey');
   font-size: 14px;
-  ion-content{
-    background-color: #f3f3f3!important;
+  ion-content {
+    background-color: #f3f3f3 !important;
   }
-
   .teacher-profile-photo {
     width: 100px;
     height: 120px;
-
     img {
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
     }
   }
-
-  .w-100px{
-    width: 100px!important;
+  .w-100px {
+    width: 100px !important;
   }
-
   @media (min-width: $md) {
-    .teachers{
-      margin:-4px;
+    .teachers {
+      margin: -4px;
     }
-
-    .flex-md-row{
-      flex-direction: row!important;
+    .flex-md-row {
+      flex-direction: row !important;
     }
-
-    .my-md-6em{
-      margin:6em 0!important;
+    .my-md-6em {
+      margin: 6em 0 !important;
     }
   }
-
   @media (max-width: $sm) {
     .nomoreteachers-wrapper {
       outline: 7px solid white;
     }
-
-    .showmoreteacher-wrapper{
-      margin-top:5em!important;
+    .showmoreteacher-wrapper {
+      margin-top: 5em !important;
     }
   }
-
-  .ion-select-35-65{
+  .ion-select-35-65 {
     ion-label {
       max-width: 35%;
     }
@@ -51,11 +42,9 @@ teacher-list-page {
       min-width: 65%;
     }
   }
-
   .hide-effect {
     animation: fade-in-effect 0.3s ease-in-out
   }
-
   @keyframes fade-in-effect {
     0% {
       opacity: 0
@@ -64,74 +53,59 @@ teacher-list-page {
       opacity: 1
     }
   }
-
-  .h-100{
+  .h-100 {
     height: 100%;
   }
-
-
-    .hover-img-effect{
-      position: relative;
+  .hover-img-effect {
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    .hover-cover {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      opacity: 0;
+      border-radius: 2px;
+      background: rgba(#607d8b, 0.4);
       transition: all 0.2s ease-in-out;
-
-      .hover-cover{
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        opacity: 0;
-        border-radius: 2px;
-        background: rgba(#607d8b,0.8);
-        transition: all 0.2s ease-in-out;
-      }
-
-      &:hover{
-        transform: scale(0.97,0.97);
-
-        .hover-cover{
-          opacity: 1;
-        }
-
+    }
+    &:hover {
+      transform: scale(0.98, 0.98);
+      .hover-cover {
+        opacity: 1;
       }
     }
-
+  }
   .show-more-teachers {
     position: absolute;
-    top: 50%; 
-    left: 50%; 
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     display: block;
     background-color: dodgerblue;
     color: white;
     font-size: 1.4rem !important;
     border-radius: 2px;
-
-    &:hover{
-      background-color: rgba(dodgerblue,0.7);
+    &:hover {
+      background-color: rgba(dodgerblue, 0.7);
     }
   }
-
   .no-more-teachers {
     margin: 1em 0;
     padding: 1em;
     background-color: rgb(230, 130, 0);
     color: white;
   }
-
-  .loader-big{
+  .loader-big {
     height: 100%;
     width: 100%;
-    margin:0!important;
+    margin: 0 !important;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
-    background: rgba(white,0.7);
-    z-index:999999;
+    background: rgba(white, 0.7);
+    z-index: 999999;
   }
-
 }
-
-
-
 
 // teacher-list-page {
 //   @include theme('bluegrey');
@@ -144,9 +118,7 @@ teacher-list-page {
 //     img {
 //       width: 100%;
 //     }
-
 //   }
-
 //   .align-self-center{
 //     align-self: center!important;
 //   }
@@ -162,7 +134,6 @@ teacher-list-page {
 //     font-size: 1.4rem !important;
 //     cursor: pointer;
 //   }
-
 //   .no-more-teachers {
 //     margin: 1em 0;
 //     padding: 1em;
