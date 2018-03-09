@@ -21,7 +21,7 @@
 
     <section class="options hide-effect" *ngIf=" display_options ">
       <div class="bg-white p-4">
-        <ion-grid class="mb-3 px-2" no-padding>
+        <ion-grid class="mb-3 px-1" no-padding>
           <ion-row>
               <ion-col>
                   <div>{{ "TEACHER LIST OPTIONS" | translate }}</div>
@@ -34,7 +34,7 @@
               </ion-col>
           </ion-row>
         </ion-grid>
-        <ion-list class="d-md-flex d-block m-0  px-2" no-lines>
+        <ion-list class="d-md-flex d-block m-0  px-1" no-lines>
             <ion-item class="border mr-md-2 mr-0 ion-select-35-65">
               <ion-label>{{ "GENDER" | translate }}</ion-label>
               <ion-select text-right (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
@@ -43,8 +43,7 @@
                 <ion-option value="">{{"ALL" | translate}}</ion-option>
               </ion-select>
             </ion-item>
-    
-            <ion-item class="border ml-md-2 ml-0 ion-select-35-65">
+            <ion-item class="border ml-md-2 ml-0 mt-3 mt-md-0 ion-select-35-65">
               <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
               <ion-select text-right (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님 등급을 선택하세요.', cssClass:'select-grade'}">
                 <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
@@ -93,7 +92,7 @@
       <div class="teachers pt-md-5 mb-5 mb-md-6">
         <ion-grid *ngIf=" re " no-padding>
           <ion-row align-items-stretch>
-            <ion-col class="mx-1 my-2 pointer hide-effect" *ngFor="let teacher of teachers"
+            <ion-col class="mx-1 my-2 m py-1 py-md-0 pointer hide-effect" *ngFor="let teacher of teachers"
                      (click)="onClickTeacher(teacher)" text-center>
               <div class="hover-img-effect text-center w-100px d-inline-block bg-white rounded-2 h-100">
                 <div class="hover-cover d-flex align-items-center justify-content-center">

@@ -6,15 +6,15 @@
   <ion-grid class="px-5" no-padding>
     <ion-row class="m-0 m-md-5">
       <ion-col class="guideline pointers pr-5 pl-1" col-md-6 col-12>
-        <div class="p-4 rounded-2" [class.active]="view == 0 " (click)="view = 0">What is Level Test</div>
-        <div class="p-4 rounded-2" [class.active]="view == 1 " (click)="view = 1">Guide for Level Test</div>
-        <div class="p-4 rounded-2" [class.active]="view == 2 && selectedVideo == 0 " (click)="playTeacherYoutube(0)">
+        <div class="p-4 rounded-2 hover-effect" [class.active]="view == 0 " (click)="view = 0">What is Level Test</div>
+        <div class="p-4 rounded-2 hover-effect" [class.active]="view == 1 " (click)="view = 1">Guide for Level Test</div>
+        <div class="p-4 rounded-2 hover-effect" [class.active]="view == 2 && selectedVideo == 0 " (click)="playTeacherYoutube(0)">
           Level Test Sample <span>Video 1</span>
         </div>
-        <div class="p-4 rounded-2" [class.active]="view == 2 && selectedVideo == 1 " (click)="playTeacherYoutube(1)">
+        <div class="p-4 rounded-2 hover-effect" [class.active]="view == 2 && selectedVideo == 1 " (click)="playTeacherYoutube(1)">
           Level Test Sample <span>Video 2</span>
         </div>
-        <div class="p-4 rounded-2" [class.active]="view == 3" (click)="view = 3">Regular Sessions</div>
+        <div class="p-4 rounded-2 hover-effect" [class.active]="view == 3" (click)="view = 3">Regular Sessions</div>
       </ion-col>
       <ion-col col-md-6 col-12>
         <div class="border rounded-2 hide-effect line-height-1-8em" *ngIf=" view == 0 ">
