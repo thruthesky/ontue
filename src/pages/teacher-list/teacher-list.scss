@@ -73,9 +73,13 @@ teacher-list-page {
       border-radius: 2px;
       background: rgba(#607d8b, 0.4);
       transition: all 0.2s ease-in-out;
+      -webkit-transition: all 0.2s ease-in-out;
+      -ms-transition: all 0.2s ease-in-out;
     }
     &:hover {
-      transform: scale(0.99, 0.99);
+      -webkit-transform: scale(0.98);
+      -ms-transform: scale(0.98);
+      transform: scale(0.98);
       .hover-cover {
         opacity: 1;
       }
@@ -85,8 +89,9 @@ teacher-list-page {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-
     &-wrapper{
       position: relative;
       border: 1px solid rgb(233, 236, 239);
