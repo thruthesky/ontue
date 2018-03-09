@@ -1,26 +1,125 @@
 teacher-list-page {
-  @include theme('bluegrey');
-  .teacher-profile-photo {
-    padding: 2px;
-    overflow: hidden;
-    width: 100px;
-    height: 120px;
-    border: 1px solid rgb(228, 228, 228);
-    img {
-      width: 100%;
-    }
+
+  font-size: 14px;
+
+  .page{
+    background: #f7f7f7!important;
   }
-  .show-more-teachers {
-    display: block;
-    margin: 2em auto 4em;
-    padding: 1.2em 7em;
-    @media (min-width: $md) {
-      padding: 1.25em 12em;
+
+  @include theme('bluegrey');
+
+    .teacher-profile-photo {
+      width: 100px;
+      height: 120px;
+      overflow: hidden!important;
+
+      img {
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        width: 100%;
+      }
     }
-    background-color: rgb(41, 75, 170);
+
+    .w-100px{
+      width: 102px!important;
+    }
+
+
+    @media (min-width: $md) {
+      .teachers{
+        margin:-4px;
+      }
+
+      .flex-md-row{
+        flex-direction: row!important;
+      }
+
+      .my-md-7em{
+        margin:6em 0!important;
+      }
+    }
+
+    .ion-select-35-65{
+      ion-label {
+        max-width: 35%;
+      }
+      ion-select {
+        min-width: 65%;
+        text-align: right;
+      }
+    }
+
+    .hide-effect {
+      animation: fade-in-effect 0.3s ease-in-out
+    }
+
+    @keyframes fade-in-effect {
+      0% {
+        opacity: 0
+      }
+      100% {
+        opacity: 1
+      }
+    }
+
+    .h-100{
+      height: 100%;
+    }
+
+    .highlight-box{
+      animation: highlight-effect 2s ease-in-out infinite;
+    }
+
+    @keyframes highlight-effect {
+      0%,50%,100% {
+        opacity: 1
+      }
+
+      25%,75%{
+        opacity: 0.5
+      }
+
+    }
+  
+
+    .hover-img-effect{
+      position: relative;
+      transition: all 0.2s ease-in-out;
+
+      .hover-cover{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        opacity: 0;
+        border-radius: 2px;
+        background: rgba(#607d8b,0.8);
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover{
+        transform: scale(0.97,0.97);
+
+        .hover-cover{
+          opacity: 1;
+        }
+
+      }
+    }
+
+  .show-more-teachers {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    display: block;
+    background-color: dodgerblue;
     color: white;
     font-size: 1.4rem !important;
-    cursor: pointer;
+    border-radius: 2px;
+
+    &:hover{
+      background-color: rgba(dodgerblue,0.7);
+    }
   }
 
   .no-more-teachers {
@@ -29,4 +128,57 @@ teacher-list-page {
     background-color: rgb(230, 130, 0);
     color: white;
   }
+
+  .loader-big{
+    height: 100%;
+    width: 100%;
+    margin:0!important;
+    position: fixed;
+    top:0;
+    left: 0;
+    background: rgba(white,0.9);
+    z-index:999999;
+  }
+
 }
+
+
+
+
+// teacher-list-page {
+//   @include theme('bluegrey');
+//   .teacher-profile-photo {
+//     padding: 2px;
+//     overflow: hidden;
+//     width: 100px;
+//     height: 120px;
+//     border: 1px solid rgb(228, 228, 228);
+//     img {
+//       width: 100%;
+//     }
+
+//   }
+
+//   .align-self-center{
+//     align-self: center!important;
+//   }
+//   .show-more-teachers {
+//     display: block;
+//     margin: 2em auto 4em;
+//     padding: 1.2em 7em;
+//     @media (min-width: $md) {
+//       padding: 1.25em 12em;
+//     }
+//     background-color: rgb(41, 75, 170);
+//     color: white;
+//     font-size: 1.4rem !important;
+//     cursor: pointer;
+//   }
+
+//   .no-more-teachers {
+//     margin: 1em 0;
+//     padding: 1em;
+//     background-color: rgb(230, 130, 0);
+//     color: white;
+//   }
+// }
