@@ -122,13 +122,13 @@
           <button class="middle-line bg-dodgerblue white hover-effect rounded-2 d-flex
                          align-items-center justify-content-center px-5 py-4"
                  (click)=" onClickShowMoreTeacher()">
-            <span>강사 더보기...</span>
+            <span class="d-inline-block">강사 더보기</span>
             <i class="fal fa-arrow-to-bottom ml-3"></i>
           </button>
       </div>
           <div class=" middle-line-wrapper  my-5em" text-center 
               *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' ">
-              <i class="middle-line fal fa-map-signs fa-6x darkgrey"></i>
+              <i class="middle-line fal fa-ellipsis-h fa-7x darkgrey"></i>
           </div>
       <div class="mb-md-5 text-center p-md-0 d-flex-column flex-md-row align-items-center justify-content-center"
            *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' ">
