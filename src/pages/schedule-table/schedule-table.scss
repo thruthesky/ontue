@@ -5,6 +5,23 @@ schedule-table-page {
     background-color: map-get( map-get( $color-maps, 'grey' ), 200 );
   }
 
+  ion-content{
+    background-color: #f3f3f3!important;
+  }
+
+  .hide-effect {
+    animation: fade-in-effect 0.3s ease-in-out
+  }
+
+  @keyframes fade-in-effect {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
+    }
+  }
+
   .schedule-table {
     &,
     th,
@@ -114,10 +131,24 @@ schedule-table-page {
     }
   }
 
+  .bg-red-80{
+    background-color: rgba(red,0.9);
+  }
+
+  .bg-dodgerblue-80{
+    background-color: rgba(dodgerblue,0.9);
+  }
+
   .kakao {
-    .kakao-button {
-      background-color: #ffe818;
-    }
+      background-color: rgba(#ffe818,0.9);
+
+  }
+
+  @media ( max-width: $sm ) {
+  .d-sm-flex-row{
+    flex-direction: row!important;
+  }
+
   }
 
   .help-how-to-reserve {
@@ -151,6 +182,17 @@ schedule-table-page {
       right: .5em;
     }
   }
+
+  .loader-big {
+    height: 100%;
+    width: 100%;
+    margin: 0 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(white, 0.8);
+    z-index: 999999;
+  }
 }
 
 @keyframes aniReserveHelper {
@@ -166,4 +208,5 @@ schedule-table-page {
     // opacity: 1;
     background-color: rgb(167, 167, 167);
   }
+  
 }

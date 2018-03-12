@@ -4,69 +4,74 @@
 
 <ion-content #content>
   <div class="page">
-    <div class="single-teacher p-3" *ngIf=" singleTeacher ">
-
-
-      <table *ngIf=" loadComplete; else singleTeacherLoader">
-        <tr valign="top">
-          <td>
-            <div class="teacher-profile-photo size-100x120 of-hidden position-relative mt-1" (click)=" playTeacherYoutube(); ">
-              <img class="w-100" src="{{ teacher_photoURL() }}">
-              <i class="fas fa-play-circle position-absolute bottom-0 right-0 mr-3 mb-3 red fs-3rem pointer"></i>
-            </div>
-            <div class="grade mt-1 text-center" [attr.grade]=" teacher_grade() ">
-              <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher_grade())"></i>
-              <!-- <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher_grade())"></i> -->
-            </div>
-
-            <div class="comment d-flex justify-content-center">
-              <!--<div class="pointer p-2" *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">{{ 'WRITE REVIEW' | translate }}</div>-->
-              <div class="pointer p-2" (click)="onClickCommentList()">{{ 'OPEN REVIEW' | translate }}</div>
-            </div>
-
-          </td>
-
-          <td>
-            <div class="teacher-info ml-4">
-              <div class="fs-2rem">{{ teacher_name() }}</div>
-              <div class="meta mt-2 pl-1">
-
-                <div class="pb-1">
-                  <span>{{ teacher_profile['nationality'] }}</span>
-                  <span>
-                    <ng-container *ngIf=" a.isKorean; else English ">{{ teacher_age() }}세 ({{ teacher_gender() | translate }})</ng-container>
-                    <ng-template #English>{{ teacher_age() }}/{{ teacher_gender() | translate }}</ng-template>
-                  </span>
-                </div>
-
-                <div class="">
-                  {{ 'TAKEN' | translate }}: {{ teacher_profile.total_reservation }} {{ 'HAD SESSIONS' | translate }}
-                </div>
-
-
-                <div class="py-2 pointer" (click)="onClickShowCurriculum()">
-                  <i class="fas fa-clipboard"></i> {{ 'CURRICULUM VITAE' | translate }}
-                </div>
-
-              </div>
-
-              <div class="kakao pt-2 pointer" (click)=" onClickAddKakao() ">
-                <div class="kakao-button d-flex p-3">
-                  <div class="size-30">
-                    <img class="w-100" src="assets/img/add-friend.png">
+    <ng-container   *ngIf=" singleTeacher ">
+        <ion-grid *ngIf=" loadComplete; else singleTeacherLoader" no-padding>
+            <ion-row  class="p-2 bg-white px-md-5 py-md-4" justify-content-between>
+              <ion-col class="bg-sm-white pl-3 pl-md-0 py-3 mb-0" col-4 col-md-1>
+                  <div class="teacher-profile-photo size-100x120 of-hidden">
+                    <img class="w-100 mx-auto" src="{{ teacher_photoURL() }}">
                   </div>
-                  <div class="pl-3 pt-2 black">{{ 'ADD KAKAO' | translate }}</div>
-                </div>
-              </div>
-
-            </div>
-
-
-          </td>
-        </tr>
-      </table>
-
-      <div class="video-container" *ngIf=" urlYoutube ">
+              </ion-col>
+              <ion-col  class="d-flex-column justify-content-between bg-sm-white py-3 pr-3 pr-md-0 pl-2 pl-md-3  mb-0" col-8  col-md-3>
+                    <div  class="d-flex align-items-center">
+                        <span class="fs-2rem d-inline-block text-uppercase">{{ teacher_name() }}</span>
+                        <span class="grade d-inline-block ml-5 text-center" [attr.grade]=" teacher_grade() ">
+                          <i class="star fas fa-star fs-110" *ngFor="let i of a.countStar(teacher_grade())"></i>
+                          <!-- <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(teacher_grade())"></i> -->
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>{{ teacher_profile['nationality'] }}</span>
+                        <span>
+                          <ng-container *ngIf=" a.isKorean; else English ">{{ teacher_age() }}세 ({{ teacher_gender() | translate }})</ng-container>
+                          <ng-template #English>{{ teacher_age() }}/{{ teacher_gender() | translate }}</ng-template>
+                        </span>
+                        <span>
+                            {{ 'TAKEN' | translate }}: {{ teacher_profile.total_reservation }} {{ 'HAD SESSIONS' | translate }}
+                        </span>
+                    </div>
+                    <div>
+                      <button class="comment p-3 w-100 rounded-2 hover-effect" (click)="onClickCommentList()">
+                          <!--<div class="pointer p-2" *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">{{ 'WRITE REVIEW' | translate }}</div>-->
+                          <div class="pointer p-2">
+                            {{ 'OPEN REVIEW' | translate }}
+                            <i class="fas fa-external-link ml-3 fs-110"></i>
+                          </div>
+                      </button>
+                    </div>
+              </ion-col>
+              <ion-col class="py-md-3 py-0 d-flex-column justify-content-between px-3 px-md-0 pb-3 pb-md-0" col-12 col-md-6>
+                  <button class="kakao d-flex align-items-center justify-content-center w-100 rounded-2 py-3 mb-2 mb-md-0  hover-effect" (click)=" onClickAddKakao() ">
+                      <div class="size-30">
+                        <img class="w-100" src="assets/img/add-friend.png">
+                      </div>
+                      <div class="pl-3 black">{{ 'ADD KAKAO' | translate }}</div>
+                  </button>
+                  <div class="d-flex mt-2 mt-md-0">
+                      <button  class="bg-dodgerblue-80 white w-100 py-4  mr-2 mr-md-3 rounded-2  hover-effect" (click)=" playTeacherYoutube(); ">
+                          Play Video
+                          <i class="fas fa-play ml-3 fs-110"></i>
+                      </button>
+                        <button class=" w-100 py-4 bg-dodgerblue-80 white ml-2 ml-md-3 rounded-2  hover-effect"  (click)="onClickShowCurriculum()">
+                            {{ 'CURRICULUM VITAE' | translate }}
+                            <i class="fas fa-clipboard ml-3 fs-110"></i>
+                        </button>
+                  </div>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>      
+                <ng-template #singleTeacherLoader>
+                  <div class="alert alert-info border-0 rounded-0">
+                    <div>선생님 정보와 수업 시간표 정보를 로드중입니다.</div>
+                    <div>잠시만 기다려주세요.</div>
+                  </div>
+                </ng-template></ion-col>
+            </ion-row>
+          </ion-grid>
+    </ng-container>
+    <div class="single-teacher p-3" *ngIf=" singleTeacher&& urlYoutube  ">
+      <div class="video-container">
         <iframe class="youtube-video border-0" [src]=" urlYoutube "></iframe>
       </div>
 
@@ -93,7 +98,7 @@
 
 
 
-    <div class="user-point d-flex justify-content-between p-3" *ngIf=" (a.user.isLogin && my_point) || status">
+    <div class="user-point d-flex justify-content-between p-3  bg-snow" *ngIf=" (a.user.isLogin && my_point) || status">
 
       <div class="black pl-2" *ngIf=" status ">
         <i class="fas fa-spinner fa-spin"></i>
@@ -101,7 +106,7 @@
         <span class="pl-2">{{ status | translate }}</span>
       </div>
 
-      <div class="d-md-flex pt-md-1 pb-md-3 " *ngIf=" ! status ">
+      <div class="d-md-flex align-items-center pt-md-1 pb-md-3" *ngIf=" ! status ">
         <div class="pt-3 pl-3">
           {{ 'POINT' | translate }}:
           <span *ngIf=" ! a.inLoadingMyPoint ">{{ my_point }}</span>
@@ -109,7 +114,7 @@
         </div>
         <div class="pl-3 mt-2 mt-md-0 ml-md-4">
           {{ 'TIMEZONE NOW' | translate }}: {{ a.userTime }}
-          <span class="app-button secondary ml-4" (click)=" a.open('settings') ">{{ 'CHANGE TIMEZONE' | translate }}</span>
+          <button class="app-button secondary ml-md-4 ml-0 hover-effect py-2" (click)=" a.open('settings') ">{{ 'CHANGE TIMEZONE' | translate }}</button>
         </div>
       </div>
 
@@ -124,7 +129,7 @@
 
       <div class="search-options mt-3" *ngIf=" display_options ">
 
-        <ion-list class="mb-0">
+        <ion-list class="mb-0  hide-effect">
 
           <ion-item *ngIf=" singleTeacher ">
             <div class="buttons pointers">
@@ -247,21 +252,39 @@
 
 
 
-      <div class="buttons d-flex justify-content-between mt-4 mb-4 px-md-3">
-        <div>
-          <span class="black" (click)="onClickNavigate('previous-week')">
-            <ion-icon name="arrow-back"></ion-icon> {{ 'PREVIOUS WEEK' | translate }}</span>
-          <span class="ml-3 dodgerblue" (click)="onClickNavigate('today')">
-            <ion-icon name="refresh"></ion-icon> {{"TODAY" | translate}}</span>
-          <span class="ml-3 black" (click)="onClickNavigate('next-week')">
-            <ion-icon name="arrow-forward"></ion-icon> {{"NEXT WEEK" | translate}}</span>
-          <span class="ml-3 black" (click)="onClickNavigate('next-month')">
-            <ion-icon name="fastforward"></ion-icon> {{"NEXT MONTH" | translate}}</span>
+      <div class="buttons d-flex justify-content-between bg-white border border-left-0 border-right-0">
+        <div  class="d-flex align-items-center">
+          <button class=" hover-effect py-4" (click)="onClickNavigate('previous-week')">
+            <div class="d-flex align-items-center">
+                <i class="fal fa-arrow-left"></i>
+                <span class="ml-2">{{ 'PREVIOUS WEEK' | translate }}</span> 
+            </div>
+          </button>
+          <button class="ml-3 dodgerblue  hover-effect py-4" (click)="onClickNavigate('today')">
+              <div class="d-flex align-items-center">
+                  <i class="fal fa-redo"></i>
+                <span  class="ml-2">{{"TODAY" | translate}}</span>
+            </div>
+          </button>
+          <button class="ml-3  hover-effect py-4" (click)="onClickNavigate('next-week')">
+              <div class="d-flex align-items-center">
+                <span  class="mr-2">{{"NEXT WEEK" | translate}}</span>
+                <i class="fal fa-arrow-right"></i>
+              </div>
+          </button>
+          <button class="ml-3 hover-effect py-4" (click)="onClickNavigate('next-month')">
+              <div class="d-flex align-items-center">
+                <span class="mr-2"> {{"NEXT MONTH" | translate}}</span>
+                <i class="fas fa-forward"></i>
+              </div>
+          </button>
         </div>
-        <div (click)=" display_options = !display_options; " *ngIf=" ! display_options ">
-          <ion-icon name="options"></ion-icon>
-          {{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}
-        </div>
+        <button class="hover-effect py-4" (click)=" display_options = !display_options; " *ngIf=" ! display_options ">
+            <div class="d-flex align-items-center">
+              <span>{{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}</span>
+              <ion-icon class="ml-2" name="options"></ion-icon>
+            </div>
+        </button>
       </div>
 
 
@@ -318,11 +341,13 @@
         {{ 'LOGIN_BEFORE_RESERVE' | translate }}
       </div>
 
-      <div class="loader-big bg-orange" *ngIf=" schedule_table_rows.length == 0 ">
-        <ion-spinner color="white"></ion-spinner>
-        <span class="text px-3 py-2 white">
-          {{ 'IN LOADING' | translate }}
-        </span>
+      <div class="loader-big" *ngIf=" schedule_table_rows.length == 0 ">
+        <div class="d-inline-block m-auto" text-center>
+          <ion-spinner class="size-100" name="ios"></ion-spinner>
+          <div class="text p-5 dimgrey fs-2rem fw-bold text-uppercase">
+            {{ 'IN LOADING' | translate }}..
+          </div>
+        </div>
       </div>
 
 
