@@ -267,33 +267,33 @@
         <div class="buttons bg-white">
           <div class="d-flex justify-content-between px-4">
               <div  class="d-flex align-items-center">
-                  <button class=" hover-effect p-md-4 px-0 py-4" (click)="onClickNavigate('previous-week')">
+                  <button class=" hover-effect p-md-4 px-0 py-4 dodgerblue" (click)="onClickNavigate('previous-week')">
                     <div class="d-flex align-items-center">
                         <i class="fal fa-arrow-left"></i>
-                        <span class="ml-2">{{ 'PREVIOUS WEEK' | translate }}</span> 
+                        <span class="ml-2 fs-90">{{ 'PREVIOUS WEEK' | translate }}</span> 
                     </div>
                   </button>
-                  <button class="ml-3 dodgerblue  hover-effect p-md-4 px-0 py-4" (click)="onClickNavigate('today')">
-                      <div class="d-flex align-items-center fs-90">
+                  <button class="ml-3 dodgerblue  hover-effect p-md-4 px-0 py-4 dodgerblue" (click)="onClickNavigate('today')">
+                      <div class="d-flex align-items-center">
                           <i class="fal fa-redo"></i>
-                        <span  class="ml-2">{{"TODAY" | translate}}</span>
+                        <span  class="ml-2 fs-90">{{"TODAY" | translate}}</span>
                     </div>
                   </button>
-                  <button class="ml-3  hover-effect p-md-4 px-0 py-4" (click)="onClickNavigate('next-week')">
-                      <div class="d-flex align-items-center fs-90">
-                        <span  class="mr-2">{{"NEXT WEEK" | translate}}</span>
+                  <button class="ml-3  hover-effect p-md-4 px-0 py-4 dodgerblue" (click)="onClickNavigate('next-week')">
+                      <div class="d-flex align-items-center">
+                        <span  class="mr-2 fs-90">{{"NEXT WEEK" | translate}}</span>
                         <i class="fal fa-arrow-right"></i>
                       </div>
                   </button>
-                  <button class="ml-3 hover-effect p-md-4 px-0 py-4" (click)="onClickNavigate('next-month')">
-                      <div class="d-flex align-items-center fs-90">
-                        <span class="mr-2"> {{"NEXT MONTH" | translate}}</span>
+                  <button class="ml-3 hover-effect p-md-4 px-0 py-4 dodgerblue" (click)="onClickNavigate('next-month')">
+                      <div class="d-flex align-items-center">
+                        <span class="mr-2 fs-90"> {{"NEXT MONTH" | translate}}</span>
                         <i class="fas fa-forward"></i>
                       </div>
                   </button>
                 </div>
-                <button class="hover-effect d-flex align-items-center p-md-4 p-0 fs-90" (click)=" display_options = !display_options; " *ngIf=" ! display_options ">
-                      <span>{{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}</span>
+                <button class="hover-effect d-flex align-items-center p-md-4 p-0 dodgerblue" (click)=" display_options = !display_options; " *ngIf=" ! display_options ">
+                      <span class="fs-90">{{ 'SCHEDULE TABLE SEARCH OPTIONS SHORT' | translate }}</span>
                       <ion-icon class="ml-2" name="options"></ion-icon>
                 </button>
           </div>
