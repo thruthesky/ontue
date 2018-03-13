@@ -1,16 +1,9 @@
 $border-color: map-get( map-get( $color-maps, 'grey' ), 200 );
 schedule-table-page {
+  font-size: 14px;
   @include theme('grey');
   .user-point {
     background-color: map-get( map-get( $color-maps, 'grey' ), 200 );
-  }
-
-  ion-content{
-    background-color: #f3f3f3!important;
-  }
-
-  .hide-effect {
-    animation: fade-in-effect 0.3s ease-in-out
   }
 
   @keyframes fade-in-effect {
@@ -22,13 +15,13 @@ schedule-table-page {
     }
   }
 
-  .schedule-table {
-    &,
-    th,
-    td {
-      border: 1px solid $border-color;
-    }
-  }
+  // .schedule-table {
+  //   &,
+  //   th,
+  //   td {
+  //     border: 1px solid $border-color;
+  //   }
+  // }
   [icon-name="lock"] {
     color: #ddd;
   }
@@ -98,23 +91,30 @@ schedule-table-page {
     width: 42px;
     overflow: hidden;
   }
-  .schedule-header {
-    margin-bottom: .5em;
-    padding-top: .25em;
-    padding-bottom: .25em;
-    background-color: $border-color;
-    .datetime {
-      cursor: pointer;
-    }
-  }
-  .tr.schedule-row {
-    margin-bottom: .5em;
-  }
-  .session-wrapper {
+  // .schedule-header {
+  //   margin-bottom: .5em;
+  //   padding-top: .25em;
+  //   padding-bottom: .25em;
+  //   background-color: $border-color;
+  //   .datetime {
+  //     cursor: pointer;
+  //   }
+  // }
+  // .tr.schedule-row {
+  //   padding-bottom: .5em;
+  // }
+  .session-wrapper{
     // session
     width: 42px;
+    height: 70px;
     overflow: hidden;
   }
+
+  .size-42px-62px{
+    width: 42px;
+    height: 62px;
+  }
+
   .icon-desc {
     margin: .5em;
     padding: 1em;
@@ -193,6 +193,44 @@ schedule-table-page {
     background: rgba(white, 0.8);
     z-index: 999999;
   }
+
+  ion-content{
+    background-color: #f3f3f3!important;
+  }
+
+  .hide-effect {
+    animation: fade-in-effect 0.3s ease-in-out
+  }
+
+  .flex-shrink-1dot25{
+    flex-shrink: 1.25
+  }
+
+  .flex-shrink-1{
+    flex-shrink: 1
+  }
+
+  .justify-content-between{
+    justify-content: space-between!important;
+  }
+
+  .justify-content-stretch{
+    justify-content: stretch!important;
+  }
+
+  .flex-wrap{
+    flex-wrap: wrap;
+  }
+
+  .item-label-mr-0{
+    ion-label,.item-inner{
+      padding-right: 0!important;
+      margin-right: 0;
+    }
+
+  }
+
+
 }
 
 @keyframes aniReserveHelper {
