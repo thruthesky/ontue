@@ -261,4 +261,5 @@
   , "FILE EMPTY": "File is empty. No file.id"
   , "PASSWORD CHANGED": "Password Changed."
   , "PAYPAL INIT FAIL": "Paypal initialization has failed."
+  , "VIDEO": "Video"
 }
