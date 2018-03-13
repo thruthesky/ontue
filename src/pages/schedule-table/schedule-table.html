@@ -359,7 +359,7 @@
   
           <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
   
-            <div class="tr schedule-header fw-bold border border-right-0 border-left-0 d-flex justify-content-around" *ngIf=" i % 10 == 0 ">
+            <div class="tr schedule-header  hide-effect fw-bold border border-right-0 border-left-0 d-flex justify-content-around" *ngIf=" i % 10 == 0 ">
               <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
                 <div class="text-center">{{ 'TEACHER' | translate }}</div>
               </div>
@@ -378,7 +378,7 @@
             </div>
   
   
-            <div class="tr border border-top-0 border border-right-0 border-left-0 schedule-row d-flex justify-content-around" valign="top">
+            <div class=" schedule-row tr border border-top-0 border border-right-0 border-left-0  hide-effect d-flex justify-content-around" valign="top">
   
               <div class='td teacher-profile pointer' text-center *ngIf=" ! singleTeacher " (click)=" a.open('schedule-table', { ID: teacher_ID(sessions[0]) }) ">
                 <div class="photo">
