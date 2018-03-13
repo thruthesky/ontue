@@ -359,7 +359,7 @@
   
           <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
   
-            <div class="tr schedule-header border border-right-0 border-left-0 d-flex justify-content-around" *ngIf=" i % 10 == 0 ">
+            <div class="tr schedule-header fw-bold border border-right-0 border-left-0 d-flex justify-content-around" *ngIf=" i % 10 == 0 ">
               <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
                 <div class="text-center">{{ 'TEACHER' | translate }}</div>
               </div>
@@ -368,7 +368,7 @@
                 <div class="">{{ 'MINUTE' | translate }}</div>
               </div>
               <!-- <td>Reserve Visible</td> -->
-              <div class="td datetime session-wrapper  d-flex-column justify-content-center align-items-center size-42px-62px" *ngFor="let header of header">
+              <div class="td datetime session-wrapper   d-flex-column justify-content-center align-items-center size-42px-62px" *ngFor="let header of header">
                 <div class="w-100 text-center hover-effect pointer" (click)="onClickNavigate( header.date )">
                   <!--{{ header | json }}-->
                   <span >{{ header.display_date }}</span>
@@ -387,7 +387,7 @@
   
               </div>
   
-              <div class="td session-datetime pt-2 text-center d-flex-column justify-content-center align-items-center ">
+              <div class="td fw-bold session-datetime pt-2 text-center d-flex-column justify-content-center align-items-center ">
                 <div *ngIf=" a.user.isLogin ">
                   {{ session_time( sessions[0] ) }}
                 </div>
@@ -402,7 +402,7 @@
               
               <div class="td session-wrapper  d-flex-column justify-content-center align-items-center" *ngFor=" let session of sessions ">
                 <!--{{session|json}}-->
-                <div class="session" [class.pointer]="session[ STATUS ]=='open'" [attr.status]=" session[ STATUS ] " [attr.open]=" session[ OPEN ] " [attr.owner]=" session[ OWNER ] "
+                <div class="session" [attr.status]=" session[ STATUS ] " [attr.open]=" session[ OPEN ] " [attr.owner]=" session[ OWNER ] "
                   text-center (click)="onClickSession( session )">
                   
                   <!-- show icon -->
