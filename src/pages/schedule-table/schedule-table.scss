@@ -230,6 +230,14 @@ schedule-table-page {
 
   }
 
+  .page{
+    overflow: visible;
+  }
+
+  .sticky-effect-color{
+    position:sticky!important;
+    top:-1px;
+  }
 
 }
 

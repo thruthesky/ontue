@@ -45,8 +45,8 @@
       </div>
       <hr>
       <ion-grid class="px-1px" no-padding>
-        <ion-row class="mx-minus-10px" justify-content-between *ngIf="dayoffs.length">
-          <ion-col class="d-flex align-items-center p-3 hide-effect" col-md-6 col-12 *ngFor="let dayoff of dayoffs">
+        <ion-row class="mx-minus-10px" *ngIf="dayoffs.length">
+          <ion-col class="d-flex align-items-center p-3 hide-effect" col-md-3 col-12 *ngFor="let dayoff of dayoffs">
             <div class="pointer white h-100 px-3 d-flex align-items-center bg-light-red"
                  (click)=" onClickDeleteDate( dayoff )">
               Delete
