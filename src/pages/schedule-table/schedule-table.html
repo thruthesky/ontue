@@ -134,7 +134,6 @@
       
     <section class="schedule-table-content page-body p-0">
 
-
         <div class="search-options my-5   hide-effect" *ngIf=" display_options ">
             <div class="buttons bg-white d-flex justify-content-center">
               <button class="red p-5 mt-3" (click)="display_options = false">
@@ -262,8 +261,6 @@
             {{ 'LOGIN_BEFORE_RESERVE' | translate }}
           </div>
   
-  
-  
         <div class="buttons bg-white">
           <div class="d-flex justify-content-between px-4">
               <div  class="d-flex align-items-center">
@@ -301,8 +298,6 @@
   
   
         <div class="alert alert-warning" *ngIf=" ! singleTeacher ">
-  
-  
           <div *ngIf=" ! show.more_total_schedule_warning ">
             주의! 전체 선생님 수업 시간표는 시간이 걸립니다.
           </div>
@@ -335,7 +330,7 @@
         </div>
   
   
-        <div class="help-how-to-reserve mt-2 mb-4 pointer" (click)=" showHelpReserve = false " *ngIf=" showHelpReserve && schedule_table_rows.length ">
+        <div class="help-how-to-reserve my-2 mt-md-5 pointer" (click)=" showHelpReserve = false " *ngIf=" showHelpReserve && schedule_table_rows.length ">
           <div class="wrapper">
             <div class="x fa-2x">
               <i class="fal fa-times" data-fa-transform="shrink-5.5" data-fa-mask="fas fa-circle"></i>
