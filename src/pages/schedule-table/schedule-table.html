@@ -396,7 +396,7 @@
             </div>
           </div>
         </div>
-        <button (click)="ScrollContentTopValue=!ScrollContentTopValue">enableSticky:{{ScrollContentTopValue}}</button>
+        <button (click)="getScrollContentTopValue()">enableSticky:{{ScrollContentTopValue}}</button>
         <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
 
           <div class=" schedule-row tr border border-top-0 border border-right-0 border-left-0  hide-effect d-flex justify-content-around align-items-center"
@@ -461,12 +461,6 @@
 
 
     </section>
-
-
-
-
-
-
 
 
     <!--schedule table redesign END
