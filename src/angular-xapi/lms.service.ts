@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {XapiService} from './xapi.service';
-import {UserService} from './user.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { XapiService } from './xapi.service';
+import { UserService } from './user.service';
 
 
-import {Base} from './base';
+import { Base } from './base';
 
 export interface SCHEDULE_EDIT extends DAYS {
   idx?: number;
@@ -73,7 +73,7 @@ export class LMSService extends Base {
   };
 
   constructor(private x: XapiService,
-              private user: UserService) {
+    private user: UserService) {
     super();
   }
 
@@ -224,7 +224,7 @@ export class LMSService extends Base {
   }
 
   session_cancel(idx_reservation) {
-    let data = {idx_reservation: idx_reservation};
+    let data = { idx_reservation: idx_reservation };
     data['route'] = 'lms.session_cancel';
     data['session_id'] = this.user.sessionId;
     return this.x.post(data);
@@ -255,12 +255,12 @@ export class LMSService extends Base {
 
 
   set_dayoff(date) {
-    let data = {route: 'lms.dayoff_set', session_id: this.user.sessionId, date: date};
+    let data = { route: 'lms.dayoff_set', session_id: this.user.sessionId, date: date };
     return this.x.post(data);
   }
 
   delete_dayoff(date) {
-    let data = {route: 'lms.dayoff_delete', session_id: this.user.sessionId, date: date};
+    let data = { route: 'lms.dayoff_delete', session_id: this.user.sessionId, date: date };
     return this.x.post(data);
   }
 
@@ -395,7 +395,7 @@ export class LMSService extends Base {
   }
 
   payment_rate() {
-    return this.x.post({route: 'lms.payment_rate'});
+    return this.x.post({ route: 'lms.payment_rate' });
   }
 
   /**
@@ -403,7 +403,7 @@ export class LMSService extends Base {
    * @note this should be called once on every boot.
    */
   info() {
-    return this.x.post({route: 'lms.info', session_id: this.user.sessionId});
+    return this.x.post({ route: 'lms.info', session_id: this.user.sessionId });
   }
 
 
@@ -425,18 +425,18 @@ export class LMSService extends Base {
     return this.x.post(req)
   }
 
-  get_latest_student_comment_to_teachers(req){
-    req['route'] =  'lms.get_latest_student_comment_to_teachers';
+  get_latest_student_comment_to_teachers(req) {
+    req['route'] = 'lms.get_latest_student_comment_to_teachers';
     return this.x.post(req);
   }
 
-  get_teacher_site_info(){
+  get_teacher_site_info() {
     return this.x.post({
       route: 'lms.get_teacher_site_info',
     });
   }
 
-  update_push_token( token: string, platform: string ) {
+  update_push_token(token: string, platform: string) {
     return this.x.post({
       route: 'lms.update_push_token',
       session_id: this.user.sessionId,
@@ -450,10 +450,16 @@ export class LMSService extends Base {
     return this.x.post(req)
   }
 
-  session_stamp_checked( req ) {
+  session_stamp_checked(req) {
     req['route'] = 'lms.session_stamp_checked';
     req['session_id'] = this.user.sessionId;
     return this.x.post(req)
   }
 
+  get_my_level() {
+    return this.x.post({
+      session_id: this.user.sessionId,
+      route: 'lms.my_level',
+    });
+  }
 }

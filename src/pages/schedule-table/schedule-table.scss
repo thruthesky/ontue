@@ -210,11 +210,11 @@ schedule-table-page {
   }
 
   .flex-shrink-1dot25{
-    flex-shrink: 1.25
+    flex-shrink: 1.04;
   }
 
   .flex-shrink-1{
-    flex-shrink: 1
+    flex-shrink: 1;
   }
 
   .justify-content-between{
@@ -252,7 +252,6 @@ schedule-table-page {
     top:-1px;
     left:0;
     right:0;
-    z-index: 99;
   }
 
 }

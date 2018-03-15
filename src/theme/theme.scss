@@ -306,6 +306,13 @@ $position in (t: top, l: left, r: right, b: bottom) {
 
 
 ion-toast {
+  &.ie-version {
+    // ie warning. DO NOT USE IE.
+    .toast-wrapper {
+      background-color: #720019;
+      color: white;
+    }
+  }
   &.error-42205 {
     // login first
     .toast-wrapper {

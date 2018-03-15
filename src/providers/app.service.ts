@@ -196,13 +196,13 @@ export class AppService {
             // console.log("updated info from remote: ", this.info);
 
         }, e => {
-            console.error( e );
+            console.error(e);
         });
     }
 
 
     lmsInfoBook() {
-        this.info = this.get( KEY_LMS_INFO );
+        this.info = this.get(KEY_LMS_INFO);
         if (this.info && this.info['user'] && this.info['user']['book_next']) {
             return this.info['user']['book_next'];
         }
@@ -321,6 +321,15 @@ export class AppService {
             direction: 'forward'
         }).then(() => {
             // alert(page);
+            if (window['ie_version']) {
+                setTimeout(() => {
+                    this.alert({
+                        message: '앗! 큰일이에요. 크롬 웹브라우저 또는 엣지로 접속하셔야합니다. 가능하면 크롬 웹 브라우저로 접속해 주세요.',
+                        cssClass: 'ie-version'
+                    });
+                }, 500);
+            }
+
         });
 
     }
@@ -405,6 +414,7 @@ export class AppService {
         };
 
         if (str['duration'] !== void 0) options['duration'] = str['duration'];
+        if (str['cssClass'] !== void 0) options['cssClass'] = str['cssClass'];
 
         if (typeof str === 'string') { // Mostly a message to user
             options['message'] = str;
@@ -904,48 +914,48 @@ export class AppService {
     }
 
     initWebPushMessage() {
-      if ('Notification' in window) {
-        this.firebase.messaging.requestPermission()
-          .then(() => { /// User accepted 'push notification alert'
-            this.firebase.messaging.getToken()
-              .then(currentToken => { /// Got token
-                this.pushToken = currentToken;
-                // console.log("Got token: ", this.pushToken);
-                this.updatePushToken();
-              })
-              .catch(err => {
-                // Failed to get token.
-                console.error('An error occurred while retrieving token. ', err);
-              });
-          })
-          .catch(err => { /// If failed to get permission.
-            console.error('User rejected/blocked push notification. ', err);
-          });
+        if ('Notification' in window) {
+            this.firebase.messaging.requestPermission()
+                .then(() => { /// User accepted 'push notification alert'
+                    this.firebase.messaging.getToken()
+                        .then(currentToken => { /// Got token
+                            this.pushToken = currentToken;
+                            // console.log("Got token: ", this.pushToken);
+                            this.updatePushToken();
+                        })
+                        .catch(err => {
+                            // Failed to get token.
+                            console.error('An error occurred while retrieving token. ', err);
+                        });
+                })
+                .catch(err => { /// If failed to get permission.
+                    console.error('User rejected/blocked push notification. ', err);
+                });
 
-        // Callback fired if Instance ID token is updated.
-        this.firebase.messaging.onTokenRefresh(() => {
-          this.firebase.messaging.getToken()
-            .then(refreshedToken => { // Token refreshed
-              this.pushToken = refreshedToken
-              // console.log("Token Refreshed: ", this.pushToken);
-              this.updatePushToken();
-            })
-            .catch(err => {
-              // console.log('Unable to retrieve refreshed token ', err);
+            // Callback fired if Instance ID token is updated.
+            this.firebase.messaging.onTokenRefresh(() => {
+                this.firebase.messaging.getToken()
+                    .then(refreshedToken => { // Token refreshed
+                        this.pushToken = refreshedToken
+                        // console.log("Token Refreshed: ", this.pushToken);
+                        this.updatePushToken();
+                    })
+                    .catch(err => {
+                        // console.log('Unable to retrieve refreshed token ', err);
+                    });
             });
-        });
 
-        // When the user is on the site(opened the site), the user will not get push notification.
-        // Instead, you can do whatever in this handler.
-        this.firebase.messaging.onMessage(payload => {
-          // console.log("Message received. ", payload);
-          // ...
-          const notification = payload['notification'];
-          // const title = notification['title'];
-          const body = notification['body'];
-          this.alert(body);
-        });
-      }
+            // When the user is on the site(opened the site), the user will not get push notification.
+            // Instead, you can do whatever in this handler.
+            this.firebase.messaging.onMessage(payload => {
+                // console.log("Message received. ", payload);
+                // ...
+                const notification = payload['notification'];
+                // const title = notification['title'];
+                const body = notification['body'];
+                this.alert(body);
+            });
+        }
     }
 
 
@@ -1120,7 +1130,7 @@ export class AppService {
         }
         else {
             this.userTime = user['timezone_country'] + ' '
-            + hour + ':' + min + ' ' + ap;
+                + hour + ':' + min + ' ' + ap;
         }
         // console.log(this.userTime);
     }
