@@ -350,7 +350,7 @@
         </div>
   
         <div class="loader-big" *ngIf=" schedule_table_rows.length == 0 ">
-          <div class="d-inline-block m-auto" text-center>
+          <div class="h-100 w-100 d-flex-column align-items-center justify-content-center" text-center>
             <ion-spinner class="size-100" name="ios"></ion-spinner>
             <div class="text p-5 dimgrey fs-2rem fw-bold text-uppercase">
               {{ 'IN LOADING' | translate }}..
@@ -361,7 +361,7 @@
   
       <!--/schedule-body-table START-->
         <div class="table schedule-table bg-white" *ngIf=" schedule_table_rows.length " width="100%">
-            <div class="sticky-effect-color bg-white tr schedule-header hide-effect fw-bold border border-right-0 border-left-0 d-flex justify-content-around align-items-center">
+            <div class="sticky-effect-color bg-white tr schedule-header hide-effect fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center">
                 <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
                   <div class="text-center">{{ 'TEACHER' | translate }}</div>
                 </div>
@@ -389,7 +389,7 @@
   
               </div>
   
-              <div class="td fw-bold session-datetime pt-2 text-center">
+              <div class="td fw-bold fs-90 session-datetime pt-2 text-center">
                 <div *ngIf=" a.user.isLogin ">
                   {{ session_time( sessions[0] ) }}
                 </div>

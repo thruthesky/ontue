@@ -49,6 +49,7 @@ teacher-list-page {
     }
   }
   .hide-effect {
+    -webkit-animation: fade-in-effect 0.3s ease-in-out;
     animation: fade-in-effect 0.3s ease-in-out
   }
   @keyframes fade-in-effect {
@@ -64,7 +65,7 @@ teacher-list-page {
   }
   .hover-img-effect {
     position: relative;
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     .hover-cover {
       height: 100%;
       width: 100%;
@@ -72,9 +73,7 @@ teacher-list-page {
       opacity: 0;
       border-radius: 2px;
       background: rgba(#607d8b, 0.4);
-      transition: all 0.2s ease-in-out;
-      -webkit-transition: all 0.2s ease-in-out;
-      -ms-transition: all 0.2s ease-in-out;
+      transition: opacity 0.2s ease-in-out;
     }
     &:hover {
       -webkit-transform: scale(0.98);
@@ -108,9 +107,14 @@ teacher-list-page {
     position: fixed;
     top: 0;
     left: 0;
+    right:0;
+    bottom:0;
     background: rgba(white, 0.8);
     z-index: 999999;
   }
+
+
+
 }
 
 // teacher-list-page {
