@@ -5,6 +5,24 @@
 <ion-content #content>
   <div class="page">
     <ng-container *ngIf=" singleTeacher ">
+        <div class="sticky-effect-top bg-white tr schedule-header hide-effect fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center"
+              *ngIf="ScrollContentTopValue">
+            <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
+              <div class="text-center">{{ 'TEACHER' | translate }}</div>
+            </div>
+            <div class="td session-datetime text-center d-flex-column justify-content-center align-items-center size-42px-62px">
+              <div class="">{{ 'TIME' | translate }}</div>
+              <div class="">{{ 'MINUTE' | translate }}</div>
+            </div>
+            <!-- <td>Reserve Visible</td> -->
+            <div class="td datetime session-wrapper   d-flex-column justify-content-center align-items-center size-42px-62px" *ngFor="let header of header">
+              <div class="w-100 text-center hover-effect pointer" (click)="onClickNavigate( header.date )">
+                <!--{{ header | json }}-->
+                <span>{{ header.display_date }}</span>
+                <span class="d-inline-block"> {{ header.user_time_day | translate }}</span>
+              </div>
+            </div>
+          </div>
       <ion-grid *ngIf=" loadComplete; else singleTeacherLoader" no-padding>
         <ion-row class="px-4 py-3 px-md-5 py-md-4 bg-white" justify-content-between align-items-stretch>
           <ion-col col-4 col-md-1>
@@ -114,7 +132,7 @@
         <span class="pl-2">{{ status | translate }}</span>
       </div>
 
-      <div class="d-md-flex align-items-center py-md-2 py-0 pl-2 pl-md-0 " *ngIf=" ! status ">
+      <div  class="d-md-flex align-items-center py-md-2 py-0 pl-2 pl-md-0 " *ngIf=" ! status ">
         <div class="pl-md-3 pl-0 ml-md-3">
           {{ 'TIMEZONE NOW' | translate }}: {{ a.userTime }}
         </div>
@@ -269,7 +287,6 @@
 
         {{ 'LOGIN_BEFORE_RESERVE' | translate }}
       </div>
-
       <div class="buttons bg-white">
         <div class="d-flex justify-content-between px-4">
           <div class="d-flex align-items-center">
@@ -362,7 +379,7 @@
 
       <!--/schedule-body-table START-->
       <div class="table schedule-table bg-white" *ngIf=" schedule_table_rows.length " width="100%">
-        <div class="sticky-effect bg-white tr schedule-header hide-effect fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center">
+        <div id="schedule-header" class="bg-white tr schedule-header hide-effect fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center">
           <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
             <div class="text-center">{{ 'TEACHER' | translate }}</div>
           </div>
@@ -379,6 +396,7 @@
             </div>
           </div>
         </div>
+        <button (click)="ScrollContentTopValue=!ScrollContentTopValue">enableSticky:{{ScrollContentTopValue}}</button>
         <ng-container *ngFor="let sessions of schedule_table_rows; let i = index">
 
           <div class=" schedule-row tr border border-top-0 border border-right-0 border-left-0  hide-effect d-flex justify-content-around align-items-center"

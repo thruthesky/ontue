@@ -241,11 +241,11 @@ schedule-table-page {
     overflow: visible;
   }
 
-  // .sticky-effect-top{
-  //   position:fixed!important;
-  //   width:992px!important;
-  //   z-index: 10000;
-  // }
+  .sticky-effect-top{
+    position:fixed!important;
+    width:992px!important;
+    z-index: 10000;
+  }
 
   .sticky-effect{
     position:sticky!important;
