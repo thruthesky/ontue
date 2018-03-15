@@ -267,6 +267,7 @@ export class MyApp {
 
     // this.a.open('student-curriculumn');
     
+    // this.a.open('session-past', {showLevel: true}); // my level
   }
 
 
