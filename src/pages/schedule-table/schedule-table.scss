@@ -241,9 +241,18 @@ schedule-table-page {
     overflow: visible;
   }
 
-  .sticky-effect-color{
+  // .sticky-effect-top{
+  //   position:fixed!important;
+  //   width:992px!important;
+  //   z-index: 10000;
+  // }
+
+  .sticky-effect{
     position:sticky!important;
     top:-1px;
+    left:0;
+    right:0;
+    z-index: 99;
   }
 
 }
