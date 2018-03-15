@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 // import { StatusBar } from '@ionic-native/status-bar';
 // import { SplashScreen } from '@ionic-native/splash-screen';
@@ -72,7 +72,7 @@ import { StudentCurriculumnPage } from '../pages/student-curriculumn/student-cur
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp implements AfterViewInit {
   @ViewChild(Nav) nav: Nav;
 
 
@@ -171,16 +171,24 @@ export class MyApp {
     this.a.pages['student-adv'] = StudentAdvPage;
     this.a.pages['student-curriculumn'] = StudentCurriculumnPage;
 
+    if (window['ie_version']) {
+      setTimeout(() => {
+        this.a.alert({
+          message: '앗! 큰일이에요. 크롬 웹브라우저 또는 엣지로 접속하셔야합니다. 가능하면 크롬 웹 브라우저로 접속해 주세요.',
+          cssClass: 'ie-version'
+        });
+      }, 500);
+    }
 
   }
 
   test() {
 
-    
-      // this.a.okDialog( '즉시 수업', '<div class="my-3">지금 곧 시작하는 수업을 예약 하였습니다.</div>수업 예약 페이지로 이동을 합니다.', () => alert('go') );
-      
 
-    
+    // this.a.okDialog( '즉시 수업', '<div class="my-3">지금 곧 시작하는 수업을 예약 하였습니다.</div>수업 예약 페이지로 이동을 합니다.', () => alert('go') );
+
+
+
 
     // this.a.open('home');
     // this.a.open('teacher-curriculum-vitae');
@@ -218,7 +226,7 @@ export class MyApp {
     // this.a.open('menu');
     // this.a.open('my-point');
 
-    
+
     // this.a.open('past');
 
     // this.a.open('dayoff');
@@ -266,7 +274,7 @@ export class MyApp {
 
 
     // this.a.open('student-curriculumn');
-    
+
   }
 
 
