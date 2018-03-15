@@ -350,7 +350,7 @@
         </div>
       </div>
 
-      <div class="loader-big" *ngIf=" schedule_table_rows.length == 0 ">
+      <div class="loader-big" *ngIf=" schedule_table_rows.length == 0 && !loadComplete ">
         <div class="h-100 w-100 d-flex-column align-items-center justify-content-center" text-center>
           <ion-spinner class="size-100" name="ios"></ion-spinner>
           <div class="text p-5 dimgrey fs-2rem fw-bold text-uppercase">
