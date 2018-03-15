@@ -6,22 +6,40 @@
     <hook-content-top></hook-content-top>
     <section class="page-header d-flex justify-content-between">
 
-      
+
       <div>
-          <ng-container *ngIf=" a.isStudent ">
-            {{ a.user.name }} 님, 포인트:
-            <span *ngIf=" a.inLoadingMyPoint ">
-              <i class="fal fa-spinner fa-spin"></i>
-            </span>
-            <span *ngIf=" ! a.inLoadingMyPoint ">
-              {{ share.point }}
-            </span>
-          </ng-container>
-        </div>
+        <ng-container *ngIf=" a.isStudent ">
+          {{ a.user.name }} 님, 포인트:
+          <span *ngIf=" a.inLoadingMyPoint ">
+            <i class="fal fa-spinner fa-spin"></i>
+          </span>
+          <span *ngIf=" ! a.inLoadingMyPoint ">
+            {{ share.point }}
+          </span>
+        </ng-container>
+      </div>
 
       <div class="pointer" (click)=" share.options = ! share.options ">
         <ion-icon name="options"></ion-icon>
         {{ "OPTIONS" | translate }}
+      </div>
+
+    </section>
+
+    <section class="my-level p-3" *ngIf="showLevel">
+      <div class="mb-4">회원님의 영어 레벨: <span class="fw-bold red">Lv {{ myLevel }}.</span></div>
+      <div>
+        레벨은 1부터 9까지 있습니다.
+        <ul>
+          <li>초급: 레벨1 ~ 레벨3</li>
+          <li>중급: 레벨4 ~ 레벨6</li>
+          <li>고급: 레벨7 ~ 레벨9</li>
+        </ul>
+      </div>
+
+      <div>
+        마지막 수업 20회를 바탕으로 각 수업 평가의 평균을 내어 레벨을 정합니다. <br>
+        강의 평가를 클릭하시면 각 수업 별 세부 평가 내용을 확인 할 수 있습니다.
       </div>
 
     </section>
@@ -31,5 +49,5 @@
 
   </div>
   <!--/page-->
-    <hook-content-bottom></hook-content-bottom>
+  <hook-content-bottom></hook-content-bottom>
 </ion-content>

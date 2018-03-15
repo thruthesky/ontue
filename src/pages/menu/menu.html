@@ -41,6 +41,12 @@
         </ion-item>
 
 
+        <ion-item class="menu-level" (click)="a.open('session-past', {showLevel: true})" *ngIf=" a.user.isLogin ">
+          <ion-icon name="stats" item-start></ion-icon>
+          나의 영어 레벨
+        </ion-item>
+
+
 
 
         <ion-item class="menu-qna" (click)=" a.onClickContactAdmin() ">
