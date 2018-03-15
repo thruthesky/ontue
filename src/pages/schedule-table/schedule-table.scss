@@ -106,13 +106,13 @@ schedule-table-page {
   .session-wrapper{
     // session
     width: 42px;
-    height: 66px;
+    height: 72px;
     overflow: hidden;
   }
 
   .size-42px-62px{
     width: 42px;
-    height: 62px;
+    height: 72px;
   }
 
   .icon-desc {
@@ -145,10 +145,17 @@ schedule-table-page {
   }
 
   @media ( max-width: $sm ) {
-  .d-sm-flex-row{
-    flex-direction: row!important;
-  }
+    .d-sm-flex-row{
+      flex-direction: row!important;
+    }
 
+    .fw-sm-normal{
+      font-weight: normal!important;
+    }
+
+    .fs-sm-80{
+      font-size: 80%!important;
+    }
   }
 
   .help-how-to-reserve {
@@ -230,6 +237,14 @@ schedule-table-page {
 
   }
 
+  .page{
+    overflow: visible;
+  }
+
+  .sticky-effect-color{
+    position:sticky!important;
+    top:-1px;
+  }
 
 }
 

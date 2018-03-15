@@ -98,7 +98,7 @@ export class ScheduleTablePage {
   length_of_schedule_table_rows = 0; // total length of schedule table rows.
   no_schedule = false; // If the teacher has no schedule table, it sets to true.
   student = {}; // Get's login user information from backend. it is more accurate than localStorage.
-  teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0, kakao_qrmark_string: '' };
+  teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0, kakao_qrmark_string: '', introduction: '' };
   teachers = {};
 
 

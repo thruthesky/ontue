@@ -64,6 +64,10 @@
 
 
   <script>
+    /**
+     * Returns false if the browser is not IE.
+     * Otherwise a number between 5~11 will be returned.
+     */
     function detect_ie_version() {
       if (!window.document['documentMode']) return false;
       var ua = window.navigator.userAgent;
@@ -78,11 +82,10 @@
       }
       return false;
     }
-    var version = detect_ie_version();
-    if (version && version < 11) {
+    var ie_version = detect_ie_version();
+    if (ie_version && ie_version < 11) {
       location.href = "/wp-content/plugins/xapi-2/lms/www/index.php";
     }
-
   </script>
 
 
