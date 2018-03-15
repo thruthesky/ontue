@@ -20,7 +20,7 @@
     border-color: #007bff!important;
   }
   
-  &:hover+div,&:focus+div{
+  &:hover+div{
     border-color: #007bff!important;
   }
 }
@@ -29,3 +29,12 @@
 .border-darkorange{border-color:darkorange!important}
 .border-bottom{border-bottom: 1px solid #e2e2e2!important}
 .border-silver{border-color: #e2e2e2!important}
+.justify-content-even{
+  justify-content: space-evenly;
+}
+.h-100{
+  height: 100%;
+}
+.w-100px{
+  width: 100px;
+}

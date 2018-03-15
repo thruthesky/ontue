@@ -904,46 +904,48 @@ export class AppService {
     }
 
     initWebPushMessage() {
+      if ('Notification' in window) {
         this.firebase.messaging.requestPermission()
-            .then(() => { /// User accepted 'push notification alert'
-                this.firebase.messaging.getToken()
-                    .then(currentToken => { /// Got token
-                        this.pushToken = currentToken;
-                        // console.log("Got token: ", this.pushToken);
-                        this.updatePushToken();
-                    })
-                    .catch(err => {
-                        // Failed to get token.
-                        console.error('An error occurred while retrieving token. ', err);;
-                    });
-            })
-            .catch(err => { /// If failed to get permission.
-                console.error('User rejected/blocked push notification. ', err);
-            });
+          .then(() => { /// User accepted 'push notification alert'
+            this.firebase.messaging.getToken()
+              .then(currentToken => { /// Got token
+                this.pushToken = currentToken;
+                // console.log("Got token: ", this.pushToken);
+                this.updatePushToken();
+              })
+              .catch(err => {
+                // Failed to get token.
+                console.error('An error occurred while retrieving token. ', err);
+              });
+          })
+          .catch(err => { /// If failed to get permission.
+            console.error('User rejected/blocked push notification. ', err);
+          });
 
         // Callback fired if Instance ID token is updated.
         this.firebase.messaging.onTokenRefresh(() => {
-            this.firebase.messaging.getToken()
-                .then(refreshedToken => { // Token refreshed
-                    this.pushToken = refreshedToken
-                    // console.log("Token Refreshed: ", this.pushToken);
-                    this.updatePushToken();
-                })
-                .catch(err => {
-                    // console.log('Unable to retrieve refreshed token ', err);
-                });
+          this.firebase.messaging.getToken()
+            .then(refreshedToken => { // Token refreshed
+              this.pushToken = refreshedToken
+              // console.log("Token Refreshed: ", this.pushToken);
+              this.updatePushToken();
+            })
+            .catch(err => {
+              // console.log('Unable to retrieve refreshed token ', err);
+            });
         });
 
         // When the user is on the site(opened the site), the user will not get push notification.
         // Instead, you can do whatever in this handler.
         this.firebase.messaging.onMessage(payload => {
-            // console.log("Message received. ", payload);
-            // ...
-            const notification = payload['notification'];
-            // const title = notification['title'];
-            const body = notification['body'];
-            this.alert(body);
+          // console.log("Message received. ", payload);
+          // ...
+          const notification = payload['notification'];
+          // const title = notification['title'];
+          const body = notification['body'];
+          this.alert(body);
         });
+      }
     }
 
 

@@ -22,18 +22,18 @@
     You can add schedule.
   </div> -->
 
-  <div class="content h-100 d-flex-column align-items-center justify-content-stretch px-5">
+  <div class="content h-100 d-flex-column align-items-center justify-content-even px-5">
 
-        <div class="border-bottom py-3">
+        <div class=" py-2">
             <div class="m-0 p-0 ">Promo Schedule Graded Teacher must have.</div>
             <ul  class=" m-0">
-                <li class="mt-3"><b class="darkorange"> 1 schedule</b> with <b class="darkorange">10mins</b> duration for <b class="darkorange">500 points</b> and must be from <b class="darkorange">Mon-Fri</b></li>
-                <li class="mt-3"><b class="darkorange"> 1 schedule</b> with <b class="darkorange">20mins</b> duration for <b class="darkorange">1000 points</b> and must be from <b class="darkorange">Mon-Fri</b></li>
+                <li class="mt-2"><b class="darkorange"> 1 schedule</b> with <b class="darkorange">10mins</b> duration for <b class="darkorange">500 points</b> and must be from <b class="darkorange">Mon-Fri</b></li>
+                <li class="mt-2"><b class="darkorange"> 1 schedule</b> with <b class="darkorange">20mins</b> duration for <b class="darkorange">1000 points</b> and must be from <b class="darkorange">Mon-Fri</b></li>
             </ul>
         </div>
 
-    <ion-grid no-padding>
-        <ion-row  class="border-bottom py-3">
+    <ion-grid class="border border-right-0 border-left-0" no-padding>
+        <ion-row  class=" py-3">
             <ion-col>
                 <div class="mx-0 py-0"> ({{ timezone_offset > 0 ? "+" + timezone_offset : timezone_offset }}) {{ timezone_name }}</div>
             </ion-col>
@@ -90,7 +90,7 @@
         </ion-grid>
 
         <ion-grid no-padding>
-                <ion-row class="form-effect border-bottom pt-2 pb-3 pb-md-2" align-items-center>
+                <ion-row class="form-effect pt-2 pb-3 pb-md-2" align-items-center>
                     <ion-col class="d-none d-md-block">
                             <div> Points</div>
                     </ion-col>
@@ -115,24 +115,49 @@
                 </ion-row>
             </ion-grid>
 
-            <ion-grid no-padding>
-                <ion-row class="form-effect py-3" align-items-stretch>
-                    <ion-col col-12 col-md-6  text-center>
-                        <div class="d-flex-column align-items-center justify-content-center h-100">
-                            <input class="focus-effect p-2 rounded-2 mt-2 mb-3 mb-0"  type="text" name="prere" [(ngModel)]="data.prere">
-                            <label class="label-first">Student Email</label>
+    <div class="alert alert-warning m-0 py-1 px-2" *ngIf=" maxPoint() ">
+        You cannot raise more than {{ max_point_per_minute }} per minute.
+        The point for {{ data['duration'] }} minutes class must be less than or equal to {{ data['duration'] *
+        max_point_per_minute }}
+      </div>
+  
+  
+      <div class="alert alert-info m-0  py-1 px-2" *ngIf=" calculateEarning() ">
+        You will earn
+        {{ calculateEarning() }}
+        peso in a month
+        (
+        {{ data.duration }} minutes /
+        {{ countSelectedDays() * 4 }} days a month
+        with
+        <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="paypal"> paypal or
+        <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="western-union"> western union
+        )
+  
+        Approximately.
+        @see Policy
+  
+      </div>
+
+      <ion-grid no-padding>
+          <ion-row class="form-effect" align-items-center>
+              <ion-col col-12 col-md-6  text-center>
+                  <div class="d-flex-column align-items-center justify-content-center h-100">
+                      <input class="focus-effect p-2 rounded-2 mt-2 mb-0"  type="text" name="prere" [(ngModel)]="data.prere">
+                      <label class="label-first">Student Email</label>
+                  </div>
+            </ion-col>
+              <ion-col col-12 col-md-6>
+                      <div class="h-100 pl-3 py-0 pr-0 darkorange d-flex align-items-center justify-content-center">
+                         You can make the schedule limited to specific student, by adding the student email here. 
                         </div>
-                  </ion-col>
-                    <ion-col col-12 col-md-6 class="border border-darkorange">
-                            <div class="h-100 p-3 pr-0 darkorange d-flex align-items-center justify-content-center">
-                               You can make the schedule limited to specific student, by adding the student email here. 
-                              </div>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+
 
         <ion-grid no-padding>
-          <ion-row class="pb-3 border-bottom " justify-content-between text-center>
+          <ion-row justify-content-between text-center>
             <ion-col class="mt-3 mt-md-0">
                 <label>
                     <input class="position-absolute opacity-0 checkbox-effect"  type="checkbox" name="sunday" [(ngModel)]="data.sunday" (change)="allDays=false">
@@ -183,31 +208,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-
-    <div class="alert alert-warning mb-2" *ngIf=" maxPoint() ">
-      You cannot raise more than {{ max_point_per_minute }} per minute.
-      The point for {{ data['duration'] }} minutes class must be less than or equal to {{ data['duration'] *
-      max_point_per_minute }}
-    </div>
-
-
-    <div class="alert alert-info" *ngIf=" calculateEarning() ">
-      You will earn
-      {{ calculateEarning() }}
-      peso in a month
-      (
-      {{ data.duration }} minutes /
-      {{ countSelectedDays() * 4 }} days a month
-      with
-      <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="paypal"> paypal or
-      <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="western-union"> western union
-      )
-
-      Approximately.
-      @see Policy
-
-    </div>
-    <div class="mt-3" text-center>
+    <div text-center>
         <button class="px-5 py-4" small outline ion-button type="submit" (click)="onSubmit()">Submit</button>
     </div>
 
