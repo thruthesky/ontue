@@ -240,7 +240,7 @@ export class MyApp implements AfterViewInit {
     // this.a.open('evaluate-view', {idx: 9707} );
 
 
-    this.a.open('payment');
+    // this.a.open('payment');
     // this.a.open('settings-payment-info');
     // this.a.open('settings-payment-info');
 

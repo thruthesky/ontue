@@ -25,7 +25,7 @@
           <div>금액을 선택하시고 구매 버튼을 클릭하시면 됩니다.</div>
 
         </div>
-        <div class="amounts d-flex justify-content-around mt-4 mb-4 mb-md-6 px-2 py-5 bg-amount">
+        <div class="amounts d-flex justify-content-around mt-4 mb-4 mb-md-6 px-2 py-5 bg-amount" *ngIf="!inputAmount">
           <!-- <div>
             <input id="a2000" type="radio" name="amount" [(ngModel)]="amount" [value]="2000">
             <label for="a2000">2천 원</label>
@@ -61,11 +61,12 @@
         </div>
         <div class="manual-amount-input mb-3">
           <div class="text-center darkred pointer" (click)=" inputAmount = true " *ngIf=" ! inputAmount ">
-            {{ 'INPUT-AMOUNT' | translate }}
+            결제 금액 직접 입력하기
           </div>
-          <div class="mb-3 text-md-center fs-130" *ngIf=" inputAmount ">
-            <span class="d-inline-block mr-3">{{ 'INPUT-AMOUNT' | translate }}</span>
-            <input class="input-amount p-2" type="number" name="amount" [(ngModel)]="amount">
+          <div class="mb-3 pl-2 pl-md-0 text-md-center fs-130" *ngIf=" inputAmount ">
+            <span class="d-inline-block mr-3">결제 금액 입력</span>
+            <input class="input-amount p-2 w-100px" type="number" name="amount" [(ngModel)]="amount">
+            <span class="d-inline-block pl-3 darkred" (click)="inputAmount=false">취소</span>
           </div>
         </div>
       </div>
