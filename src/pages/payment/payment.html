@@ -59,6 +59,15 @@
             <label for="a200000">20만원</label>
           </div>
         </div>
+        <div class="manual-amount-input mb-3">
+          <div class="text-center darkred pointer" (click)=" inputAmount = true " *ngIf=" ! inputAmount ">
+            {{ 'INPUT-AMOUNT' | translate }}
+          </div>
+          <div class="mb-3 text-md-center fs-130" *ngIf=" inputAmount ">
+            <span class="d-inline-block mr-3">{{ 'INPUT-AMOUNT' | translate }}</span>
+            <input class="input-amount p-2" type="number" name="amount" [(ngModel)]="amount">
+          </div>
+        </div>
       </div>
 
       <ng-template #loginFirst>

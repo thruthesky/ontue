@@ -18,6 +18,8 @@ export class PaymentPage implements AfterViewInit {
         paypal_student_fee: 0
     };
     inLoadingPaymentRate = true;
+
+    inputAmount = false;
     constructor(
         public a: AppService
     ) {
