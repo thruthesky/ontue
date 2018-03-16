@@ -249,6 +249,7 @@ schedule-table-page {
 
   .sticky-effect-top{
     position:fixed!important;
+    top:-1px;
     width:992px;
     z-index: 10000;
   }

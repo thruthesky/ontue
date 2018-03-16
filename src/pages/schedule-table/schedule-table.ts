@@ -187,7 +187,6 @@ export class ScheduleTablePage {
       this.loadScheduleTable();
     });
 
-
     // console.log('data params', this.params);
 
     // this.a.lms.my_point().subscribe( re => this.my_point = re['point'], e => this.a.alert( e ) );
@@ -213,7 +212,7 @@ export class ScheduleTablePage {
 
   ngAfterViewInit() {
 }
-  
+ 
 
 
   ngOnDestroy() {
@@ -828,10 +827,10 @@ export class ScheduleTablePage {
 
   //.scroll-content class is the scroll parent container in ionic
   checkSticky(){
-    let elTop=document.querySelector('.scroll-content').getBoundingClientRect().top;
-    let targetTop=document.getElementById('schedule-header').getBoundingClientRect().top;
+    let elTop=document.querySelector('.scroll-content');
+    let targetTop=document.getElementById('schedule-header');
     this.zone.run(()=>{
-      if(elTop>=targetTop-1){
+      if(elTop.getBoundingClientRect().top>=targetTop.getBoundingClientRect().top-1){
         this.enableSticky=true;
       }else{
         this.enableSticky=false;

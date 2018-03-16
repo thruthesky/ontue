@@ -2,7 +2,7 @@
   <header-content page="schedule-table"></header-content>
 </ion-header>
 
-<ion-content (ionScroll)="checkSticky()" #content>
+<ion-content #content>
   <div class="page">
     <ng-container *ngIf=" singleTeacher ">
         <div class="sticky-effect-top bg-white hide-effect tr schedule-header fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center"
@@ -23,7 +23,7 @@
               </div>
             </div>
           </div>
-      <ion-grid *ngIf=" loadComplete; else singleTeacherLoader" no-padding>
+      <ion-grid *ngIf=" loadComplete; else singleTeacherLoader" no-padding  (ionScroll)="checkSticky()">
         <ion-row class="px-4 py-3 px-md-5 py-md-4 bg-white" justify-content-between align-items-stretch>
           <ion-col col-4 col-md-1>
             <div class="teacher-profile-photo size-100x120 of-hidden">
@@ -385,7 +385,6 @@
           </div>
         </div>
       </div>
-
 
       <!--/schedule-body-table START-->
       <div class="table schedule-table bg-white" *ngIf=" schedule_table_rows.length " width="100%">
