@@ -1,4 +1,4 @@
-import { Component, ViewChild,NgZone } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from './../../providers/app.service';
 import { Platform, ModalController, NavParams } from "ionic-angular";
@@ -170,8 +170,7 @@ export class ScheduleTablePage {
     public navParams: NavParams,
     public domSanitizer: DomSanitizer,
     public youtube: YoutubeVideoPlayer,
-    public modalCtrl: ModalController,
-    public zone: NgZone
+    public modalCtrl: ModalController
     // public cdr: ChangeDetectorRef
   ) {
 
@@ -213,7 +212,7 @@ export class ScheduleTablePage {
 
   ngAfterViewInit() {
 }
-  
+
 
 
   ngOnDestroy() {
@@ -830,13 +829,14 @@ export class ScheduleTablePage {
   doEnableSticky(){
     let elTop=document.querySelector('.scroll-content').getBoundingClientRect().top;
     let targetTop=document.getElementById('schedule-header').getBoundingClientRect().top;
-    this.zone.run(()=>{
-      if(elTop>=targetTop-1){
-        this.enableSticky=true;
-      }else{
-        this.enableSticky=false;
-      }
-    })
+
+    if(elTop>=targetTop-1){
+      this.enableSticky=true;
+    }else{
+      this.enableSticky=false;
+    }
+
+    this.a.render();
   }
 
 }
