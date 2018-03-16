@@ -2,7 +2,7 @@
   <header-content page="schedule-table"></header-content>
 </ion-header>
 
-<ion-content (ionScroll)="doEnableSticky()" #content>
+<ion-content (ionScroll)="checkSticky()" #content>
   <div class="page">
     <ng-container *ngIf=" singleTeacher ">
         <div class="sticky-effect-top bg-white hide-effect tr schedule-header fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center"
@@ -389,7 +389,7 @@
 
       <!--/schedule-body-table START-->
       <div class="table schedule-table bg-white" *ngIf=" schedule_table_rows.length " width="100%">
-        <div id="schedule-header" class="bg-white tr schedule-header hide-effect fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center">
+        <div id="schedule-header" class="bg-white tr sticky-effect schedule-header hide-effect fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0 d-flex justify-content-around align-items-center">
           <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
             <div class="text-center">{{ 'TEACHER' | translate }}</div>
           </div>

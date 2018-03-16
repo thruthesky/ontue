@@ -827,7 +827,7 @@ export class ScheduleTablePage {
 
 
   //.scroll-content class is the scroll parent container in ionic
-  doEnableSticky(){
+  checkSticky(){
     let elTop=document.querySelector('.scroll-content').getBoundingClientRect().top;
     let targetTop=document.getElementById('schedule-header').getBoundingClientRect().top;
     this.zone.run(()=>{
