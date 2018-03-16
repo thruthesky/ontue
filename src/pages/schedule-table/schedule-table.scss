@@ -6,14 +6,6 @@ schedule-table-page {
     background-color: map-get( map-get( $color-maps, 'grey' ), 200 );
   }
 
-  @keyframes fade-in-effect {
-    0% {
-      opacity: 0
-    }
-    100% {
-      opacity: 1
-    }
-  }
 
   // .schedule-table {
   //   &,
@@ -156,6 +148,22 @@ schedule-table-page {
     .fs-sm-80{
       font-size: 80%!important;
     }
+
+    .ml-1dot1rem{
+      margin-left: 1.1rem!important;
+    }
+
+    .sticky-effect-top{
+      max-width: 100%!important;
+    }
+
+    .w-sm-100px{
+      width: 100px;
+    }
+
+    .h-sm-100{
+      height: 100%!important;
+    }
   }
 
   .help-how-to-reserve {
@@ -206,15 +214,17 @@ schedule-table-page {
   }
 
   .hide-effect {
-    animation: fade-in-effect 0.3s ease-in-out
+    animation: fade-in-effect 0.1s ease-in-out
   }
 
-  .flex-shrink-1dot25{
-    flex-shrink: 1.04;
-  }
 
-  .flex-shrink-1{
-    flex-shrink: 1;
+  @keyframes fade-in-effect {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
+    }
   }
 
   .justify-content-between{
@@ -237,16 +247,15 @@ schedule-table-page {
 
   }
 
-  .page{
-    overflow: visible;
-  }
-
   .sticky-effect-top{
     position:fixed!important;
-    width:992px!important;
+    width:992px;
     z-index: 10000;
   }
 
+  .page{
+    overflow: visible!important;
+  }
   .sticky-effect{
     position:sticky!important;
     top:-1px;

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,NgZone } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppService } from './../../providers/app.service';
 import { Platform, ModalController, NavParams } from "ionic-angular";
@@ -48,6 +48,7 @@ interface SCHEDULE {
   selector: 'schedule-table-page',
   templateUrl: 'schedule-table.html'
 })
+
 export class ScheduleTablePage {
 
 
@@ -100,7 +101,7 @@ export class ScheduleTablePage {
   student = {}; // Get's login user information from backend. it is more accurate than localStorage.
   teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0, kakao_qrmark_string: '', introduction: '' };
   teachers = {};
-  ScrollContentTopValue=false;
+  enableSticky=false;
 
 
   no_more_schedule = false;
@@ -169,10 +170,10 @@ export class ScheduleTablePage {
     public navParams: NavParams,
     public domSanitizer: DomSanitizer,
     public youtube: YoutubeVideoPlayer,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public zone: NgZone
     // public cdr: ChangeDetectorRef
   ) {
-
 
     this.showHelpReserve = !a.lmsInfoUserNoOfTotalSessions;
 
@@ -195,6 +196,7 @@ export class ScheduleTablePage {
 
     this.updatePoint();
 
+
     this.typing
       .debounceTime(800)
       .subscribe(() => {
@@ -210,7 +212,8 @@ export class ScheduleTablePage {
 
 
   ngAfterViewInit() {
-  }
+}
+  
 
 
   ngOnDestroy() {
@@ -824,15 +827,16 @@ export class ScheduleTablePage {
 
 
   //.scroll-content class is the scroll parent container in ionic
-  getScrollContentTopValue(){
+  doEnableSticky(){
     let elTop=document.querySelector('.scroll-content').getBoundingClientRect().top;
     let targetTop=document.getElementById('schedule-header').getBoundingClientRect().top;
-    if(elTop>=targetTop){
-      this.ScrollContentTopValue=true;
-    }else{
-      this.ScrollContentTopValue=false;
-    }
-   
+    this.zone.run(()=>{
+      if(elTop>=targetTop-1){
+        this.enableSticky=true;
+      }else{
+        this.enableSticky=false;
+      }
+    })
   }
 
 }
