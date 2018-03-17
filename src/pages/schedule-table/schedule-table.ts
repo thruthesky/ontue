@@ -347,7 +347,10 @@ export class ScheduleTablePage {
       if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
       }
-    }, e => this.a.alert(e));
+    }, e => {
+      this.a.alert(e);
+      this.loadComplete = true;
+    });
   }
 
   displayScheduleTable(re) {
