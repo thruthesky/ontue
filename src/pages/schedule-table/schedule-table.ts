@@ -48,6 +48,7 @@ interface SCHEDULE {
   selector: 'schedule-table-page',
   templateUrl: 'schedule-table.html'
 })
+
 export class ScheduleTablePage {
 
 
@@ -100,6 +101,7 @@ export class ScheduleTablePage {
   student = {}; // Get's login user information from backend. it is more accurate than localStorage.
   teacher_profile = { age: 0, gender: '', name: '', idx: 0, photoURL: '', grade: 0, total_reservation: 0, kakao_qrmark_string: '', introduction: '' };
   teachers = {};
+  // enableSticky=false;
 
 
   no_more_schedule = false;
@@ -172,7 +174,6 @@ export class ScheduleTablePage {
     // public cdr: ChangeDetectorRef
   ) {
 
-
     this.showHelpReserve = !a.lmsInfoUserNoOfTotalSessions;
 
     this.default_photo_url = a.urlBackend + "/wp-content/plugins/xapi-2/lms/img/default-teacher-photo.jpg";
@@ -185,7 +186,6 @@ export class ScheduleTablePage {
       this.loadScheduleTable();
     });
 
-
     // console.log('data params', this.params);
 
     // this.a.lms.my_point().subscribe( re => this.my_point = re['point'], e => this.a.alert( e ) );
@@ -193,6 +193,7 @@ export class ScheduleTablePage {
     // this.a.loadMyPoint( p => this.my_point = p );
 
     this.updatePoint();
+
 
     this.typing
       .debounceTime(800)
@@ -209,7 +210,7 @@ export class ScheduleTablePage {
 
 
   ngAfterViewInit() {
-  }
+}
 
 
   ngOnDestroy() {
@@ -823,5 +824,16 @@ export class ScheduleTablePage {
     if (url) window.open(url, '_blank');
     else this.a.alert('앗, 이 선생님의 카카오톡을 입력하지 않았습니다.');
   }
+  
+  // checkSticky(){
+  //   let elTop=document.querySelector('.scroll-content').getBoundingClientRect().top;
+  //   let targetTop=document.getElementById('schedule-header').getBoundingClientRect().top;
+
+  //   if(elTop>=targetTop-1){
+  //     this.enableSticky=true;
+  //   }else{
+  //     this.enableSticky=false;
+  //   }
+  // }
 
 }
