@@ -2,87 +2,160 @@
   <header-content [title]=" 'EVALUATE' "></header-content>
 </ion-header>
 <ion-content>
-  <div class="page">
+  <div class="page bg-white">
+    <h2 class="darkorange p-3 pt-5 pt-md-3 fs-3rem m-0 mt-md-5" text-center>{{ 'EVALUATE' | translate }}</h2>
+    <ion-grid class="px-md-5 px-3" no-padding>
+      <ion-row align-items-stretch>
+        <ion-col col-md-4 col-12>
+         <div class="p-4 fs-110" text-center>
+            <b>Session No:</b>
+            {{ idx }}
+            <i class="fal fa-hashtag ml-2 brown fs-110"></i>
+         </div> 
+        </ion-col>
+        <ion-col col-md-4 col-12>
+         <div class="p-4 fs-110" text-center>
+            <b>Point:</b>
+            {{point}}
+            <i class="fal fa-check-circle green ml-2 fs-110"></i>
+         </div> 
+        </ion-col>
+        <ion-col col-md-4 col-12>
+         <div class="p-4 fs-110" text-center>
+            <b>Level of the session:</b>
+            {{level}}
+            <i class="fal fa-chart-line ml-2 indigo fs-110"></i>
+         </div> 
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-stretch>
+        <ion-col class="px-5" col-12>
+            <div class="alert m-0 alert-danger p-4 fs-90" *ngIf=" student_absent ">
+              <b>Warning:</b> when you check on 'student was absent' box,
+              You must input some comment on comment box or else the session may not be paid.
+              If you have nothing to commment, then just type "Student was absent at hour:time on Month/Day".
+            </div>
+        </ion-col>
+        <ion-col class="d-flex-column form-effect px-5 pt-5" col-md-4 col-12>
+          <input class="rounded-2 p-3 w-100 focus-effect" type="text" [(ngModel)]="book_used">
+          <label class=" mb-2  pl-1"> Book(Page) used in the session:</label>
+        </ion-col>
+        <ion-col class="px-5  form-effect pt-5" col-md-4 col-12>
+          <label>
+            <div class=" mb-2 pl-1">Student was absent:</div>
+            <div class="d-flex align-items-center justify-content-center p-3 border focus-effect rounded-2 " text-center>
+                <input type="checkbox" [(ngModel)]="student_absent">
+            </div>
+          </label>
+        </ion-col>
+        <ion-col class="px-5 form-effect pt-5" col-md-4 col-12>
+            <label>
+              <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
+                  <span>Class was unsuccessful:</span>
+                  <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                  <span class="fs-90 pop-over-content">Any problem in the class?</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-center p-3 border focus-effect rounded-2 " text-center>
+                  <input type="checkbox" [(ngModel)]="unsuccessful">
+              </div>
+            </label>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-stretch>
+        <ion-col class="d-flex-column px-5 form-effect  pt-5" col-md-4 col-12>
+            <select class="rounded-2 w-100 focus-effect" [(ngModel)]="expression" (ngModelChange)="onChangeChecklevel()">
+              <option [value]="0">Select...</option>
+              <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
+              </option>
+            </select>
+            <label class=" mb-2">
+                <div class="pop-over d-flex justify-content-between align-items-center px-1">
+                    <span>Expression:</span>
+                    <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                    <span class="fs-90 pop-over-content">Rate how well the student can express</span>
+                </div>
+            </label>
+        </ion-col>
+        <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
+            <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="vocabulary" (ngModelChange)="onChangeChecklevel()">
+              <option [value]="0">Select...</option>
+              <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
+              </option>
+            </select>
+            <label class=" mb-2">
+                <div class="pop-over d-flex justify-content-between align-items-center px-1">
+                    <span>Vocabulary:</span>
+                    <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                    <span class="fs-90 pop-over-content">Rate if the student use proper words, cluases</span>
+                </div>
+            </label>
+        </ion-col>
+        <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
+              <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
+                <option [value]="0">Select...</option>
+                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
+                </option> 
+              </select>
+              <label class=" mb-2">
+                  <div class="pop-over d-flex justify-content-between align-items-center px-1">
+                      <span>Grammar:</span>
+                      <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                      <span class="fs-90 pop-over-content">Rate on student grammar</span>
+                  </div>
+              </label>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-stretch>
+        <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
+              <select  class="rounded-2 w-100 focus-effect pr-5em" [(ngModel)]="pronunciation" (ngModelChange)="onChangeChecklevel()">
+                <option [value]="0">Select...</option>
+                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
+                </option>
+              </select>
+              <label class=" mb-2">
+                  <div class="pop-over d-flex justify-content-between align-items-center px-1">
+                      <span>Pronunciation: </span>
+                      <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                      <span class="fs-90 pop-over-content">Rate on student accent and intonation</span>
+                  </div>
+              </label>
+        </ion-col>
+        <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
+              <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="speed" (ngModelChange)="onChangeChecklevel()">
+                <option [value]="0">Select...</option>
+                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
+                </option>
+              </select>
+              <label class=" mb-2">
+                  <div class="pop-over d-flex justify-content-between align-items-center px-1">
+                      <span>Speed of Speach:</span>
+                      <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                      <span class="fs-90 pop-over-content">Rate on how fast and fluently the student speaks</span>
+                  </div>
+              </label>
+        </ion-col>
+        <ion-col class="d-flex-column px-5 pt-5 form-effect" col-md-4 col-12>
+            <input class="rounded-2 p-3 w-100 focus-effect" type="text" [(ngModel)]="book_next">
+            <label class=" mb-2  pl-1">Book(Page) for the next session:</label> 
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="d-flex-column form-effect px-5 pt-5" col-12>       
+            <textarea class="w-100 textarea-effect rounded-2 p-5" rows="10" [(ngModel)]="comment"></textarea> 
+            <label>
+              <div class="mt-5 mb-2  pl-1">
+                <b>Comment</b>: Leave comment of the session. Or Leave any message if the class was unsuccessful.
+              </div>
+            </label>  
+        </ion-col>
+        <ion-col col-12>
+            <div class="m-md-5 m-0 p-5" text-center>
+               <input class="py-4 border-0 w-md-50 w-100 rounded-2 bg-blue white hover-effect" type="submit" (click)="onClickSubmitEvaluation()" value="SUBMIT">
+            </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-    <hook-content-top></hook-content-top>
-    <section class="page-header green">
-      <h2 class="title">{{ 'EVALUATE' | translate }}</h2>
-    </section>
-    <section class="page-body">
-      <ion-list>
-        <ion-item> Session No.: {{ idx }}</ion-item>
-        <ion-item>Point: {{point}}</ion-item>
-        <ion-item text-wrap>
-          Student was absent: <input type="checkbox" [(ngModel)]="student_absent">
-          <div class="alert alert-danger fs-2rem" *ngIf=" student_absent ">
-            Warning: when you check on 'student was absent' box,
-            You must input some comment on comment box or else the session may not be paid.
-            If you have nothing to commment, then just type "Student was absent at hour:time on Month/Day".
-          </div>
-        </ion-item>
-
-        <ion-item>Class was unsuccessful: <input type="checkbox" [(ngModel)]="unsuccessful"> Any problem in the class?
-        </ion-item>
-        <ion-item>Level of the session: {{level}}</ion-item>
-
-        <ion-item>
-          Expression:
-          <select [(ngModel)]="expression" (ngModelChange)="onChangeChecklevel()">
-            <option [value]="0">Select...</option>
-            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-            </option>
-          </select> (Rate how well the student can express)
-        </ion-item>
-        <ion-item>
-          Vocabulary:
-          <select [(ngModel)]="vocabulary" (ngModelChange)="onChangeChecklevel()">
-            <option [value]="0">Select...</option>
-            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-            </option>
-          </select>
-          (Rate if the student use proper words, cluases)
-        </ion-item>
-        <ion-item>
-          Grammar:
-          <select [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
-            <option [value]="0">Select...</option>
-            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-            </option>
-          </select> (Rate on student grammar)
-        </ion-item>
-        <ion-item>
-          Pronunciation:
-          <select [(ngModel)]="pronunciation" (ngModelChange)="onChangeChecklevel()">
-            <option [value]="0">Select...</option>
-            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-            </option>
-          </select> (Rate on student accent and intonation)
-        </ion-item>
-        <ion-item>
-          Speed of Speach:
-          <select [(ngModel)]="speed" (ngModelChange)="onChangeChecklevel()">
-            <option [value]="0">Select...</option>
-            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-            </option>
-          </select> (Rate on how fast and fluently the student speaks.)
-        </ion-item>
-        <ion-item>
-          <textarea rows="10" cols="100" [(ngModel)]="comment"></textarea>
-          <div>Comment: Leave comment of the session. Or Leave any message if the class was unsuccessful.</div>
-        </ion-item>
-
-        <ion-item>
-          Book(Page) used in the session: <input type="text" [(ngModel)]="book_used">
-        </ion-item>
-        <ion-item>
-          Book(Page) will be used in next session: <input type="text" [(ngModel)]="book_next">
-        </ion-item>
-        <ion-item>
-          <input type="submit" (click)="onClickSubmitEvaluation()" value="SUBMIT">
-        </ion-item>
-      </ion-list>
-
-    </section>
   </div>
   <hook-content-bottom></hook-content-bottom>
 </ion-content>

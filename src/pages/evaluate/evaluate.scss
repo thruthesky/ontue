@@ -1,0 +1,50 @@
+evaluate-page{
+    font-size: 14px;
+    .form-effect{
+    label{
+      transition: all 0.2s ease-in-out;
+      order: -1
+    }
+    .focus-effect{
+        height: 40px;
+      }
+    .focus-effect,.textarea-effect{
+      transition: all 0.2s ease-in-out;
+      &:focus{
+        border:1px solid rgba(#007bff,0.5)!important;
+      }
+      &:focus+label:nth-of-type(1){
+        color:#007bff!important;
+      }
+    }
+  }
+
+  .pr-5em{
+      padding-right: 5em;
+  }
+  .pop-over{
+      position: relative;
+      right: 0;
+    &-content{
+        display: none;
+        position: absolute;
+        width: 15em;
+        padding: 1em 1.5em;
+        background-color: #fff9c4;
+        border:1px solid #f57f17;
+        color: black!important;
+        border-radius: 2px;
+        -webkit-transform: translate(-50%,-112%);
+        -moz-transform: translate(-50%,-112%);
+        transform: translate(-50%,-112%);
+        top:50%;
+        left: 50%;
+    }
+
+    &-trigger:hover+.pop-over-content{
+        display: inline;
+    }
+
+  }
+
+}
