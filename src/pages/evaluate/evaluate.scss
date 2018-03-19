@@ -24,7 +24,6 @@ evaluate-page{
   }
   .pop-over{
       position: relative;
-      right: 0;
     &-content{
         display: none;
         position: absolute;
@@ -43,6 +42,7 @@ evaluate-page{
 
     &-trigger:hover+.pop-over-content{
         display: inline;
+        right: 0;
     }
 
   }
