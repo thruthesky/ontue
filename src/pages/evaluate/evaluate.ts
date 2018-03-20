@@ -19,7 +19,7 @@ export class EvaluatePage {
   grammar: number = 0;
   pronunciation: number = 0;
   speed: number = 0;
-  comment: string="d";
+  comment: string;
   book_used: string;
   book_next: string;
   student_name:string;
