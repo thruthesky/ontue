@@ -182,7 +182,9 @@
               <div class="teacher buttons d-flex" *ngIf=" a.isTeacher ">
 
 
-                <button class="bg-white blue" [class.warning]=" ! evaluated(book) " (click)=" a.open('evaluate', {idx: book.idx}) " *ngIf=" !paid(book) && !refunded( book ) ">
+                <button class="bg-white blue" [class.warning]=" ! evaluated(book) "
+                (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) "
+                 *ngIf=" !paid(book) && !refunded( book ) ">
                   Eval
                 </button>
 

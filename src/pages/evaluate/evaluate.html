@@ -5,27 +5,28 @@
   <div class="page bg-white">
     <h2 class="darkorange p-3 pt-5 pt-md-3 fs-3rem m-0 mt-md-5 fw-bold" text-center>{{ 'EVALUATE' | translate }}</h2>
     <ion-grid class="px-md-5 px-3" no-padding>
-      <ion-row align-items-stretch>
-        <ion-col col-md-4 col-12>
-         <div class="p-4 fs-110" text-center>
-            <b>Session No:</b>
-            {{ idx }}
-            <i class="fal fa-hashtag ml-2 brown fs-110"></i>
-         </div> 
-        </ion-col>
-        <ion-col col-md-4 col-12>
-         <div class="p-4 fs-110" text-center>
-            <b>Point:</b>
-            {{point}}
-            <i class="fal fa-check-circle green ml-2 fs-110"></i>
-         </div> 
-        </ion-col>
-        <ion-col col-md-4 col-12>
-         <div class="p-4 fs-110" text-center>
-            <b>Level of the session:</b>
-            {{level}}
-            <i class="fal fa-chart-line ml-2 indigo fs-110"></i>
-         </div> 
+    <ion-row>
+        <ion-col class="d-flex justify-content-around">
+            <div class="py-4 px-0 fs-110 d-flex align-items-center">
+                <span class="fw-bold mr-2">Name:</span>
+                {{student_name}}
+                <i class="fal fa-user-circle ml-2 fs-110"></i>
+            </div> 
+            <div class="py-4 px-0 fs-110 d-flex align-items-center">
+                <span class="fw-bold mr-2">Session No:</span>
+                {{ idx }}
+                <i class="fal fa-hashtag ml-2 brown fs-110"></i>
+                </div> 
+            <div class="py-4 px-0 fs-110 d-flex align-items-center">
+                <span class="fw-bold mr-2">Point:</span>
+                {{point}}
+                <i class="fal fa-check-circle green ml-2 fs-110"></i>
+            </div> 
+            <div class="py-4 px-0 fs-110 d-flex align-items-center">
+                <span class="fw-bold mr-2">Level of the session:</span>
+                {{level}}
+                <i class="fal fa-chart-line ml-2 indigo fs-110"></i>
+            </div> 
         </ion-col>
       </ion-row>
       <ion-row align-items-stretch>
@@ -37,56 +38,54 @@
             </div>
         </ion-col>
         <ion-col class="d-flex-column form-effect px-5 pt-5" col-md-4 col-12>
-          <label class=" mb-2  pl-1">
+        <input class="rounded-2 p-3 w-100 focus-effect" type="text" [(ngModel)]="book_used">
+          <label class="pl-1">
               <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
                   <span>Book(Page) used in the session:</span>
                   <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
-                  <span class="fs-90 pop-over-content">Title of the book and the page</span>
-              </div>
-              <div class="d-flex align-items-center justify-content-center p-3 border focus-effect rounded-2 " text-center>
-                  <input class="rounded-2 p-3 w-100 focus-effect" type="text" [(ngModel)]="book_used">
+                  <span class="fs-90 pop-over-content">book used for today session</span>
               </div>
             </label>
         </ion-col>
-        <ion-col class="px-5  form-effect pt-5" col-md-4 col-12>
-          <label>
-              <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
-                  <span>Student was absent:</span>
-                  <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
-                  <span class="fs-90 pop-over-content">click the box if the student is absent?</span>
-              </div>
-              <div class="d-flex align-items-center justify-content-center p-3 border focus-effect rounded-2 " text-center>
-                  <input type="checkbox"  [(ngModel)]="student_absent">
-              </div>
-          </label>
-        </ion-col>
-        <ion-col class="px-5 form-effect pt-5" col-md-4 col-12>
-            <label>
-              <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
-                  <span>Class was unsuccessful:</span>
-                  <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
-                  <span class="fs-90 pop-over-content">Any problem in the class?</span>
-              </div>
-              <div class="d-flex align-items-center justify-content-center p-3 border focus-effect rounded-2 " text-center>
-                  <input type="checkbox" [(ngModel)]="unsuccessful">
-              </div>
-            </label>
-        </ion-col>
+        <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
+                <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
+                  <option [value]="0">Select...</option>
+                  <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
+                  </option> 
+                </select>
+                <label class=" mb-2">
+                    <div class="pop-over d-flex justify-content-between align-items-center px-1">
+                        <span>Grammar:</span>
+                        <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                        <span class="fs-90 pop-over-content">Rate on student grammar</span>
+                    </div>
+                </label>
+          </ion-col>
+        <ion-col class="d-flex-column px-5 form-effect  pt-5" col-md-4 col-12>
+                <select class="rounded-2 w-100 focus-effect" [(ngModel)]="expression" (ngModelChange)="onChangeChecklevel()">
+                    <option [value]="0">Select...</option>
+                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
+                    </option>
+                </select>
+                <label class=" mb-2">
+                    <div class="pop-over d-flex justify-content-between align-items-center px-1">
+                        <span>Expression:</span>
+                        <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                        <span class="fs-90 pop-over-content">Rate how well the student can express</span>
+                    </div>
+                </label>
+            </ion-col>
       </ion-row>
       <ion-row align-items-stretch>
-        <ion-col class="d-flex-column px-5 form-effect  pt-5" col-md-4 col-12>
-            <select class="rounded-2 w-100 focus-effect" [(ngModel)]="expression" (ngModelChange)="onChangeChecklevel()">
-              <option [value]="0">Select...</option>
-              <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-              </option>
-            </select>
-            <label class=" mb-2">
-                <div class="pop-over d-flex justify-content-between align-items-center px-1">
-                    <span>Expression:</span>
-                    <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
-                    <span class="fs-90 pop-over-content">Rate how well the student can express</span>
-                </div>
-            </label>
+        <ion-col class="d-flex-column px-5 pt-5 form-effect" col-md-4 col-12>
+            <input class="rounded-2 p-3 w-100 focus-effect" type="text" [(ngModel)]="book_next">
+            <label class="pl-1">
+                    <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
+                        <span>Book(Page) for the next session:</span>
+                        <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                        <span class="fs-90 pop-over-content">book you will use for the next session</span>
+                    </div>
+            </label> 
         </ion-col>
         <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
             <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="vocabulary" (ngModelChange)="onChangeChecklevel()">
@@ -102,20 +101,22 @@
                 </div>
             </label>
         </ion-col>
-        <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
-              <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
-                <option [value]="0">Select...</option>
-                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-                </option> 
-              </select>
-              <label class=" mb-2">
-                  <div class="pop-over d-flex justify-content-between align-items-center px-1">
-                      <span>Grammar:</span>
+        <ion-col class="px-5 form-effect pt-5" col-md-4 col-12>
+                <label>
+                  <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
+                      <span>Class was unsuccessful:</span>
                       <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
-                      <span class="fs-90 pop-over-content">Rate on student grammar</span>
+                      <span class="fs-90 pop-over-content">Any problem in the class?</span>
                   </div>
-              </label>
-        </ion-col>
+                  <input class="custom-checkbox" type="checkbox"  [(ngModel)]="unsuccessful">
+                  <div class="border rounded-2 d-flex align-items-center justify-content-center">
+                      <span class="text">
+                          UNSUCCESFUL
+                      </span>
+                      <i class="fal fa-times-square ml-1 fs-110 text"></i>
+                  </div>
+                </label>
+            </ion-col>
       </ion-row>
       <ion-row align-items-stretch>
         <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
@@ -146,19 +147,21 @@
                   </div>
               </label>
         </ion-col>
-        <ion-col class="d-flex-column px-5 pt-5 form-effect" col-md-4 col-12>
-            <label class=" mb-2  pl-1">
-                <label class=" mb-2  pl-1">
-                  <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
-                      <span>Book(Page) for the next session:</span>
-                      <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
-                      <span class="fs-90 pop-over-content">Title of the book and the page.</span>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-center p-3 border focus-effect rounded-2 " text-center>
-                      <input class="rounded-2 p-3 w-100 focus-effect" type="text" [(ngModel)]="book_next">
-                  </div>
-                </label>
-            </label> 
+        <ion-col class="px-5 pt-5" col-md-4 col-12>
+            <label>
+                <div class="pop-over mb-2 d-flex justify-content-between align-items-center px-1">
+                    <span>Student was absent:</span>
+                    <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
+                    <span class="fs-90 pop-over-content">click the box if the student is absent</span>
+                </div>
+                    <input class="custom-checkbox" type="checkbox"  [(ngModel)]="student_absent">
+                    <div class="border rounded-2 d-flex align-items-center justify-content-center">
+                        <span class="text">
+                            ABSENT 
+                        </span>
+                        <i class="fal fa-user-times ml-2 fs-110 text"></i>
+                    </div>
+            </label>
         </ion-col>
       </ion-row>
       <ion-row>

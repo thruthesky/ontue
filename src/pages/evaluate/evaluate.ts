@@ -13,6 +13,7 @@ export class EvaluatePage {
   point: number;
 
   student_absent: boolean = false;
+  student_name:string;
   unsuccessful: boolean = false;
   expression: number = 0;
   vocabulary: number = 0;
@@ -31,6 +32,7 @@ export class EvaluatePage {
   constructor(navParams: NavParams,
               public a: AppService) {
     this.idx = navParams.data['idx'];
+    this.student_name = navParams.data['student_name'];
     // console.log(this.idx);
 
     this.a.lms.get_session_evaluation(this.idx).subscribe(res => {
