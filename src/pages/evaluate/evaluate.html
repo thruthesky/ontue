@@ -3,10 +3,10 @@
 </ion-header>
 <ion-content>
   <div class="page bg-white">
-    <h2 class="darkorange p-3 pt-5 pt-md-3 fs-3rem m-0 mt-md-5 fw-bold" text-center>{{ 'EVALUATE' | translate }}</h2>
+    <h2 class="dark orange p-3 pt-5 pt-md-3 fs-3rem m-0 mt-md-5 fw-light" text-center>{{ 'EVALUATE' | translate }}</h2>
     <ion-grid class="px-md-5 px-3" no-padding>
-    <ion-row>
-        <ion-col class="d-flex justify-content-around">
+    <ion-row  class="border mx-5">
+        <ion-col class="d-flex-column d-md-flex-row align-items-center justify-content-around">
             <div class="py-4 px-0 fs-110 d-flex align-items-center">
                 <span class="fw-bold mr-2">Name:</span>
                 {{student_name}}
@@ -31,7 +31,7 @@
       </ion-row>
       <ion-row align-items-stretch>
         <ion-col class="px-5" col-12>
-            <div class="alert m-0 alert-danger p-4 fs-90" *ngIf=" student_absent ">
+            <div class="alert hide-effect m-0 mt-md-5 alert-danger p-4 fs-90" *ngIf=" student_absent ">
               <b>Warning:</b> when you check on 'student was absent' box,
               You must input some comment on comment box or else the session may not be paid.
               If you have nothing to commment, then just type "Student was absent at hour:time on Month/Day".

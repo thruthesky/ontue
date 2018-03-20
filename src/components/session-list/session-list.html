@@ -1,28 +1,32 @@
 <section>
 
-  <div class="options mb-5" *ngIf=" share.options ">
+  <div class="options mb-5 hide-effect" *ngIf=" share.options ">
 
-    <ion-grid *ngIf=" past ">
+    <ion-grid *ngIf=" past " no-padding>
 
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>{{ 'DATE BEGIN' | translate }}</ion-label>
-            <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
-          </ion-item>
+      <ion-row class="my-3">
+        <ion-col class="pr-2">
+          <ion-list class="border mb-0" no-lines>
+              <ion-item>
+                <ion-label>{{ 'DATE BEGIN' | translate }}</ion-label>
+                <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+              </ion-item>
+          </ion-list>
         </ion-col>
 
-        <ion-col>
-          <ion-item>
-            <ion-label>{{ 'DATE END' | translate }}</ion-label>
-            <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
-          </ion-item>
+        <ion-col class="pl-2">
+          <ion-list class="border mb-0" no-lines>
+              <ion-item>
+                <ion-label>{{ 'DATE END' | translate }}</ion-label>
+                <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
+              </ion-item>
+          </ion-list>
         </ion-col>
       </ion-row>
 
     </ion-grid>
 
-    <ion-list *ngIf=" my_teachers ">
+    <ion-list  *ngIf=" my_teachers "  no-lines>
       <ion-item>
         <ion-label class="blue">{{'SELECT TEACHER'| translate}}</ion-label>
         <ion-select [(ngModel)]="show_teacher" (ionChange)="onChangeSearchOption()" okText="{{ 'OK' | translate }}" cancelText="{{ 'CANCEL' | translate }}"
@@ -33,15 +37,15 @@
       </ion-item>
     </ion-list>
 
-    <ion-list *ngIf=" past ">
-      <ion-item>
+    <ion-list class="border border-bottom-0"  *ngIf=" past "  no-lines>
+      <ion-item class="border border-top-0 border-left-0 border-right-0">
         <ion-checkbox [(ngModel)]="show_refund_in_progress" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
         <ion-label>
 
           {{ 'DISPLAY SESSION IN PROGRESS' | translate }}
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item  class="border border-top-0 border-left-0 border-right-0">
         <ion-checkbox [(ngModel)]="show_refunded" color="vibrant" (ionChange)="onChangeSearchOption()"></ion-checkbox>
         <ion-label>
 
@@ -49,25 +53,25 @@
         </ion-label>
       </ion-item>
       <ng-container *ngIf="a.isStudent">
-        <ion-item>
+        <ion-item  class="border border-top-0 border-left-0 border-right-0">
           <ion-checkbox [(ngModel)]="displayTeacherName" color="vibrant"></ion-checkbox>
           <ion-label>
             선생님 이름 표시
           </ion-label>
         </ion-item>
-        <ion-item>
+        <ion-item  class="border border-top-0 border-left-0 border-right-0">
           <ion-checkbox [(ngModel)]="displayDate" color="vibrant"></ion-checkbox>
           <ion-label>날짜 표시</ion-label>
         </ion-item>
-        <ion-item>
+        <ion-item   class="border border-top-0 border-left-0 border-right-0">
           <ion-checkbox [(ngModel)]="displayPoint" color="vibrant"></ion-checkbox>
           <ion-label>포인트 표시</ion-label>
         </ion-item>
       </ng-container>
     </ion-list>
 
-    <div class="buttons d-flex justify-content-end mb-3">
-      <button class="primary" (click)=" share.options = false ">
+    <div class="buttons d-flex justify-content-center mb-4">
+      <button class="primary d-flex align-items-center fs-90 text-uppercase" (click)=" share.options = false ">
         <i class="fal fa-times mr-1"></i>
         {{ 'CLOSE' | translate }}
       </button>
@@ -76,33 +80,56 @@
   </div>
   <!--/options-->
 
-  <div class="alert alert-warning m-0" *ngIf=" a.isTeacher ">
+  <div class="alert alert-warning mt-5 mb-0" *ngIf=" a.isTeacher ">
     Teacher must see this page in wide screen since the content in this page is wide.
   </div>
 
-  <section class="page-desc search-result mb-3 p-3" *ngIf=" re && books.length ">
-    <div>
-      {{ 'SEARCH PERIOD' | translate }}: {{ date_begin }} ~{{ date_end }}
-    </div>
-    <div>
-      {{ 'SEARCHED SESSIONS' | translate }} : {{ books.length }} ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )
-    </div>
-    <div *ngIf=" a.isTeacher ">
-      {{ 'SEARCHED POINT' | translate }} : {{ re.total_points | number }}
-    </div>
+  <ion-grid class="page-desc search-result mb-md-5 my-0 " *ngIf=" re && books.length " no-padding>
+    <ion-row class="py-5" align-items-stretch justify-content-around text-center>
+      <ion-col col-md-3 col-12>
+        <div class="d-flex-column align-items-center justify-content-around">
+          <div class="fw-bold">{{ 'TIMEZONE NOW' | translate }}</div>
+          <div class="my-3"> {{ a.userTime }}</div>
+          <div class="app-button secondary m-0" (click)=" a.open('settings') ">{{ 'CHANGE TIMEZONE' | translate }}</div>
+        </div>
+      </ion-col>
+      <ion-col class="my-4 my-md-0" col-md-2 col-6>
+          <div class="d-flex-column align-items-center justify-content-around">
+            <div class="fw-bold">{{ 'SEARCHED SESSIONS' | translate }}</div>
+            <div class="my-3"> {{ books.length }}</div>
+            <div> ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )</div>
+          </div>
+      </ion-col>
+      <ion-col class="my-4 my-md-0"  *ngIf=" a.isTeacher " col-md-2 col-6>
+          <div class="d-flex-column align-items-center justify-content-around">
+            <div class="fw-bold">{{ 'SEARCHED POINT' | translate }} </div>
+            <div class="my-3"> {{ re.total_points | number }}</div>
+          </div>
+      </ion-col>
+      <ion-col col-md-2 col-6>
+          <div class="d-flex-column align-items-center justify-content-around">
+            <div class="fw-bold">  {{ 'SEARCH PERIOD' | translate }} </div>
+            <div class="mt-3">{{ date_begin }}</div>
+            <div class="my-0">
+                <i class="fal fa-arrow-down"></i>
+            </div>
+            <div>{{ date_end }}</div>
+          </div>
+      </ion-col>
+      <ion-col  *ngIf=" past " col-md-2 col-6>
+          <div class="d-flex-column align-items-center justify-content-around"  *ngIf=" re.total_session_refunded ">
+              <div class="fw-bold">  {{ 'REFUNDED SESSIONS' | translate }} </div>
+              <div class="my-3"> {{re.total_session_refunded}}</div>
+          </div>
+          <div  class="d-flex-column align-items-center justify-content-around"  *ngIf=" re.total_session_refund_in_progress ">
+              <div class="fw-bold">  {{ 'SESSIONS IN REFUND PROGRESS' | translate }} </div>
+              <div class="my-3">  {{re.total_session_refund_in_progress}}</div>
+          </div>
+      </ion-col>
+    </ion-row>
 
-    <div *ngIf=" past ">
-      <span class="mr-3" *ngIf=" re.total_session_refunded ">{{ 'REFUNDED SESSIONS' | translate }} : {{re.total_session_refunded}}</span>
-      <span *ngIf=" re.total_session_refund_in_progress ">{{ 'SESSIONS IN REFUND PROGRESS' | translate }} : {{re.total_session_refund_in_progress}}</span>
-    </div>
 
-
-    <div class="pl-3 mt-2 mt-md-0 ml-md-4">
-      {{ 'TIMEZONE NOW' | translate }}: {{ a.userTime }}
-      <span class="app-button secondary ml-4" (click)=" a.open('settings') ">{{ 'CHANGE TIMEZONE' | translate }}</span>
-    </div>
-
-  </section>
+  </ion-grid>
 
   <div class="my-5 p-5 text-center" *ngIf=" re && books.length == 0 ">
     <ng-container *ngIf=" future ">{{ 'NO MORE RESERVATIONS' | translate }}</ng-container>
@@ -120,7 +147,7 @@
 
   <div class="books my-5" *ngIf=" books.length ">
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr class="" text-center style="height: 4em;">
+      <tr class="bg-blue-60 white h-45px text-uppercase" text-center>
         <td *ngIf="a.isStudent"><div class="pl-2">{{ 'TEACHER' | translate }}</div></td>
         <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
         <td *ngIf="a.isTeacher">{{ 'CLASS NO' | translate }}</td>
@@ -177,27 +204,27 @@
 
         <td class="pr-2 blue text-center" *ngIf="displayPoint">{{ point(book) }}</td>
         <td text-left>
-          <section class="menu my-1 py-3">
+          <section class="menu">
             <div class="past" *ngIf=" book.past ">
-              <div class="teacher buttons d-flex" *ngIf=" a.isTeacher ">
+              <div class="teacher buttons d-flex justify-content-center align-items-center" *ngIf=" a.isTeacher ">
 
 
-                <button class="bg-white blue" [class.warning]=" ! evaluated(book) "
+                <button class="bg-white blue rounded-2 hover-effect" [class.warning]=" ! evaluated(book) "
                 (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) "
                  *ngIf=" !paid(book) && !refunded( book ) ">
                   Eval
                 </button>
 
-                <button class="bg-lightgrey" (click)=" onClickRefund( book ) " *ngIf=" refundable(book) ">Refund</button>
+                <button class="bg-lightgrey rounded-2 hover-effect" (click)=" onClickRefund( book ) " *ngIf=" refundable(book) ">Refund</button>
 
 
                 <span *ngIf=" paid(book) ">Paid</span>
 
-                <span class="darkred" *ngIf=" refunded( book ); ">Refunded</span>
+                <span class="darkred " *ngIf=" refunded( book ); ">Refunded</span>
 
 
                 <ng-container class="alert alert-warning" *ngIf=" refund_in_progress(book) ">
-                  <span class="alert alert-warning" *ngIf=" rejected(book); else Requested ">Rejected</span>
+                  <span class="alert alert-warning m-0" *ngIf=" rejected(book); else Requested ">Rejected</span>
                   <ng-template #Requested>
                     <button class="bg-darkred white" (click)=" onClickShowRequest( book ) ">
                       <ion-icon name="mail"></ion-icon> Refund Requested</button>

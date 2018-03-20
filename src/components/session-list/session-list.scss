@@ -1,8 +1,22 @@
 session-list {
+    .odd,.even{
+        height: 65px!important;
+    }
     .even {
         background-color: #c3ddf3;
     }
-}
+    .odd{
+        background-color: white;
+    }
 
-.w-90px{width: 90px!important}
-.border-bottom{ border-bottom: 1px solid #e2e2e2!important}
+    .w-90px{
+        width: 90px!important
+    }
+    .border-bottom{ 
+        border-bottom: 1px solid #e2e2e2!important
+    }
+    .h-45px{
+        height: 45px;
+    }
+
+}

@@ -53,6 +53,7 @@ evaluate-page{
     opacity: 0;
     &+div{  
       height: 40px;
+      border-color: #bebebe!important;
       transition: all 0.2s ease-in-out;
       .text{
         opacity: 0;
