@@ -13,7 +13,6 @@ export class EvaluatePage {
   point: number;
 
   student_absent: boolean = false;
-  student_name:string;
   unsuccessful: boolean = false;
   expression: number = 0;
   vocabulary: number = 0;
@@ -23,6 +22,7 @@ export class EvaluatePage {
   comment: string;
   book_used: string;
   book_next: string;
+  student_name:string;
 
   an = []; //[1,2,3,4,5,6];
   ob = {a: 1, b: 2};
