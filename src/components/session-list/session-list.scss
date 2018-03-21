@@ -1,10 +1,13 @@
 session-list {
 
+    .odd,.even{
+        min-height: 80px;
+    }
     .even {
-        background-color: #c3ddf3;
+        background-color: rgba(#007bff,0.2);
     }
     .odd{
-        background-color: white;
+        background-color: ghostwhite!important;
     }
     .w-90px{
         width: 90px!important
@@ -13,8 +16,26 @@ session-list {
         border-bottom: 1px solid #e2e2e2!important
     }
 
-    .bg-blue-60{
-        background-color:rgba(#007bff,0.6)!important;
+    .bg-blue-dark{
+        background-color:#0288d1;
     }
 
+    .hover-effect:hover{
+        opacity: 0.8!important;
+    }
+
+
+    .sticky-effect{
+        position:sticky!important;
+        top:-1px;
+        left:0;
+        right:0;
+        z-index: 1000;
+      }
+
+
+}
+
+.page{
+    overflow: visible!important;
 }
