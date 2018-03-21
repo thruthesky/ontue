@@ -227,25 +227,25 @@
         </ion-col>
         <ion-col col-12 col-md-3>
             <ion-grid no-padding>
-              <ion-row class="buttons mt-md-0 mt-4  mb-3 mb-md-0" justify-content-around align-items-center>
+              <ion-row class="buttons mb-3" justify-content-around align-items-center>
                 <ng-container *ngIf=" book.past ">
                   <ng-container *ngIf=" a.isTeacher ">
-                    <ion-col class="d-flex justify-content-center mt-md-0" *ngIf=" !paid(book) && !refunded( book ) " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4" *ngIf=" !paid(book) && !refunded( book ) " col-6>
                         <button class="hover-effect bg-white blue rounded-2 " [class.warning]=" ! evaluated(book) "
                         (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) ">
                           Eval
                         </button>
                     </ion-col>
-                    <ion-col class="d-flex justify-content-center mt-md-0"  *ngIf=" refundable(book) " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" refundable(book) " col-6>
                         <button class="hover-effect bg-lightgrey rounded-2 " (click)=" onClickRefund( book ) ">Refund</button>
                     </ion-col>
-                    <ion-col class="d-flex justify-content-center mt-md-0"  *ngIf=" paid(book) " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" paid(book) " col-6>
                         <div>Paid</div>
                     </ion-col>
-                    <ion-col class="d-flex justify-content-center mt-md-0"  *ngIf=" refunded( book ); " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" refunded( book ); " col-6>
                         <div class="darkred ">Refunded</div>
                     </ion-col>
-                    <ion-col class="d-flex justify-content-center mt-md-0"  *ngIf=" refund_in_progress(book) " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" refund_in_progress(book) " col-6>
                         <div class="alert alert-warning">
                           <span class="alert alert-warning m-0" *ngIf=" rejected(book); else Requested ">Rejected</span>
                           <ng-template #Requested>
@@ -256,33 +256,33 @@
                     </ion-col>
                   </ng-container>
                   <ng-container  *ngIf=" a.isStudent ">
-                    <ion-col class="d-flex justify-content-center mt-md-0"  *ngIf=" !refunded(book) " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" !refunded(book) " col-6>
                         <button class="hover-effect d-flex align-items-center justify-content-center dark" (click)=" onClickEvaluateView(book.idx)">강의평가
                             <i class="fal fa-file-check ml-2"></i>
                         </button>
                     </ion-col>
-                    <ion-col class="d-flex justify-content-center mt-md-0"   *ngIf=" !refund_in_progress(book) " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4"   *ngIf=" !refund_in_progress(book) " col-6>
                         <button class="hover-effect d-flex align-items-center justify-content-center lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">후기작성
                             <i class="fal fa-pen-square ml-2"></i>
                         </button>
                     </ion-col>
-                    <ion-col  class="d-flex justify-content-center mt-md-0" *ngIf=" rejected( book ) " col-6>
+                    <ion-col  class="d-flex justify-content-center mt-4" *ngIf=" rejected( book ) " col-6>
                         <span class="darkred py-2">포인트 복구 거절 됨</span>
                     </ion-col>
-                    <ion-col class="d-flex justify-content-center mt-md-0" *ngIf=" refunded(book) " col-6>
+                    <ion-col class="d-flex justify-content-center mt-4" *ngIf=" refunded(book) " col-6>
                         <span class="darkred py-2" >복구됨</span>
                     </ion-col>
-                      <ion-col class="d-flex justify-content-center mt-md-0" *ngIf=" !book.refund_timeover && ! rejected( book ) " col-6>
+                      <ion-col class="d-flex justify-content-center mt-4" *ngIf=" !book.refund_timeover && ! rejected( book ) " col-6>
                         <ng-container *ngIf=" ! refunded( book ) ">
-                          <button class="hover-effect " (click)=" onClickCancelRefundRequest( book )" *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}</button>
-                          <button class="hover-effect warning" (click)=" onClickRefundRequest( book )" *ngIf=" book.refund_request_at == 0 ">{{ "REQUEST REFUND" | translate }}</button>
+                          <button class="hover-effect  fs-90" (click)=" onClickCancelRefundRequest( book )" *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}</button>
+                          <button class="hover-effect warning fs-90" (click)=" onClickRefundRequest( book )" *ngIf=" book.refund_request_at == 0 ">{{ "REQUEST REFUND" | translate }}</button>
                         </ng-container>
                       </ion-col>
                   </ng-container>
                 </ng-container>
               </ion-row>
     
-                <ion-row class="buttons buttons-sm mt-md-1 mt-4 mb-3 mb-md-0" *ngIf=" future " justify-content-around align-items-center>
+                <ion-row class="buttons buttons-sm mt-md-1 mt-4 mb-3" *ngIf=" future " justify-content-around align-items-center>
                   <ion-col class="d-flex justify-content-center mt-md-0" col-6>
                       <button class="lightgrey hover-effect" *ngIf=" ! book.process " (click)="onClickCancel( book )">
                         <i class="fal fa-times"></i>
@@ -292,7 +292,7 @@
                           <i class="fal fa-spinner fa-spin"></i>
                         </span>
                   </ion-col>
-                  <ion-col class="d-flex justify-content-center mt-md-0"  *ngIf=" a.isTeacher "  col-6>
+                  <ion-col class="d-flex justify-content-center mt-md-4"  *ngIf=" a.isTeacher "  col-6>
                       <button class="hover-effect" [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' "(click)="onClickReady( book )" >
                           <!--<i class="fal fa-times"></i>-->
                         <span class="white" *ngIf=" book.ready "><i class="fal fa-spinner fa-spin"></i></span>
