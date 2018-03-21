@@ -61,7 +61,7 @@
         <div *ngIf="a.user.isLogin ">
           <div text-center>
               {{ a.user.name }}님,
-            전체 선생님 수는 <b>{{ re.total }}</b> 명이며, 회원님의 예약된 수업은 <b>{{ a.lmsInfoUserNoOfTotalSessions }}</b>회이며 지난 수업은
+            전체 선생님 수는 <b>{{ re.total }}</b> 명이며, 회원님의 예약된 수업은 <b>{{ a.lmsInfoUserNoOfReservation }}</b>회이며 지난 수업은
             <span *ngIf=" a.lmsInfoUserNoOfPast "><b>{{ a.lmsInfoUserNoOfPast }}</b>회입니다.</span>
             <span *ngIf=" a.lmsInfoUserNoOfPast == 0">없습니다.</span>
           </div>
