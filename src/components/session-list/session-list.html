@@ -84,7 +84,7 @@
 
   <ion-grid class="page-desc bg-white search-result mb-md-5 my-0 " *ngIf=" re && books.length " no-padding>
     <ion-row class="p-5 px-md-0" align-items-stretch justify-content-around text-center>
-      <ion-col class="pointer mb-5" col-md-3 col-6 (click)=" a.open('settings') ">
+      <ion-col class="pointer mb-5 mb-md-0" col-md-3 col-6 (click)=" a.open('settings') ">
         <i class="fal fa-globe skyblue fa-4x mb-3"></i>
         <div class="d-flex-column align-items-center justify-content-around">
           <div class="fw-bold">{{ 'TIMEZONE NOW' | translate }}</div>
@@ -92,7 +92,7 @@
           <div class="app-button secondary m-0" >{{ 'CHANGE TIMEZONE' | translate }}</div>
         </div>
       </ion-col>
-      <ion-col class=" mb-5" col-md-2 col-6>
+      <ion-col class=" mb-5 mb-md-0" col-md-2 col-6>
         <i class="fal fa-list brown fa-4x mb-3"></i>
           <div class="d-flex-column align-items-center justify-content-around">
             <div class="fw-bold">{{ 'SEARCHED SESSIONS' | translate }}</div>
