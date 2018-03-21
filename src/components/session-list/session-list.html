@@ -142,126 +142,160 @@
   </div>
 
   <div class="books my-5" *ngIf=" books.length ">
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr class="white bg-blue-60 h-45px text-uppercase" text-center>
-        <td *ngIf="a.isStudent"><div class="pl-2">{{ 'TEACHER' | translate }}</div></td>
-        <td *ngIf="a.isTeacher">{{ 'STUDENT' | translate }}</td>
-        <td *ngIf="a.isTeacher">{{ 'CLASS NO' | translate }}</td>
-        <td *ngIf="displayDate">{{ 'DATE' | translate }}</td>
-        <td>{{ 'TIME' | translate }}</td>
-        <td>{{ 'MINUTE' | translate }}</td>
-        <td *ngIf=" future ">
-          {{ 'KAKAOTALK' | translate }}
-          <br> {{ 'ADD FRIEND' | translate }}
-        </td>
-        <td *ngIf="displayPoint">{{ 'POINT' | translate }}</td>
-        <td>
-          <ng-container *ngIf=" a.isStudent && past ">
-            결과
-          </ng-container>
-        </td>
-
-      </tr>
-
-      <tr class="" text-center *ngFor="let book of books; let i = index; let o = odd; let e = even" [ngClass]=" { 'odd': o, 'even': e } ">
-        <td *ngIf="a.isStudent">
-          <section class="teacher-photo my-2 py-2 pl-2">
-
-            <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
-              <img class="d-block w-100" src="{{ photoURL( book )  }}">
+    <ion-grid no-padding  text-center>  
+      <ion-row class="white bg-blue-60 p-4 text-uppercase fw-bold" justify-content-between align-items-center > 
+        <ion-col  *ngIf="a.isStudent" col-md-1>
+            <div>{{ 'TEACHER' | translate }}</div>
+        </ion-col>
+        <ion-col *ngIf="a.isTeacher" col-md-1>
+            <div>{{ 'STUDENT' | translate }}</div>
+        </ion-col>
+        <ion-col *ngIf="a.isTeacher" col-md-1>
+            <div>{{ 'CLASS NO' | translate }}</div>
+        </ion-col>
+        <ion-col *ngIf="displayDate" col-md-1>
+          <div>{{ 'DATE' | translate }}</div>
+        </ion-col>
+        <ion-col col-md-1>
+          <div>{{ 'TIME' | translate }}</div>
+        </ion-col>
+        <ion-col col-md-1>
+          <div>{{ 'MINUTE' | translate }}</div>
+        </ion-col>
+        <ion-col  *ngIf=" future " col-md-auto>
+            <div> {{ 'KAKAOTALK' | translate }}
+              <br> {{ 'ADD FRIEND' | translate }}
             </div>
-            <div *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
-
-          </section>
-        </td>
-        <td class="fw-bold" *ngIf="a.isTeacher">
-          {{ a.preTeacherName(book.student_name) }}
-        </td>
-        <td *ngIf=" a.isTeacher ">{{book.idx}}</td>
-        <td class="px-1" *ngIf="displayDate">{{ date(book.date_display) }}</td>
-        <td class="px-1">{{book.class_begin_display}}</td>
-        <td class="px-1 grey fw-bold">{{book.duration}}</td>
-
-        <td class="kakaotalk-id px-1 grey fw-bold" *ngIf=" future ">
-          <ng-container *ngIf="a.isTeacher">
-            {{book.student_kakaotalk_id}}
+        </ion-col>
+        <ion-col  *ngIf="displayPoint" col-md-1>
+          <div>{{ 'POINT' | translate }}</div>
+        </ion-col>
+        <ion-col col-md-3>
+          <ng-container  *ngIf=" a.isStudent && past ">
+              <div> 결과</div>
           </ng-container>
-          <ng-container *ngIf="a.isStudent">
-
-            <div class="fs-3rem orange" (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " *ngIf=" a.isMobile() ">
-              <i class="fas fa-plus-circle"></i>
-            </div>
-            <div class="" *ngIf=" ! a.isMobile() ">
-              {{ my_teachers[book.idx_teacher].kakaotalk_id }}
-            </div>
-
-          </ng-container>
-        </td>
-
-        <td class="pr-2 blue text-center" *ngIf="displayPoint">{{ point(book) }}</td>
-        <td text-left>
-          <section class="menu">
-            <div class="past" *ngIf=" book.past ">
-              <div class="teacher buttons d-flex justify-content-center align-items-center" *ngIf=" a.isTeacher ">
-
-
-                <button class="bg-white blue rounded-2 hover-effect" [class.warning]=" ! evaluated(book) "
-                (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) "
-                 *ngIf=" !paid(book) && !refunded( book ) ">
-                  Eval
-                </button>
-
-                <button class="bg-lightgrey rounded-2 hover-effect" (click)=" onClickRefund( book ) " *ngIf=" refundable(book) ">Refund</button>
-
-
-                <span *ngIf=" paid(book) ">Paid</span>
-
-                <span class="darkred " *ngIf=" refunded( book ); ">Refunded</span>
-
-
-                <ng-container class="alert alert-warning" *ngIf=" refund_in_progress(book) ">
-                  <span class="alert alert-warning m-0" *ngIf=" rejected(book); else Requested ">Rejected</span>
-                  <ng-template #Requested>
-                    <button class="bg-darkred white" (click)=" onClickShowRequest( book ) ">
-                      <ion-icon name="mail"></ion-icon> Refund Requested</button>
-                  </ng-template>
-                </ng-container>
-
+        </ion-col>
+      </ion-row>
+      <ion-row class="p-4" *ngFor="let book of books; let i = index; let o = odd; let e = even" [ngClass]=" { 'odd': o, 'even': e } " justify-content-between align-items-center >
+        <ion-col *ngIf="a.isStudent" col-md-1>
+            <section class="teacher-photo">
+              <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
+                <img class="d-block w-100" src="{{ photoURL( book )  }}">
               </div>
-
-              <div class="student buttons d-flex-column mr-2 text-center" text-center *ngIf=" a.isStudent ">
-                <button class="dark" (click)=" onClickEvaluateView(book.idx)" *ngIf=" !refunded(book) ">강의평가</button>
-                <button class="lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) "  *ngIf=" !refund_in_progress(book) ">후기작성</button>
-                <span class="darkred py-2" *ngIf=" rejected( book ) ">포인트 복구 거절 됨</span>
-                <span class="darkred py-2" *ngIf=" refunded(book) ">복구됨</span>
-                <ng-container *ngIf=" !book.refund_timeover && ! rejected( book ) ">
-                  <ng-container *ngIf=" ! refunded( book ) ">
-                    <button class="" (click)=" onClickCancelRefundRequest( book )" *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}</button>
-                    <button class="warning" (click)=" onClickRefundRequest( book )" *ngIf=" book.refund_request_at == 0 ">{{ "REQUEST REFUND" | translate }}</button>
+              <div class="mt-1" *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
+            </section>
+        </ion-col>
+        <ion-col  *ngIf="a.isTeacher" col-md-1>
+            <div> {{ a.preTeacherName(book.student_name) }}</div>
+        </ion-col>
+        <ion-col *ngIf=" a.isTeacher " col-md-1>
+          <div>{{book.idx}}</div>
+        </ion-col>
+        <ion-col *ngIf="displayDate" col-md-1>
+          <div>{{ date(book.date_display) }}</div>
+        </ion-col>
+        <ion-col col-md-1>
+          <div>{{book.class_begin_display}}</div>
+        </ion-col>
+        <ion-col col-md-1>
+          <div>{{book.duration}}</div>
+        </ion-col>
+        <ion-col  *ngIf=" future " col-md-auto>
+            <div class="kakaotalk-id">
+                <ng-container *ngIf="a.isTeacher">
+                  {{book.student_kakaotalk_id}}
+                </ng-container>
+                <ng-container *ngIf="a.isStudent">
+      
+                  <div class="fs-3rem orange" (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " *ngIf=" a.isMobile() ">
+                    <i class="fas fa-plus-circle"></i>
+                  </div>
+                  <div class="" *ngIf=" ! a.isMobile() ">
+                    {{ my_teachers[book.idx_teacher].kakaotalk_id }}
+                  </div>
+      
+                </ng-container>
+              </div>
+        </ion-col>
+        <ion-col  *ngIf="displayPoint" col-md-1>
+          <div class="blue"> {{ point(book) }}</div>
+        </ion-col>
+        <ion-col col-md-3>
+            <ion-grid no-padding>
+              <ion-row class="buttons" justify-content-around align-items-center>
+                <ng-container *ngIf=" book.past ">
+                  <ng-container *ngIf=" a.isTeacher ">
+                    <ion-col *ngIf=" !paid(book) && !refunded( book ) " col-md-5>
+                        <button class="hover-effect bg-white blue rounded-2 hover-effect" [class.warning]=" ! evaluated(book) "
+                        (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) ">
+                          Eval
+                        </button>
+                    </ion-col>
+                    <ion-col  *ngIf=" refundable(book) " col-md-5>
+                        <button class="hover-effect bg-lightgrey rounded-2 hover-effect" (click)=" onClickRefund( book ) ">Refund</button>
+                    </ion-col>
+                    <ion-col  *ngIf=" paid(book) " col-md-5>
+                        <div>Paid</div>
+                    </ion-col>
+                    <ion-col  *ngIf=" refunded( book ); " col-md-5>
+                        <div class="darkred ">Refunded</div>
+                    </ion-col>
+                    <ion-col  *ngIf=" refund_in_progress(book) " col-md-5>
+                        <div class="alert alert-warning">
+                          <span class="alert alert-warning m-0" *ngIf=" rejected(book); else Requested ">Rejected</span>
+                          <ng-template #Requested>
+                            <button class="hover-effect bg-darkred white" (click)=" onClickShowRequest( book ) ">
+                              <ion-icon name="mail"></ion-icon> Refund Requested</button>
+                          </ng-template>
+                        </div>
+                    </ion-col>
+                  </ng-container>
+                  <ng-container  *ngIf=" a.isStudent ">
+                    <ion-col  *ngIf=" !refunded(book) " col-md-5>
+                        <button class="hover-effect dark" (click)=" onClickEvaluateView(book.idx)">강의평가</button>
+                    </ion-col>
+                    <ion-col   *ngIf=" !refund_in_progress(book) " col-md-5>
+                        <button class="hover-effect lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">후기작성</button>
+                    </ion-col>
+                    <ion-col  *ngIf=" rejected( book ) " col-md-5>
+                        <span class="darkred py-2">포인트 복구 거절 됨</span>
+                    </ion-col>
+                    <ion-col *ngIf=" refunded(book) " col-md-5>
+                        <span class="darkred py-2" >복구됨</span>
+                    </ion-col>
+                      <ion-col *ngIf=" !book.refund_timeover && ! rejected( book ) " col-md-5>
+                        <ng-container *ngIf=" ! refunded( book ) ">
+                          <button class="hover-effect " (click)=" onClickCancelRefundRequest( book )" *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}</button>
+                          <button class="hover-effect warning" (click)=" onClickRefundRequest( book )" *ngIf=" book.refund_request_at == 0 ">{{ "REQUEST REFUND" | translate }}</button>
+                        </ng-container>
+                      </ion-col>
                   </ng-container>
                 </ng-container>
-              </div>
-            </div>
-
-            <div class="buttons buttons-sm mt-1" *ngIf=" future ">
-              <button class="lightgrey" *ngIf=" ! book.process " (click)="onClickCancel( book )">
-                <i class="fal fa-times"></i>
-                <span class="pl-2">{{ 'CANCEL' | translate }}</span>
-              </button>
-              <span class="pl-5" *ngIf=" book.process ">
-                <i class="fal fa-spinner fa-spin"></i>
-              </span>
-              <button [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' " *ngIf=" a.isTeacher " (click)="onClickReady( book )" >
-                <!--<i class="fal fa-times"></i>-->
-                <span class="white" *ngIf=" book.ready "><i class="fal fa-spinner fa-spin"></i></span>
-                <span class="pl-2 white">{{ 'READY' | translate }}</span>
-              </button>
-            </div>
-
-          </section>
-        </td>
-      </tr>
-    </table>
+              </ion-row>
+    
+                <ion-row class="buttons buttons-sm mt-1" *ngIf=" future " justify-content-around align-items-center>
+                  <ion-col col-md-5>
+                      <button class="lightgrey" *ngIf=" ! book.process " (click)="onClickCancel( book )">
+                        <i class="fal fa-times"></i>
+                        <span class="pl-2">{{ 'CANCEL' | translate }}</span>
+                      </button>
+                      <span class="pl-5" *ngIf=" book.process ">
+                          <i class="fal fa-spinner fa-spin"></i>
+                        </span>
+                  </ion-col>
+                  <ion-col  *ngIf=" a.isTeacher "  col-md-5>
+                      <button [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' "(click)="onClickReady( book )" >
+                          <!--<i class="fal fa-times"></i>-->
+                        <span class="white" *ngIf=" book.ready "><i class="fal fa-spinner fa-spin"></i></span>
+                        <span class="pl-2 white">{{ 'READY' | translate }}</span>
+                      </button>
+                  </ion-col>
+                </ion-row>
+    
+            </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
   <!--/books-->
 
