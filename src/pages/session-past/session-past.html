@@ -19,10 +19,10 @@
         </ng-container>
       </div>
 
-      <button class="fs-110" ion-button clear color="white" (click)=" share.options = ! share.options ">
-        <ion-icon class="mr-2" name="options"></ion-icon>
-        <span class="fs-90">{{ "OPTIONS" | translate }}</span>
-      </button>
+      <div class="pointer" (click)=" share.options = ! share.options ">
+        <ion-icon name="options"></ion-icon>
+        {{ "OPTIONS" | translate }}
+      </div>
 
     </section>
 
