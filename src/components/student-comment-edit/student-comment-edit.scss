@@ -1,0 +1,21 @@
+student-comment-edit{
+    .h-100{
+        height: 100%;
+    }
+
+    .input-effect:focus{
+        border-color: dodgerblue!important;
+    }
+
+    .hover-icon-color-effect{
+        path{
+            transition: fill 0.2s ease-in-out;
+        }
+
+        &:hover{
+            path{
+                fill: orange!important;
+            }
+        }
+    }
+}

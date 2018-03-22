@@ -1,46 +1,81 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>{{ data.idx ? "STUDENT COMMENT UPDATE" : "STUDENT COMMENT CREATE"  | translate}}</ion-title>
-    <ion-buttons start>
-      <button ion-button class="cancel" (click)="onClickCancel()">
-        <span ion-text color="primary">{{ "CLOSE" | translate}}</span>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar class="px-5" color="brown">
+      <ion-grid no-padding>
+        <ion-row align-items-center >
+          <ion-col>       
+            <ion-title class="p-0">
+            <span class="fw-bold fs-90">{{ data.idx ? "STUDENT COMMENT UPDATE" : "STUDENT COMMENT CREATE"  | translate}}</span>
+          </ion-title>
+        </ion-col>
+        <ion-col text-right col-md-2>
+          <button class="p-0"  icon-end  ion-button clear small  (click)="onClickCancel()">
+              <span class="text-uppercase fw-light">{{ "CLOSE" | translate}}</span><ion-icon name="close"></ion-icon>
+          </button>
+       </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
 <ion-content>
-
-  <ion-list>
-    <ion-item>
-      <ion-textarea class="w-100" rows="10" [(ngModel)]="comment" placeholder="{{ 'RATE COMMENT' | translate }}"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      {{ 'RATING' | translate }} : {{rate}}
-      <span *ngIf="rate < 1" (click)="rate=1"><i class="fal fa-star"></i></span>
-      <span *ngIf="rate >= 1" (click)="rate=1"><i class="fas fa-star"></i></span>
-
-      <span *ngIf="rate < 2" (click)="rate=2"><i class="fal fa-star"></i></span>
-      <span *ngIf="rate >= 2" (click)="rate=2"><i class="fas fa-star"></i></span>
-
-      <span *ngIf="rate < 3" (click)="rate=3"><i class="fal fa-star"></i></span>
-      <span *ngIf="rate >= 3" (click)="rate=3"><i class="fas fa-star"></i></span>
-
-      <span *ngIf="rate < 4" (click)="rate=4"><i class="fal fa-star"></i></span>
-      <span *ngIf="rate >= 4" (click)="rate=4"><i class="fas fa-star"></i></span>
-
-      <span *ngIf="rate < 5" (click)="rate=5"><i class="fal fa-star"></i></span>
-      <span *ngIf="rate >= 5" (click)="rate=5"><i class="fas fa-star"></i></span>
-    </ion-item>
-    <ion-item text-wrap>
-      <div>{{ 'STUDENT RATE COMMENT' | translate }}</div>
-    </ion-item>
-  </ion-list>
-<div class="px-3">
-  <button ion-button type="button" (click)="onClickSubmit()">
-    <span *ngIf="loading"><i class="fa fa-spinner fa-spin mr-2"></i>Loading...</span>
-    <span *ngIf="!loading">{{ 'SUBMIT' | translate }}</span>
-  </button>
-  <button ion-button type="button" color="secondary"  (click)="onClickCancel()">{{ 'CANCEL' | translate }}</button>
-</div>
+  <ion-grid class="h-100 p-5" no-padding>
+    <ion-row class="h-100" justify-content-center>
+      <ion-col col-md-12 col-12>
+        <div class="d-flex-column justify-content-center align-items-center">
+          <div class="text-uppercase fs-3rem fw-light">{{ 'RATING' | translate }} : {{rate}}</div>
+          <div class=" my-3 hover-icon-color-effect"> 
+              <span *ngIf="rate < 1 " (click)="rate=1">
+                <i class="fal fa-star fa-3x pointer"></i>
+              </span>
+              <span *ngIf="rate >= 1" (click)="rate=1">
+                <i class="fas fa-star fa-3x pointer"></i>
+              </span>
+        
+              <span *ngIf="rate < 2" (click)="rate=2">
+                <i class="fal fa-star fa-3x pointer"></i>
+              </span>
+              <span *ngIf="rate >= 2 " (click)="rate=2">
+                <i class="fas fa-star fa-3x pointer"></i>
+              </span>
+        
+              <span *ngIf="rate < 3" (click)="rate=3">
+                <i class="fal fa-star fa-3x pointer"></i>
+              </span>
+              <span *ngIf="rate >= 3" (click)="rate=3">
+                <i class="fas fa-star fa-3x pointer"></i>
+              </span>
+        
+              <span *ngIf="rate < 4" (click)="rate=4">
+                <i class="fal fa-star fa-3x pointer"></i>
+              </span>
+              <span *ngIf="rate >= 4" (click)="rate=4">
+                <i class="fas fa-star fa-3x pointer"></i>
+              </span>
+        
+              <span *ngIf="rate < 5" (click)="rate=5">
+                <i class="fal fa-star fa-3x pointer"></i>
+              </span>
+              <span *ngIf="rate >= 5" (click)="rate=5">
+                <i class="fas fa-star fa-3x pointer"></i>
+              </span>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col col-md-12 col-12>
+        <div>
+            <textarea class="border border-grey rounded-2 w-100 p-3 input-effect" rows="10" [(ngModel)]="comment" placeholder="{{ 'RATE COMMENT' | translate }}"></textarea>
+            <div class=" py-3 px-4"> <b> NOTE:</b> {{ 'STUDENT RATE COMMENT' | translate }}</div>
+        </div>
+      </ion-col>
+      <ion-col col-12>
+        <div text-center>
+            <button class="white mx-1 py-3 px-4 rounded-2 fs-110 bg-dodgerblue hover-effect" type="button" (click)="onClickSubmit()">
+                <span *ngIf="loading"><i class="fa fa-spinner fa-spin mr-2"></i>Loading...</span>
+                <span *ngIf="!loading">{{ 'SUBMIT' | translate }}</span>
+              </button>
+            <button class="red mx-1 hover-effect py-3 fs-110 px-4" type="button"(click)="onClickCancel()">{{ 'CANCEL' | translate }}</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
