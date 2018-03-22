@@ -263,4 +263,5 @@
   "PAYPAL INIT FAIL": "Paypal initialization has failed.",
   "VIDEO": "Video",
   "INPUT-AMOUNT": "Input Amount"
+  ,"IN LOADING 60": "Loading. It may take upto 60 seconds."
 }
