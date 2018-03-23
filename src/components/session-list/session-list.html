@@ -137,14 +137,14 @@
                  <span> {{ 'REFUNDED SESSIONS' | translate }} </span>
                  <i class="fal d-inline d-md-none fa-retweet brown fs-2rem ml-2"></i>
               </div>
-              <div class="my-3 fs-3rem"> {{re.total_session_refunded}}</div>
+              <div class="my-md-3 my-4 fs-3rem"> {{re.total_session_refunded}}</div>
           </div>
           <div  class="d-flex-column align-items-center justify-content-around"  *ngIf=" re.total_session_refund_in_progress ">
               <div class="fw-bold fs-110 d-flex align-items-center">
                   <span>{{ 'SESSIONS IN REFUND PROGRESS' | translate }} </span>
                   <i class="fal d-inline d-md-none fa-retweet brown fs-2rem ml-2"></i>
               </div>
-              <div class="my-3 fs-3rem">  {{re.total_session_refund_in_progress}}</div>
+              <div class="my-md-3 my-4 fs-3rem">  {{re.total_session_refund_in_progress}}</div>
           </div>
       </ion-col>
     </ion-row>
@@ -166,8 +166,8 @@
 
   <div class="books my-md-5 mt-0 " *ngIf=" books.length ">
     <ion-grid no-padding  text-center>  
-      <ion-row class="sticky-effect white bg-blue-dark p-md-4 px-0 py-4 text-uppercase fw-bold" justify-content-between align-items-center > 
-        <ion-col  *ngIf="a.isStudent" col-3 col-md-2>
+      <ion-row class="sticky-effect white bg-blue-dark px-md-5 px-0 py-4 text-uppercase fw-bold" justify-content-between align-items-center > 
+        <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
             <div>{{ 'TEACHER' | translate }}</div>
         </ion-col>
         <ion-col *ngIf="a.isTeacher" col-3 col-md-2>
@@ -199,8 +199,8 @@
           </ng-container>
         </ion-col>
       </ion-row>
-      <ion-row class="p-md-4 px-0 py-4" *ngFor="let book of books; let i = index; let o = odd; let e = even" [ngClass]=" { 'odd': o, 'even': e } " justify-content-between align-items-center >
-        <ion-col *ngIf="a.isStudent" col-3 col-md-2>
+      <ion-row class="px-md-5 px-0 py-4" *ngFor="let book of books; let i = index; let o = odd; let e = even" [ngClass]=" { 'odd': o, 'even': e } " justify-content-between align-items-center >
+        <ion-col *ngIf="a.isStudent" col-3 col-md-1>
             <section class="teacher-photo">
               <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
                 <img class="d-block w-100" src="{{ photoURL( book )  }}">
