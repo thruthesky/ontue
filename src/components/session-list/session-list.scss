@@ -34,9 +34,9 @@ session-list {
       }
 
       .bg-img{
-          background: linear-gradient(to bottom,rgba(white, 0.9), rgba(white, 0.9)),url('../assets/img/banner2.jpg')!important;
+          background: linear-gradient(to bottom,rgba(white, 0.8), rgba(white, 0.8)),url('../assets/img/banner1.jpg')!important;
           background-size:cover!important;
-          background-position: center!important;
+          background-position: bottom!important;
           background-repeat: no-repeat!important;
       }
 
@@ -44,5 +44,6 @@ session-list {
 }
 
 .page{
+    background-color: #f7f7f7!important;
     overflow: visible!important;
 }
