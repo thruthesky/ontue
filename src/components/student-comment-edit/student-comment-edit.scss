@@ -18,4 +18,18 @@ student-comment-edit{
             }
         }
     }
+
+    .scroll-content{
+        overflow: overlay;
+    }
+
+    ion-header{
+        box-shadow: none;
+        -webkit-box-shadow:none;
+        
+        .header.header-md::after{
+            background:none!important;
+        }
+
+    }
 }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar class="px-5" color="brown">
+  <ion-toolbar class="px-5" color="light">
     <ion-grid no-padding>
       <ion-row align-items-center >
         <ion-col>       
@@ -16,69 +16,69 @@
     </ion-grid>
   </ion-toolbar>
 </ion-header>
-<ion-content id="section-to-print">
+<ion-content class="bg-ghostwhite" id="section-to-print">
   <ion-grid class="h-100" no-padding>
     <ion-row class="h-100 p-4" text-center align-items-stretch justify-content-center>
 
       <ion-col class="p-2" col-md-12 col-12>
         <div class="h-100 d-flex align-items-center justify-content-center">
           <span class="fw-bold">수업번호 </span>
-          <span class="fs-110 ml-2 green">{{ session?.idx }}</span> 
+          <span class="fs-110 ml-2">{{ session?.idx }}</span> 
         </div>
       </ion-col>
 
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
             <div class="mb-2 fs-110">{{ session?.book_used }}</div>
             <div class="fs-1rem ">교재</div>
         </div>
       </ion-col>
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-110">{{ session?.book_next }}</div>
           <div class="fs-1rem ">다음 수업 시간에 사용할 교재</div>
         </div>
       </ion-col>
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-3rem">{{ session?.point }}</div>
           <div>포인트</div>
         </div>
       </ion-col>
 
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-3rem">{{ session?.expression }}</div>
           <div>표현력</div>
         </div>
       </ion-col>
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-3rem">{{ session?.vocabulary }}</div>
           <div>어휘력</div>
         </div>
       </ion-col>
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-3rem"> {{ session?.grammar }}</div>
           <div>문법</div>
         </div>
       </ion-col>
 
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-3rem"> {{ session?.pronunciation }}</div>
           <div>발음</div>
         </div>
       </ion-col>
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-3rem"> {{ session?.speed }}</div>
           <div>유창함</div>
         </div>
       </ion-col>
       <ion-col class="p-2" col-md-4 col-6>
-        <div class="border h-100 d-flex-column align-items-center justify-content-center p-3">
+        <div class="border h-100 d-flex-column align-items-center bg-white justify-content-center p-3">
           <div class="mb-2 fs-3rem">{{level}}</div>
           <div>결과(레벨)</div>
         </div>
