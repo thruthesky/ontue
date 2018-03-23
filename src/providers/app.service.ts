@@ -15,6 +15,10 @@ declare let FCMPlugin;
 
 const KEY_LMS_INFO = 'lms-info';
 
+export const KEY_WEEKEND = 'key-weekend';
+export const KEY_DAYS = 'key-days';
+
+
 
 import * as firebase from "firebase";
 import "firebase/firestore"; // required for side-effect??? @see https://firebase.google.com/docs/firestore/quickstart?authuser=0
@@ -1143,4 +1147,72 @@ export class AppService {
         return window.innerWidth < 756;
     }
 
+
+
+    /**
+     * Loads schedules from backend and caches.
+     * @since 2018-03-23 This methods is a copy versioni of schedule-table.ts and should be merge with it.
+     * 
+     * @desc {WARNING} This must be called after or inside platform.ready().then()
+     * @desc This only loads for all teacher's schedule.
+     * 
+     */
+    loadSchedule() {
+
+        /**
+         * display 6 days of columns for mobile.
+         */
+        let days = 6;
+
+        /**
+         * For computer/laptop, 20 days of column.
+         */
+        if (this.platform.is('core')) {
+            // console.log("platform is core...");
+            days = 20;
+        }
+        /**
+         * For tablets, 15 days of column.
+         */
+        else if (this.platform.is('tablet')) {
+            days = 15;
+        }
+
+
+        /**
+         * If the user has selected days already, use that selection.
+         */
+        let v = this.get(KEY_DAYS);
+        if (v !== null) days = v;
+
+
+        /**
+         * Display weekends.
+         */
+        const displayWeekends = !!this.get(KEY_WEEKEND);
+
+        const options = {
+            teachers: [],
+            days: days,
+            min_duration: 0,
+            max_duration: 160,
+            navigate: 'today',
+            starting_day: '',
+            display_weekends: displayWeekends ? 'Y' : 'N',
+            min_point: 0,
+            max_point: 100000,
+            class_begin_hour: 0,        // Loads schedule btween 00:00 am and 23:59 pm.
+            class_end_hour: 24          // Loads schedule btween 00:00 am and 23:59 pm.
+        };
+
+        this.lms.schedule_table(options).subscribe(re => {
+            if (Object.keys(re['schedule']).length == 0) {
+                // No schedule table.
+            }
+            console.log(`All teacher's schedule table: `, re);
+          }, e => {
+              console.log(`ERROR: Failed to load All Teacher's schedule table.`)
+          });
+
+    }
 }

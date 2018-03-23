@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AppService } from './../../providers/app.service';
+import { AppService, KEY_DAYS, KEY_WEEKEND } from './../../providers/app.service';
 import { Platform, ModalController, NavParams } from "ionic-angular";
 import { Subject } from "rxjs/Subject";
 
@@ -11,9 +11,6 @@ import { StudentCommentList } from "../../components/student-comment-list/studen
 
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
-
-const KEY_WEEKEND = 'key-weekend';
-const KEY_DAYS = 'key-days';
 
 
 type iShow = {
@@ -181,8 +178,17 @@ export class ScheduleTablePage {
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
 
+    /**
+     * Set the column width of the table.
+     */
     this.initScheduleTableWidth(() => {
+      /**
+       * Load options for days and weekends.
+       */
       this.loadOptions();
+      /**
+       * Loads schedule from backend.
+       */
       this.loadScheduleTable();
     });
 
