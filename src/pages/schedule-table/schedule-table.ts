@@ -250,7 +250,7 @@ export class ScheduleTablePage {
       // console.log("platforms: ", this.platform.platforms());
       if (this.platform.is('core')) {
         // console.log("platform is core...");
-        this.days = 20;
+        this.days = 15;                     // 15 days for desktop.
       }
       else if (this.platform.is('tablet')) {
         this.days = 15;
@@ -354,7 +354,10 @@ export class ScheduleTablePage {
       if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
       }
-    }, e => this.a.alert(e));
+    }, e => {
+      this.a.alert(e);
+      this.loadComplete = true;
+    });
   }
 
   displayScheduleTable(re) {
