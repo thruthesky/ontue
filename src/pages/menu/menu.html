@@ -79,7 +79,7 @@
       
 
 
-        <ion-item class="menu-schedule-table" (click)="a.open('schedule-table')">
+        <ion-item class="menu-schedule-table" (click)="a.open('schedule-table')" *ngIf="!a.isIeEdge()">
           <ion-icon name="apps" item-start></ion-icon>
           {{ 'ALL SCHEDULE TABLE' | translate }}
         </ion-item>

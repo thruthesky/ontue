@@ -190,7 +190,7 @@
 
 
 
-      <ion-col *ngIf=" ! a.newUser ">
+      <ion-col *ngIf=" ! a.newUser && !a.isIeEdge()">
         <div class="item header-teacher-list" (click)="a.open( 'schedule-table' )">
           <div class="icon">
             <i class="fal fa-calendar-alt"></i>

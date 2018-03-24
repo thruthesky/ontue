@@ -175,14 +175,7 @@ export class MyApp implements AfterViewInit {
     this.a.pages['student-adv'] = StudentAdvPage;
     this.a.pages['student-curriculumn'] = StudentCurriculumnPage;
 
-    if (window['ie_version']) {
-      setTimeout(() => {
-        this.a.alert({
-          message: '앗! 큰일이에요. 크롬 웹브라우저로 접속하셔야합니다. 익플로러 또는 엣지로 접속하면 몇 몇 기능이 제한됩니다.',
-          cssClass: 'ie-version'
-        });
-      }, 500);
-    }
+    this.a.warningIeEdge();
 
   }
 
