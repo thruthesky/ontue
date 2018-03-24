@@ -178,7 +178,7 @@ export class MyApp implements AfterViewInit {
     if (window['ie_version']) {
       setTimeout(() => {
         this.a.alert({
-          message: '앗! 큰일이에요. 크롬 웹브라우저 또는 엣지로 접속하셔야합니다. 가능하면 크롬 웹 브라우저로 접속해 주세요.',
+          message: '앗! 큰일이에요. 크롬 웹브라우저로 접속하셔야합니다. 익플로러 또는 엣지로 접속하면 몇 몇 기능이 제한됩니다.',
           cssClass: 'ie-version'
         });
       }, 500);

@@ -65,8 +65,9 @@
 
   <script>
     /**
-     * Returns false if the browser is not IE.
-     * Otherwise a number between 5~11 will be returned.
+     * Returns false if the browser is not IE/Edge.
+     * Otherwise a number between 5~ will be returned.
+     *  - 12+ will be edge.
      */
     function detect_ie_version() {
       if (!window.document['documentMode']) return false;
@@ -80,12 +81,20 @@
         var rv = ua.indexOf('rv:');
         return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
       }
+
+      var edge = ua.indexOf('Edge/');
+      if (edge > 0) {
+        // Edge (IE 12+) => return version number
+        return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+      }
       return false;
     }
     var ie_version = detect_ie_version();
+    if ( ie_version ) alert('version no: ', ie_version);
     if (ie_version && ie_version < 11) {
       location.href = "/wp-content/plugins/xapi-2/lms/www/index.php";
     }
+
   </script>
 
 
