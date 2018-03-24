@@ -10,7 +10,7 @@
       &:focus{
         border:1px solid rgba(#007bff,0.5)!important;
       }
-      &:focus+label{
+      &:focus+label:nth-of-type(1){
         color:#007bff!important;
       }
     }

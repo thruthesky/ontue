@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { AppService } from './../../providers/app.service';
 
 
@@ -13,6 +13,7 @@ export class HomePage {
   
   constructor(
     public navCtrl: NavController,
+    platform: Platform,
     public a: AppService
   ) {
     // a.xapi.page({ name: 'ontue.reminders' }).subscribe( re => this.reminders = re, e => a.alert(e));
@@ -29,6 +30,14 @@ export class HomePage {
     // a.lms.stats().subscribe( re => this.stats = re, e => a.alert(e) );
 
     // this.showMoreMyOwnPlan();
+
+
+    /**
+     * Try to load all schedule table on front page.
+     */
+    platform.ready().then(() => {
+      this.a.loadSchedule();
+    });
 
   }
 

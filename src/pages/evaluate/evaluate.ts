@@ -22,6 +22,7 @@ export class EvaluatePage {
   comment: string;
   book_used: string;
   book_next: string;
+  student_name:string;
 
   an = []; //[1,2,3,4,5,6];
   ob = {a: 1, b: 2};
@@ -31,6 +32,7 @@ export class EvaluatePage {
   constructor(navParams: NavParams,
               public a: AppService) {
     this.idx = navParams.data['idx'];
+    this.student_name = navParams.data['student_name'];
     // console.log(this.idx);
 
     this.a.lms.get_session_evaluation(this.idx).subscribe(res => {
