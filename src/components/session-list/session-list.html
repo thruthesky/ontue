@@ -311,7 +311,7 @@
                           <i class="fal fa-spinner fa-spin"></i>
                         </span>
                   </ion-col>
-                  <ion-col class="d-flex justify-content-center mt-md-4"  *ngIf=" a.isTeacher "  col-6>
+                  <ion-col class="d-flex justify-content-center mt-sm-4 mt-md-0"  *ngIf=" a.isTeacher "  col-6>
                       <button class="hover-effect border border-dark-06 rounded-2" [ngClass]=" book.stamp_checked != 0 ? 'bg-green' : 'bg-red' "(click)="onClickReady( book )" >
                           <!--<i class="fal fa-times"></i>-->
                         <span class="white" *ngIf=" book.ready "><i class="fal fa-spinner fa-spin"></i></span>
