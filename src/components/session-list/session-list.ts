@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AppService, SHARE_SESSION_LIST } from '../../providers/app.service';
+import { AppService, SHARE_SESSION_LIST, KEY_SCHEDULES } from '../../providers/app.service';
 import { AlertController, ModalController } from 'ionic-angular';
 import { EvaluateView } from '../../components/evaluate-view/evaluate-view';
 import { MessageWrite } from "../message-write/message-write";
@@ -118,6 +118,9 @@ export class SessionList {
               this.a.updateLmsInfoUserNoOfTotalSessions(re['no_of_total_sessions']);
               this.a.updateLmsInfoUserNoOfReservation(re['no_of_reservation']);
               this.updatePoint();
+
+              this.a.set( KEY_SCHEDULES, null); /// new code. When a session is clicked. delete old schedule cache.
+
 
 
               this.a.onLmsCancel();

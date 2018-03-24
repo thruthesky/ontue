@@ -17,6 +17,7 @@ const KEY_LMS_INFO = 'lms-info';
 
 export const KEY_WEEKEND = 'key-weekend';
 export const KEY_DAYS = 'key-days';
+export const KEY_SCHEDULES = 'key-schedules';
 
 
 
@@ -560,7 +561,7 @@ export class AppService {
     /**
      * Saves value into localStorage
      * @param key key of localStorage
-     * @param value value to save. it can be an object or a scalar.
+     * @param value value to save. it can be an object or a scalar. It will be JSON.stringyfy(). So no need to do it.
      */
     set(key: string, value: any) {
         return this.xapi.set(key, value);
@@ -1153,11 +1154,56 @@ export class AppService {
      * Loads schedules from backend and caches.
      * @since 2018-03-23 This methods is a copy versioni of schedule-table.ts and should be merge with it.
      * 
-     * @desc {WARNING} This must be called after or inside platform.ready().then()
+     * 
      * @desc This only loads for all teacher's schedule.
+     * @desc This method is being invoked only by HomePage component and ScheduleTable component.
+     *          - No other page is needed to call this method.
+     *
+     * 
+     * @desc {WARNING} This must be called after/inside platform.ready().then()
+     * 
+     * 
+     * @desc it clears cache when reserve and cancel by the user. But it cannot clear cache when a teacher cancells the class.
+     * 
+     * @desc {side effect}
+     *  - If user changes options, and quickly move to another page
+     *  - the schedule loading process continues and
+     *  - the user quickly goes back to all schedule table
+     *  - the user may see unchanged schedule.
+     *  - and the user goes to anotehr page
+     *  - and the schedule loading finishes,
+     *  - and the user goes back to the all schedule table.
+     *  - the user will see updated schedule table.
+     * 
+     * @desc {another side effer}
+     *  - student reserve
+     *  - teacher cancells.
+     *  - the student will still see the reservation on all teacher's schedule table
+     *    unless the cache is being cleared.
+     * 
      * 
      */
-    loadSchedule() {
+    loadSchedule(callback?) {
+
+        // console.log(`platform is ready now. Going to load schedule...`);
+
+        const re = this.get(KEY_SCHEDULES);
+        if (re && re['time']) {
+            const seconds = 60 * 25; // for 25 minutes.
+            const t1 = re['time'] / 1000;
+            const t2 = (new Date).getTime() / 1000;
+            if (t2 - t1 < seconds) {   // The cached schedule data is less than 30s.
+                console.log(`Cached schedule data is less than ${seconds} seconds. It will use cached data.`);
+                if (callback) callback(re);
+                return re;
+            }
+            else {
+                console.log(`Cached data is expired. Going to get new data.`);
+            }
+        }
+        else {
+            console.log('No cached data. Going to load all teacher schedules');
+        }
 
         /**
          * display 6 days of columns for mobile.
@@ -1165,7 +1211,7 @@ export class AppService {
         let days = 6;
 
         /**
-         * For computer/laptop, 20 days of column.
+         * For computer/laptop, 18 days of column.
          */
         if (this.platform.is('core')) {
             // console.log("platform is core...");
@@ -1178,18 +1224,17 @@ export class AppService {
             days = 15;
         }
 
-
         /**
          * If the user has selected days already, use that selection.
          */
         let v = this.get(KEY_DAYS);
         if (v !== null) days = v;
 
-
         /**
          * Display weekends.
          */
         const displayWeekends = !!this.get(KEY_WEEKEND);
+
 
         const options = {
             teachers: [],
@@ -1205,14 +1250,24 @@ export class AppService {
             class_end_hour: 24          // Loads schedule btween 00:00 am and 23:59 pm.
         };
 
+        console.log('options: ', options);
         this.lms.schedule_table(options).subscribe(re => {
+            if (callback) callback(re);                   // fires with fresh data.
             if (Object.keys(re['schedule']).length == 0) {
                 // No schedule table.
             }
-            console.log(`All teacher's schedule table: `, re);
-          }, e => {
-              console.log(`ERROR: Failed to load All Teacher's schedule table.`)
-          });
+            try {
+                re['time'] = (new Date).getTime();
+                this.set(KEY_SCHEDULES, re);
+            } catch (e) {
+                // console.log(`ERROR: failed save all schedules into localStorage`);
+                this.alert('에러. 서버로 부터 전체 수업 시간표를 가져 온 후, 저장을 하지 못했습니다.');
+            }
+            // console.log(`All teacher's schedules saved: `, re);
+        }, e => {
+            // console.log(`ERROR: Failed to load All Teacher's schedule table.`);
+            this.alert(`에러. 전체 선생님 수업 시간표를 가져오지 못하였습니다.`);
+        });
 
     }
 }
