@@ -11,22 +11,22 @@
                 <span class="fw-bold mr-2">Name:</span>
                 {{student_name}}
                 <i class="fal fa-user-circle ml-2 fs-110"></i>
-            </div> 
+            </div>
             <div class="py-4 px-0 fs-110 d-flex align-items-center">
                 <span class="fw-bold mr-2">Session No:</span>
                 {{ idx }}
                 <i class="fal fa-hashtag ml-2 brown fs-110"></i>
-                </div> 
+                </div>
             <div class="py-4 px-0 fs-110 d-flex align-items-center">
                 <span class="fw-bold mr-2">Point:</span>
                 {{point}}
                 <i class="fal fa-check-circle green ml-2 fs-110"></i>
-            </div> 
+            </div>
             <div class="py-4 px-0 fs-110 d-flex align-items-center">
                 <span class="fw-bold mr-2">Level of the session:</span>
                 {{level}}
                 <i class="fal fa-chart-line ml-2 indigo fs-110"></i>
-            </div> 
+            </div>
         </ion-col>
       </ion-row>
       <ion-row align-items-stretch>
@@ -51,7 +51,7 @@
                 <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="grammar" (ngModelChange)="onChangeChecklevel()">
                   <option [value]="0">Select...</option>
                   <option *ngFor="let i of [1,2,3,4,5,6,7,8,9]" [value]="i">{{i}}
-                  </option> 
+                  </option>
                 </select>
                 <label class=" mb-2">
                     <div class="pop-over d-flex justify-content-between align-items-center px-1">
@@ -85,7 +85,7 @@
                         <i class="fal fa-question-circle pop-over-trigger dodgerblue"></i>
                         <span class="fs-90 pop-over-content">book you will use for the next session</span>
                     </div>
-            </label> 
+            </label>
         </ion-col>
         <ion-col class="d-flex-column px-5 form-effect pt-5" col-md-4 col-12>
             <select  class="rounded-2 w-100 focus-effect" [(ngModel)]="vocabulary" (ngModelChange)="onChangeChecklevel()">
@@ -157,7 +157,7 @@
                     <input class="custom-checkbox" type="checkbox"  [(ngModel)]="student_absent">
                     <div class="border rounded-2 d-flex align-items-center justify-content-center">
                         <span class="text">
-                            ABSENT 
+                            ABSENT
                         </span>
                         <i class="fal fa-user-times ml-2 fs-110 text"></i>
                     </div>
@@ -165,17 +165,18 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="d-flex-column form-effect px-5 pt-5" col-12>       
-            <textarea class="w-100 textarea-effect rounded-2 p-5" rows="10" [(ngModel)]="comment"></textarea> 
+        <ion-col class="d-flex-column form-effect px-5 pt-5" col-12>
+            <textarea class="w-100 textarea-effect rounded-2 p-5" rows="10" [(ngModel)]="comment"></textarea>
             <label>
               <div class="mt-5 mb-2  pl-1">
                 <b>Comment</b>: Leave comment of the session. Or Leave any message if the class was unsuccessful.
               </div>
-            </label>  
+            </label>
         </ion-col>
         <ion-col col-12>
             <div class="m-md-5 m-0 p-5" text-center>
-               <input class="py-4 border-0 w-md-50 w-100 rounded-2 bg-blue white hover-effect" type="submit" (click)="onClickSubmitEvaluation()" value="SUBMIT">
+              <span *ngIf="loading"><i class="fa fa-spinner fa-spin"></i> </span>
+              <input class="py-4 border-0 w-md-50 w-100 rounded-2 bg-blue white hover-effect" type="submit" (click)="onClickSubmitEvaluation()" value="SUBMIT">
             </div>
         </ion-col>
       </ion-row>

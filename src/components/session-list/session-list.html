@@ -132,10 +132,10 @@
               </div>
               <div class="mt-3">  {{re.total_session_refund_in_progress}}</div>
           </div>
-      </ion-col> 
+      </ion-col>
       <ion-col col-md-2 col-6>
         <i class="fal d-none d-md-inline fa-calendar-alt indigo fa-4x mb-3"></i>
-          <div class="h-100 d-flex-column align-items-center">  
+          <div class="h-100 d-flex-column align-items-center">
             <div class="fw-bold fs-110  d-flex align-items-center">
                 <span>{{ 'SEARCH PERIOD' | translate }} </span>
                 <i class="fal d-inline d-md-none fa-calendar-alt indigo fs-2rem ml-2"></i>
@@ -146,7 +146,7 @@
               <span> {{ date_end }} </span>
               </div>
           </div>
-      </ion-col> 
+      </ion-col>
     </ion-row>
 
 
@@ -165,8 +165,8 @@
   </div>
 
   <div class="books my-md-5 mt-0 " *ngIf=" books.length ">
-    <ion-grid no-padding  text-center>  
-      <ion-row class="sticky-effect white bg-blue-60 px-md-5 px-0 py-4 text-uppercase fw-bold" justify-content-between align-items-center > 
+    <ion-grid no-padding  text-center>
+      <ion-row class="sticky-effect white bg-blue-60 px-md-5 px-0 py-4 text-uppercase fw-bold" justify-content-between align-items-center >
         <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
             <div>{{ 'TEACHER' | translate }}</div>
         </ion-col>
@@ -182,7 +182,7 @@
         <ion-col col-2 col-md-1>
           <div>{{ 'TIME' | translate }}</div>
         </ion-col>
-        <ion-col col-1 col-md-1> 
+        <ion-col col-1 col-md-1>
           <div>{{ 'MINUTE' | translate }}</div>
         </ion-col>
         <ion-col  *ngIf=" future " col-2 col-md-auto>
@@ -229,14 +229,14 @@
                   {{book.student_kakaotalk_id}}
                 </ng-container>
                 <ng-container *ngIf="a.isStudent">
-      
+
                   <div class="fs-3rem orange" (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " *ngIf=" a.isMobile() ">
                     <i class="fas fa-plus-circle"></i>
                   </div>
                   <div class="" *ngIf=" ! a.isMobile() ">
                     {{ my_teachers[book.idx_teacher].kakaotalk_id }}
                   </div>
-      
+
                 </ng-container>
               </div>
         </ion-col>
@@ -280,8 +280,9 @@
                         </button>
                     </ion-col>
                     <ion-col class="d-flex justify-content-center mt-4"   *ngIf=" !refund_in_progress(book) " col-6>
-                        <button class="hover-effect rounded-2 d-flex align-items-center justify-content-center border border-dark-06 lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">후기작성
-                            <i class="fal fa-pen-square ml-2"></i>
+                        <button class="hover-effect rounded-2 d-flex align-items-center justify-content-center border border-dark-06 lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">
+                          후기작성
+                          <i class="fal fa-pen-square ml-2"></i>
                         </button>
                     </ion-col>
                     <ion-col  class="d-flex justify-content-center mt-4" *ngIf=" rejected( book ) " col-6>
@@ -299,7 +300,7 @@
                   </ng-container>
                 </ng-container>
               </ion-row>
-    
+
                 <ion-row class="buttons buttons-sm mt-md-1 mt-4 mb-3" *ngIf=" future " justify-content-around align-items-center>
                   <ion-col class="d-flex justify-content-center mt-md-0" col-6>
                       <button class="lightgrey border border-dark-06 rounded-2hover-effect" *ngIf=" ! book.process " (click)="onClickCancel( book )">
@@ -318,7 +319,7 @@
                       </button>
                   </ion-col>
                 </ion-row>
-    
+
             </ion-grid>
         </ion-col>
       </ion-row>

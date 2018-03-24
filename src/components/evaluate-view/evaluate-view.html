@@ -2,7 +2,7 @@
   <ion-toolbar class="px-5" color="light">
     <ion-grid no-padding>
       <ion-row align-items-center >
-        <ion-col>       
+        <ion-col>
           <ion-title class="p-0">
           <span class="fw-bold fs-90">강의 평가</span>
         </ion-title>
@@ -17,13 +17,20 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="bg-ghostwhite" id="section-to-print">
+
+  <div *ngIf="loading" class="position-absolute d-flex align-items-center justify-content-center top-0 right-0 bottom-0 left-0 bg-white" style="z-index: 987654; opacity: .6">
+    <div class="text-center">
+      <i class="fa fa-spinner fa-spin fs-4rem"></i>
+      <div>{{ 'IN LOADING' | translate }}</div>
+    </div>
+  </div>
   <ion-grid class="h-100" no-padding>
     <ion-row class="h-100 p-4" text-center align-items-stretch justify-content-center>
 
       <ion-col class="p-2" col-md-12 col-12>
         <div class="h-100 d-flex align-items-center justify-content-center">
           <span class="fw-bold">수업번호 </span>
-          <span class="fs-110 ml-2">{{ session?.idx }}</span> 
+          <span class="fs-110 ml-2">{{ session?.idx }}</span>
         </div>
       </ion-col>
 
