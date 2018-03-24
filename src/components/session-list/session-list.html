@@ -276,13 +276,13 @@
                   <ng-container  *ngIf=" a.isStudent ">
                     <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" !refunded(book) " col-6>
                         <button class="hover-effect rounded-2 d-flex align-items-center  border border-dark-06 justify-content-center dark" (click)=" onClickEvaluateView(book.idx)">강의평가
-                            <i class="fal fa-file-check ml-2"></i>
+                            <!--<i class="fal fa-file-check ml-2"></i>-->
                         </button>
                     </ion-col>
                     <ion-col class="d-flex justify-content-center mt-4"   *ngIf=" !refund_in_progress(book) " col-6>
                         <button class="hover-effect rounded-2 d-flex align-items-center justify-content-center border border-dark-06 lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">
                           후기작성
-                          <i class="fal fa-pen-square ml-2"></i>
+                          <!--<i class="fal fa-pen-square ml-2"></i>-->
                         </button>
                     </ion-col>
                     <ion-col  class="d-flex justify-content-center mt-4" *ngIf=" rejected( book ) " col-6>
