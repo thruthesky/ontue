@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AppService } from './../../providers/app.service';
+import { AppService, KEY_DAYS, KEY_WEEKEND, KEY_SCHEDULES } from './../../providers/app.service';
 import { Platform, ModalController, NavParams } from "ionic-angular";
 import { Subject } from "rxjs/Subject";
 
@@ -11,9 +11,6 @@ import { StudentCommentList } from "../../components/student-comment-list/studen
 
 // import {SCHEDULE_EDIT_RESPONSE} from "../../angular-xapi/lms.service";
 
-
-const KEY_WEEKEND = 'key-weekend';
-const KEY_DAYS = 'key-days';
 
 
 type iShow = {
@@ -41,6 +38,7 @@ interface SCHEDULE {
   p: any;
   a: any;
 };
+
 
 
 
@@ -164,6 +162,8 @@ export class ScheduleTablePage {
 
   loadComplete = false; /// This will become true after the first schedule load.
 
+
+  cachedDate = 0; /// cached date.
   constructor(
     public platform: Platform,
     public a: AppService,
@@ -181,8 +181,17 @@ export class ScheduleTablePage {
     this.params = navParams.data;
     this.singleTeacher = this.params.ID;
 
+    /**
+     * Set the column width of the table.
+     */
     this.initScheduleTableWidth(() => {
+      /**
+       * Load options for days and weekends.
+       */
       this.loadOptions();
+      /**
+       * Loads schedule from backend.
+       */
       this.loadScheduleTable();
     });
 
@@ -210,7 +219,7 @@ export class ScheduleTablePage {
 
 
   ngAfterViewInit() {
-}
+  }
 
 
   ngOnDestroy() {
@@ -244,7 +253,7 @@ export class ScheduleTablePage {
       // console.log("platforms: ", this.platform.platforms());
       if (this.platform.is('core')) {
         // console.log("platform is core...");
-        this.days = 20;
+        this.days = 15;                     // 15 days for desktop.
       }
       else if (this.platform.is('tablet')) {
         this.days = 15;
@@ -257,7 +266,7 @@ export class ScheduleTablePage {
     if (session[this.STATUS] == 'future') {
       if (session[this.OPEN] == 'open') { // open to reserve
         if (session[this.DAYOFF] == 'dayoff') return 'cloud-circle'; // but day off
-        if ( session[this.PRERE] ) return 'heart';
+        if (session[this.PRERE]) return 'heart';
         else return 'radio-button-off'; // reservable
       }
 
@@ -321,6 +330,7 @@ export class ScheduleTablePage {
     // console.log("Request: ", req);
     return req;
   }
+
   // getTeacherSchedule( ID ) {
 
   //   this.a.lms.schedule_search( [ ID ] ).subscribe( re => {
@@ -331,24 +341,52 @@ export class ScheduleTablePage {
   // }
 
 
+  /**
+   * 
+   * @see app.service::loadSchedule() for more info
+   */
   loadScheduleTable() {
-    // console.log("loadScheduleTable: ");
+
+    /**
+     * Loads the cached data or new data ( and cache )
+     * @desc For displaying all teacher schedules for the first loading(without search),
+     *        - it uses new code.
+     */
+    if (!this.params.ID && !this.loadComplete) {
+      console.log(`Going to first load.`);
+      this.a.loadSchedule(re => {
+        console.log('Schedules loaded :', re);
+        this.loadComplete = true;
+        this.displayScheduleTable(re);
+        this.cachedDate = Math.round(((new Date).getTime() - re.time) / 1000 / 60) + 1;
+      });
+      return;
+    }
+
     let opt = {};
     if (this.params.ID) opt['teachers'] = [this.params.ID];
     opt = this.request(opt);
-    // console.log("opt: ", opt);
     if (opt['class_begin_hour'] == opt['class_end_hour']) {
       this.a.alert(this.a.i18n['CHOOSE DIFFERENT HOURS']);
       return;
     }
     this.status = 'LOADING SCHEDULE';
+
     this.a.lms.schedule_table(opt).subscribe(re => {
       this.loadComplete = true;
       this.displayScheduleTable(re);
+      if (!this.params.ID) { // Save only if all teacher's schedule table is loaded.
+        re['time'] = (new Date).getTime();            // New code. need time.
+        this.a.set(KEY_SCHEDULES, re);                // New codes. save new data.
+      }
       if (Object.keys(re['schedule']).length == 0) {
         this.a.alert('선생님의 수업 시간표가 없습니다.');
       }
-    }, e => this.a.alert(e));
+    }, e => {
+      this.a.alert(e);
+      this.loadComplete = true;
+    });
+
   }
 
   displayScheduleTable(re) {
@@ -364,7 +402,7 @@ export class ScheduleTablePage {
     this.schedules = re.schedule; // whole schedules
     this.student = re.student;
 
-    this.student['timezone_country'] = this.a.translateTimezoneCountry( this.student['timezone_country'] );
+    this.student['timezone_country'] = this.a.translateTimezoneCountry(this.student['timezone_country']);
     this.teacher_profile = re.teacher; // single teacher
 
 
@@ -492,7 +530,7 @@ export class ScheduleTablePage {
     else name = this.teacher_profile['name'];
     // return name;
 
-    return this.a.preTeacherName( name, 7, '...' );
+    return this.a.preTeacherName(name, 7, '...');
   }
 
   /**
@@ -624,6 +662,7 @@ export class ScheduleTablePage {
     if (session[this.OPEN] == 'open') this.reserveSession(session);
     else if (session[this.OPEN] == 'reserved' && session[this.OWNER] == 'me') this.cancelSession(session);
 
+    this.a.set(KEY_SCHEDULES, null); /// new code. When a session is clicked. delete old schedule cache.
   }
 
   reserveSession(session: SESSION) {
@@ -773,6 +812,8 @@ export class ScheduleTablePage {
       this.no_more_schedule = true;
     }
   }
+
+
   doInfinite(infiniteScroll) {
     // console.log('doInfinite');
     if (this.no_more_schedule) {
@@ -808,7 +849,7 @@ export class ScheduleTablePage {
     const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: this.teacher_profile['ID'] }, { cssClass: 'student-comment-list' }
     );
     createCommentModal.onDidDismiss(reason => {
-      if(reason == 'commentCreate') this.onClickCommentCreate();
+      if (reason == 'commentCreate') this.onClickCommentCreate();
     });
     createCommentModal.present();
   }
@@ -821,7 +862,7 @@ export class ScheduleTablePage {
     if (url) window.open(url, '_blank');
     else this.a.alert('앗, 이 선생님의 카카오톡을 입력하지 않았습니다.');
   }
-  
+
   // checkSticky(){
   //   let elTop=document.querySelector('.scroll-content').getBoundingClientRect().top;
   //   let targetTop=document.getElementById('schedule-header').getBoundingClientRect().top;

@@ -12,6 +12,8 @@ export class EvaluateView {
   session;
   level;
 
+  loading = true;
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -25,9 +27,10 @@ export class EvaluateView {
       console.log("get_session_evaluation:: " , res.session);
       let s = res.session;
       this.session = s;
-
+      this.loading = false;
       this.level = Math.floor(( this.a.toInt(s.expression) + this.a.toInt(s.vocabulary) + this.a.toInt(s.grammar) + this.a.toInt(s.pronunciation) + this.a.toInt(s.speed)  ) / 5);
     }, e => {
+      this.loading = false;
       this.a.alert(e);
     })
   }

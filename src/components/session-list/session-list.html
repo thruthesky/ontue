@@ -158,8 +158,8 @@
   </div>
 
   <div class="books my-md-5 mt-0 " *ngIf=" books.length ">
-    <ion-grid no-padding  text-center>  
-      <ion-row class="sticky-effect white bg-blue-60 px-md-5 px-0 py-4 text-uppercase fw-bold" justify-content-between align-items-center > 
+    <ion-grid no-padding  text-center>
+      <ion-row class="sticky-effect white bg-blue-60 px-md-5 px-0 py-4 text-uppercase fw-bold" justify-content-between align-items-center >
         <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
             <div>{{ 'TEACHER' | translate }}</div>
         </ion-col>
@@ -175,7 +175,7 @@
         <ion-col col-2 col-md-1>
           <div>{{ 'TIME' | translate }}</div>
         </ion-col>
-        <ion-col col-1 col-md-1> 
+        <ion-col col-1 col-md-1>
           <div>{{ 'MINUTE' | translate }}</div>
         </ion-col>
         <ion-col  *ngIf=" future " col-2 col-md-auto>
@@ -222,14 +222,14 @@
                   {{book.student_kakaotalk_id}}
                 </ng-container>
                 <ng-container *ngIf="a.isStudent">
-      
+
                   <div class="fs-3rem orange" (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " *ngIf=" a.isMobile() ">
                     <i class="fas fa-plus-circle"></i>
                   </div>
                   <div class="" *ngIf=" ! a.isMobile() ">
                     {{ my_teachers[book.idx_teacher].kakaotalk_id }}
                   </div>
-      
+
                 </ng-container>
               </div>
         </ion-col>
@@ -269,12 +269,13 @@
                   <ng-container  *ngIf=" a.isStudent ">
                     <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" !refunded(book) " col-6>
                         <button class="hover-effect rounded-2 d-flex align-items-center  border border-dark-06 justify-content-center dark" (click)=" onClickEvaluateView(book.idx)">강의평가
-                            <i class="fal fa-file-check ml-2"></i>
+                            <!--<i class="fal fa-file-check ml-2"></i>-->
                         </button>
                     </ion-col>
                     <ion-col class="d-flex justify-content-center mt-4"   *ngIf=" !refund_in_progress(book) " col-6>
-                        <button class="hover-effect rounded-2 d-flex align-items-center justify-content-center border border-dark-06 lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">후기작성
-                            <i class="fal fa-pen-square ml-2"></i>
+                        <button class="hover-effect rounded-2 d-flex align-items-center justify-content-center border border-dark-06 lightgrey" (click)=" onClickCommentCreate( book.idx_teacher ) ">
+                          후기작성
+                          <!--<i class="fal fa-pen-square ml-2"></i>-->
                         </button>
                     </ion-col>
                     <ion-col  class="d-flex justify-content-center mt-4" *ngIf=" rejected( book ) " col-6>
@@ -292,7 +293,7 @@
                   </ng-container>
                 </ng-container>
               </ion-row>
-    
+
                 <ion-row class="buttons buttons-sm mt-md-1 mt-4 mb-3" *ngIf=" future " justify-content-around align-items-center>
                   <ion-col class="d-flex justify-content-center mt-md-0" col-6>
                       <button class="lightgrey border border-dark-06 rounded-2hover-effect" *ngIf=" ! book.process " (click)="onClickCancel( book )">
@@ -311,7 +312,7 @@
                       </button>
                   </ion-col>
                 </ion-row>
-    
+
             </ion-grid>
         </ion-col>
       </ion-row>

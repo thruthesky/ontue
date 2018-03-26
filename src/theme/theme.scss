@@ -34,15 +34,22 @@ ul.buttons {
 }
 
 .text-center {
-  text-align: center!important;
+  text-align: center !important;
+}
+
+.text-md-center {
+  @media (min-width: $md) {
+    text-align: center !important;
+  }
 }
 
 .text-left {
-  text-align: left!important;
+  text-align: left !important;
 }
+
 @media (min-width: $md) {
   .text-md-left {
-    text-align: left!important;
+    text-align: left !important;
   }
 }
 
@@ -50,11 +57,11 @@ ul.buttons {
 .d-flex {
   display: flex;
 }
+
 .d-flex-column {
   display: flex;
   flex-flow: column;
 }
-
 
 .justify-content-between {
   justify-content: space-between;
@@ -85,7 +92,6 @@ ul.buttons {
 .border-red {
   border: 1px solid red;
 }
-
 
 // button
 .btn {
@@ -150,70 +156,75 @@ indigo,
 teal,
 skyblue {
   .#{$animal} {
-    color: #{$animal}!important;
+    color: #{$animal} !important;
   }
   .bg-#{$animal} {
-    background-color: #{$animal}!important;
+    background-color: #{$animal} !important;
   }
 }
 
 $sizer: 1rem !default;
-$sizers: ( 0: 0, 1: ($spacer * .25), 2: ($spacer * .5), 3:  ($spacer * .75), 4: $spacer, 5: ($spacer * 1.25), 6: ($spacer * 1.5), 7: ($spacer * 1.75), 8: ($spacer * 2), 9: ($spacer * 2.25), 10: ($spacer * 2.5), 11: ($spacer * 2.75), 12: ($spacer * 3), 13: ($spacer * 3.25), 14: ($spacer * 3.5), 15: ($spacer * 3.75), 16: ($spacer * 4), 17: ($spacer * 4.25), 18: ($spacer * 4.5), 19: ($spacer * 4.75), 20: ($spacer * 5)) !default;
+$sizers: ( 0: 0, 1: ($spacer * .25), 2: ($spacer * .5), 3 : ($spacer * .75), 4: $spacer, 5: ($spacer * 1.25), 6: ($spacer * 1.5), 7: ($spacer * 1.75), 8: ($spacer * 2), 9: ($spacer * 2.25), 10: ($spacer * 2.5), 11: ($spacer * 2.75), 12: ($spacer * 3), 13: ($spacer * 3.25), 14: ($spacer * 3.5), 15: ($spacer * 3.75), 16: ($spacer * 4), 17: ($spacer * 4.25), 18: ($spacer * 4.5), 19: ($spacer * 4.75), 20: ($spacer * 5)) !default;
 // width, height, size, z-index
 // colors
 @each $size,
 $length in $sizers {
   .size-#{$size} {
-    width: #{$length}!important;
-    height: #{$length}!important;
+    width: #{$length} !important;
+    height: #{$length} !important;
   }
   .w-#{$size} {
-    width: #{$length}!important;
+    width: #{$length} !important;
   }
   .h-#{$size} {
-    height: #{$length}!important;
+    height: #{$length} !important;
   }
 }
 
 .size-30 {
-  width: 30px!important;
-  height: 30px!important;
+  width: 30px !important;
+  height: 30px !important;
 }
+
 .size-40 {
-  width: 40px!important;
-  height: 40px!important;
+  width: 40px !important;
+  height: 40px !important;
 }
+
 .size-50 {
-  width: 50px!important;
-  height: 50px!important;
+  width: 50px !important;
+  height: 50px !important;
 }
+
 .size-60 {
-  width: 60px!important;
-  height: 60px!important;
+  width: 60px !important;
+  height: 60px !important;
 }
 
 .size-80 {
-  width: 80px!important;
-  height: 80px!important;
+  width: 80px !important;
+  height: 80px !important;
 }
+
 .size-90 {
-  width: 90px!important;
-  height: 90px!important;
+  width: 90px !important;
+  height: 90px !important;
 }
+
 .size-100 {
-  width: 100px!important;
-  height: 100px!important;
+  width: 100px !important;
+  height: 100px !important;
 }
+
 .size-100x120 {
-  width: 100px!important;
-  height: 120px!important;
+  width: 100px !important;
+  height: 120px !important;
 }
 
 .size-200x240 {
-  width: 200px!important;
-  height: 240px!important;
+  width: 200px !important;
+  height: 240px !important;
 }
-
 
 // top, left, right, bottom
 @each $abbr,
@@ -227,11 +238,11 @@ $position in (t: top, l: left, r: right, b: bottom) {
 }
 
 .p-relative {
-  position: relative!important;
+  position: relative !important;
 }
 
 .p-absolute {
-  position: absolute!important;
+  position: absolute !important;
 }
 
 .of-hidden {
@@ -239,71 +250,70 @@ $position in (t: top, l: left, r: right, b: bottom) {
 }
 
 .rounded-50 {
-  border-radius: 50%!important;
+  border-radius: 50% !important;
 }
+
 .rounded-2 {
   border-radius: 2px;
 }
 
 // font size
 .fs-1rem {
-  font-size: 1rem!important;
+  font-size: 1rem !important;
 }
 
 .fs-2rem {
-  font-size: 2rem!important;
+  font-size: 2rem !important;
 }
 
 .fs-3rem {
-  font-size: 3rem!important;
+  font-size: 3rem !important;
 }
 
 .fs-4rem {
-  font-size: 4rem!important;
+  font-size: 4rem !important;
 }
 
 .fs-xs {
-  font-size: .8rem!important;
+  font-size: .8rem !important;
 }
 
 .fs-sm {
-  font-size: .9rem!important;
+  font-size: .9rem !important;
 }
 
 .fs-md {
-  font-size: 1rem!important;
+  font-size: 1rem !important;
 }
 
 .fs-lg {
-  font-size: 1.2rem!important;
+  font-size: 1.2rem !important;
 }
 
 .fs-xl {
-  font-size: 2rem!important;
+  font-size: 2rem !important;
 }
 
 .fs-sl {
   // super large
-  font-size: 12rem!important;
+  font-size: 12rem !important;
 }
 
 .fs-90 {
-  font-size: 90%!important;
+  font-size: 90% !important;
 }
 
 .fs-110 {
-  font-size: 110%!important;
+  font-size: 110% !important;
 }
 
 .fw-bold {
-  font-weight: bold!important;
+  font-weight: bold !important;
 }
 
 .w-100 {
   width: 100%;
 }
-
-
 
 ion-toast {
   &.ie-version {
@@ -329,25 +339,20 @@ ion-toast {
   }
 }
 
-
-
-
-
-input[type="text"], input[type="email"], input[type="password"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   border: 1px solid rgb(190, 190, 190);
 }
 
-
 $bg-loader: rgb(212, 212, 211);
 $color-loader: rgb(38, 38, 82);
-
 .loader {
   padding: 1em;
   animation: aniLoader 2.5s infinite;
   background-color: $bg-loader;
   color: $color-loader;
 }
-
 
 .loader-big {
   display: flex;
@@ -357,7 +362,6 @@ $color-loader: rgb(38, 38, 82);
   background-color: $bg-loader;
   color: $color-loader;
 }
-
 
 @keyframes aniLoader {
   20% {
@@ -393,10 +397,14 @@ $bg-color-warning: rgb(83, 54, 0);
   }
 }
 
-
 /** Customize ionic toast */
+
 .error-4000102 {
   .toast-container {
     background-color: red;
   }
+}
+
+.underline {
+  text-decoration: underline;
 }

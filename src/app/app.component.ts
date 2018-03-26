@@ -100,7 +100,11 @@ export class MyApp implements AfterViewInit {
       /// it should be here.
       /// Test code should run after platform is ready.
       setTimeout(() => this.test(), 100);
+
     });
+
+
+
 
   }
 
@@ -274,7 +278,7 @@ export class MyApp implements AfterViewInit {
 
 
     // this.a.open('student-curriculumn');
-    
+
     // this.a.open('session-past', {showLevel: true}); // my level
   }
 

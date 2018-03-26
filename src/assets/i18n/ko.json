@@ -270,4 +270,6 @@
  , "PASSWORD CHANGED": "비밀번호가 변경되었습니다."
  , "PAYPAL INIT FAIL": "페이팔 초기화에 실패하였습니다."
  , "VIDEO": "동영상"
+ , "INPUT-AMOUNT": "금액 직접 입력"
+ , "IN LOADING 60": "정보를 불러오고 있습니다. 약 60초 정도 걸릴 수 있읍니다."
 }

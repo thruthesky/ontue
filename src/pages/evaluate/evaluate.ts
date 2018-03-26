@@ -29,6 +29,8 @@ export class EvaluatePage {
 
   level: number = 0;
 
+  loading = false;
+
   constructor(navParams: NavParams,
               public a: AppService) {
     this.idx = navParams.data['idx'];
@@ -57,6 +59,8 @@ export class EvaluatePage {
 
 
   onClickSubmitEvaluation() {
+    if ( this.loading ) return;
+
     let data = {};
     data['idx'] = this.idx;
     this.student_absent ? data['student_absent'] = "y" : data['student_absent'] = "n";
@@ -127,13 +131,15 @@ export class EvaluatePage {
 
 
     // console.log("onClickSubmitEvaluation", data);
-
+    this.loading = true;
     this.a.lms.session_evaluate(data).subscribe(res => {
       // console.log(res);
       this.a.alert("Evaluation Submitted!!!");
       this.a.open('session-past');
       this.a.onTeacherEvaluateSession();
+      this.loading = false;
     }, e => {
+      this.loading = false;
       this.a.alert(e);
     })
   }
