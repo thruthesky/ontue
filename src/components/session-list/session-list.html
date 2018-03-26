@@ -83,70 +83,63 @@
   </div>
 
   <ion-grid class="page-desc bg-img search-result mb-md-5 my-0 " *ngIf=" re && books.length " no-padding>
-    <ion-row class="p-4 px-md-0" align-items-stretch justify-content-around text-center>
-      <ion-col class="pointer mb-4 mb-md-0" col-md-2 col-6 (click)=" a.open('settings') ">
-        <i class="d-none d-md-inline fal fa-globe dodgerblue fa-4x mb-3"></i>
-        <div class="d-flex-column h-100 align-items-center">
-          <div class="fw-bold fs-110 d-flex align-items-center">
-            <span>{{ 'TIMEZONE NOW' | translate }}</span>
-            <i class="d-inline d-md-none fal fs-2rem fa-globe dodgerblue ml-2"></i>
-          </div>
-          <div class="my-3"> {{ a.userTime }}</div>
-          <div class="app-button bg-white border black hover-effect secondary m-0" >{{ 'CHANGE TIMEZONE' | translate }}</div>
-        </div>
-      </ion-col>
-      <ion-col class=" mb-4 mb-md-0" col-md-2 col-6>
+    <ion-row class="p-4 pl-md-0 pr-md-5" align-items-stretch justify-content-around text-center>
+      <ion-col class=" my-2 mb-md-0" col-md-2 col-12>
         <i class="fal d-md-inline d-none fa-list fa-4x orange mb-3"></i>
-          <div class="h-100 d-flex-column align-items-center">
-            <div class="fw-bold fs-110 d-flex align-items-center">
-              <span>{{ 'SEARCHED SESSIONS' | translate }}</span>
-              <i class="fal d-inline d-md-none fa-list fs-2rem orange ml-2"></i>
-              </div>
-            <div class="my-3"> {{ books.length }}</div>
-            <div> ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )</div>
+          <div class="h-100 d-flex-column d-sm-flex-row align-items-center">
+              <i class="fal d-inline d-md-none fs-2rem fa-list orange mr-2"></i>
+              <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'SEARCHED SESSIONS' | translate }}</div>
+              <div> {{ books.length }}</div>
+              <div> ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )</div>
           </div>
       </ion-col>
-      <ion-col *ngIf=" a.isTeacher " col-md-2 col-6>
+      <ion-col class="my-2" *ngIf=" a.isTeacher " col-md-2 col-12>
         <i class="fal d-none d-md-inline fa-check-circle green fa-4x mb-3"></i>
-          <div class="h-100 d-flex-column align-items-center">
-            <div class="fw-bold fs-110  d-flex align-items-center">
-              <span>{{ 'SEARCHED POINT' | translate }}</span>
-              <i class="fal d-inline d-md-none fa-check-circle green fs-2rem ml-2"></i>
-            </div>
-            <div class="my-3"> {{ re.total_points | number }}</div>
+          <div class="h-100 d-flex-column d-sm-flex-row align-items-center">
+              <i class="fal d-inline d-md-none fa-check-circle green fs-2rem mr-2"></i>
+            <div class="mr-3 mr-md-0  d-flex align-items-center fs-110  fw-bold ">{{ 'SEARCHED POINT' | translate }}</div>
+            <div class="my-md-3 my-0 "> {{ re.total_points | number }}</div>
           </div>
       </ion-col>
-      <ion-col  *ngIf=" past " col-md-2 col-6>
-        <i class="fal d-none d-md-inline fa-retweet brown fa-4x mb-3"></i>
-          <div class="h-100 d-flex-column align-items-center"  *ngIf=" re.total_session_refunded ">
-              <div class="fw-bold fs-110  d-flex align-items-center">
-                 <span> {{ 'REFUNDED SESSIONS' | translate }} </span>
-                 <i class="fal d-inline d-md-none fa-retweet brown fs-2rem ml-2"></i>
-              </div>
-              <div class="mt-3"> {{re.total_session_refunded}}</div>
-          </div>
-          <div  class="h-100 d-flex-column align-items-center justify-content-around"  *ngIf=" re.total_session_refund_in_progress ">
-              <div class="fw-bold fs-110 d-flex align-items-center">
-                  <span>{{ 'SESSIONS IN REFUND PROGRESS' | translate }} </span>
-                  <i class="fal d-inline d-md-none fa-retweet brown fs-2rem ml-2"></i>
-              </div>
-              <div class="mt-3">  {{re.total_session_refund_in_progress}}</div>
-          </div>
-      </ion-col> 
-      <ion-col col-md-2 col-6>
-        <i class="fal d-none d-md-inline fa-calendar-alt indigo fa-4x mb-3"></i>
-          <div class="h-100 d-flex-column align-items-center">  
-            <div class="fw-bold fs-110  d-flex align-items-center">
-                <span>{{ 'SEARCH PERIOD' | translate }} </span>
-                <i class="fal d-inline d-md-none fa-calendar-alt indigo fs-2rem ml-2"></i>
-              </div>
-            <div class="mt-3 d-flex-column d-sm-flex-row align-items-center">
+      <ng-container   *ngIf=" past " >
+          <ion-col class="my-2" col-md-2 col-12  *ngIf=" re.total_session_refunded ">
+              <i class="fal d-none d-md-inline fa-retweet brown fa-4x mb-3"></i>
+                <div class="h-100 d-flex-column d-sm-flex-row align-items-center" >
+                    <i class="fal d-inline d-md-none fa-redo-alt brown fs-2rem mr-2"></i>
+                    <div class="mr-3 mr-md-0 fw-bold fs-110  d-flex align-items-center">{{ 'REFUNDED SESSIONS' | translate }}</div>
+                    <div class="mt-md-3 mt-0"> {{re.total_session_refunded}}</div>
+                </div>
+            </ion-col> 
+            <ion-col class="my-2" col-md-2 col-12   *ngIf=" re.total_session_refund_in_progress ">
+                <i class="fal d-none d-md-inline fa-sync teal fa-4x mb-3"></i>
+                <div  class="h-100 d-flex-column d-sm-flex-row align-items-center">
+                    <i class="fal d-inline d-md-none teal fa-sync fs-2rem mr-2"></i>
+                    <div class="mr-3 mr-md-0 fw-bold fs-110 d-flex align-items-center">{{ 'SESSIONS IN REFUND PROGRESS' | translate }}</div>
+                    <div class="mt-md-3 mt-0">  {{re.total_session_refund_in_progress}}</div>
+                </div>
+            </ion-col>
+      </ng-container>
+      <ion-col class="my-2" col-md-2 col-12>
+        <i class="fal d-none d-md-inline fa-calendar-alt mb-3 indigo fa-4x"></i>
+          <div class="h-100 d-flex-column d-sm-flex-row align-items-center">  
+            <i class="fal d-inline d-md-none fa-calendar-alt indigo fs-2rem mr-2"></i>
+            <div class="mr-3 mr-md-0 fw-bold fs-110  d-flex align-items-center">{{ 'SEARCH PERIOD' | translate }}</div>
+            <div class="mt-md-3 mt-0 d-flex-column d-sm-flex-row align-items-center">
               <span>{{ date_begin }}</span>
               <span class="mx-2"> ~ </span>
               <span> {{ date_end }} </span>
               </div>
           </div>
-      </ion-col> 
+      </ion-col>
+      <ion-col class="pointer mt-2 mb-md-0" col-md-2 col-12 (click)=" a.open('settings') ">
+          <i class="d-none d-md-inline fal fa-globe dodgerblue fa-4x mb-3"></i>
+          <div class="d-flex d-flex-column d-sm-flex-row align-items-center">
+            <i class="d-inline d-md-none fal fa-globe dodgerblue fs-2rem mr-2"></i>
+            <div class="fw-bold mr-3 mr-md-0 fs-110 d-flex align-items-center">{{ 'TIMEZONE NOW' | translate }}</div>
+            <div class="mt-md-3 mt-0 fs-90 fs-sm-1dot4rem"> {{ a.userTime }}</div>
+          </div>
+          <div class="app-button bg-white px-3 border black hover-effect secondary mt-3" >{{ 'CHANGE TIMEZONE' | translate }}</div>
+        </ion-col> 
     </ion-row>
 
 
