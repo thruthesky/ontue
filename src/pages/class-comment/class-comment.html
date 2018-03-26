@@ -50,10 +50,10 @@
                         <div class="date mt-1 fs-90">{{ 'DATE' | translate }} : {{ a.shortDate(comment.stamp) }}</div>
                   </div>
                     <div class="description">
-                      {{comment.comment.slice(0,60)}}
+                      {{comment.comment.slice(0,55)}}
                       <span *ngIf="comment.comment.length>80">...</span>
                     </div>
-                    <button class="more d-inline-block hover-effect bg-skyblue white text-center py-2"><i class="fa fa-angle-double-down"></i> {{ 'MORE' | translate }}</button>
+                    <button class="more w-50 rounded-2 mr-auto hover-effect bg-skyblue white text-center py-2">{{ 'MORE' | translate }}</button>
                 </ion-col>
                 <ion-col class="d-none h-100 border border-top-0 border-bottom-0 border-right-0 d-md-flex align-items-center justify-content-center" col-md-3>
                     <div class="d-flex-column align-items-center justify-content-between teacher-profile-photo of-hidden size-100x120">

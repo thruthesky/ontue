@@ -32,17 +32,23 @@ teacher-reminders-component{
         animation: colorAnimate 7s ease-in-out infinite
     }
 
+    .bg-red-90{
+        background: #ab000d!important;
+    }
+
+    .bg-greeny{
+        background: #405C00;
+    }
+
     @keyframes colorAnimate {
         0%{
             transform: rotateZ(0deg);
-          color: dodgerblue;
+          color: #ab000d;
         }
       
 
-
-
         26%{
-            color: indigo;
+            color: #003D63;
             transform: rotateZ(0deg);
         }
         27%{
@@ -75,22 +81,22 @@ teacher-reminders-component{
 
         40%{
             transform: rotateZ(0deg);
-            color: violet;
+            color: #405C00;
         }
 
 
         54%{
             transform: rotateZ(0deg);
-            color: dodgerblue;
+            color: #003D63;
         }
 
         80%{
             transform: rotateZ(0deg);
-            color: darkorange;
+            color: #405C00;
         }
 
         100%{
-            color: dodgerblue;
+            color: #ab000d;
             transform: rotateZ(0deg);
         }
       }
