@@ -24,6 +24,15 @@
 <ion-content>
 
   <section id="student-comments" class="p-5">
+    <div *ngIf="loading"
+         class="position-absolute d-flex align-items-center justify-content-center top-0 right-0 bottom-0 left-0 bg-white"
+         style="z-index: 987654; opacity: .6">
+      <div class="text-center">
+        <i class="fa fa-spinner fa-spin fs-4rem"></i>
+        <div>{{ 'IN LOADING' | translate }}</div>
+      </div>
+    </div>
+
 
     <ng-container *ngFor="let comment of comments">
     <div class="comment" *ngIf="comment.idx">

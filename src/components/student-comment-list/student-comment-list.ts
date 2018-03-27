@@ -30,6 +30,8 @@ export class StudentCommentList{
     totalRecord: 0
   };
 
+  loading = true;
+
   constructor(
     public a: AppService,
     public navParams: NavParams,
@@ -53,15 +55,17 @@ export class StudentCommentList{
     this.a.lms.get_student_comments_to_teacher(data).subscribe( (res:STUDENT_COMMENTS_TO_TEACHER) => {
       // console.log("get_comment_from_student_to_teaceher:: ", res);
       if( res && res['comments'] && res['comments'].length ) {
-        this.comments = res['comments'];;
+        this.comments = res['comments'];
       } else {
         this.error = "No available review yet for this teacher."
       }
       this.pageOption.currentPage = res['page'];
       this.pageOption.limitPerPage = res['limit'];
       this.pageOption.totalRecord = res['total']
+      this.loading = false;
     }, e => {
       this.a.alert(e);
+      this.loading = false;
     })
   }
 
