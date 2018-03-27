@@ -1,71 +1,88 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>{{ "STUDENT COMMENT LIST" | translate}}</ion-title>
-    <ion-buttons start>
-      <button ion-button class="mr-5" *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">
-        {{ 'WRITE REVIEW' | translate }}
-      </button>
-      <button ion-button class="cancel" (click)="onClickCancel()">
-        <span ion-text color="primary">{{ "CLOSE" | translate}}</span>
-      </button>
-    </ion-buttons>
+  <ion-toolbar class="px-5">
+    <ion-grid no-padding>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-title class="p-0">
+            <span class="fs-90 white">{{ "STUDENT COMMENT LIST" | translate}}</span>
+          </ion-title>
+        </ion-col>
+        <ion-col class="d-flex justify-content-end" col-6>
+          <button class="p-0 mr-3  d-flex align-items-center" color="white" icon-end ion-button clear small  *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">
+            <span class="text-uppercase fw-bold">{{ 'WRITE REVIEW' | translate }}</span>
+            <i class="fas fa-edit ml-2"></i>
+          </button>
+          <button class="p-0" icon-end ion-button color="white" clear small (click)="onClickCancel()">
+            <span class="text-uppercase fw-light">{{ "CLOSE" | translate}}</span>
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
-<ion-content padding="">
+<ion-content>
 
-  <section id="student-comments" class="pt-1">
+  <section id="student-comments" class="p-5">
 
     <ng-container *ngFor="let comment of comments">
     <div class="comment" *ngIf="comment.idx">
       <ion-grid no-padding>
         <ion-row>
-          <ion-col col-4 col-sm-3 col-lg-3>
-            <div class="photo">
-              <img src="{{comment?.photoURL ? comment.photoURL : a.anonymousPhotoURL }}">
-            </div>
+          <ion-col col-3>
+              <div class="d-flex align-items-center justify-content-center of-hidden rounded-50 size-100">
+                <img src="{{comment?.photoURL ? comment.photoURL : a.anonymousPhotoURL }}">
+              </div>
           </ion-col>
-          <ion-col col-8 col-sm-9 col-lg-9>
-            <div class="name mt-0 mb-2">{{ comment.student_name }}</div>
-            <div class="date mb-2">{{ 'DATE' | translate }}: {{ a.shortDate(comment.stamp) }}</div>
-            <div class="rating mb-2">
-              {{ 'RATING' | translate }}: {{rate}}
-              <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
-              <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
-
-              <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
-              <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
-
-              <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
-              <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
-
-              <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
-              <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
-
-              <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
-              <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
+          <ion-col col-9>
+            <div  class="ml-3 d-flex align-items-end">
+                <div class="name mr-4 m-0 text-uppercase fw-bold">
+                  <i class="fas fa-graduation-cap"></i>
+                  {{ comment.student_name }}
+                </div>
+                <div class="date mr-4">{{ 'DATE' | translate }}: {{ a.shortDate(comment.stamp) }}</div>
+                <div class="rating darkorange mr-4">
+                  {{ 'RATING' | translate }}: {{rate}}
+                  <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
+                  <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
+    
+                  <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
+                  <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
+    
+                  <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
+                  <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
+    
+                  <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
+                  <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
+    
+                  <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
+                  <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
+                </div>
             </div>
-            <div>
-              <span class="py-2 pointer mr-3" *ngIf="comment.idx_student == a.user.id" (click)="onClickDelete(comment)"><i class="fa fa-trash"></i> {{ 'DELETE' | translate }}</span>
-              <span class="py-2 pointer" *ngIf="comment.idx_student == a.user.id" (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}</span>
+            <div class="description">
+                <div class="mb-2">
+                    <span class="py-2 pointer mr-4  hover-effect" *ngIf="comment.idx_student == a.user.id" (click)="onClickDelete(comment)"><i class="fa fa-trash"></i> {{ 'DELETE' | translate }}</span>
+                    <span class="py-2 pointer hover-effect" *ngIf="comment.idx_student == a.user.id" (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}</span>
+                </div>
+                {{comment.comment}}
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <div class="description" [innerHTML]="comment.comment"></div>
     </div>
     </ng-container>
     <div class="alert alert-secondary my-5" *ngIf="error">
       <span class="fs-2rem">{{error}}</span>
     </div>
   </section>
-    <page-navigator [no_of_total_items]=" pageOption['totalRecord'] "
-                          [no_of_items_in_one_page]=" pageOption['limitPerPage'] "
-                          [no_of_pages_in_navigator]=" pageOption['limitPerNavigation'] "
-                          [no_of_current_page]=" pageOption['currentPage'] "
-                          [show_prev_next]=" true "
-                          (pageClick)="onPostPageClick($event)">
-    </page-navigator>
-
-
+  <div class="d-flex justify-content-center mb-5">
+      <page-navigator [no_of_total_items]=" pageOption['totalRecord'] "
+          [no_of_items_in_one_page]=" pageOption['limitPerPage'] "
+          [no_of_pages_in_navigator]=" pageOption['limitPerNavigation'] "
+          [no_of_current_page]=" pageOption['currentPage'] "
+          [show_prev_next]=" true "
+          (pageClick)="onPostPageClick($event)">
+      </page-navigator>
+  </div>
 </ion-content>
 

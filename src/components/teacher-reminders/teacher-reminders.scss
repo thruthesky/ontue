@@ -20,10 +20,6 @@ teacher-reminders-component{
         background-position: top;
     }
 
-    .w-50{
-        width: 50%;
-    }
-
     .line-height-1-2rem{
         line-height: 2rem;
     }
@@ -36,8 +32,8 @@ teacher-reminders-component{
         background: #ab000d!important;
     }
 
-    .bg-greeny{
-        background: #405C00;
+    .bg-redish{
+        background: rgba(#ab000d, 0.1);
     }
 
     @keyframes colorAnimate {

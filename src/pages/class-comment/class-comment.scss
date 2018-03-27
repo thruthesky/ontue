@@ -19,7 +19,21 @@ class-comment-page{
   .h-100{
     height: 100%!important;
   }
+
+
   
+  .hover-blur-effect-wrapper{
+
+    .hover-blur-effect{
+      transition: all 0.2s ease-in-out ;
+    }
+
+    &:hover{
+      .hover-blur-effect{
+        background-color: #389ebb!important;
+      }
+    }
+  }
 
   .mx-minus-5px{
    margin:0 -5px!important;
