@@ -20,7 +20,7 @@ teacher-reminders-component{
         background-position: top;
     }
 
-    .line-height-1-2rem{
+    .line-height-2rem{
         line-height: 2rem;
     }
 
@@ -28,8 +28,12 @@ teacher-reminders-component{
         animation: colorAnimate 7s ease-in-out infinite
     }
 
+    .justify-self-start{
+       justify-self: start!important;
+    }
+
     .bg-red-90{
-        background: #ab000d!important;
+        background: rgba(#ab000d,0.8)!important;
     }
 
     .bg-redish{
@@ -39,12 +43,12 @@ teacher-reminders-component{
     @keyframes colorAnimate {
         0%{
             transform: rotateZ(0deg);
-          color: #ab000d;
+          color: #009600;
         }
       
 
         26%{
-            color: #003D63;
+            color: #BC5500;
             transform: rotateZ(0deg);
         }
         27%{
@@ -77,22 +81,22 @@ teacher-reminders-component{
 
         40%{
             transform: rotateZ(0deg);
-            color: #405C00;
+            color: #007171;
         }
 
 
         54%{
             transform: rotateZ(0deg);
-            color: #003D63;
+            color: #BC5500;
         }
 
         80%{
             transform: rotateZ(0deg);
-            color: #405C00;
+            color: #009600;
         }
 
         100%{
-            color: #ab000d;
+            color: #007171;
             transform: rotateZ(0deg);
         }
       }

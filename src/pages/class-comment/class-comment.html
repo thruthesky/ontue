@@ -6,7 +6,7 @@
 
     <hook-content-top></hook-content-top>
     <section class="page-header green bg-lightgrey">
-      <h2 class="title">{{ 'CLASS COMMENTS' | translate }}:</h2>
+      <h2 class="title fw-light f-110">{{ 'CLASS COMMENTS' | translate }}:</h2>
     </section>
     <section class="page-desc">
       학생이 작성한 수업 후기를 볼 수 있습니다. 여러분들도 수업을 하시면 꼭 후기를 남겨주세요.
@@ -14,8 +14,8 @@
     <section class="page-body">
     <ion-grid class="px-0">
       <ion-row class="mx-minus-5px" align-items-stretch>
-          <ion-col class="student-comment pointer hover-blur-effect-wrapper" *ngFor="let comment of comments" col-12 col-md-6  (click)="onClickShowMore(comment)">
-            <ion-grid class="h-100 px-0 bg-white">
+          <ion-col class="student-comment pointer hover-blur-effect-wrapper hide-effect" *ngFor="let comment of comments" col-12 col-md-6  (click)="onClickShowMore(comment)">
+            <ion-grid class="h-100 px-0 bg-white rounded-2">
               <ion-row class="h-100" align-items-center>
                 <ion-col class="h-100 pr-0" col-md-3 col-4>
                     <div class="d-flex h-100 align-items-center justify-content-center  teacher-profile-photo of-hidden">

@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-toolbar class="px-5">
+  <ion-toolbar class="px-md-5 px-3">
     <ion-grid no-padding>
       <ion-row align-items-center>
-        <ion-col>
+        <ion-col col-7 col-md-6>
           <ion-title class="p-0">
             <span class="fs-90 white">{{ "STUDENT COMMENT LIST" | translate}}</span>
           </ion-title>
         </ion-col>
-        <ion-col class="d-flex justify-content-end" col-6>
+        <ion-col class="d-flex justify-content-end" col-5 col-md-6>
           <button class="p-0 mr-3  d-flex align-items-center" color="white" icon-end ion-button clear small  *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">
             <span class="text-uppercase fw-bold">{{ 'WRITE REVIEW' | translate }}</span>
             <i class="fas fa-edit ml-2"></i>
@@ -29,34 +29,39 @@
     <div class="comment" *ngIf="comment.idx">
       <ion-grid no-padding>
         <ion-row>
-          <ion-col col-3>
+          <ion-col class="d-none d-md-flex" col-md-3>
               <div class="d-flex align-items-center justify-content-center of-hidden rounded-50 size-100">
                 <img src="{{comment?.photoURL ? comment.photoURL : a.anonymousPhotoURL }}">
               </div>
           </ion-col>
-          <ion-col col-9>
-            <div  class="ml-3 d-flex align-items-end">
-                <div class="name mr-4 m-0 text-uppercase fw-bold">
-                  <i class="fas fa-graduation-cap"></i>
-                  {{ comment.student_name }}
-                </div>
-                <div class="date mr-4">{{ 'DATE' | translate }}: {{ a.shortDate(comment.stamp) }}</div>
-                <div class="rating darkorange mr-4">
-                  {{ 'RATING' | translate }}: {{rate}}
-                  <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
-    
-                  <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
-    
-                  <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
-    
-                  <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
-    
-                  <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
-                  <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
+          <ion-col col-md-9 col-12>
+            <div class="d-flex justify-content-center md-justify-content-start">
+                <div class="d-md-none d-sm-flex align-items-center justify-content-center of-hidden rounded-50 size-100">
+                    <img src="{{comment?.photoURL ? comment.photoURL : a.anonymousPhotoURL }}">
+                  </div>
+                <div  class="ml-md-3 ml-5 d-flex-column d-md-flex-row align-items-end mt-auto">
+                    <div class="name mr-4 m-0 text-uppercase fw-bold">
+                      <i class="fal mr-1 fa-id-card"></i>
+                      {{ comment.student_name }}
+                    </div>
+                    <div class="date mr-4 my-2 my-md-0">{{ 'DATE' | translate }}: {{ a.shortDate(comment.stamp) }}</div>
+                    <div class="rating darkorange mr-4">
+                      {{ 'RATING' | translate }}: {{rate}}
+                      <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
+                      <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
+        
+                      <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
+                      <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
+        
+                      <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
+                      <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
+        
+                      <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
+                      <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
+        
+                      <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
+                      <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
+                    </div>
                 </div>
             </div>
             <div class="description">
