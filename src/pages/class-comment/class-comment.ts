@@ -20,6 +20,8 @@ export class ClassCommentPage {
     totalRecord: 0
   };
 
+  idx_teacher= null;
+
   constructor(
     public a: AppService,
     public alertCtrl: AlertController,
@@ -99,9 +101,21 @@ export class ClassCommentPage {
 
 
   onClickShowMore(comment) {
+    this.idx_teacher= comment.idx_teacher;
     const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: comment.idx_teacher }, { cssClass: 'student-comment-list' }
     );
-    createCommentModal.onDidDismiss(() => { });
+    createCommentModal.onDidDismiss(reason => {
+      if (reason == 'commentCreate') this.onClickCommentCreate();
+    });
+    createCommentModal.present();
+  }
+
+  onClickCommentCreate() {
+    const createCommentModal = this.modalCtrl.create(StudentCommentEdit, { idx_teacher: this.idx_teacher }, { cssClass: 'student-comment-create' }
+    );
+    createCommentModal.onDidDismiss(res => {
+      if (res == 'success') this.onClickShowMore({idx_teacher: this.idx_teacher});
+    });
     createCommentModal.present();
   }
 

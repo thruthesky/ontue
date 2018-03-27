@@ -8,7 +8,7 @@
           </ion-title>
         </ion-col>
         <ion-col class="d-flex justify-content-end" col-5 col-md-6>
-          <button class="p-0 mr-3  d-flex align-items-center" color="white" icon-end ion-button clear small  *ngIf="a.user.isLogin" (click)="onClickCommentCreate()">
+          <button class="p-0 mr-3  d-flex align-items-center" color="white" icon-end ion-button clear small  *ngIf="a.user.isLogin && a.studentTheme" (click)="onClickCommentCreate()">
             <span class="text-uppercase fw-bold">{{ 'WRITE REVIEW' | translate }}</span>
             <i class="fas fa-edit ml-2"></i>
           </button>
@@ -49,16 +49,16 @@
                       {{ 'RATING' | translate }}: {{rate}}
                       <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
                       <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
-        
+
                       <span *ngIf="comment.rate < 2"><i class="fal fa-star"></i></span>
                       <span *ngIf="comment.rate >= 2"><i class="fas fa-star"></i></span>
-        
+
                       <span *ngIf="comment.rate < 3"><i class="fal fa-star"></i></span>
                       <span *ngIf="comment.rate >= 3"><i class="fas fa-star"></i></span>
-        
+
                       <span *ngIf="comment.rate < 4"><i class="fal fa-star"></i></span>
                       <span *ngIf="comment.rate >= 4"><i class="fas fa-star"></i></span>
-        
+
                       <span *ngIf="comment.rate < 5"><i class="fal fa-star"></i></span>
                       <span *ngIf="comment.rate >= 5"><i class="fas fa-star"></i></span>
                     </div>
