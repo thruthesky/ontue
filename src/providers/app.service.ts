@@ -1180,6 +1180,9 @@ export class AppService {
      *  - teacher cancells.
      *  - the student will still see the reservation on all teacher's schedule table
      *    unless the cache is being cleared.
+     *  - when user visits the site and he didn't logged in yet. the app gets all schedule table.
+     *      and the all schedule table may show jis reservations as others.
+     *      so, it should clear when the user logged in.
      * 
      * 
      */
@@ -1215,13 +1218,13 @@ export class AppService {
          */
         if (this.platform.is('core')) {
             // console.log("platform is core...");
-            days = 20;
+            days = 12;
         }
         /**
          * For tablets, 15 days of column.
          */
         else if (this.platform.is('tablet')) {
-            days = 15;
+            days = 12;
         }
 
         /**
