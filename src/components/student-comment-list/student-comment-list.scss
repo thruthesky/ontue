@@ -1,0 +1,16 @@
+student-comment-list{
+    .toolbar-background-md{
+        background: skyblue!important;
+    }
+
+    ion-header{
+        box-shadow: none;
+        -webkit-box-shadow:none;
+        
+        .header.header-md::after{
+            background:none!important;
+        }
+
+    }
+
+}
