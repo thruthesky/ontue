@@ -107,7 +107,7 @@ export class ScheduleTablePage {
 
 
   /// search options
-  days = 0; // 7 for mobile and single teacher. 6 for mobile and multiple teachers. 20 for web.
+  days = 0; // 7 for mobile and single teacher. 6 for mobile and multiple teachers. 12 for web.
   min_duration = 0;
   max_duration = 160;
 
@@ -253,10 +253,10 @@ export class ScheduleTablePage {
       // console.log("platforms: ", this.platform.platforms());
       if (this.platform.is('core')) {
         // console.log("platform is core...");
-        this.days = 15;                     // 15 days for desktop.
+        this.days = 12;                     // 15 days for desktop.
       }
       else if (this.platform.is('tablet')) {
-        this.days = 15;
+        this.days = 12;
       }
       callback();
     });
