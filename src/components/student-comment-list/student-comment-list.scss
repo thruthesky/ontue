@@ -1,0 +1,31 @@
+student-comment-list{
+    .toolbar-background-md{
+        background: skyblue!important;
+    }
+
+    .toolbar-title-md{
+        display: flex;
+        align-items: center;
+    }
+
+    ion-header{
+        box-shadow: none;
+        -webkit-box-shadow:none;
+        
+        .header.header-md::after{
+            background:none!important;
+        }
+
+    }
+
+    @media screen and (min-width:$md) {
+        .d-md-flex-row{
+            flex-direction: row!important;
+        }
+
+        .md-justify-content-start{
+            justify-content: flex-start!important;
+        }
+    }
+    
+}

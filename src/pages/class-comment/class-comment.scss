@@ -1,17 +1,57 @@
-.comment-wrapper {
+class-comment-page{
+  .comment-wrapper {
   
-  background-color: #eaf2ff;
 
-  .comment-info {
+    .comment-info {
 
-    .student-comment {
-      overflow: hidden;
-      height: 124px;
+      .student-comment {
+        overflow: hidden;
+        height: 124px;
 
+      }
+    }
+  }
+
+  ion-content{
+    background-color: #f3f3f3!important;
+  }
+
+  .h-100{
+    height: 100%!important;
+  }
+
+
+  
+  .hover-blur-effect-wrapper{
+
+    .hover-blur-effect{
+      transition: all 0.2s ease-in-out ;
     }
 
-    .more {
-      background-color: #e0ecff;
+    &:hover{
+      .hover-blur-effect{
+        background-color: #389ebb!important;
+      }
+    }
+  }
+
+  .mx-minus-5px{
+   margin:0 -5px!important;
+  }
+   .w-50{
+     width: 50%!important;
+   }
+
+   .hide-effect {
+    animation: fade-in-effect 0.3s ease-in-out
+  }
+
+  @keyframes fade-in-effect {
+    0% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1
     }
   }
 }

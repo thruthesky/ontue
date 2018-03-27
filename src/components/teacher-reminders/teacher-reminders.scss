@@ -1,3 +1,4 @@
+teacher-reminders-component{
     .slide-bg-1{
         background:linear-gradient(to bottom, rgba(#494949,0.63),  rgba(#494949,0.63)), 
         url('../assets/img/teacher/teacher-mobile-slide1.jpg');
@@ -19,3 +20,85 @@
         background-position: top;
     }
 
+    .line-height-2rem{
+        line-height: 2rem;
+    }
+
+    .color-animation{
+        animation: colorAnimate 7s ease-in-out infinite
+    }
+
+    .justify-self-start{
+       justify-self: start!important;
+    }
+
+    .bg-red-90{
+        background: rgba(#ab000d,0.8)!important;
+    }
+
+    .bg-redish{
+        background: rgba(#ab000d, 0.1);
+    }
+
+    @keyframes colorAnimate {
+        0%{
+            transform: rotateZ(0deg);
+          color: #009600;
+        }
+      
+
+        26%{
+            color: #BC5500;
+            transform: rotateZ(0deg);
+        }
+        27%{
+            transform: rotateZ(8deg);
+        }
+
+        28%{
+            transform: rotateZ(0deg);
+        }
+
+        29%{
+            transform: rotateZ(8deg);
+        }
+
+        30%{
+            transform: rotateZ(0deg);
+        }
+        
+        31%{
+            transform: rotateZ(8deg);
+        }
+
+        32%{
+            transform: rotateZ(0deg);
+        }
+
+        33%{
+            transform: rotateZ(5deg);
+        }
+
+        40%{
+            transform: rotateZ(0deg);
+            color: #007171;
+        }
+
+
+        54%{
+            transform: rotateZ(0deg);
+            color: #BC5500;
+        }
+
+        80%{
+            transform: rotateZ(0deg);
+            color: #009600;
+        }
+
+        100%{
+            color: #007171;
+            transform: rotateZ(0deg);
+        }
+      }
+
+}

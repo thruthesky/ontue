@@ -6,6 +6,10 @@ session-list {
         .d-sm-flex-row{
             flex-direction: row!important;
         }
+
+        .fs-sm-1dot4rem{
+            font-size: 1.4rem!important;
+        }
     }
 
     .odd,.even{
@@ -32,6 +36,9 @@ session-list {
         border-color: rgba(black, 0.06)!important;
     }
 
+    .h-100{
+        height: 100%;
+    }
     .sticky-effect{
         position:sticky!important;
         top:-1.5px;
