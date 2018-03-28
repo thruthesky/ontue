@@ -18,6 +18,7 @@ teacher-list-page {
   .flex-nowrap{
     flex-wrap: nowrap;
   }
+
   .my-5em {
     margin: 5em 0 !important;
   }
@@ -111,6 +112,10 @@ teacher-list-page {
     bottom:0;
     background: rgba(white, 0.8);
     z-index: 999999;
+  }
+
+  .p-1dot25em{
+    padding: 1.25em;
   }
 
 

@@ -1,4 +1,8 @@
 session-past-page {
   @include theme('brown');
+
+  .p-1dot25em{
+    padding: 1.25em;
+  }
 }
 
