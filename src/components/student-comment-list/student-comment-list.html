@@ -1,60 +1,69 @@
 <ion-header>
-  <ion-toolbar class="px-md-5 px-3">
-    <ion-grid no-padding>
+    <ion-grid class="bg-skyblue" no-padding>
       <ion-row align-items-center>
         <ion-col col-7 col-md-6>
           <ion-title class="p-0">
-            <span class="fs-90 white">{{ "STUDENT COMMENT LIST" | translate}}</span>
+            <span class="p-5 fs-90 white">{{ "STUDENT COMMENT LIST" | translate}}</span>
           </ion-title>
         </ion-col>
         <ion-col class="d-flex justify-content-end" col-5 col-md-6>
-          <button class="p-0 mr-3  d-flex align-items-center" color="white" icon-end ion-button clear small  *ngIf="a.user.isLogin && a.studentTheme" (click)="onClickCommentCreate()">
+          <button class="d-flex align-items-center m-0 py-5 pr-4 pl-5" color="white" icon-end ion-button clear small
+                  *ngIf="a.user.isLogin && a.studentTheme" (click)="onClickCommentCreate()">
             <span class="text-uppercase fw-bold">{{ 'WRITE REVIEW' | translate }}</span>
             <i class="fas fa-edit ml-2"></i>
           </button>
-          <button class="p-0" icon-end ion-button color="white" clear small (click)="onClickCancel()">
+          <button class="m-0 py-5 pl-4 pr-5" icon-end ion-button color="white" clear small (click)="onClickCancel()">
             <span class="text-uppercase fw-light">{{ "CLOSE" | translate}}</span>
             <ion-icon name="close"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-toolbar>
 </ion-header>
 <ion-content>
 
   <section id="student-comments" class="p-5">
     <div *ngIf="loading"
-         class="position-absolute d-flex align-items-center justify-content-center top-0 right-0 bottom-0 left-0 bg-white"
-         style="z-index: 987654; opacity: .6">
+         class="position-absolute d-flex align-items-center justify-content-center top-0 right-0 bottom-0 left-0 bg-opacity-white">
       <div class="text-center">
         <i class="fa fa-spinner fa-spin fs-4rem"></i>
-        <div>{{ 'IN LOADING' | translate }}</div>
+        <div class="mt-4 fs-2rem">{{ 'IN LOADING' | translate }}</div>
       </div>
     </div>
 
+    <div class="d-flex-column align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center size-100x120 rounded-2 of-hidden">
+              <img src="{{teacher_photoURL}}">
+          </div>
+        <div class="my-3 fw-bold text-uppercase dodgerblue">
+          <i class="fas fa-users mr-1"></i>
+          {{a.preTeacherName(teacher_name)}}
+        </div>
+    </div>
+
+    <hr class="mb-5">
 
     <ng-container *ngFor="let comment of comments">
     <div class="comment" *ngIf="comment.idx">
       <ion-grid no-padding>
         <ion-row>
           <ion-col class="d-none d-md-flex" col-md-3>
-              <div class="d-flex align-items-center justify-content-center of-hidden rounded-50 size-100">
+              <div class="d-flex align-items-center justify-content-center  size-100 rounded-50 of-hidden">
                 <img src="{{comment?.photoURL ? comment.photoURL : a.anonymousPhotoURL }}">
               </div>
           </ion-col>
           <ion-col col-md-9 col-12>
             <div class="d-flex justify-content-center md-justify-content-start">
-                <div class="d-md-none d-sm-flex align-items-center justify-content-center of-hidden rounded-50 size-100">
+                <div class="d-md-none d-sm-flex align-items-center justify-content-center size-100 rounded-50 of-hidden">
                     <img src="{{comment?.photoURL ? comment.photoURL : a.anonymousPhotoURL }}">
                   </div>
-                <div  class="ml-md-3 ml-5 d-flex-column d-md-flex-row align-items-end mt-auto">
-                    <div class="name mr-4 m-0 text-uppercase fw-bold">
-                      <i class="fal mr-1 fa-id-card"></i>
+                <div  class="d-flex-column d-md-flex-row align-items-end mt-auto ml-md-3 ml-5 ">
+                    <div class="name mr-4 m-0 fw-bold text-uppercase">
+                      <i class="fas fa-graduation-cap mr-1"></i>
                       {{ comment.student_name }}
                     </div>
                     <div class="date mr-4 my-2 my-md-0">{{ 'DATE' | translate }}: {{ a.shortDate(comment.stamp) }}</div>
-                    <div class="rating darkorange mr-4">
+                    <div class="rating mr-4 darkorange">
                       {{ 'RATING' | translate }}: {{rate}}
                       <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
                       <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
@@ -75,8 +84,16 @@
             </div>
             <div class="description">
                 <div class="mb-2">
-                    <span class="py-2 pointer mr-4  hover-effect" *ngIf="comment.idx_student == a.user.id" (click)="onClickDelete(comment)"><i class="fa fa-trash"></i> {{ 'DELETE' | translate }}</span>
-                    <span class="py-2 pointer hover-effect" *ngIf="comment.idx_student == a.user.id" (click)="onClickCommentEdit(comment)"><i class="fa fa-pencil"></i> {{ 'EDIT' | translate }}</span>
+                    <span class="hover-effect  pointer mr-4 py-2" *ngIf="comment.idx_student == a.user.id" 
+                    (click)="onClickDelete(comment)">
+                    <i class="fa fa-trash"></i> 
+                    {{ 'DELETE' | translate }}
+                  </span>
+                    <span class="hover-effect pointer py-2" *ngIf="comment.idx_student == a.user.id" 
+                    (click)="onClickCommentEdit(comment)">
+                    <i class="fa fa-pencil"></i> 
+                    {{ 'EDIT' | translate }}
+                  </span>
                 </div>
                 {{comment.comment}}
             </div>

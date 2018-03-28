@@ -1,43 +1,43 @@
-<div class="guidelines bg-white m-0 p-0 pb-5 h-100 outline-effect">
-  <div class="bg-blue-60 white mb-1 pl-md-5 mb-4">
-      <h2  class="title-style ml-md-5 p-5 fs-3rem m-0 fw-light bg-blue text-center d-md-inline-block" ion-text color="white">Guidelines and Tips</h2>
+<div class="guidelines m-0 p-0 pb-5 h-100 bg-white outline-effect">
+  <div class="bg-blue-60 mb-1 mb-4 pl-md-5 white">
+      <h2  class="title-style d-md-inline-block m-0 ml-md-5 p-5  bg-blue fs-3rem fw-light text-center" ion-text color="white">Guidelines and Tips</h2>
   </div>
   <ion-grid no-padding>
-    <ion-row class="p-5 pointer" (click)="tipsAccordion=!tipsAccordion">
+    <ion-row class="pointer p-5" (click)="tipsAccordion=!tipsAccordion">
         <ion-col col-md-2 col-12 text-center text-md-left>
             <i class="fal fa-info-circle fa-3x ml-md-5 ml-0 pl-md-2 pl-0 dodgerblue "></i>
         </ion-col>
         <ion-col class="mt-4" 
                 [ngClass]="{'accordion-hide': !tipsAccordion, 'accordion-show': tipsAccordion}">
-                <h3 class="m-0 dodgerblue fw-bold mb-4 fs-110" text-center text-md-left >Important Tips</h3>
+                <h3 class="m-0 mb-4 dodgerblue fw-bold fs-110" text-center text-md-left >Important Tips</h3>
                 <div class="accordion-item">
-                  <p class="black m-0 mt-3 fw-light">Teacher must add student using smart phone.</p>
-                  <p class="black m-0 mt-3 fw-light">There is no way to add friend in kakao with desktop software.</p>
-                  <p class="black m-0 mt-3 fw-light">Teacher without grade will not be shown in the list of Recommended teacher.</p>
-                  <p class="black m-0 mt-3 fw-light">But they will be shown if the option "Show all teachers" is selected.</p>
+                  <p class="m-0 mt-3 black fw-light">Teacher must add student using smart phone.</p>
+                  <p class="m-0 mt-3 black fw-light">There is no way to add friend in kakao with desktop software.</p>
+                  <p class="m-0 mt-3 black fw-light">Teacher without grade will not be shown in the list of Recommended teacher.</p>
+                  <p class="m-0 mt-3 black fw-light">But they will be shown if the option "Show all teachers" is selected.</p>
                 </div>
         </ion-col>
-        <ion-col class="accordion-icon mt-3 d-none d-md-block" col-md-2 col-12 text-right>
+        <ion-col class="accordion-icon  d-none d-md-block mt-3" col-md-2 col-12 text-right>
             <i class="accordion-icon-toggle fal fa-chevron-right  fa-2x  mr-0 mr-md-5 dimgrey"></i>
         </ion-col>
       </ion-row>
-      <ion-row class="p-5 pointer" (click)="gradedTeachersAccordion=!gradedTeachersAccordion">
+      <ion-row class="pointer p-5" (click)="gradedTeachersAccordion=!gradedTeachersAccordion">
         <ion-col col-md-2 col-12 text-center text-md-left>
             <i class="fal fa-bullhorn fa-3x ml-md-5 ml-0 pl-md-2 pl-0 secondary-yellow"></i>
         </ion-col>
         <ion-col class="mt-4" 
                 [ngClass]="{'accordion-hide': !gradedTeachersAccordion, 'accordion-show': gradedTeachersAccordion}">
-                <h3  class="m-0 dodgerblue fw-bold mb-4 fs-110" text-center text-md-left>Graded Teacher's must have <b>Promotion Schedule</b></h3>
-                <ul class="accordion-item pl-5 m-0">
-                  <li><p class="black m-0 mt-3 fw-light"><b>1</b> schedule with <b>10mins</b> duration and <b>500points</b></p> </li>
-                  <li><p class="black m-0 mt-3 fw-light"><b>1</b> schedule with <b>20mins</b> duration and <b>1000points</b></p></li>
+                <h3  class="m-0 mb-4 dodgerblue fw-bold fs-110" text-center text-md-left>Graded Teacher's must have <b>Promotion Schedule</b></h3>
+                <ul class="accordion-item  m-0 pl-5">
+                  <li><p class="m-0 mt-3 black fw-light"><b>1</b> schedule with <b>10mins</b> duration and <b>500points</b></p> </li>
+                  <li><p class="m-0 mt-3 black fw-light"><b>1</b> schedule with <b>20mins</b> duration and <b>1000points</b></p></li>
                 </ul>
         </ion-col>
-        <ion-col class="accordion-icon mt-3 d-none d-md-block" col-md-2 col-12 text-right>
-            <i class="accordion-icon-toggle fal fa-chevron-right  fa-2x  mr-0 mr-md-5 dimgrey"></i>
+        <ion-col class="accordion-icon d-none d-md-block mt-3" col-md-2 col-12 text-right>
+            <i class="accordion-icon-toggle fal fa-chevron-right fa-2x mr-0 mr-md-5 dimgrey"></i>
         </ion-col>
       </ion-row>
-      <ion-row class="p-5 pointer" (click)="guidelinesAccordion=!guidelinesAccordion">
+      <ion-row class="pointer p-5" (click)="guidelinesAccordion=!guidelinesAccordion">
         <ion-col col-md-2 col-12 text-center text-md-left>
             <i class="fal fa-anchor  fa-3x ml-md-5 ml-0 pl-md-2 pl-0  dimgrey"></i>
         </ion-col>
@@ -45,11 +45,11 @@
                 [ngClass]="{'accordion-hide': !guidelinesAccordion, 'accordion-show': guidelinesAccordion}" >
                 <h3 class="m-0  dodgerblue mb-4 fs-110" text-center text-md-left>Teacher's Guideline</h3>
                 <ul class="pl-5 m-0 mt-3 accordion-item">
-                  <li><p class="black m-0 mt-3 fw-light">Nickname should be less than or equal to 8 letters.</p></li>
-                  <li><p class="black m-0 mt-3 fw-light">Profile image is best fit on 100px of width and 120px of height.</p></li>
+                  <li><p class="m-0 mt-3 black fw-light">Nickname should be less than or equal to 8 letters.</p></li>
+                  <li><p class="m-0 mt-3 black fw-light">Profile image is best fit on 100px of width and 120px of height.</p></li>
                 </ul>
         </ion-col>
-        <ion-col class="accordion-icon mt-3 d-none d-md-block" col-md-2 col-12 text-right>
+        <ion-col class="accordion-icon d-none d-md-block mt-3" col-md-2 col-12 text-right>
             <i class="accordion-icon-toggle fal fa-chevron-right  fa-2x  mr-0 mr-md-5 dimgrey"></i>
         </ion-col>
       </ion-row>
@@ -72,10 +72,10 @@
       </ion-col>
       <ion-col class="pl-md-5" col-md-8 col-12 >
           <h3 class="m-0 pt-5 dodgerblue fw-bold mb-4 fs-110" text-center text-md-left>Important Tips</h3>
-          <p class="black m-0 mt-3 fw-light">Teacher must add student using smart phone.</p>
-          <p class="black m-0 mt-3 fw-light">There is no way to add friend in kakao with desktop software.</p>
-          <p class="black m-0 mt-3 fw-light">Teacher without grade will not be shown in the list of Recommended teacher.</p>
-          <p class="black m-0 mt-3 fw-light">But they will be shown if the option "Show all teachers" is selected.</p>
+          <p class="m-0 mt-3 black fw-light">Teacher must add student using smart phone.</p>
+          <p class="m-0 mt-3 black fw-light">There is no way to add friend in kakao with desktop software.</p>
+          <p class="m-0 mt-3 black fw-light">Teacher without grade will not be shown in the list of Recommended teacher.</p>
+          <p class="m-0 mt-3 black fw-light">But they will be shown if the option "Show all teachers" is selected.</p>
       </ion-col>
     </ion-row>
     <ion-row class="my-5  px-5 px-md-0" align-items-stretch >
@@ -85,8 +85,8 @@
         <ion-col class="pl-md-5" col-md-8 col-12 >
           <h3  class="m-0 pt-5 dodgerblue fw-bold mb-4 fs-110" text-center text-md-left >Graded Teacher's must have <b>Promotion Schedule</b></h3>
          <ul class="pl-5 m-0">
-            <li><p class="black m-0 mt-3 fw-light"><b>1</b> schedule with <b>10mins</b> duration and <b>500points</b></p> </li>
-            <li><p class="black m-0 mt-3 fw-light"><b>1</b> schedule with <b>20mins</b> duration and <b>1000points</b></p></li>
+            <li><p class="m-0 mt-3 black fw-light"><b>1</b> schedule with <b>10mins</b> duration and <b>500points</b></p> </li>
+            <li><p class="m-0 mt-3 black fw-light"><b>1</b> schedule with <b>20mins</b> duration and <b>1000points</b></p></li>
           </ul>
       </ion-col>
     </ion-row>
@@ -97,8 +97,8 @@
         <ion-col class="pl-md-5" col-md-8 col-12 >
           <h3 class="m-0 pt-5 dodgerblue mb-4 fs-110" text-center text-md-left>Teacher's Guideline</h3>
           <ul class="pl-5 m-0 mt-3">
-            <li><p class="black m-0 mt-3 fw-light">Nickname should be less than or equal to 8 letters.</p></li>
-            <li><p class="black m-0 mt-3 fw-light">Profile image is best fit on 100px of width and 120px of height.</p></li>
+            <li><p class="m-0 mt-3 black fw-light">Nickname should be less than or equal to 8 letters.</p></li>
+            <li><p class="m-0 mt-3 black fw-light">Profile image is best fit on 100px of width and 120px of height.</p></li>
           </ul>
       </ion-col>
     </ion-row>

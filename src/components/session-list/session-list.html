@@ -1,12 +1,12 @@
 <section class="bg-page">
 
-  <div class="options mb-5 hide-effect" *ngIf=" share.options ">
+  <div class="options hide-effect mb-5" *ngIf=" share.options ">
 
     <ion-grid *ngIf=" past " no-padding>
 
       <ion-row class="my-3">
         <ion-col class="pr-md-2 pr-0">
-          <ion-list class="border mb-0" no-lines>
+          <ion-list class="mb-0 border" no-lines>
               <ion-item>
                 <ion-label>{{ 'DATE BEGIN' | translate }}</ion-label>
                 <ion-datetime name="date_begin" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_begin" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
@@ -15,7 +15,7 @@
         </ion-col>
 
         <ion-col class="pl-md-2 pl-0">
-          <ion-list class="border mb-0" no-lines>
+          <ion-list class="mb-0 border" no-lines>
               <ion-item>
                 <ion-label>{{ 'DATE END' | translate }}</ion-label>
                 <ion-datetime name="date_end" displayFormat="MM/DD/YYYY" pickerFormat="YYYYMMDD" [(ngModel)]="date_end" (ngModelChange)="onChangeSearchOption()"></ion-datetime>
@@ -69,7 +69,7 @@
     </ion-list>
 
     <div class="buttons d-flex justify-content-center mb-4">
-      <button class="primary d-flex align-items-center fs-90 text-uppercase" (click)=" share.options = false ">
+      <button class="text-uppercase primary d-flex align-items-center fs-90" (click)=" share.options = false ">
         <i class="fal fa-times mr-1"></i>
         {{ 'CLOSE' | translate }}
       </button>
@@ -85,46 +85,46 @@
   <ion-grid class="page-desc bg-img search-result mb-md-5 my-0 " *ngIf=" re && books.length " no-padding>
     <ion-row class="p-4 pl-md-0 pr-md-5" align-items-stretch justify-content-around text-center>
       <ion-col class=" my-2 mb-md-0" col-md-2 col-12>
-        <i class="fal d-md-inline d-none fa-list fa-4x orange mb-3"></i>
-          <div class="h-100 d-flex-column d-sm-flex-row align-items-center">
-              <i class="fal d-inline d-md-none fs-2rem fa-list orange mr-2"></i>
+        <i class=" d-md-inline d-none fal fa-list fa-4x  mb-3 orange"></i>
+          <div class="d-flex-column d-sm-flex-row align-items-center h-100 ">
+              <i class="d-inline d-md-none fal fs-2rem fa-list  mr-2 orange"></i>
               <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'SEARCHED SESSIONS' | translate }}</div>
-              <div> {{ books.length }}</div>
+              <div class="mt-md-3 mt-0"> {{ books.length }}</div>
               <div> ( {{ 'TOTAL' | translate }} : {{ re.total_sessions }} )</div>
           </div>
       </ion-col>
       <ion-col class="my-2" *ngIf=" a.isTeacher " col-md-2 col-12>
-        <i class="fal d-none d-md-inline fa-check-circle green fa-4x mb-3"></i>
-          <div class="h-100 d-flex-column d-sm-flex-row align-items-center">
-              <i class="fal d-inline d-md-none fa-check-circle green fs-2rem mr-2"></i>
-            <div class="mr-3 mr-md-0  d-flex align-items-center fs-110  fw-bold ">{{ 'SEARCHED POINT' | translate }}</div>
+        <i class="fal fa-check-circle fa-4x  d-none d-md-inline mb-3 green"></i>
+          <div class="d-flex-column d-sm-flex-row align-items-center h-100">
+              <i class="fal fa-check-circle d-inline d-md-none  mr-2 fs-2rem green"></i>
+            <div class="d-flex align-items-center mr-3 mr-md-0 fs-110 fw-bold">{{ 'SEARCHED POINT' | translate }}</div>
             <div class="my-md-3 my-0 "> {{ re.total_points | number }}</div>
           </div>
       </ion-col>
-      <ng-container   *ngIf=" past " >
+      <ng-container *ngIf=" past " >
           <ion-col class="my-2" col-md-2 col-12  *ngIf=" re.total_session_refunded ">
-              <i class="fal d-none d-md-inline fa-retweet brown fa-4x mb-3"></i>
-                <div class="h-100 d-flex-column d-sm-flex-row align-items-center" >
-                    <i class="fal d-inline d-md-none fa-redo-alt brown fs-2rem mr-2"></i>
-                    <div class="mr-3 mr-md-0 fw-bold fs-110  d-flex align-items-center">{{ 'REFUNDED SESSIONS' | translate }}</div>
+              <i class="fal d-none d-md-inline fa-retweet fa-4x mb-3 brown"></i>
+                <div class="d-flex-column d-sm-flex-row align-items-center h-100">
+                    <i class="fal fa-redo-alt  d-inline d-md-none mr-2  brown fs-2rem"></i>
+                    <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'REFUNDED SESSIONS' | translate }}</div>
                     <div class="mt-md-3 mt-0"> {{re.total_session_refunded}}</div>
                 </div>
             </ion-col> 
             <ion-col class="my-2" col-md-2 col-12   *ngIf=" re.total_session_refund_in_progress ">
-                <i class="fal d-none d-md-inline fa-sync teal fa-4x mb-3"></i>
-                <div  class="h-100 d-flex-column d-sm-flex-row align-items-center">
-                    <i class="fal d-inline d-md-none teal fa-sync fs-2rem mr-2"></i>
-                    <div class="mr-3 mr-md-0 fw-bold fs-110 d-flex align-items-center">{{ 'SESSIONS IN REFUND PROGRESS' | translate }}</div>
+                <i class="fal fa-sync d-none d-md-inline fa-4x mb-3 teal"></i>
+                <div  class="d-flex-column d-sm-flex-row align-items-center h-100">
+                    <i class="fal fa-sync d-inline d-md-none mr-2 fs-2rem teal"></i>
+                    <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'SESSIONS IN REFUND PROGRESS' | translate }}</div>
                     <div class="mt-md-3 mt-0">  {{re.total_session_refund_in_progress}}</div>
                 </div>
             </ion-col>
       </ng-container>
       <ion-col class="my-2" col-md-2 col-12>
-        <i class="fal d-none d-md-inline fa-calendar-alt mb-3 indigo fa-4x"></i>
-          <div class="h-100 d-flex-column d-sm-flex-row align-items-center">  
-            <i class="fal d-inline d-md-none fa-calendar-alt indigo fs-2rem mr-2"></i>
-            <div class="mr-3 mr-md-0 fw-bold fs-110  d-flex align-items-center">{{ 'SEARCH PERIOD' | translate }}</div>
-            <div class="mt-md-3 mt-0 d-flex-column d-sm-flex-row align-items-center">
+        <i class="fal fa-calendar-alt fa-4x d-none d-md-inline mb-3 indigo"></i>
+          <div class="d-flex-column d-sm-flex-row align-items-center h-100">  
+            <i class="fal fa-calendar-alt d-inline d-md-none mr-2 fs-2rem indigo"></i>
+            <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'SEARCH PERIOD' | translate }}</div>
+            <div class="d-flex-column d-sm-flex-row align-items-center mt-md-3 mt-0">
               <span>{{ date_begin }}</span>
               <span class="mx-2"> ~ </span>
               <span> {{ date_end }} </span>
@@ -132,13 +132,13 @@
           </div>
       </ion-col>
       <ion-col class="pointer mt-2 mb-md-0" col-md-2 col-12 (click)=" a.open('settings') ">
-          <i class="d-none d-md-inline fal fa-globe dodgerblue fa-4x mb-3"></i>
+          <i class="fal fa-globe dodgerblue fa-4x d-none d-md-inline  mb-3"></i>
           <div class="d-flex d-flex-column d-sm-flex-row align-items-center">
-            <i class="d-inline d-md-none fal fa-globe dodgerblue fs-2rem mr-2"></i>
-            <div class="fw-bold mr-3 mr-md-0 fs-110 d-flex align-items-center">{{ 'TIMEZONE NOW' | translate }}</div>
+            <i class="fal fa-globe d-inline d-md-none mr-2 fs-2rem dodgerblue"></i>
+            <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'TIMEZONE NOW' | translate }}</div>
             <div class="mt-md-3 mt-0 fs-90 fs-sm-1dot4rem"> {{ a.userTime }}</div>
           </div>
-          <div class="app-button bg-white px-3 border black hover-effect secondary mt-3" >{{ 'CHANGE TIMEZONE' | translate }}</div>
+          <div class="app-button hover-effect mt-3 px-3  border bg-white black" >{{ 'CHANGE TIMEZONE' | translate }}</div>
         </ion-col> 
     </ion-row>
 
@@ -150,7 +150,7 @@
     <ng-container *ngIf=" past ">{{ 'NO MORE PASTS' | translate }}</ng-container>
   </div>
 
-  <div class="d-flex my-5 mx-4 p-4 alert alert-warning rounded-0" *ngIf=" re == null ">
+  <div class="alert alert-warning d-flex my-5 mx-4 p-4 rounded-0" *ngIf=" re == null ">
     <ion-spinner></ion-spinner>
     <span class="px-3 py-2">
         {{ 'IN LOADING' | translate }}
@@ -159,7 +159,7 @@
 
   <div class="books my-md-5 mt-0 " *ngIf=" books.length ">
     <ion-grid no-padding  text-center>
-      <ion-row class="sticky-effect white bg-blue-60 px-md-5 px-0 py-4 text-uppercase fw-bold" justify-content-between align-items-center >
+      <ion-row class="sticky-effect  px-md-5 px-0 py-4 bg-blue-60 fw-bold white text-uppercase" justify-content-between align-items-center >
         <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
             <div>{{ 'TEACHER' | translate }}</div>
         </ion-col>
@@ -192,13 +192,16 @@
           </ng-container>
         </ion-col>
       </ion-row>
-      <ion-row class="px-md-5 px-0 py-4 border border-top-0 border-right-0 border-left-0 " *ngFor="let book of books; let i = index; let o = odd; let e = even" [ngClass]=" { 'odd': o, 'even': e } " justify-content-between align-items-center >
+      <ion-row class="px-md-5 px-0 py-4 border border-top-0 border-right-0 border-left-0 " 
+              *ngFor="let book of books; let i = index; let o = odd; let e = even" 
+              [ngClass]=" { 'odd': o, 'even': e } " 
+              justify-content-between align-items-center >
         <ion-col *ngIf="a.isStudent" col-3 col-md-1>
             <section class="teacher-photo">
-              <div class="size-40 rounded-50 of-hidden pointer mx-auto" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
+              <div class="pointer mx-auto size-40 rounded-50 of-hidden" (click)=" a.open('schedule-table', { ID: book.idx_teacher })">
                 <img class="d-block w-100" src="{{ photoURL( book )  }}">
               </div>
-              <div class="mt-2 text-uppercase fs-90" *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
+              <div class="mt-2  fs-90 text-uppercase" *ngIf="displayTeacherName">{{ a.preTeacherName(my_teachers[book.idx_teacher].name) }}</div>
             </section>
         </ion-col>
         <ion-col  *ngIf="a.isTeacher" col-3 col-md-2>
@@ -223,10 +226,12 @@
                 </ng-container>
                 <ng-container *ngIf="a.isStudent">
 
-                  <div class="fs-3rem orange" (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " *ngIf=" a.isMobile() ">
+                  <div class="fs-3rem orange" 
+                      (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " 
+                      *ngIf=" a.isMobile() ">
                     <i class="fas fa-plus-circle"></i>
                   </div>
-                  <div class="" *ngIf=" ! a.isMobile() ">
+                  <div *ngIf=" ! a.isMobile() ">
                     {{ my_teachers[book.idx_teacher].kakaotalk_id }}
                   </div>
 
@@ -242,13 +247,14 @@
                 <ng-container *ngIf=" book.past ">
                   <ng-container *ngIf=" a.isTeacher ">
                     <ion-col class="d-flex justify-content-center mt-4" *ngIf=" !paid(book) && !refunded( book ) " col-6>
-                        <button class="hover-effect border border-dark-06 bg-white blue rounded-2 " [class.warning]=" ! evaluated(book) "
-                        (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) ">
+                        <button class="hover-effect rounded-2 border border-dark-06 bg-white blue" 
+                                [class.warning]=" ! evaluated(book) "
+                                (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) ">
                           Eval
                         </button>
                     </ion-col>
                     <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" refundable(book) " col-6>
-                        <button class="hover-effect border border-dark-06 bg-lightgrey rounded-2 " (click)=" onClickRefund( book ) ">Refund</button>
+                        <button class="hover-effect rounded-2  border border-dark-06 bg-lightgrey" (click)=" onClickRefund( book ) ">Refund</button>
                     </ion-col>
                     <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" paid(book) " col-6>
                         <div>Paid</div>
@@ -260,7 +266,7 @@
                         <div class="alert alert-warning">
                           <span class="alert alert-warning m-0" *ngIf=" rejected(book); else Requested ">Rejected</span>
                           <ng-template #Requested>
-                            <button class="hover-effect border border-dark-06 rounded-2 bg-darkred white" (click)=" onClickShowRequest( book ) ">
+                            <button class="hover-effect  rounded-2 border border-dark-06 bg-darkred white" (click)=" onClickShowRequest( book ) ">
                               <ion-icon name="mail"></ion-icon> Refund Requested</button>
                           </ng-template>
                         </div>
@@ -268,7 +274,8 @@
                   </ng-container>
                   <ng-container  *ngIf=" a.isStudent ">
                     <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" !refunded(book) " col-6>
-                        <button class="hover-effect rounded-2 d-flex align-items-center  border border-dark-06 justify-content-center dark" (click)=" onClickEvaluateView(book.idx)">강의평가
+                        <button class="hover-effect rounded-2  d-flex align-items-center justify-content-center border border-dark-06 dark" 
+                                (click)=" onClickEvaluateView(book.idx)">강의평가
                             <!--<i class="fal fa-file-check ml-2"></i>-->
                         </button>
                     </ion-col>
@@ -279,15 +286,22 @@
                         </button>
                     </ion-col>
                     <ion-col  class="d-flex justify-content-center mt-4" *ngIf=" rejected( book ) " col-6>
-                        <span class="darkred py-2">포인트 복구 거절 됨</span>
+                        <span class="py-2 darkred">포인트 복구 거절 됨</span>
                     </ion-col>
                     <ion-col class="d-flex justify-content-center mt-4" *ngIf=" refunded(book) " col-6>
-                        <span class="darkred py-2" >복구됨</span>
+                        <span class="py-2 darkred" >복구됨</span>
                     </ion-col>
                       <ion-col class="d-flex justify-content-center mt-4" *ngIf=" !book.refund_timeover && ! rejected( book ) " col-6>
                         <ng-container *ngIf=" ! refunded( book ) ">
-                          <button class="hover-effect border border-dark-06 rounded-2  fs-90" (click)=" onClickCancelRefundRequest( book )" *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}</button>
-                          <button class="hover-effect border border-dark-06 rounded-2 warning fs-90" (click)=" onClickRefundRequest( book )" *ngIf=" book.refund_request_at == 0 ">{{ "REQUEST REFUND" | translate }}</button>
+                          <button class="hover-effect border border-dark-06 rounded-2  fs-90" 
+                                  (click)=" onClickCancelRefundRequest( book )" 
+                                  If=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}
+                          </button>
+                          <button class="warning hover-effect border border-dark-06 rounded-2 fs-90" 
+                                  (click)=" onClickRefundRequest( book )" 
+                                  *ngIf=" book.refund_request_at == 0 ">
+                                  {{ "REQUEST REFUND" | translate }}
+                          </button>
                         </ng-container>
                       </ion-col>
                   </ng-container>
@@ -296,7 +310,7 @@
 
                 <ion-row class="buttons buttons-sm mt-md-1 mt-4 mb-3" *ngIf=" future " justify-content-around align-items-center>
                   <ion-col class="d-flex justify-content-center mt-md-0" col-6>
-                      <button class="lightgrey border border-dark-06 rounded-2hover-effect" *ngIf=" ! book.process " (click)="onClickCancel( book )">
+                      <button class="hover-effect border border-dark-06 rounded-2 lightgrey" *ngIf=" ! book.process " (click)="onClickCancel( book )">
                         <i class="fal fa-times"></i>
                         <span class="pl-2">{{ 'CANCEL' | translate }}</span>
                       </button>
@@ -324,64 +338,64 @@
   <ion-grid class="mb-5" no-padding *ngIf=" a.isTeacher ">
     <ion-row>
       <ion-col class="mr-md-3 border">
-        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+        <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
           <div>Total Points from payable sessions</div>
-          <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['total_points_from_payable_session']}}</div>
+          <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['total_points_from_payable_session']}}</div>
         </div>
-        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+        <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
           <div>Your Total Share Points</div>
-          <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['total_teacher_share_points']}}</div>
+          <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['total_teacher_share_points']}}</div>
         </div>
-        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+        <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
           <div>No. of payable sessions</div>
-          <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['counts_of_payable_session']}}</div>
+          <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['counts_of_payable_session']}}</div>
         </div>
-        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+        <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
           <div>No. of not Payable sessions</div>
-          <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['counts_of_not_payable_session']}}</div>
+          <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['counts_of_not_payable_session']}}</div>
         </div>
-        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+        <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
           <div>Session not evaluated. <span class="red fw-bold">*No pay</span>.</div><!--  Session not evaluated. You need to evaluate the session or you will not get paid on the session.-->
-          <div class="w-90px fs-90  bg-darkorange white py-4 text-center" [class.warning]=" true ">Eval</div>
+          <div class="w-90px  py-4 fs-90  bg-darkorange white text-center" [class.warning]=" true ">Eval</div>
         </div>
 
-        <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white ">
+        <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white ">
           <div>Session you confirmed.</div>
-          <div class="w-90px fs-90  bg-green white py-4 text-center">Ready</div>
+          <div class="w-90px py-4 fs-90 bg-green white text-center">Ready</div>
         </div>
-        <div class="d-flex justify-content-between pl-4 align-items-center bg-white ">
+        <div class="d-flex justify-content-between align-items-center pl-4 bg-white ">
           <div>Session you must confirm.</div>
-          <div class="w-90px fs-90 bg-red white py-4 text-center">Ready</div>
+          <div class="w-90px py-4 fs-90 bg-red white text-center">Ready</div>
         </div>
       </ion-col>
       <ion-col class="ml-md-3 border">
-          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
               <div>No. of paid sessions</div>
-              <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['counts_of_paid_session']}}</div>
+              <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['counts_of_paid_session']}}</div>
             </div>
-            <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+            <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
               <div>No. of refunded sessions</div>
-              <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['counts_of_refunded_session']}}</div>
+              <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['counts_of_refunded_session']}}</div>
             </div>
-          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
             <div>No. of refund in progress</div>
-            <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['counts_of_rejected_refund'] + teacher_summary['counts_of_requested_refund']}}</div>
+            <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['counts_of_rejected_refund'] + teacher_summary['counts_of_requested_refund']}}</div>
           </div>
-          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
             <div>No. of Incomplete Evaluation</div>
-            <div class="w-90px fs-90  bg-grey  white py-4 text-center">{{teacher_summary['counts_of_incomplete_eval']}}</div>
+            <div class="w-90px py-4 fs-90 bg-grey  white text-center">{{teacher_summary['counts_of_incomplete_eval']}}</div>
           </div>
-          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
             <div>Point Refund Request Rejected.</div>
-            <div class="w-90px fs-90  alert alert-warning m-0 py-4 text-center">Rejected</div>
+            <div class=" alert alert-warning w-90px  py-4 fs-90 m-0 text-center">Rejected</div>
           </div>
-          <div class="d-flex justify-content-between pl-4 align-items-center border-bottom bg-white">
+          <div class="d-flex justify-content-between align-items-center pl-4 border-bottom bg-white">
             <div>Accept Refund Request</div>
-            <div class="w-90px fs-90   bg-blue white py-4 text-center">Accept</div>
+            <div class="w-90px  py-4 fs-90 bg-blue white text-center">Accept</div>
           </div>
-        <div class="d-flex justify-content-between pl-4 align-items-center bg-white ">
+        <div class="d-flex justify-content-between align-items-center pl-4 bg-white ">
           <div>Reject Refund Request.</div>
-          <div class="w-90px fs-90  bg-darkred  white py-4 text-center">Reject</div>
+          <div class="w-90px py-4 fs-90 bg-darkred white text-center">Reject</div>
         </div>
       </ion-col>
     </ion-row>

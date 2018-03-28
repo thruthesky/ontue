@@ -1,22 +1,22 @@
-<div class="teacher-evaluation outline-effect  bg-white rounded m-0 mt-5">
-    <div class="bg-blue-60 white px-md-5">
-        <h2  class="title-style p-5 ml-md-4 fs-3rem m-0 fw-light bg-blue d-md-inline-block" ion-text color="white" text-center text-md-left>Recent Evaluation</h2>
+<div class="teacher-evaluation m-0 mt-5 rounded bg-white outline-effect">
+    <div class="px-md-5 bg-blue-60 white">
+        <h2  class="title-style d-md-inline-block ml-md-4 m-0 p-5 fs-3rem fw-light bg-blue" ion-text color="white" text-center text-md-left>Recent Evaluation</h2>
     </div>
-    <ion-list class="mx-0 my-5 " no-lines>
+    <ion-list class="mx-0 my-5" no-lines>
         <div class="m-0 px-5 py-5 " ion-item
           *ngFor="let teacher_comment of evaluations; let i=index">
           <ion-grid no-padding>
               <ion-row class="mx-4 my-3" align-items-end>
                   <ion-col class="my-3 my-md-0" *ngIf="teacher_comment['teacher_photoURL'] || teacher_comment['student_photoURL']" text-md-left text-center col-12 col-md-6>
-                        <span class=" size-80 of-hidden mr-2 d-inline-block rounded-2" *ngIf="teacher_comment['teacher_photoURL']">
+                        <span class="d-inline-block mr-2 size-80 rounded-2 of-hidden" *ngIf="teacher_comment['teacher_photoURL']">
                           <img src="{{teacher_comment['teacher_photoURL']}}">
                         </span>
-                        <span class=" size-80 of-hidden mr-4 d-inline-block rounded-2">
-                          <img  src="{{a.checkPhotoURL(teacher_comment['student_photoURL'])}}">
+                        <span class="d-inline-block mr-4 size-80 rounded-2 of-hidden ">
+                          <img src="{{a.checkPhotoURL(teacher_comment['student_photoURL'])}}">
                         </span>
-                        <h2 class="fs-2rem fw-bold mx-0  d-md-inline-block my-3 my-md-0" ion-text color="blue">
+                        <h2 class=" d-md-inline-block my-3 my-md-0 mx-0 fs-2rem fw-bold" ion-text color="blue">
                           {{ a.preTeacherName(teacher_comment.teacher_name) }}
-                          <span class="fw-light fs-lg ml-3 black">{{preDate(teacher_comment['date'])}}</span>
+                          <span class="ml-3 fw-light fs-lg black">{{preDate(teacher_comment['date'])}}</span>
                         </h2>
                   </ion-col>
                   <ion-col text-md-right text-center col-12 col-md-6>
@@ -24,10 +24,10 @@
                   </ion-col>
               </ion-row>
           </ion-grid>
-          <div class="bg-light p-5 m-0 rounded my-3 mx-4 outline-effect">
-            <div  class="line-h-1-8em m-0 p-0 my-3 fs-90" ion-text color="dark">
-              <span class="white-space-pre  hide-effect" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}}<span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
-              <span class="white-space-pre  hide-effect" *ngIf="teacher_comment['more']">{{teacher_comment.comment}}</span>
+          <div class="m-0 my-3 mx-4 p-5 rounded bg-light outline-effect">
+            <div  class="my-3 m-0 p-0 line-h-1-8em fs-90" ion-text color="dark">
+              <span class="white-space-pre hide-effect" *ngIf="!teacher_comment['more']">{{teacher_comment.comment.slice(0,200)}}<span class="fs-xl" *ngIf="teacher_comment.comment.length>200"> ...</span></span>
+              <span class="white-space-pre hide-effect" *ngIf="teacher_comment['more']">{{teacher_comment.comment}}</span>
             </div>
             <ng-container *ngIf="teacher_comment.comment.length>200">
               <span class="pointer text-nowrap" ion-text color="blue" (click)="teacher_comment['more'] = !teacher_comment['more']"> {{teacher_comment['more']? 'View Less' : 'View More'}}</span>
@@ -35,7 +35,7 @@
           </div>
         </div>
     </ion-list>
-    <div class="pagination bg-blue p-3" text-center>
+    <div class="pagination p-3 bg-blue" text-center>
       <page-navigator class="evaluation mx-auto"
                       [no_of_total_items]=" pageOption['totalRecord'] "
                       [no_of_items_in_one_page]=" pageOption['limitPerPage'] "

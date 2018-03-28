@@ -1,11 +1,7 @@
 student-comment-list{
-    .toolbar-background-md{
-        background: skyblue!important;
-    }
-
-    .toolbar-title-md{
-        display: flex;
-        align-items: center;
+    .bg-opacity-white{
+        background: rgba(white, 0.6);
+        z-index: 999898;
     }
 
     ion-header{

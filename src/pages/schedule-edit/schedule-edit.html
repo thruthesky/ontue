@@ -16,42 +16,42 @@
             <ion-grid no-padding>
               <ion-row class="mt-4 mb-2">
                 <ion-col class="mr-4" col-md-5>
-                   <div class="p-4 bg-white border fw-bold dodgerblue  border-dodgerblue">Your ID No:</div>
+                   <div class="p-4 border border-dodgerblue  bg-white fw-bold dodgerblue">Your ID No:</div>
                 </ion-col>
                 <ion-col>
-                   <div class="p-4 bg-white border border-dodgerblue"> {{ a.user.id }}</div>
+                   <div class="p-4 border border-dodgerblue bg-white"> {{ a.user.id }}</div>
                 </ion-col>
               </ion-row>
               <ion-row class="my-3">
                 <ion-col class="mr-4" col-md-5>
-                  <div class="p-4 bg-white border fw-bold dodgerblue  border-dodgerblue">Your timezone:</div>
+                  <div class="p-4 border border-dodgerblue  bg-white fw-bold dodgerblue">Your timezone:</div>
                 </ion-col>
                 <ion-col>
-                   <div class="p-4 bg-white border border-dodgerblue"> {{ timezone_name }}</div>
+                   <div class="p-4 border border-dodgerblue bg-white"> {{ timezone_name }}</div>
                 </ion-col>
               </ion-row>
               <ion-row class="mb-4 mt-2" align-items-stretch>
                 <ion-col class="mr-4"  col-md-5>
-                  <div class="h-100 p-4 bg-white border fw-bold dodgerblue  border-dodgerblue d-flex align-items-center">Your time is now:</div>
+                  <div class="h-100 p-4 border border-dodgerblue  bg-white fw-bold dodgerblue d-flex align-items-center">Your time is now:</div>
                 </ion-col>
                 <ion-col>
-                   <div class="p-4 bg-white border border-dodgerblue"> {{ time }}</div>
+                   <div class="p-4 border border-dodgerblue bg-white"> {{ time }}</div>
                 </ion-col>
               </ion-row>
             </ion-grid>
           </ion-col>
           <ion-col>
-            <div class="py-4 d-flex justify-content-between h-100">
-              <div class="add-schedule rounded h-100 w-100 my-0 ml-md-4 mr-md-2 mr-3 bg-light-green white pointer p-3 p-md-0"
+            <div class="d-flex justify-content-between py-4 h-100">
+              <div class="add-schedule my-0 ml-md-4 mr-md-2 mr-3 p-3 p-md-0 h-100 w-100 rounded bg-light-green white pointer "
                 *ngIf="data" (click)='onClickAddSchedule()'>
-               <div class="fs-2rem fw-light h-100 d-flex-column align-items-center justify-content-center">
+               <div class="d-flex-column align-items-center justify-content-center  h-100 fs-2rem fw-light">
                   <i class="fal fa-calendar-plus fa-3x mb-4"></i>
                   Add Schedule
                </div>
               </div>
-              <div class="add-dayoff rounded h-100 w-100 m-0 ml-md-3 ml-2 bg-light-orange white pointer  p-3 p-md-0"
+              <div class="add-dayoff m-0 ml-md-3 ml-2  p-3 p-md-0  h-100 w-100 rounded bg-light-orange white pointer "
                *ngIf="data" (click)="a.open('dayoff')">
-               <div class="fs-2rem fw-light  h-100 d-flex-column align-items-center justify-content-center">
+               <div class="d-flex-column align-items-center justify-content-center   h-100 fs-2rem fw-light">
                   <i class="fal fa-calendar-minus fa-3x mb-4"></i>
                   Add Day off
                </div>

@@ -3,37 +3,37 @@
     <ion-grid class="max-width-992" no-padding>
         <ion-row>
             <ion-col col-md-3>
-                <ion-buttons  id="logo" class="px-3 py-0 m-0" (click)=" a.open('home')">
-                    <div class="min-height-56 p-0 m-0 pointer" ion-button>
-                            <i class="fas fa-video fa-2x border border-white p-2 rounded-2 white"></i>
+                <ion-buttons  id="logo" class="m-0 px-3 py-0" (click)=" a.open('home')">
+                    <div class="min-height-56  pointer m-0 p-0" ion-button>
+                            <i class="fas fa-video fa-2x p-2 rounded-2 border border-white white"></i>
                         <span  class="ml-2" color="white" ion-text>Ontue</span>
                     </div>
                 </ion-buttons>
             </ion-col>
             <ion-col text-center col-md-6>
-                <ion-buttons class="min-height-56 d-none d-md-flex justify-content-between p-0 m-0">
-                    <button class="min-height-56 p-0 m-0 pl-3 hover-effect" (click)="a.open('teacher-list')" ion-button color="white">Teachers</button>
+                <ion-buttons class="min-height-56 d-none d-md-flex justify-content-between m-0 p-0">
+                    <button class="min-height-56 hover-effect m-0 p-0 px-4" (click)="a.open('teacher-list')" ion-button color="white">Teachers</button>
 
-                    <button class="min-height-56 p-0 m-0 hover-effect" (click)="a.onClickContactAdmin()"  ion-button color="white">Contact Us</button>
-                    <button class="min-height-56 p-0 m-0 hover-effect" (click)="a.open('how-to-use')" ion-button color="white">FAQ</button>
+                    <button class="min-height-56 hover-effect m-0 p-0 px-4" (click)="a.onClickContactAdmin()"  ion-button color="white">Contact Us</button>
+                    <button class="min-height-56 hover-effect m-0 p-0 px-4" (click)="a.open('how-to-use')" ion-button color="white">FAQ</button>
                     
                     <ng-container *ngIf=" a.user.isLogin; else userLogout ">
-                        <button class="min-height-56 m-0 p-0 hover-effect" (click)="a.open('session-future')" ion-button color="white">Reserved</button>
-                        <button class="min-height-56 m-0 p-0 hover-effect" (click)="a.open('session-past')" ion-button color="white">Past</button>
-                        <button class="min-height-56 m-0 p-0 pr-3 hover-effect" (click)="a.open('schedule-edit')" ion-button color="white">Schedule</button>
+                        <button class="min-height-56 hover-effect m-0 p-0 px-4" (click)="a.open('session-future')" ion-button color="white">Reserved</button>
+                        <button class="min-height-56 hover-effect m-0 p-0 px-4" (click)="a.open('session-past')" ion-button color="white">Past</button>
+                        <button class="min-height-56 hover-effect m-0 px-4 p-0 pr-3" (click)="a.open('schedule-edit')" ion-button color="white">Schedule</button>
                     </ng-container>
                     <ng-template #userLogout>
-                        <button class="min-height-56 m-0 p-0 hover-effect" (click)="a.open('login')" ion-button color="white">Login</button>
-                        <button class="min-height-56 m-0 p-0 pr-3 hover-effect" (click)="a.open('register')" ion-button color="white">Register</button>
+                        <button class="min-height-56 hover-effect m-0 p-0 px-4" (click)="a.open('login')" ion-button color="white">Login</button>
+                        <button class="min-height-56 hover-effect m-0 px-4 p-0 pr-3" (click)="a.open('register')" ion-button color="white">Register</button>
                     </ng-template>
                 </ion-buttons>
                 <ion-buttons class="d-md-none">
-                        <button class="min-height-56 hover-effect fs-110" (click)="a.onClickContactAdmin()" ion-button icon-start icon-start color="white" > Contact Us</button>
+                        <button class="min-height-56 hover-effect px-4 fs-110" (click)="a.onClickContactAdmin()" ion-button icon-start icon-start color="white" > Contact Us</button>
                 </ion-buttons>
             </ion-col>
             <ion-col col-md-3>
                 <ion-buttons class="mr-0 px-3 py-0" text-right>
-                    <button class="min-height-56 mr-0 p-0" (click)="a.open('teacher-dashboard')" ion-button>
+                    <button class="min-height-56 hover-effect mr-0 p-0 pl-5" (click)="a.open('teacher-dashboard')" ion-button>
                         <ion-icon  class="fs-2-25em" color="white" name="ios-menu"></ion-icon>
                     </button>
                 </ion-buttons>

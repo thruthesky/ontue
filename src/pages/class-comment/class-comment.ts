@@ -102,7 +102,7 @@ export class ClassCommentPage {
 
   onClickShowMore(comment) {
     this.idx_teacher= comment.idx_teacher;
-    const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: comment.idx_teacher }, { cssClass: 'student-comment-list' }
+    const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: comment.idx_teacher, teacher_photoURL: comment.teacher_photoURL, teacher_name:comment.teacher_name }, { cssClass: 'student-comment-list' }
     );
     createCommentModal.onDidDismiss(reason => {
       if (reason == 'commentCreate') this.onClickCommentCreate();

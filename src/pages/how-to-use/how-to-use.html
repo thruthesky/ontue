@@ -4,25 +4,25 @@
 <ion-content>
   <div class="page pt-3 pb-0 pb-md-5">
     <hook-content-top></hook-content-top>
-    <section id="how-to-use" class="page-body m-0 my-1 p-0 mb-5 pb-5">
-        <section class="page-header bg-blue my-3">
-          <ion-grid class="cover-by-2 bg-white outline-effect px-1px">
-            <ion-row class="h-100  p-4 p-md-0" align-items-center justify-content-between>
+    <section id="how-to-use" class="page-body m-0 my-1 mb-5 p-0 pb-5">
+        <section class="page-header my-3 bg-blue">
+          <ion-grid class="cover-by-2 px-1px bg-white outline-effect">
+            <ion-row class="h-100 p-4 p-md-0" align-items-center justify-content-between>
               <ion-col text-center>
                   <h2 class="fs-4rem m-0" ion-text color="blue">Tips and Guides</h2>
                   <p ion-text color="dark">Things you need to know. Choose among the topics to learn more.</p>
               </ion-col>
               <ion-col class="d-none d-md-block" col-md-5 col-12 text-center>
-                  <i class="fs-9em fal fa-cog mr-4" ion-text color="blue"></i>
-                  <i class="fs-9em fas fa-lightbulb" ion-text color="blue"></i>
+                  <i class="fal fa-cog mr-4 fs-9em" ion-text color="blue"></i>
+                  <i class="fas fa-lightbulb fs-9em" ion-text color="blue"></i>
               </ion-col>
             </ion-row>
           </ion-grid>
         </section>
-      <ion-grid class="px-1px mt-5 mt-md-0" no-padding>
+      <ion-grid class="mt-5 mt-md-0 px-1px" no-padding>
         <ion-row class="my-md-3 my-0">
           <ion-col class="mr-md-3" col-12 col-md>
-              <ion-grid class="pointer cover-by-4 outline-effect bg-white hover-effect-color" (click)="showModalFAQ('teacherPolicy')" no-padding>
+              <ion-grid class="cover-by-4 pointer outline-effect bg-white hover-effect-color" (click)="showModalFAQ('teacherPolicy')" no-padding>
                 <ion-row class="h-100 py-3 py-md-0" align-items-center>
                   <ion-col text-center col-4>
                       <i class="fs-4em fal fa-archive"></i>
@@ -33,11 +33,11 @@
                 </ion-row>
               </ion-grid>
           </ion-col>
-          <ion-col class="ml-md-3 " col-12 col-md>
-              <ion-grid class="pointer cover-by-4 outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('kakaoInstall')" no-padding>
-                  <ion-row class="h-100 py-3 py-md-0" align-items-center>
+          <ion-col class="ml-md-3" col-12 col-md>
+              <ion-grid class="cover-by-4 pointer outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('kakaoInstall')" no-padding>
+                  <ion-row class="py-3 py-md-0 h-100" align-items-center>
                     <ion-col text-center col-4>
-                        <i class="fs-4em fal fa-plus-square"></i>
+                        <i class="fal fa-plus-square fs-4em "></i>
                     </ion-col>
                     <ion-col>
                         <div>Install Or Create Kakaotalk on Mobile.</div>
@@ -48,8 +48,8 @@
         </ion-row>
         <ion-row class="mt-md-3 mt-0">
           <ion-col class="mr-md-3 " col-12 col-md>
-              <ion-grid class="pointer cover-by-4 outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('qrmark')" no-padding>
-                  <ion-row class="h-100 py-3 py-md-0" align-items-center>
+              <ion-grid class="cover-by-4 pointer outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('qrmark')" no-padding>
+                  <ion-row class="py-3 py-md-0 h-100" align-items-center>
                     <ion-col text-center col-4>
                         <i class="fs-4em fal fa-qrcode "></i>
                     </ion-col>
@@ -60,8 +60,8 @@
                 </ion-grid>
           </ion-col>
           <ion-col class="ml-md-3 " col-12 col-md>
-              <ion-grid class="pointer cover-by-4 outline-effect bg-white  hover-effect-color" (click)="showModalFAQ('kakaoID')" no-padding>
-                  <ion-row class="h-100 py-3 py-md-0" align-items-center>
+              <ion-grid class="cover-by-4 pointer bg-white  outline-effect hover-effect-color" (click)="showModalFAQ('kakaoID')" no-padding>
+                  <ion-row class="py-3 py-md-0 h-100" align-items-center>
                     <ion-col text-center col-4>
                         <i class="fs-4em fal fa-id-badge"></i>
                     </ion-col>

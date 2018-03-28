@@ -1,8 +1,13 @@
 add-schedule{
 .form-effect{
-  label{transition: all 0.2s ease-in-out}
+  label{
+    transition: all 0.2s ease-in-out
+  }
 
-  .label-first{order: -1!important}
+  .label-first{
+    order: -1!important
+  }
+
   .focus-effect{
     transition: all 0.2s ease-in-out;
     &:focus{
@@ -15,29 +20,46 @@ add-schedule{
 }
 
 .checkbox-effect{
-  &+div{  transition: all 0.2s ease-in-out;}
+  &+div{  
+    transition: all 0.2s ease-in-out
+  }
+
   &:checked+div{
-    background:  rgba(#007bff,0.1)!important;
     border-color: #007bff!important;
+    background:  rgba(#007bff,0.1)!important
   }
   
   &:hover+div{
-    border-color: #007bff!important;
+    border-color: #007bff!important
   }
 }
 
-.opacity-0{opacity: 0!important}
-.border-darkorange{border-color:darkorange!important}
-.border-bottom{border-bottom: 1px solid #e2e2e2!important}
-.border-silver{border-color: #e2e2e2!important}
+.opacity-0{
+  opacity: 0!important
+}
+
+.border-darkorange{
+  border-color:darkorange!important
+}
+
+.border-bottom{
+  border-bottom: 1px solid #e2e2e2!important
+}
+
+.border-silver{
+  border-color: #e2e2e2!important
+}
+
 .justify-content-even{
-  justify-content: space-evenly;
+  justify-content: space-evenly
 }
+
 .h-100{
-  height: 100%;
+  height: 100%
 }
+
 .w-100px{
-  width: 100px;
+  width: 100px
 }
 
 }

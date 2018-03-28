@@ -4,7 +4,7 @@
 <ion-content>
   <div class="page pb-md-5 pb-0">
     <hook-content-top></hook-content-top>
-    <section class="page-header bg-blue-60 white fw-light fs-2rem p-5 text-center m-0">
+    <section class="page-header m-0 p-5  fw-light fs-2rem  bg-blue-60 white text-center">
       <div>{{ "TEACHER DASHBOARD" | translate }}</div>
     </section>
     <section class="page-body mt-md-4 mt-0">
@@ -14,7 +14,7 @@
           <ion-row class="mx-minus-15px px-4 px-md-0">
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color"  (click)="a.open('session-future')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white"  (click)="a.open('session-future')">
                   <i class="fa fa-calendar-alt fa-3x mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Reserved Class</div>
                 </div>
@@ -22,7 +22,7 @@
             </ion-col>
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
                 <!-- <ion-card> -->
-                  <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color"  (click)="a.open('teacher-list')">
+                  <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white"  (click)="a.open('teacher-list')">
                     <i class="fas fa-users fa-3x mb-4 mt-3"></i>
                     <div class="p-3 pb-5 lebel">Teachers</div>
                   </div>
@@ -30,7 +30,7 @@
               </ion-col>
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('session-past')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('session-past')">
                   <i class="fa fa-calendar-times fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Past Class</div>
                 </div>
@@ -38,7 +38,7 @@
             </ion-col>
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('schedule-edit')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('schedule-edit')">
                   <i class="fa fa-calendar-plus fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Add/Edit Schedule</div>
                 </div>
@@ -47,7 +47,7 @@
 
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('teacher-curriculum-vitae')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('teacher-curriculum-vitae')">
                   <i class="fa fa-edit fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Curriculum Vitae</div>
                 </div>
@@ -55,7 +55,7 @@
             </ion-col>
             <ion-col class="text-center" *ngIf="a.user.isLogout"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('login')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('login')">
                   <i class="fa fa-sign-in fa-3x mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Login</div>
                 </div>
@@ -63,7 +63,7 @@
             </ion-col>
             <ion-col class="text-center"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('register')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('register')">
                   <i class="fa fa-address-card fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel" *ngIf="a.user.isLogin">Update Profile</div>
                   <div class="p-3 pb-5 lebel" *ngIf="a.user.isLogout">Register</div>
@@ -72,7 +72,7 @@
             </ion-col>
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('settings-payment-info')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('settings-payment-info')">
                   <i class="fa fa-credit-card fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Payment Info<span class="d-none d-md-inline">rmation</span></div>
                 </div>
@@ -81,7 +81,7 @@
 
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('message')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('message')">
                   <i class="fa fa-comment-alt fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Messages</div>
                 </div>
@@ -89,7 +89,7 @@
             </ion-col>
             <ion-col class="text-center"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)=" a.onClickContactAdmin() ">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)=" a.onClickContactAdmin() ">
                   <i class="fa fa-phone-square fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Contact Us</div>
                 </div>
@@ -97,7 +97,7 @@
             </ion-col>
             <ion-col class="text-center"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('how-to-use')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('how-to-use')">
                   <i class="fal fa-book fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">FAQ</div>
                 </div>
@@ -106,7 +106,7 @@
 
             <ion-col class="text-center"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="showModal('teacherPolicy')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="showModal('teacherPolicy')">
                   <i class="fal fa-info-circle fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Policy</div>
                 </div>
@@ -115,7 +115,7 @@
 
             <ion-col class="text-center"  *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('password-change')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('password-change')">
                   <i class="fa fa-key fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Change Password</div>
                 </div>
@@ -124,7 +124,7 @@
 
             <ion-col class="text-center"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.open('settings')">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('settings')">
                   <i class="fa fa-cogs fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Settings</div>
                 </div>
@@ -133,7 +133,7 @@
 
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->
-                <div class="pt-5 pointer bg-white m-md-4 m-2 hover-effect-color" (click)="a.user.logout()">
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.user.logout()">
                   <i class="fa fa-sign-out fa-3x  mb-4 mt-3"></i>
                   <div class="p-3 pb-5 lebel">Logout</div>
                 </div>

@@ -12,16 +12,16 @@
       <form (submit)="onSubmitUpdate()">
         <ion-grid class="curriculum-vitae mb-5" no-padding>
           <ion-row class="mt-4" justify-content-center align-items-stretch>
-            <ion-col class="pr-md-5 pr-0 mr-md-2 mx-0 mb-5 mb-md-0 " col-md-5 col-11>
-              <div class="p-relative of-hidden pointer  h-100  border-stripes d-flex  align-items-center justify-content-center">
-                <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey"
+            <ion-col class="mr-md-2 mx-0 mb-5 mb-md-0  pr-md-5 pr-0" col-md-5 col-11>
+              <div class="p-relative of-hidden pointer d-flex  align-items-center justify-content-center h-100  border-stripes">
+                <input *ngIf=" ! a.isCordova " class="p-absolute top-0 right-0 bg-grey z-100"
                        style="opacity: 0.001; font-size: 15em;"
                        type="file"
                        (change)="fileUpload.onChangeFile($event)">
                 <div class="profile-user d-flex-column align-items-center justify-content-center py-3"
                   (click)="fileUpload.onClickCamera()">
 
-                  <div class="profile-user-photo d-inline-block size-100 my-3 of-hidden rounded-50 d-flex align-items-center">
+                  <div class="profile-user-photo of-hidden d-inline-block my-3 size-100 rounded-50 d-flex align-items-center">
                     <img src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
                   </div>
                   <button type="button" class="btn submit fs-lg my-3" [class.skip]="files && files.length"
@@ -37,20 +37,20 @@
                 </div>
               </div>
             </ion-col>
-            <ion-col col-5 class="pl-md-5 pl-0 ml-md-2 ml-0" col-md-5 col-11>
+            <ion-col col-5 class="ml-md-2 ml-0 pl-md-5 pl-0" col-md-5 col-11>
               <div class="p-relative of-hidden pointer">
                 <input *ngIf=" ! a.isCordova " class="p-absolute z-100 top-0 right-0 bg-grey"
                        style="opacity: 0.001; font-size: 15em;"
                        type="file"
                        (change)="fileUploadQRMark.onChangeFile($event)">
-                <div class="qr-mark p-4 d-flex-column align-items-center justify-content-center h-100 border"
+                <div class="qr-mark d-flex-column align-items-center justify-content-center p-4 h-100 border"
                      *ngIf="a.user.isLogin" (click)="fileUploadQRMark.onClickCamera()">
                   <ng-container *ngIf="!showQRMark">
                     <div>Upload QR Mark</div>
                     <div><i class="fal fa-qrcode fa-5x my-3"></i></div>
                   </ng-container>
                   <ng-container *ngIf="showQRMark">
-                    <div class="profile-qrmak-photo d-inline-block size-100 my-3 of-hidden d-flex align-items-center">
+                    <div class="profile-qrmak-photo d-inline-block of-hidden d-flex align-items-center size-100 my-3 ">
                       <img src="{{qrmarks[0].url}}">
                     </div>
                   </ng-container>
@@ -76,34 +76,34 @@
             </ion-col>
           </ion-row>
           <ion-row justify-content-center align-items-center>
-            <ion-col class="pr-md-5 pr-0 mr-md-2 mr-0" col-11 col-md-5>
+            <ion-col class="mr-md-2 mr-0 pr-md-5 pr-0" col-11 col-md-5>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" readonly [(ngModel)]="account.name"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" readonly [(ngModel)]="account.name"
                        name="name"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'TEACHER ID' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.fullname"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.fullname"
                        name="fullname"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'FULL NAME' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.display_name"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.display_name"
                        name="display_name"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'NICKNAME' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="email" [(ngModel)]="account.user_email"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="email" [(ngModel)]="account.user_email"
                        name="user_email"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'EMAIL' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.phone_number"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.phone_number"
                        name="phone_number"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'PHONE NO' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.last_education"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.last_education"
                        name="last_education"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'EDUCATION' | translate }}</label>
               </div>
@@ -133,23 +133,23 @@
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'Year you start teaching' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.youtube_video_url"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.youtube_video_url"
                        name="youtube_video_url"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'YOUTUBE VIDEO' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.kakaotalk_id"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.kakaotalk_id"
                        name="kakaotalk_id"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'KAKAOTALK ID' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2 focus-effect" type="text" [(ngModel)]="account.address"
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.address"
                        name="address"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'ADDRESS' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
                 <div
-                  class="d-flex border bg-white align-items-center justify-content-around h-40px w-100 rounded-2 p-3">
+                  class="d-flex  align-items-center justify-content-around h-40px w-100 p-3 border rounded-2 bg-white">
                   <input type="radio" name="male" [(ngModel)]="account.gender" value="M">Male
                   <input type="radio" name="female" [(ngModel)]="account.gender" value="F">Female
                 </div>
@@ -160,13 +160,13 @@
           <ion-row class="mt-5" justify-content-center>
             <ion-col col-10>
               <div class="m-0 p-0">
-                <ion-label class="bg-blue white text-center p-3 m-0">{{ 'GREETINGS' | translate }}</ion-label>
-                <textarea class="bg-light px-3 py-2  input-effect border w-100" rows="8" [(ngModel)]="account.introduction"
+                <ion-label class="p-3 m-0 bg-blue white text-center">{{ 'GREETINGS' | translate }}</ion-label>
+                <textarea class="  input-effect px-3 py-2 w-100  border bg-light" rows="8" [(ngModel)]="account.introduction"
                               name="introduction">
                 </textarea>
               </div>
               <div class="mt-5 mb-3" text-center>
-                <button class="py-4 w-md-50 w-100 rounded-2 bg-blue white hover-effect">
+                <button class=" hover-effect py-4 w-md-50 w-100 rounded-2 bg-blue white">
                   {{ 'UPDATE BUTTON' | translate }}
                 </button>
               </div>

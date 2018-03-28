@@ -1,32 +1,31 @@
-<ion-header>
-    <ion-toolbar class="px-5" color="blue">
-      <ion-grid no-padding>
-        <ion-row align-items-center >
-          <ion-col>       
-            <ion-title class="p-0">
-            <span class="fw-bold fs-90">GETTING THE QR CODE</span>
+  <ion-header>
+    <ion-grid class="bg-dodgerblue" no-padding>
+      <ion-row align-items-center>
+        <ion-col col-7 col-md-6>
+          <ion-title class="p-0">
+            <span class="p-5 fs-90 white">GETTING THE QR CODE</span>
           </ion-title>
         </ion-col>
-        <ion-col text-right col-md-2>
-          <button class="p-0"  icon-end  ion-button clear small color="white" (click)="dismiss()">
-              <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span><ion-icon name="close"></ion-icon>
+        <ion-col class="d-flex justify-content-end" col-5 col-md-6>
+          <button class="m-0 p-5" icon-end ion-button color="white" clear small (click)="dismiss()">
+            <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span>
+            <ion-icon name="close"></ion-icon>
           </button>
-       </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-toolbar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-header>
 <ion-content>
-  <section class="how-to p-5" id="how-to-get-qrcode">
-        <p class="fw-light fs-110 mt-4 mb-5 border  line-height-1-8em p-5">1. Open the Kakaotalk app on your smart phone. *(Login if you didn't login yet) </p>
-        <p class="fw-light fs-110 mt-4 mb-5 border  line-height-1-8em p-5">2. In your Kakaotalk app, press the <b>More Option Button</b>. (3 dot shown on the image below)</p> 
+  <section  id="how-to-get-qrcode" class="how-to p-5">
+        <p class="line-height-1-8em fs-110 fw-light mt-4 mb-5  p-5 border">1. Open the Kakaotalk app on your smart phone. *(Login if you didn't login yet) </p>
+        <p class="line-height-1-8em fs-110 fw-light mt-4 mb-5  p-5 border">2. In your Kakaotalk app, press the <b>More Option Button</b>. (3 dot shown on the image below)</p> 
           <img class="mb-5 ml-md-5 ml-0  p-0 border" src="assets/img/kakao/6.jpg">
-        <p class="fw-light fs-110 mt-4 mb-5 border  line-height-1-8em p-5">3. Press My <b>Profile</b>. (Primary Photo with your name shown on the image below)</p>
+        <p class="line-height-1-8em fs-110 fw-light mt-4 mb-5  p-5 border">3. Press My <b>Profile</b>. (Primary Photo with your name shown on the image below)</p>
           <img class="mb-5 ml-md-5 ml-0  p-0 border" src="assets/img/kakao/7.jpg">
-        <p class="fw-light fs-110 mt-4 mb-5 border  line-height-1-8em p-5">4. Press the <b>QR Code Button</b>.</p>
+        <p class="line-height-1-8em fs-110 fw-light mt-4 mb-5  p-5 border">4. Press the <b>QR Code Button</b>.</p>
           <img class="mb-5 ml-md-5 ml-0  p-0 border" src="assets/img/kakao/8.jpg">
-        <p class="fw-light fs-110 mt-4 mb-5 border  line-height-1-8em p-5">5. Press the <b>Download Button</b> to get a copy of your QR Code. (Check your gallery or Download folder)</p>
+        <p class="line-height-1-8em fs-110 fw-light mt-4 mb-5  p-5 border">5. Press the <b>Download Button</b> to get a copy of your QR Code. (Check your gallery or Download folder)</p>
           <img class="mb-5 ml-md-5 ml-0  p-0 border" src="assets/img/kakao/9.jpg">
-        <p class="fw-light fs-110 mt-4 mb-5 border  line-height-1-8em p-5">6. Hurray! You have a copy of your QR Code, you can update your Curriculum Vitae by uploading this image.</p>
+        <p class="line-height-1-8em fs-110 fw-light mt-4 mb-5  p-5 border">6. Hurray! You have a copy of your QR Code, you can update your Curriculum Vitae by uploading this image.</p>
   </section>
 </ion-content>

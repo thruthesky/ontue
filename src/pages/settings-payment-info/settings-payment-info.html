@@ -2,7 +2,7 @@
     <header-content [title]=" 'PAYMENT SETTING' "></header-content>
   </ion-header>
   <ion-content>
-    <div id="settings-payment" class="page bg-white outline-effect pb-5">
+    <div id="settings-payment" class="page  pb-5 bg-white outline-effect">
       <hook-content-top></hook-content-top>
       <div class="m-5 py-3">
           <h1 class="fs-3rem fw-bold"  text-center ion-text color="blue">{{ "PAYMENT SETTING" | translate }}</h1>
@@ -12,8 +12,8 @@
             <ion-row justify-content-center>
               <ion-col class="mr-md-4" col-md-3 col-auto>
                 <label class="hover-icon-effect pointer ">
-                  <input class="position-absolute opacity-0 radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash">
-                  <div class="d-inline-block p-md-5 p-4 border bg-light rounded-2 fs-lg fw-bold w-100" text-center>
+                  <input class="radio-effect position-absolute opacity-0" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="gcash">
+                  <div class="d-inline-block p-md-5 p-4 w-100 fs-lg fw-bold border rounded-2 bg-light" text-center>
                       <i class="fal fa-tablet-alt d-inline-block mx-auto fs-4rem icon-effect" ion-text color="green"></i>
                       <span class="d-block mt-md-3 m-0" text-center>GCAsh</span>
                   </div>
@@ -21,8 +21,8 @@
               </ion-col>
               <ion-col class="mx-5" col-md-3 col-auto>
                 <label class="hover-icon-effect pointer ">
-                  <input class="position-absolute opacity-0 radio-effect"  type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="western-union">
-                  <div class="d-inline-block p-md-5 p-4 border bg-light rounded-2 fs-lg fw-bold w-100" text-center>
+                  <input class="radio-effect position-absolute opacity-0"  type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="western-union">
+                  <div class="d-inline-block p-md-5 p-4 w-100 fs-lg fw-bold border rounded-2 bg-light" text-center>
                       <i class="fal fa-barcode d-inline-block fs-4rem mx-auto icon-effect" ion-text color="yellow"></i>
                       <span class="d-block mt-md-3 m-0" text-center>Western Union</span>
                   </div>
@@ -30,8 +30,8 @@
               </ion-col>
               <ion-col class="ml-md-4" col-md-3 col-auto>
                 <label class="hover-icon-effect pointer ">
-                    <input class="position-absolute opacity-0 radio-effect" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal">
-                    <div class="d-inline-block p-md-5 p-4 border bg-light rounded-2 fs-lg fw-bold w-100" text-center>
+                    <input class="radio-effect position-absolute opacity-0" type="radio" name="payment_method" [(ngModel)]="payment_information['payment_method']" value="paypal">
+                    <div class="d-inline-block p-md-5 p-4 w-100 fs-lg fw-bold border rounded-2 bg-light" text-center>
                         <i class="fal fa-credit-card d-inline-block fs-4rem mx-auto icon-effect" ion-text color="blue"></i>
                         <span class="d-block mt-md-3 m-md-0" text-center>Paypal</span>
                     </div>

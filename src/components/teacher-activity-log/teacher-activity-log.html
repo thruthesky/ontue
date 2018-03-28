@@ -1,10 +1,10 @@
-<div class="cover activity-log  bg-muted of-hidden outline-effect">
-  <p class="bg-silver fs-90 m-0 py-3 mb-3 text-center white fw-bold">Activity Log</p>
+<div class="cover activity-log bg-muted of-hidden outline-effect">
+  <p class="m-0 mb-3 py-3 fs-90 fw-bold bg-silver white text-center">Activity Log</p>
   <div class="px-4" *ngIf="a.activity_log && a.activity_log.length">
     <div class="m-0 py-3" *ngFor="let a of a.activity_log" text-wrap>
       <ion-grid class="my-0-2em pl-2" no-padding>
         <ion-row align-items-center>
-          <ion-col class="font-em-0-75 d-flex align-items-center" col-10>
+          <ion-col class="d-flex align-items-center font-em-0-75" col-10>
             <div class="d-flex align-items-center">
                 <span>
                     <span class="fw-bold">{{a.name ? a.name : 'Guest'}}</span>

@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Curriculum Vitae</ion-title>
     <ion-buttons start>
-      <button ion-button class="close" (click)="dismiss()">
+      <button  class="close" ion-button (click)="dismiss()">
         <span ion-text color="primary">{{ 'CLOSE' | translate }}</span>
       </button>
     </ion-buttons>
@@ -11,7 +11,7 @@
 <ion-content>
   <ion-list text-wrap class="fs-xl">
     <ion-item text-center>
-      <div class="size-200x240 mx-auto">
+      <div class="mx-auto size-200x240">
         <img src="{{ teacher.photoURL ? teacher.photoURL : a.anonymousPhotoURL }}">
       </div>
     </ion-item>

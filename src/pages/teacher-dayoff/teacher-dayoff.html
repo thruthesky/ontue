@@ -4,19 +4,19 @@
 <ion-content>
   <div class="page">
     <hook-content-top></hook-content-top>
-    <section class="page-header bg-blue mt-5">
-        <ion-grid class="bg-white outline-effect px-1px" no-padding>
-          <ion-row class="h-100 p-5" align-items-center justify-content-between>
+    <section class="page-header  mt-5 bg-blue">
+        <ion-grid class="px-1px bg-white outline-effect" no-padding>
+          <ion-row class="p-5 h-100" align-items-center justify-content-between>
             <ion-col text-center col-12 col-md-8>
-                <h2 class="fs-4rem m-0 mb-4" ion-text color="blue">{{ "DAY OFF" | translate }}</h2>
-                <p class="black fw-light line-height-1-8em m-0">
+                <h2 class="m-0 mb-4 fs-4rem" ion-text color="blue">{{ "DAY OFF" | translate }}</h2>
+                <p class="m-0 black fw-light line-height-1-8em">
                     Creating Day Off will prevent student to reserve on the date specified.
                     If there is already a reservation on the date you want to make day off, you may still add it.
                     You can still teach on the reserve class even you already set it as your day off.
                     Or You must inform the student that you will make a day off and you will cancel the reserved class.
                 </p>
             </ion-col>
-            <ion-col class=" d-none d-md-block" text-center col-12 col-md-4>
+            <ion-col class="d-none d-md-block" text-center col-12 col-md-4>
                 <i class="fs-9em fas fa-info-square" ion-text color="blue"></i>
             </ion-col>
           </ion-row>
@@ -25,10 +25,10 @@
     <section class="page-body">
       <div class="d-flex-column d-md-flex-row mt-3 mt-md-5">
         <button ion-button (click)='onClickCreateDayoff()'>Create Day-off</button>
-        <section class="w-100 pl-md-5 mt-2 mt-md-0" *ngIf="showForm">
-          <form class="w-100  d-flex">
-            <ion-list class="w-100 mr-md-5 " no-lines>
-                <ion-item-group class="w-100  border rounded-2">
+        <section class="mt-2 mt-md-0 w-100 pl-md-5" *ngIf="showForm">
+          <form class="w-100 d-flex">
+            <ion-list class="mr-md-5 w-100" no-lines>
+                <ion-item-group class="w-100 border rounded-2">
                   <ion-item>
                     <ion-label>Select Date</ion-label>
                     <ion-datetime name="date" max="{{today.getFullYear()+1}}" displayFormat="MM/DD/YYYY"
@@ -39,7 +39,7 @@
                   </ion-item>
                 </ion-item-group>
             </ion-list>
-            <button class="px-md-5 d-none d-md-block" color="orange" ion-button type="submit" (click)="onClickSubmit()">Create</button>
+            <button class="d-none d-md-block px-md-5" color="orange" ion-button type="submit" (click)="onClickSubmit()">Create</button>
           </form>
         </section>
       </div>
@@ -47,12 +47,12 @@
       <ion-grid class="px-1px" no-padding>
         <ion-row class="mx-minus-10px" *ngIf="dayoffs.length">
           <ion-col class="d-flex align-items-center p-3 hide-effect" col-md-3 col-12 *ngFor="let dayoff of dayoffs">
-            <div class="pointer white h-100 px-3 d-flex align-items-center bg-light-red"
+            <div class=" d-flex align-items-center pointer white h-100 px-3 bg-light-red"
                  (click)=" onClickDeleteDate( dayoff )">
               Delete
               <i class="fal fa-trash-alt ml-2 "></i>
             </div>
-            <div class="p-5 bg-white border w-100">{{ preDate(dayoff.date)}}</div>
+            <div class="p-5 w-100 bg-white border">{{ preDate(dayoff.date)}}</div>
           </ion-col>
         </ion-row>
         <ion-row *ngIf="!dayoffs.length">

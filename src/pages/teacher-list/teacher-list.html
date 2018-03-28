@@ -6,7 +6,6 @@
   <div class="page">
     <hook-content-top></hook-content-top>
 
-
     <section class="page-header d-flex justify-content-between">
       <div class="title white" *ngIf=" mode == 'leveltest' ">{{ "LEVELTEST PAGE TITLE" | translate }}</div>
       <h2 class="title white" *ngIf=" mode != 'leveltest' ">
@@ -35,7 +34,7 @@
           </ion-row>
         </ion-grid>
         <ion-list class="d-md-flex d-block m-0  px-1" no-lines>
-            <ion-item class="border mr-md-2 mr-0 ion-select-35-65">
+            <ion-item class="ion-select-35-65  mr-md-2 mr-0 border">
               <ion-label>{{ "GENDER" | translate }}</ion-label>
               <ion-select text-right (ionChange)=" onChangeGender() " [(ngModel)]="gender" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님의 성별을 선택하세요.', cssClass:'select-gender'}">
                 <ion-option value="F">{{"FEMALE" | translate}}</ion-option>
@@ -43,7 +42,7 @@
                 <ion-option value="">{{"ALL" | translate}}</ion-option>
               </ion-select>
             </ion-item>
-            <ion-item class="border ml-md-2 ml-0 mt-3 mt-md-0 ion-select-35-65">
+            <ion-item class=" ion-select-35-65 ml-md-2 ml-0 mt-3 mt-md-0 border">
               <ion-label>{{ "TEACHER GRADE" | translate }}</ion-label>
               <ion-select text-right (ionChange)=" onChangeRecommend() " [(ngModel)]="recommend" okText="확인" cancelText="취소" [selectOptions]="{ title: '선생님 등급을 선택하세요.', cssClass:'select-grade'}">
                 <ion-option value="Y">{{"RECOMMENDED TEACHER" | translate}}</ion-option>
@@ -89,12 +88,12 @@
     <section class="page-body pb-5">
 
 
-      <div class="teachers pt-md-5 mb-5 mb-md-6">
+      <div class="teachers  mb-5 mb-md-6 pt-md-5">
         <ion-grid *ngIf=" re " no-padding>
           <ion-row align-items-stretch justify-content-around>
-            <ion-col class=" mx-1 my-2 m py-1 py-md-0 pointer hide-effect" *ngFor="let teacher of teachers"
+            <ion-col class=" pointer hide-effect mx-1 my-2 py-1 py-md-0" *ngFor="let teacher of teachers"
                      (click)="onClickTeacher(teacher)" text-center col-auto>
-              <div class="hover-img-effect text-center w-100px d-inline-block bg-white rounded-2 h-100">
+              <div class="hover-img-effect  d-inline-block  h-100 w-100px  text-center  rounded-2 bg-white">
                 <div class="hover-cover d-flex align-items-center justify-content-center">
                     <i class="fas fa-external-link-square fa-2x white"></i>
                 </div>
@@ -108,7 +107,7 @@
                     <i class="star fas fa-star" *ngFor="let i of a.countStar(teacher.grade)"></i>
                   </span>
                 </div>
-                <div class="fs-90 fw-light mt-2 mb-4">
+                <div class="mt-2 mb-4 fs-90 fw-light">
                   ({{ teacher.total_reservation }} 명 참여)
                 </div>
               </div>
@@ -117,10 +116,10 @@
         </ion-grid>
       </div>
 
-      <div class="h-0 showmoreteacher-wrapper middle-line-wrapper my-5 my-md-6em"
+      <div class="showmoreteacher-wrapper middle-line-wrapper my-5 my-md-6em h-0 "
            *ngIf=" ! noMoreTeachers && ! loading">
-          <button class="middle-line bg-dodgerblue white hover-effect rounded-2 d-flex
-                         align-items-center justify-content-center px-5 py-4"
+          <button class="middle-line d-flex align-items-center justify-content-center
+                        px-5 py-4  rounded-2 bg-dodgerblue white hover-effect"
                  (click)=" onClickShowMoreTeacher()">
             <span class="d-inline-block">강사 더보기</span>
             <i class="fal fa-arrow-to-bottom ml-3"></i>
@@ -130,11 +129,11 @@
               *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' ">
               <i class="middle-line fal fa-ellipsis-h fa-7x darkgrey"></i>
           </div>
-      <div class="mb-md-5 text-center p-md-0 d-flex-column flex-md-row align-items-center justify-content-center"
+      <div class="d-flex-column flex-md-row align-items-center justify-content-center mb-md-5 p-md-0 text-center"
            *ngIf=" noMoreTeachers && gender == '' && recommend == 'Y' ">
         <div class="px-3 p-md-0">더 이상 추천 강사가 없습니다. 옵션을 통해 더 많은 강사를 볼 수 있습니다.</div>
-        <button class="no-more-teachers white bg-dodgerblue hover-effect   d-flex align-items-center
-                         justify-content-center rounded-2 text-uppercase ml-3"
+        <button class="no-more-teachers d-flex align-items-center justify-content-center ml-3
+                      rounded-2 bg-dodgerblue white hover-effect text-uppercase"
                 (click)="onClickShowAllTeachers() ">
           <span>옵션 창 열기</span>
           <ion-icon class="ml-3" name="options"></ion-icon>
@@ -142,9 +141,9 @@
       </div>
 
       <div class="loader-big" *ngIf=" loading ">
-          <div class="h-100 w-100 d-flex-column align-items-center justify-content-center" text-center>
+          <div class="d-flex-column align-items-center justify-content-center h-100 w-100 " text-center>
                 <ion-spinner class="size-100" name="ios"></ion-spinner>
-                <div class="text p-5 dimgrey fs-2rem fw-bold text-uppercase">
+                <div class="text p-5 fs-2rem dimgrey fw-bold text-uppercase">
                   {{ 'IN LOADING' | translate }}..
                 </div>
           </div>

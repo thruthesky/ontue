@@ -1,86 +1,83 @@
 <ion-header>
-  <ion-toolbar class="px-5" color="light">
-    <ion-grid no-padding>
+    <ion-grid class="bg-lightgrey" no-padding>
       <ion-row align-items-center>
-        <ion-col>
+        <ion-col col-7 col-md-6>
           <ion-title class="p-0">
-            <span class="fw-bold fs-90">강의 평가</span>
+            <span class="p-5 fs-90 white">강의 평가</span>
           </ion-title>
         </ion-col>
-        <ion-col text-right col-md-2>
-          <button class="p-0" icon-end ion-button clear small (click)="dismiss()">
-            <span class="text-uppercase fw-light">{{ 'CANCEL' | translate }}</span>
+        <ion-col class="d-flex justify-content-end" col-5 col-md-6>
+          <button class="m-0 p-5" icon-end ion-button color="white" clear small (click)="dismiss()">
+            <span class="text-uppercase">{{'CLOSE'| translate}}</span>
             <ion-icon name="close"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-toolbar>
-</ion-header>
-<ion-content class="bg-ghostwhite" id="section-to-print">
+  </ion-header>
+<ion-content  id="section-to-print" class="bg-ghostwhite">
 
   <div class="p-3">
     <div *ngIf="loading"
-         class="position-absolute d-flex align-items-center justify-content-center top-0 right-0 bottom-0 left-0 bg-white"
-         style="z-index: 987654; opacity: .6">
-      <div class="text-center">
-        <i class="fa fa-spinner fa-spin fs-4rem"></i>
-        <div>{{ 'IN LOADING' | translate }}</div>
+         class="position-absolute d-flex align-items-center justify-content-center top-0 right-0 bottom-0 left-0 bg-opacity-white">
+      <div class="p-5 text-center rounded-2">
+        <i class="fa fa-spinner fa-spin  mb-3 fs-4rem"></i>
+        <div class="mt-3 fs-2rem">{{ 'IN LOADING' | translate }}</div>
       </div>
     </div>
     <div class="d-flex align-items-stretch justify-content-center text-center">
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <span class="fw-bold">수업번호 </span>
-        <span class="fs-110 ml-2">{{ session?.idx }}</span>
+        <span class=" ml-2 fs-110">{{ session?.idx }}</span>
       </div>
     </div>
     <div class="d-flex align-items-stretch justify-content-center text-center">
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-110">{{ session?.book_used }}</div>
         <div class="fs-1rem ">교재</div>
       </div>
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-110">{{ session?.book_next }}</div>
         <div class="fs-1rem ">다음 수업 시간에 사용할 교재</div>
       </div>
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-3rem">{{ session?.point }}</div>
         <div>포인트</div>
       </div>
     </div>
     <div class="d-flex align-items-stretch justify-content-center text-center">
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-3rem">{{ session?.expression }}</div>
         <div>표현력</div>
       </div>
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-3rem">{{ session?.vocabulary }}</div>
         <div>어휘력</div>
       </div>
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-3rem"> {{ session?.grammar }}</div>
         <div>문법</div>
       </div>
     </div>
     <div class="d-flex align-items-stretch justify-content-center text-center">
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-3rem"> {{ session?.pronunciation }}</div>
         <div>발음</div>
       </div>
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-3rem"> {{ session?.speed }}</div>
         <div>유창함</div>
       </div>
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 w-100 border bg-white">
         <div class="mb-2 fs-3rem">{{level}}</div>
         <div>결과(레벨)</div>
       </div>
     </div>
     <div class="d-flex align-items-stretch justify-content-center text-center">
 
-      <div class="py-4 m-1 border bg-white w-100">
+      <div class="m-1 py-4 px-3  w-100 border bg-white">
         <div class="mt-2 fw-bold">코멘트</div>
-        <div class="line-height-1-8em"> {{ session?.comment }}</div>
+        <div class="line-height-1-8em"> {{ session?.comment }} </div>
       </div>
 
     </div>

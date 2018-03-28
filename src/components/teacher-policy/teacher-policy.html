@@ -1,36 +1,34 @@
 <ion-header>
-  <ion-toolbar class="px-5" color="blue">
-    <ion-grid no-padding>
-      <ion-row align-items-center>
-        <ion-col>
-          <ion-title class="p-0">
-            <span class="fw-bold"> TERMS AND CONDITION</span>
-          </ion-title>
-        </ion-col>
-        <ion-col text-right col-md-2>
-          <button class="p-0" icon-end ion-button clear small color="white" (click)="dismiss()">
-            <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span>
-            <ion-icon name="close"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
+  <ion-grid class="bg-dodgerblue" no-padding>
+    <ion-row align-items-center>
+      <ion-col col-7 col-md-6>
+        <ion-title class="p-0">
+          <span class="p-5 fs-90 white">TERMS AND CONDITION</span>
+        </ion-title>
+      </ion-col>
+      <ion-col class="d-flex justify-content-end" col-5 col-md-6>
+        <button class="m-0 p-5" icon-end ion-button color="white" clear small (click)="dismiss()">
+          <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span>
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-header>
 <ion-content>
-  <section class="p-5" id="teacher-policy">
-    <h1 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4">TERMS AND
+  <section id="teacher-policy" class="p-5">
+    <h1 class="d-inline-block m-0 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue">TERMS AND
       CONDITION</h1>
     <p class="fw-light fs-110 line-height-1-8em mt-4 mb-5 border  p-5">The terms and conditions in this page explain the
       agreement between OnTue and you.</p>
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">TERMS</h2>
-    <p class="fw-light fs-110 mt-4 mb-5 border p-5">* Cutoff Period of payable dates.</p>
+    <p class="mt-4 mb-5 p-5 fw-light fs-110 border">* Cutoff Period of payable dates.</p>
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">CONDITION</h2>
-    <div class=" border  p-4  mt-4 mb-5">
-      <ul class="fw-light fs-110 line-height-1-8em px-5">
+    <div class="mt-4 mb-5 p-4 border">
+      <ul class="line-height-1-8em px-5 fw-light fs-110">
         <li>Teachers can freely register and set up profile, open schedules.</li>
 
         <li class="mt-5">Trial session is a common practice and it helps Teachers to gain more Students.</li>
@@ -61,10 +59,10 @@
       </ul>
     </div>
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">LEVEL TEST CURRICULUM</h2>
-    <div class=" border  p-4  mt-4 mb-5">
-      <ul class="fw-light fs-110 line-height-1-8em px-5">
+    <div class="mt-4 mb-5 p-4 border">
+      <ul class="px-5 line-height-1-8em fw-light fs-110">
         <li>We strongly request all teacher to follow this format for the level test class. It is considered a level test class when the session has 0 point.</li>
 
         <li class="mt-5">
@@ -107,18 +105,10 @@
 
 
 
-
-
-
-
-
-
-
-
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">FORMAT FOR EACH SESSION</h2>
-    <div class=" border  p-4  mt-4 mb-5">
-      <ul class="fw-light fs-110 line-height-1-8em px-5">
+    <div class="mt-4 mb-5 p-4 border">
+      <ul class="px-5 line-height-1-8em fw-light fs-110">
         <li>1. Say hello to Student for 2 minutes.</li>
 
         <li class="mt-5">
@@ -145,10 +135,9 @@
 
 
     <div>
-
-      <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5"
+      <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue"
           ion-text color="blue">Bookable Time</h2>
-      <p class="fw-light fs-110  line-height-1-8em  mt-4 mb-5 border p-5">
+      <p class="mt-4 mb-5 p-5 fw-light fs-110  line-height-1-8em border">
         Bookable time is an time interval to prevent a sudden booking by student.
         The input unit is minutes.
         If you put numbre 1 in bookable time, it means, student cannot book(reserve) your schedule that would begin in 1
@@ -159,67 +148,67 @@
     </div>
 
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">SESSION CANCELLATION</h2>
-    <p class="fw-light fs-110  mt-4 mb-5 border p-5">Teachers can cancel their reserve sessions.</p>
+    <p class="mt-4 mb-5 p-5 fw-light fs-110 border">Teachers can cancel their reserve sessions.</p>
 
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">PAYMENT</h2>
-    <div class="fw-light px-5 py-4 line-height-1-8em  mt-4 border fs-90 mb-5">
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+    <div class="mt-4 mb-5 px-5 py-4 line-height-1-8em  fs-90 fw-light border ">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         * Payment is on every 7th and 22nd.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         ** Teachers will get their payment on every 22nd for the cutoff between 1st and 15th of the month.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         ** Teachers will get their payment on every 7th for the cutoff between 16th and the last day of previous month.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         ** Sessions in Refund progress will be paid on next cutoff if it is settled.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         ** Sessions with no evaluation will be paid on next cutoff if it is evaluated.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         * Teachers can choose a payment method between paypal, gcash, western union.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         ** If a Teacher choose Western Union as his payment to be delivered, then the teacher must pay for Western Union
         Transaction fee since it is every expensive.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         ** Transaction fee of paypal, gcash will be held by Company.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         * If payment information of a Teacher is incorrect, then the teacher will get his payment on next cutoff if he
         settled the problem.
       </div>
-      <div class="fw-light fs-110 line-height-1-8em  mt-4">
+      <div class="mt-4 line-height-1-8em fw-light fs-110">
         * Payments less than 100 pesos or 2 USD dollars will be added to next cutoff.
       </div>
     </div>
 
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">POINT REFUND</h2>
-    <p class="fw-light fs-110 mt-4 mb-5 border  line-height-1-8em p-5">* If a teacher failed to submit class record on
+    <p class="mt-4 mb-5 p-5 line-height-1-8em  fw-light fs-110 border">* If a teacher failed to submit class record on
       the request of admin in 24 working hours, the point of session will be returned
       to the student.
-      <span class="mt-5 d-block"> * If a teacher does not turn on his camera, the point of the session will be returned to the student.</span>
-      <span class="mt-5 d-block"> * If a session has been failed due to any incidents that are occurred on teacher's side, the point of the session will
+      <span class="d-block mt-5"> * If a teacher does not turn on his camera, the point of the session will be returned to the student.</span>
+      <span class="d-block mt-5"> * If a session has been failed due to any incidents that are occurred on teacher's side, the point of the session will
     be refunded.</span>
-      <span class="mt-5 d-block">* Point of failure sessions that are not caused by student will be refunded. For instance, the internet
+      <span class="d-block mt-5">* Point of failure sessions that are not caused by student will be refunded. For instance, the internet
     cable under the sea was corrupted. And teacher cannot connect to student. It's not teacher's fault. The problem has occurred
     by the nature. But we need to protect our valuable customers. We will refund any session that has failed if that is not
     student's fault.</span>
     </p>
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">TEACHING ENVIRONMENT</h2>
-    <div class="mt-4 mb-5 border p-4">
-      <ul class="fw-light fs-110 line-height-1-8em px-5">
+    <div class="mt-4 mb-5 p-4 border">
+      <ul class="px-5 line-height-1-8em fw-light fs-110">
         <li class="mt-4">We don't consider a teacher as a good who teaches very well.</li>
         <li class="mt-4">
           We consider a teacher as a good teacher * If he has a good internet, headset, clam space ( no one and nothing
@@ -232,10 +221,10 @@
       </ul>
     </div>
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">THE FIRST CLASS</h2>
-    <div class=" mt-4 mb-5 border  p-4">
-      <ul class="fw-light fs-110 line-height-1-8em px-5">
+    <div class="mt-4 mb-5 p-4 border">
+      <ul class="px-5 line-height-1-8em fw-light fs-110">
         <li class="mt-4">The first class may be or may NOT be a free class.</li>
         <li class="mt-4">When it is a free class, it means student is new to our service and the student is giving a
           trial
@@ -250,10 +239,10 @@
       </ul>
     </div>
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">RULES ON CONDUCTING A SESSION</h2>
-    <div class=" mt-4 mb-5 border p-4">
-      <ul class="fw-light fs-110  line-height-1-8em px-5">
+    <div class=" mt-4 mb-5 p-4 border">
+      <ul class="px-5 line-height-1-8em fw-light fs-110">
         <li class="mt-4">
           Teacher must add the student's kakao as his friend and must be able to communicate before class time. If the
           teacher did
@@ -302,10 +291,10 @@
       </ul>
     </div>
 
-    <h2 class="fs-110 m-0 fw-light border d-inline-block border-dodgerblue rounded-2 dodgerblue py-3 px-4 mt-5" ion-text
+    <h2 class="d-inline-block m-0 mt-5 py-3 px-4 fs-110 fw-light border border-dodgerblue rounded-2 dodgerblue" ion-text
         color="blue">GRADING SYSTEM</h2>
-    <div class=" mt-4 mb-5 border p-4">
-      <ul class="fw-light fs-110  line-height-1-8em px-5">
+    <div class="mt-4 mb-5 p-4 border">
+      <ul class="px-5 line-height-1-8em fw-light fs-110">
         <li class="mt-4">
           Good teacher will have grade 1. Again, as we explain above, good teacher is who has good internet, good
           environment, good

@@ -19,6 +19,8 @@ export class StudentCommentList{
   idx_teacher;
   comments: STUDENT_COMMENTS_TO_TEACHER = <STUDENT_COMMENTS_TO_TEACHER>[] ;
   limit = 10;
+  teacher_photoURL;
+  teacher_name;
 
 
   error = null;
@@ -41,6 +43,8 @@ export class StudentCommentList{
   ) {
     this.params = navParams.data;
     this.idx_teacher = this.params['idx_teacher'];
+    this.teacher_name = this.params['teacher_name'];
+    this.teacher_photoURL = this.params['teacher_photoURL'];
     this.loadCommentList();
 
   }
