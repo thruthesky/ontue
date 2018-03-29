@@ -2,7 +2,7 @@
     <p class=" m-0 py-3 fs-90 white bg-blue-80 fw-bold text-center">Student Comments</p>
     <div class="list-hover-effect my-0-25em" no-lines>
      <ng-container *ngFor="let student_comment of student_comments; let i=index">
-        <ion-grid class="pointer item" (click)="onClickCommentList(student_comment.idx_teacher)" *ngIf="i<3" no-padding>
+        <ion-grid class="pointer item" (click)="onClickCommentList(student_comment)" *ngIf="i<3" no-padding>
             <ion-row  class="py-3 px-4" align-items-center justify-content-center>
                 <ion-col  class="d-flex align-items-center" col-md-4 col-3>
                     <span class="size-40 rounded-circle of-hidden">

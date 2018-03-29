@@ -28,7 +28,7 @@
         </div>
 
     <ion-grid class="border border-right-0 border-left-0" no-padding>
-        <ion-row class="py-3">
+        <ion-row class="py-3" align-items-center>
             <ion-col>
                 <div class="mx-0 py-0"> ({{ timezone_offset > 0 ? "+" + timezone_offset : timezone_offset }}) {{ timezone_name }}</div>
             </ion-col>
@@ -49,10 +49,10 @@
             <ion-col class="d-flex" col-md-5 col-8>
                 <label class="d-flex align-items-center">
                   <span class="mr-2">Hour</span>
-                <input class="focus-effect  p-2  w-20 rounded-2" placeholder="0-23" type="text" name="class_begin_hour" [(ngModel)]="data.class_begin_hour">
+                <input class="focus-effect p-2 w-6rem rounded-2 border border-input" placeholder="0-23" type="number" min="0" max="23" name="class_begin_hour" [(ngModel)]="data.class_begin_hour">
                 <span class="mx-2 mx-md-2 fw-bold">:</span>
                   <span class="mr-2"> Min</span>
-                <input class="focus-effect  p-2 w-20 rounded-2" placeholder="0-60" type="text" name="class_begin_minute" [(ngModel)]="data.class_begin_minute">
+                <input class="focus-effect p-2 w-6rem rounded-2 border border-input" autocomplete="on" placeholder="0-60" min="0" max="60" type="number" name="class_begin_minute" [(ngModel)]="data.class_begin_minute">
               </label>
             </ion-col>
             <ion-col col-md-3 col-4>
@@ -70,7 +70,7 @@
                     <ion-grid no-padding>
                         <ion-row class="pr-md-5 pr-3" align-items-center>
                             <ion-col col-md-7 push-md-5>
-                                <input class="focus-effect p-2  w-100 rounded-2"  type="text"  name="duration" [(ngModel)]="data.duration">
+                                <input class="focus-effect p-2  w-100 rounded-2" autocomplete="on"  type="text"  name="duration" [(ngModel)]="data.duration">
                             </ion-col>
                             <ion-col  col-md-5 pull-md-7>
                                 <div class=" ml-3 ml-md-0 h-100">Min<span class="d-inline d-md-none">(Duration)</span></div>
@@ -93,7 +93,7 @@
                         <ion-grid no-padding>
                             <ion-row class="pr-md-5 pr-3" align-items-center>
                                 <ion-col col-md-7 push-md-5 >
-                                    <input class="focus-effect  p-2 w-100 rounded-2" type="text" name="point" [(ngModel)]="data.point">
+                                    <input class="focus-effect  p-2 w-100 rounded-2" autocomplete="on" type="text" name="point" [(ngModel)]="data.point">
                                 </ion-col>
                                 <ion-col col-md-5 pull-md-7 >
                                     <div class="ml-3 ml-md-0 h-100">

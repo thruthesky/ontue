@@ -1,0 +1,12 @@
+curriculum-vitae-view{
+    ion-header{
+        box-shadow: none;
+        -webkit-box-shadow:none;
+        
+        .header.header-md::after{
+            background:none!important;
+        }
+
+    }
+
+}

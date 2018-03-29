@@ -23,9 +23,9 @@ export class TeacherStudentCommentComponent implements OnInit  {
 
   ngOnInit() { }
 
-  onClickCommentList(idx_teacher) {
-    this.idx_teacher= idx_teacher;
-    const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: idx_teacher }, { cssClass: 'student-comment-list' }
+  onClickCommentList(student_comments) {
+    this.idx_teacher= student_comments.idx_teacher;
+    const createCommentModal = this.modalCtrl.create(StudentCommentList, { idx_teacher: this.idx_teacher, teacher_name:student_comments.teacher_name,teacher_photoURL:student_comments.teacher_photoURL }, { cssClass: 'student-comment-list' }
     );
     createCommentModal.onDidDismiss(reason => {
       if (reason == 'commentCreate') this.onClickCommentCreate();

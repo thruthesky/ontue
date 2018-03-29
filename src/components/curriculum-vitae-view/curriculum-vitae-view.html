@@ -1,46 +1,52 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Curriculum Vitae</ion-title>
-    <ion-buttons start>
-      <button  class="close" ion-button (click)="dismiss()">
-        <span ion-text color="primary">{{ 'CLOSE' | translate }}</span>
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-grid class="bg-lightgrey" no-padding>
+    <ion-row align-items-center>
+      <ion-col col-7 col-md-6>
+        <ion-title class="p-0">
+          <span class="p-5 fs-90 white">CURRICULUM VITAE</span>
+        </ion-title>
+      </ion-col>
+      <ion-col class="d-flex justify-content-end" col-5 col-md-6>
+        <button class="m-0 p-5" icon-end ion-button color="white" clear small (click)="dismiss()">
+          <span class="text-uppercase">{{'CLOSE'| translate}}</span>
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-header>
 <ion-content>
-  <ion-list text-wrap class="fs-xl">
-    <ion-item text-center>
-      <div class="mx-auto size-200x240">
-        <img src="{{ teacher.photoURL ? teacher.photoURL : a.anonymousPhotoURL }}">
-      </div>
-    </ion-item>
-    <ion-item>
-      Full name: {{teacher.fullname}}
-    </ion-item>
-    <ion-item>
-      Greetings: {{teacher.introduction}}
-    </ion-item>
-    <ion-item>
-      Email: {{teacher.user_email}}
-    </ion-item>
-    <ion-item>
-      Phone No: {{teacher.phone_number}}
-    </ion-item>
-    <ion-item>
-      Gender: {{teacher.gender}}
-    </ion-item>
-    <ion-item>
-      Birthday: {{teacher.birthday}} / {{teacher.age}}
-    </ion-item>
-    <ion-item>
-      Nationality: {{teacher.nationality}}
-    </ion-item>
-    <ion-item>
-      Course: {{teacher.major}}
-    </ion-item>
-    <ion-item>
-      Teaching English since: {{teacher.experience}}
-    </ion-item>
-  </ion-list>
+  <ion-grid class="p-5" no-padding>
+    <ion-row>
+      <ion-col col-md-3>
+          <div class="size-100x120 rounded-2 of-hidden ">
+              <img src="{{ teacher.photoURL ? teacher.photoURL : a.anonymousPhotoURL }}">
+          </div>
+      </ion-col>
+      <ion-col class="d-flex-column justify-content-around" col-md-9>
+          <div class="d-flex align-items-center fw-bold fs-2rem">
+            <i class="fal fa-id-card mr-3"></i> 
+            {{teacher.fullname}}
+          </div>
+          <div class="fw-light" *ngIf="teacher.gender">Gender: <span [innerHTML]="teacher.gender=='F'?'Female':'Male'"></span></div>
+          <div class="fw-light" *ngIf="teacher.experience">Teaching English since : {{teacher.experience}}</div>
+          <div class="fw-light" *ngIf="teacher.nationality">Nationality : {{teacher.nationality}}</div>
+          <div class="fw-light" *ngIf="teacher.birthday&&teacher.age">Birthday : {{teacher.birthday.slice(0,4)}}-{{teacher.birthday.slice(4,6)}}-{{teacher.birthday.slice(6,8)}} / {{teacher.age}}</div>
+          <div class="fw-light" *ngIf="teacher.major">Course : {{teacher.major}}</div>
+      </ion-col>
+      <ion-col col-12>
+        <div class="d-flex justify-content-between mt-5 mb-4">
+          <span *ngIf="teacher.phone_number">
+            <i class="fal fa-phone mr-2"></i>
+            Phone No:  {{teacher.phone_number}}
+          </span>
+            <span *ngIf="teacher.user_email">
+              <i class="fal fa-envelope mr-2"></i>
+              Email : {{teacher.user_email}}
+          </span>
+        </div>
+        <div class="line-height-1-8em p-4 border fs-110 fw-light">{{teacher.introduction}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
