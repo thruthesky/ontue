@@ -64,7 +64,7 @@
                     </div>
                     <div class="date mr-4 my-2 my-md-0">{{ 'DATE' | translate }}: {{ a.shortDate(comment.stamp) }}</div>
                     <div class="rating mr-4 darkorange">
-                      {{ 'RATING' | translate }}: {{rate}}
+                      {{ 'RATING' | translate }}:
                       <span *ngIf="comment.rate < 1"><i class="fal fa-star"></i></span>
                       <span *ngIf="comment.rate >= 1"><i class="fas fa-star"></i></span>
 

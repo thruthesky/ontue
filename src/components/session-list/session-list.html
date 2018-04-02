@@ -158,7 +158,7 @@
   </div>
 
   <div class="books my-md-5 mt-0 " *ngIf=" books.length ">
-    <ion-grid no-padding  text-center>
+    <ion-grid no-padding text-center>
       <ion-row class="sticky-effect  px-md-5 px-0 py-4 bg-blue-60 fw-bold white text-uppercase" justify-content-between align-items-center >
         <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
             <div>{{ 'TEACHER' | translate }}</div>
@@ -178,7 +178,7 @@
         <ion-col col-1 col-md-1>
           <div>{{ 'MINUTE' | translate }}</div>
         </ion-col>
-        <ion-col  *ngIf=" future " col-2 col-md-auto>
+        <ion-col  *ngIf=" future " col-2 col-md-2>
             <div class="fs-lg"> {{ 'KAKAOTALK' | translate }}
               <br> {{ 'ADD FRIEND' | translate }}
             </div>
@@ -219,7 +219,7 @@
         <ion-col col-1 col-md-1>
           <div>{{book.duration}}</div>
         </ion-col>
-        <ion-col  *ngIf=" future " col-2 col-md-auto>
+        <ion-col  *ngIf=" future " col-2 col-md-2>
             <div class="kakaotalk-id">
                 <ng-container *ngIf="a.isTeacher">
                   {{book.student_kakaotalk_id}}

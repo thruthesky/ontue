@@ -17,6 +17,16 @@ curriculum-vitae-view{
         .align-items-md-start{
             align-items: flex-start!important;
         }
+
+        .fs-md-88{
+            font-size: 88%;
+        }
+    }
+
+    @media screen and (max-width:$sm){
+        .fs-82{
+            font-size: 82%!important;
+        }
     }
 
 }
