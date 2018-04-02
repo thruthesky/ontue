@@ -18,29 +18,29 @@
 <ion-content>
   <ion-grid class="p-5" no-padding>
     <ion-row>
-      <ion-col col-md-3>
-          <div class="size-100x120 rounded-2 of-hidden ">
+      <ion-col col-md-3 col-12>
+          <div class="size-100x120 rounded-2 of-hidden mx-md-0 mx-auto">
               <img src="{{ teacher.photoURL ? teacher.photoURL : a.anonymousPhotoURL }}">
           </div>
       </ion-col>
-      <ion-col class="d-flex-column justify-content-around" col-md-9>
-          <div class="d-flex align-items-center fw-bold fs-2rem">
+      <ion-col class="d-flex-column justify-content-around align-items-md-start align-items-center" col-md-9 col-12>
+          <div class="d-flex align-items-center mt-4 mt-md-0 fw-bold fs-2rem">
             <i class="fal fa-id-card mr-3"></i> 
             {{teacher.fullname}}
           </div>
-          <div class="fw-light" *ngIf="teacher.gender">Gender: <span [innerHTML]="teacher.gender=='F'?'Female':'Male'"></span></div>
-          <div class="fw-light" *ngIf="teacher.experience">Teaching English since : {{teacher.experience}}</div>
-          <div class="fw-light" *ngIf="teacher.nationality">Nationality : {{teacher.nationality}}</div>
-          <div class="fw-light" *ngIf="teacher.birthday&&teacher.age">Birthday : {{teacher.birthday.slice(0,4)}}-{{teacher.birthday.slice(4,6)}}-{{teacher.birthday.slice(6,8)}} / {{teacher.age}}</div>
-          <div class="fw-light" *ngIf="teacher.major">Course : {{teacher.major}}</div>
+          <div class="fw-light mt-2 mt-md-0" *ngIf="teacher.nationality">Nationality : {{teacher.nationality}}</div>
+          <div class="fw-light mt-2 mt-md-0" *ngIf="teacher.gender">Gender: <span [innerHTML]="teacher.gender=='F'?'Female':'Male'"></span></div>
+          <div class="fw-light mt-2 mt-md-0" *ngIf="teacher.experience">Teaching English since : {{teacher.experience}}</div>
+          <div class="fw-light mt-2 mt-md-0" *ngIf="teacher.birthday&&teacher.age">Birthday : {{teacher.birthday.slice(0,4)}}-{{teacher.birthday.slice(4,6)}}-{{teacher.birthday.slice(6,8)}} / {{teacher.age}}</div>
+          <div class="fw-light mt-2 mt-md-0" *ngIf="teacher.major">Course : {{teacher.major}}</div>
       </ion-col>
       <ion-col col-12>
-        <div class="d-flex justify-content-between mt-5 mb-4">
+        <div class="d-flex-column d-md-flex-row justify-content-between align-items-center mt-5 mb-4">
           <span *ngIf="teacher.phone_number">
             <i class="fal fa-phone mr-2"></i>
             Phone No:  {{teacher.phone_number}}
           </span>
-            <span *ngIf="teacher.user_email">
+            <span class="mt-2 mt-md-0" *ngIf="teacher.user_email">
               <i class="fal fa-envelope mr-2"></i>
               Email : {{teacher.user_email}}
           </span>
