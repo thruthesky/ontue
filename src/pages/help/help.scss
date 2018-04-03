@@ -38,7 +38,7 @@ help-page {
     .part {
       margin: 4em 0 2em;
       padding: 0 .5em;
-      h2 {}
+      // h2 {}
       .desc {
         margin-top: 1em;
         line-height: 180%;
@@ -126,32 +126,67 @@ help-page {
   
 
   .problem .desc {
-    background: #753650;
+    background: #251a1f;
     color: white;
     &>div:first-child {
-      background-color: #251a1f;
+      background-color: #753650;
       color: white;
     }
   }
   
   .refund .desc {
-    background: #366375;
+    background: #1a2025;
     color: white;
     &>div:first-child {
-      background-color: #1a2025;
+      background-color: #366375;
       color: white;
     }
   }
   .cancel .desc {
-    background: #647536;
+    background:  #23251a;
     color: white;
     &>div:first-child {
-      background-color: #23251a;
+      background-color: #647536;
       color: white;
     }
   }
-  
 
 
+  .accordion-hidden,.accordion-showed{
+    padding: 3rem!important;
+    height: auto;
+    overflow: hidden;
+    transition: all 0.1s ease-in-out;
+
+    &>div{
+      padding: 1em;
+    }
+  }
+
+  .accordion-hidden{
+    padding-top:0!important;
+    padding-bottom: 0!important;
+    max-height: 0;
+  }
+  .accordion-showed{
+    max-height: 500px;
+  }
+
+  .rotate-45-on{
+    transition: all .1s ease-in-out;
+    transform: rotate(45deg)!important
+  }
+
+  .rotate-45-off{
+    transition: all .1s ease-in-out;
+    transform: rotate(0deg)!important
+  }
+
+  .bg-image{
+    background: linear-gradient(to bottom,rgba(white, 0.83), rgba(white, 0.83)),url('../assets/img/banner1.jpg')!important;
+    background-size:cover!important;
+    background-position: bottom!important;
+    background-repeat: no-repeat!important;
+  }
   
 }

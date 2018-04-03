@@ -32,37 +32,41 @@
               <ion-col col-md-7 col-12>
                 <div class="mt-3 mt-md-4 fw-light">
                   <i class="fal fa-map mr-2 d-none d-md-inline"></i>
-                  Nationality : 
-                  <span  *ngIf="teacher.nationality">{{teacher.nationality}}</span>
+                  Nationality : {{teacher.nationality}}
                 </div>
               </ion-col>
               <ion-col col-md-5 col-12>
                 <div class="mt-3 mt-md-4 fw-light">
-                  Gender : 
-                  <span  *ngIf="teacher.gender" [innerHTML]="teacher.gender=='F'?'Female':'Male'"></span></div>
+                  Gender : <span  *ngIf="teacher.gender" [innerHTML]="teacher.gender=='F'?'Female':'Male'"></span></div>
               </ion-col>
               <ion-col col-md-7 col-12>
                 <div class="mt-3 mt-md-4 fw-light">
-                  Course : 
-                  <span  *ngIf="teacher.major">{{teacher.major}}</span>
+                  Course : {{teacher.major}}
                 </div>
               </ion-col>
               <ion-col col-md-5 col-12>
                 <div class="mt-3 mt-md-4 fw-light">
-                  Birthday : 
-                  <span  *ngIf="teacher.birthday">{{teacher.birthday.slice(0,4)}}-{{teacher.birthday.slice(4,6)}}-{{teacher.birthday.slice(6,8)}}</span>
+                  Birthday : {{teacher.birthday.slice(0,4)}}-{{teacher.birthday.slice(4,6)}}-{{teacher.birthday.slice(6,8)}}
                 </div>
               </ion-col>
               <ion-col col-md-7 col-12>
                 <div class="mt-3 mt-md-4 fw-light">
-                  Teaching English since :
-                   <span  *ngIf="teacher.experience">{{teacher.experience}}</span>
+                  Teaching English since : {{teacher.experience}}
                   </div>
               </ion-col>
               <ion-col col-md-5 col-12>
                   <div class="mt-3 mt-md-4 fw-light">
-                    Age :
-                   <span *ngIf="teacher.age">{{teacher.age}}</span>
+                    Age : {{teacher.age}}
+                  </div>
+              </ion-col>
+              <ion-col col-md-7 col-12>
+                  <div class="mt-3 mt-md-4 fw-light">
+                    School : {{teacher.last_education}}
+                  </div>
+              </ion-col>
+              <ion-col col-md-5 col-12>
+                  <div class="mt-3 mt-md-4 fw-light">
+                    Hobbies :{{teacher.hobby}}
                   </div>
               </ion-col>
             </ion-row>
@@ -73,11 +77,11 @@
       <ion-col col-12>
         <hr class="mt-4">
         <div class="d-flex-column d-md-flex-row justify-content-between align-items-center my-4">
-          <span *ngIf="teacher.phone_number">
+          <span class=" d-flex align-items-center" *ngIf="teacher.phone_number">
             <i class="fal fa-phone mr-2"></i>
             Phone No:  {{teacher.phone_number}}
           </span>
-            <span class="mt-3 mt-md-0" *ngIf="teacher.user_email">
+            <span class="mt-3 mt-md-0 d-flex align-items-center" *ngIf="teacher.user_email">
               <i class="fal fa-envelope mr-2"></i>
               Email : {{teacher.user_email}}
           </span>
