@@ -1,7 +1,7 @@
 teacher-leveltest-component {
   .guideline {
     .active {
-      background-color: rgba(#007bff,0.1);
+      background-color: rgba(#007bff,0.1)!important;
       color: #007bff;
       border-left: 3px solid #007bff;
       margin-left: -3px!important;
@@ -26,4 +26,7 @@ teacher-leveltest-component {
     height: 100%;
   }
 
+  .tab-hover-effect:hover{
+    background: #f7f7f7;
+  }
 }

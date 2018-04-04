@@ -4,6 +4,8 @@ page/login                      (login)
 page/register                   (register)
 page/schedule-available         (Instant Book)
 page/message                    (message)
+page/payment-history            (payment history)
+page/session-past               (My English Level)
 
 
 --Ontue--
@@ -12,6 +14,4 @@ components/teacher-leveltest    (Teacher Level Test Guide)
 components/add-schedule         (Add Schedule)
 page/schedule-edit              (Schedule)
 page/teacher-dayoff             (Add Dayoff)
-page/payment-history            (payment history)
-page/session-past               (My English Level)
 
