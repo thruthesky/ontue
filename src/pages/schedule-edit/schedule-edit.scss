@@ -5,6 +5,20 @@ schedule-edit-page {
       border: 1px solid black;
     }
   }
+
+  .sticky-effect{
+    position:sticky!important;
+    top:-1.5px;
+    left:0;
+    right:0;
+    min-width: 900px;
+    z-index: 1000;
+  }
+
+  .page{
+    min-width: 900px;
+    overflow: visible!important;
+  }
   
   .bg-light-green{background: rgba(green, 0.9)}
   .bg-light-orange{ background: rgba(orange, 0.9)}

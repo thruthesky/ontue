@@ -9,49 +9,26 @@
       <h2 class="title">{{ "TEACHER SCHEDULE" | translate }}</h2>
     </section>
 
-    <section class="page-body">
+    <section class="page-body bg-white">
       <ion-grid no-padding>
-        <ion-row>
-          <ion-col col-md-5 col-12 >
-            <ion-grid no-padding>
-              <ion-row class="mt-4 mb-2">
-                <ion-col class="mr-4" col-md-5>
-                   <div class="p-4 border border-dodgerblue  bg-white fw-bold dodgerblue">Your ID No:</div>
-                </ion-col>
-                <ion-col>
-                   <div class="p-4 border border-dodgerblue bg-white"> {{ a.user.id }}</div>
-                </ion-col>
-              </ion-row>
-              <ion-row class="my-3">
-                <ion-col class="mr-4" col-md-5>
-                  <div class="p-4 border border-dodgerblue  bg-white fw-bold dodgerblue">Your timezone:</div>
-                </ion-col>
-                <ion-col>
-                   <div class="p-4 border border-dodgerblue bg-white"> {{ timezone_name }}</div>
-                </ion-col>
-              </ion-row>
-              <ion-row class="mb-4 mt-2" align-items-stretch>
-                <ion-col class="mr-4"  col-md-5>
-                  <div class="h-100 p-4 border border-dodgerblue  bg-white fw-bold dodgerblue d-flex align-items-center">Your time is now:</div>
-                </ion-col>
-                <ion-col>
-                   <div class="p-4 border border-dodgerblue bg-white"> {{ time }}</div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
+          <ion-row class="bg-white px-md-4 px-1" align-items-center>
+          <ion-col col-5>
+            <div class="p-4 pl-0 fw-bold dodgerblue">Your ID No: <span class="black ml-2 fw-light"> {{ a.user.id }}</span></div>
+            <div class="p-4 pl-0 fw-bold dodgerblue">Your timezone: <span class="black ml-2 fw-light"> {{ timezone_name }}</span></div>
+            <div class="p-4 pl-0 fw-bold dodgerblue">Your time is now: <span class="black ml-2 fw-light"> {{ time }}</span></div>
           </ion-col>
           <ion-col>
             <div class="d-flex justify-content-between py-4 h-100">
               <div class="add-schedule my-0 ml-md-4 mr-md-2 mr-3 p-3 p-md-0 h-100 w-100 rounded bg-light-green white pointer "
                 *ngIf="data" (click)='onClickAddSchedule()'>
-               <div class="d-flex-column align-items-center justify-content-center  h-100 fs-2rem fw-light">
+               <div class="d-flex-column align-items-center justify-content-center py-md-5 py-2 h-100 fs-2rem fw-light">
                   <i class="fal fa-calendar-plus fa-3x mb-4"></i>
                   Add Schedule
                </div>
               </div>
               <div class="add-dayoff m-0 ml-md-3 ml-2  p-3 p-md-0  h-100 w-100 rounded bg-light-orange white pointer "
                *ngIf="data" (click)="a.open('dayoff')">
-               <div class="d-flex-column align-items-center justify-content-center   h-100 fs-2rem fw-light">
+               <div class="d-flex-column align-items-center justify-content-center py-md-5 py-2 h-100 fs-2rem fw-light">
                   <i class="fal fa-calendar-minus fa-3x mb-4"></i>
                   Add Day off
                </div>
@@ -62,41 +39,53 @@
       </ion-grid>
       <!-- {{ schedules | json }} -->
 
-      <div class="alert alert-warning" *ngIf="data && !data['promo_class']">
+      <div class="alert alert-warning m-0" *ngIf="data && !data['promo_class']">
         {{data['promo_class_message']}}
       </div>
 
-      <table width="100%" class="schedule-edit text-center my-3" *ngIf=" data ">
-        <tr class="fw-bold">
-          <td class="px-1 py-2">No.</td>
-          <td class="px-1 py-2">Time</td>
-          <td class="px-1 py-2">Min</td>
-          <td class="px-1 py-2">Sun</td>
-          <td class="px-1 py-2">Mon</td>
-          <td class="px-1 py-2">Tue</td>
-          <td class="px-1 py-2">Wed</td>
-          <td class="px-1 py-2">Thu</td>
-          <td class="px-1 py-2">Fri</td>
-          <td class="px-1 py-2">Sat</td>
-          <td class="px-1 py-2" colspan="2">Action</td>
-        </tr>
-        <tr *ngFor="let s of data.schedules; let odd = odd;" class="{{odd? 'bg-lightgrey':''}}" >
-          <td class="px-1">{{ s.idx }}</td>
-          <td class="px-1">{{s.user_time_class_begin}}</td>
-          <td class="px-1">{{s.duration}}</td>
-          <td class="px-1"><div *ngIf="s.user_time_days.sunday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></td>
-          <td class="px-1"><div *ngIf="s.user_time_days.monday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></td>
-          <td class="px-1"><div *ngIf="s.user_time_days.tuesday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></td>
-          <td class="px-1"><div *ngIf="s.user_time_days.wednesday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></td>
-          <td class="px-1"><div *ngIf="s.user_time_days.thursday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></td>
-          <td class="px-1"><div *ngIf="s.user_time_days.friday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></td>
-          <td class="px-1"><div *ngIf="s.user_time_days.saturday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></td>
-          <td class="edit buttons" (click)="onClickEditSchedule(s)" width="1%"><button class="primary m-2">Edit</button></td>
-          <td class="delete buttons" (click)="onClickDelete(s.idx)" width="1%"><button class="warning my-2 mr-0">Delete</button></td>
-        </tr>
-      </table>
+      <ion-grid class="schedule-edit bg-white text-center" *ngIf=" data ">
+        <ion-row class="sticky-effect border border-top-0 border-right-0 border-left-0 bg-white fw-bold">
+              <ion-col class="px-2 py-4" col-1>No.</ion-col>
+              <ion-col class="px-2 py-4" col-1>Time</ion-col>
+              <ion-col class="px-2 py-4" col-1>Min</ion-col>
+              <ion-col class="px-2 py-4" col-1>Sun</ion-col>
+              <ion-col class="px-2 py-4" col-1>Mon</ion-col>
+              <ion-col class="px-2 py-4" col-1>Tue</ion-col>
+              <ion-col class="px-2 py-4" col-1>Wed</ion-col>
+              <ion-col class="px-2 py-4" col-1>Thu</ion-col>
+              <ion-col class="px-2 py-4" col-1>Fri</ion-col>
+              <ion-col class="px-2 py-4" col-1>Sat</ion-col>
+              <ion-col class="px-2 py-4" col-2 >Action</ion-col>
+          </ion-row>
+          <ion-row class="border border-top-0 border-right-0 border-left-0" *ngFor="let s of data.schedules; let odd = odd;" align-items-center>
+              <ion-col col-1>{{ s.idx }}</ion-col>
+              <ion-col col-1>{{s.user_time_class_begin.slice(0,2)}}:{{s.user_time_class_begin.slice(2,4)}}</ion-col>
+              <ion-col col-1>{{s.duration}}</ion-col>
+              <ion-col col-1><div *ngIf="s.user_time_days.sunday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
+              <ion-col col-1><div *ngIf="s.user_time_days.monday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
+              <ion-col col-1><div *ngIf="s.user_time_days.tuesday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
+              <ion-col col-1><div *ngIf="s.user_time_days.wednesday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
+              <ion-col col-1><div *ngIf="s.user_time_days.thursday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
+              <ion-col col-1><div *ngIf="s.user_time_days.friday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
+              <ion-col col-1><div *ngIf="s.user_time_days.saturday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
+              <ion-col class="d-flex align-items-center justify-content-center" col-2>
+                <div class="edit buttons py-2" (click)="onClickEditSchedule(s)">
+                    <button class="primary hover-effect d-flex align-items-center m-2 fs-lg">
+                      <i class="fal fa-edit mr-2"></i>
+                      Edit
+                    </button>
+                </div>
+                <div class="delete buttons py-2" (click)="onClickDelete(s.idx)">
+                    <button class="warning hover-effect  d-flex align-items-center m-2 mr-3 fs-lg">
+                      <i class="fas fa-trash mr-2"></i>
+                      Delete
+                    </button>
+                </div>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
 
-      <div *ngIf=" ! data ">
+      <div class="mt-4 ml-5" *ngIf=" ! data ">
         <i class="fa fa-spinner fa-spin"></i> Loading...
       </div>
 
