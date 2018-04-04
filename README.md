@@ -61,6 +61,25 @@ $  ionic cordova run android --livereload --address=192.168.0.2 // [MACBOOK_INTE
 
 # TODO
 
+--Katalkenglish--
+
+page/login                      (login)
+page/register                   (register)
+page/schedule-available         (Instant Book)
+page/message                    (message)
+page/payment-history            (payment history)
+page/session-past               (My English Level)
+
+
+--Ontue--
+
+components/teacher-leveltest    (Teacher Level Test Guide)      -ok
+components/add-schedule         (Add Schedule)                  -ok 
+page/schedule-edit              (Schedule)                      -ok
+page/teacher-dayoff             (Add Dayoff)
+
+
+
 * Convert OLD OnTue teachers and Student to new OnTue.
   ** In that way, we can really show that we are not just a starter. We have a plenty of experience.
 
