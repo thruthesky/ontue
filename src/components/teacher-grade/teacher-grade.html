@@ -1,20 +1,19 @@
 <ion-content id="teacher-grade">
-  <ion-toolbar class="px-5" color="blue">
-      <ion-grid no-padding>
-        <ion-row align-items-center >
-          <ion-col>       
+    <ion-grid class="bg-dodgerblue" no-padding>
+        <ion-row align-items-center>
+          <ion-col col-7 col-md-6>
             <ion-title class="p-0">
-            <span class="fw-bold fs-90">Teacher Grade</span>
-          </ion-title>
-        </ion-col>
-        <ion-col text-right col-md-2>
-          <button class="p-0" icon-end ion-button clear small color="white" (click)="dismiss()">
-              <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span><ion-icon name="close"></ion-icon>
-          </button>
-        </ion-col>
+              <span class="p-5 fs-90 white">Teacher Grade</span>
+            </ion-title>
+          </ion-col>
+          <ion-col class="d-flex justify-content-end" col-5 col-md-6>
+            <button class="m-0 p-5" icon-end ion-button color="white" clear small (click)="dismiss()">
+              <span class="text-uppercase fw-light">{{'CLOSE'| translate}}</span>
+              <ion-icon name="close"></ion-icon>
+            </button>
+          </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-toolbar>
   <div class="content px-5 py-4">
     <ion-slides>
       <ion-slide>

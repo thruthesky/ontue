@@ -72,11 +72,11 @@ page/session-past               (My English Level)
 
 --Ontue--
 
-components/teacher-leveltest    (Teacher Level Test Guide)  
-components/add-schedule         (Add Schedule)                 
-page/schedule-edit              (Schedule)                    
-page/teacher-dayoff             (Add Dayoff)
-page/settings-payment-info      (Payment history)                    
+components/teacher-leveltest    (Teacher Level Test Guide)    -ok
+components/add-schedule         (Add Schedule)           
+page/schedule-edit              (Schedule)                    -ok      
+page/teacher-dayoff             (Add Dayoff)                  
+page/settings-payment-info      (Payment history)             -ok                
 
 
 

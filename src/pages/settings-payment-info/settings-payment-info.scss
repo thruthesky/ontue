@@ -34,21 +34,57 @@
   }
 
   .payment-information-history {
+
     ion-item {
-      .item-inner {
-        padding-left: 1em;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-      }
-      &.odd {
-        .item-inner {
-          background-color: #b2b2b2;
-        }
-      }
-      &.even {
-        .item-inner {
-          background-color: #ececec;
-        }
+      padding: 0 1em;
+    }
+
+    .border-lightgrey{
+      border-color: lightgrey!important
+    }
+
+    ion-item:first-of-type{
+      border-top: 1px solid lightgrey!important;
+    }
+
+    .border-top-grey{
+      border-top:1px solid lightgrey!important;
+    }
+
+    .item-hover-effect:hover{
+        background: lightgrey;
+        cursor: pointer;
+    }
+
+    .rotate-45-off,.rotate-45-on{
+      transition: all 0.1s ease-in-out;
+    }
+
+    .rotate-45-off{
+      transform: rotate(0deg);
+    }
+
+    .rotate-45-on{
+      transform: rotate(45deg);
+    }
+
+    .accordion-hidden,.accordion-showed{
+      height: auto;
+      overflow: hidden;
+      transition: all 0.2s ease-in-out;
+    }
+  
+    .accordion-hidden{
+      max-height: 0;
+      border-width:0!important;
+    }
+    .accordion-showed{
+      max-height: 500px;
+    }
+
+    @media screen and (max-width:$sm) {
+      .border-sm-none{
+        border-width:0!important;
       }
     }
   }

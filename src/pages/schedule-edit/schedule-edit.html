@@ -70,13 +70,13 @@
               <ion-col col-1><div *ngIf="s.user_time_days.saturday"><div class="prere">{{s.prere}}</div>{{s.point}}</div></ion-col>
               <ion-col class="d-flex align-items-center justify-content-center" col-2>
                 <div class="edit buttons py-2" (click)="onClickEditSchedule(s)">
-                    <button class="primary hover-effect d-flex align-items-center m-2 fs-lg">
+                    <button class="primary hover-effect d-flex align-items-center m-2 rounded-2 fs-lg">
                       <i class="fal fa-edit mr-2"></i>
                       Edit
                     </button>
                 </div>
                 <div class="delete buttons py-2" (click)="onClickDelete(s.idx)">
-                    <button class="warning hover-effect  d-flex align-items-center m-2 mr-3 fs-lg">
+                    <button class="warning hover-effect  d-flex align-items-center m-2 mr-3 rounded-2 fs-lg">
                       <i class="fas fa-trash mr-2"></i>
                       Delete
                     </button>

@@ -13,8 +13,6 @@ export class SettingsPaymentInfoPage {
     payment_information_history = [];
 
     reload_history= false;
-    accordionValue=false;
-
 
     constructor(public a: AppService) {
       if (a.user.isLogin && a.isTeacher) {
@@ -57,10 +55,6 @@ export class SettingsPaymentInfoPage {
 
     onClickCompare() {
 
-    }
-
-    getAccordionName(i){
-      return 'accordion'+i;
     }
 }
 
