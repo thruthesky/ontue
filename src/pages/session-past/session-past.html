@@ -26,21 +26,30 @@
 
     </section>
 
-    <section class="my-level p-3" *ngIf="showLevel">
-      <div class="mb-4">회원님의 영어 레벨: <span class="fw-bold red">Lv {{ myLevel }}.</span></div>
-      <div>
-        레벨은 1부터 9까지 있습니다.
-        <ul>
-          <li>초급: 레벨1 ~ 레벨3</li>
-          <li>중급: 레벨4 ~ 레벨6</li>
-          <li>고급: 레벨7 ~ 레벨9</li>
-        </ul>
-      </div>
+    <section class="my-level pt-3 pb-5 bg-white" *ngIf="showLevel">
+      <div class="p-5 pt-4 fs-2rem" text-center>회원님의 영어 레벨: <span class="fw-bold red">Lv {{ myLevel }}.</span></div>
+      <div class="pl-5 fs-110 fw-light">레벨은 1부터 9까지 있습니다 :</div>
+      <ion-grid class="py-5" no-padding text-center>
+        <ion-row align-items-stretch justify-content-center>
+            <ion-col>
+              <div class="mb-2"><i class="fas fa-bookmark fa-3x lightslategrey"></i></div>
+              <div>레벨1 ~ 레벨3</div>
+              <div class="mt-3 fw-bold">초급</div>
+            </ion-col>
+            <ion-col>
+              <div class="mb-2"><i class="fas fa-trophy fa-3x green"></i></div>
+              <div>레벨4 ~ 레벨6</div>
+              <div class="mt-3 fw-bold">중급</div>
+            </ion-col>
+            <ion-col>
+              <div class="mb-2"><i class="fas fa-trophy-alt fa-3x darkorange"></i></div>
+              <div>레벨7 ~ 레벨9</div>
+              <div class="mt-3 fw-bold">고급</div></ion-col>
+        </ion-row>
+      </ion-grid>
 
-      <div>
-        마지막 수업 20회를 바탕으로 각 수업 평가의 평균을 내어 레벨을 정합니다. <br>
-        강의 평가를 클릭하시면 각 수업 별 세부 평가 내용을 확인 할 수 있습니다.
-      </div>
+        <div class="pl-5 py-3 bg-dodgerblue white"> 마지막 수업 20회를 바탕으로 각 수업 평가의 평균을 내어 레벨을 정합니다. </div>
+        <div class="pl-5 pb-3 bg-dodgerblue white"> 강의 평가를 클릭하시면 각 수업 별 세부 평가 내용을 확인 할 수 있습니다. </div>
 
     </section>
 
