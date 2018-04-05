@@ -66,6 +66,12 @@ export class ScheduleTablePage {
   USER_TIME_CLASS_BEGIN = 'u';
   DURATION = 'a';
 
+  SESSION_NO_SCHEDULE = 'N';
+  SESSION_OPEN = 'O';
+  SESSION_PAST = 'P';
+  SESSION_FUTURE = 'F';
+  SESSION_RESERVED = 'R';
+
 
   default_photo_url;
   @ViewChild('content') content;
@@ -263,26 +269,26 @@ export class ScheduleTablePage {
   }
 
   icon(session: SESSION) {
-    if (session[this.STATUS] == 'future') {
-      if (session[this.OPEN] == 'open') { // open to reserve
+    if (session[this.STATUS] == this.SESSION_FUTURE) {
+      if (session[this.OPEN] == this.SESSION_OPEN) { // open to reserve
         if (session[this.DAYOFF] == 'dayoff') return 'cloud-circle'; // but day off
         if (session[this.PRERE]) return 'heart';
         else return 'radio-button-off'; // reservable
       }
 
-      else if (session[this.OPEN] == 'reserved') { // already reserved.
+      else if (session[this.OPEN] == this.SESSION_RESERVED) { // already reserved.
         if (session[this.OWNER] == 'me' && !session[this.DAYOFF]) {
           return 'radio-button-on';
         }
         else if (session[this.DAYOFF] == 'dayoff') return 'cloud-done'; // already reserved and day-off
         else return 'checkmark'; // reserved
       }
-      else if (session[this.OPEN] == 'no-schedule') { // teacher didn't open a session on this day of his schedule table.
+      else if (session[this.OPEN] == this.SESSION_NO_SCHEDULE) { // teacher didn't open a session on this day of his schedule table.
         return 'qr-scanner'; // no schedule on this day.
       }
     } // eo future
     else { /// past classes.
-      if (session[this.OPEN] == 'open') { // past class. but open.
+      if (session[this.OPEN] == this.SESSION_OPEN) { // past class. but open.
         return 'square';
       }
       else { // past & reserved.
@@ -294,13 +300,13 @@ export class ScheduleTablePage {
   }
 
   session_text(session: SESSION) {
-    if (session[this.STATUS] == 'future') {
-      if (session[this.OPEN] == 'reserved') {
+    if (session[this.STATUS] == this.SESSION_FUTURE) {
+      if (session[this.OPEN] == this.SESSION_RESERVED) {
         if (session[this.OWNER] == 'me') {
           return '취소';
         }
       }
-      else if (session[this.OPEN] == 'open') {
+      else if (session[this.OPEN] == this.SESSION_OPEN) {
         // return '예약';
         return '';
       }
@@ -353,9 +359,9 @@ export class ScheduleTablePage {
      *        - it uses new code.
      */
     if (!this.params.ID && !this.loadComplete) {
-      console.log(`Going to first load.`);
+      // console.log(`Going to first load.`);
       this.a.loadSchedule(re => {
-        console.log('Schedules loaded :', re);
+        // console.log('Schedules loaded :', re);
         this.loadComplete = true;
         this.displayScheduleTable(re);
         this.cachedDate = Math.round(((new Date).getTime() - re.time) / 1000 / 60) + 1;
@@ -373,6 +379,7 @@ export class ScheduleTablePage {
     this.status = 'LOADING SCHEDULE';
 
     this.a.lms.schedule_table(opt).subscribe(re => {
+      // console.log('got schedule_table: ', re);
       this.loadComplete = true;
       this.displayScheduleTable(re);
       if (!this.params.ID) { // Save only if all teacher's schedule table is loaded.
@@ -658,9 +665,9 @@ export class ScheduleTablePage {
       return;
     }
 
-    if (session[this.STATUS] == 'past') return;
-    if (session[this.OPEN] == 'open') this.reserveSession(session);
-    else if (session[this.OPEN] == 'reserved' && session[this.OWNER] == 'me') this.cancelSession(session);
+    if (session[this.STATUS] == this.SESSION_PAST) return;
+    if (session[this.OPEN] == this.SESSION_OPEN) this.reserveSession(session);
+    else if (session[this.OPEN] == this.SESSION_RESERVED && session[this.OWNER] == 'me') this.cancelSession(session);
 
     this.a.set(KEY_SCHEDULES, null); /// new code. When a session is clicked. delete old schedule cache.
   }
@@ -678,9 +685,9 @@ export class ScheduleTablePage {
       // setTimeout(() => session['in_progress'] = false, 500);
       session['in_progress'] = false;
 
-      session[this.OPEN] = 'reserved';
+      session[this.OPEN] = this.SESSION_RESERVED;
       session[this.DAYOFF] = '';
-      session[this.STATUS] = 'future';
+      session[this.STATUS] = this.SESSION_FUTURE;
       session[this.OWNER] = 'me';
       session[this.STUDENT_NAME] = re.student_name;
       session[this.POINT] = re.point;
@@ -702,8 +709,8 @@ export class ScheduleTablePage {
     this.a.lms.session_cancel(session[this.IDX_RESERVATION]).subscribe(re => {
       // console.log("cancel success", re);
       session['in_progress'] = false;
-      session[this.STATUS] = 'future';
-      session[this.OPEN] = 'open';
+      session[this.STATUS] = this.SESSION_FUTURE;
+      session[this.OPEN] = this.SESSION_OPEN;
       session[this.OWNER] = '';
       session[this.STUDENT_NAME] = '';
       session[this.POINT] = this.schedule(session[this.IDX_SCHEDULE])[this.POINT];
@@ -739,7 +746,7 @@ export class ScheduleTablePage {
 
 
     sessions.forEach(session => {
-      if (session.open == 'open' && session.status != 'past') {
+      if (session.open == this.SESSION_OPEN && session.status != this.SESSION_PAST) {
         // console.log(session)
         this.reserveSession(session);
       }
@@ -751,7 +758,7 @@ export class ScheduleTablePage {
   onClickReserveCancel(sessions) {
 
     sessions.forEach(session => {
-      if (session.open == 'reserved' && session.owner && session.owner == 'me') {
+      if (session.open == this.SESSION_RESERVED && session.owner && session.owner == 'me') {
         // console.log(session)
         this.cancelSession(session);
       }
@@ -786,11 +793,11 @@ export class ScheduleTablePage {
 
 
   point(session) {
-    if (session[this.STATUS] == 'future') {
-      if (session[this.OPEN] == 'open') {
+    if (session[this.STATUS] == this.SESSION_FUTURE) {
+      if (session[this.OPEN] == this.SESSION_OPEN) {
         if (session[this.DAYOFF] != 'dayoff') return session[this.POINT];
       }
-      else if (session[this.OPEN] == 'reserved') { // already reserved.
+      else if (session[this.OPEN] == this.SESSION_RESERVED) { // already reserved.
         if (session[this.OWNER] == 'me') {
           return session[this.POINT];
         }
@@ -836,7 +843,7 @@ export class ScheduleTablePage {
 
 
   onClickCommentCreate() {
-    const createCommentModal = this.modalCtrl.create(StudentCommentEdit, { idx_teacher: this.teacher_profile['ID']}, { cssClass: 'student-comment-create' }
+    const createCommentModal = this.modalCtrl.create(StudentCommentEdit, { idx_teacher: this.teacher_profile['ID'] }, { cssClass: 'student-comment-create' }
     );
     createCommentModal.onDidDismiss(res => {
       if (res == 'success') this.onClickCommentList();

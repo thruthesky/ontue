@@ -1260,7 +1260,7 @@ export class AppService {
             class_end_hour: 24          // Loads schedule btween 00:00 am and 23:59 pm.
         };
 
-        console.log('options: ', options);
+        // console.log('options: ', options);
         this.lms.schedule_table(options).subscribe(re => {
             if (callback) callback(re);                   // fires with fresh data.
             if (Object.keys(re['schedule']).length == 0) {

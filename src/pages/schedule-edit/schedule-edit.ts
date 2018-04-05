@@ -57,6 +57,16 @@ export class ScheduleEditPage {
 
 
   onClickAddSchedule() {
+    const idx = this.checkEmptySchedule();
+    if ( idx ) {
+      const msg = `Schedule No. ${idx} has no days. You need to delete it before you are going to add or edit a schedule.`;
+      // this.a.alert(msg);
+      this.a.okDialog('Warning: Delete Empty Schedule!', msg, () => {
+        // this.getMySchedule();
+      });
+      // alert(msg);
+      return;
+    }
     const modal = this.modalCtrl.create( AddSchedule,
       { php_to_kwr: this.data['php_to_kwr'],
         usd_to_kwr: this.data['usd_to_kwr'],
@@ -84,6 +94,16 @@ export class ScheduleEditPage {
   }
 
 
+  checkEmptySchedule() {
+    if ( this.data && this.data.schedules && this.data.schedules.length ) {
+      for( let s of this.data.schedules ) {
+        if ( !s.sunday && !s.monday && !s.tuesday && !s.wednesday && !s.thursday && !s.friday && !s.saturday ) {
+          return s.idx;
+        }
+      }
+    }
+    return false;
+  }
   getMySchedule(){
     this.a.lms.my_schedules().subscribe( re =>{
       console.log('getMySchedule', re);

@@ -207,9 +207,6 @@
               <ion-option value="30">30분 부터</ion-option>
               <ion-option value="40">40분 부터</ion-option>
               <ion-option value="50">50분 부터</ion-option>
-              <ion-option value="60">60분 부터</ion-option>
-              <ion-option value="80">80분 부터</ion-option>
-              <ion-option value="120">120분 부터</ion-option>
             </ion-select>
             <ion-select [(ngModel)]="max_duration" (ionChange)="onChangeSearchOption()" [selectOptions]="{cssClass:'select-duration'}">
               <ion-option value="5">5분 사이</ion-option>
@@ -409,6 +406,7 @@
             <div class="td fw-bold fs-90 session-datetime pt-2 text-center">
               <div *ngIf=" a.user.isLogin ">
                 {{ session_time( sessions[0] ) }}
+                <!-- {{ sessions[0] | json }} -->
               </div>
               <div>
                 {{ session_duration( sessions[0] ) }} {{ 'MINUTE' | translate }}
@@ -420,7 +418,7 @@
             </div>
 
             <div class="td session-wrapper  d-flex-column justify-content-center align-items-center" *ngFor=" let session of sessions ">
-              <!--{{session|json}}-->
+              <!-- {{session|json}} -->
               <div class="session" [attr.status]=" session[ STATUS ] " [attr.open]=" session[ OPEN ] " [attr.owner]=" session[ OWNER ] "
                 text-center (click)="onClickSession( session )">
 
