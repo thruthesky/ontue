@@ -2,7 +2,27 @@
   <header-content page="schedule-table"></header-content>
 </ion-header>
 
-<ion-content #content>
+<ion-content #content (ionScroll)="checkSticky()">
+    <div id="schedule-header" 
+    [class.sticky-effect-top]="enableSticky"
+    class="tr schedule-header bg-white d-flex justify-content-around align-items-center
+     fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0">
+  <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
+    <div class="text-center">{{ 'TEACHER' | translate }}</div>
+  </div>
+  <div class="td session-datetime d-flex-column justify-content-center align-items-center  size-42px-62px text-center">
+    <div class="">{{ 'TIME' | translate }}</div>
+    <div class="">{{ 'MINUTE' | translate }}</div>
+  </div>
+
+  <div class="td datetime session-wrapper d-flex-column justify-content-center align-items-center size-42px-62px" *ngFor="let header of header">
+    <div class="hover-effect pointer w-100 text-center" (click)="onClickNavigate( header.date )">
+
+      <span>{{ header.display_date }}</span>
+      <span class="d-inline-block"> {{ header.user_time_day | translate }}</span>
+    </div>
+  </div>
+</div>
   <div class="page">
     <ng-container *ngIf=" singleTeacher ">
       <ion-grid *ngIf=" loadComplete; else singleTeacherLoader" no-padding >
@@ -373,7 +393,7 @@
 
       <!--/schedule-body-table START-->
       <div class="table schedule-table bg-white" *ngIf=" schedule_table_rows.length " width="100%">
-        <div id="schedule-header" class="sticky-effect tr schedule-header  bg-white  hide-effect d-flex justify-content-around align-items-center fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0">
+        <div id="schedule-header" class="tr schedule-header  bg-white  hide-effect d-flex justify-content-around align-items-center fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0">
           <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
             <div class="text-center">{{ 'TEACHER' | translate }}</div>
           </div>
