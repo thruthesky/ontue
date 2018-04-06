@@ -1,0 +1,16 @@
+my-point-page{
+    .hover-colored-effect{
+        transition:all .2s ease-in-out!important;
+        .icon-effect{transition:all .2s ease-in-out!important}
+        &:hover{
+            border-color: dodgerblue!important;
+            background: rgba(dodgerblue,0.1)!important;
+            cursor: pointer;
+
+            .icon-effect{
+            transform:scale(0.9,0.9)!important;
+          }
+        }
+    }
+
+}
