@@ -545,7 +545,7 @@
 
   <hook-content-bottom></hook-content-bottom>
 
-<ion-fab top right>
+<ion-fab top right *ngIf="a.isApp()">
     <div class="size-65 fs-lg rounded-50 white d-flex align-items-center d-md-none"
         [class.bg-dodgerblue]="enableSticky" [class.bg-grey]="!enableSticky" text-center  (click)="enableSticky=!enableSticky">
          Schedule Header
