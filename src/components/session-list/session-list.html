@@ -158,8 +158,43 @@
   </div>
 
   <div class="books my-md-5 mt-0 " *ngIf=" books.length ">
-    <ion-grid no-padding text-center>
-      <ion-row class="sticky-effect  px-md-5 px-0 py-4 bg-blue-60 fw-bold white text-uppercase" justify-content-between align-items-center >
+    <ion-grid id="sticky-header" no-padding text-center>
+
+        <ion-row *ngIf="enableSticky"  class="sticky-effect-top px-md-5 px-0 py-4 bg-blue-60 fw-bold white text-uppercase" justify-content-between align-items-center >
+            <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
+                <div>{{ 'TEACHER' | translate }}</div>
+            </ion-col>
+            <ion-col *ngIf="a.isTeacher" col-3 col-md-2>
+                <div>{{ 'STUDENT' | translate }}</div>
+            </ion-col>
+            <ion-col *ngIf="a.isTeacher" col-2 col-md-1>
+                <div>{{ 'CLASS NO' | translate }}</div>
+            </ion-col>
+            <ion-col *ngIf="displayDate" col-2 col-md-1>
+              <div>{{ 'DATE' | translate }}</div>
+            </ion-col>
+            <ion-col col-2 col-md-1>
+              <div>{{ 'TIME' | translate }}</div>
+            </ion-col>
+            <ion-col col-1 col-md-1>
+              <div>{{ 'MINUTE' | translate }}</div>
+            </ion-col>
+            <ion-col  *ngIf=" future " col-2 col-md-2>
+                <div class="fs-lg"> {{ 'KAKAOTALK' | translate }}
+                  <br> {{ 'ADD FRIEND' | translate }}
+                </div>
+            </ion-col>
+            <ion-col  *ngIf="displayPoint" col-2 col-md-1>
+              <div>{{ 'POINT' | translate }}</div>
+            </ion-col>
+            <ion-col class="d-none d-md-flex justify-content-center" col-2 col-md-3>
+              <ng-container  *ngIf=" a.isStudent && past ">
+                  <div> 결과</div>
+              </ng-container>
+            </ion-col>
+          </ion-row>
+          
+      <ion-row class="sticky-effect px-md-5 px-0 py-4 bg-blue-60 fw-bold white text-uppercase" justify-content-between align-items-center >
         <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
             <div>{{ 'TEACHER' | translate }}</div>
         </ion-col>
