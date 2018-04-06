@@ -1,6 +1,6 @@
 {
   "name": "ontue",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
@@ -43,7 +43,6 @@
     "cordova-ios": "4.5.4",
     "cordova-plugin-camera": "~4.0.1",
     "cordova-plugin-device": "^1.1.7",
-    "cordova-plugin-fcm": "^2.1.2",
     "cordova-plugin-file": "~5.0.0",
     "cordova-plugin-file-transfer": "~1.7.0",
     "cordova-plugin-ionic": "~2.0.4",
@@ -67,7 +66,9 @@
   },
   "description": "An Ionic project",
   "cordova": {
-    "platforms": [],
+    "platforms": [
+      "android"
+    ],
     "plugins": {
       "ionic-plugin-keyboard": {},
       "cordova-plugin-whitelist": {},
@@ -85,8 +86,7 @@
         "UPDATE_METHOD": "background",
         "UPDATE_API": "https://api.ionicjs.com",
         "MAX_STORE": "2"
-      },
-      "cordova-plugin-fcm": {}
+      }
     }
   }
 }

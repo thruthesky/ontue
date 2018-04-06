@@ -209,6 +209,7 @@ export class MyApp implements AfterViewInit {
 
     // this.a.open('schedule-table', { ID: 137 }); /// teacher21
     // this.a.open('schedule-table', { ID: 138 }); /// teacher22
+    // this.a.open('schedule-table', { ID: 300 }); /// Cherish
 
     // this.a.open('teacher-list');
 
