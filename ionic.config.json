@@ -1,9 +1,9 @@
 {
   "name": "ontue",
-  "app_id": "62a53500",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
   },
-  "hooks": {}
+  "hooks": {},
+  "pro_id": "62a53500"
 }

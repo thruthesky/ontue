@@ -3,25 +3,6 @@
 </ion-header>
 
 <ion-content #content>
-    <div class="tr sticky-effect-top schedule-header bg-white d-flex justify-content-around
-                  align-items-center fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0"
-          *ngIf="enableSticky">
-        <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
-          <div class="text-center">{{ 'TEACHER' | translate }}</div>
-        </div>
-        <div class="td session-datetime d-flex-column justify-content-center align-items-center  size-42px-62px text-center">
-          <div class="">{{ 'TIME' | translate }}</div>
-          <div class="">{{ 'MINUTE' | translate }}</div>
-        </div>
-      
-        <div class="td datetime session-wrapper d-flex-column justify-content-center align-items-center size-42px-62px" *ngFor="let header of header">
-          <div class="hover-effect pointer w-100 text-center" (click)="onClickNavigate( header.date )">
-      
-            <span>{{ header.display_date }}</span>
-            <span class="d-inline-block"> {{ header.user_time_day | translate }}</span>
-          </div>
-        </div>
-  </div>
   <div class="page">
     <ng-container *ngIf=" singleTeacher ">
       <ion-grid *ngIf=" loadComplete; else singleTeacherLoader" no-padding >
@@ -545,12 +526,6 @@
 
   <hook-content-bottom></hook-content-bottom>
 
-<ion-fab bottom left>
-    <div class="size-65 fs-lg rounded-50 white d-flex align-items-center d-md-none"
-        [class.bg-dodgerblue]="enableSticky" [class.bg-grey]="!enableSticky" text-center  (click)="enableSticky=!enableSticky">
-         Schedule Header
-   </div>
-</ion-fab>
   <ion-fab right bottom #fab>
     <button ion-fab mini color="light">
       <ion-icon name="ios-arrow-dropleft" color="dark"></ion-icon>
