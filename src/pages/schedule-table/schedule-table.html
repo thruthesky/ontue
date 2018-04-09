@@ -434,8 +434,8 @@
 
                 <!-- show class informatio -->
                 <div>{{ point( session ) }}</div>
-                <div *ngIf=" session.status == 'reserved' ">{{ session[ STUDENT_NAME ] }}</div>
-                <div>{{ session[ PRERE ] }}</div>
+                <!-- <div *ngIf=" session.status == 'reserved' ">{{ session[ STUDENT_NAME ] }}</div> // It's a bug. status can only be 'future' or 'past' -->
+                <div class="fs-sm" *ngIf=" session[OPEN] == SESSION_OPEN ">{{ session[ PRERE ] }}</div>
                 <div class="fs-lg">{{ session_text(session) }}</div>
                 <!-- <div>{{ session.idx_reservation }}</div> -->
                 <!-- <div>{{ session.day }}</div> -->
