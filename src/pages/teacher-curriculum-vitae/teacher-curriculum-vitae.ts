@@ -65,7 +65,6 @@ export class TeacherCurriculumVitaePage {
       this.account.nationality = userData.nationality;
       this.account.last_education = userData.last_education;
       this.account.major = userData.major;
-      this.account.school = userData.school;
       this.account.hobby = userData.hobby;
       this.account.experience = userData.experience;
       this.account.introduction = userData.introduction;

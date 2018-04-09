@@ -90,7 +90,6 @@ export interface USER_REGISTER extends REQUEST {
     last_education?: string;
     major?: string;
     civil_status?: string;
-    school?: string;
     experience?: string;
     nationality?: string;
     hobby?: string;
