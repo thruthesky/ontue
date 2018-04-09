@@ -32,9 +32,9 @@
         <ng-template #pageLoaded>
           <div class="mt-md-2">
             <ion-grid *ngIf=" re && re?.available_schedules?.length; else NoSchedule">
-              <ion-row>
-                <ion-col *ngFor="let schedule of re.available_schedules" col-4 col-sm-3 col-lg-2>
-                  <div class="teacher mt-md-5 mb-md-3">
+              <ion-row justify-content-around>
+                <ion-col *ngFor="let schedule of re.available_schedules" col-auto>
+                  <div class="teacher mt-md-5 mb-md-3 w-100px bg-white">
                     
                         <div class="d-flex justify-content-center">
                           <div class="teacher-profile-photo size-100x120 of-hidden">
@@ -42,30 +42,32 @@
                           </div>
                         </div>
                         <div class="text-center mt-1">
-                          <div>{{ a.preTeacherName( schedule.teacher.name )}}</div>
-                          <div class="grade" [attr.grade]=" schedule.teacher.grade ">
+                          <div class="py-3 text-uppercase">{{ a.preTeacherName( schedule.teacher.name )}}</div>
+                          <div class="grade fs-90" [attr.grade]=" schedule.teacher.grade ">
                             추천:
                             <i class="star fas fa-star" *ngFor="let i of a.countStar(schedule.teacher.grade)"></i>
                             <!-- <i class="star empty-star fal fa-star" *ngFor="let i of a.countEmptyStar(schedule.teacher.grade)"></i> -->
 
                           </div>
-                          <div>
+                          <div class="pb-2 fs-90">
                             ({{ schedule.teacher.total_reservation }} 명 참여)
                           </div>
-                          <div>
-                            <span *ngIf=" a.user.isLogin ">{{ class_begin(schedule) }} / </span>
-                            {{ schedule.duration }} {{ 'MINUTE' | translate }}
+                          <div class="d-flex align-items-center justify-content-center pb-2 fs-90">
+                            <span *ngIf=" a.user.isLogin ">{{ class_begin(schedule) }} /</span>
+                            <span> {{ schedule.duration }} {{ 'MINUTE' | translate }} </span>
+                            <i class="fal fa-clock ml-1 fs-90 dodgerblue" *ngIf=" !a.user.isLogin "></i>
                           </div>
-                          <div>
-                            {{ schedule.point }} 포인트
+                          <div class="pb-2 d-flex align-items-center justify-content-center fs-90">
+                            {{ schedule.point }} 포인트 <i class="fal fa-check-circle ml-1 fs-90 green"></i>
                           </div>
 
-                          <div class="reserve-button pointer" (click)="onClickSchedule(schedule)" *ngIf=" ! loading[schedule.idx] ">
+                          <div class="reserve-button pointer py-3"   (click)="onClickSchedule(  schedule)" *ngIf="  !loading[schedule.idx] ">
                             {{ 'RESERVE NOW' | translate }}
+                            <i class="fal fa-calendar-check ml-2"></i>
                           </div>
-                          <div class="d-flex p-3" *ngIf=" loading[schedule.idx] ">
+                          <div class="d-flex-column align-items-center p-3" *ngIf=" loading[schedule.idx] ">
+                            <div class="p-2 fs-lg">{{ 'IN RESERVING' | translate }}</div>
                             <ion-spinner></ion-spinner>
-                            <span class="p-2">{{ 'IN RESERVING' | translate }}</span>
                           </div>
 
                         </div>

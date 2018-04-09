@@ -22,7 +22,7 @@
           <div class="size-100x120 rounded-2 of-hidden mx-md-0 mx-auto">
               <img src="{{ teacher.photoURL ? teacher.photoURL : a.anonymousPhotoURL }}">
           </div>
-          <div class="grade mx-auto mt-4 width-100px text-center">
+          <div class="grade mt-4 width-100px" text-center>
               <i class="star fas fa-star fs-110" *ngFor="let i of a.countStar(teacher.grade)"></i>
           </div>
       </ion-col>
@@ -69,13 +69,11 @@
               </ion-col>
               <ion-col col-12>
                   <div class="mt-3 mt-md-4 fw-light">
-                    School : {{teacher.last_education}}
+                    School : {{teacher.school}}
                   </div>
               </ion-col>
             </ion-row>
           </ion-grid>
-      </ion-col>
-      <ion-col>
       </ion-col>
       <ion-col col-12>
         <hr class="mt-4">

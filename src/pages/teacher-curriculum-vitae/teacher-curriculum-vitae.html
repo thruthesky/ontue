@@ -79,7 +79,7 @@
             <ion-col class="mr-md-2 mr-0 pr-md-5 pr-0" col-11 col-md-5>
               <div class="d-flex-column form-effect">
                 <input class=" focus-effect p-3 w-100 rounded-2" type="text" readonly [(ngModel)]="account.name"
-                       name="name"/>
+                       name="name" disabled/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'TEACHER ID' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
@@ -101,6 +101,10 @@
                 <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.phone_number"
                        name="phone_number"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'PHONE NO' | translate }}</label>
+              </div>
+              <div class="d-flex-column form-effect">
+                <input class="p-3 w-100 rounded-2  focus-effect" type="text" [(ngModel)]="account.school" name="school"/>
+                <label class="mt-5 mb-2 fs-90 fw-bold uppercase black">{{ 'SCHOOL' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
                 <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.last_education"
@@ -127,6 +131,14 @@
                               [(ngModel)]="birthday" (ngModelChange)="onChangeBirthDate()"></ion-datetime>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'BIRTHDAY' | translate }}</label>
               </div>
+              <div class="d-flex-column form-effect">
+                <div
+                  class="d-flex  align-items-center justify-content-around h-40px w-100 p-3 border rounded-2 bg-white">
+                  <input type="radio" name="male" [(ngModel)]="account.gender" value="M">Male
+                  <input type="radio" name="female" [(ngModel)]="account.gender" value="F">Female
+                </div>
+                <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'GENDER' | translate }}</label>
+              </div>
               <div class="d-flex-column form-effect position-relative">
                 <ion-datetime class="border p-3 m-0 w-100 rounded-2 h-40px bg-white bg-light " displayFormat="YYYY"
                               [(ngModel)]="account.experience" name="experience"></ion-datetime>
@@ -148,12 +160,9 @@
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'ADDRESS' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <div
-                  class="d-flex  align-items-center justify-content-around h-40px w-100 p-3 border rounded-2 bg-white">
-                  <input type="radio" name="male" [(ngModel)]="account.gender" value="M">Male
-                  <input type="radio" name="female" [(ngModel)]="account.gender" value="F">Female
-                </div>
-                <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'GENDER' | translate }}</label>
+                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.hobby"
+                        name="hobby"/>
+                <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'HOBBIES' | translate }}</label>
               </div>
             </ion-col>
           </ion-row>
