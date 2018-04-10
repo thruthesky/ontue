@@ -50,7 +50,7 @@ export class TeacherCurriculumVitaePage {
 
   loadData() {
     this.a.user.data().subscribe((userData: USER_DATA_RESPONSE) => {
-      // console.log('userData::', userData);
+      console.log('userData::', userData);
       this.account.name = userData.name;
       this.account.fullname = userData.fullname;
       this.account.nickname = userData.nickname;
@@ -128,6 +128,7 @@ export class TeacherCurriculumVitaePage {
     delete this.account.kakao_qrmark_URL;
 
     this.a.showLoader();
+    console.log("account", this.account);
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
       // console.log('curriculum vitae:', res);
       this.a.hideLoader();

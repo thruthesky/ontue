@@ -42,7 +42,7 @@ export class CommentViewWidget {
     const createCommentModal = this.modalCtrl.create(CommentEditPage, {post: this.post, comment: this.comment});
     createCommentModal.onDidDismiss(comment => {
       if (comment) {
-        console.log('ID:: ', comment);
+        // console.log('ID:: ', comment);
         this.updateComment(comment);
       }
     });
@@ -60,10 +60,10 @@ export class CommentViewWidget {
           {
             text: this.a.i18n["YES"],
             handler: () => {
-              console.log('Yes');
+              // console.log('Yes');
               this.a.showLoader();
               this.a.forum.commentDelete(this.comment.comment_ID).subscribe(res => {
-                console.log('success delete: ', res);
+                // console.log('success delete: ', res);
                 if (res.mode == 'mark') {
                   this.updateComment(this.comment);
                 }
@@ -97,8 +97,8 @@ export class CommentViewWidget {
       let depth = oComment.depth;
       Object.assign(oComment, comment);
       oComment.depth = depth;
-      console.log('commentData: ', comment);
-      console.log(oComment);
+      // console.log('commentData: ', comment);
+      // console.log(oComment);
       this.a.hideLoader();
     }, e => {
       this.a.showError(e);

@@ -33,7 +33,7 @@ export class TeacherDayoffPage {
     onClickSubmit() {
         let date = this.date.replace(/\-/g, '');
         this.a.lms.set_dayoff( date ).subscribe( re => {
-            console.log(re);
+            // console.log(re);
             this.loadDayoffs();
         }, e => this.a.alert(e) );
     }

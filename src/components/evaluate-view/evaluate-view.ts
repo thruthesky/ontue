@@ -21,10 +21,10 @@ export class EvaluateView {
   ) {
 
     let idx = navParams.data['idx'];
-    console.log( idx );
+    // console.log( idx );
 
     this.a.lms.get_session_evaluation( idx ).subscribe(res => {
-      console.log("get_session_evaluation:: " , res.session);
+      // console.log("get_session_evaluation:: " , res.session);
       let s = res.session;
       this.session = s;
       this.loading = false;

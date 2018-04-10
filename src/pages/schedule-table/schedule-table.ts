@@ -347,7 +347,7 @@ export class ScheduleTablePage {
 
 
   /**
-   * 
+   *
    * @see app.service::loadSchedule() for more info
    */
   loadScheduleTable() {
@@ -660,7 +660,7 @@ export class ScheduleTablePage {
 
     // console.log('onClickSession', session);
     if (session['in_progress'] === true) {
-      console.log("It is reserving/cancelling... return");
+      // console.log("It is reserving/cancelling... return");
       return;
     }
 

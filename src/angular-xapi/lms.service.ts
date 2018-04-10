@@ -333,7 +333,7 @@ export class LMSService extends Base {
   session_evaluate(data) {
     data['route'] = 'lms.session_evaluate';
     data['session_id'] = this.user.sessionId;
-    console.log(data);
+    // console.log(data);
     return this.x.post(data);
   }
 
@@ -357,7 +357,7 @@ export class LMSService extends Base {
    */
   page(req): any {
     req['route'] = 'lms.page';
-    console.log(req);
+    // console.log(req);
     return this.x.post(req)
       .map(e => {
         const re = this.x.safe(e);

@@ -19,7 +19,7 @@ export class TeacherGradeComponent {
   }
   ionViewCanEnter() {
     let grade = this.nav.get('grade');
-    console.log(grade);
+    // console.log(grade);
     if( grade ) this.grade = grade;
     this.slides.initialSlide=this.grade;
     this.slides.simulateTouch=false;

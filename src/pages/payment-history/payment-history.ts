@@ -17,7 +17,7 @@ export class PaymentHistoryPage {
     public modalCtrl: ModalController,
   ) {
     this.a.lms.get_payment_history().subscribe( res => {
-      console.log("get_payment_history", res['payments']);
+      // console.log("get_payment_history", res['payments']);
       this.payments = res['payments'];
       // if ( this.payments[0] ) this.onClickPrintPreview(this.payments[0]);
     }, e => {
@@ -27,7 +27,7 @@ export class PaymentHistoryPage {
   }
 
   onClickPrintPreview(payment) {
-    console.log("payment:: ", payment);
+    // console.log("payment:: ", payment);
     const modal = this.modalCtrl.create(PaymentReceipt,
       {payment: payment});
     modal.onDidDismiss(() => {

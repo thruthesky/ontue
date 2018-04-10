@@ -16,7 +16,7 @@ export class SitePreviewWidget {
   ) {}
 
   onClickDelete() {
-    console.log("deleting site preview: ", this.preview.id );
+    // console.log("deleting site preview: ", this.preview.id );
     this.a.forum.deletePreview( this.preview.id ).subscribe( res => {
       this.preview.id = 0;
       this.preview.content = '';
