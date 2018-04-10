@@ -11,6 +11,7 @@ export class RefundRequestView {
 
 
   book;
+  loadingRefundReject = false;
 
   constructor(
     public a: AppService,
@@ -51,13 +52,24 @@ export class RefundRequestView {
   }
 
   onClickRejectRefundRequest(book) {
+
+    if(this.loadingRefundReject) return;
     const modal = this.modalCtrl.create(MessageWrite, {title: this.a.i18n["WHY REJECT REFUND"]});
-    modal.onDidDismiss(re => {
-      if (re) {
-        this.a.lms.session_refund_reject({idx_reservation: book['idx'], refund_reject_message: re}).subscribe(res => {
+    modal.onDidDismiss(msg => {
+      if (msg) {
+
+        this.loadingRefundReject = true;
+        this.a.lms.session_refund_reject({
+          idx_reservation: book['idx'],
+          refund_reject_message: msg
+        }).subscribe(res => {
           // console.log(res);
           this.viewCtrl.dismiss('reject');
-        }, e => this.a.alert(e));
+          this.loadingRefundReject = false;
+        }, e => {
+          this.a.alert(e);
+          this.loadingRefundReject = false;
+        });
       }
     });
     modal.present();
