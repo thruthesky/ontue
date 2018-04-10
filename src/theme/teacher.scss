@@ -168,7 +168,7 @@ ion-nav.teacher {
       overflow: overlay !important
     }
 
-    @media screen and (min-width: 544px){
+    @media screen and (min-width: $md){
 
       .cover {
         height: calc(235.953px * 2) !important
@@ -240,7 +240,7 @@ ion-nav.teacher {
       }
     }
   
-    @media screen and (max-width: 544px){
+    @media screen and (max-width: $md){
       .border-sm-0{
         border: none!important;
       }

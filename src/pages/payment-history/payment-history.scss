@@ -1,3 +1,21 @@
 payment-history-page {
     @include theme('bluegrey');
+    
+    .sticky-effect{
+        position:sticky!important;
+        top:-1.5px;
+        left:0;
+        right:0;
+        z-index: 1000;
+      }
+    
+      .page{
+        background: #f7f7f7!important;
+        overflow: visible!important;
+      }
+
+      .bg-opacity-white{
+        background: rgba(#fff, 0.85)
+    }
+
 }

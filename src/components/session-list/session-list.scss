@@ -47,6 +47,18 @@ session-list {
         z-index: 1000;
       }
 
+
+  .sticky-effect-top{
+    position:fixed!important;
+    top:56px;
+    left:0;
+    right:0;
+    margin: auto;
+    max-width: 992px!important;
+    z-index:100000;
+  }
+
+
       .bg-img{
           background: linear-gradient(to bottom,rgba(white, 0.83), rgba(white, 0.83)),url('../assets/img/teacher/teacher-mobile-slide2.jpg')!important;
           background-size:cover!important;

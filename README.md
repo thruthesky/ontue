@@ -63,20 +63,20 @@ $  ionic cordova run android --livereload --address=192.168.0.2 // [MACBOOK_INTE
 
 --Katalkenglish--
 
-page/login                      (login)
-page/register                   (register)
-page/schedule-available         (Instant Book)
-page/payment-history            (payment history)
-page/session-past               (My English Level)
+page/schedule-available         (Instant Book)                -ok
+page/payment-history            (payment history)             -ok
+page/session-past               (My English Level)            -ok
+page/my-point                   (My Points)                   -ok
+
 
 
 --Ontue--
 
-components/teacher-leveltest    (Teacher Level Test Guide)  
-components/add-schedule         (Add Schedule)                 
-page/schedule-edit              (Schedule)                    
-page/teacher-dayoff             (Add Dayoff)
-page/settings-payment-info      (Payment history)                    
+components/teacher-leveltest    (Teacher Level Test Guide)    -ok
+components/add-schedule         (Add Schedule)                -ok
+page/schedule-edit              (Schedule)                    -ok      
+page/teacher-dayoff             (Add Dayoff)                  -ok
+page/settings-payment-info      (Payment history)             -ok                
 
 
 

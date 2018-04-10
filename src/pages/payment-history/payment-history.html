@@ -11,38 +11,35 @@
 
     <section class="page-desc">{{ 'PAYMENT HISTORY PAGE DESC' | translate }}</section>
 
-    <section class="page-body">
+    <section class="page-body bg-white mt-5">
 
-      <div>
 
-        <table width="100%">
-          <tr>
-            <td>{{ 'NO' | translate }}</td>
-            <!-- <td class="p-2">transaction ID</td> -->
-            <td>{{ 'DATE' | translate }}</td>
-            <td>{{ 'PAYMENT METHOD SHORT' | translate }}</td>
-            <td>{{ 'AMOUNT' | translate }}</td>
-            <td>{{ 'POINT' | translate }}</td>
-            <td>{{ 'PRINT' | translate }}</td>
-          </tr>
-          <tr *ngFor="let payment of payments; even as o" class=" {{o ? 'bg-ghostwhite': ''}}">
-            <td class="p-1">{{ payment.idx }}</td>
-            <!-- <td class="p-2">{{ payment.paymentID }}</td> -->
-            <td class="p-1">{{ a.shortDate( payment.stamp_end ) }}</td>
-            <td class="p-1">{{ payment.payment_method }}</td>
-            <td class="p-1">{{ payment.amount }} {{ payment.currency | lowercase }}</td>
-            <td class="p-1">{{ payment.point }}</td>
-            <td class="p-1" (click)="onClickPrintPreview(payment)">
-              <button ion-button small>
+        <ion-grid class="px-2 px-md-0" no-padding text-center>
+          <ion-row class="sticky-effect border border-right-0 border-left-0 bg-opacity-white fw-bold" align-items-center justify-content-between>
+            <ion-col class="py-4" col-1>{{ 'NO' | translate }}</ion-col>
+            <!-- <ion-col class="py-4" col-1>transaction ID</ion-col> -->
+            <ion-col class="py-4" col-2>{{ 'DATE' | translate }}</ion-col>
+            <ion-col class="py-4" col-2>{{ 'PAYMENT METHOD SHORT' | translate }}</ion-col>
+            <ion-col class="py-4" col-3>{{ 'AMOUNT' | translate }}</ion-col>
+            <ion-col class="py-4" col-2>{{ 'POINT' | translate }}</ion-col>
+            <ion-col class="py-4" col-2>{{ 'PRINT' | translate }}</ion-col>
+          </ion-row>
+           <ion-row class="border border-top-0 border-right-0 border-left-0" *ngFor="let payment of payments; even as o" align-items-center justify-content-between>
+            <ion-col col-1>{{ payment.idx }}</ion-col>
+            <!-- <ion-col col-1>{{ payment.paymentID }</ion-col> -->
+            <ion-col col-2>{{ a.shortDate( payment.stamp_end ) }}</ion-col>
+            <ion-col col-2>{{ payment.payment_method }}</ion-col>
+            <ion-col col-3>{{ payment.amount }} {{ payment.currency | lowercase }}</ion-col>
+            <ion-col col-2>{{ payment.point }}</ion-col>
+            <ion-col col-2 (click)="onClickPrintPreview(payment)">
+              <button class="my-3" ion-button small>
                 <ion-icon name="print"></ion-icon>
+                <span class="ml-2 d-none d-md-inline">Print</span>
               </button>
-            </td>
-          </tr>
-        </table>
-      </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
     </section>
-
-  </div>
-
+</div>
   <hook-content-bottom></hook-content-bottom>
 </ion-content>

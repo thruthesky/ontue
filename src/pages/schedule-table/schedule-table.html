@@ -373,7 +373,7 @@
 
       <!--/schedule-body-table START-->
       <div class="table schedule-table bg-white" *ngIf=" schedule_table_rows.length " width="100%">
-        <div id="schedule-header" class="sticky-effect tr schedule-header  bg-white  hide-effect d-flex justify-content-around align-items-center fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0">
+        <div id="sticky-header" class="tr schedule-header sticky-effect bg-white  hide-effect d-flex justify-content-around align-items-center fw-bold fw-sm-normal fs-sm-80 border border-right-0 border-left-0">
           <div class="td teacher-profile" *ngIf=" ! singleTeacher ">
             <div class="text-center">{{ 'TEACHER' | translate }}</div>
           </div>
@@ -382,8 +382,8 @@
             <div class="">{{ 'MINUTE' | translate }}</div>
           </div>
           <!-- <td>Reserve Visible</td> -->
-          <div class="td datetime session-wrapper d-flex-column justify-content-center align-items-center size-42px-62px" *ngFor="let header of header">
-            <div class="hover-effect pointer w-100 text-center" (click)="onClickNavigate( header.date )">
+          <div class="td datetime session-wrapper size-42px-62px" *ngFor="let header of header">
+            <div class="hover-effect pointer  d-flex-column justify-content-center align-items-center h-100 w-100 text-center" (click)="onClickNavigate( header.date )">
               <!--{{ header | json }}-->
               <span>{{ header.display_date }}</span>
               <span class="d-inline-block"> {{ header.user_time_day | translate }}</span>
@@ -526,7 +526,6 @@
 
   <hook-content-bottom></hook-content-bottom>
 
-
   <ion-fab right bottom #fab>
     <button ion-fab mini color="light">
       <ion-icon name="ios-arrow-dropleft" color="dark"></ion-icon>
@@ -549,5 +548,4 @@
       </button>
     </ion-fab-list>
   </ion-fab>
-
 </ion-content>
