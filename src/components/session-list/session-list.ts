@@ -41,6 +41,8 @@ export class SessionList {
   displayTeacherName = true;
   displayDate = true;
   displayPoint = true;
+
+  loadingRefundRequest = false;
   constructor(
     public a: AppService,
     public modalCtrl: ModalController,
@@ -175,17 +177,24 @@ export class SessionList {
 
 
   onClickRefundRequest(book) {
+
+    if(this.loadingRefundRequest) return;
     // console.log(book);
     const modal = this.modalCtrl.create(MessageWrite, { title: "포인트 복구 사유를 적어주세요." });
-    modal.onDidDismiss(re => {
+    modal.onDidDismiss(msg => {
       // console.log("onDidDismiss", re);
-      if (re) {
+      if (msg) {
+        this.loadingRefundRequest = true;
         this.a.lms.session_refund_request({
           idx_reservation: book['idx'],
-          refund_request_message: 're'
+          refund_request_message: msg
         }).subscribe(re => {
           book['refund_request_at'] = 1;
-        }, e => this.a.alert(e));
+          this.loadingRefundRequest = false;
+        }, e => {
+          this.a.alert(e);
+          this.loadingRefundRequest = false;
+        });
       }
     });
     modal.present();

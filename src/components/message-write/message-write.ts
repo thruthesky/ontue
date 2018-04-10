@@ -13,6 +13,7 @@ export class MessageWrite {
   title:string = null;
   message: string = null;
 
+
   constructor(
     public a: AppService,
     public navParams: NavParams,

@@ -109,7 +109,7 @@
                     <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'REFUNDED SESSIONS' | translate }}</div>
                     <div class="mt-md-3 mt-0"> {{re.total_session_refunded}}</div>
                 </div>
-            </ion-col> 
+            </ion-col>
             <ion-col class="my-2" col-md-2 col-12   *ngIf=" re.total_session_refund_in_progress ">
                 <i class="fal fa-sync d-none d-md-inline fa-4x mb-3 teal"></i>
                 <div  class="d-flex-column d-sm-flex-row align-items-center h-100">
@@ -121,7 +121,7 @@
       </ng-container>
       <ion-col class="my-2" col-md-2 col-12>
         <i class="fal fa-calendar-alt fa-4x d-none d-md-inline mb-3 indigo"></i>
-          <div class="d-flex-column d-sm-flex-row align-items-center h-100">  
+          <div class="d-flex-column d-sm-flex-row align-items-center h-100">
             <i class="fal fa-calendar-alt d-inline d-md-none mr-2 fs-2rem indigo"></i>
             <div class="d-flex align-items-center mr-3 mr-md-0 fw-bold fs-110">{{ 'SEARCH PERIOD' | translate }}</div>
             <div class="d-flex-column d-sm-flex-row align-items-center mt-md-3 mt-0">
@@ -139,7 +139,7 @@
             <div class="mt-md-3 mt-0 fs-90 fs-sm-1dot4rem"> {{ a.userTime }}</div>
           </div>
           <div class="app-button hover-effect mt-3 px-3  border bg-white black" >{{ 'CHANGE TIMEZONE' | translate }}</div>
-        </ion-col> 
+        </ion-col>
     </ion-row>
 
 
@@ -159,7 +159,7 @@
 
   <div class="books my-md-5 mt-0 " *ngIf=" books.length ">
     <ion-grid no-padding text-center>
-          
+
       <ion-row class="sticky-effect px-md-5 px-0 py-4 bg-blue-60 fw-bold white text-uppercase" justify-content-between align-items-center >
         <ion-col  *ngIf="a.isStudent" col-3 col-md-1>
             <div>{{ 'TEACHER' | translate }}</div>
@@ -193,9 +193,9 @@
           </ng-container>
         </ion-col>
       </ion-row>
-      <ion-row class="px-md-5 px-0 py-4 border border-top-0 border-right-0 border-left-0 " 
-              *ngFor="let book of books; let i = index; let o = odd; let e = even" 
-              [ngClass]=" { 'odd': o, 'even': e } " 
+      <ion-row class="px-md-5 px-0 py-4 border border-top-0 border-right-0 border-left-0 "
+              *ngFor="let book of books; let i = index; let o = odd; let e = even"
+              [ngClass]=" { 'odd': o, 'even': e } "
               justify-content-between align-items-center >
         <ion-col *ngIf="a.isStudent" col-3 col-md-1>
             <section class="teacher-photo">
@@ -227,8 +227,8 @@
                 </ng-container>
                 <ng-container *ngIf="a.isStudent">
 
-                  <div class="fs-3rem orange" 
-                      (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) " 
+                  <div class="fs-3rem orange"
+                      (click)=" onClickKakaoQRMarkString( my_teachers[book.idx_teacher].kakao_qrmark_string ) "
                       *ngIf=" a.isMobile() ">
                     <i class="fas fa-plus-circle"></i>
                   </div>
@@ -248,7 +248,7 @@
                 <ng-container *ngIf=" book.past ">
                   <ng-container *ngIf=" a.isTeacher ">
                     <ion-col class="d-flex justify-content-center mt-4" *ngIf=" !paid(book) && !refunded( book ) " col-6>
-                        <button class="hover-effect rounded-2 border border-dark-06 bg-white blue" 
+                        <button class="hover-effect rounded-2 border border-dark-06 bg-white blue"
                                 [class.warning]=" ! evaluated(book) "
                                 (click)=" a.open('evaluate', {idx: book.idx, student_name: a.preTeacherName(book.student_name)}) ">
                           Eval
@@ -275,7 +275,7 @@
                   </ng-container>
                   <ng-container  *ngIf=" a.isStudent ">
                     <ion-col class="d-flex justify-content-center mt-4"  *ngIf=" !refunded(book) " col-6>
-                        <button class="hover-effect rounded-2  d-flex align-items-center justify-content-center border border-dark-06 dark" 
+                        <button class="hover-effect rounded-2  d-flex align-items-center justify-content-center border border-dark-06 dark"
                                 (click)=" onClickEvaluateView(book.idx)">강의평가
                             <!--<i class="fal fa-file-check ml-2"></i>-->
                         </button>
@@ -294,13 +294,14 @@
                     </ion-col>
                       <ion-col class="d-flex justify-content-center mt-4" *ngIf=" !book.refund_timeover && ! rejected( book ) " col-6>
                         <ng-container *ngIf=" ! refunded( book ) ">
-                          <button class="hover-effect border border-dark-06 rounded-2  fs-90" 
-                                  (click)=" onClickCancelRefundRequest( book )" 
-                                  If=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}
+                          <button class="hover-effect border border-dark-06 rounded-2  fs-90"
+                                  (click)=" onClickCancelRefundRequest( book )"
+                                  *ngIf=" book.refund_request_at > 0 ">{{ "CANCEL REFUND REQUEST" | translate }}
                           </button>
-                          <button class="warning hover-effect border border-dark-06 rounded-2 fs-90" 
-                                  (click)=" onClickRefundRequest( book )" 
+                          <button class="warning hover-effect border border-dark-06 rounded-2 fs-90"
+                                  (click)=" onClickRefundRequest( book )"
                                   *ngIf=" book.refund_request_at == 0 ">
+                                  <span *ngIf="loadingRefundRequest"><i class="fa fa-spinner fa-spin"></i> </span>
                                   {{ "REQUEST REFUND" | translate }}
                           </button>
                         </ng-container>
