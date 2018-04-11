@@ -82,11 +82,11 @@ export class XapiService extends Base {
         // console.log("checkResult() => res: ", res, " data: ", data);
         if (!res) {
             console.error("Response from backend is empty");
-            console.log("Requested data(that cause empty response): ", data);
+            // console.log("Requested data(that cause empty response): ", data);
             this.throw(-4008, 'Response from backend is empty');
         }
         else if (res['code'] === void 0) {
-            console.log("=========> re: ", res);
+            // console.log("=========> re: ", res);
             this.throw(-4009, 'Response has no code');
         }
         else if (res['code'] !== 0) {

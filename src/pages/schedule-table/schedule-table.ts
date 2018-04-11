@@ -54,11 +54,11 @@ export class ScheduleTablePage {
   DAYOFF = 'f';
   IDX_RESERVATION = 'i';
   IDX_SCHEDULE = 'e';
-  OPEN = 'o';
+  OPEN = 'o';               /// 'open' can have one of SESSION_OPEN, SESSION_RESERVED, SESSION_NO_SCHEDULE
   OWNER = 'w';
   POINT = 'p';
   PRERE = 'r';
-  STATUS = 's';
+  STATUS = 's';             /// 'status'  can have one of SESSION_FUTURE or SESSION_PAST
   STUDENT_NAME = 'n';
 
   IDX_TEACHER = 't';
@@ -67,7 +67,7 @@ export class ScheduleTablePage {
   DURATION = 'a';
 
   SESSION_NO_SCHEDULE = 'N';
-  SESSION_OPEN = 'O';
+  SESSION_OPEN = 'O';     /// This 'O' means, the class is open. Not reserved.
   SESSION_PAST = 'P';
   SESSION_FUTURE = 'F';
   SESSION_RESERVED = 'R';
@@ -347,7 +347,7 @@ export class ScheduleTablePage {
 
 
   /**
-   * 
+   *
    * @see app.service::loadSchedule() for more info
    */
   loadScheduleTable() {
@@ -660,7 +660,7 @@ export class ScheduleTablePage {
 
     // console.log('onClickSession', session);
     if (session['in_progress'] === true) {
-      console.log("It is reserving/cancelling... return");
+      // console.log("It is reserving/cancelling... return");
       return;
     }
 

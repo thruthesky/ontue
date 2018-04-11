@@ -49,7 +49,7 @@ export class CommentEditPage {
     };
     req.fid = this.files.reduce((_, file) => { _.push(file.id); return _; }, []);
 
-    console.log('onClickSubmit:',req);
+    // console.log('onClickSubmit:',req);
     this.a.forum.commentUpdate(req).subscribe(id => {
       this.a.hideLoader();
       this.viewCtrl.dismiss(this.comment);

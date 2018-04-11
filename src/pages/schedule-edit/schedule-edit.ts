@@ -106,7 +106,7 @@ export class ScheduleEditPage {
   }
   getMySchedule(){
     this.a.lms.my_schedules().subscribe( re =>{
-      console.log('getMySchedule', re);
+      // console.log('getMySchedule', re);
       this.data = re;
 
       // this.onClickAddSchedule(); // TEST ONLY
@@ -122,10 +122,10 @@ export class ScheduleEditPage {
           {
             text: this.a.i18n["YES"],
             handler: () => {
-              console.log('Yes');
+              // console.log('Yes');
               this.a.showLoader();
               this.a.lms.schedule_delete(idx).subscribe(res => {
-                console.log('success delete: ', res);
+                // console.log('success delete: ', res);
                 this.getMySchedule();
                 this.a.hideLoader();
               }, e => {
@@ -137,7 +137,7 @@ export class ScheduleEditPage {
           {
             text: this.a.i18n["CANCEL"],
             handler: () => {
-              console.log('cancel');
+              // console.log('cancel');
             }
           }
         ]

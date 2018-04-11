@@ -41,6 +41,8 @@ export class SessionList {
   displayTeacherName = true;
   displayDate = true;
   displayPoint = true;
+
+  loadingRefundRequest = false;
   constructor(
     public a: AppService,
     public modalCtrl: ModalController,
@@ -133,7 +135,7 @@ export class SessionList {
         {
           text: this.a.i18n['CANCEL'],
           handler: () => {
-            console.log('Cancel');
+            // console.log('Cancel');
           }
         }
       ]
@@ -175,17 +177,24 @@ export class SessionList {
 
 
   onClickRefundRequest(book) {
+
+    if(this.loadingRefundRequest) return;
     // console.log(book);
     const modal = this.modalCtrl.create(MessageWrite, { title: "포인트 복구 사유를 적어주세요." });
-    modal.onDidDismiss(re => {
+    modal.onDidDismiss(msg => {
       // console.log("onDidDismiss", re);
-      if (re) {
+      if (msg) {
+        this.loadingRefundRequest = true;
         this.a.lms.session_refund_request({
           idx_reservation: book['idx'],
-          refund_request_message: 're'
+          refund_request_message: msg
         }).subscribe(re => {
           book['refund_request_at'] = 1;
-        }, e => this.a.alert(e));
+          this.loadingRefundRequest = false;
+        }, e => {
+          this.a.alert(e);
+          this.loadingRefundRequest = false;
+        });
       }
     });
     modal.present();
@@ -193,7 +202,7 @@ export class SessionList {
   }
 
   onClickCancelRefundRequest(book) {
-    console.log(book);
+    // console.log(book);
     this.a.lms.session_cancel_refund_request(book['idx']).subscribe(re => {
       book['refund_request_at'] = 0;
     }, e => this.a.alert(e));
@@ -267,7 +276,7 @@ export class SessionList {
       // console.log("onDidDismiss", re);
       if (re) {
         this.a.lms.session_refund_reject({ idx_reservation: book['idx'], refund_reject_message: re }).subscribe(re => {
-          console.log(re);
+          // console.log(re);
           book['refund_reject_at'] = 1;
         }, e => this.a.alert(e));
       }
@@ -300,12 +309,12 @@ export class SessionList {
   }
 
   onClickShowRequest(book) {
-    console.log("onClickShowRequest:: ", book);
+    // console.log("onClickShowRequest:: ", book);
     const modal = this.modalCtrl.create(RefundRequestView, { book: book });
     modal.onDidDismiss(re => {
-      console.log("onClickShowRequest::onDidDismiss:: ", re);
+      // console.log("onClickShowRequest::onDidDismiss:: ", re);
       if (!re) return;
-      console.log("onDidDismiss::", re);
+      // console.log("onDidDismiss::", re);
       if (re == 'accept') {
         book['refund_done_at'] = 1;
       } else if (re == 'reject') {
@@ -342,14 +351,14 @@ export class SessionList {
     if ( book.stamp_checked > 0 ) return;
 
     book['ready'] = true;
-    console.log(book);
+    // console.log(book);
     let data = {
       idx: book.idx,
       idx_teacher: book.idx_teacher
     };
-    console.log(data);
+    // console.log(data);
     this.a.lms.session_stamp_checked(data).subscribe(re => {
-      console.log(re);
+      // console.log(re);
       book['stamp_checked'] = 1;
       book['ready'] = false;
     }, e => {

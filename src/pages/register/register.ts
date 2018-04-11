@@ -85,7 +85,7 @@ export class RegisterPage {
     this.inLoading = true;
     this.a.user.data().subscribe((userData: USER_DATA_RESPONSE) => {
       setTimeout(() => this.inLoading = false, 1000);
-      console.log('userData::', userData);
+      // console.log('userData::', userData);
       this.account.user_email = userData.user_email;
       this.account.name = userData.name;
       this.account['display_name'] = userData['display_name'];
@@ -176,7 +176,7 @@ export class RegisterPage {
     delete this.account.kakao_qrmark_string;
 
     this.a.user.register(this.account).subscribe(re => { /// Registration success
-      console.log("user.register => success: re: ", re);
+      // console.log("user.register => success: re: ", re);
       this.a.onUserRegister();
       this.account.user_pass = null;
       this.a.lms.timezone_set(this.offset).subscribe(() => {
@@ -185,7 +185,7 @@ export class RegisterPage {
 
       this.a.hideLoader();
 
-      console.log("tehem: ", this.a.studentTheme);
+      // console.log("theme: ", this.a.studentTheme);
       if (this.a.studentTheme) {
         this.a.open('student-register-success');
       }

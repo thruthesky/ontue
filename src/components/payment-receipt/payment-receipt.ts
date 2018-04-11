@@ -15,7 +15,7 @@ export class PaymentReceipt {
     ) {
 
         this.payment = navParams.data['payment'];
-        console.log( "PaymentReceipt", this.payment );
+        // console.log( "PaymentReceipt", this.payment );
 
     }
 
