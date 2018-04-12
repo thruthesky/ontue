@@ -191,7 +191,7 @@ export class AppService {
      *
      * @attention use this method to get user information. Once this method is being used, the app gets NOT only the user information BUT also it saves into localStorage.
      *
-     * @note if you only want to get user point, consider using "loadMyPoint()". It's more convinent to only get point.
+     * @note if you only want to get user point, consider using "loadMyPoint()". It's more convenient to only get point.
      */
     updateLMSInfo(callback = null) {
         this.info = this.get(KEY_LMS_INFO);
@@ -1160,18 +1160,18 @@ export class AppService {
     /**
      * Loads schedules from backend and caches.
      * @since 2018-03-23 This methods is a copy versioni of schedule-table.ts and should be merge with it.
-     * 
-     * 
+     *
+     *
      * @desc This only loads for all teacher's schedule.
      * @desc This method is being invoked only by HomePage component and ScheduleTable component.
      *          - No other page is needed to call this method.
      *
-     * 
+     *
      * @desc {WARNING} This must be called after/inside platform.ready().then()
-     * 
-     * 
+     *
+     *
      * @desc it clears cache when reserve and cancel by the user. But it cannot clear cache when a teacher cancells the class.
-     * 
+     *
      * @desc {side effect}
      *  - If user changes options, and quickly move to another page
      *  - the schedule loading process continues and
@@ -1181,7 +1181,7 @@ export class AppService {
      *  - and the schedule loading finishes,
      *  - and the user goes back to the all schedule table.
      *  - the user will see updated schedule table.
-     * 
+     *
      * @desc {another side effer}
      *  - student reserve
      *  - teacher cancells.
@@ -1190,8 +1190,8 @@ export class AppService {
      *  - when user visits the site and he didn't logged in yet. the app gets all schedule table.
      *      and the all schedule table may show jis reservations as others.
      *      so, it should clear when the user logged in.
-     * 
-     * 
+     *
+     *
      */
     loadSchedule(callback?) {
 

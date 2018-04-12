@@ -21,6 +21,7 @@ export class AddSchedule {
     php_to_kwr;
     usd_to_kwr;
     share_teacher;
+    transaction_fee;
     max_point_per_minute;
 
 
@@ -35,6 +36,7 @@ export class AddSchedule {
         this.php_to_kwr = this.params['php_to_kwr'];
         this.usd_to_kwr = this.params['usd_to_kwr'];
         this.share_teacher = this.params['share_teacher'];
+        this.transaction_fee = this.params['transaction_fee'];
         this.max_point_per_minute = this.params['max_point_per_minute'];
 
         // console.log('params', this.params['schedule']);
@@ -141,17 +143,19 @@ export class AddSchedule {
         if (!point) return 0;
         point = Math.ceil(point);
         let php = parseFloat(this.php_to_kwr);
+        let usd = parseFloat(this.usd_to_kwr);
         if (!php) return 0;
         // console.log("php: ", this.payment_method);
-
-
-        let amount = Math.round(point / php * this.share_teacher / 100);
         if (this.payment_method == 'western-union') {
-            amount = Math.round(amount * 94 / 100); // @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.yjz5bpwzcj9j
+            let p = Math.round(point / php * this.share_teacher / 100);
+            p = Math.round(p -( p * this.transaction_fee / 100));
+            return  p + ' pesos';
         }
-
-        return amount;
-
+        if (this.payment_method == 'paypal') {
+            let u = Math.round(point / usd * this.share_teacher / 100);
+            u = Math.round(u -( u * this.transaction_fee / 100));
+            return  '$'+u;
+        }
     }
 
     countSelectedDays() {

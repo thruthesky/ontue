@@ -344,7 +344,6 @@ export class RegisterPage {
     const modal = this.modalCtrl.create(this._modal[modal_name]);
     modal.onDidDismiss(() => { });
     modal.present();
-
   }
 
 

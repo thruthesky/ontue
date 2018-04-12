@@ -14,7 +14,7 @@ export class StudentCommentEdit {
   data: STUDENT_COMMENT_TO_TEACHER = <STUDENT_COMMENT_TO_TEACHER>{};
 
   comment= '';
-  rate = 1;
+  rate = 3;
 
   loading = false;
 

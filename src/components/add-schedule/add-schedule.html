@@ -115,23 +115,23 @@
         The point for {{ data['duration'] }} minutes class must be less than or equal to {{ data['duration'] *
         max_point_per_minute }}
       </div>
-  
-  
+
+
       <div class="alert alert-info m-0 py-1 px-2" *ngIf=" calculateEarning() ">
         You will earn
         {{ calculateEarning() }}
-        peso in a month
+        in a month
         (
         {{ data.duration }} minutes /
         {{ countSelectedDays() * 4 }} days a month
         with
         <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="paypal"> paypal or
-        <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="western-union"> western union
+        <input type="radio" name="payment_method" [(ngModel)]="payment_method" value="western-union"> western union/gcash
         )
-  
+
         Approximately.
         @see Policy
-  
+
       </div>
 
       <ion-grid no-padding>
@@ -144,7 +144,7 @@
             </ion-col>
               <ion-col col-12 col-md-6>
                       <div class=" d-flex align-items-center justify-content-center  pl-3 py-0 pr-0  mt-2 mt-md-0 h-100 darkorange" text-center text-md-left>
-                         You can make the schedule limited to specific student, by adding the student email here. 
+                         You can make the schedule limited to specific student, by adding the student email here.
                         </div>
               </ion-col>
           </ion-row>
