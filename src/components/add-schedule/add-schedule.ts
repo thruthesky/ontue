@@ -37,7 +37,7 @@ export class AddSchedule {
         this.share_teacher = this.params['share_teacher'];
         this.max_point_per_minute = this.params['max_point_per_minute'];
 
-        console.log('params', this.params['schedule']);
+        // console.log('params', this.params['schedule']);
         this.updateTime();
         if (this.params.schedule && this.params.schedule.idx) {
             let s = this.params.schedule;
@@ -101,7 +101,7 @@ export class AddSchedule {
         }
         this.a.showLoader();
         this.a.lms.schedule_edit(this.data).subscribe(re => {
-            console.log('re: ', re);
+            // console.log('re: ', re);
             this.a.hideLoader();
             if (re['schedule']['idx']) {
                 if (this.data.idx) this.a.showAlert('Update Success', "Schedule was update successful.");
@@ -142,7 +142,7 @@ export class AddSchedule {
         point = Math.ceil(point);
         let php = parseFloat(this.php_to_kwr);
         if (!php) return 0;
-        console.log("php: ", this.payment_method);
+        // console.log("php: ", this.payment_method);
 
 
         let amount = Math.round(point / php * this.share_teacher / 100);

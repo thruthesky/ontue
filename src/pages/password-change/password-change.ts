@@ -22,7 +22,7 @@ export class PasswordChangePage {
 
   onClickChangePassword() {
     this.a.user.changePassword(this.changePassword).subscribe(re => {
-      console.log('onClickChangePassword', re);
+      // console.log('onClickChangePassword', re);
       this.a.alert(this.a.i18n["PASSWORD CHANGED"])
     }, e => {
       this.a.alert(e);

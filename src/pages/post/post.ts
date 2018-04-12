@@ -45,7 +45,7 @@ export class PostPage {
     };
     // this.loadCache(req);
     this.a.forum.postList(req).subscribe((page: POST_LIST_RESPONSE) => {
-      console.log('Page::', page);
+      // console.log('Page::', page);
       if (page.paged == page.max_num_pages) {
         this.noMorePosts = true;
       }

@@ -15,7 +15,8 @@
     </ion-item>
     <ion-item>
       <button ion-button color="primary" (click)=" onClickRefund( book ) ">Accept</button>
-      <button ion-button color="danger" (click)=" onClickRejectRefundRequest( book ) ">Reject</button>
+      <button ion-button color="danger" (click)=" onClickRejectRefundRequest( book ) ">
+        <span *ngIf="loadingRefundReject"><i class="fa fa-spinner fa-spin"></i></span> Reject</button>
     </ion-item>
   </ion-list>
 </ion-content>

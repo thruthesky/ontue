@@ -103,13 +103,9 @@
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'PHONE NO' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class="p-3 w-100 rounded-2  focus-effect" type="text" [(ngModel)]="account.school" name="school"/>
-                <label class="mt-5 mb-2 fs-90 fw-bold uppercase black">{{ 'SCHOOL' | translate }}</label>
-              </div>
-              <div class="d-flex-column form-effect">
                 <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.last_education"
                        name="last_education"/>
-                <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'EDUCATION' | translate }}</label>
+                <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'SCHOOL' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
                 <input class="p-3 w-100 rounded-2  focus-effect" type="text" [(ngModel)]="account.major" name="major"/>
@@ -155,15 +151,19 @@
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'KAKAOTALK ID' | translate }}</label>
               </div>
               <div class="d-flex-column form-effect">
-                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.address"
-                       name="address"/>
-                <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'ADDRESS' | translate }}</label>
-              </div>
-              <div class="d-flex-column form-effect">
-                <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.hobby"
-                        name="hobby"/>
+                  <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.hobby"
+                          name="hobby"/>
                 <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'HOBBIES' | translate }}</label>
               </div>
+            </ion-col>
+          </ion-row>
+          <ion-row justify-content-center>
+            <ion-col col-10>
+                <div class="d-flex-column form-effect">
+                    <input class=" focus-effect p-3 w-100 rounded-2" type="text" [(ngModel)]="account.address"
+                           name="address"/>
+                    <label class="mt-5 mb-2 fs-90 fw-bold uppercase">{{ 'ADDRESS' | translate }}</label>
+                  </div>
             </ion-col>
           </ion-row>
           <ion-row class="mt-5" justify-content-center>
@@ -184,7 +184,6 @@
 
         </ion-grid>
       </form>
-
     </section>
   </div>
   <hook-content-bottom></hook-content-bottom>

@@ -21,7 +21,7 @@ export class CurriculumVitaeView {
   ) {
 
     this.teacher = navParams.data['teacher'];
-    console.log("teacher:: ", this.teacher);
+    // console.log("teacher:: ", this.teacher);
   }
 
   dismiss() {
