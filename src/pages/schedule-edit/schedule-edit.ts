@@ -86,6 +86,7 @@ export class ScheduleEditPage {
       php_to_kwr: this.data['php_to_kwr'],
       usd_to_kwr: this.data['usd_to_kwr'],
       share_teacher: this.data['share_teacher'],
+      transaction_fee: this.data['transaction_fee'],
       max_point_per_minute: this.data['max_point_per_minute']
     }, {cssClass:'add-schedule'});
     modal.onDidDismiss(()=> {

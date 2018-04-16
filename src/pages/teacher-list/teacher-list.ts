@@ -35,7 +35,7 @@ export class TeacherListPage {
     this.mode = nav.get('mode');
 
     if ( this.mode == 'leveltest' ) this.title = '레벨테스트';
-    else this.title = '수업예약'
+    else this.title = '수업예약';
     this.init();
     this.loadTeachers();
   }
