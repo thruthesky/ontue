@@ -13,6 +13,7 @@ export { SHARE_SESSION_LIST };
 
 declare let FCMPlugin;
 
+const ALL_SCHEDULE_CACHE_INTERVAL = 2; // 1 for 1 second. 1800 for 30 min. 3600 for 1 hour.
 const KEY_LMS_INFO = 'lms-info';
 
 export const KEY_WEEKEND = 'key-weekend';
@@ -215,7 +216,7 @@ export class AppService {
             // console.log("updated info from remote: ", this.info);
 
         }, e => {
-            console.error(e);
+            this.alert(e);
         });
     }
 
@@ -437,6 +438,16 @@ export class AppService {
             const code = this.xapi.getError(str).code;
             options['message'] = message;
             options['cssClass'] = 'error' + code;
+
+
+            /**
+             * When user's login session is not valid anymore, logout.
+             */
+            if (code === -42001) {
+                // console.log('login again');
+                this.user.logout();
+            }
+
         }
         /**
          * @todo This error happens rarely. @see https://github.com/thruthesky/ontue/issues/192
@@ -461,7 +472,7 @@ export class AppService {
             options['message'] = 'No message';
         }
 
-        // console.log('options: ', options);
+        console.log('options: ', options);
 
         this.toastCtrl.create(options).present();
 
@@ -898,7 +909,7 @@ export class AppService {
         }
         this.lms.update_push_token(this.pushToken, platform).subscribe(re => {
             // console.log("Token updated:");
-        }, e => console.error(e));
+        }, e => this.alert(e));
 
 
     }
@@ -1199,11 +1210,12 @@ export class AppService {
 
         const re = this.get(KEY_SCHEDULES);
         if (re && re['time']) {
-            const seconds = 60 * 25; // for 25 minutes.
+            // const seconds = 60 * 25; // for 25 minutes.
             const t1 = re['time'] / 1000;
             const t2 = (new Date).getTime() / 1000;
-            if (t2 - t1 < seconds) {   // The cached schedule data is less than 30s.
-                console.log(`Cached schedule data is less than ${seconds} seconds. It will use cached data.`);
+            const left = Math.round(t2 - t1);
+            if (left < ALL_SCHEDULE_CACHE_INTERVAL) {   //
+                console.log(`Using Cached schedule. ${left} seconds left for update.`);
                 if (callback) callback(re);
                 return re;
             }
