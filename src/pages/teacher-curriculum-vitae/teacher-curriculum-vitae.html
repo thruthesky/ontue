@@ -21,8 +21,8 @@
                 <div class="profile-user d-flex-column align-items-center justify-content-center py-3"
                   (click)="fileUpload.onClickCamera()">
 
-                  <div class="profile-user-photo of-hidden d-inline-block my-3 size-100 rounded-50 d-flex align-items-center">
-                    <img src="{{files.length ? files[0].url : a.anonymousPhotoURL}}">
+                  <div *ngIf="files" class="profile-user-photo of-hidden d-inline-block my-3 size-100 rounded-50 d-flex align-items-center">
+                    <img class="w-100" src="{{ userProfilePhoto( files )}}">
                   </div>
                   <button type="button" class="btn submit fs-lg my-3" [class.skip]="files && files.length"
                           (click)="fileUpload.onClickCamera()">

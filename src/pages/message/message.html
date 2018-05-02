@@ -31,6 +31,7 @@
               <img src="{{ message?.sender_photoURL? message.sender_photoURL: a.anonymousPhotoURL}}">
             </ion-avatar>
             <h2>Sender: {{message.sender_name}}</h2>
+            <div class="fs-1rem">{{ message.stamp * 1000 | date:'medium'}}</div>
             <h3 class="{{message.open == 0 ? 'fw-bold': ''}}" text-wrap>Title: {{message.title}}</h3>
             <p text-wrap *ngIf="message.view">{{message.content}}</p>
           </ion-item>
