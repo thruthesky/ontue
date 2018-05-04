@@ -462,4 +462,10 @@ export class LMSService extends Base {
       route: 'lms.my_level',
     });
   }
+
+  get_payment_computation_info() {
+    return this.x.post({
+      route: 'lms.get_payment_computation_info',
+    });
+  }
 }

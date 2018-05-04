@@ -1,0 +1,119 @@
+<ion-header>
+  <header-content></header-content>
+</ion-header>
+
+<ion-content>
+  <div class="page">
+
+    <div class="page-header black text-center">
+      Salary Computation
+    </div>
+    <section class="page-body">
+      <div *ngIf=" loading ">
+        <ion-spinner class="size-3"></ion-spinner>
+        {{ 'IN LOADING' | translate}}
+      </div>
+      <div class="p-3 pt-5" *ngIf=" ! loading " text-center>
+
+
+        <ion-grid class=" px-0 px-md-5" no-padding>
+          <ion-row justify-content-center>
+            <ion-col class="mr-md-4" col-md-3 col-auto>
+              <label class="hover-icon-effect pointer ">
+                <input class="radio-effect position-absolute opacity-0" type="radio" name="payment_method"
+                       [(ngModel)]="payment_information['payment_method']" (ngModelChange)="recompute()" value="gcash">
+                <div class="d-inline-block p-md-5 p-4 w-100 fs-lg fw-bold border rounded-2 bg-light" text-center>
+                  <i class="fal fa-tablet-alt d-inline-block mx-auto fs-4rem icon-effect" ion-text color="green"></i>
+                  <span class="d-block mt-md-3 m-0" text-center>GCAsh</span>
+                </div>
+              </label>
+            </ion-col>
+            <ion-col class="mx-5" col-md-3 col-auto>
+              <label class="hover-icon-effect pointer ">
+                <input class="radio-effect position-absolute opacity-0"  type="radio" name="payment_method"
+                       [(ngModel)]="payment_information['payment_method']" (ngModelChange)="recompute()" value="western-union">
+                <div class="d-inline-block p-md-5 p-4 w-100 fs-lg fw-bold border rounded-2 bg-light" text-center>
+                  <i class="fal fa-barcode d-inline-block fs-4rem mx-auto icon-effect" ion-text color="yellow"></i>
+                  <span class="d-block mt-md-3 m-0" text-center>Western Union</span>
+                </div>
+              </label>
+            </ion-col>
+            <ion-col class="ml-md-4" col-md-3 col-auto>
+              <label class="hover-icon-effect pointer ">
+                <input class="radio-effect position-absolute opacity-0" type="radio" name="payment_method"
+                       [(ngModel)]="payment_information['payment_method']" (ngModelChange)="recompute()" value="paypal">
+                <div class="d-inline-block p-md-5 p-4 w-100 fs-lg fw-bold border rounded-2 bg-light" text-center>
+                  <i class="fal fa-credit-card d-inline-block fs-4rem mx-auto icon-effect" ion-text color="blue"></i>
+                  <span class="d-block mt-md-3 m-md-0" text-center>Paypal</span>
+                </div>
+              </label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid class="payment-information  p-5" no-padding>
+          <ion-row class="mb-3" justify-content-center>
+            <ion-col class="pr-md-5 mr-md-2">
+                <div class="p-3 fw-bold">Total Points</div>
+            </ion-col>
+            <ion-col class="pr-md-5 mr-md-2">
+              <input id="total_points" class="p-3 rounded-2 focus-effect w-100 text-center"
+                     type="text" [(ngModel)]="total_points" (keyup)="recompute()" />
+            </ion-col>
+          </ion-row>
+          <ion-row class="mb-3" justify-content-center>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="p-3 fw-bold">Teacher Share Points (88%)</div>
+            </ion-col>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="bg-white p-3 border">{{ teacher_share }}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="mb-3" justify-content-center>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="p-3 fw-bold">Transaction Fee(4.2%)</div>
+            </ion-col>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="bg-white p-3 border">{{ paypal_charges }}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="mb-3" justify-content-center *ngIf="payment_information['payment_method'] !== 'paypal' ">
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="p-3 fw-bold">Buying Rate to PHP(3.1%):</div>
+            </ion-col>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="bg-white p-3 border">{{ buying_rate }}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="mb-3" justify-content-center>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="p-3 fw-bold">Earnings</div>
+            </ion-col>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="bg-white p-3 border">{{ earnings }}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="mb-3" justify-content-center>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="p-3 fw-bold">Salary</div>
+            </ion-col>
+            <ion-col class="pr-md-5 mr-md-2">
+              <div class="bg-white p-3 border">{{ salary }}</div>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+        <div>
+          *Note: Additional charges will be applied to GCash and Western Union base on the total salary earned.
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <hook-content-bottom></hook-content-bottom>
+</ion-content>

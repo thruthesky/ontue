@@ -65,6 +65,8 @@ import { StudentAdvPage } from '../pages/student-adv/student-adv';
 
 import { StudentCurriculumnPage } from '../pages/student-curriculumn/student-curriculumn';
 
+import { SalaryComputationPage } from '../pages/salary-computation/salary-computation';
+
 
 
 
@@ -174,6 +176,7 @@ export class MyApp implements AfterViewInit {
     this.a.pages['student-register-success'] = StudentRegisterSuccessPage;
     this.a.pages['student-adv'] = StudentAdvPage;
     this.a.pages['student-curriculumn'] = StudentCurriculumnPage;
+    this.a.pages['salary-computation'] = SalaryComputationPage;
 
     this.a.warningIeEdge();
 
@@ -274,6 +277,9 @@ export class MyApp implements AfterViewInit {
     // this.a.open('student-curriculumn');
 
     // this.a.open('session-past', {showLevel: true}); // my level
+
+
+    // this.a.open('salary-computation', { total_points: 10000 }); /// compute salary
   }
 
 

@@ -78,6 +78,14 @@
                 </div>
               <!-- </ion-card> -->
             </ion-col>
+            <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
+              <!-- <ion-card> -->
+                <div class="hover-effect-color pointer pt-5 m-md-4 m-2 bg-white" (click)="a.open('salary-computation')">
+                  <i class="fa fa-calculator fa-3x  mb-4 mt-3"></i>
+                  <div class="p-3 pb-5 lebel">Salary Computation</div>
+                </div>
+              <!-- </ion-card> -->
+            </ion-col>
 
             <ion-col class="text-center" *ngIf="a.user.isLogin"  col-md-3 col-6 >
               <!-- <ion-card> -->

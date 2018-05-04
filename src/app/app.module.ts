@@ -55,6 +55,7 @@ import { MyPointPage } from '../pages/my-point/my-point';
 import { StudentRegisterSuccessPage } from '../pages/student-register-success/student-register-success';
 import { StudentAdvPage } from '../pages/student-adv/student-adv';
 import { StudentCurriculumnPage } from '../pages/student-curriculumn/student-curriculumn';
+import { SalaryComputationPage } from '../pages/salary-computation/salary-computation';
 
 
 
@@ -202,7 +203,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherActivityLogComponent,
     TeacherGradeComponent,
     StudentCurriculumnPage,
-    TeacherLeveltestComponent
+    TeacherLeveltestComponent,
+    SalaryComputationPage
   ],
   imports: [
     BrowserModule,
@@ -286,7 +288,8 @@ export function createTranslateLoader(http: HttpClient) {
     TeacherActivityLogComponent,
     TeacherGradeComponent,
     StudentCurriculumnPage,
-    TeacherLeveltestComponent
+    TeacherLeveltestComponent,
+    SalaryComputationPage
   ],
   providers: [
     // StatusBar,
