@@ -30,8 +30,9 @@
             </ion-col>
             <ion-col class="mx-5" col-md-3 col-auto>
               <label class="hover-icon-effect pointer ">
-                <input class="radio-effect position-absolute opacity-0"  type="radio" name="payment_method"
-                       [(ngModel)]="payment_information['payment_method']" (ngModelChange)="recompute()" value="western-union">
+                <input class="radio-effect position-absolute opacity-0" type="radio" name="payment_method"
+                       [(ngModel)]="payment_information['payment_method']" (ngModelChange)="recompute()"
+                       value="western-union">
                 <div class="d-inline-block p-md-5 p-4 w-100 fs-lg fw-bold border rounded-2 bg-light" text-center>
                   <i class="fal fa-barcode d-inline-block fs-4rem mx-auto icon-effect" ion-text color="yellow"></i>
                   <span class="d-block mt-md-3 m-0" text-center>Western Union</span>
@@ -54,11 +55,11 @@
         <ion-grid class="payment-information  p-5" no-padding>
           <ion-row class="mb-3" justify-content-center>
             <ion-col class="pr-md-5 mr-md-2">
-                <div class="p-3 fw-bold">Total Points</div>
+              <div class="p-3 fw-bold">Total Points</div>
             </ion-col>
             <ion-col class="pr-md-5 mr-md-2">
               <input id="total_points" class="p-3 rounded-2 focus-effect w-100 text-center"
-                     type="text" [(ngModel)]="total_points" (keyup)="recompute()" />
+                     type="text" [(ngModel)]="total_points" (keyup)="recompute()"/>
             </ion-col>
           </ion-row>
           <ion-row class="mb-3" justify-content-center>
@@ -103,10 +104,37 @@
           </ion-row>
 
         </ion-grid>
-        <div>
-          *Note: Additional charges will be applied to GCash and Western Union base on the total salary earned.
+        <div class="text-left">
+          <div class="mb-3">
+            <b>*Total Points:</b> This is the total accumulated points you earn every paid class for a certain cutoff.
+          </div>
+          <div class="mb-3">
+            <b>*Teacher Share Points:</b> Teacher share is 88% of the total accumulated points.
+          </div>
+          <div class="mb-3">
+            <b>*Paypal Charges:</b> When the student buy points, paypal charges a total of 4.7% from the total amount
+            they pay.
+            But we still give the full amount of points to student, thats why we deduct the 4.7% to the teacher and
+            company share.
+            Company and teacher will share with this deduction. Since teacher share is 88% then we deduct 4.2% to
+            teacher points.
+            And since the company share is 12% we deduct 0.5% to company points.
+          </div>
+          <div class="mb-3">
+            <b>*Buying Rate:</b> It is applied when we transfer the money from paypal to local banks.
+          </div>
+          <div class="mb-3">
+            <b>*Total Earnings:</b> This amount sum of all the share and deductions.
+          </div>
+          <div class="mb-3">
+            <b>*Average Salary:</b> This amount is may change depends on the current exchange rate.
+          </div>
+          <div class="mb-3">
+            <div><b>*Note:</b> Additional charges will be applied to GCash and Western Union base on the total salary earned.</div>
+            <div><b>*Note:</b> For paypal users, buying rate is not applied but paypal will charge a service fee upon
+            receiving your salary.</div>
+          </div>
         </div>
-
 
       </div>
 

@@ -62,8 +62,11 @@ export class SalaryComputationPage implements OnInit {
     if ( this.payment_information['payment_method'] !== 'paypal' ) {
       console.log('this.payment_information[payment_method]', this.payment_information['payment_method']);
       this.buying_rate = this.teacher_share * this.payment_computation.buyer_rate / 100;
+      this.earnings = Math.round(this.teacher_share - this.paypal_charges - this.buying_rate);
+    } else {
+      this.earnings = Math.round(this.teacher_share - this.paypal_charges);
     }
-    this.earnings = Math.round(this.teacher_share - this.paypal_charges - this.buying_rate);
+
     if (this.payment_information['payment_method'] === 'paypal') {
       this.salary = Math.round(this.earnings / parseInt(this.payment_computation['usd'])) + 'USD';
     } else {
