@@ -71,7 +71,7 @@
           </ion-row>
           <ion-row class="mb-3" justify-content-center>
             <ion-col class="pr-md-5 mr-md-2">
-              <div class="p-3 fw-bold">Transaction Fee(4.2%)</div>
+              <div class="p-3 fw-bold">Paypal Charges/Transaction Fee(4.2%)</div>
             </ion-col>
             <ion-col class="pr-md-5 mr-md-2">
               <div class="bg-white p-3 border">{{ paypal_charges }}</div>
@@ -79,7 +79,7 @@
           </ion-row>
           <ion-row class="mb-3" justify-content-center *ngIf="payment_information['payment_method'] !== 'paypal' ">
             <ion-col class="pr-md-5 mr-md-2">
-              <div class="p-3 fw-bold">Buying Rate to PHP(3.1%):</div>
+              <div class="p-3 fw-bold">Current Buying Rate to PHP(3.1%):</div>
             </ion-col>
             <ion-col class="pr-md-5 mr-md-2">
               <div class="bg-white p-3 border">{{ buying_rate }}</div>
@@ -87,7 +87,7 @@
           </ion-row>
           <ion-row class="mb-3" justify-content-center>
             <ion-col class="pr-md-5 mr-md-2">
-              <div class="p-3 fw-bold">Earnings</div>
+              <div class="p-3 fw-bold">Total Earnings</div>
             </ion-col>
             <ion-col class="pr-md-5 mr-md-2">
               <div class="bg-white p-3 border">{{ earnings }}</div>
@@ -95,7 +95,7 @@
           </ion-row>
           <ion-row class="mb-3" justify-content-center>
             <ion-col class="pr-md-5 mr-md-2">
-              <div class="p-3 fw-bold">Salary</div>
+              <div class="p-3 fw-bold">Average Salary</div>
             </ion-col>
             <ion-col class="pr-md-5 mr-md-2">
               <div class="bg-white p-3 border">{{ salary }}</div>
