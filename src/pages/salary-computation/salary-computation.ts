@@ -71,8 +71,8 @@ export class SalaryComputationPage implements OnInit {
       this.salary = Math.round(this.earnings / parseInt(this.payment_computation['usd'])) + 'USD';
     } else {
 
-      console.log('this.earnings',  this.earnings);
-      console.log('his.payment_computation[php]',  this.payment_computation['php']);
+      // console.log('this.earnings',  this.earnings);
+      // console.log('his.payment_computation[php]',  this.payment_computation['php']);
       let converted =  Math.round(this.earnings / parseFloat(this.payment_computation['php']));
 
       console.log('converted',  converted);
