@@ -1,7 +1,7 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+// import { StatusBar } from '@ionic-native/status-bar';
+// import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
@@ -84,8 +84,8 @@ export class MyApp implements AfterViewInit {
 
   constructor(
     platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
+    // statusBar: StatusBar,
+    // splashScreen: SplashScreen,
     xapi: XapiService,
     public a: AppService
   ) {
@@ -94,8 +94,8 @@ export class MyApp implements AfterViewInit {
 
     platform.ready().then(() => {
       this.a.platform = platform;
-      statusBar.styleDefault();
-      splashScreen.hide();
+      // statusBar.styleDefault();
+      // splashScreen.hide();
 
       this.a.onetimeInitPushMessage();
 
