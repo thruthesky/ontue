@@ -1,15 +1,22 @@
 # ONTUE Development
 
-# ITS (issue.sh) (https://github.com/marketplace/issue-sh)
+## ITS (issue.sh) (https://github.com/marketplace/issue-sh)
+
 https://github.com/thruthesky/ontue/issues#issue-sh-boards
 
-
-# Environment
+## Environment
 
 * How to get ionic info
+
+```` sh
+ionic info
 ````
-$ ionic info
-````
+
+## Versions
+
+* Node version 8.9.4
+* Firebase ^4.9.0
+
 
 ## Repository
 * It uses github and ionic repo.
@@ -122,8 +129,17 @@ $ git checkout master
 
 # Publish
 
-
 ## Cordova App
+
+* Submit the code to Ionic Pro git repo.
+* Build and Package.
+* Download APK
+* Upload it to play store.
+
+
+````
+$ npm run ionic-pro-build
+````
 
 * @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.b6m5q8dofizh
 
