@@ -22,9 +22,10 @@ export const KEY_SCHEDULES = 'key-schedules';
 
 
 
-import * as firebase from "firebase";
-import "firebase/firestore"; // required for side-effect??? @see https://firebase.google.com/docs/firestore/quickstart?authuser=0
-import { firestore } from 'firebase';
+import * as firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/messaging";
+// import { firestore } from 'firebase/firestore';
 
 
 const firestoreLogCollection = 'user-activity-log-2';
@@ -1036,7 +1037,7 @@ export class AppService {
 
     log(data) {
         // data['name'] = 'test' + (new Date).getTime();
-        data['stamp'] = firestore.FieldValue.serverTimestamp();
+        data['stamp'] = firebase.firestore.FieldValue.serverTimestamp();// .FieldValue.serverTimestamp();
         // console.log(data);
         const col = this.firebase.db.collection(firestoreLogCollection);
         col.add(data)
