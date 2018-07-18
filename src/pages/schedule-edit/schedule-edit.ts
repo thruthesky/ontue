@@ -38,7 +38,7 @@ export class ScheduleEditPage {
     }
     else {
       a.open('home');
-      a.alert("User type must be teacher and should login first...");
+      a.alert("Please login as Teacher to edit your schedule.");
     }
 
 

@@ -29,15 +29,15 @@
 
 
   <!-- cordova.js required for cordova apps -->
-  <!-- <script src="cordova.js"></script> -->
+  <script src="cordova.js"></script>
 
 
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => {})
-        .catch(err => console.error('Error', err));
-    }
+    // if ('serviceWorker' in navigator) {
+    //   navigator.serviceWorker.register('service-worker.js')
+    //     .then(() => {})
+    //     .catch(err => console.error('Error', err));
+    // }
 
   </script>
 
@@ -70,9 +70,9 @@
      *  - 12+ will be edge.
      */
     function detect_ie_version() {
-      
+
       var ua = window.navigator.userAgent;
-      
+
       var msie = ua.indexOf('MSIE ');
       if (msie > 0) {
         return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
@@ -88,7 +88,7 @@
         // Edge (IE 12+) => return version number
         return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
       }
-      
+
       return false;
     }
     var ie_version = detect_ie_version();
