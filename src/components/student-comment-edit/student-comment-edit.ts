@@ -43,7 +43,7 @@ export class StudentCommentEdit {
 
   onClickSubmit() {
 
-    if( this.comment.length < 10 ) {
+    if( !this.comment || this.comment.length < 10 ) {
       this.a.alert("코멘트가 너무 짧습니다.");
       return;
     }

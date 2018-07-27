@@ -301,7 +301,9 @@
                           <button class="warning hover-effect border border-dark-06 rounded-2 fs-90"
                                   (click)=" onClickRefundRequest( book )"
                                   *ngIf=" book.refund_request_at == 0 ">
-                                  <span *ngIf="loadingRefundRequest"><i class="fa fa-spinner fa-spin"></i> </span>
+                                  <span *ngIf="loadingRefundRequest">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                  </span>
                                   {{ "REQUEST REFUND" | translate }}
                           </button>
                         </ng-container>
