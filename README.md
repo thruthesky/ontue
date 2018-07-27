@@ -141,6 +141,11 @@ $ git checkout master
 $ npm run ionic-pro-build
 ````
 
+* Wait for ionic pro finishes building.
+* Deploy.
+* Downloda APK.
+* Upload it app store.
+
 * @see https://docs.google.com/document/d/1ZpGsmKhnjqE9estnjr_vl9DcjdpeMSgxTz4B4eoTm7c/edit#heading=h.b6m5q8dofizh
 
 

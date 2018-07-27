@@ -108,9 +108,13 @@ export class RegisterPage {
       }
 
 
+
+      /// patch
+      this.account.kakaotalk_id = userData['class_software_id'];
+
       /// Check if QR Mark converting has been failed.
       ///
-      this.account.kakaotalk_id = userData.kakaotalk_id;
+      // this.account.kakaotalk_id = userData.kakaotalk_id;
       this.account['kakao_qrmark_string'] = userData.kakao_qrmark_string;
       if (this.account.kakao_qrmark_URL && !this.account.kakao_qrmark_string) {
         this.a.lms.update_kakao_qrmark_string().subscribe(re => {
@@ -121,7 +125,6 @@ export class RegisterPage {
         }, e => this.a.alert(e));
       }
       /// eo
-
 
     }, error => {
       this.inLoading = false;
@@ -172,6 +175,11 @@ export class RegisterPage {
    */
   profile_register() {
     this.account.user_login = this.account.user_email;
+    this.account['domain'] = 'www.kakaotalk.com';
+    this.account['class_software'] = 'kakaotalk';
+    this.account['class_software_id'] = this.account.kakaotalk_id;
+
+    
     // delete this.account.kakao_qrmark_URL;
     delete this.account.kakao_qrmark_string;
 
@@ -207,6 +215,10 @@ export class RegisterPage {
 
     // delete this.account.kakao_qrmark_URL;
     delete this.account.kakao_qrmark_string;
+
+    /// patch
+    this.account['class_software_id'] = this.account.kakaotalk_id;
+
     this.a.user.update(this.account).subscribe((res: USER_UPDATE_RESPONSE) => {
       // console.log('updateUserInfo:', res);
       this.a.hideLoader();
